@@ -1,0 +1,7 @@
+case=b exit_code=101 timeout=False
+loader=<repo>\target\provider-resolution\f6b86b9f0889403f92c6700786886285\case-b/runtime/amd_fidelityfx_loader_dx12.dll
+cwd=<repo>\target\provider-resolution\f6b86b9f0889403f92c6700786886285\case-b/cwd
+files:
+app\query.exe
+runtime\amd_fidelityfx_loader_dx12.dll
+runtime\amd_fidelityfx_upscaler_dx12.dll

@@ -1,0 +1,5 @@
+PROVIDER: phase=before_load, loaded=false
+LOADER: acquired=true
+PROVIDER: phase=after_load, loaded=false
+GET_VERSIONS: return_code=0, upscaler_version_count=2
+PROVIDER: phase=after_query, loaded=true, path=<repo>\target\provider-resolution\f6b86b9f0889403f92c6700786886285\case-a\app\amd_fidelityfx_upscaler_dx12.dll

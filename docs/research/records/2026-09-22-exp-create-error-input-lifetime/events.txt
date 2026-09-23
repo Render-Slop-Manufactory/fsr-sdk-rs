@@ -1,0 +1,102 @@
+# Process-specific non-null addresses normalized; labels are local to each child process.
+# Repeated labels preserve pointer identity, including unchanged post-destroy handle bits.
+=== input-cleanup.status.txt ===
+CASE mode=cleanup timeout=False exit_signed=0 exit_unsigned=0 exit_hex=0x00000000
+=== input-cleanup.stderr.txt ===
+Loader acquisition: succeeded
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+Candidate: upscale -> version -> DX12 -> DX12 -> null; same live device in both backends; null callbacks
+Dedicated descriptor storage: base=<descriptor-storage>; bytes=120
+Create: return_code=1; after create: context=0x0
+Returned failure: mode=cleanup; no destroy; host/message/backend callbacks=null; provider identity unavailable without a live context
+Descriptor storage released: VirtualFree succeeded
+Releasing caller device reference
+Caller device reference released; dropping FfxLibrary
+FfxLibrary dropped
+Observation begins: requested_ms=2000
+Observation completed: elapsed_ms=2000; normal process exit; no destroy
+=== input-cleanup.stdout.txt ===
+
+running 1 test
+test probes_create_error_input_lifetime ... 
+=== input-control.status.txt ===
+CASE mode=control timeout=False exit_signed=0 exit_unsigned=0 exit_hex=0x00000000
+=== input-control.stderr.txt ===
+Loader acquisition: succeeded
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+Create: return_code=0; after create: context=<context-1>
+Provider: return_code=0; id=0xf5a5ca1e01001001
+Provider name: 4.1.1
+Before destroy: context=<context-1>
+Destroy: return_code=0; after destroy: context=<context-1>
+=== input-control.stdout.txt ===
+
+running 1 test
+test creates_and_destroys_upscaler_context ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.39s
+
+=== input-discover.status.txt ===
+timeout=False exit=0
+=== input-discover.stderr.txt ===
+Loader acquisition: succeeded
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+Candidate: upscale -> version -> DX12 -> DX12 -> null; same live device in both backends; null callbacks
+Create: return_code=1; after create: context=0x0
+Returned-error discovery: no destroy; retaining all dependencies until process exit
+=== input-discover.stdout.txt ===
+
+running 1 test
+test probes_create_error_input_lifetime ... 
+=== input-protect.status.txt ===
+CASE mode=protect timeout=False exit_signed=0 exit_unsigned=0 exit_hex=0x00000000
+=== input-protect.stderr.txt ===
+Loader acquisition: succeeded
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+Candidate: upscale -> version -> DX12 -> DX12 -> null; same live device in both backends; null callbacks
+Dedicated descriptor storage: base=<descriptor-storage>; bytes=120
+Create: return_code=1; after create: context=0x0
+Returned failure: mode=protect; no destroy; host/message/backend callbacks=null; provider identity unavailable without a live context
+Descriptor pages: PAGE_NOACCESS verified by VirtualQuery
+Observation begins: requested_ms=2000
+Observation completed: elapsed_ms=2000; normal process exit; no destroy
+=== input-protect.stdout.txt ===
+
+running 1 test
+test probes_create_error_input_lifetime ... 
+=== input-retain.status.txt ===
+CASE mode=retain timeout=False exit_signed=0 exit_unsigned=0 exit_hex=0x00000000
+=== input-retain.stderr.txt ===
+Loader acquisition: succeeded
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+Candidate: upscale -> version -> DX12 -> DX12 -> null; same live device in both backends; null callbacks
+Dedicated descriptor storage: base=<descriptor-storage>; bytes=120
+Create: return_code=1; after create: context=0x0
+Returned failure: mode=retain; no destroy; host/message/backend callbacks=null; provider identity unavailable without a live context
+Dependencies retained
+Observation begins: requested_ms=2000
+Observation completed: elapsed_ms=2000; normal process exit; no destroy
+=== input-retain.stdout.txt ===
+
+running 1 test
+test probes_create_error_input_lifetime ... 

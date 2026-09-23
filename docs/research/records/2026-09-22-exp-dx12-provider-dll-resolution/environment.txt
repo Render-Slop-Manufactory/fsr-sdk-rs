@@ -1,0 +1,5 @@
+PATH entries=61; rooted=61; provider hits=0; Windows-directory hits=0
+Child PATH inherited unchanged; no DLL search-directory APIs called by probe/runner.
+Child-only inputs: FSR_SDK_TEST_DLL=absolute staged loader; FSR_SDK_RESOLUTION_DIAGNOSTICS=1; RUST_BACKTRACE=0.
+amd_fidelityfx_loader_dx12.dll SHA256=E2D85AA05A9BD9ED8B38935FDF5199372CCA6F74C12015143BB6F945EE1608AA; signature=Valid; signer=CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US
+amd_fidelityfx_upscaler_dx12.dll SHA256=D0DCCCC74A43C44BA435B7A369B456E0970D8A4464E4BD683119B374F2C9FB46; signature=Valid; signer=CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US

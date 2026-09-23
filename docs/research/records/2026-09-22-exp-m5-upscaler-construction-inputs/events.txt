@@ -1,0 +1,138 @@
+=== C0 status ===
+case=C0 timeout=False exit_signed=0 exit_hex=0x00000000
+=== C0 stderr ===
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=C0 render=1280x720 upscale=1920x1080 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+create_returned=true return_code=0 handle=non-null-1
+provider_query=0 provider_id=0xf5a5ca1e01001001 provider_name=4.1.1
+destroy_entered=true
+destroy_returned=true return_code=0
+=== C0 stdout ===
+
+running 1 test
+test signed_runtime_dimensions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+
+=== Z1 status ===
+case=Z1 timeout=False exit_signed=-1073740791 exit_hex=0xC0000409
+=== Z1 stderr ===
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=Z1 render=0x720 upscale=1920x1080 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+fatal runtime error: Rust cannot catch foreign exceptions, aborting
+=== Z1 stdout ===
+
+running 1 test
+test signed_runtime_dimensions ... 
+=== Z2 status ===
+case=Z2 timeout=False exit_signed=-1073740791 exit_hex=0xC0000409
+=== Z2 stderr ===
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=Z2 render=1280x0 upscale=1920x1080 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+fatal runtime error: Rust cannot catch foreign exceptions, aborting
+=== Z2 stdout ===
+
+running 1 test
+test signed_runtime_dimensions ... 
+=== Z3 status ===
+case=Z3 timeout=False exit_signed=-1073740791 exit_hex=0xC0000409
+=== Z3 stderr ===
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=Z3 render=1280x720 upscale=0x1080 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+fatal runtime error: Rust cannot catch foreign exceptions, aborting
+=== Z3 stdout ===
+
+running 1 test
+test signed_runtime_dimensions ... 
+=== Z4 status ===
+case=Z4 timeout=False exit_signed=-1073740791 exit_hex=0xC0000409
+=== Z4 stderr ===
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=Z4 render=1280x720 upscale=1920x0 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+fatal runtime error: Rust cannot catch foreign exceptions, aborting
+=== Z4 stdout ===
+
+running 1 test
+test signed_runtime_dimensions ... 
+=== T1 status ===
+case=T1 timeout=False exit_signed=0 exit_hex=0x00000000
+=== T1 stderr ===
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=T1 render=1x1 upscale=2x2 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+create_returned=true return_code=0 handle=non-null-1
+provider_query=0 provider_id=0xf5a5ca1e01001001 provider_name=4.1.1
+destroy_entered=true
+destroy_returned=true return_code=0
+=== T1 stdout ===
+
+running 1 test
+test signed_runtime_dimensions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.26s
+
+=== N1 status ===
+case=N1 timeout=False exit_signed=0 exit_hex=0x00000000
+=== N1 stderr ===
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=N1 render=1279x719 upscale=1919x1079 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+create_returned=true return_code=0 handle=non-null-1
+provider_query=0 provider_id=0xf5a5ca1e01001001 provider_name=4.1.1
+destroy_entered=true
+destroy_returned=true return_code=0
+=== N1 stdout ===
+
+running 1 test
+test signed_runtime_dimensions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+
+=== E1 status ===
+case=E1 timeout=False exit_signed=0 exit_hex=0x00000000
+=== E1 stderr ===
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=E1 render=1280x720 upscale=1280x720 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+create_returned=true return_code=0 handle=non-null-1
+provider_query=0 provider_id=0xf5a5ca1e01001001 provider_name=4.1.1
+destroy_entered=true
+destroy_returned=true return_code=0
+=== E1 stdout ===
+
+running 1 test
+test signed_runtime_dimensions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+
+=== D1 status ===
+case=D1 timeout=False exit_signed=0 exit_hex=0x00000000
+=== D1 stderr ===
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=D1 render=1920x1080 upscale=1280x720 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+create_returned=true return_code=0 handle=non-null-1
+provider_query=0 provider_id=0xf5a5ca1e01001001 provider_name=4.1.1
+destroy_entered=true
+destroy_returned=true return_code=0
+=== D1 stdout ===
+
+running 1 test
+test signed_runtime_dimensions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+

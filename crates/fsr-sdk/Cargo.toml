@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: MPL-2.0
+
+[package]
+name = "fsr-sdk"
+version = "0.1.0"
+description = "Engine-independent Rust wrapper for AMD FidelityFX SDK v2.3.0 (under development)"
+
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[features]
+default = ["dx12"]
+dx12 = ["fsr-sdk-sys/dx12", "dep:windows"]
+vulkan = ["fsr-sdk-sys/vulkan"]
+
+[dependencies.fsr-sdk-sys]
+path = "../fsr-sdk-sys"
+version = "0.1.0"
+default-features = false
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.62.2", optional = true, default-features = false, features = ["Win32_Graphics_Direct3D12"] }
+
+[dev-dependencies]
+libloading = "0.9.0"
