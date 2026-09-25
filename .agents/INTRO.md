@@ -6,39 +6,46 @@ result; otherwise proceed within the user's request.
 
 ## Context and authority
 
-Read [SCOPE.md](../SCOPE.md) for project purpose and boundaries, and
-[ROADMAP.md](../ROADMAP.md) for current status and sequencing. Source code and
+Read [SCOPE.md](../SCOPE.md) for project purpose and boundaries.
+[ROADMAP.md](../ROADMAP.md) owns current status and sequencing;
+[README.md](../README.md) is the human-facing entry point. Source code and
 Cargo manifests establish implemented behavior. Goals and plans are not evidence
 of completed functionality.
-Use [README.md](../README.md) as the human-facing entry point.
 
 This project wraps AMD's official FSR SDK in two layers: faithful native bindings
 in `fsr-sdk-sys`, and engine-independent Rust abstractions in `fsr-sdk`.
 Research supplies evidence; recommendations are not automatically decisions or
 implementation. Keep project facts and policy in human-facing documents, not
 only in agent instructions.
+Verification claims must remain understandable from files included in the
+published repository. Put dated commands, inputs, observations, and limits in
+self-contained records; link current documentation to those records. Do not
+make a Git revision, external CI page, or unpublished history necessary to
+understand a result.
 
 ## Task routing
 
 Read only the routes relevant to the task, and reconsider them if scope changes.
 
-- Every repository change: read [CONTRIBUTING.md](../CONTRIBUTING.md).
+- Repository changes or SDK, dependency, packaging, or licensing work: read
+  [CONTRIBUTING.md](../CONTRIBUTING.md).
 - Code changes or reviews: read [development guidance](../docs/DEVELOPMENT.md),
   relevant [decisions](../docs/DECISIONS.md), and
   [code heuristics](../docs/CODE_HEURISTICS.md),
   affected source and manifests, and relevant safety or SDK evidence.
-- Planning or documentation: inspect the actual implementation and relevant
-  scope sections, [ROADMAP.md](../ROADMAP.md), and relevant
-  [decisions](../docs/DECISIONS.md).
-- Tests, build commands, or support claims: read
+- Planning, status, or documentation: inspect the actual implementation and
+  relevant [decisions](../docs/DECISIONS.md). Consult
+  [ROADMAP.md](../ROADMAP.md) for status or sequencing and
+  [README.md](../README.md) for user-facing documentation or usage claims.
+- Tests, build commands, or support claims outside code work: read
   [development guidance](../docs/DEVELOPMENT.md).
-- SDK, dependencies, packaging, or licensing: read
-  [CONTRIBUTING.md](../CONTRIBUTING.md) and relevant
+- SDK, dependencies, packaging, or licensing: read relevant
   [decisions](../docs/DECISIONS.md); inspect affected manifests,
   relevant lockfile entries, [LICENSE](../LICENSE), and pinned upstream evidence.
   Distinguish the project's licence from AMD's terms.
-- Research: select the skill below and read the relevant existing topic under
-  `docs/research/`. Read historical records only to resolve provenance or gaps.
+- Research: use the matching skill below for a prompt, experiment, or synthesis.
+  For a direct source investigation, read the
+  [shared research guidance](skills/RESEARCH.md).
 
 ## Research skills
 
@@ -51,9 +58,7 @@ particular agent provider or automatically delegate work.
 | Run a bounded spike or native experiment and record evidence | [research-experiment](skills/research-experiment/SKILL.md) |
 | Import and integrate completed research | [research-synthesis](skills/research-synthesis/SKILL.md) |
 
-An ordinary implementation or test run does not need a research record. A direct
-request to perform source research is not merely a request to write a prompt;
-conduct it using the [shared research guidance](skills/RESEARCH.md).
+An ordinary implementation or test run does not need a research record.
 
 ## Execution and authorization
 

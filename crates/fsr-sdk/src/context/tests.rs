@@ -2,6 +2,10 @@
 
 use super::*;
 #[cfg(not(all(windows, feature = "dx12")))]
+use crate::runtime::FfxLibrary;
+#[cfg(all(windows, feature = "dx12"))]
+use fsr_sdk_sys::loader::FfxLibrary;
+#[cfg(not(all(windows, feature = "dx12")))]
 use std::cell::Cell;
 use std::{
     cell::RefCell,
@@ -112,6 +116,28 @@ fn create(
         library.observe_release(ledger.released.clone());
         library
     };
+    let runtime = Rc::new(crate::runtime::RuntimeState { library });
+    (
+        create_on(
+            &runtime,
+            &ledger,
+            create_code,
+            destroy_code,
+            null_create,
+            clear_destroy,
+        ),
+        ledger,
+    )
+}
+
+fn create_on(
+    runtime: &Rc<crate::runtime::RuntimeState>,
+    ledger: &Rc<Ledger>,
+    create_code: u32,
+    destroy_code: u32,
+    null_create: bool,
+    clear_destroy: bool,
+) -> Result<Owner, Error> {
     let mut state = State {
         input: Box::new(fixture::Input {
             tag: 0,
@@ -121,15 +147,91 @@ fn create(
             null_create: null_create.into(),
             clear_destroy: clear_destroy.into(),
             event,
-            data: Rc::as_ptr(&ledger).cast_mut().cast(),
+            data: Rc::as_ptr(ledger).cast_mut().cast(),
         }),
         ledger: ledger.clone(),
     };
     let root = (&raw mut *state.input).cast();
     // SAFETY: Fixture owns stable state, does no GPU work, and accesses only its
     // declared input. Device is a drop spy; no fake COM is passed to AMD.
-    let result = unsafe { Owner::create(state, Device(ledger.clone()), library, root) };
-    (result, ledger)
+    unsafe { Owner::create(state, Device(ledger.clone()), runtime.clone(), root) }
+}
+
+fn shared_runtime() -> (Rc<crate::runtime::RuntimeState>, Rc<Ledger>) {
+    let (library, path) = library();
+    let ledger = Rc::new(Ledger {
+        events: RefCell::new(Vec::new()),
+        #[cfg(all(windows, feature = "dx12"))]
+        path,
+        #[cfg(not(all(windows, feature = "dx12")))]
+        released: Rc::new(Cell::new(false)),
+    });
+    #[cfg(not(all(windows, feature = "dx12")))]
+    let library = {
+        let _ = path;
+        let mut library = library;
+        library.observe_release(ledger.released.clone());
+        library
+    };
+    (Rc::new(crate::runtime::RuntimeState { library }), ledger)
+}
+
+#[test]
+fn shared_runtime_survives_public_owner_and_first_context() {
+    let (runtime, ledger) = shared_runtime();
+    let weak = Rc::downgrade(&runtime);
+    let a = create_on(&runtime, &ledger, 0, 0, false, false).unwrap();
+    let b = create_on(&runtime, &ledger, 0, 0, false, false).unwrap();
+    drop(runtime);
+    assert_eq!(*ledger.events.borrow(), [1, 1]);
+    a.destroy().unwrap();
+    assert_eq!(*ledger.events.borrow(), [1, 1, 2, 3, 4]);
+    assert!(weak.upgrade().is_some());
+    assert_loaded(&ledger, true);
+    drop(b);
+    assert_eq!(*ledger.events.borrow(), [1, 1, 2, 3, 4, 2, 3, 4]);
+    assert!(weak.upgrade().is_none());
+    assert_loaded(&ledger, false);
+}
+
+#[test]
+fn failed_sibling_create_preserves_live_sibling() {
+    let (runtime, ledger) = shared_runtime();
+    let a = create_on(&runtime, &ledger, 0, 0, false, false).unwrap();
+    let b = create_on(&runtime, &ledger, u32::MAX, 0, false, false);
+    assert!(matches!(
+        b,
+        Err(Error::Native {
+            operation: Operation::Create,
+            code: u32::MAX
+        })
+    ));
+    drop(runtime);
+    assert_eq!(*ledger.events.borrow(), [1, 1, 3, 4]);
+    assert_loaded(&ledger, true);
+    a.destroy().unwrap();
+    assert_eq!(*ledger.events.borrow(), [1, 1, 3, 4, 2, 3, 4]);
+    assert_loaded(&ledger, false);
+}
+
+#[test]
+fn sibling_destroy_failure_retains_runtime_after_other_cleanup() {
+    let (runtime, ledger) = shared_runtime();
+    let weak = Rc::downgrade(&runtime);
+    let a = create_on(&runtime, &ledger, 0, u32::MAX, false, false).unwrap();
+    let b = create_on(&runtime, &ledger, 0, 0, false, false).unwrap();
+    drop(runtime);
+    assert_eq!(
+        a.destroy(),
+        Err(Error::Native {
+            operation: Operation::Destroy,
+            code: u32::MAX
+        })
+    );
+    b.destroy().unwrap();
+    assert_eq!(*ledger.events.borrow(), [1, 1, 2, 2, 3, 4]);
+    assert!(weak.upgrade().is_some());
+    assert_loaded(&ledger, true);
 }
 
 #[test]
@@ -240,6 +342,7 @@ extern crate self as fsr_sdk_sys;
 mod api {{
     pub type ffxContext = *mut std::ffi::c_void;
     pub type ffxCreateContextDescHeader = std::ffi::c_void;
+    pub type ffxDispatchDescHeader = std::ffi::c_void;
     pub type ffxAllocationCallbacks = std::ffi::c_void;
     pub const FFX_API_RETURN_OK: u32 = 0;
 }}
@@ -248,9 +351,11 @@ mod api {{
 mod runtime {{
     use crate::api::*;
     pub struct FfxLibrary;
+    pub struct RuntimeState {{ pub library: FfxLibrary }}
     impl FfxLibrary {{
         pub unsafe fn ffxCreateContext(&self, _: *mut ffxContext, _: *mut ffxCreateContextDescHeader, _: *const ffxAllocationCallbacks) -> u32 {{ 0 }}
         pub unsafe fn ffxDestroyContext(&self, _: *mut ffxContext, _: *const ffxAllocationCallbacks) -> u32 {{ 0 }}
+        pub unsafe fn ffxDispatch(&self, _: *mut ffxContext, _: *const ffxDispatchDescHeader) -> u32 {{ 0 }}
     }}
 }}
 use context::NativeContextOwner;

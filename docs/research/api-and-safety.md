@@ -1,6 +1,6 @@
 # API and safety
 
-- Updated: 2026-09-23.
+- Updated: 2026-09-25.
 - Scope: common ABI, loading, provider deployment, version enumeration, context
   lifecycle contracts and isolated create-failure experiments; M5 construction,
   Query/Configure, runtime-sharing source findings and bounded signed-runtime
@@ -26,7 +26,8 @@
   [M5 numerical construction investigation](records/2026-09-23-src-m5-numeric-construction-safety-contract.md),
   [signed-runtime dimension probe](records/2026-09-22-exp-m5-upscaler-construction-inputs.md),
   [signed-runtime DX12 width-boundary probe](records/2026-09-23-exp-m5-dx12-dimension-boundary.md),
-  and [sequential shared-runtime probe](records/2026-09-22-exp-m5-shared-runtime-provider-lifetime.md).
+  [sequential shared-runtime probe](records/2026-09-22-exp-m5-shared-runtime-provider-lifetime.md),
+  and [M5 Windows native verification](records/2026-09-24-exp-m5-windows-native-verification.md).
 
 ## Current findings
 
@@ -379,8 +380,9 @@ only; downscaling and GPU dispatch were not tested.
 Each case with zero in one of the four width/height components instead aborted
 before `ffxCreateContext` returned. The child exit was `0xC0000409`, with a Rust
 foreign-exception report; the native exception type, throw site and selected
-provider for those failed cases were not established. The current private
-constructor already uses `NonZeroU32`. For this tested signed path, zero input
+provider for those failed cases were not established. The M4 private
+constructor already used `NonZeroU32`; the M5 public `Dimensions::new` rejects
+zero before native creation. For this tested signed path, zero input
 cannot safely be delegated to a returned native error. The result does not
 establish a complete nonzero size domain or behavior on other configurations.
 This corrects any reading of the earlier source-only report as promising an
@@ -394,8 +396,11 @@ complete safe numerical domain for the four creation dimensions. The generic
 upscaler ABI specifies their meanings but no universal minimum, maximum,
 alignment, aspect ratio or render-versus-upscale ordering rule. The decision in
 [D008](../DECISIONS.md#d008--bound-the-first-public-dx12-upscaler-construction-contract)
-is now accepted with an explicit bounded numerical runtime trust assumption;
-the production constructor remains private and unsafe pending M5 implementation.
+is accepted with an explicit bounded numerical runtime trust assumption. M5
+now exposes safe construction from checked dimensions, a borrowed DX12 device
+and an unsafely acquired `Runtime`. Windows-target compilation and host/Windows
+ownership fixtures pass. The public path's native lifecycle evidence is
+synthesized below; it does not establish a complete nonzero numerical domain.
 
 **Open-provider source behavior:** FSR2 and FSR3 derive half-resolution resource
 extents from `maxRenderSize`, so a coordinate of 1 yields a zero extent in those
@@ -435,7 +440,8 @@ ordinary-error contract for unsupported sizes. D008 now selects an explicit,
 bounded trust assumption for the supported runtime path and its actually
 selected providers. This closes the policy question without converting these
 observations into proof of a safe numerical interval; no further numerical
-research is required for D008. Implementation remains pending.
+research is required for D008. M5 implements the selected contract without
+claiming that these observations establish a universal safe numerical domain.
 
 ### Sequential shared-runtime lifetime
 
@@ -452,10 +458,41 @@ rule, provider DLL reference counts, dispatch correctness or the identity of
 all participating driver code. Source evidence still leaves cross-context
 synchronization and arbitrary provider/runtime sharing unresolved.
 
-**Integration outcome:** the source repair and experiments refine M5 inputs
-without completing M5. They select no public runtime, device, sharing or
-synchronization API. The remaining helper, retention, ordering and threading
-questions need separate evidence where the selected wrapper surface requires it.
+**Integration outcome:** these source records and experiments informed, but did
+not themselves select, the public API. Accepted D008 subsequently selected
+runtime sharing, device retention and thread confinement; M5 implements those
+choices. The earlier raw two-context experiment did not verify the new public
+path; the later experiment below does so within its tested configuration.
+
+### Public M5 construction verification
+
+**Verified:** the [M5 Windows experiment](records/2026-09-24-exp-m5-windows-native-verification.md)
+ran the production `Runtime` and `Upscaler` path against the signed SDK v2.3.0
+loader/upscaler DLL pair on Windows x64/MSVC, an RX 9060 XT and driver
+`32.0.31041.1004`. Ordinary tests, paired C++ ABI compilation and the native
+helper build passed. Two isolated native cases each created A and B on one DX12
+device, dropped the public runtime and caller device, destroyed A, queried live
+B for provider `0xf5a5ca1e01001001` / `4.1.1`, then cleaned up B. Explicit B
+destruction and B `Drop` each exited `0` without timeout. This adds public
+wrapper execution to the earlier raw shared-runtime and private M4 lifecycle
+evidence. The native run exercised one nonzero size pair and no Dispatch.
+
+**Ownership observation:** the loader remained resident while B lived and was
+no longer resident after B cleanup in both cases. The test's internal runtime
+ownership assertions passed, and B remained usable after the caller's runtime
+and device values were dropped. This does not independently measure COM
+reference counts. The earlier raw shared-runtime experiment observed the
+*upscaler provider DLL* remaining resident after its loader owner was dropped;
+the M5 test checked the *API loader DLL*. Their residency results concern
+different modules and do not conflict. Neither probe identifies every selected
+implementation or establishes a general module-unloading rule.
+
+**Limits:** calls were sequential, and each case ran once on one configuration.
+No native concurrency, broader input domain, dispatch, image correctness,
+performance, or other GPU/provider compatibility follows. The first two M5
+runner attempts stopped at local PowerShell command availability and restricted
+OS inventory access before reaching native execution; the record retains them
+separately from the passing hardware cases.
 
 ## Destroy failures: source paths and limits
 
@@ -624,8 +661,9 @@ providers and threading remain outside the evidence.
 [D005](../DECISIONS.md#d005--own-effect-independent-context-lifecycles-with-terminal-teardown)
 now accepts it for the supported runtime path as an explicit, revisable runtime
 trust assumption, not a provider-independent guarantee. The evidence limits
-above remain unchanged; this is no longer a general M4 blocker. No public context
-ownership implementation follows. Repeating this wait or adding a staged cleanup
+above remain unchanged; this is no longer a general M4 blocker. This experiment
+alone did not establish a public ownership contract; D005 and D008 later selected
+bounded policies that M5 implements. Repeating this wait or adding a staged cleanup
 matrix cannot establish the missing universal contract. Further investigation
 would need provider-specific source/contract evidence or an independently
 justified deeper returned-failure path.
@@ -703,18 +741,27 @@ provider's implementation or establish runtime behavior.
 
 ## Open questions
 
-- **M5 source and runtime follow-up:** the later provenance repair supplies
+The later [M6 dispatch synthesis](upscaling-dispatch.md) collects source
+findings about DX12 states and synchronization and tracks accepted D011 and
+M6b's bounded public-route GPU verification. Those results do not change this
+topic's M5 lifecycle observations.
+
+- **M5 evidence limits and future API work:** the later provenance repair supplies
   pinned source links and corrects broad earlier claims, but does not recover
   every original claim-to-source mapping. Zero components aborted on one signed
   configuration; a later three-width probe returned generic error `1` below,
   at and above the D3D12 Texture2D width limit without identifying the rejection
   cause or an accepted maximum. The numerical source investigation and these
-  probes establish no complete safe domain; [D008](../DECISIONS.md#d008--bound-the-first-public-dx12-upscaler-construction-contract)
-  remains proposed, and public safe construction awaits further evidence or a
-  reviewed trust decision. Resolve provider-specific helper rounding, output
-  retention, global debug scoping and runtime/module lifetime where selected public
-  operations require them. The two-context sequential result does not resolve
-  general concurrency or choose an API.
+  probes establish no complete safe domain. Accepted
+  [D008](../DECISIONS.md#d008--bound-the-first-public-dx12-upscaler-construction-contract)
+  instead adopts a bounded runtime trust assumption, and M5 implements the
+  public constructor. Ordinary Windows CI fixtures for that path passed in the
+  [recorded run](records/2026-09-24-exp-m5-windows-ci-verification.md); both
+  opt-in native lifecycle cases passed on the tested configuration
+  ([native record](records/2026-09-24-exp-m5-windows-native-verification.md)). Resolve
+  provider-specific helper rounding, output retention and global debug scoping
+  where later public operations require them. The two-context sequential result
+  does not establish general native concurrency safety.
 - **Policy selected, broader questions open:** D007 selects explicit acquisition
   and executable-adjacent upscaler deployment for the tested v2.3.0 DX12 baseline;
   automatic runtime discovery is not part of that policy. Other effect artifacts,
@@ -739,9 +786,11 @@ provider's implementation or establish runtime behavior.
   corrupt private state to manufacture one, blindly destroy failed-create output,
   or retry failed destruction without a contract.
   Check library/context lifetime invariants without deliberate use-after-free.
-- **Later source work and experiments:** result-array queries, GPU resource and
-  synchronization contracts, and dispatch. Successful context creation does not
-  establish executed upscaling. Stress tests cannot establish an absent threading guarantee.
+- **Later source work and experiments:** result-array queries and broader GPU
+  resource, temporal and synchronization behavior remain open. The separate
+  [dispatch topic](upscaling-dispatch.md) records one executed public-route
+  upscaling frame; neither that result nor stress tests establish general
+  threading or image-quality guarantees.
 - **Policy selected, implementation deferred:**
   [D006](../DECISIONS.md#d006--curate-abi-slices-and-permit-reviewed-generated-bindings)
   establishes handwritten bindings as the default and permits reviewed generated

@@ -2,7 +2,10 @@
 
 Raw Rust bindings and an explicit-path Windows/DX12 loader for AMD FSR SDK
 v2.3.0. The implemented ABI is a limited subset including upscaler/DX12 creation
-descriptors. Provider-identification instrumentation remains test-local.
+and the narrow upscaler dispatch resource and descriptor payloads.
+Provider-identification instrumentation remains test-local.
+The [ABI coverage inventory](../../docs/ABI_COVERAGE.md) tracks each selected
+slice, its binding method, verification and wrapper support status.
 
 ## Licensing and provenance
 

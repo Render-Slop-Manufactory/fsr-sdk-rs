@@ -31,10 +31,14 @@ Keep each record self-contained and proportional to the investigation:
 - what changed relative to the supplied baseline;
 - unresolved questions and follow-up work.
 
-An experiment additionally records revision and relevant uncommitted changes,
-environment, hardware when relevant, exact commands and inputs, observed results,
-and reproduction limits. Preserve negative and inconclusive results. Retain only
-useful, sanitized artefacts; exclude secrets and personal machine details.
+An experiment additionally records the tested source state and relevant local
+changes, environment, hardware when relevant, exact commands and inputs,
+observed results, and reproduction limits. Preserve negative and inconclusive
+results. Retain only useful, sanitized artefacts; exclude secrets and personal
+machine details. Records must state the relevant observations and limits in the
+files themselves. A Git revision or external CI link may supplement a record,
+but must not be needed to understand its result. Link current plans, package
+READMEs, and topic syntheses to these self-contained records.
 
 Before retaining records or logs, normalize transient runtime addresses to
 semantic labels such as `<non-null-device>` or `<allocation-1>`. Use consistent

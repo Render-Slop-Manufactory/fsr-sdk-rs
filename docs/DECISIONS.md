@@ -66,11 +66,33 @@ the replacement. Update SCOPE.md if project boundaries change.
 
 [Read D008](adr/D008.md)
 
+## D009 — Leave public error categories open for extension
+
+**Status:** accepted
+
+[Read D009](adr/D009.md)
+
+## D010 — Own the public runtime load error in fsr-sdk
+
+**Status:** accepted
+
+[Read D010](adr/D010.md)
+
+## D011 — Bound the first public DX12 upscaler dispatch contract
+
+**Status:** accepted; M6b implemented and verified on one tested configuration
+
+[Read D011](adr/D011.md)
+
 ## Open choices
 
-Concrete binding-slice selections under D006 and public APIs beyond D008 remain
-undecided. D008 selects the first construction contract; implementation remains
-pending. D007 resolves runtime discovery/acquisition policy for its bounded
+Concrete binding-slice selections under D006 and public APIs beyond D008/D011
+remain undecided. [D011](adr/D011.md) accepts the first public DX12 dispatch
+contract; M6b implementation and bounded public-route GPU verification are
+complete. D008 selects the first construction
+contract; implementation and
+bounded [Windows native verification](research/records/2026-09-24-exp-m5-windows-native-verification.md)
+are complete. D007 resolves runtime discovery/acquisition policy for its bounded
 baseline; its explicitly deferred runtime questions remain open. Record further
 choices when supported by the relevant investigation; research recommendations
 are not decisions.

@@ -27,17 +27,18 @@ dependency changes may require updating the lockfile separately.
 
 These commands were checked on macOS on 2026-09-16 with cached dependencies.
 Clippy, tests, no-default-features checking, and documentation generation passed.
-That historical pass established compilation only. The first common ABI slice
-now has three Rust tests plus compile-time type checks; the empty placeholders
-have been formatted. The loader adds independent fixture tests and an opt-in
-AMD DLL load test. CI runs the ordinary checks on Ubuntu and Windows x64/MSVC.
+That historical pass established compilation only. The common ABI now has
+Rust and paired C++ checks; the loader adds independent fixture tests and an
+opt-in AMD DLL load test. CI runs the ordinary checks on Ubuntu and Windows
+x64/MSVC.
 
 ### Continuous integration
 
 The [CI workflow](../.github/workflows/ci.yml) runs on pull requests, pushes to
 `main`, and manual dispatch. Ubuntu checks formatting, Clippy, ordinary tests,
 the no-default-features build, and documentation with warnings denied. Windows
-x64/MSVC runs Clippy, ordinary tests, and the no-default-features build. The
+x64/MSVC runs Clippy, ordinary tests, the no-default-features build, and
+documentation with warnings denied so the Windows/DX12 public API is checked. The
 shared Rust setup installs stable Rust with the required components and restores
 a Cargo cache. Validation uses the lockfile.
 
@@ -49,6 +50,9 @@ passing CI result. The `vulkan` feature deliberately fails compilation, so CI
 does not use `--all-features`. No MSRV is declared yet.
 
 ### Common ABI verification
+
+The [ABI coverage inventory](ABI_COVERAGE.md) distinguishes raw declarations,
+their verification, and wrapper support for each selected slice.
 
 `crates/fsr-sdk-sys/tests/abi.rs` checks return constants, nullable function-pointer
 layouts, exact Rust types/signatures, and Windows x64 MSVC struct sizes, alignment
@@ -149,10 +153,14 @@ powershell -NoProfile -File crates/fsr-sdk/tests/run-m4.ps1 -Native
 The latter also compiles paired C++ ABI checks, builds the helper, stages SDK
 DLLs and runs `upscaler::tests::native_lifecycle` in a separate process with a
 60-second timeout. Stdout/stderr/status are saved under `target/m4-lifecycle/`.
-It uses production create/destroy policy, identifies the provider while the
-context is live and submits no GPU work. These Windows execution checks passed
-on 2026-09-22: 17 ordinary executable tests, two compile-fail doctests, paired C++
-ABI compilation and the isolated production-owner lifecycle (provider 4.1.1,
+The current test uses M5's public constructor and two sequential contexts; its
+Windows execution is recorded in the
+[M5 verification record](research/records/2026-09-24-exp-m5-windows-native-verification.md).
+The earlier M4 version used production
+create/destroy policy, identified the provider while the context was live and
+submitted no GPU work. Those Windows checks passed on 2026-09-22: 17 ordinary
+executable tests, two compile-fail doctests, paired C++ ABI compilation and the
+isolated production-owner lifecycle (provider 4.1.1,
 RX 9060 XT, driver 32.0.31041.1004). The
 [M4 verification record](research/records/2026-09-22-exp-m4-windows-verification.md)
 preserves inputs, results and the process-local PowerShell execution-policy
@@ -185,6 +193,82 @@ cargo clippy --workspace --all-targets --target x86_64-pc-windows-msvc --locked 
 
 No Rust cross-check substitutes for the native C++/DLL/device checks above.
 
+### M5 public construction checks
+
+M5 adds a public Windows/DX12 `Runtime` and checked `Upscaler` constructor.
+The ordinary Windows test suite includes a local fixture for the descriptor
+chain, COM AddRef/Release, zero rejection and exceptional dependency retention,
+plus shared-runtime sibling lifecycle tests. On Windows with Rust/MSVC, run:
+
+```powershell
+powershell -NoProfile -File crates/fsr-sdk/tests/run-m5.ps1
+```
+
+For the trusted local SDK v2.3.0, an x64 VS developer shell and a hardware DX12
+device, opt into the two-context native cases (one explicit B destroy, one B
+Drop) in separate 60-second processes:
+
+```powershell
+powershell -NoProfile -File crates/fsr-sdk/tests/run-m5.ps1 -Native
+```
+
+The runner saves DLL SHA-256 fingerprints, OS/GPU/driver data, native output
+and exit status under `target/m5-lifecycle/`. It compiles the existing paired
+native ABI check and builds the DX12 helper. The native cases create A and B
+sequentially through the public path, drop the public runtime and caller device,
+destroy A, query B for provider identity, then clean up B. Module residency is
+recorded separately from the Rust runtime ownership assertion. Neither fixtures
+nor native lifecycle tests exercise Dispatch or prove universal numerical
+provider safety. The ordinary Windows CI suite ran these M5 fixtures successfully
+in the [recorded run](research/records/2026-09-24-exp-m5-windows-ci-verification.md).
+Both opt-in native cases passed on the tested Windows x64/MSVC
+machine on 2026-09-24; the [verification record](research/records/2026-09-24-exp-m5-windows-native-verification.md)
+includes the exact PowerShell 7 developer-shell command, inputs, outcomes, and
+two setup failures before native execution.
+
+### M6a private native dispatch proof
+
+The M6a proof originally checked the selected dispatch ABI, private descriptor
+construction, rejection paths and fixture forwarding. The opt-in test uses
+the unchanged public M5 constructor, five synthetic DX12 textures, command-list
+submission, fence and pitched readback. M6b switched it to the public dispatch
+method; the historical M6a record still describes its original private path.
+It requires the trusted local SDK v2.3.0 under
+`external/FidelityFX-SDK/v2.3.0`, an x64 VS developer shell and a hardware DX12
+GPU. From the repository root:
+
+```powershell
+pwsh -NoProfile -File crates/fsr-sdk/tests/run-m6.ps1 -Native
+```
+
+The runner compiles a paired C++ ABI check against the pinned headers, builds
+the DX12 helper, stages the signed loader/provider DLLs beside an isolated
+test executable, and records metadata, stdout, stderr and status under
+`target/m6a/`. It enables the D3D12 debug layer; `-GpuValidation` additionally
+enables GPU-based validation. On the [recorded setup](research/records/2026-09-24-exp-m6a-native-dispatch-proof.md),
+the debug-layer-only run passed with OK dispatch, fence completion, 230,400
+finite changed pixels, spatial variation and zero debug errors. Two
+GPU-based-validation attempts timed out inside native dispatch before GPU
+submission; that mode remains inconclusive. The original M6a run provided
+bounded private-path evidence, not an image-quality claim.
+The [bounded GBV spike](research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md)
+uses [`run-m6-gbv-spike.ps1`](../crates/fsr-sdk/tests/run-m6-gbv-spike.ps1):
+its no-dispatch DX12 control completed under
+GBV, while the provider call consumed CPU and timed out before submission.
+
+### M6b public dispatch verification
+
+The M6a harness now calls the public `unsafe Upscaler::dispatch` route while
+retaining its five-resource parity check, submission, fence and pitched readback.
+Run `run-m6.ps1 -Native` as above to execute this public route. The ordinary
+suite checks the fixed descriptor, inspectable resource and scalar rejection,
+public-route COM inspection with controlled DX12 objects, and fixture-driven
+error/poison/teardown policy without AMD DLLs or GPU commands. The
+[M6b record](research/records/2026-09-25-m6b-public-dispatch-verification.md)
+preserves the native inputs, command, outputs and limits. The method does not
+submit or wait; the unsafe caller must keep the context, resources and backing
+storage alive until GPU completion and obey D011's failure/abandonment rules.
+
 ## Feature and platform boundaries
 
 `fsr-sdk` enables `dx12` by default and forwards it to `fsr-sdk-sys`. The raw crate
@@ -197,7 +281,7 @@ on Windows with DX12 enabled when changing that boundary. Cross-compilation may
 check target-specific Rust code, but cannot establish that a DLL loads or a GPU
 operation works. The native SDK baseline is `v2.3.0`
 ([D002](DECISIONS.md#d002--pin-amd-fsr-sdk-v230-as-the-initial-native-baseline)).
-No acquisition mechanism or high-level runtime operations are implemented.
+No automated SDK acquisition or public Query/Configure operations are implemented.
 The raw loader's forwarding methods do not validate native operation contracts.
 
 ## FFI safety and verification

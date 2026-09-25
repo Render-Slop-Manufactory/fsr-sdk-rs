@@ -30,8 +30,30 @@ interfaces. Preserve native error information. Expose safe operations only where
 the wrapper can uphold their contracts; document caller obligations at unsafe
 native-resource boundaries.
 
+The caller's renderer supplies GPU resources, image content, motion vectors,
+camera and timing values. The first DX12 dispatch boundary also
+leaves command-list submission and GPU synchronization to the caller. The
+wrapper may validate metadata it can inspect and document the remaining
+obligations, but it does not own the rendering pipeline.
+
 Correctness and a clear correspondence with AMD's API take priority over an
 elaborate facade. Implement only the API surface justified by real use.
+
+### Public API surface
+
+`fsr-sdk` owns its public configuration and error types, translating native
+failures while preserving codes where supplied and underlying causes where
+available. Ordinary safe APIs must not expose `fsr-sdk-sys` ABI types, raw
+pointers or handles, descriptor chains, or function pointers. Keep those details
+behind the wrapper's validated types and ownership rules.
+
+Platform resource types that callers already own may be deliberate public
+inputs. The DX12 `ID3D12Device` is one such choice; its `windows` dependency
+version is part of the compatibility review ([D008](docs/adr/D008.md)). A future
+low-level or unsafe escape hatch may expose native types when its caller
+obligations and public compatibility costs are explicit and recorded in a
+[decision](docs/DECISIONS.md). The owned load-error boundary is recorded in
+[D010](docs/adr/D010.md).
 
 ## Platform and compatibility boundaries
 

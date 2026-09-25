@@ -113,6 +113,68 @@ pub struct FfxApiDimensions2D {
     pub height: u32,
 }
 
+/// Selected resource ABI from SDK v2.3.0 `api/include/ffx_api_types.h`.
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct FfxApiFloatCoords2D {
+    pub x: f32,
+    pub y: f32,
+}
+
+pub const FFX_API_RESOURCE_TYPE_TEXTURE2D: u32 = 2;
+pub const FFX_API_RESOURCE_FLAGS_NONE: u32 = 0;
+pub const FFX_API_RESOURCE_USAGE_READ_ONLY: u32 = 0;
+pub const FFX_API_RESOURCE_USAGE_UAV: u32 = 1 << 1;
+pub const FFX_API_RESOURCE_STATE_COMPUTE_READ: u32 = 1 << 2;
+pub const FFX_API_RESOURCE_STATE_UNORDERED_ACCESS: u32 = 1 << 1;
+pub const FFX_API_SURFACE_FORMAT_UNKNOWN: u32 = 0;
+pub const FFX_API_SURFACE_FORMAT_R16G16B16A16_FLOAT: u32 = 4;
+pub const FFX_API_SURFACE_FORMAT_R16G16_FLOAT: u32 = 18;
+pub const FFX_API_SURFACE_FORMAT_R32_FLOAT: u32 = 28;
+
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub union FfxApiResourceWidth {
+    pub width: u32,
+    pub size: u32,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub union FfxApiResourceHeight {
+    pub height: u32,
+    pub stride: u32,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub union FfxApiResourceDepth {
+    pub depth: u32,
+    pub alignment: u32,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy)]
+#[allow(non_snake_case)]
+pub struct FfxApiResourceDescription {
+    pub r#type: u32,
+    pub format: u32,
+    pub width: FfxApiResourceWidth,
+    pub height: FfxApiResourceHeight,
+    pub depth: FfxApiResourceDepth,
+    pub mipCount: u32,
+    pub flags: u32,
+    pub usage: u32,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct FfxApiResource {
+    pub resource: *mut c_void,
+    pub description: FfxApiResourceDescription,
+    pub state: u32,
+}
+
 /// Windows message callback from `api/include/ffx_api.h` (16-bit wchar_t).
 #[cfg(windows)]
 pub type ffxApiMessage = Option<unsafe extern "C" fn(u32, *const u16)>;

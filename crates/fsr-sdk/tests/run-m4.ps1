@@ -51,7 +51,7 @@ try {
         [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/native.status.txt"), "timeout=$timeout exit=$exitCode")
         Write-Host $stdout.Result
         Write-Host $stderr.Result
-        if ($timeout -or $exitCode -ne 0 -or $stderr.Result -notmatch 'Production owner: destroy OK') { throw "Native lifecycle failed: timeout=$timeout exit=$exitCode" }
+        if ($timeout -or $exitCode -ne 0 -or $stderr.Result -notmatch 'Production owner: destroy A/B OK') { throw "Native lifecycle failed: timeout=$timeout exit=$exitCode" }
     }
 } finally {
     $env:FSR_SDK_TEST_DLL = $previousLoader

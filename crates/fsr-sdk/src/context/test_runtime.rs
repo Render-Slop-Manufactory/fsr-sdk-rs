@@ -13,6 +13,10 @@ pub(crate) struct FfxLibrary {
     release_probe: Option<Rc<Cell<bool>>>,
 }
 
+pub(crate) struct RuntimeState {
+    pub(crate) library: FfxLibrary,
+}
+
 impl Drop for FfxLibrary {
     fn drop(&mut self) {
         if let Some(probe) = &self.release_probe {

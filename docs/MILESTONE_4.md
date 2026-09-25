@@ -2,8 +2,11 @@
 
 Status: implemented and verified on the tested Windows x64/MSVC configuration, 2026-09-22. This plan accompanies
 [D005](DECISIONS.md#d005--own-effect-independent-context-lifecycles-with-terminal-teardown).
-The implementation follows this design; the verification status below distinguishes
-host tests, Windows compilation and native execution.
+The M4 implementation followed this design at the time. M5 subsequently
+replaced exclusive loader ownership with private shared `Rc` runtime state and
+exposed borrowed-device construction; see [D008](adr/D008.md) and
+[M5](MILESTONE_5.md). The M4 verification status below distinguishes host tests,
+Windows compilation and native execution.
 The [roadmap](../ROADMAP.md) remains authoritative for milestone status.
 
 ## Preconditions and scope
@@ -185,11 +188,15 @@ the separate allocator/input-lifetime research probes remain raw.
 Run `powershell -NoProfile -File crates/fsr-sdk/tests/run-m4.ps1` on Windows for
 ordinary checks. Add `-Native` from an x64 VS developer shell with the local SDK
 and hardware device for paired C++ ABI verification and isolated native lifecycle
-execution. Results go under `target/m4-lifecycle/`. On 2026-09-22 these checks
-passed: 17 ordinary Windows executable tests, two compile-fail doctests,
-formatting, Clippy, no-default-feature checking, paired C++ ABI compilation and
-the production owner's actual AMD lifecycle. The native child exited 0 without
-timeout, identifying provider 4.1.1 on RX 9060 XT / driver 32.0.31041.1004.
+execution. The current runner targets M5's public constructor; that native test
+passed through the [M5 runner](research/records/2026-09-24-exp-m5-windows-native-verification.md)
+on 2026-09-24. The M4 runner itself was not rerun after that adaptation. Its
+results go under `target/m4-lifecycle/`. The M4-era
+runner passed on 2026-09-22: 17 ordinary Windows executable tests, two
+compile-fail doctests, formatting, Clippy, no-default-feature checking, paired
+C++ ABI compilation and the production owner's actual AMD lifecycle. The native
+child exited 0 without timeout, identifying provider 4.1.1 on RX 9060 XT /
+driver 32.0.31041.1004.
 The [Windows experiment](research/records/2026-09-22-exp-m4-windows-verification.md)
 records reproduction, fingerprints and limits. M4 verification is complete for
 this bounded configuration. No GPU dispatch is included; native failure

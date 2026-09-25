@@ -1,6 +1,6 @@
 # Licensing and distribution
 
-- Updated: 2026-09-22.
+- Updated: 2026-09-25.
 - Evidence: [license and package audit](records/2026-09-21-src-license-and-package-audit.md)
   and [DX12 provider-DLL resolution](records/2026-09-21-src-dx12-provider-dll-resolution.md),
   [distribution and artifact provenance](records/2026-09-22-src-distribution-artifact-provenance.md),
@@ -19,11 +19,12 @@ notices do not mean all Rust additions or complete mixed files are MIT-licensed.
 
 **Audit baseline:** neither Cargo file list included the root MPL text or a
 README. The raw archive confirmed its absence. The subsequent repository setup
-adds package-local copies of LICENSE, package READMEs, source SPDX markers and
-contribution rules preserving AMD notices. Wrapper packaging still fails on
-the missing version requirement for its `fsr-sdk-sys` path dependency, so a
-wrapper archive has not been verified. The historical missing text is not by
-itself labeled a proven legal violation.
+added package-local copies of LICENSE, package READMEs, source SPDX markers and
+contribution rules preserving AMD notices. At audit time, wrapper packaging
+failed because the `fsr-sdk-sys` path dependency lacked a version requirement.
+The [current wrapper manifest](../../crates/fsr-sdk/Cargo.toml) supplies
+`version = "0.1.0"`; a wrapper archive still has not been inspected. The
+historical missing text is not by itself labeled a proven legal violation.
 
 **Setup verification:** both updated Cargo file lists include LICENSE and
 README.md. A newly generated raw-crate archive includes those files plus
@@ -122,7 +123,8 @@ or distribution choices are not completed by importing this report.
   attribution. The setup retains existing `MPL-2.0` metadata and documents the
   MIT notice separately; a future expression change requires an explicit decision.
   `OR` would incorrectly suggest an already-authorized package-wide license choice.
-- Complete wrapper packaging after its dependency version is supplied.
+- Inspect a local wrapper archive, including its notices, before claiming
+  package readiness. The path-dependency version is now present.
 - For any future binary distribution, inspect the exact contents and applicable
   dependency notices, rather than treating local test staging as a release bundle.
 - Copyrightability of individual ABI declarations, all-contributor title and
