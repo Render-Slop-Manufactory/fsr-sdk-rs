@@ -1,0 +1,669 @@
+diff --git a/crates/fsr-sdk/src/upscaler/m6.rs b/crates/fsr-sdk/src/upscaler/m6.rs
+index 4d604e3..0bda6db 100644
+--- a/crates/fsr-sdk/src/upscaler/m6.rs
++++ b/crates/fsr-sdk/src/upscaler/m6.rs
+@@ -6,7 +6,7 @@ use super::{
+     CameraParameters, Dimensions, FrameTimeMillis, JitterOffsetPixels, UpscaleDispatch, Upscaler,
+     UpscalerOptions, dispatch::resource_for_parity,
+ };
+-use crate::runtime::Runtime;
++use crate::{error::Error, runtime::Runtime};
+ use fsr_sdk_sys::api::{
+     FFX_API_RESOURCE_STATE_COMPUTE_READ, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS,
+     FFX_API_RETURN_OK, FfxApiResource, ffxApiHeader,
+@@ -51,12 +51,50 @@ struct ProviderQuery {
+ 
+ type EnableDebug = unsafe extern "C" fn() -> i32;
+ type CreateDevice = unsafe extern "C" fn(*mut *mut c_void) -> i32;
++type DeviceCheck = unsafe extern "C" fn(*mut c_void) -> i32;
++type SetTemporalFrame = unsafe extern "C" fn(*mut c_void, u32, f32, f32) -> i32;
+ type CreateHarness =
+     unsafe extern "C" fn(*mut c_void, *mut *mut c_void, *mut *mut c_void, *mut *mut c_void) -> i32;
+ type CompareResource = unsafe extern "C" fn(*mut c_void, *const FfxApiResource, u32) -> i32;
+ type Finish = unsafe extern "C" fn(*mut c_void, *mut Metrics) -> i32;
+ type Destroy = unsafe extern "C" fn(*mut c_void);
+ 
++fn log_provider(upscaler: &mut Upscaler) {
++    let mut provider = ProviderQuery {
++        header: ffxApiHeader {
++            r#type: 6,
++            pNext: null_mut(),
++        },
++        id: 0,
++        name: std::ptr::null(),
++    };
++    // SAFETY: This test-only query ABI matches the existing M5 fixture;
++    // the context and runtime remain live while reading the provider name.
++    let query_code = unsafe { upscaler.owner.query_for_test(&raw mut provider.header) };
++    eprintln!("Provider query: code={query_code:#010x}");
++    assert_eq!(query_code, FFX_API_RETURN_OK, "provider query failed");
++    assert!(!provider.name.is_null() && provider.id != 0);
++    // SAFETY: A successful query returned a live native name pointer.
++    let name = unsafe { CStr::from_ptr(provider.name) };
++    eprintln!(
++        "M6 provider: id={:#018x}; name={}",
++        provider.id,
++        name.to_string_lossy()
++    );
++}
++
++fn abort_dispatch(error: Error, frame: u32) -> ! {
++    match error {
++        Error::Native { operation, code } => eprintln!(
++            "NATIVE DISPATCH FAILURE: frame={frame} operation={operation:?} code={code:#010x} ({code}); context poisoned"
++        ),
++        other => eprintln!("HARNESS / INPUT FAILURE: frame={frame} error={other:?}"),
++    }
++    // Failed native recordings must never be submitted. Terminating this
++    // isolated child also preserves the existing fail-fast cleanup strategy.
++    std::process::exit(1);
++}
++
+ #[test]
+ #[ignore = "requires trusted staged v2.3.0 DLLs, MSVC-built m6_gpu.dll and a hardware DX12 GPU; use tests/run-m6.ps1 -Native"]
+ fn native_dispatch_readback() {
+@@ -73,6 +111,9 @@ fn native_dispatch_readback() {
+             .get::<CreateDevice>(b"probe_create_device\0")
+             .unwrap()
+     };
++    // SAFETY: These exact helper exports inspect the live caller-owned device.
++    let require_amd = unsafe { *helper.get::<DeviceCheck>(b"m6_require_amd\0").unwrap() };
++    let check_device = unsafe { *helper.get::<DeviceCheck>(b"m6_check_device\0").unwrap() };
+     let create_harness = unsafe { *helper.get::<CreateHarness>(b"m6_create\0").unwrap() };
+     let compare = unsafe {
+         *helper
+@@ -84,16 +125,24 @@ fn native_dispatch_readback() {
+ 
+     // SAFETY: Debug configuration occurs before device creation.
+     let debug_hr = unsafe { enable_debug() };
++    eprintln!("Gate A debug layer: HRESULT={debug_hr:#010x}");
+     assert!(
+         debug_hr >= 0,
+-        "D3D12 debug/GPU validation unavailable: {debug_hr:#x}"
++        "ENVIRONMENT BLOCKER: D3D12 debug/GPU validation unavailable: {debug_hr:#x}"
+     );
+     let mut raw_device = null_mut();
+     // SAFETY: Writable output; the helper transfers one COM reference.
+     let hr = unsafe { create_device(&mut raw_device) };
++    eprintln!("Gate A device creation: HRESULT={hr:#010x}");
+     assert!(hr >= 0 && !raw_device.is_null(), "device creation: {hr:#x}");
+     // SAFETY: The helper returned an owned ID3D12Device reference.
+     let device = unsafe { ID3D12Device::from_raw(raw_device) };
++    // SAFETY: The device is live; the helper resolves its actual adapter LUID.
++    let hr = unsafe { require_amd(device.as_raw()) };
++    assert_eq!(
++        hr, 0,
++        "ENVIRONMENT BLOCKER: selected adapter is not AMD hardware: {hr:#010x}"
++    );
+     eprintln!("M6a: loading runtime");
+     // SAFETY: The explicit trusted loader and provider match the pinned ABI.
+     let runtime = unsafe { Runtime::load_unchecked(&loader) }.unwrap();
+@@ -107,26 +156,8 @@ fn native_dispatch_readback() {
+         ),
+     )
+     .unwrap();
+-    let mut provider = ProviderQuery {
+-        header: ffxApiHeader {
+-            r#type: 6,
+-            pNext: null_mut(),
+-        },
+-        id: 0,
+-        name: std::ptr::null(),
+-    };
+-    // SAFETY: This exact test-only query ABI is paired with the existing M5
+-    // native fixture; the context and runtime remain live while reading name.
+-    let query_code = unsafe { upscaler.owner.query_for_test(&raw mut provider.header) };
+-    assert_eq!(query_code, FFX_API_RETURN_OK, "provider query failed");
+-    assert!(!provider.name.is_null() && provider.id != 0);
+-    // SAFETY: A successful query returned a live native name pointer.
+-    let name = unsafe { CStr::from_ptr(provider.name) };
+-    eprintln!(
+-        "M6a provider: id={:#018x}; name={}",
+-        provider.id,
+-        name.to_string_lossy()
+-    );
++    eprintln!("Gate A public construction: OK native_code={FFX_API_RETURN_OK:#010x}");
++    log_provider(&mut upscaler);
+     eprintln!("M6a: creating synthetic textures and list");
+     let mut harness = null_mut();
+     let mut raw_list = null_mut();
+@@ -216,12 +247,9 @@ fn native_dispatch_readback() {
+         })
+     };
+     if let Err(error) = dispatch {
+-        eprintln!("ffxDispatch failed: {error:?}");
+-        // The provider may have recorded partial work. End this isolated child
+-        // without running context/resource destructors before GPU completion.
+-        std::process::exit(1);
++        abort_dispatch(error, 0);
+     }
+-    eprintln!("ffxDispatch: OK");
++    eprintln!("ffxDispatch: OK native_code={FFX_API_RETURN_OK:#010x}");
+     let mut metrics = Metrics::default();
+     // SAFETY: The helper owns the list/queue/fence and waits before readback.
+     let hr = unsafe { finish(harness, &mut metrics) };
+@@ -250,7 +278,212 @@ fn native_dispatch_readback() {
+     drop(resources);
+     drop(list);
+     upscaler.destroy().unwrap();
++    eprintln!("Gate A explicit destroy: OK native_code={FFX_API_RETURN_OK:#010x}");
+     // SAFETY: GPU completion was fenced, and no Rust reference to harness
+     // resources remains. The C++ owner can now release its COM references.
+     unsafe { destroy(harness) };
++    eprintln!("Gate A after explicit destroy and resource cleanup:");
++    // SAFETY: All GPU work completed; the caller's device/runtime remain live.
++    assert_eq!(
++        unsafe { check_device(device.as_raw()) },
++        0,
++        "post-destroy device/debug failure"
++    );
++    eprintln!("Gate A: PASSED");
++}
++
++#[test]
++#[ignore = "requires trusted v2.3.0 DLLs, m6_gpu.dll and AMD DX12 hardware; use tests/run-m6.ps1 -Native"]
++fn native_temporal_smoke() {
++    let loader = PathBuf::from(std::env::var_os("FSR_SDK_TEST_DLL").expect("FSR_SDK_TEST_DLL"));
++    let helper_path =
++        PathBuf::from(std::env::var_os("FSR_SDK_TEST_M6_DLL").expect("FSR_SDK_TEST_M6_DLL"));
++    assert!(std::env::var_os("FSR_SDK_TEST_M6_CONTROL").is_none());
++    // SAFETY: The opt-in runner builds this trusted helper and stages pinned DLLs.
++    let helper = unsafe { libloading::Library::new(helper_path) }.unwrap();
++    // SAFETY: Exact C exports/signatures are paired with m6_gpu.cpp.
++    let (
++        enable_debug,
++        create_device,
++        require_amd,
++        check_device,
++        create_harness,
++        set_frame,
++        finish,
++        destroy,
++    ) = unsafe {
++        (
++            *helper.get::<EnableDebug>(b"m6_enable_debug\0").unwrap(),
++            *helper
++                .get::<CreateDevice>(b"probe_create_device\0")
++                .unwrap(),
++            *helper.get::<DeviceCheck>(b"m6_require_amd\0").unwrap(),
++            *helper.get::<DeviceCheck>(b"m6_check_device\0").unwrap(),
++            *helper.get::<CreateHarness>(b"m6_create\0").unwrap(),
++            *helper
++                .get::<SetTemporalFrame>(b"m6_set_temporal_frame\0")
++                .unwrap(),
++            *helper.get::<Finish>(b"m6_finish\0").unwrap(),
++            *helper.get::<Destroy>(b"m6_destroy\0").unwrap(),
++        )
++    };
++    // SAFETY: Debug configuration precedes creation of the only device.
++    let hr = unsafe { enable_debug() };
++    eprintln!("Gate B debug layer: HRESULT={hr:#010x}");
++    assert!(
++        hr >= 0,
++        "ENVIRONMENT BLOCKER: debug layer unavailable: {hr:#010x}"
++    );
++    let mut raw_device = null_mut();
++    // SAFETY: Writable output; one owned COM reference is transferred.
++    let hr = unsafe { create_device(&mut raw_device) };
++    eprintln!("Gate B device creation: HRESULT={hr:#010x}");
++    assert!(
++        hr >= 0 && !raw_device.is_null(),
++        "ENVIRONMENT BLOCKER: device: {hr:#010x}"
++    );
++    // SAFETY: The helper transferred an owned live device interface.
++    let device = unsafe { ID3D12Device::from_raw(raw_device) };
++    // SAFETY: Inspect the actual device's adapter, not the machine inventory.
++    let hr = unsafe { require_amd(device.as_raw()) };
++    assert_eq!(
++        hr, 0,
++        "ENVIRONMENT BLOCKER: selected adapter is not AMD hardware: {hr:#010x}"
++    );
++    // SAFETY: Explicit trusted loader/provider match the pinned ABI.
++    let runtime = unsafe { Runtime::load_unchecked(&loader) }.unwrap();
++    let mut upscaler = Upscaler::new(
++        &runtime,
++        &device,
++        UpscalerOptions::new(
++            Dimensions::new(320, 180).unwrap(),
++            Dimensions::new(640, 360).unwrap(),
++        ),
++    )
++    .unwrap();
++    eprintln!("Gate B public construction: OK native_code={FFX_API_RETURN_OK:#010x}");
++    log_provider(&mut upscaler);
++
++    // Keep every harness/resource set until after normal context Drop. Waiting
++    // each frame is only this test's strategy, not a wrapper requirement.
++    let mut frames = Vec::with_capacity(3);
++    for (frame, (jx, jy)) in [(0.25, -0.25), (-0.25, 0.25), (0.125, -0.125)]
++        .into_iter()
++        .enumerate()
++    {
++        let frame = frame as u32;
++        eprintln!(
++            "Gate B frame={frame}: translation={frame}px jitter=({jx},{jy}) reset={} motion=({},0) frame_time=16.667ms",
++            frame == 0,
++            if frame == 0 { 0.0 } else { -1.0 / 320.0 }
++        );
++        let mut harness = null_mut();
++        let mut raw_list = null_mut();
++        let mut raw_resources = [null_mut(); 5];
++        // SAFETY: A fresh harness owns its recording list/allocator and resource
++        // set; it transfers an extra COM reference for every returned interface.
++        let hr = unsafe {
++            create_harness(
++                device.as_raw(),
++                &mut harness,
++                &mut raw_list,
++                raw_resources.as_mut_ptr(),
++            )
++        };
++        eprintln!("Gate B frame={frame} harness creation: HRESULT={hr:#010x}");
++        assert!(
++            hr >= 0 && !harness.is_null() && !raw_list.is_null(),
++            "HARNESS / INPUT FAILURE: frame={frame} setup: {hr:#010x}"
++        );
++        // SAFETY: Only not-yet-submitted color/motion uploads are rewritten.
++        let hr = unsafe { set_frame(harness, frame, jx, jy) };
++        assert!(
++            hr >= 0,
++            "HARNESS / INPUT FAILURE: frame={frame} uploads: {hr:#010x}"
++        );
++        // SAFETY: The helper transferred owned, live COM interfaces.
++        let list = unsafe { ID3D12GraphicsCommandList::from_raw(raw_list) };
++        let resources: Vec<ID3D12Resource> = raw_resources
++            .into_iter()
++            .map(|pointer| {
++                assert!(!pointer.is_null());
++                // SAFETY: Each pointer carries one transferred COM reference.
++                unsafe { ID3D12Resource::from_raw(pointer) }
++            })
++            .collect();
++        // SAFETY: The helper recorded correct input/output transitions. This
++        // upscaler, runtime, device, resources and allocator survive completion.
++        let dispatch = unsafe {
++            upscaler.dispatch(UpscaleDispatch {
++                command_list: &list,
++                color: &resources[0],
++                depth: &resources[1],
++                motion_vectors: &resources[2],
++                exposure: &resources[3],
++                output: &resources[4],
++                jitter: JitterOffsetPixels::new(jx, jy).unwrap(),
++                frame_time: FrameTimeMillis::new(16.667).unwrap(),
++                camera: CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0)
++                    .unwrap(),
++                reset: frame == 0,
++            })
++        };
++        if let Err(error) = dispatch {
++            abort_dispatch(error, frame);
++        }
++        eprintln!("Gate B frame={frame} public dispatch: OK native_code={FFX_API_RETURN_OK:#010x}");
++        let mut metrics = Metrics::default();
++        // SAFETY: Readback transition/copy are recorded before Close/submission;
++        // the helper fences GPU completion before CPU Map/metrics inspection.
++        let hr = unsafe { finish(harness, &mut metrics) };
++        if hr < 0 {
++            eprintln!(
++                "Gate B frame={frame} submit/fence/readback failed: HRESULT={hr:#010x}; completion may be unverified"
++            );
++            // Avoid ordinary cleanup if dependencies may still be in flight.
++            std::process::exit(1);
++        }
++        eprintln!("Gate B frame={frame} GPU readback: {metrics:?}");
++        assert_eq!((metrics.width, metrics.height), (640, 360));
++        assert_eq!(
++            metrics.finite_pixels,
++            230_400,
++            "frame={frame}: non-finite pixels={}",
++            230_400 - metrics.finite_pixels
++        );
++        assert!(
++            metrics.changed_pixels > 0,
++            "frame={frame}: expected output was not observed"
++        );
++        assert_eq!(
++            metrics.debug_errors, 0,
++            "frame={frame}: debug-layer errors/corruption"
++        );
++        assert_eq!(metrics.device_removed, 0, "frame={frame}: device removed");
++        frames.push((harness, list, resources));
++    }
++    // All three submitted dispatches were fenced. Required external dependencies
++    // are still alive while the ordinary D005 Drop makes its one destroy attempt.
++    drop(upscaler);
++    eprintln!("Gate B normal Drop completed; native destroy result is not exposed");
++    // SAFETY: The caller device and all frame resource sets remain alive.
++    assert_eq!(
++        unsafe { check_device(device.as_raw()) },
++        0,
++        "post-Drop device/debug failure"
++    );
++    for (harness, list, resources) in frames {
++        drop(resources);
++        drop(list);
++        // SAFETY: All GPU work completed; no Rust resource/list borrows remain.
++        unsafe { destroy(harness) };
++    }
++    eprintln!("Gate B after frame-resource cleanup:");
++    // SAFETY: The device/runtime are retained after all dependent cleanup.
++    assert_eq!(
++        unsafe { check_device(device.as_raw()) },
++        0,
++        "post-resource-cleanup device/debug failure"
++    );
++    eprintln!("Gate B: PASSED");
+ }
+diff --git a/crates/fsr-sdk/tests/m6_gpu.cpp b/crates/fsr-sdk/tests/m6_gpu.cpp
+index 6c15a44..1bab0d9 100644
+--- a/crates/fsr-sdk/tests/m6_gpu.cpp
++++ b/crates/fsr-sdk/tests/m6_gpu.cpp
+@@ -1,13 +1,15 @@
+ // SPDX-License-Identifier: MPL-2.0
+ 
+-// Opt-in GPU laboratory for the private M6a Rust dispatch path. No AMD DLL
++// Opt-in GPU laboratory for the public Rust dispatch path. No AMD DLL
+ // calls occur here; the included inline helper is used only for parity checks.
+ #define NOMINMAX
+ #include <d3d12.h>
++#include <dxgi1_4.h>
+ #include <wrl/client.h>
+ #include <algorithm>
+ #include <cmath>
+ #include <cstdint>
++#include <cstdio>
+ #include <cstring>
+ #include <memory>
+ #include <vector>
+@@ -148,6 +150,39 @@ void fill_row(Role role, uint32_t y, uint8_t* row, float red_shift = 0.0f) {
+     }
+ }
+ 
++// Rewrite only uploads whose copy commands have not yet been submitted.
++// Projection jitter affects the analytic image; UV motion excludes jitter.
++HRESULT set_temporal_frame(Harness& h, uint32_t frame, float jitter_x, float jitter_y) {
++    for (Role role : {Color, Motion}) {
++        const auto desc = texture_desc(role);
++        D3D12_PLACED_SUBRESOURCE_FOOTPRINT footprint{};
++        h.device->GetCopyableFootprints(&desc, 0, 1, 0, &footprint, nullptr, nullptr, nullptr);
++        uint8_t* mapped = nullptr;
++        HRESULT hr = h.uploads[role]->Map(0, nullptr, reinterpret_cast<void**>(&mapped));
++        if (FAILED(hr)) return hr;
++        for (uint32_t y = 0; y < render_height; ++y) {
++            uint8_t* row = mapped + footprint.Offset + y * footprint.Footprint.RowPitch;
++            for (uint32_t x = 0; x < render_width; ++x) {
++                if (role == Color) {
++                    const float sx = x + 0.5f + jitter_x;
++                    const float sy = y + 0.5f + jitter_y;
++                    const float u = sx - static_cast<float>(frame);
++                    uint16_t pixel[4] = {
++                        half(0.1f + 0.75f * u / render_width),
++                        half(0.1f + 0.75f * sy / render_height), half(0.2f), half(1.0f)
++                    };
++                    std::memcpy(row + x * sizeof(pixel), pixel, sizeof(pixel));
++                } else {
++                    uint16_t pixel[2] = {half(frame == 0 ? 0.0f : -1.0f / render_width), 0};
++                    std::memcpy(row + x * sizeof(pixel), pixel, sizeof(pixel));
++                }
++            }
++        }
++        h.uploads[role]->Unmap(0, nullptr);
++    }
++    return S_OK;
++}
++
+ void transition(ID3D12GraphicsCommandList* list, ID3D12Resource* resource,
+                 D3D12_RESOURCE_STATES before, D3D12_RESOURCE_STATES after) {
+     D3D12_RESOURCE_BARRIER barrier{};
+@@ -205,12 +240,17 @@ uint64_t debug_error_count(ID3D12Device* device) {
+     const uint64_t count = info->GetNumStoredMessages();
+     for (uint64_t index = 0; index < count; ++index) {
+         SIZE_T bytes = 0;
+-        if (FAILED(info->GetMessage(index, nullptr, &bytes))) continue;
++        if (FAILED(info->GetMessage(index, nullptr, &bytes))) return UINT64_MAX;
+         std::vector<uint8_t> storage(bytes);
+         auto* message = reinterpret_cast<D3D12_MESSAGE*>(storage.data());
+-        if (SUCCEEDED(info->GetMessage(index, message, &bytes))
+-            && (message->Severity == D3D12_MESSAGE_SEVERITY_ERROR
+-                || message->Severity == D3D12_MESSAGE_SEVERITY_CORRUPTION)) ++errors;
++        if (FAILED(info->GetMessage(index, message, &bytes))) return UINT64_MAX;
++        if (message->Severity == D3D12_MESSAGE_SEVERITY_ERROR
++            || message->Severity == D3D12_MESSAGE_SEVERITY_CORRUPTION) {
++            ++errors;
++            std::fprintf(stderr, "D3D12 error: id=%u severity=%u text=%s\n",
++                         static_cast<unsigned>(message->ID),
++                         static_cast<unsigned>(message->Severity), message->pDescription);
++        }
+     }
+     return errors;
+ }
+@@ -310,6 +350,40 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_enable_debug() {
+     return S_OK;
+ }
+ 
++extern "C" __declspec(dllexport) int32_t __cdecl m6_require_amd(ID3D12Device* device) {
++    if (!device) return E_INVALIDARG;
++    ComPtr<IDXGIFactory4> factory;
++    HRESULT hr = CreateDXGIFactory1(IID_PPV_ARGS(&factory));
++    if (FAILED(hr)) return hr;
++    ComPtr<IDXGIAdapter1> adapter;
++    hr = factory->EnumAdapterByLuid(device->GetAdapterLuid(), IID_PPV_ARGS(&adapter));
++    if (FAILED(hr)) return hr;
++    DXGI_ADAPTER_DESC1 desc{};
++    hr = adapter->GetDesc1(&desc);
++    if (FAILED(hr)) return hr;
++    const bool amd = desc.VendorId == 0x1002 && !(desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE);
++    std::fprintf(stderr, "Selected-device AMD check: vendor=0x%04x device=0x%04x hardware_amd=%s\n",
++                 desc.VendorId, desc.DeviceId, amd ? "true" : "false");
++    return amd ? S_OK : DXGI_ERROR_UNSUPPORTED;
++}
++
++// Call after context teardown while the caller's device remains alive.
++extern "C" __declspec(dllexport) int32_t __cdecl m6_check_device(ID3D12Device* device) {
++    if (!device) return E_INVALIDARG;
++    const uint64_t errors = debug_error_count(device);
++    const HRESULT removed = device->GetDeviceRemovedReason();
++    std::fprintf(stderr, "Device checkpoint: debug_errors=%llu device_removed=0x%08lx\n",
++                 static_cast<unsigned long long>(errors), static_cast<unsigned long>(removed));
++    return removed != S_OK ? removed : errors == 0 ? S_OK : E_FAIL;
++}
++
++extern "C" __declspec(dllexport) int32_t __cdecl m6_set_temporal_frame(
++    void* handle, uint32_t frame, float jitter_x, float jitter_y) {
++    if (!handle || frame > 2 || !std::isfinite(jitter_x) || !std::isfinite(jitter_y))
++        return E_INVALIDARG;
++    return set_temporal_frame(*static_cast<Harness*>(handle), frame, jitter_x, jitter_y);
++}
++
+ extern "C" __declspec(dllexport) int32_t __cdecl m6_create(
+     ID3D12Device* device, void** out_harness,
+     ID3D12GraphicsCommandList** out_list, ID3D12Resource** out_resources) {
+@@ -381,16 +455,23 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_finish(void* handle, Metrics
+     if (!handle || !metrics) return E_INVALIDARG;
+     auto& h = *static_cast<Harness*>(handle);
+     HRESULT hr = record_readback(h);
++    std::fprintf(stderr, "DX12 readback recording: HRESULT=0x%08lx\n", static_cast<unsigned long>(hr));
+     if (FAILED(hr)) return hr;
+     hr = h.list->Close();
++    std::fprintf(stderr, "DX12 list close: HRESULT=0x%08lx\n", static_cast<unsigned long>(hr));
+     if (FAILED(hr)) return hr;
+     ID3D12CommandList* lists[] = { h.list.Get() };
+     h.queue->ExecuteCommandLists(1, lists);
++    std::fprintf(stderr, "DX12 submission: ExecuteCommandLists issued (no return value)\n");
+     hr = h.queue->Signal(h.fence.Get(), 1);
++    std::fprintf(stderr, "DX12 signal: HRESULT=0x%08lx\n", static_cast<unsigned long>(hr));
+     if (FAILED(hr)) return hr;
+     hr = wait_for_fence(h);
++    std::fprintf(stderr, "DX12 fence completion: HRESULT=0x%08lx timeout_ms=60000\n", static_cast<unsigned long>(hr));
+     if (FAILED(hr)) return hr;
+-    return read_metrics(h, metrics);
++    hr = read_metrics(h, metrics);
++    std::fprintf(stderr, "DX12 mapped readback: HRESULT=0x%08lx\n", static_cast<unsigned long>(hr));
++    return hr;
+ }
+ 
+ // Record every readback before submission, then submit all lists in order on
+diff --git a/crates/fsr-sdk/tests/run-m6.ps1 b/crates/fsr-sdk/tests/run-m6.ps1
+index e3edd7d..40993e2 100644
+--- a/crates/fsr-sdk/tests/run-m6.ps1
++++ b/crates/fsr-sdk/tests/run-m6.ps1
+@@ -1,32 +1,55 @@
+ # SPDX-License-Identifier: MPL-2.0
+ 
+ # Run in an x64 VS developer shell. -Native opts into the trusted SDK and GPU.
+-param([switch]$Native, [switch]$GpuValidation)
++param([switch]$Native, [switch]$GpuValidation, [string]$Stage = 'target/m6a')
+ $ErrorActionPreference = 'Stop'
+ Push-Location (Resolve-Path (Join-Path $PSScriptRoot '../../..'))
+ $previousLoader = $env:FSR_SDK_TEST_DLL
+ $previousHelper = $env:FSR_SDK_TEST_M6_DLL
+ $previousGpuValidation = $env:FSR_SDK_TEST_GBV
++$previousControl = $env:FSR_SDK_TEST_M6_CONTROL
++$stage = $Stage
++New-Item -ItemType Directory -Force $stage | Out-Null
++$transcriptStarted = $false
++
++function Save-CheckResult([string]$command, [int]$code) {
++    Add-Content -LiteralPath "$stage/checks.status.txt" -Value "$command => exit=$code"
++    if ($code -ne 0) { throw "Check failed (exit=$code): $command" }
++}
+ try {
++    Start-Transcript -LiteralPath "$stage/runner.log" -Force | Out-Null
++    $transcriptStarted = $true
++    [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/checks.status.txt"), '')
++    if ($Native) {
++        $candidateCommit = & git rev-parse HEAD
++        $candidateTree = & git rev-parse 'HEAD^{tree}'
++        $candidateStatus = & git status --short
++        $candidatePatch = & git diff --no-ext-diff --binary -- crates/fsr-sdk/src/upscaler/m6.rs crates/fsr-sdk/tests/m6_gpu.cpp crates/fsr-sdk/tests/run-m6.ps1
++        [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/candidate.patch"), ($candidatePatch -join "`n") + "`n")
++        [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/source-state.txt"),
++            "Commit=$candidateCommit`nBaseTree=$candidateTree`nCaptured=$(Get-Date -Format o)`nStatus=$($candidateStatus -join "`n")")
++        $sourceHashes = & git ls-files -- crates Cargo.toml Cargo.lock | ForEach-Object {
++            [pscustomobject]@{File=$_; SHA256=(Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash}
++        }
++        [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/source-inputs.json"), ($sourceHashes | ConvertTo-Json))
++    }
+     & cargo fmt --all -- --check
+-    if ($LASTEXITCODE -ne 0) { throw 'Formatting failed' }
++    Save-CheckResult 'cargo fmt --all -- --check' $LASTEXITCODE
+     & cargo clippy --workspace --all-targets --locked --offline -- -D warnings
+-    if ($LASTEXITCODE -ne 0) { throw 'Clippy failed' }
++    Save-CheckResult 'cargo clippy --workspace --all-targets --locked --offline -- -D warnings' $LASTEXITCODE
+     & cargo test --workspace --locked --offline
+-    if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
++    Save-CheckResult 'cargo test --workspace --locked --offline' $LASTEXITCODE
+     & cargo check --workspace --no-default-features --locked --offline
+-    if ($LASTEXITCODE -ne 0) { throw 'No-default-feature check failed' }
++    Save-CheckResult 'cargo check --workspace --no-default-features --locked --offline' $LASTEXITCODE
+     if (-not $Native) { return }
+ 
+-    $stage = 'target/m6a'
+-    New-Item -ItemType Directory -Force $stage | Out-Null
+     $sdk = 'external/FidelityFX-SDK/v2.3.0/Kits/FidelityFX'
+     & cl /nologo /std:c++17 /W4 /WX /c /I"$sdk/upscalers/include" crates/fsr-sdk-sys/tests/dispatch_native_abi.cpp /Fo"$stage/dispatch_native_abi.obj"
+-    if ($LASTEXITCODE -ne 0) { throw 'Paired dispatch ABI check failed' }
++    Save-CheckResult "cl /nologo /std:c++17 /W4 /WX /c /I$sdk/upscalers/include crates/fsr-sdk-sys/tests/dispatch_native_abi.cpp /Fo$stage/dispatch_native_abi.obj" $LASTEXITCODE
+     & cl /nologo /std:c++17 /W4 /WX /MT /LD /I"$sdk/api/include/dx12" crates/fsr-sdk/tests/m6_gpu.cpp crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp /Fo"$stage/" /link /OUT:"$stage/m6_gpu.dll" /IMPLIB:"$stage/m6_gpu.lib" d3d12.lib dxgi.lib
+-    if ($LASTEXITCODE -ne 0) { throw 'DX12 helper build failed' }
++    Save-CheckResult "cl /nologo /std:c++17 /W4 /WX /MT /LD /I$sdk/api/include/dx12 crates/fsr-sdk/tests/m6_gpu.cpp crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp /Fo$stage/ /link /OUT:$stage/m6_gpu.dll /IMPLIB:$stage/m6_gpu.lib d3d12.lib dxgi.lib" $LASTEXITCODE
+     $messages = & cargo test -p fsr-sdk --lib --features dx12 --locked --offline --no-run --message-format=json
+-    if ($LASTEXITCODE -ne 0) { throw 'Wrapper test build failed' }
++    Save-CheckResult 'cargo test -p fsr-sdk --lib --features dx12 --locked --offline --no-run --message-format=json' $LASTEXITCODE
+     $artifact = $messages | ForEach-Object { $_ | ConvertFrom-Json } | Where-Object {
+         $_.reason -eq 'compiler-artifact' -and $_.target.name -eq 'fsr_sdk' -and $_.executable
+     } | Select-Object -Last 1
+@@ -37,40 +60,69 @@ try {
+     $env:FSR_SDK_TEST_M6_DLL = (Resolve-Path "$stage/m6_gpu.dll").Path
+     if ($GpuValidation) { $env:FSR_SDK_TEST_GBV = '1' }
+     else { Remove-Item Env:FSR_SDK_TEST_GBV -ErrorAction SilentlyContinue }
++    Remove-Item Env:FSR_SDK_TEST_M6_CONTROL -ErrorAction SilentlyContinue
+     $hashes = Get-ChildItem $stage -Filter '*.dll' | Get-FileHash -Algorithm SHA256 |
+         Select-Object @{Name='File';Expression={Split-Path $_.Path -Leaf}},Hash | ConvertTo-Json
+     $system = Get-CimInstance Win32_OperatingSystem |
+         Select-Object Caption,Version,BuildNumber | Format-List | Out-String
+     $gpu = Get-CimInstance Win32_VideoController |
+         Select-Object Name,DriverVersion | Format-List | Out-String
++    $signatureObjects = Get-ChildItem $stage -Filter 'amd_*.dll' | Get-AuthenticodeSignature
++    $signatures = $signatureObjects |
++        Select-Object @{Name='File';Expression={Split-Path $_.Path -Leaf}},Status | ConvertTo-Json
++    if ($signatureObjects | Where-Object Status -ne 'Valid') { throw 'ENVIRONMENT BLOCKER: staged AMD DLL signature is not valid' }
++    $rustVersion = & rustc -vV | Out-String
++    $compilerVersion = (Get-Item -LiteralPath (Get-Command cl).Source).VersionInfo.FileVersion
++    $zone = Get-TimeZone | Select-Object Id,BaseUtcOffset | ConvertTo-Json
+     [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/native.environment.txt"),
+-        "SDK=v2.3.0`r`nGPUValidation=$GpuValidation`r`nRust=$(& rustc --version)`r`nOS=$system`r`nGPU=$gpu`r`nSHA256=$hashes")
+-    $start = New-Object System.Diagnostics.ProcessStartInfo
+-    $start.FileName = (Resolve-Path "$stage/m6.exe").Path
+-    $start.Arguments = '--ignored --exact upscaler::m6::native_dispatch_readback --nocapture --test-threads=1'
+-    $start.UseShellExecute = $false
+-    $start.CreateNoWindow = $true
+-    $start.RedirectStandardOutput = $true
+-    $start.RedirectStandardError = $true
+-    $child = [System.Diagnostics.Process]::Start($start)
+-    $stdout = $child.StandardOutput.ReadToEndAsync()
+-    $stderr = $child.StandardError.ReadToEndAsync()
+-    $timeout = !$child.WaitForExit(180000)
+-    if ($timeout) { $child.Kill() }
+-    $child.WaitForExit()
+-    $exitCode = $child.ExitCode
+-    $child.Dispose()
+-    [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/native.stdout.txt"), $stdout.Result)
+-    [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/native.stderr.txt"), $stderr.Result)
+-    [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/native.status.txt"), "timeout=$timeout exit=$exitCode")
+-    Write-Host $stdout.Result
+-    Write-Host $stderr.Result
+-    if ($timeout -or $exitCode -ne 0 -or $stderr.Result -notmatch 'GPU readback:') {
+-        throw "Native M6a dispatch failed: timeout=$timeout exit=$exitCode"
++        "Started=$(Get-Date -Format o)`r`nTimezone=$zone`r`nSDK=v2.3.0`r`nGPUValidation=$GpuValidation`r`nRust=$rustVersion`r`nMSVC=$env:VCToolsVersion`r`nCompiler=$compilerVersion`r`nPowerShell=$($PSVersionTable.PSVersion)`r`nWindowsSDK=$env:WindowsSDKVersion`r`nTargetArch=$env:VSCMD_ARG_TGT_ARCH`r`nOS=$system`r`nGPU=$gpu`r`nSHA256=$hashes`r`nSignatures=$signatures`r`nFSR_SDK_TEST_DLL=$stage/amd_fidelityfx_loader_dx12.dll (absolute at execution)`r`nFSR_SDK_TEST_M6_DLL=$stage/m6_gpu.dll (absolute at execution)`r`nFSR_SDK_TEST_GBV=<unset unless -GpuValidation>`r`nFSR_SDK_TEST_M6_CONTROL=<unset>")
++    $inputHashes = Get-ChildItem "$sdk/api/include","$sdk/upscalers/include" -File -Recurse | ForEach-Object {
++        [pscustomobject]@{File=[IO.Path]::GetRelativePath((Get-Location).Path,$_.FullName).Replace('\','/'); SHA256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash}
++    }
++    $inputHashes += Get-Item "$stage/m6.exe","$stage/m6_gpu.dll" | ForEach-Object {
++        [pscustomobject]@{File="$stage/$($_.Name)"; SHA256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash}
++    }
++    [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/native-inputs.json"), ($inputHashes | ConvertTo-Json))
++    $failed = @()
++    foreach ($gate in @(
++        @{Name='gate-a'; Test='native_dispatch_readback'; Marker='Gate A: PASSED'},
++        @{Name='gate-b'; Test='native_temporal_smoke'; Marker='Gate B: PASSED'}
++    )) {
++        $name = $gate.Name
++        [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/$name.status.txt"), 'not_started')
++        $start = New-Object System.Diagnostics.ProcessStartInfo
++        $start.FileName = (Resolve-Path "$stage/m6.exe").Path
++        $start.Arguments = "--ignored --exact upscaler::m6::$($gate.Test) --nocapture --test-threads=1"
++        $start.UseShellExecute = $false
++        $start.CreateNoWindow = $true
++        $start.RedirectStandardOutput = $true
++        $start.RedirectStandardError = $true
++        $started = Get-Date -Format o
++        Write-Host "Child command: $stage/m6.exe $($start.Arguments)"
++        $child = [System.Diagnostics.Process]::Start($start)
++        $stdout = $child.StandardOutput.ReadToEndAsync()
++        $stderr = $child.StandardError.ReadToEndAsync()
++        $timeout = !$child.WaitForExit(180000)
++        if ($timeout) { $child.Kill() }
++        $child.WaitForExit()
++        $exitCode = $child.ExitCode
++        $child.Dispose()
++        [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/$name.stdout.txt"), $stdout.Result)
++        [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/$name.stderr.txt"), $stderr.Result)
++        [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/$name.status.txt"),
++            "started=$started`nfinished=$(Get-Date -Format o)`ntimeout=$timeout exit=$exitCode")
++        Write-Host $stdout.Result
++        Write-Host $stderr.Result
++        if ($timeout -or $exitCode -ne 0 -or !$stderr.Result.Contains($gate.Marker)) {
++            $failed += "$name timeout=$timeout exit=$exitCode"
++        }
+     }
++    if ($failed.Count) { throw "Windows verification failed: $($failed -join '; ')" }
+ } finally {
+     $env:FSR_SDK_TEST_DLL = $previousLoader
+     $env:FSR_SDK_TEST_M6_DLL = $previousHelper
+     $env:FSR_SDK_TEST_GBV = $previousGpuValidation
++    $env:FSR_SDK_TEST_M6_CONTROL = $previousControl
++    if ($transcriptStarted) { Stop-Transcript | Out-Null }
+     Pop-Location
+ }

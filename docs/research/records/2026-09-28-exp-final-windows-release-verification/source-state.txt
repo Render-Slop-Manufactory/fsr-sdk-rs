@@ -1,0 +1,7 @@
+Commit=54e2c3f102ca9099d2bcc09fdddbbf75f716f5c4
+BaseTree=d9f43893a5cea9b50dd79549c2ce8dc87fc00d8c
+Captured=2026-09-28T18:51:31.3084005+02:00
+Status= M crates/fsr-sdk/src/upscaler/m6.rs
+ M crates/fsr-sdk/tests/m6_gpu.cpp
+ M crates/fsr-sdk/tests/run-m6.ps1
+?? docs/research/records/2026-09-28-exp-final-windows-release-verification.md

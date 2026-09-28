@@ -1,0 +1,282 @@
+[
+  {
+    "label": "sys_package",
+    "command": "cargo package -p fsr-sdk-sys --locked --target-dir target/final-artifact-recheck --config net.retry=0",
+    "cargo_exit_code": 0,
+    "result": "PASS",
+    "output": "   Packaging fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n    Updating crates.io index\n    Packaged 28 files, 119.4KiB (31.3KiB compressed)\n   Verifying fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n   Compiling windows-link v0.2.1\n   Compiling libloading v0.9.0\n   Compiling fsr-sdk-sys v0.1.0 (<repo>\\target\\final-artifact-recheck\\package\\fsr-sdk-sys-0.1.0)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.48s\n"
+  },
+  {
+    "label": "wrapper_package",
+    "command": "cargo package -p fsr-sdk --locked --target-dir target/final-artifact-recheck --config net.retry=0",
+    "cargo_exit_code": 101,
+    "result": "EXPECTED RELEASE-ORDER CONDITION",
+    "output": "   Packaging fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Updating crates.io index\nerror: failed to prepare local package for uploading\n\nCaused by:\n  no matching package named `fsr-sdk-sys` found\n  location searched: crates.io index\n  required by package `fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)`\nCARGO_EXIT=101\r\n"
+  },
+  {
+    "label": "workspace_package",
+    "command": "cargo package --workspace --locked --target-dir target/final-artifact-recheck --config net.retry=0",
+    "cargo_exit_code": 0,
+    "result": "PASS",
+    "output": "   Packaging fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n    Updating crates.io index\n    Packaged 28 files, 119.4KiB (31.3KiB compressed)\n   Packaging fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Updating crates.io index\n    Packaged 24 files, 224.4KiB (56.6KiB compressed)\n   Verifying fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n   Compiling fsr-sdk-sys v0.1.0 (<repo>\\target\\final-artifact-recheck\\package\\fsr-sdk-sys-0.1.0)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.63s\n   Verifying fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Updating crates.io index\n   Unpacking fsr-sdk-sys v0.1.0 (registry `<repo>\\target\\final-artifact-recheck\\package\\tmp-registry`)\n   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.26\n   Compiling quote v1.0.47\n   Compiling windows-strings v0.5.1\n   Compiling windows-result v0.4.1\n   Compiling windows-threading v0.2.1\n   Compiling fsr-sdk-sys v0.1.0\n   Compiling syn v2.0.119\n   Compiling windows-interface v0.59.3\n   Compiling windows-implement v0.60.2\n   Compiling windows-core v0.62.2\n   Compiling windows-collections v0.3.2\n   Compiling windows-numerics v0.3.1\n   Compiling windows-future v0.3.2\n   Compiling windows v0.62.2\n   Compiling fsr-sdk v0.1.0 (<repo>\\target\\final-artifact-recheck\\package\\fsr-sdk-0.1.0)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.38s\n"
+  },
+  {
+    "label": "sys_publish",
+    "command": "cargo publish --dry-run -p fsr-sdk-sys --locked --target-dir target/final-artifact-recheck --config net.retry=0",
+    "cargo_exit_code": 0,
+    "result": "PASS",
+    "output": "    Updating crates.io index\n   Packaging fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n    Updating crates.io index\n    Packaged 28 files, 119.4KiB (31.3KiB compressed)\n   Verifying fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n   Compiling fsr-sdk-sys v0.1.0 (<repo>\\target\\final-artifact-recheck\\package\\fsr-sdk-sys-0.1.0)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.41s\n   Uploading fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\nwarning: aborting upload due to dry run\n"
+  },
+  {
+    "label": "wrapper_publish",
+    "command": "cargo publish --dry-run -p fsr-sdk --locked --target-dir target/final-artifact-recheck --config net.retry=0",
+    "cargo_exit_code": 101,
+    "result": "EXPECTED RELEASE-ORDER CONDITION",
+    "output": "    Updating crates.io index\n   Packaging fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Updating crates.io index\nerror: failed to prepare local package for uploading\n\nCaused by:\n  no matching package named `fsr-sdk-sys` found\n  location searched: crates.io index\n  required by package `fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)`\nCARGO_EXIT=101\r\n"
+  },
+  {
+    "label": "workspace_publish",
+    "command": "cargo publish --dry-run --workspace --locked --target-dir target/final-artifact-recheck --config net.retry=0",
+    "cargo_exit_code": 0,
+    "result": "PASS",
+    "output": "    Updating crates.io index\n   Packaging fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n    Updating crates.io index\n    Packaged 28 files, 119.4KiB (31.3KiB compressed)\n   Packaging fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Updating crates.io index\n    Packaged 24 files, 224.4KiB (56.6KiB compressed)\n   Verifying fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n   Compiling fsr-sdk-sys v0.1.0 (<repo>\\target\\final-artifact-recheck\\package\\fsr-sdk-sys-0.1.0)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.66s\n   Verifying fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Updating crates.io index\n   Compiling fsr-sdk v0.1.0 (<repo>\\target\\final-artifact-recheck\\package\\fsr-sdk-0.1.0)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.22s\n   Uploading fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\nwarning: aborting upload due to dry run\n   Uploading fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\nwarning: aborting upload due to dry run\n"
+  },
+  {
+    "label": "workspace-fmt",
+    "command": "cargo fmt --all -- --check",
+    "cargo_exit_code": 0,
+    "result": "PASS",
+    "output": "warn: could not canonicalize path <user-home>\nCARGO_EXIT=0\r\n"
+  },
+  {
+    "label": "workspace-check",
+    "command": "cargo check --workspace --all-targets --locked --offline",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:39:34.5564018Z",
+    "finished_utc": "2026-09-28T17:39:35.5276144Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Checking fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n    Checking fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.88s"
+  },
+  {
+    "label": "workspace-clippy",
+    "command": "cargo clippy --workspace --all-targets --locked --offline -- -D warnings",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:41:45.7551233Z",
+    "finished_utc": "2026-09-28T17:41:46.0960983Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.16s"
+  },
+  {
+    "label": "workspace-tests",
+    "command": "cargo test --workspace --locked --offline",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:41:47.5622853Z",
+    "finished_utc": "2026-09-28T17:41:51.1938553Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.17s\n     Running unittests src\\lib.rs (target\\debug\\deps\\fsr_sdk-09b9f5cb8de80e23.exe)\n\nrunning 30 tests\ntest error::tests::preserves_unknown_codes_and_operation ... ok\ntest error::tests::preserves_hresult_bits_separately_from_native_codes ... ok\ntest runtime::tests::public_load_unchecked_maps_path_error_and_retains_io_source ... ok\ntest runtime::tests::library_and_symbol_errors_keep_their_causes ... ok\ntest upscaler::dispatch::tests::exact_extents_and_canonical_identity_reject_before_native_call ... ok\ntest upscaler::dispatch::tests::narrow_conversion_and_descriptor ... ok\ntest upscaler::m6::native_dispatch_readback ... ignored, requires trusted staged v2.3.0 DLLs, MSVC-built m6_gpu.dll and a hardware DX12 GPU; use tests/run-m6.ps1 -Native\ntest upscaler::dispatch::tests::rejects_invalid_resources_and_frame_before_native_call ... ok\ntest upscaler::m6::native_temporal_smoke ... ignored, requires trusted v2.3.0 DLLs, m6_gpu.dll and AMD DX12 hardware; use tests/run-m6.ps1 -Native\ntest upscaler::m6_recording::native_recording_ahead_spike ... ignored, requires staged v2.3.0 DLLs, MSVC-built m6_gpu.dll and a hardware DX12 GPU; use tests/run-m6-recording-spike.ps1\ntest upscaler::tests::descriptor_links_survive_moves_of_outer_storage ... ok\ntest upscaler::tests::dimensions_reject_every_zero_component ... ok\ntest upscaler::tests::native_lifecycle ... ignored, requires staged trusted AMD v2.3.0 DLLs and the native DX12 helper; use tests/run-m5.ps1\ntest upscaler::tests::native_lifecycle_drop ... ignored, requires staged trusted AMD v2.3.0 DLLs and the native DX12 helper; use tests/run-m5.ps1\ntest context::tests::sibling_destroy_failure_retains_runtime_after_other_cleanup ... ok\ntest context::tests::shared_runtime_survives_public_owner_and_first_context ... ok\ntest context::tests::failed_sibling_create_preserves_live_sibling ... ok\ntest context::tests::ok_null_retains_every_dependency_without_destroy ... ok\ntest upscaler::tests::private_dispatch_forwards_once_and_preserves_unknown_native_code ... ok\ntest upscaler::tests::dispatch_fixture_tests::public_dispatch_inspects_com_and_recovers_after_each_preflight_error ... ok\ntest upscaler::tests::public_constructor_forwards_checked_chain_and_owns_device ... ok\ntest upscaler::tests::poisoned_dispatch_still_uses_terminal_destroy_retention ... ok\ntest context::tests::consumed_owner_and_private_handle_are_compile_errors ... ok\ntest upscaler::tests::public_siblings_survive_failed_create_and_destroy ... ok\ntest upscaler::tests::public_dispatch_core_preserves_preflight_errors_and_poison_policy ... ok\ntest context::tests::returned_create_errors_never_destroy_even_nonnull_outputs ... ok\ntest upscaler::tests::zero_is_rejected_without_entering_native_create ... ok\ntest context::tests::destroy_errors_retain_every_dependency_and_never_retry ... ok\ntest upscaler::tests::public_failure_paths_preserve_com_and_runtime_policy ... ok\ntest context::tests::successful_teardown_is_once_and_ordered_for_explicit_destroy_and_drop ... ok\n\ntest result: ok. 25 passed; 0 failed; 5 ignored; 0 measured; 0 filtered out; finished in 1.43s\n\n     Running unittests src\\lib.rs (target\\debug\\deps\\fsr_sdk_sys-f1b4c516d50474cb.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\abi.rs (target\\debug\\deps\\abi-2e04fc1871d1e9e1.exe)\n\nrunning 6 tests\ntest creation_constants_and_dimension_field_types ... ok\ntest return_codes ... ok\ntest version_query_windows_x64_layout ... ok\ntest version_query_tags ... ok\ntest nullable_function_pointer_layouts ... ok\ntest windows_x64_layouts ... ok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\context_dimensions.rs (target\\debug\\deps\\context_dimensions-60ba78b92c30be69.exe)\n\nrunning 1 test\ntest signed_runtime_dimensions ... ignored, requires the explicit signed-runtime runner and one fresh process per case\n\ntest result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\context_lifecycle.rs (target\\debug\\deps\\context_lifecycle-ee09a6e7eb4391ce.exe)\n\nrunning 2 tests\ntest probes_create_allocation_failure ... ignored, isolated allocation-failure experiment; use run.ps1 -FailureInjection\ntest probes_create_error_input_lifetime ... ignored, isolated returned-error experiment; use run.ps1 -InputLifetime\n\ntest result: ok. 0 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\dispatch_abi.rs (target\\debug\\deps\\dispatch_abi-8abb06c89e709d26.exe)\n\nrunning 2 tests\ntest selected_dispatch_constants ... ok\ntest windows_x64_dispatch_layout ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\loader.rs (target\\debug\\deps\\loader-b69978b37f19b68e.exe)\n\nrunning 5 tests\ntest loads_amd_runtime_without_api_calls ... ignored, requires an explicitly supplied trusted AMD v2.3.0 loader DLL\ntest missing_file_reports_path_and_source ... ok\ntest invalid_library_reports_load_failure ... ok\ntest forwards_all_arguments_and_returns_and_unloads_on_drop ... ok\ntest each_missing_symbol_reports_name_and_releases_library ... ok\n\ntest result: ok. 4 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.99s\n\n     Running tests\\query.rs (target\\debug\\deps\\query-98c54141ce8c1381.exe)\n\nrunning 1 test\ntest queries_upscaler_version_count_without_context ... ignored, requires the trusted local SDK v2.3.0 loader and upscaler DLLs\n\ntest result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\shared_runtime.rs (target\\debug\\deps\\shared_runtime-3999c2db1d90ce09.exe)\n\nrunning 1 test\ntest sequential_shared_runtime_lifetime ... ignored, requires trusted signed DLLs, hardware DX12 and the isolated runner\n\ntest result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Doc-tests fsr_sdk\n\nrunning 2 tests\ntest crates\\fsr-sdk\\src\\lib.rs - (line 52) - compile ... ok\ntest crates\\fsr-sdk\\src\\lib.rs - (line 73) - compile ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\nall doctests ran in 0.55s; merged doctests compilation took 0.47s\n   Doc-tests fsr_sdk_sys\n\nrunning 2 tests\ntest crates\\fsr-sdk-sys\\src\\loader.rs - loader::FfxLibrary (line 78) - compile fail ... ok\ntest crates\\fsr-sdk-sys\\src\\loader.rs - loader::FfxLibrary (line 89) - compile fail ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s\n"
+  },
+  {
+    "label": "workspace-no-default-check",
+    "command": "cargo check --workspace --no-default-features --locked --offline",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:41:52.7145980Z",
+    "finished_utc": "2026-09-28T17:41:52.8480120Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s"
+  },
+  {
+    "label": "workspace-docs",
+    "command": "cargo doc --workspace --no-deps --locked --offline",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": "-D warnings",
+    "started_utc": "2026-09-28T17:41:54.2724912Z",
+    "finished_utc": "2026-09-28T17:41:56.0373422Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n Documenting fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n Documenting fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.67s\n   Generated <repo>\\target\\doc\\fsr_sdk\\index.html and 1 other file"
+  },
+  {
+    "label": "workspace-windows-check",
+    "command": "cargo check --workspace --all-targets --target x86_64-pc-windows-msvc --locked --offline",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:47:30.6413167Z",
+    "finished_utc": "2026-09-28T17:47:39.1390080Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Checking windows-link v0.2.1\n   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n   Compiling unicode-ident v1.0.26\n    Checking libloading v0.9.0\n    Checking windows-result v0.4.1\n    Checking windows-strings v0.5.1\n    Checking windows-threading v0.2.1\n    Checking fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n   Compiling syn v2.0.119\n   Compiling windows-interface v0.59.3\n   Compiling windows-implement v0.60.2\n    Checking windows-core v0.62.2\n    Checking windows-collections v0.3.2\n    Checking windows-numerics v0.3.1\n    Checking windows-future v0.3.2\n    Checking windows v0.62.2\n    Checking fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.41s"
+  },
+  {
+    "label": "workspace-windows-clippy",
+    "command": "cargo clippy --workspace --all-targets --target x86_64-pc-windows-msvc --locked --offline -- -D warnings",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:47:40.7065338Z",
+    "finished_utc": "2026-09-28T17:47:41.9106826Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Checking fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n    Checking fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.01s"
+  },
+  {
+    "label": "workspace-windows-no-default-check",
+    "command": "cargo check --workspace --no-default-features --target x86_64-pc-windows-msvc --locked --offline",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:47:43.4725536Z",
+    "finished_utc": "2026-09-28T17:47:43.9072915Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Checking fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n    Checking fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.35s"
+  },
+  {
+    "label": "workspace-windows-docs",
+    "command": "cargo doc --workspace --no-deps --target x86_64-pc-windows-msvc --locked --offline",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": "-D warnings",
+    "started_utc": "2026-09-28T17:47:45.4266768Z",
+    "finished_utc": "2026-09-28T17:47:46.4874171Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n Documenting fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n Documenting fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.97s\n   Generated <repo>\\target\\x86_64-pc-windows-msvc\\doc\\fsr_sdk\\index.html and 1 other file"
+  },
+  {
+    "label": "workspace-no-default-tests",
+    "command": "cargo test --workspace --no-default-features --locked --offline",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:47:48.0417996Z",
+    "finished_utc": "2026-09-28T17:47:51.7153684Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n   Compiling fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n   Compiling fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.35s\n     Running unittests src\\lib.rs (target\\debug\\deps\\fsr_sdk-d909c39c421e25c7.exe)\n\nrunning 10 tests\ntest error::tests::preserves_hresult_bits_separately_from_native_codes ... ok\ntest error::tests::preserves_unknown_codes_and_operation ... ok\ntest context::tests::ok_null_retains_every_dependency_without_destroy ... ok\ntest context::tests::sibling_destroy_failure_retains_runtime_after_other_cleanup ... ok\ntest context::tests::failed_sibling_create_preserves_live_sibling ... ok\ntest context::tests::shared_runtime_survives_public_owner_and_first_context ... ok\ntest context::tests::consumed_owner_and_private_handle_are_compile_errors ... ok\ntest context::tests::returned_create_errors_never_destroy_even_nonnull_outputs ... ok\ntest context::tests::destroy_errors_retain_every_dependency_and_never_retry ... ok\ntest context::tests::successful_teardown_is_once_and_ordered_for_explicit_destroy_and_drop ... ok\n\ntest result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.12s\n\n     Running unittests src\\lib.rs (target\\debug\\deps\\fsr_sdk_sys-c8f67f9c18bcd927.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\abi.rs (target\\debug\\deps\\abi-5fcc4e07f2c9ef5b.exe)\n\nrunning 6 tests\ntest creation_constants_and_dimension_field_types ... ok\ntest return_codes ... ok\ntest nullable_function_pointer_layouts ... ok\ntest version_query_tags ... ok\ntest windows_x64_layouts ... ok\ntest version_query_windows_x64_layout ... ok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\context_dimensions.rs (target\\debug\\deps\\context_dimensions-347901623c5edef6.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\context_lifecycle.rs (target\\debug\\deps\\context_lifecycle-b8d970aef7876bda.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\dispatch_abi.rs (target\\debug\\deps\\dispatch_abi-4b36e0db95734339.exe)\n\nrunning 2 tests\ntest selected_dispatch_constants ... ok\ntest windows_x64_dispatch_layout ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\loader.rs (target\\debug\\deps\\loader-2c8de72dad274771.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\query.rs (target\\debug\\deps\\query-c4488495bd134f3e.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\shared_runtime.rs (target\\debug\\deps\\shared_runtime-56a05d78e41c362a.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Doc-tests fsr_sdk\n\nrunning 2 tests\ntest crates\\fsr-sdk\\src\\lib.rs - (line 52) - compile ... ok\ntest crates\\fsr-sdk\\src\\lib.rs - (line 73) - compile ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\nall doctests ran in 0.37s; merged doctests compilation took 0.29s\n   Doc-tests fsr_sdk_sys\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n"
+  },
+  {
+    "label": "workspace-no-default-clippy",
+    "command": "cargo clippy --workspace --all-targets --no-default-features --locked --offline -- -D warnings",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:47:53.2582198Z",
+    "finished_utc": "2026-09-28T17:47:54.1260162Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Checking fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n    Checking fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.68s"
+  },
+  {
+    "label": "workspace-no-default-docs",
+    "command": "cargo doc --workspace --no-deps --no-default-features --locked --offline",
+    "working_directory": "<repo>",
+    "isolated_cargo_home": false,
+    "rustdocflags": "-D warnings",
+    "started_utc": "2026-09-28T17:47:55.6749054Z",
+    "finished_utc": "2026-09-28T17:47:57.1840788Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n Documenting fsr-sdk v0.1.0 (<repo>\\crates\\fsr-sdk)\n Documenting fsr-sdk-sys v0.1.0 (<repo>\\crates\\fsr-sdk-sys)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.42s\n   Generated <repo>\\target\\doc\\fsr_sdk\\index.html and 1 other file"
+  },
+  {
+    "label": "isolated-wrapper-lockfile",
+    "command": "cargo generate-lockfile --offline",
+    "working_directory": "<isolated> wrapper-consumer",
+    "isolated_cargo_home": true,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:44:29.1728197Z",
+    "finished_utc": "2026-09-28T17:44:29.4627484Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n     Locking 19 packages to latest Rust 1.98.1 compatible versions"
+  },
+  {
+    "label": "isolated-sys-lockfile",
+    "command": "cargo generate-lockfile --offline",
+    "working_directory": "<isolated> sys-consumer",
+    "isolated_cargo_home": true,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:44:31.0265631Z",
+    "finished_utc": "2026-09-28T17:44:31.2125708Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n     Locking 4 packages to latest Rust 1.98.1 compatible versions"
+  },
+  {
+    "label": "isolated-wrapper-host",
+    "command": "cargo check --all-targets --locked --offline",
+    "working_directory": "<isolated> wrapper-consumer",
+    "isolated_cargo_home": true,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:44:32.7690674Z",
+    "finished_utc": "2026-09-28T17:44:42.6347458Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n   Unpacking fsr-sdk v0.1.0 (registry `<isolation>\\local-registry`)\n   Unpacking fsr-sdk-sys v0.1.0 (registry `<isolation>\\local-registry`)\n   Unpacking libloading v0.9.0 (registry `<isolation>\\local-registry`)\n   Unpacking proc-macro2 v1.0.107 (registry `<isolation>\\local-registry`)\n   Unpacking quote v1.0.47 (registry `<isolation>\\local-registry`)\n   Unpacking syn v2.0.119 (registry `<isolation>\\local-registry`)\n   Unpacking unicode-ident v1.0.26 (registry `<isolation>\\local-registry`)\n   Unpacking windows v0.62.2 (registry `<isolation>\\local-registry`)\n   Unpacking windows-collections v0.3.2 (registry `<isolation>\\local-registry`)\n   Unpacking windows-core v0.62.2 (registry `<isolation>\\local-registry`)\n   Unpacking windows-future v0.3.2 (registry `<isolation>\\local-registry`)\n   Unpacking windows-implement v0.60.2 (registry `<isolation>\\local-registry`)\n   Unpacking windows-interface v0.59.3 (registry `<isolation>\\local-registry`)\n   Unpacking windows-link v0.2.1 (registry `<isolation>\\local-registry`)\n   Unpacking windows-numerics v0.3.1 (registry `<isolation>\\local-registry`)\n   Unpacking windows-result v0.4.1 (registry `<isolation>\\local-registry`)\n   Unpacking windows-strings v0.5.1 (registry `<isolation>\\local-registry`)\n   Unpacking windows-threading v0.2.1 (registry `<isolation>\\local-registry`)\n   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.26\n    Checking windows-link v0.2.1\n   Compiling quote v1.0.47\n    Checking windows-result v0.4.1\n    Checking windows-strings v0.5.1\n    Checking windows-threading v0.2.1\n    Checking libloading v0.9.0\n    Checking fsr-sdk-sys v0.1.0\n   Compiling syn v2.0.119\n   Compiling windows-implement v0.60.2\n   Compiling windows-interface v0.59.3\n    Checking windows-core v0.62.2\n    Checking windows-future v0.3.2\n    Checking windows-numerics v0.3.1\n    Checking windows-collections v0.3.2\n    Checking windows v0.62.2\n    Checking fsr-sdk v0.1.0\n    Checking final-wrapper-consumer v0.0.0 (<working-directory>)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.76s"
+  },
+  {
+    "label": "isolated-sys-host",
+    "command": "cargo check --all-targets --locked --offline",
+    "working_directory": "<isolated> sys-consumer",
+    "isolated_cargo_home": true,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:45:12.2213911Z",
+    "finished_utc": "2026-09-28T17:45:12.8571492Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Checking windows-link v0.2.1\n    Checking libloading v0.9.0\n    Checking fsr-sdk-sys v0.1.0\n    Checking final-sys-consumer v0.0.0 (<working-directory>)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.55s"
+  },
+  {
+    "label": "isolated-wrapper-windows",
+    "command": "cargo check --all-targets --locked --offline --target x86_64-pc-windows-msvc",
+    "working_directory": "<isolated> wrapper-consumer",
+    "isolated_cargo_home": true,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:46:43.4097471Z",
+    "finished_utc": "2026-09-28T17:46:51.4526576Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n   Compiling proc-macro2 v1.0.107\n    Checking windows-link v0.2.1\n   Compiling unicode-ident v1.0.26\n   Compiling quote v1.0.47\n    Checking windows-result v0.4.1\n    Checking windows-strings v0.5.1\n    Checking windows-threading v0.2.1\n    Checking libloading v0.9.0\n    Checking fsr-sdk-sys v0.1.0\n   Compiling syn v2.0.119\n   Compiling windows-implement v0.60.2\n   Compiling windows-interface v0.59.3\n    Checking windows-core v0.62.2\n    Checking windows-numerics v0.3.1\n    Checking windows-collections v0.3.2\n    Checking windows-future v0.3.2\n    Checking windows v0.62.2\n    Checking fsr-sdk v0.1.0\n    Checking final-wrapper-consumer v0.0.0 (<working-directory>)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 7.95s"
+  },
+  {
+    "label": "isolated-sys-windows",
+    "command": "cargo check --all-targets --locked --offline --target x86_64-pc-windows-msvc",
+    "working_directory": "<isolated> sys-consumer",
+    "isolated_cargo_home": true,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:46:53.0875091Z",
+    "finished_utc": "2026-09-28T17:46:53.5982452Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Checking windows-link v0.2.1\n    Checking libloading v0.9.0\n    Checking fsr-sdk-sys v0.1.0\n    Checking final-sys-consumer v0.0.0 (<working-directory>)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.42s"
+  },
+  {
+    "label": "packaged-wrapper-all-targets",
+    "command": "cargo check --manifest-path packages/fsr-sdk-0.1.0/Cargo.toml --all-targets --locked --offline --target x86_64-pc-windows-msvc",
+    "working_directory": "<isolated> <isolation>",
+    "isolated_cargo_home": true,
+    "rustdocflags": null,
+    "started_utc": "2026-09-28T17:46:55.2208825Z",
+    "finished_utc": "2026-09-28T17:47:03.4833391Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n    Checking windows-link v0.2.1\n   Compiling unicode-ident v1.0.26\n    Checking windows-result v0.4.1\n    Checking windows-strings v0.5.1\n    Checking windows-threading v0.2.1\n    Checking libloading v0.9.0\n    Checking fsr-sdk-sys v0.1.0\n   Compiling syn v2.0.119\n   Compiling windows-implement v0.60.2\n   Compiling windows-interface v0.59.3\n    Checking windows-core v0.62.2\n    Checking windows-collections v0.3.2\n    Checking windows-numerics v0.3.1\n    Checking windows-future v0.3.2\n    Checking windows v0.62.2\n    Checking fsr-sdk v0.1.0 (<working-directory>\\packages\\fsr-sdk-0.1.0)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.17s"
+  },
+  {
+    "label": "packaged-wrapper-docs",
+    "command": "cargo doc --manifest-path packages/fsr-sdk-0.1.0/Cargo.toml --no-deps --locked --offline --target x86_64-pc-windows-msvc",
+    "working_directory": "<isolated> <isolation>",
+    "isolated_cargo_home": true,
+    "rustdocflags": "-D warnings",
+    "started_utc": "2026-09-28T17:47:05.0996101Z",
+    "finished_utc": "2026-09-28T17:47:05.7394845Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n Documenting fsr-sdk v0.1.0 (<working-directory>\\packages\\fsr-sdk-0.1.0)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.55s\n   Generated <working-directory>\\packages\\fsr-sdk-0.1.0\\target\\x86_64-pc-windows-msvc\\doc\\fsr_sdk\\index.html"
+  },
+  {
+    "label": "packaged-sys-docs",
+    "command": "cargo doc --manifest-path packages/fsr-sdk-sys-0.1.0/Cargo.toml --no-deps --features dx12 --locked --offline --target x86_64-pc-windows-msvc",
+    "working_directory": "<isolated> <isolation>",
+    "isolated_cargo_home": true,
+    "rustdocflags": "-D warnings",
+    "started_utc": "2026-09-28T17:47:07.2488937Z",
+    "finished_utc": "2026-09-28T17:47:08.1831319Z",
+    "cargo_exit_code": 0,
+    "output": "warn: could not canonicalize path <user-home>\n    Checking windows-link v0.2.1\n    Checking libloading v0.9.0\n Documenting fsr-sdk-sys v0.1.0 (<working-directory>\\packages\\fsr-sdk-sys-0.1.0)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.84s\n   Generated <working-directory>\\packages\\fsr-sdk-sys-0.1.0\\target\\x86_64-pc-windows-msvc\\doc\\fsr_sdk_sys\\index.html"
+  }
+]
