@@ -1,0 +1,11 @@
+PROVIDER: phase=before_load, loaded=false
+LOADER: acquired=true
+PROVIDER: phase=after_load, loaded=false
+GET_VERSIONS: return_code=4, upscaler_version_count=0
+PROVIDER: phase=after_query, loaded=false
+
+thread 'queries_upscaler_version_count_without_context' (18680) panicked at crates\fsr-sdk-sys\tests\query.rs:42:5:
+assertion `left == right` failed: global version query failed
+  left: 4
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

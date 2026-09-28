@@ -1,0 +1,60 @@
+## B1
+### status
+case=B1 timeout=False exit_signed=0 exit_hex=0x00000000
+
+### stdout
+
+running 1 test
+test signed_runtime_dimensions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.36s
+
+### stderr
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5279744
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=B1 render=16383x720 upscale=16383x720 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+create_returned=true return_code=1 handle=null
+destroy_attempted=false reason=returned-create-error
+
+## B2
+### status
+case=B2 timeout=False exit_signed=0 exit_hex=0x00000000
+
+### stdout
+
+running 1 test
+test signed_runtime_dimensions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+
+### stderr
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5279744
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=B2 render=16384x720 upscale=16384x720 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+create_returned=true return_code=1 handle=null
+destroy_attempted=false reason=returned-create-error
+
+## B3
+### status
+case=B3 timeout=False exit_signed=0 exit_hex=0x00000000
+
+### stdout
+
+running 1 test
+test signed_runtime_dimensions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+
+### stderr
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5279744
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+case=B3 render=16385x720 upscale=16385x720 chain=upscale->version->DX12 flags=0 callback=null allocator=null
+create_entered=true
+create_returned=true return_code=1 handle=null
+destroy_attempted=false reason=returned-create-error
+

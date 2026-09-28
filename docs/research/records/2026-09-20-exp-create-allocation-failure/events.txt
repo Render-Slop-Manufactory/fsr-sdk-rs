@@ -1,0 +1,64 @@
+# Process-specific non-null addresses normalized; labels are local to each child process.
+# Repeated labels preserve pointer identity, including unchanged post-destroy handle bits.
+CASE fail_at=0 exit_code=0
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+ALLOC index=1 size=1099864 alignment=16 injected=false pointer=<allocation-1>
+ALLOC index=2 size=1634664 alignment=16 injected=false pointer=<allocation-2>
+ALLOC index=3 size=16 alignment=16 injected=false pointer=<allocation-3>
+Create: return_code=0; after create: context=<allocation-3>
+SUMMARY phase=after_create fail_at=0 reached=false attempts=3 successful=3 frees=0 null_frees=0 live=3 all_freed_once=false
+Provider: return_code=0; id=0xf5a5ca1e01001001
+Provider name: 4.1.1
+Before destroy: context=<allocation-3>
+FREE allocation_record=2 pointer=<allocation-2>
+FREE allocation_record=1 pointer=<allocation-1>
+FREE allocation_record=3 pointer=<allocation-3>
+Destroy: return_code=0; after destroy: context=<allocation-3>
+SUMMARY phase=after_destroy fail_at=0 reached=false attempts=3 successful=3 frees=3 null_frees=0 live=0 all_freed_once=true
+CASE fail_at=1 exit_code=-1073741819
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+ALLOC index=1 size=1099864 alignment=16 injected=true pointer=0x0
+CASE fail_at=2 exit_code=-1073741819
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+ALLOC index=1 size=1099864 alignment=16 injected=false pointer=<allocation-1>
+ALLOC index=2 size=1634664 alignment=16 injected=true pointer=0x0
+CASE fail_at=3 exit_code=-1073741819
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+ALLOC index=1 size=1099864 alignment=16 injected=false pointer=<allocation-1>
+ALLOC index=2 size=1634664 alignment=16 injected=false pointer=<allocation-2>
+ALLOC index=3 size=16 alignment=16 injected=true pointer=0x0
+CASE fail_at=4 exit_code=0
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+D3D12CreateDevice: HRESULT=0x00000000; device=<non-null-device>
+Create chain: upscale -> upscale version (0x01001001) -> DX12 -> null; flags=0; render=1280x720; upscale=1920x1080
+Before create: context=0x0
+ALLOC index=1 size=1099864 alignment=16 injected=false pointer=<allocation-1>
+ALLOC index=2 size=1634664 alignment=16 injected=false pointer=<allocation-2>
+ALLOC index=3 size=16 alignment=16 injected=false pointer=<allocation-3>
+Create: return_code=0; after create: context=<allocation-3>
+SUMMARY phase=after_create fail_at=4 reached=false attempts=3 successful=3 frees=0 null_frees=0 live=3 all_freed_once=false
+Provider: return_code=0; id=0xf5a5ca1e01001001
+Provider name: 4.1.1
+Before destroy: context=<allocation-3>
+FREE allocation_record=2 pointer=<allocation-2>
+FREE allocation_record=1 pointer=<allocation-1>
+FREE allocation_record=3 pointer=<allocation-3>
+Destroy: return_code=0; after destroy: context=<allocation-3>
+SUMMARY phase=after_destroy fail_at=4 reached=false attempts=3 successful=3 frees=3 null_frees=0 live=0 all_freed_once=true
