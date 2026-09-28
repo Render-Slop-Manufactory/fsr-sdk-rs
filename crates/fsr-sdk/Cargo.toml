@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: MPL-2.0
+
+[package]
+name = "fsr-sdk"
+version = "0.1.0"
+description = "Engine-independent Windows/DX12 upscaling wrapper for AMD FSR SDK v2.3.0"
+keywords = ["fsr", "fidelityfx", "dx12", "graphics", "gamedev"]
+categories = ["rendering", "game-development"]
+# These runners require the complete repository checkout.
+exclude = ["tests/**/*.ps1"]
+
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[package.metadata.docs.rs]
+default-target = "x86_64-pc-windows-msvc"
+targets = []
+
+[features]
+default = ["dx12"]
+dx12 = ["fsr-sdk-sys/dx12", "dep:windows"]
+# Reserved unsupported backend marker.
+# Enabling this intentionally produces a compile error.
+vulkan = ["fsr-sdk-sys/vulkan"]
+
+[dependencies.fsr-sdk-sys]
+path = "../fsr-sdk-sys"
+version = "0.1.0"
+default-features = false
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.62.2", optional = true, default-features = false, features = ["Win32_Graphics_Direct3D12", "Win32_Graphics_Dxgi_Common"] }
+
+[dev-dependencies]
+libloading = "0.9.0"

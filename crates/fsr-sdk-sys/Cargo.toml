@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: MPL-2.0
+
+[package]
+name = "fsr-sdk-sys"
+version = "0.1.0"
+description = "Selected raw bindings and explicit Windows/DX12 runtime loading for AMD FSR SDK v2.3.0"
+keywords = ["fsr", "fidelityfx", "dx12", "graphics", "gamedev"]
+categories = ["external-ffi-bindings", "rendering", "game-development"]
+# These runners require the complete repository checkout.
+exclude = ["tests/**/*.ps1"]
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[package.metadata.docs.rs]
+default-target = "x86_64-pc-windows-msvc"
+targets = []
+features = ["dx12"]
+
+[features]
+default = []
+dx12 = []
+# Reserved unsupported backend marker.
+# Enabling this intentionally produces a compile error.
+vulkan = []
+
+[dependencies]
+libloading = "0.9.0"

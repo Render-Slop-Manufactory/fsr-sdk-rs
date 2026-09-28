@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: MPL-2.0
+
+[workspace]
+members = [
+  "crates/fsr-sdk-sys",
+  "crates/fsr-sdk",
+]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+license = "MPL-2.0"
+repository = "https://github.com/Render-Slop-Manufactory/fsr-sdk-rs"
