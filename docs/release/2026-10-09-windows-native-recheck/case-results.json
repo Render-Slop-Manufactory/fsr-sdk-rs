@@ -1,0 +1,863 @@
+[
+  {
+    "Family": "movable-retry",
+    "Case": "gate-a",
+    "Test": "upscaler::dx12::m6::native_dispatch_readback",
+    "Status": "started=2026-10-09T19:45:46.3188768+02:00\nfinished=2026-10-09T19:45:46.7666365+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358085, right_red: 0.7556556, debug_errors: 0, device_removed: 0 }",
+      "Gate A: PASSED"
+    ]
+  },
+  {
+    "Family": "movable-retry",
+    "Case": "gate-b",
+    "Test": "upscaler::dx12::m6::native_temporal_smoke",
+    "Status": "started=2026-10-09T19:45:46.7689604+02:00\nfinished=2026-10-09T19:45:47.2928839+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "Gate B: PASSED"
+    ]
+  },
+  {
+    "Family": "movable-retry",
+    "Case": "gate-c",
+    "Test": "upscaler::dx12::m6::native_semantic_comparisons",
+    "Status": "started=2026-10-09T19:45:47.2952032+02:00\nfinished=2026-10-09T19:45:49.4991918+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "Semantic deltas: motion=0.24122791 jitter=0.03519135 reset=0.00000000 history=0.01101808",
+      "Analytic red MAE: correct=0.01334815 reversed_motion=0.25143567 reversed_jitter=0.04247920",
+      "Gate C: PASSED"
+    ]
+  },
+  {
+    "Family": "movable-retry",
+    "Case": "native-drop",
+    "Test": "upscaler::dx12::tests::native_lifecycle_drop",
+    "Status": "started=2026-10-09T19:45:45.9064999+02:00\nfinished=2026-10-09T19:45:46.3163880+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "Production owner: create A/B OK",
+      "Production owner: destroy A/B OK; B via Drop"
+    ]
+  },
+  {
+    "Family": "movable-retry",
+    "Case": "native-explicit",
+    "Test": "upscaler::dx12::tests::native_lifecycle",
+    "Status": "started=2026-10-09T19:45:45.2962611+02:00\nfinished=2026-10-09T19:45:45.9006574+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "Production owner: create A/B OK",
+      "Production owner: destroy A/B OK; B via explicit destroy"
+    ]
+  },
+  {
+    "Family": "movable-retry",
+    "Case": "public-movable",
+    "Test": "upscaler::dx12::m6::movable_public::public_siblings_dispatch_and_cleanup_after_thread_handoffs",
+    "Status": "started=2026-10-09T19:45:49.5056343+02:00\nfinished=2026-10-09T19:45:50.1091868+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "Public movable: PASSED (two fenced frames; separate siblings; unwind and failed-handoff Drop)"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-create_after_transfer-control-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation",
+    "Status": "started=2026-10-09T19:46:41.0768698+02:00\nfinished=2026-10-09T19:46:41.4755189+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=1 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation\")",
+      "D013-2 case=1 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-create_after_transfer-control-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation",
+    "Status": "started=2026-10-09T19:46:41.5037922+02:00\nfinished=2026-10-09T19:46:41.8977110+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=1 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation\")",
+      "D013-2 case=1 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-create_after_transfer-control-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation",
+    "Status": "started=2026-10-09T19:46:41.9141128+02:00\nfinished=2026-10-09T19:46:42.3530322+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=1 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation\")",
+      "D013-2 case=1 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-create_after_transfer-transfer-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread",
+    "Status": "started=2026-10-09T19:46:42.3701184+02:00\nfinished=2026-10-09T19:46:42.8124390+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=1 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread\")",
+      "D013-2 case=1 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-create_after_transfer-transfer-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread",
+    "Status": "started=2026-10-09T19:46:42.8287949+02:00\nfinished=2026-10-09T19:46:43.2749289+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=1 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread\")",
+      "D013-2 case=1 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-create_after_transfer-transfer-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread",
+    "Status": "started=2026-10-09T19:46:43.2913704+02:00\nfinished=2026-10-09T19:46:43.7146843+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=1 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread\")",
+      "D013-2 case=1 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::runtime_transfer_before_context_creation_on_another_thread\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-history-control-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs",
+    "Status": "started=2026-10-09T19:46:43.7295971+02:00\nfinished=2026-10-09T19:46:46.4218988+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=2 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs\")",
+      "D013-2 case=2 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-history-control-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs",
+    "Status": "started=2026-10-09T19:46:46.4519475+02:00\nfinished=2026-10-09T19:46:49.0281761+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=2 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs\")",
+      "D013-2 case=2 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-history-control-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs",
+    "Status": "started=2026-10-09T19:46:49.0574710+02:00\nfinished=2026-10-09T19:46:51.5342312+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=2 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs\")",
+      "D013-2 case=2 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_continuous_history_across_ownership_handoffs\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-history-transfer-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers",
+    "Status": "started=2026-10-09T19:46:51.5633952+02:00\nfinished=2026-10-09T19:46:54.0198129+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=2 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers\")",
+      "D013-2 case=2 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-history-transfer-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers",
+    "Status": "started=2026-10-09T19:46:54.0517344+02:00\nfinished=2026-10-09T19:46:56.5417830+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=2 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers\")",
+      "D013-2 case=2 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-history-transfer-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers",
+    "Status": "started=2026-10-09T19:46:56.5711799+02:00\nfinished=2026-10-09T19:46:59.0351242+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=2 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers\")",
+      "D013-2 case=2 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::continuous_history_across_worker_thread_transfers\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-independent_siblings-control-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination",
+    "Status": "started=2026-10-09T19:46:59.0617364+02:00\nfinished=2026-10-09T19:47:00.1618479+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=3 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination\")",
+      "D013-2 case=3 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-independent_siblings-control-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination",
+    "Status": "started=2026-10-09T19:47:00.1862076+02:00\nfinished=2026-10-09T19:47:01.1640438+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=3 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination\")",
+      "D013-2 case=3 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-independent_siblings-control-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination",
+    "Status": "started=2026-10-09T19:47:01.1924139+02:00\nfinished=2026-10-09T19:47:02.1798484+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=3 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination\")",
+      "D013-2 case=3 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-independent_siblings-transfer-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads",
+    "Status": "started=2026-10-09T19:47:02.2068032+02:00\nfinished=2026-10-09T19:47:03.2077114+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=3 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads\")",
+      "D013-2 case=3 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-independent_siblings-transfer-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads",
+    "Status": "started=2026-10-09T19:47:03.2324170+02:00\nfinished=2026-10-09T19:47:04.2755314+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=3 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads\")",
+      "D013-2 case=3 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-independent_siblings-transfer-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads",
+    "Status": "started=2026-10-09T19:47:04.3050652+02:00\nfinished=2026-10-09T19:47:05.4305218+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=3 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads\")",
+      "D013-2 case=3 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-sibling_unwind-control-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor",
+    "Status": "started=2026-10-09T19:47:08.3305362+02:00\nfinished=2026-10-09T19:47:08.8965151+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=5 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 case=5 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-sibling_unwind-control-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor",
+    "Status": "started=2026-10-09T19:47:08.9124065+02:00\nfinished=2026-10-09T19:47:09.4621855+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=5 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 case=5 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-sibling_unwind-control-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor",
+    "Status": "started=2026-10-09T19:47:09.4789064+02:00\nfinished=2026-10-09T19:47:10.0333858+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=5 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 case=5 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-sibling_unwind-transfer-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor",
+    "Status": "started=2026-10-09T19:47:10.0492997+02:00\nfinished=2026-10-09T19:47:10.6028928+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=5 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 case=5 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-sibling_unwind-transfer-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor",
+    "Status": "started=2026-10-09T19:47:10.6211261+02:00\nfinished=2026-10-09T19:47:11.1846008+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=5 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 case=5 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-sibling_unwind-transfer-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor",
+    "Status": "started=2026-10-09T19:47:11.2014431+02:00\nfinished=2026-10-09T19:47:11.7592836+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=5 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor\")",
+      "D013-2 case=5 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-unwind-control-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind",
+    "Status": "started=2026-10-09T19:47:05.4524112+02:00\nfinished=2026-10-09T19:47:05.8906496+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=4 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind\")",
+      "D013-2 case=4 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-unwind-control-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind",
+    "Status": "started=2026-10-09T19:47:05.9034277+02:00\nfinished=2026-10-09T19:47:06.4291328+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=4 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind\")",
+      "D013-2 case=4 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-unwind-control-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind",
+    "Status": "started=2026-10-09T19:47:06.4459685+02:00\nfinished=2026-10-09T19:47:06.9412939+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=4 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind\")",
+      "D013-2 case=4 transfer=false: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::same_thread_automatic_context_cleanup_during_unwind\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-unwind-transfer-r1",
+    "Test": "upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind",
+    "Status": "started=2026-10-09T19:47:06.9548189+02:00\nfinished=2026-10-09T19:47:07.4312153+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=4 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind\")",
+      "D013-2 case=4 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-unwind-transfer-r2",
+    "Test": "upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind",
+    "Status": "started=2026-10-09T19:47:07.4483573+02:00\nfinished=2026-10-09T19:47:07.8876053+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=4 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind\")",
+      "D013-2 case=4 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-2-unwind-transfer-r3",
+    "Test": "upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind",
+    "Status": "started=2026-10-09T19:47:07.8997047+02:00\nfinished=2026-10-09T19:47:08.3141485+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013-2 case=4 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind\")",
+      "D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind\")",
+      "D013-2 case=4 transfer=true: PASSED thread=ThreadId(2) name=Some(\"upscaler::dx12::m6::thread_transfers::transferred_context_automatic_cleanup_during_unwind\")"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-control-abc",
+    "Test": "upscaler::dx12::m6::thread_transfer_baseline::same_thread_load_create_dispatch_and_cleanup",
+    "Status": "started=2026-10-09T19:46:37.9846194+02:00\nfinished=2026-10-09T19:46:38.3883211+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013 scenario=1 transfer=false; ordinary debug enabled, GBV off",
+      "D013 scenario=1 transfer=false: PASSED"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-control-siblings",
+    "Test": "upscaler::dx12::m6::thread_transfer_baseline::same_thread_siblings_survive_runtime_release",
+    "Status": "started=2026-10-09T19:46:39.8033815+02:00\nfinished=2026-10-09T19:46:40.3966385+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013 scenario=3 transfer=false; ordinary debug enabled, GBV off",
+      "D013 scenario=3 transfer=false: PASSED"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-control-three-frames",
+    "Test": "upscaler::dx12::m6::thread_transfer_baseline::same_thread_three_moving_frames",
+    "Status": "started=2026-10-09T19:46:38.7975162+02:00\nfinished=2026-10-09T19:46:39.3165291+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013 scenario=2 transfer=false; ordinary debug enabled, GBV off",
+      "D013 scenario=2 transfer=false: PASSED"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-transfer-abc",
+    "Test": "upscaler::dx12::m6::thread_transfer_baseline::load_create_then_dispatch_and_cleanup_on_other_threads",
+    "Status": "started=2026-10-09T19:46:38.3904960+02:00\nfinished=2026-10-09T19:46:38.7953787+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013 scenario=1 transfer=true; ordinary debug enabled, GBV off",
+      "D013 scenario=1 transfer=true: PASSED"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-transfer-siblings",
+    "Test": "upscaler::dx12::m6::thread_transfer_baseline::siblings_survive_runtime_release_and_thread_transfers",
+    "Status": "started=2026-10-09T19:46:40.3987703+02:00\nfinished=2026-10-09T19:46:41.0642928+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013 scenario=3 transfer=true; ordinary debug enabled, GBV off",
+      "D013 scenario=3 transfer=true: PASSED"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "d013-transfer-three-frames",
+    "Test": "upscaler::dx12::m6::thread_transfer_baseline::three_moving_frames_on_successive_threads",
+    "Status": "started=2026-10-09T19:46:39.3187538+02:00\nfinished=2026-10-09T19:46:39.8012407+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "D013 scenario=2 transfer=true; ordinary debug enabled, GBV off",
+      "D013 scenario=2 transfer=true: PASSED"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "gate-a",
+    "Test": "upscaler::dx12::m6::native_dispatch_readback",
+    "Status": "started=2026-10-09T19:46:35.0197583+02:00\nfinished=2026-10-09T19:46:35.4404355+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358085, right_red: 0.7556556, debug_errors: 0, device_removed: 0 }",
+      "Gate A: PASSED"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "gate-b",
+    "Test": "upscaler::dx12::m6::native_temporal_smoke",
+    "Status": "started=2026-10-09T19:46:35.4428461+02:00\nfinished=2026-10-09T19:46:35.9387185+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "Gate B: PASSED"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "gate-c",
+    "Test": "upscaler::dx12::m6::native_semantic_comparisons",
+    "Status": "started=2026-10-09T19:46:35.9410307+02:00\nfinished=2026-10-09T19:46:37.9820997+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "Semantic deltas: motion=0.24122791 jitter=0.03519135 reset=0.00000000 history=0.01101808",
+      "Analytic red MAE: correct=0.01334815 reversed_motion=0.25143567 reversed_jitter=0.04247920",
+      "Gate C: PASSED"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "native-drop",
+    "Test": "upscaler::dx12::tests::native_lifecycle_drop",
+    "Status": "started=2026-10-09T19:46:34.6782671+02:00\nfinished=2026-10-09T19:46:35.0174724+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "Production owner: create A/B OK",
+      "Production owner: destroy A/B OK; B via Drop"
+    ]
+  },
+  {
+    "Family": "d013-cleanup",
+    "Case": "native-explicit",
+    "Test": "upscaler::dx12::tests::native_lifecycle",
+    "Status": "started=2026-10-09T19:46:34.1628427+02:00\nfinished=2026-10-09T19:46:34.6732682+02:00\ntimeout=False exit=0",
+    "Observations": [
+      "Production owner: create A/B OK",
+      "Production owner: destroy A/B OK; B via explicit destroy"
+    ]
+  },
+  {
+    "Family": "sharpening",
+    "Case": "sharpening-repeat-1",
+    "Test": "upscaler::dx12::m6::native_sharpening_comparisons",
+    "Status": "started=2026-10-09T19:47:22.0288298+02:00\nfinished=2026-10-09T19:47:27.0870576+02:00\ntimeout=False exit=101",
+    "Observations": [
+      "SHARPEN_METRIC scene=0 setting=zero D=0.0022058795 C=0.8322365334 G=0.0983579424 B=0.0002401376 G_off=0.0976884703 criteria=false",
+      "SHARPEN_METRIC scene=0 setting=0.35 D=0.0034433764 C=0.8488762200 G=0.0982593301 B=0.0013968057 G_off=0.0976884703 criteria=false",
+      "SHARPEN_METRIC scene=0 setting=1 D=0.0305979964 C=0.9914191535 G=0.1040763046 B=0.0195217544 G_off=0.0976884703 criteria=false",
+      "SHARPEN_METRIC scene=1 setting=zero D=0.0010861201 C=0.2518064940 G=0.0042398606 B=0.0007913059 G_off=0.0022574928 criteria=true",
+      "SHARPEN_METRIC scene=1 setting=0.35 D=0.0029274483 C=0.4985806119 G=0.0022112184 B=0.0025952632 G_off=0.0022574928 criteria=false",
+      "SHARPEN_METRIC scene=1 setting=1 D=0.0042345393 C=0.4987272429 G=0.0100947167 B=0.0010167820 G_off=0.0022574928 criteria=true"
+    ]
+  },
+  {
+    "Family": "sharpening",
+    "Case": "sharpening-repeat-2",
+    "Test": "upscaler::dx12::m6::native_sharpening_comparisons",
+    "Status": "started=2026-10-09T19:47:27.1089063+02:00\nfinished=2026-10-09T19:47:32.0458268+02:00\ntimeout=False exit=101",
+    "Observations": [
+      "SHARPEN_METRIC scene=0 setting=zero D=0.0022058795 C=0.8322365334 G=0.0983579424 B=0.0002401376 G_off=0.0976884703 criteria=false",
+      "SHARPEN_METRIC scene=0 setting=0.35 D=0.0034433764 C=0.8488762200 G=0.0982593301 B=0.0013968057 G_off=0.0976884703 criteria=false",
+      "SHARPEN_METRIC scene=0 setting=1 D=0.0305979964 C=0.9914191535 G=0.1040763046 B=0.0195217544 G_off=0.0976884703 criteria=false",
+      "SHARPEN_METRIC scene=1 setting=zero D=0.0010861201 C=0.2518064940 G=0.0042398606 B=0.0007913059 G_off=0.0022574928 criteria=true",
+      "SHARPEN_METRIC scene=1 setting=0.35 D=0.0029274483 C=0.4985806119 G=0.0022112184 B=0.0025952632 G_off=0.0022574928 criteria=false",
+      "SHARPEN_METRIC scene=1 setting=1 D=0.0042345393 C=0.4987272429 G=0.0100947167 B=0.0010167820 G_off=0.0022574928 criteria=true"
+    ]
+  },
+  {
+    "Family": "sharpening",
+    "Case": "sharpening-repeat-3",
+    "Test": "upscaler::dx12::m6::native_sharpening_comparisons",
+    "Status": "started=2026-10-09T19:47:32.0521381+02:00\nfinished=2026-10-09T19:47:36.4694702+02:00\ntimeout=False exit=101",
+    "Observations": [
+      "SHARPEN_METRIC scene=0 setting=zero D=0.0022058795 C=0.8322365334 G=0.0983579424 B=0.0002401376 G_off=0.0976884703 criteria=false",
+      "SHARPEN_METRIC scene=0 setting=0.35 D=0.0034433764 C=0.8488762200 G=0.0982593301 B=0.0013968057 G_off=0.0976884703 criteria=false",
+      "SHARPEN_METRIC scene=0 setting=1 D=0.0305979964 C=0.9914191535 G=0.1040763046 B=0.0195217544 G_off=0.0976884703 criteria=false",
+      "SHARPEN_METRIC scene=1 setting=zero D=0.0010861201 C=0.2518064940 G=0.0042398606 B=0.0007913059 G_off=0.0022574928 criteria=true",
+      "SHARPEN_METRIC scene=1 setting=0.35 D=0.0029274483 C=0.4985806119 G=0.0022112184 B=0.0025952632 G_off=0.0022574928 criteria=false",
+      "SHARPEN_METRIC scene=1 setting=1 D=0.0042345393 C=0.4987272429 G=0.0100947167 B=0.0010167820 G_off=0.0022574928 criteria=true"
+    ]
+  },
+  {
+    "Family": "recording",
+    "Case": "same-1",
+    "Test": "upscaler::dx12::m6_recording::native_recording_ahead_spike",
+    "Status": "timeout=False exit=0",
+    "Observations": []
+  },
+  {
+    "Family": "recording",
+    "Case": "same-2",
+    "Test": "upscaler::dx12::m6_recording::native_recording_ahead_spike",
+    "Status": "timeout=False exit=0",
+    "Observations": []
+  },
+  {
+    "Family": "recording",
+    "Case": "same-5",
+    "Test": "upscaler::dx12::m6_recording::native_recording_ahead_spike",
+    "Status": "timeout=False exit=0",
+    "Observations": []
+  },
+  {
+    "Family": "recording",
+    "Case": "same-8",
+    "Test": "upscaler::dx12::m6_recording::native_recording_ahead_spike",
+    "Status": "timeout=False exit=0",
+    "Observations": []
+  },
+  {
+    "Family": "recording",
+    "Case": "sibling-2",
+    "Test": "upscaler::dx12::m6_recording::native_recording_ahead_spike",
+    "Status": "timeout=False exit=0",
+    "Observations": []
+  },
+  {
+    "Family": "recording",
+    "Case": "sibling-5",
+    "Test": "upscaler::dx12::m6_recording::native_recording_ahead_spike",
+    "Status": "timeout=False exit=0",
+    "Observations": []
+  },
+  {
+    "Family": "gbv",
+    "Case": "control",
+    "Test": "upscaler::dx12::m6::native_dispatch_readback",
+    "Status": "gpu_validation=True\r\ncontrol=True\r\ntimeout=False\r\nexit=0",
+    "Observations": [
+      "DX12 control readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 0, min_red: 65504.0, max_red: 65504.0, left_red: 65504.0, right_red: 65504.0, debug_errors: 0, device_removed: 0 }"
+    ]
+  },
+  {
+    "Family": "gbv",
+    "Case": "dispatch",
+    "Test": "upscaler::dx12::m6::native_dispatch_readback",
+    "Status": "gpu_validation=True\r\ncontrol=False\r\ntimeout=True\r\nexit=-1\r\nelapsed_seconds=10 cpu_seconds=9.734375\r\nelapsed_seconds=20 cpu_seconds=19.546875\r\nelapsed_seconds=30 cpu_seconds=29.40625\r\nelapsed_seconds=40 cpu_seconds=39\r\nelapsed_seconds=50 cpu_seconds=48.421875\r\nelapsed_seconds=60 cpu_seconds=57.203125\r\nelapsed_seconds=70 cpu_seconds=66.96875\r\nelapsed_seconds=80 cpu_seconds=76.8125\r\nelapsed_seconds=90 cpu_seconds=86",
+    "Observations": []
+  },
+  {
+    "Family": "dimensions",
+    "Case": "C0",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=C0 timeout=False exit_signed=0 exit_hex=0x00000000",
+    "Observations": [
+      "create_returned=true return_code=0 handle=non-null-1",
+      "destroy_returned=true return_code=0"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "Z1",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=Z1 timeout=False exit_signed=-1073740791 exit_hex=0xC0000409",
+    "Observations": [
+      "fatal runtime error: Rust cannot catch foreign exceptions, aborting"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "Z2",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=Z2 timeout=False exit_signed=-1073740791 exit_hex=0xC0000409",
+    "Observations": [
+      "fatal runtime error: Rust cannot catch foreign exceptions, aborting"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "Z3",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=Z3 timeout=False exit_signed=-1073740791 exit_hex=0xC0000409",
+    "Observations": [
+      "fatal runtime error: Rust cannot catch foreign exceptions, aborting"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "Z4",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=Z4 timeout=False exit_signed=-1073740791 exit_hex=0xC0000409",
+    "Observations": [
+      "fatal runtime error: Rust cannot catch foreign exceptions, aborting"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "T1",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=T1 timeout=False exit_signed=0 exit_hex=0x00000000",
+    "Observations": [
+      "create_returned=true return_code=0 handle=non-null-1",
+      "destroy_returned=true return_code=0"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "N1",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=N1 timeout=False exit_signed=0 exit_hex=0x00000000",
+    "Observations": [
+      "create_returned=true return_code=0 handle=non-null-1",
+      "destroy_returned=true return_code=0"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "E1",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=E1 timeout=False exit_signed=0 exit_hex=0x00000000",
+    "Observations": [
+      "create_returned=true return_code=0 handle=non-null-1",
+      "destroy_returned=true return_code=0"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "D1",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=D1 timeout=False exit_signed=0 exit_hex=0x00000000",
+    "Observations": [
+      "create_returned=true return_code=0 handle=non-null-1",
+      "destroy_returned=true return_code=0"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "B1",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=B1 timeout=False exit_signed=0 exit_hex=0x00000000",
+    "Observations": [
+      "create_returned=true return_code=1 handle=null",
+      "destroy_attempted=false reason=returned-create-error"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "B2",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=B2 timeout=False exit_signed=0 exit_hex=0x00000000",
+    "Observations": [
+      "create_returned=true return_code=1 handle=null",
+      "destroy_attempted=false reason=returned-create-error"
+    ]
+  },
+  {
+    "Family": "dimensions",
+    "Case": "B3",
+    "Test": "signed_runtime_dimensions",
+    "Status": "case=B3 timeout=False exit_signed=0 exit_hex=0x00000000",
+    "Observations": [
+      "create_returned=true return_code=1 handle=null",
+      "destroy_attempted=false reason=returned-create-error"
+    ]
+  },
+  {
+    "Family": "allocation-failure",
+    "Case": "0",
+    "Test": "probes_create_allocation_failure",
+    "Status": "CASE fail_at=0 exit_code=0",
+    "Observations": [
+      "Create: return_code=0; after create: context=0x1fa6d209060",
+      "SUMMARY phase=after_create fail_at=0 reached=false attempts=3 successful=3 frees=0 null_frees=0 live=3 all_freed_once=false",
+      "Destroy: return_code=0; after destroy: context=0x1fa6d209060",
+      "SUMMARY phase=after_destroy fail_at=0 reached=false attempts=3 successful=3 frees=3 null_frees=0 live=0 all_freed_once=true"
+    ]
+  },
+  {
+    "Family": "allocation-failure",
+    "Case": "1",
+    "Test": "probes_create_allocation_failure",
+    "Status": "CASE fail_at=1 exit_code=-1073741819",
+    "Observations": []
+  },
+  {
+    "Family": "allocation-failure",
+    "Case": "2",
+    "Test": "probes_create_allocation_failure",
+    "Status": "CASE fail_at=2 exit_code=-1073741819",
+    "Observations": []
+  },
+  {
+    "Family": "allocation-failure",
+    "Case": "3",
+    "Test": "probes_create_allocation_failure",
+    "Status": "CASE fail_at=3 exit_code=-1073741819",
+    "Observations": []
+  },
+  {
+    "Family": "allocation-failure",
+    "Case": "4",
+    "Test": "probes_create_allocation_failure",
+    "Status": "CASE fail_at=4 exit_code=0",
+    "Observations": [
+      "Create: return_code=0; after create: context=0x1f214635cc0",
+      "SUMMARY phase=after_create fail_at=4 reached=false attempts=3 successful=3 frees=0 null_frees=0 live=3 all_freed_once=false",
+      "Destroy: return_code=0; after destroy: context=0x1f214635cc0",
+      "SUMMARY phase=after_destroy fail_at=4 reached=false attempts=3 successful=3 frees=3 null_frees=0 live=0 all_freed_once=true"
+    ]
+  },
+  {
+    "Family": "input-lifetime",
+    "Case": "control",
+    "Test": "upscaler::dx12::tests::native_lifecycle",
+    "Status": "CASE mode=control timeout=False exit_signed=0 exit_unsigned=0 exit_hex=0x00000000",
+    "Observations": [
+      "Production owner: create A/B OK",
+      "Production owner: destroy A/B OK; B via explicit destroy"
+    ]
+  },
+  {
+    "Family": "input-lifetime",
+    "Case": "retain",
+    "Test": "probes_create_error_input_lifetime",
+    "Status": "CASE mode=retain timeout=False exit_signed=0 exit_unsigned=0 exit_hex=0x00000000",
+    "Observations": [
+      "Create: return_code=1; after create: context=0x0",
+      "Returned failure: mode=retain; no destroy; host/message/backend callbacks=null; provider identity unavailable without a live context",
+      "Observation completed: elapsed_ms=2000; normal process exit; no destroy"
+    ]
+  },
+  {
+    "Family": "input-lifetime",
+    "Case": "protect",
+    "Test": "probes_create_error_input_lifetime",
+    "Status": "CASE mode=protect timeout=False exit_signed=0 exit_unsigned=0 exit_hex=0x00000000",
+    "Observations": [
+      "Create: return_code=1; after create: context=0x0",
+      "Returned failure: mode=protect; no destroy; host/message/backend callbacks=null; provider identity unavailable without a live context",
+      "Descriptor pages: PAGE_NOACCESS verified by VirtualQuery",
+      "Observation completed: elapsed_ms=2000; normal process exit; no destroy"
+    ]
+  },
+  {
+    "Family": "input-lifetime",
+    "Case": "cleanup",
+    "Test": "probes_create_error_input_lifetime",
+    "Status": "CASE mode=cleanup timeout=False exit_signed=0 exit_unsigned=0 exit_hex=0x00000000",
+    "Observations": [
+      "Create: return_code=1; after create: context=0x0",
+      "Returned failure: mode=cleanup; no destroy; host/message/backend callbacks=null; provider identity unavailable without a live context",
+      "Descriptor storage released: VirtualFree succeeded",
+      "Observation completed: elapsed_ms=2000; normal process exit; no destroy"
+    ]
+  },
+  {
+    "Family": "shared-runtime",
+    "Case": "sequential",
+    "Test": "sequential_shared_runtime_lifetime",
+    "Status": "timeout=False exit=0",
+    "Observations": [
+      "query phase=A_both_live return_code=0 provider_id=0xf5a5ca1e01001001 provider_name=4.1.1",
+      "query phase=B_both_live return_code=0 provider_id=0xf5a5ca1e01001001 provider_name=4.1.1",
+      "query phase=B_after_A_destroy return_code=0 provider_id=0xf5a5ca1e01001001 provider_name=4.1.1",
+      "B_identity_equal=true",
+      "module phase=after_loader_drop loaded=true identity=same path=<stage>/amd_fidelityfx_upscaler_dx12.dll path_matches_stage=true"
+    ]
+  },
+  {
+    "Family": "provider-resolution",
+    "Case": "a",
+    "Test": "queries_upscaler_version_count_without_context",
+    "Status": "case=a exit_code=0 timeout=False",
+    "Observations": [
+      "GET_VERSIONS: return_code=0, upscaler_version_count=2"
+    ]
+  },
+  {
+    "Family": "provider-resolution",
+    "Case": "b",
+    "Test": "queries_upscaler_version_count_without_context",
+    "Status": "case=b exit_code=101 timeout=False",
+    "Observations": [
+      "GET_VERSIONS: return_code=4, upscaler_version_count=0"
+    ]
+  },
+  {
+    "Family": "provider-resolution",
+    "Case": "c",
+    "Test": "queries_upscaler_version_count_without_context",
+    "Status": "case=c exit_code=0 timeout=False",
+    "Observations": [
+      "GET_VERSIONS: return_code=0, upscaler_version_count=2"
+    ]
+  },
+  {
+    "Family": "provider-resolution",
+    "Case": "d",
+    "Test": "queries_upscaler_version_count_without_context",
+    "Status": "case=d exit_code=101 timeout=False",
+    "Observations": [
+      "GET_VERSIONS: return_code=4, upscaler_version_count=0"
+    ]
+  },
+  {
+    "Family": "loader",
+    "Case": "load-without-api-calls",
+    "Test": "loads_amd_runtime_without_api_calls",
+    "Status": "exit=0; 1 passed; 0 failed",
+    "Observations": []
+  }
+]
