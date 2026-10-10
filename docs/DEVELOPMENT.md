@@ -70,6 +70,15 @@ commands remain compatibility entry points. `-GpuValidation` is an opt-in diagno
 Dispatch mode includes the [controlled semantic comparisons](research/records/2026-09-30-exp-dispatch-semantics.md)
 for motion direction, jitter direction and history reset, alongside the earlier
 single-frame and three-frame regressions.
+The experiment-only `-Mode d013 -Native` runs six isolated same-thread/transfer
+cases using the real Arc-retained private owner; GBV is excluded. See its
+[native transfer record](research/records/2026-09-30-exp-d013-native-thread-transfer.md)
+for commands, configuration and the provider-unload limitation.
+The experiment-only `-Mode sharpening -Native` runs D014's three isolated
+stationary-scene comparisons and writes final red half images under the target
+stage for independent auditing; GBV is excluded. Its
+[research record](research/records/2026-09-30-exp-d014-native-sharpening.md)
+preserves the successful execution and failed proposed effect criteria.
 Renderer objects, submission, fences and readback belong to test equipment under
 `crates/fsr-sdk/tests/native`; production modules contain no GPU harness.
 

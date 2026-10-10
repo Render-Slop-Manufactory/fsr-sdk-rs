@@ -37,6 +37,12 @@ pub(super) type Finish = unsafe extern "C" fn(*mut c_void, *mut Metrics) -> i32;
 pub(super) type Destroy = unsafe extern "C" fn(*mut c_void);
 
 pub(super) fn log_provider(upscaler: &mut Upscaler) {
+    log_provider_owner(&mut upscaler.owner);
+}
+
+pub(super) fn log_provider_owner<S, D, R: crate::context::RuntimeRetention>(
+    owner: &mut crate::context::NativeContextOwner<S, D, R>,
+) {
     let mut provider = ProviderQuery {
         header: ffxApiHeader {
             r#type: 6,
@@ -47,7 +53,7 @@ pub(super) fn log_provider(upscaler: &mut Upscaler) {
     };
     // SAFETY: This test-only query ABI matches the existing M5 fixture;
     // the context and runtime remain live while reading the provider name.
-    let query_code = unsafe { upscaler.owner.query_for_test(&raw mut provider.header) };
+    let query_code = unsafe { owner.query_for_test(&raw mut provider.header) };
     eprintln!("Provider query: code={query_code:#010x}");
     assert_eq!(query_code, FFX_API_RETURN_OK, "provider query failed");
     assert!(!provider.name.is_null() && provider.id != 0);

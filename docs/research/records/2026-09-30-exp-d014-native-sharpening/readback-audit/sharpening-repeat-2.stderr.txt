@@ -1,0 +1,946 @@
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_a frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_a frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_a frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_a frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_a frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_a frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_a frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_a frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=0 setting=off_a frames=8 cleanup=passed
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_b frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_b frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_b frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_b frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_b frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_b frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_b frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=off_b frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=0 setting=off_b frames=8 cleanup=passed
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=zero frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=zero frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=zero frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=zero frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=zero frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=zero frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=zero frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=zero frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=0 setting=zero frames=8 cleanup=passed
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=0.35 frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=0.35 frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=0.35 frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=0.35 frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=0.35 frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=0.35 frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=0.35 frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=0.35 frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=0 setting=0.35 frames=8 cleanup=passed
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=1 frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=1 frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=1 frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=1 frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=1 frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=1 frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=1 frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=0 setting=1 frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=0 setting=1 frames=8 cleanup=passed
+SHARPEN_REPEAT scene=0 bit_mismatches=0 N=0.0000000000 policy=bit_identical
+SHARPEN_METRIC scene=0 setting=zero D=0.0022058795 C=0.8322365334 G=0.0983579424 B=0.0002401376 G_off=0.0976884703 criteria=false
+SHARPEN_METRIC scene=0 setting=0.35 D=0.0034433764 C=0.8488762200 G=0.0982593301 B=0.0013968057 G_off=0.0976884703 criteria=false
+SHARPEN_METRIC scene=0 setting=1 D=0.0305979964 C=0.9914191535 G=0.1040763046 B=0.0195217544 G_off=0.0976884703 criteria=false
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_a frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_a frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_a frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_a frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_a frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_a frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_a frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_a frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=1 setting=off_a frames=8 cleanup=passed
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_b frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_b frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_b frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_b frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_b frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_b frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_b frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=off_b frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=1 setting=off_b frames=8 cleanup=passed
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=zero frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=zero frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=zero frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=zero frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=zero frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=zero frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=zero frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=zero frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=1 setting=zero frames=8 cleanup=passed
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=0.35 frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=0.35 frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=0.35 frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=0.35 frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=0.35 frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=0.35 frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=0.35 frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=0.35 frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=1 setting=0.35 frames=8 cleanup=passed
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=1 frame=0 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=1 frame=1 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=1 frame=2 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=1 frame=3 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=1 frame=4 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=1 frame=5 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=1 frame=6 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+SHARPEN_FRAME scene=1 setting=1 frame=7 finite=230400 changed=230400 debug_errors=0 device_removed=0x0
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+SHARPEN_SEQUENCE scene=1 setting=1 frames=8 cleanup=passed
+SHARPEN_REPEAT scene=1 bit_mismatches=0 N=0.0000000000 policy=bit_identical
+SHARPEN_METRIC scene=1 setting=zero D=0.0010861201 C=0.2518064940 G=0.0042398606 B=0.0007913059 G_off=0.0022574928 criteria=true
+SHARPEN_METRIC scene=1 setting=0.35 D=0.0029274483 C=0.4985806119 G=0.0022112184 B=0.0025952632 G_off=0.0022574928 criteria=false
+SHARPEN_METRIC scene=1 setting=1 D=0.0042345393 C=0.4987272429 G=0.0100947167 B=0.0010167820 G_off=0.0022574928 criteria=true
+SHARPEN_EDGE setting=off_a width_10_90=Some(1.4484541351810525) min=0.0996704102 max=0.8994140625 undershoot=0.0003295898 overshoot=0.0000000000
+SHARPEN_PROFILE setting=off_a distance=-8.00 red=0.0998581688
+SHARPEN_PROFILE setting=off_a distance=-7.75 red=0.0998728990
+SHARPEN_PROFILE setting=off_a distance=-7.50 red=0.0998821805
+SHARPEN_PROFILE setting=off_a distance=-7.25 red=0.0998758778
+SHARPEN_PROFILE setting=off_a distance=-7.00 red=0.0998609412
+SHARPEN_PROFILE setting=off_a distance=-6.75 red=0.0998503056
+SHARPEN_PROFILE setting=off_a distance=-6.50 red=0.0998548755
+SHARPEN_PROFILE setting=off_a distance=-6.25 red=0.0998693725
+SHARPEN_PROFILE setting=off_a distance=-6.00 red=0.0998808060
+SHARPEN_PROFILE setting=off_a distance=-5.75 red=0.0998775808
+SHARPEN_PROFILE setting=off_a distance=-5.50 red=0.0998628504
+SHARPEN_PROFILE setting=off_a distance=-5.25 red=0.0998497793
+SHARPEN_PROFILE setting=off_a distance=-5.00 red=0.0998505715
+SHARPEN_PROFILE setting=off_a distance=-4.75 red=0.0998642652
+SHARPEN_PROFILE setting=off_a distance=-4.50 red=0.0998777820
+SHARPEN_PROFILE setting=off_a distance=-4.25 red=0.0998780656
+SHARPEN_PROFILE setting=off_a distance=-4.00 red=0.0998635409
+SHARPEN_PROFILE setting=off_a distance=-3.75 red=0.0998471141
+SHARPEN_PROFILE setting=off_a distance=-3.50 red=0.0998431068
+SHARPEN_PROFILE setting=off_a distance=-3.25 red=0.0998557302
+SHARPEN_PROFILE setting=off_a distance=-3.00 red=0.0998731050
+SHARPEN_PROFILE setting=off_a distance=-2.75 red=0.0998806743
+SHARPEN_PROFILE setting=off_a distance=-2.50 red=0.0998724973
+SHARPEN_PROFILE setting=off_a distance=-2.25 red=0.0998600802
+SHARPEN_PROFILE setting=off_a distance=-2.00 red=0.0998573667
+SHARPEN_PROFILE setting=off_a distance=-1.75 red=0.0999473151
+SHARPEN_PROFILE setting=off_a distance=-1.50 red=0.1007360097
+SHARPEN_PROFILE setting=off_a distance=-1.25 red=0.1045200093
+SHARPEN_PROFILE setting=off_a distance=-1.00 red=0.1150372834
+SHARPEN_PROFILE setting=off_a distance=-0.75 red=0.1408218184
+SHARPEN_PROFILE setting=off_a distance=-0.50 red=0.1956112448
+SHARPEN_PROFILE setting=off_a distance=-0.25 red=0.2889742785
+SHARPEN_PROFILE setting=off_a distance=0.00 red=0.4146939254
+SHARPEN_PROFILE setting=off_a distance=0.25 red=0.5571521235
+SHARPEN_PROFILE setting=off_a distance=0.50 red=0.6881957458
+SHARPEN_PROFILE setting=off_a distance=0.75 red=0.7876646137
+SHARPEN_PROFILE setting=off_a distance=1.00 red=0.8512062722
+SHARPEN_PROFILE setting=off_a distance=1.25 red=0.8814415853
+SHARPEN_PROFILE setting=off_a distance=1.50 red=0.8926199701
+SHARPEN_PROFILE setting=off_a distance=1.75 red=0.8961741814
+SHARPEN_PROFILE setting=off_a distance=2.00 red=0.8975322010
+SHARPEN_PROFILE setting=off_a distance=2.25 red=0.8979278346
+SHARPEN_PROFILE setting=off_a distance=2.50 red=0.8978928002
+SHARPEN_PROFILE setting=off_a distance=2.75 red=0.8978959455
+SHARPEN_PROFILE setting=off_a distance=3.00 red=0.8981096619
+SHARPEN_PROFILE setting=off_a distance=3.25 red=0.8983627681
+SHARPEN_PROFILE setting=off_a distance=3.50 red=0.8984291317
+SHARPEN_PROFILE setting=off_a distance=3.75 red=0.8982329627
+SHARPEN_PROFILE setting=off_a distance=4.00 red=0.8979794044
+SHARPEN_PROFILE setting=off_a distance=4.25 red=0.8978908820
+SHARPEN_PROFILE setting=off_a distance=4.50 red=0.8980752432
+SHARPEN_PROFILE setting=off_a distance=4.75 red=0.8983371307
+SHARPEN_PROFILE setting=off_a distance=5.00 red=0.8984608660
+SHARPEN_PROFILE setting=off_a distance=5.25 red=0.8983173706
+SHARPEN_PROFILE setting=off_a distance=5.50 red=0.8980635097
+SHARPEN_PROFILE setting=off_a distance=5.75 red=0.8979300993
+SHARPEN_PROFILE setting=off_a distance=6.00 red=0.8980697104
+SHARPEN_PROFILE setting=off_a distance=6.25 red=0.8983388314
+SHARPEN_PROFILE setting=off_a distance=6.50 red=0.8985000541
+SHARPEN_PROFILE setting=off_a distance=6.75 red=0.8983895159
+SHARPEN_PROFILE setting=off_a distance=7.00 red=0.8981155168
+SHARPEN_PROFILE setting=off_a distance=7.25 red=0.8979015459
+SHARPEN_PROFILE setting=off_a distance=7.50 red=0.8979650895
+SHARPEN_PROFILE setting=off_a distance=7.75 red=0.8982164713
+SHARPEN_PROFILE setting=off_a distance=8.00 red=0.8984303699
+SHARPEN_EDGE setting=off_b width_10_90=Some(1.4484541351810525) min=0.0996704102 max=0.8994140625 undershoot=0.0003295898 overshoot=0.0000000000
+SHARPEN_PROFILE setting=off_b distance=-8.00 red=0.0998581688
+SHARPEN_PROFILE setting=off_b distance=-7.75 red=0.0998728990
+SHARPEN_PROFILE setting=off_b distance=-7.50 red=0.0998821805
+SHARPEN_PROFILE setting=off_b distance=-7.25 red=0.0998758778
+SHARPEN_PROFILE setting=off_b distance=-7.00 red=0.0998609412
+SHARPEN_PROFILE setting=off_b distance=-6.75 red=0.0998503056
+SHARPEN_PROFILE setting=off_b distance=-6.50 red=0.0998548755
+SHARPEN_PROFILE setting=off_b distance=-6.25 red=0.0998693725
+SHARPEN_PROFILE setting=off_b distance=-6.00 red=0.0998808060
+SHARPEN_PROFILE setting=off_b distance=-5.75 red=0.0998775808
+SHARPEN_PROFILE setting=off_b distance=-5.50 red=0.0998628504
+SHARPEN_PROFILE setting=off_b distance=-5.25 red=0.0998497793
+SHARPEN_PROFILE setting=off_b distance=-5.00 red=0.0998505715
+SHARPEN_PROFILE setting=off_b distance=-4.75 red=0.0998642652
+SHARPEN_PROFILE setting=off_b distance=-4.50 red=0.0998777820
+SHARPEN_PROFILE setting=off_b distance=-4.25 red=0.0998780656
+SHARPEN_PROFILE setting=off_b distance=-4.00 red=0.0998635409
+SHARPEN_PROFILE setting=off_b distance=-3.75 red=0.0998471141
+SHARPEN_PROFILE setting=off_b distance=-3.50 red=0.0998431068
+SHARPEN_PROFILE setting=off_b distance=-3.25 red=0.0998557302
+SHARPEN_PROFILE setting=off_b distance=-3.00 red=0.0998731050
+SHARPEN_PROFILE setting=off_b distance=-2.75 red=0.0998806743
+SHARPEN_PROFILE setting=off_b distance=-2.50 red=0.0998724973
+SHARPEN_PROFILE setting=off_b distance=-2.25 red=0.0998600802
+SHARPEN_PROFILE setting=off_b distance=-2.00 red=0.0998573667
+SHARPEN_PROFILE setting=off_b distance=-1.75 red=0.0999473151
+SHARPEN_PROFILE setting=off_b distance=-1.50 red=0.1007360097
+SHARPEN_PROFILE setting=off_b distance=-1.25 red=0.1045200093
+SHARPEN_PROFILE setting=off_b distance=-1.00 red=0.1150372834
+SHARPEN_PROFILE setting=off_b distance=-0.75 red=0.1408218184
+SHARPEN_PROFILE setting=off_b distance=-0.50 red=0.1956112448
+SHARPEN_PROFILE setting=off_b distance=-0.25 red=0.2889742785
+SHARPEN_PROFILE setting=off_b distance=0.00 red=0.4146939254
+SHARPEN_PROFILE setting=off_b distance=0.25 red=0.5571521235
+SHARPEN_PROFILE setting=off_b distance=0.50 red=0.6881957458
+SHARPEN_PROFILE setting=off_b distance=0.75 red=0.7876646137
+SHARPEN_PROFILE setting=off_b distance=1.00 red=0.8512062722
+SHARPEN_PROFILE setting=off_b distance=1.25 red=0.8814415853
+SHARPEN_PROFILE setting=off_b distance=1.50 red=0.8926199701
+SHARPEN_PROFILE setting=off_b distance=1.75 red=0.8961741814
+SHARPEN_PROFILE setting=off_b distance=2.00 red=0.8975322010
+SHARPEN_PROFILE setting=off_b distance=2.25 red=0.8979278346
+SHARPEN_PROFILE setting=off_b distance=2.50 red=0.8978928002
+SHARPEN_PROFILE setting=off_b distance=2.75 red=0.8978959455
+SHARPEN_PROFILE setting=off_b distance=3.00 red=0.8981096619
+SHARPEN_PROFILE setting=off_b distance=3.25 red=0.8983627681
+SHARPEN_PROFILE setting=off_b distance=3.50 red=0.8984291317
+SHARPEN_PROFILE setting=off_b distance=3.75 red=0.8982329627
+SHARPEN_PROFILE setting=off_b distance=4.00 red=0.8979794044
+SHARPEN_PROFILE setting=off_b distance=4.25 red=0.8978908820
+SHARPEN_PROFILE setting=off_b distance=4.50 red=0.8980752432
+SHARPEN_PROFILE setting=off_b distance=4.75 red=0.8983371307
+SHARPEN_PROFILE setting=off_b distance=5.00 red=0.8984608660
+SHARPEN_PROFILE setting=off_b distance=5.25 red=0.8983173706
+SHARPEN_PROFILE setting=off_b distance=5.50 red=0.8980635097
+SHARPEN_PROFILE setting=off_b distance=5.75 red=0.8979300993
+SHARPEN_PROFILE setting=off_b distance=6.00 red=0.8980697104
+SHARPEN_PROFILE setting=off_b distance=6.25 red=0.8983388314
+SHARPEN_PROFILE setting=off_b distance=6.50 red=0.8985000541
+SHARPEN_PROFILE setting=off_b distance=6.75 red=0.8983895159
+SHARPEN_PROFILE setting=off_b distance=7.00 red=0.8981155168
+SHARPEN_PROFILE setting=off_b distance=7.25 red=0.8979015459
+SHARPEN_PROFILE setting=off_b distance=7.50 red=0.8979650895
+SHARPEN_PROFILE setting=off_b distance=7.75 red=0.8982164713
+SHARPEN_PROFILE setting=off_b distance=8.00 red=0.8984303699
+SHARPEN_EDGE setting=zero width_10_90=Some(1.299405815743194) min=0.0916748047 max=0.9531250000 undershoot=0.0083251953 overshoot=0.0531250000
+SHARPEN_PROFILE setting=zero distance=-8.00 red=0.0997366830
+SHARPEN_PROFILE setting=zero distance=-7.75 red=0.0997837125
+SHARPEN_PROFILE setting=zero distance=-7.50 red=0.0998132021
+SHARPEN_PROFILE setting=zero distance=-7.25 red=0.0997937755
+SHARPEN_PROFILE setting=zero distance=-7.00 red=0.0997470322
+SHARPEN_PROFILE setting=zero distance=-6.75 red=0.0997137111
+SHARPEN_PROFILE setting=zero distance=-6.50 red=0.0997275873
+SHARPEN_PROFILE setting=zero distance=-6.25 red=0.0997727196
+SHARPEN_PROFILE setting=zero distance=-6.00 red=0.0998089056
+SHARPEN_PROFILE setting=zero distance=-5.75 red=0.0998000283
+SHARPEN_PROFILE setting=zero distance=-5.50 red=0.0997555677
+SHARPEN_PROFILE setting=zero distance=-5.25 red=0.0997161383
+SHARPEN_PROFILE setting=zero distance=-5.00 red=0.0997191711
+SHARPEN_PROFILE setting=zero distance=-4.75 red=0.0997615941
+SHARPEN_PROFILE setting=zero distance=-4.50 red=0.0998047601
+SHARPEN_PROFILE setting=zero distance=-4.25 red=0.0998083054
+SHARPEN_PROFILE setting=zero distance=-4.00 red=0.0997680191
+SHARPEN_PROFILE setting=zero distance=-3.75 red=0.0997231507
+SHARPEN_PROFILE setting=zero distance=-3.50 red=0.0997131775
+SHARPEN_PROFILE setting=zero distance=-3.25 red=0.0997490256
+SHARPEN_PROFILE setting=zero distance=-3.00 red=0.0997952998
+SHARPEN_PROFILE setting=zero distance=-2.75 red=0.0998112735
+SHARPEN_PROFILE setting=zero distance=-2.50 red=0.0997648320
+SHARPEN_PROFILE setting=zero distance=-2.25 red=0.0996077245
+SHARPEN_PROFILE setting=zero distance=-2.00 red=0.0992878844
+SHARPEN_PROFILE setting=zero distance=-1.75 red=0.0987589619
+SHARPEN_PROFILE setting=zero distance=-1.50 red=0.0984906112
+SHARPEN_PROFILE setting=zero distance=-1.25 red=0.1008655690
+SHARPEN_PROFILE setting=zero distance=-1.00 red=0.1099329047
+SHARPEN_PROFILE setting=zero distance=-0.75 red=0.1353208465
+SHARPEN_PROFILE setting=zero distance=-0.50 red=0.1927171519
+SHARPEN_PROFILE setting=zero distance=-0.25 red=0.2932084500
+SHARPEN_PROFILE setting=zero distance=0.00 red=0.4295520048
+SHARPEN_PROFILE setting=zero distance=0.25 red=0.5835089860
+SHARPEN_PROFILE setting=zero distance=0.50 red=0.7221067164
+SHARPEN_PROFILE setting=zero distance=0.75 red=0.8224014744
+SHARPEN_PROFILE setting=zero distance=1.00 red=0.8808031005
+SHARPEN_PROFILE setting=zero distance=1.25 red=0.9019019019
+SHARPEN_PROFILE setting=zero distance=1.50 red=0.9041175490
+SHARPEN_PROFILE setting=zero distance=1.75 red=0.9012448731
+SHARPEN_PROFILE setting=zero distance=2.00 red=0.8987604228
+SHARPEN_PROFILE setting=zero distance=2.25 red=0.8973060942
+SHARPEN_PROFILE setting=zero distance=2.50 red=0.8965030944
+SHARPEN_PROFILE setting=zero distance=2.75 red=0.8963460750
+SHARPEN_PROFILE setting=zero distance=3.00 red=0.8968490132
+SHARPEN_PROFILE setting=zero distance=3.25 red=0.8974867279
+SHARPEN_PROFILE setting=zero distance=3.50 red=0.8975937308
+SHARPEN_PROFILE setting=zero distance=3.75 red=0.8969497350
+SHARPEN_PROFILE setting=zero distance=4.00 red=0.8961431922
+SHARPEN_PROFILE setting=zero distance=4.25 red=0.8958603164
+SHARPEN_PROFILE setting=zero distance=4.50 red=0.8964281150
+SHARPEN_PROFILE setting=zero distance=4.75 red=0.8972480125
+SHARPEN_PROFILE setting=zero distance=5.00 red=0.8976186806
+SHARPEN_PROFILE setting=zero distance=5.25 red=0.8971289940
+SHARPEN_PROFILE setting=zero distance=5.50 red=0.8963031018
+SHARPEN_PROFILE setting=zero distance=5.75 red=0.8958479108
+SHARPEN_PROFILE setting=zero distance=6.00 red=0.8962560051
+SHARPEN_PROFILE setting=zero distance=6.25 red=0.8970877507
+SHARPEN_PROFILE setting=zero distance=6.50 red=0.8976122204
+SHARPEN_PROFILE setting=zero distance=6.75 red=0.8972830071
+SHARPEN_PROFILE setting=zero distance=7.00 red=0.8964528665
+SHARPEN_PROFILE setting=zero distance=7.25 red=0.8958237024
+SHARPEN_PROFILE setting=zero distance=7.50 red=0.8960488245
+SHARPEN_PROFILE setting=zero distance=7.75 red=0.8968600892
+SHARPEN_PROFILE setting=zero distance=8.00 red=0.8975385771
+SHARPEN_EDGE setting=0.35 width_10_90=Some(1.2219603928376692) min=0.0852661133 max=1.0126953125 undershoot=0.0147338867 overshoot=0.1126953125
+SHARPEN_PROFILE setting=0.35 distance=-8.00 red=0.0995303472
+SHARPEN_PROFILE setting=0.35 distance=-7.75 red=0.0995352760
+SHARPEN_PROFILE setting=0.35 distance=-7.50 red=0.0995382720
+SHARPEN_PROFILE setting=0.35 distance=-7.25 red=0.0995358024
+SHARPEN_PROFILE setting=0.35 distance=-7.00 red=0.0995308401
+SHARPEN_PROFILE setting=0.35 distance=-6.75 red=0.0995272536
+SHARPEN_PROFILE setting=0.35 distance=-6.50 red=0.0995284209
+SHARPEN_PROFILE setting=0.35 distance=-6.25 red=0.0995334807
+SHARPEN_PROFILE setting=0.35 distance=-6.00 red=0.0995375865
+SHARPEN_PROFILE setting=0.35 distance=-5.75 red=0.0995372252
+SHARPEN_PROFILE setting=0.35 distance=-5.50 red=0.0995333165
+SHARPEN_PROFILE setting=0.35 distance=-5.25 red=0.0995293080
+SHARPEN_PROFILE setting=0.35 distance=-5.00 red=0.0995293779
+SHARPEN_PROFILE setting=0.35 distance=-4.75 red=0.0995333713
+SHARPEN_PROFILE setting=0.35 distance=-4.50 red=0.0995374637
+SHARPEN_PROFILE setting=0.35 distance=-4.25 red=0.0995378697
+SHARPEN_PROFILE setting=0.35 distance=-4.00 red=0.0995340470
+SHARPEN_PROFILE setting=0.35 distance=-3.75 red=0.0995298283
+SHARPEN_PROFILE setting=0.35 distance=-3.50 red=0.0995290775
+SHARPEN_PROFILE setting=0.35 distance=-3.25 red=0.0995327138
+SHARPEN_PROFILE setting=0.35 distance=-3.00 red=0.0995368280
+SHARPEN_PROFILE setting=0.35 distance=-2.75 red=0.0995360530
+SHARPEN_PROFILE setting=0.35 distance=-2.50 red=0.0994871103
+SHARPEN_PROFILE setting=0.35 distance=-2.25 red=0.0992516797
+SHARPEN_PROFILE setting=0.35 distance=-2.00 red=0.0986795116
+SHARPEN_PROFILE setting=0.35 distance=-1.75 red=0.0976042764
+SHARPEN_PROFILE setting=0.35 distance=-1.50 red=0.0964537271
+SHARPEN_PROFILE setting=0.35 distance=-1.25 red=0.0977175091
+SHARPEN_PROFILE setting=0.35 distance=-1.00 red=0.1056840112
+SHARPEN_PROFILE setting=0.35 distance=-0.75 red=0.1307806242
+SHARPEN_PROFILE setting=0.35 distance=-0.50 red=0.1901546747
+SHARPEN_PROFILE setting=0.35 distance=-0.25 red=0.2961097593
+SHARPEN_PROFILE setting=0.35 distance=0.00 red=0.4406853017
+SHARPEN_PROFILE setting=0.35 distance=0.25 red=0.6035779896
+SHARPEN_PROFILE setting=0.35 distance=0.50 red=0.7479528542
+SHARPEN_PROFILE setting=0.35 distance=0.75 red=0.8484632695
+SHARPEN_PROFILE setting=0.35 distance=1.00 red=0.9020052661
+SHARPEN_PROFILE setting=0.35 distance=1.25 red=0.9147917890
+SHARPEN_PROFILE setting=0.35 distance=1.50 red=0.9089275010
+SHARPEN_PROFILE setting=0.35 distance=1.75 red=0.9004824831
+SHARPEN_PROFILE setting=0.35 distance=2.00 red=0.8953017816
+SHARPEN_PROFILE setting=0.35 distance=2.25 red=0.8934428998
+SHARPEN_PROFILE setting=0.35 distance=2.50 red=0.8930498224
+SHARPEN_PROFILE setting=0.35 distance=2.75 red=0.8930477431
+SHARPEN_PROFILE setting=0.35 distance=3.00 red=0.8931782331
+SHARPEN_PROFILE setting=0.35 distance=3.25 red=0.8932989177
+SHARPEN_PROFILE setting=0.35 distance=3.50 red=0.8933122275
+SHARPEN_PROFILE setting=0.35 distance=3.75 red=0.8932102786
+SHARPEN_PROFILE setting=0.35 distance=4.00 red=0.8930916945
+SHARPEN_PROFILE setting=0.35 distance=4.25 red=0.8930494324
+SHARPEN_PROFILE setting=0.35 distance=4.50 red=0.8931328961
+SHARPEN_PROFILE setting=0.35 distance=4.75 red=0.8932526454
+SHARPEN_PROFILE setting=0.35 distance=5.00 red=0.8933104585
+SHARPEN_PROFILE setting=0.35 distance=5.25 red=0.8932499273
+SHARPEN_PROFILE setting=0.35 distance=5.50 red=0.8931339552
+SHARPEN_PROFILE setting=0.35 distance=5.75 red=0.8930683941
+SHARPEN_PROFILE setting=0.35 distance=6.00 red=0.8931208489
+SHARPEN_PROFILE setting=0.35 distance=6.25 red=0.8932304939
+SHARPEN_PROFILE setting=0.35 distance=6.50 red=0.8933077680
+SHARPEN_PROFILE setting=0.35 distance=6.75 red=0.8932707276
+SHARPEN_PROFILE setting=0.35 distance=7.00 red=0.8931645568
+SHARPEN_PROFILE setting=0.35 distance=7.25 red=0.8930855044
+SHARPEN_PROFILE setting=0.35 distance=7.50 red=0.8931135670
+SHARPEN_PROFILE setting=0.35 distance=7.75 red=0.8932167451
+SHARPEN_PROFILE setting=0.35 distance=8.00 red=0.8933018900
+SHARPEN_EDGE setting=1 width_10_90=Some(0.7605112728399845) min=0.0514526367 max=1.7343750000 undershoot=0.0485473633 overshoot=0.8343750000
+SHARPEN_PROFILE setting=1 distance=-8.00 red=0.0995553003
+SHARPEN_PROFILE setting=1 distance=-7.75 red=0.0996834626
+SHARPEN_PROFILE setting=1 distance=-7.50 red=0.0997633304
+SHARPEN_PROFILE setting=1 distance=-7.25 red=0.0997081201
+SHARPEN_PROFILE setting=1 distance=-7.00 red=0.0995804055
+SHARPEN_PROFILE setting=1 distance=-6.75 red=0.0994891065
+SHARPEN_PROFILE setting=1 distance=-6.50 red=0.0995254190
+SHARPEN_PROFILE setting=1 distance=-6.25 red=0.0996501378
+SHARPEN_PROFILE setting=1 distance=-6.00 red=0.0997503904
+SHARPEN_PROFILE setting=1 distance=-5.75 red=0.0997291779
+SHARPEN_PROFILE setting=1 distance=-5.50 red=0.0996119475
+SHARPEN_PROFILE setting=1 distance=-5.25 red=0.0995051450
+SHARPEN_PROFILE setting=1 distance=-5.00 red=0.0995121117
+SHARPEN_PROFILE setting=1 distance=-4.75 red=0.0996253505
+SHARPEN_PROFILE setting=1 distance=-4.50 red=0.0997407251
+SHARPEN_PROFILE setting=1 distance=-4.25 red=0.0997505668
+SHARPEN_PROFILE setting=1 distance=-4.00 red=0.0996428717
+SHARPEN_PROFILE setting=1 distance=-3.75 red=0.0995231311
+SHARPEN_PROFILE setting=1 distance=-3.50 red=0.0994974940
+SHARPEN_PROFILE setting=1 distance=-3.25 red=0.0995945532
+SHARPEN_PROFILE setting=1 distance=-3.00 red=0.0997168118
+SHARPEN_PROFILE setting=1 distance=-2.75 red=0.0997552586
+SHARPEN_PROFILE setting=1 distance=-2.50 red=0.0994938112
+SHARPEN_PROFILE setting=1 distance=-2.25 red=0.0983428124
+SHARPEN_PROFILE setting=1 distance=-2.00 red=0.0956949807
+SHARPEN_PROFILE setting=1 distance=-1.75 red=0.0908593819
+SHARPEN_PROFILE setting=1 distance=-1.50 red=0.0841669392
+SHARPEN_PROFILE setting=1 distance=-1.25 red=0.0790571517
+SHARPEN_PROFILE setting=1 distance=-1.00 red=0.0816066813
+SHARPEN_PROFILE setting=1 distance=-0.75 red=0.1081297249
+SHARPEN_PROFILE setting=1 distance=-0.50 red=0.1876461324
+SHARPEN_PROFILE setting=1 distance=-0.25 red=0.3459620358
+SHARPEN_PROFILE setting=1 distance=0.00 red=0.5738472033
+SHARPEN_PROFILE setting=1 distance=0.25 red=0.8340820436
+SHARPEN_PROFILE setting=1 distance=0.50 red=1.0538235232
+SHARPEN_PROFILE setting=1 distance=0.75 red=1.1762499047
+SHARPEN_PROFILE setting=1 distance=1.00 red=1.1932121716
+SHARPEN_PROFILE setting=1 distance=1.25 red=1.1244141085
+SHARPEN_PROFILE setting=1 distance=1.50 red=1.0321969860
+SHARPEN_PROFILE setting=1 distance=1.75 red=0.9593334258
+SHARPEN_PROFILE setting=1 distance=2.00 red=0.9170345779
+SHARPEN_PROFILE setting=1 distance=2.25 red=0.9002952949
+SHARPEN_PROFILE setting=1 distance=2.50 red=0.8952917007
+SHARPEN_PROFILE setting=1 distance=2.75 red=0.8943798804
+SHARPEN_PROFILE setting=1 distance=3.00 red=0.8953977588
+SHARPEN_PROFILE setting=1 distance=3.25 red=0.8967683902
+SHARPEN_PROFILE setting=1 distance=3.50 red=0.8968444191
+SHARPEN_PROFILE setting=1 distance=3.75 red=0.8951554982
+SHARPEN_PROFILE setting=1 distance=4.00 red=0.8931036664
+SHARPEN_PROFILE setting=1 distance=4.25 red=0.8923777061
+SHARPEN_PROFILE setting=1 distance=4.50 red=0.8938279259
+SHARPEN_PROFILE setting=1 distance=4.75 red=0.8959181068
+SHARPEN_PROFILE setting=1 distance=5.00 red=0.8968817652
+SHARPEN_PROFILE setting=1 distance=5.25 red=0.8956893292
+SHARPEN_PROFILE setting=1 distance=5.50 red=0.8936075462
+SHARPEN_PROFILE setting=1 distance=5.75 red=0.8924518082
+SHARPEN_PROFILE setting=1 distance=6.00 red=0.8934557861
+SHARPEN_PROFILE setting=1 distance=6.25 red=0.8955159374
+SHARPEN_PROFILE setting=1 distance=6.50 red=0.8968564046
+SHARPEN_PROFILE setting=1 distance=6.75 red=0.8960733364
+SHARPEN_PROFILE setting=1 distance=7.00 red=0.8940337652
+SHARPEN_PROFILE setting=1 distance=7.25 red=0.8924951724
+SHARPEN_PROFILE setting=1 distance=7.50 red=0.8930445622
+SHARPEN_PROFILE setting=1 distance=7.75 red=0.8950348124
+SHARPEN_PROFILE setting=1 distance=8.00 red=0.8966934905
+
+thread 'upscaler::m6::native_sharpening_comparisons' (<thread-id>) panicked at crates\fsr-sdk\src\..\tests\native\sharpening.rs:343:5:
+predeclared sharpening criteria failed; retain original results
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

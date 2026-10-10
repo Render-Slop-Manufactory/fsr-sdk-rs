@@ -2,7 +2,8 @@
 
 - Updated: 2026-09-30.
 - Scope: source research and bounded Windows/DX12 public dispatch, recording-ahead
-  temporal smoke and controlled semantic comparisons against AMD FSR SDK `v2.3.0`
+  temporal smoke, controlled semantic comparisons and a test-only sharpening
+  experiment against AMD FSR SDK `v2.3.0`
   (`60f4ea81909200d8542eca14dccb2628b763a9a3`), whose upscaler API version
   is 4.1.1. Source analysis and executed GPU results are distinguished below.
 - Included records: [dispatch ABI](records/2026-09-24-src-m6-upscale-dispatch-abi.md),
@@ -17,7 +18,9 @@
   the [backend allocation investigation](records/2026-09-24-src-m6-backend-allocation-inflight-scope.md),
   the [M6b public-route verification](records/2026-09-25-m6b-public-dispatch-verification.md),
   the [final Windows regression/temporal smoke](records/2026-09-28-exp-final-windows-release-verification.md),
-  and the [broader DX12 upscaler surface](records/2026-09-29-src-dx12-upscaler-api-surface.md).
+  the [broader DX12 upscaler surface](records/2026-09-29-src-dx12-upscaler-api-surface.md),
+  the [controlled semantic comparisons](records/2026-09-30-exp-dispatch-semantics.md),
+  and the [D014 native sharpening spike](records/2026-09-30-exp-d014-native-sharpening.md).
 
 The initial M6 source records list pinned primary sources, but their original inline
 citation tokens had no index-to-source map. Those tokens were removed at intake.
@@ -356,15 +359,72 @@ breaking release with one private-field frame representation. Neither is
 required now; no finding weakens `unsafe dispatch(&mut self, ...)`, renderer
 ownership, poison behavior or GPU-completion obligations.
 
-**Experiments still needed:** controlled correct/wrong motion and jitter inputs,
-history accumulation followed by a camera cut/reset, equivalent scenes under
-different pre-exposure/exposure modes, sharpening comparisons, mask fixtures
-and sentinel checks outside changing active extents would distinguish semantic
-correctness from successful writes. Broader HDR/non-linear/format and provider
-coverage needs separate comparisons. The report proposes these experiments;
-none was run during this source investigation or synthesis. GBV, signed-provider
-allocation/sharing, state restoration, COMPUTE-list support and callback/tuning
+**Subsequent experiments and remaining work:** the
+[controlled semantic comparisons](records/2026-09-30-exp-dispatch-semantics.md)
+now cover motion/jitter direction, history sensitivity and reset for one scene.
+The [D014 spike](records/2026-09-30-exp-d014-native-sharpening.md) adds stationary
+sharpening comparisons with a failed proposed effect gate, detailed below. These
+are later runtime evidence, not results of the source investigation. Equivalent
+scenes under different pre-exposure/exposure modes, mask fixtures and sentinel
+checks outside changing active extents still need experiments. Broader
+HDR/non-linear/format, temporal-quality and provider coverage remains open.
+GBV, signed-provider allocation/sharing, state restoration, COMPUTE-list support and callback/tuning
 contracts remain unresolved within their existing scope.
+
+## D014 sharpening: native execution and failed effect gate
+
+The [2026-09-30 spike](records/2026-09-30-exp-d014-native-sharpening.md) tests the
+existing native fields after shared descriptor inspection, through the existing
+owner/poisoning core. Production dispatch still fixes sharpening off; the spike
+does not implement or verify D014's proposed public frame API.
+
+**Verified bounded execution:** on the RX 9060 XT, driver `32.0.31041.1004`,
+signed SDK v2.3.0/provider 4.1.1 configuration, two stationary grayscale scenes
+ran at 320x180 render and 640x360 output with explicit exposure 1, zero motion
+and eight matched jittered frames per fresh context. Disabled A/B and enabled
+0, 0.35 and 1 were compared in three isolated 180-second-watchdog processes.
+A second complete run added saved half-bit readbacks for independent auditing.
+Across both runs, 480 submitted/fenced outputs had finite RGBA, clean ordinary
+debug/device checks and completed explicit teardown. GBV stayed disabled.
+Disabled A/B red bits were identical in the measured ROI, with repeat noise
+`N=0` in every repetition.
+
+**Verified failed effect criteria:** both nonzero settings produced differences
+above the predeclared magnitude and changed-area floors, but neither satisfied
+all frequency-scene requirements. Every repetition gave the same results:
+
+| Enabled setting | Horizontal gradient relative to disabled | Absolute mean-red shift | Failed criterion |
+|---|---:|---:|---|
+| 0.35 | 1.0058436764 | 0.0013968057 | Gradient must be at least 1.01 times baseline |
+| 1 | 1.0653898496 | 0.0195217544 | Mean shift must be at most 0.005 |
+
+All three original children and all three audit children exited 101 at the final
+effect assertion, after successful execution and cleanup; none timed out. The
+independent .NET half decoder and f64 metric loops reproduced the Rust values to
+ten decimal places. This rules out repeat noise and a discrepancy between those
+two metric implementations as explanations for the recorded failure. It does
+not identify the closed provider's internal response or prove the policy suitable
+for broader scenes. The original thresholds remain unchanged and the gate failed.
+
+**Verified enabled-zero behavior:** enabled 0 differed from disabled in both
+scenes (red MAE 0.0022058795 for frequency and 0.0010861201 for edge). Pass
+enablement and strength therefore need distinct documentation; zero is the
+parameter's lower endpoint, not a promise of disabled or identity output. The
+edge profiles narrowed and showed overshoot, with a finite ROI maximum of
+1.734375 at strength 1. Edge execution/profile measurements are diagnostics,
+not an independent effect gate or a general image-quality result. Open FSR3/FSR2
+RCAS behavior does not explain the signed FSR4 internals by itself.
+
+**Design inference and unresolved policy:** the source inventory's available
+fields now have bounded enabled-pass runtime evidence. Successful execution
+does not establish the proposed 1% gradient/0.005 mean-preservation policy.
+Before adopting D014's effect gate, review what response it is intended to
+establish; changing scenes or thresholds requires a declared amendment and a
+new complete run, while this original result stays failed. D014 remains
+proposed. D011's unsafe boundary, application GPU lifetimes, poison/cleanup
+obligations and bounded allocator trust are unchanged; the experiment establishes
+no new queue depth, cross-queue behavior, thread transfer or general provider
+support.
 
 ## Disagreements and limitations
 
@@ -467,3 +527,10 @@ contracts remain unresolved within their existing scope.
    exposure/mask requirements and image semantics need provider-specific evidence;
    the [surface record](records/2026-09-29-src-dx12-upscaler-api-surface.md)
    supplies proposals, not implementation authorization.
+7. **Sharpening acceptance policy:** the
+   [D014 spike](records/2026-09-30-exp-d014-native-sharpening.md) supplies clean
+   enabled-pass execution and measurable changes on one configuration, including
+   enabled zero, but fails the proposed effect criteria. Decide the gate's intended
+   response before amending it and running a new complete validation. Brightness
+   behavior, moving-scene quality and broader provider coverage remain unresolved;
+   neither synthesis nor the spike accepts D014 or adds a public sharpening API.

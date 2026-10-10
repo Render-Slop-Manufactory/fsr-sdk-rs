@@ -1,0 +1,11 @@
+Commit=bb107d79836158bcb5c3dd2f81b8b7a7b7ea4d87
+BaseTree=c73e573d2e601eda8bca940c8ce3b37df3eaa971
+Captured=2026-09-30T01:34:50.3111306+02:00
+Status= M ROADMAP.md
+ M crates/fsr-sdk/tests/native/dispatch_readback.rs
+ M crates/fsr-sdk/tests/native/gpu.cpp
+ M crates/fsr-sdk/tests/native/run.ps1
+ M docs/DECISIONS.md
+?? crates/fsr-sdk/tests/native/sharpening.h
+?? crates/fsr-sdk/tests/native/sharpening.rs
+?? docs/adr/D014.md

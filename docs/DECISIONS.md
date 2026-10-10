@@ -97,7 +97,17 @@ no public movable API
 
 [Read D013](adr/D013.md)
 
+## D014 — Extensible DX12 dispatch inputs and sharpening
+
+**Status:** proposed; concrete 0.2.0 API, migration and verification contract
+prepared for review; not implemented or accepted
+
+[Read D014](adr/D014.md)
+
 ## Open choices
+
+The dispatch-input and sharpening design in [D014](adr/D014.md) is proposed
+for the roadmap's M7 review. D011 remains the accepted current dispatch contract.
 
 The optional movable runtime/upscaler family in [D013](adr/D013.md) remains a
 proposal. Its conditional thread-transfer contract and acceptance gates require

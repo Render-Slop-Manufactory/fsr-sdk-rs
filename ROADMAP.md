@@ -136,6 +136,10 @@ These repository milestones continue M1–M6, independently of the record's
 numbering. D011 remains the current contract until the extension ADR is reviewed;
 D012 already covers creation-option extensibility.
 
+The concrete [D014 design proposal](docs/adr/D014.md) supplies M7's API sketch,
+migration, alternatives and verification gates. It remains proposed pending
+review; the frame redesign and sharpening are not implemented.
+
 | Milestone | Scope | Done when |
 |---|---|---|
 | M7 — Dispatch API contract | ADR for private fields, construction/access methods, optional defaults and migration from `0.1.0` literals. | Approved contract; one unsafe dispatch route; GPU-lifetime, poison and cleanup obligations preserved. |

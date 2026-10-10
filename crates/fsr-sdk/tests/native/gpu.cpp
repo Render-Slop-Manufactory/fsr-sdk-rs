@@ -444,3 +444,5 @@ extern "C" __declspec(dllexport) int32_t __cdecl semantic_copy_red(
     h.readback->Unmap(0, &written);
     return S_OK;
 }
+
+#include "sharpening.h"

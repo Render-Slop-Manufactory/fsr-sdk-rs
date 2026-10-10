@@ -28,7 +28,9 @@ use windows::{
 
 mod support;
 use support::*;
+mod d013;
 mod semantics;
+mod sharpening;
 mod single_frame;
 mod temporal_smoke;
 
@@ -48,4 +50,10 @@ fn native_temporal_smoke() {
 #[ignore = "requires trusted SDK DLLs and hardware DX12; use tests/run-m6.ps1 -Native"]
 fn native_semantic_comparisons() {
     semantics::compare();
+}
+
+#[test]
+#[ignore = "requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode sharpening -Native"]
+fn native_sharpening_comparisons() {
+    sharpening::compare();
 }

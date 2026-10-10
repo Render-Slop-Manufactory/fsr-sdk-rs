@@ -10,6 +10,8 @@ mod frame;
 mod resources;
 pub use frame::{CameraParameters, FrameTimeMillis, JitterOffsetPixels, UpscaleDispatch};
 #[cfg(test)]
+pub(super) use resources::inspect_dispatch;
+#[cfg(test)]
 pub(super) use resources::resource_for_parity;
 
 impl Upscaler {

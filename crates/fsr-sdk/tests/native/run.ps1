@@ -2,11 +2,13 @@
 
 # Run in an x64 VS developer shell. -Native opts into the trusted SDK and GPU.
 param(
-    [ValidateSet('lifecycle', 'dispatch')][string]$Mode = 'dispatch',
+    [ValidateSet('lifecycle', 'dispatch', 'd013', 'sharpening')][string]$Mode = 'dispatch',
     [switch]$Native, [switch]$GpuValidation,
     [string]$Stage = 'target/native-verification'
 )
 $ErrorActionPreference = 'Stop'
+if ($Mode -eq 'd013' -and $GpuValidation) { throw 'D013 excludes GBV; use ordinary debug layer only' }
+if ($Mode -eq 'sharpening' -and $GpuValidation) { throw 'Sharpening protocol excludes GBV; use ordinary debug layer only' }
 Push-Location (Resolve-Path (Join-Path $PSScriptRoot '../../../..'))
 $previousLoader = $env:FSR_SDK_TEST_DLL
 $previousHelper = $env:FSR_SDK_TEST_M6_DLL
@@ -29,7 +31,7 @@ try {
         $candidateCommit = & git rev-parse HEAD
         $candidateTree = & git rev-parse 'HEAD^{tree}'
         $candidateStatus = & git status --short
-        $candidatePatch = & git diff --no-ext-diff --binary -- crates/fsr-sdk/tests/native/dispatch_readback.rs crates/fsr-sdk/tests/native/gpu.cpp crates/fsr-sdk/tests/run-m6.ps1
+        $candidatePatch = & git diff --no-ext-diff --binary -- crates Cargo.toml Cargo.lock
         [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/candidate.patch"), ($candidatePatch -join "`n") + "`n")
         [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/source-state.txt"),
             "Commit=$candidateCommit`nBaseTree=$candidateTree`nCaptured=$(Get-Date -Format o)`nStatus=$($candidateStatus -join "`n")")
@@ -95,6 +97,19 @@ try {
             @{Name='native-explicit'; Test='upscaler::tests::native_lifecycle'; Marker='Production owner: destroy A/B OK'},
             @{Name='native-drop'; Test='upscaler::tests::native_lifecycle_drop'; Marker='Production owner: destroy A/B OK'}
         )
+    } elseif ($Mode -eq 'd013') {
+        @(
+            @{Name='d013-control-abc'; Test='upscaler::m6::d013::control_abc'; Marker='D013 scenario=1 transfer=false: PASSED'},
+            @{Name='d013-transfer-abc'; Test='upscaler::m6::d013::transfer_abc'; Marker='D013 scenario=1 transfer=true: PASSED'},
+            @{Name='d013-control-three-frames'; Test='upscaler::m6::d013::control_three_frames'; Marker='D013 scenario=2 transfer=false: PASSED'},
+            @{Name='d013-transfer-three-frames'; Test='upscaler::m6::d013::transfer_three_frames'; Marker='D013 scenario=2 transfer=true: PASSED'},
+            @{Name='d013-control-siblings'; Test='upscaler::m6::d013::control_siblings'; Marker='D013 scenario=3 transfer=false: PASSED'},
+            @{Name='d013-transfer-siblings'; Test='upscaler::m6::d013::transfer_siblings'; Marker='D013 scenario=3 transfer=true: PASSED'}
+        )
+    } elseif ($Mode -eq 'sharpening') {
+        @(1..3 | ForEach-Object {
+            @{Name="sharpening-repeat-$_"; Test='upscaler::m6::native_sharpening_comparisons'; Marker='Sharpening gate: PASSED'}
+        })
     } else {
         @(
             @{Name='gate-a'; Test='upscaler::m6::native_dispatch_readback'; Marker='Gate A: PASSED'},
@@ -112,6 +127,10 @@ try {
         $start.CreateNoWindow = $true
         $start.RedirectStandardOutput = $true
         $start.RedirectStandardError = $true
+        if ($Mode -eq 'sharpening') {
+            $imageDirectory = New-Item -ItemType Directory -Force "$stage/$name.images"
+            $start.Environment['FSR_SDK_TEST_SHARPENING_OUTPUT'] = $imageDirectory.FullName
+        }
         $started = Get-Date -Format o
         Write-Host "Child command: $stage/m6.exe $($start.Arguments)"
         $child = [System.Diagnostics.Process]::Start($start)

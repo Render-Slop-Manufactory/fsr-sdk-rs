@@ -1,15 +1,16 @@
 # API and safety
 
-- Updated: 2026-09-30 (topic reorganization; evidence dates retained).
+- Updated: 2026-09-30 (native D013 and D014 evidence integrated).
 - Scope: common ABI, loading, provider deployment, version enumeration, context
   lifecycle contracts and isolated create-failure experiments; M5 construction,
   Query/Configure, runtime-sharing source findings and bounded signed-runtime
   experiments for FidelityFX SDK v2.3.0; post-dispatch teardown observations;
   the broader modern DX12 upscaler API surface and design implications;
-  D013 trait compilation and serialized macOS/Windows fixtures; and older FSR2 Rust
-  binding comparisons. AMD execution/native layout evidence is limited to
-  Windows x64/MSVC; D013 adds macOS ARM64 and Windows x64/MSVC fixture execution
-  without AMD or GPU work.
+  D013 trait compilation, serialized macOS/Windows fixtures and fenced native
+  Windows/DX12 transfers; D014's test-only native sharpening experiment; and older
+  FSR2 Rust binding comparisons. AMD execution/native layout evidence is limited to
+  Windows x64/MSVC; D013 fixture execution also covers macOS ARM64. Native D013
+  transfer and loader-release observations cover one identified AMD configuration.
 - Included evidence: [common ABI verification record](records/2026-09-20-exp-common-abi-verification.md)
   and [explicit loader verification](records/2026-09-20-exp-explicit-dll-loader.md),
   plus the [version-count query](records/2026-09-20-exp-version-count-query.md),
@@ -35,7 +36,9 @@
   [final Windows verification](records/2026-09-28-exp-final-windows-release-verification.md),
   the [DX12 upscaler API surface investigation](records/2026-09-29-src-dx12-upscaler-api-surface.md),
   the [D013 compile/host experiment](records/2026-09-29-exp-d013-movable-compile-host.md),
-  and [D013 Windows fixture execution](records/2026-09-29-exp-d013-windows-fixtures.md).
+  [D013 Windows fixture execution](records/2026-09-29-exp-d013-windows-fixtures.md),
+  [D013 native transfers](records/2026-09-30-exp-d013-native-thread-transfer.md),
+  and the [D014 native sharpening spike](records/2026-09-30-exp-d014-native-sharpening.md).
 
 ## Topic map
 
@@ -45,6 +48,7 @@ Detailed findings are split by the contract they explain:
 - [context lifecycle](context-lifecycle.md)
 - [upscaler construction](upscaler-construction.md)
 - [runtime threading](runtime-threading.md)
+- [upscaling dispatch](upscaling-dispatch.md)
 
 ## Current findings
 
@@ -109,6 +113,39 @@ and release afterward. Compilation confirms the trait assumptions; public local
 types remain `!Send + !Sync`.
 This adds no AMD transfer or concurrency guarantee; see
 [the bounded threading findings](runtime-threading.md#d013-compiled-traits-and-serialized-host-lifecycles).
+
+**Verified bounded D013 native results:** three serialized, fenced AMD transfer
+scenarios and their same-thread controls pass on the recorded RX 9060 XT,
+driver `32.0.31041.1004`, SDK v2.3.0/provider 4.1.1 configuration. This includes
+dispatch, sibling retention, destination-thread destruction and final loader
+release, with finite/changed readbacks and clean debug/device checks. Current
+public Rc lifecycle/dispatch regressions also pass on the same changed source.
+The provider DLL remains loaded after final wrapper release in both controls
+and transfers; its termination on the destination thread is unverified.
+See [native threading results and remaining gates](runtime-threading.md#d013-fenced-native-transfers-and-final-release).
+D013 remains proposed; this adds no public movable API or universal AMD threading
+guarantee.
+
+**Verified bounded D014 sharpening results:** the
+[native spike](records/2026-09-30-exp-d014-native-sharpening.md) changes only the
+already-bound native sharpening fields in test code after shared inspection,
+through the existing context owner and dispatch-poisoning core. On SDK
+v2.3.0/provider 4.1.1, RX 9060 XT and driver `32.0.31041.1004`, two complete
+three-repetition runs submitted/fenced 480 finite outputs with clean ordinary
+debug/device checks and explicit teardown. Disabled repeat controls were
+bit-identical. Enabled zero differed from disabled in both stationary scenes;
+zero strength cannot promise pass disablement or identity output.
+
+The proposed frequency-scene effect gate failed in every repetition: strength
+0.35 increased horizontal gradient by only 0.584% against a 1% requirement;
+strength 1 shifted mean red by 0.01952 against a 0.005 bound. Independent half
+decoding and metric computation confirmed the results. Edge overshoot is a
+diagnostic observation, not a quality guarantee. See the
+[dispatch synthesis](upscaling-dispatch.md#d014-sharpening-native-execution-and-failed-effect-gate)
+for the policy conflict and scope limits. Production still fixes sharpening
+off, and D014 remains proposed. These results add bounded execution evidence;
+they do not establish new public scalar validation, trait guarantees, safe GPU
+lifetimes, signed-provider allocation capacity or broader hardware support.
 
 **Safety boundary:** explicit input paths are canonicalized before loading the
 main DLL. Dependency resolution still follows Windows loading rules. Loading
@@ -255,6 +292,15 @@ lifecycle results; their native failure and ownership limits remain unchanged.
   and completed three-frame moving smoke. Neither those bounded results nor
   recording-ahead tests establish general threading, synchronization or
   image-quality guarantees. Temporal reconstruction accuracy remains open.
+- **D014 effect gate and API review:** the
+  [sharpening experiment](records/2026-09-30-exp-d014-native-sharpening.md)
+  resolves whether the selected enabled passes execute and whether enabled zero
+  can differ from disabled, but its proposed effect criteria failed. Review the
+  intended acceptance policy before any threshold/scene amendment and new full
+  run. This is not an observed native safety failure or acceptance of D014's
+  public API. Existing D011 lifetime, ordering and terminal-error obligations
+  remain in force; HDR, exposure modes, GBV, moving scenes and other providers
+  gained no new coverage.
 - **Policy selected, implementation deferred:**
   [D006](../DECISIONS.md#d006--curate-abi-slices-and-permit-reviewed-generated-bindings)
   establishes handwritten bindings as the default and permits reviewed generated

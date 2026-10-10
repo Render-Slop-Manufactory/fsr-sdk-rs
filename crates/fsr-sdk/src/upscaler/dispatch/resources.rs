@@ -6,6 +6,7 @@ use crate::error::{
     DispatchValidation, Error, InspectionObject, InspectionOperation, ResourceProperty,
     ResourceRole,
 };
+use crate::upscaler::UpscalerOptions;
 use fsr_sdk_sys::{
     api::{
         FFX_API_RESOURCE_FLAGS_NONE, FFX_API_RESOURCE_STATE_COMPUTE_READ,
@@ -182,151 +183,159 @@ impl Upscaler {
         &self,
         dispatch: UpscaleDispatch<'_>,
     ) -> Result<ffxDispatchDescUpscale, Error> {
-        let list = dispatch.command_list;
-        // SAFETY: GetType inspects the live command-list COM object.
-        if unsafe { list.GetType() } != D3D12_COMMAND_LIST_TYPE_DIRECT {
-            return Err(Error::InvalidDispatch {
-                reason: DispatchValidation::CommandListType,
-            });
-        }
-        let objects = [
-            (ResourceRole::Color, dispatch.color),
-            (ResourceRole::Depth, dispatch.depth),
-            (ResourceRole::MotionVectors, dispatch.motion_vectors),
-            (ResourceRole::Exposure, dispatch.exposure),
-            (ResourceRole::Output, dispatch.output),
-        ];
-        let mut identities: [Option<IUnknown>; 5] = std::array::from_fn(|_| None);
-        let mut identity_pointers = [std::ptr::null_mut(); 5];
-        for (index, (role, object)) in objects.into_iter().enumerate() {
-            let identity: IUnknown = object.cast().map_err(|error| {
-                inspection(
-                    InspectionObject::Resource(role),
-                    InspectionOperation::QueryIdentity,
-                    error,
-                )
-            })?;
-            check_identity(role, identity.as_raw(), &identity_pointers[..index])?;
-            identity_pointers[index] = identity.as_raw();
-            identities[index] = Some(identity);
-        }
-        let color = convert(
-            dispatch.color,
-            ResourceRole::Color,
-            DXGI_FORMAT_R16G16B16A16_FLOAT,
-            false,
-        )?;
-        let depth = convert(
-            dispatch.depth,
-            ResourceRole::Depth,
-            DXGI_FORMAT_R32_FLOAT,
-            false,
-        )?;
-        let motion = convert(
-            dispatch.motion_vectors,
-            ResourceRole::MotionVectors,
-            DXGI_FORMAT_R16G16_FLOAT,
-            false,
-        )?;
-        let exposure = convert(
-            dispatch.exposure,
-            ResourceRole::Exposure,
-            DXGI_FORMAT_R32_FLOAT,
-            false,
-        )?;
-        let output = convert(
-            dispatch.output,
-            ResourceRole::Output,
-            DXGI_FORMAT_R16G16B16A16_FLOAT,
-            true,
-        )?;
-        let render_size = (
-            self.options.max_render_size.width.get(),
-            self.options.max_render_size.height.get(),
-        );
-        let output_size = (
-            self.options.max_upscale_size.width.get(),
-            self.options.max_upscale_size.height.get(),
-        );
-        check_extents(
-            [
-                (ResourceRole::Color, color.size),
-                (ResourceRole::Depth, depth.size),
-                (ResourceRole::MotionVectors, motion.size),
-                (ResourceRole::Exposure, exposure.size),
-                (ResourceRole::Output, output.size),
-            ],
-            render_size,
-            output_size,
-        )?;
+        inspect_dispatch(self.owner.device(), &self.options, dispatch)
+    }
+}
 
-        let context_device: IUnknown = self.owner.device().cast().map_err(|error| {
+pub(in crate::upscaler) fn inspect_dispatch(
+    device: &ID3D12Device,
+    options: &UpscalerOptions,
+    dispatch: UpscaleDispatch<'_>,
+) -> Result<ffxDispatchDescUpscale, Error> {
+    let list = dispatch.command_list;
+    // SAFETY: GetType inspects the live command-list COM object.
+    if unsafe { list.GetType() } != D3D12_COMMAND_LIST_TYPE_DIRECT {
+        return Err(Error::InvalidDispatch {
+            reason: DispatchValidation::CommandListType,
+        });
+    }
+    let objects = [
+        (ResourceRole::Color, dispatch.color),
+        (ResourceRole::Depth, dispatch.depth),
+        (ResourceRole::MotionVectors, dispatch.motion_vectors),
+        (ResourceRole::Exposure, dispatch.exposure),
+        (ResourceRole::Output, dispatch.output),
+    ];
+    let mut identities: [Option<IUnknown>; 5] = std::array::from_fn(|_| None);
+    let mut identity_pointers = [std::ptr::null_mut(); 5];
+    for (index, (role, object)) in objects.into_iter().enumerate() {
+        let identity: IUnknown = object.cast().map_err(|error| {
             inspection(
-                InspectionObject::ContextDevice,
+                InspectionObject::Resource(role),
                 InspectionOperation::QueryIdentity,
                 error,
             )
         })?;
-        let mut list_device: Option<ID3D12Device> = None;
-        // SAFETY: GetDevice writes a fresh COM reference into this output.
-        unsafe { list.GetDevice(&mut list_device) }.map_err(|error| {
+        check_identity(role, identity.as_raw(), &identity_pointers[..index])?;
+        identity_pointers[index] = identity.as_raw();
+        identities[index] = Some(identity);
+    }
+    let color = convert(
+        dispatch.color,
+        ResourceRole::Color,
+        DXGI_FORMAT_R16G16B16A16_FLOAT,
+        false,
+    )?;
+    let depth = convert(
+        dispatch.depth,
+        ResourceRole::Depth,
+        DXGI_FORMAT_R32_FLOAT,
+        false,
+    )?;
+    let motion = convert(
+        dispatch.motion_vectors,
+        ResourceRole::MotionVectors,
+        DXGI_FORMAT_R16G16_FLOAT,
+        false,
+    )?;
+    let exposure = convert(
+        dispatch.exposure,
+        ResourceRole::Exposure,
+        DXGI_FORMAT_R32_FLOAT,
+        false,
+    )?;
+    let output = convert(
+        dispatch.output,
+        ResourceRole::Output,
+        DXGI_FORMAT_R16G16B16A16_FLOAT,
+        true,
+    )?;
+    let render_size = (
+        options.max_render_size.width.get(),
+        options.max_render_size.height.get(),
+    );
+    let output_size = (
+        options.max_upscale_size.width.get(),
+        options.max_upscale_size.height.get(),
+    );
+    check_extents(
+        [
+            (ResourceRole::Color, color.size),
+            (ResourceRole::Depth, depth.size),
+            (ResourceRole::MotionVectors, motion.size),
+            (ResourceRole::Exposure, exposure.size),
+            (ResourceRole::Output, output.size),
+        ],
+        render_size,
+        output_size,
+    )?;
+
+    let context_device: IUnknown = device.cast().map_err(|error| {
+        inspection(
+            InspectionObject::ContextDevice,
+            InspectionOperation::QueryIdentity,
+            error,
+        )
+    })?;
+    let mut list_device: Option<ID3D12Device> = None;
+    // SAFETY: GetDevice writes a fresh COM reference into this output.
+    unsafe { list.GetDevice(&mut list_device) }.map_err(|error| {
+        inspection(
+            InspectionObject::CommandList,
+            InspectionOperation::GetDevice,
+            error,
+        )
+    })?;
+    let list_identity: IUnknown = list_device
+        .ok_or(Error::InvalidDispatch {
+            reason: DispatchValidation::CommandListDevice,
+        })?
+        .cast()
+        .map_err(|error| {
             inspection(
                 InspectionObject::CommandList,
+                InspectionOperation::QueryIdentity,
+                error,
+            )
+        })?;
+    if list_identity.as_raw() != context_device.as_raw() {
+        return Err(Error::InvalidDispatch {
+            reason: DispatchValidation::CommandListDevice,
+        });
+    }
+    for (role, object) in objects {
+        let mut device: Option<ID3D12Device> = None;
+        // SAFETY: GetDevice writes a fresh COM reference into this output.
+        unsafe { object.GetDevice(&mut device) }.map_err(|error| {
+            inspection(
+                InspectionObject::Resource(role),
                 InspectionOperation::GetDevice,
                 error,
             )
         })?;
-        let list_identity: IUnknown = list_device
-            .ok_or(Error::InvalidDispatch {
-                reason: DispatchValidation::CommandListDevice,
-            })?
+        let identity: IUnknown = device
+            .ok_or_else(|| invalid_resource(role, ResourceProperty::Device))?
             .cast()
             .map_err(|error| {
                 inspection(
-                    InspectionObject::CommandList,
+                    InspectionObject::Resource(role),
                     InspectionOperation::QueryIdentity,
                     error,
                 )
             })?;
-        if list_identity.as_raw() != context_device.as_raw() {
-            return Err(Error::InvalidDispatch {
-                reason: DispatchValidation::CommandListDevice,
-            });
+        if identity.as_raw() != context_device.as_raw() {
+            return Err(invalid_resource(role, ResourceProperty::Device));
         }
-        for (role, object) in objects {
-            let mut device: Option<ID3D12Device> = None;
-            // SAFETY: GetDevice writes a fresh COM reference into this output.
-            unsafe { object.GetDevice(&mut device) }.map_err(|error| {
-                inspection(
-                    InspectionObject::Resource(role),
-                    InspectionOperation::GetDevice,
-                    error,
-                )
-            })?;
-            let identity: IUnknown = device
-                .ok_or_else(|| invalid_resource(role, ResourceProperty::Device))?
-                .cast()
-                .map_err(|error| {
-                    inspection(
-                        InspectionObject::Resource(role),
-                        InspectionOperation::QueryIdentity,
-                        error,
-                    )
-                })?;
-            if identity.as_raw() != context_device.as_raw() {
-                return Err(invalid_resource(role, ResourceProperty::Device));
-            }
-        }
-
-        Ok(build_descriptor(
-            list.as_raw(),
-            [color, depth, motion, exposure, output],
-            (
-                dispatch.jitter,
-                dispatch.frame_time,
-                dispatch.camera,
-                dispatch.reset,
-            ),
-        ))
     }
+
+    Ok(build_descriptor(
+        list.as_raw(),
+        [color, depth, motion, exposure, output],
+        (
+            dispatch.jitter,
+            dispatch.frame_time,
+            dispatch.camera,
+            dispatch.reset,
+        ),
+    ))
 }
