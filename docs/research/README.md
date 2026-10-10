@@ -119,8 +119,10 @@ integrated in dispatch, API/safety and licensing/distribution. Development sourc
 and the unmodified extracted wrapper candidate each completed 144 outputs with
 continuing-history mode changes, clean ordinary debug/device checks and cleanup.
 Exact local `fsr-sdk 0.2.0` / `fsr-sdk-sys 0.1.1` archives and registry-only consumers
-passed verification; publication remains pending and D013's public movable family
-is excluded. Mapping fixtures, GPU execution and quality remain distinct evidence;
+passed verification with D013's public movable family excluded from that
+historical projection. The maintainer explicitly superseded this exclusion on
+2026-10-10; [combined release verification](../release/2026-10-10-0.2.0-release-verification.md)
+covers the complete `0.2.0` release. Mapping fixtures, GPU execution and quality remain distinct evidence;
 the original failed effect results are unchanged.
 
 The SDK version is already decided: AMD FSR SDK `v2.3.0`

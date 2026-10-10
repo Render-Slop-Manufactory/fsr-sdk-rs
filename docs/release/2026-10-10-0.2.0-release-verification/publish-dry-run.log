@@ -1,0 +1,8 @@
+    Updating crates.io index
+error: failed to update registry `crates-io`
+
+Caused by:
+  download of config.json failed
+
+Caused by:
+  [6] Could not resolve hostname (Could not resolve host: index.crates.io)

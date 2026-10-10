@@ -10,9 +10,9 @@ with every hardware/provider configuration. The
 [project scope](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/SCOPE.md#platform-and-compatibility-boundaries)
 owns this policy. Other SDK effects and Vulkan are not implemented.
 
-## Extensible frames and native sharpening in current source
+## Extensible frames and native sharpening in 0.2.0
 
-The unreleased M8 API replaces public `UpscaleDispatch` literals with
+Version `0.2.0` replaces `0.1.0` public `UpscaleDispatch` literals with
 `UpscaleResources::new(color, depth, motion_vectors, exposure, output)` and
 `UpscaleDispatch::new(list, resources, jitter, frame_time, camera, reset)`.
 Accessors expose the inputs; clone the resource bundle to reuse its borrows.
@@ -24,7 +24,7 @@ unchanged, including negative zero. Enabled zero is distinct from Disabled.
 There is no wrapper filter, clamping, quality profile or image-quality promise.
 The frame and sharpening types require Windows plus `dx12`; common inputs keep
 their portable availability. Native error, poison and renderer GPU obligations
-continue to apply. The published `0.1.0` API is still available separately.
+continue to apply.
 
 [D014](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D014.md)
 contains migration and the original failed sharpening-effect evidence.
@@ -32,11 +32,13 @@ contains migration and the original failed sharpening-effect evidence.
 covers compilation and controlled FFI. The
 [M9 verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/release/2026-10-10-m9-verification.md)
 records public-route GPU execution, same-context mode changes, candidate artifact
-checks and their configuration limits. These checks do not publish the candidate.
+checks and their configuration limits. The
+[0.2.0 release verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/release/2026-10-10-0.2.0-release-verification.md)
+checks the release artifacts including movable ownership.
 
-## Optional movable ownership in current source
+## Optional movable ownership
 
-The unreleased `movable` feature exposes `runtime::MovableRuntime` and
+The `movable` feature exposes `runtime::MovableRuntime` and
 `upscaler::MovableUpscaler` with Windows + `dx12`. Both are `Send + !Sync`;
 the existing local types remain `!Send + !Sync`. Unsafe acquisition requires
 lasting arbitrary-thread native compatibility and serialization across all
@@ -48,22 +50,25 @@ coordinates independently transferred contexts and automatic cleanup.
 Generate its current Rustdoc with `cargo doc -p fsr-sdk --features movable --no-deps --locked`
 on Windows. [D013](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D013.md)
 and the [verification record](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/release/2026-10-09-d013-public-api-verification.md)
-separate the contract from bounded native observations. This feature is absent
-from published `0.1.0` and is outside `0.2.0` scope; no later release is selected.
+separate the contract from bounded native observations. Enable it with:
+
+```toml
+fsr-sdk = { version = "0.2.0", features = ["movable"] }
+```
 
 ## Consumer workflow
 
-Current unreleased source exposes `upscaler::common` for checked sizes, options
+The crate exposes `upscaler::common` for checked sizes, options
 and frame scalars, and `upscaler::dx12` for GPU construction and dispatch.
 Existing imports from `upscaler` remain reexports of the same types. Common inputs
 are available on every host without backend features. `upscaler::dx12`, its
 reexports and `runtime` require Windows plus `dx12`; Vulkan remains unsupported.
 
-Install the [published `0.1.0` crate](https://crates.io/crates/fsr-sdk):
+Install [`fsr-sdk 0.2.0`](https://crates.io/crates/fsr-sdk):
 
 ```toml
 [dependencies]
-fsr-sdk = "0.1.0"
+fsr-sdk = "0.2.0"
 ```
 
 1. Load a separately acquired, trusted runtime with `unsafe Runtime::load_unchecked`.
@@ -84,22 +89,22 @@ completion and recording cleanup.
 The first profile uses fixed extents, linear non-HDR RGBA16F color, ordinary R32F
 depth, jitter-free current-to-previous top-down UV RG16F motion, explicit 1×1 R32F
 exposure and a UAV-capable RGBA16F output. HDR, auto exposure, dynamic resolution,
-masks are not exposed. Current source additionally exposes the native sharpening
+masks are not exposed. Native sharpening uses the
 control described above. The API uses `windows` 0.62 DX12 interfaces.
 
 ## API contract and example
 
 Full field, error and safety contracts are published in the
-[`0.1.0` API documentation](https://docs.rs/fsr-sdk/0.1.0/fsr_sdk/).
+[`0.2.0` API documentation](https://docs.rs/fsr-sdk/0.2.0/fsr_sdk/).
 In a repository checkout,
 generate the Windows API with:
 
 ```sh
-cargo doc -p fsr-sdk --no-deps --locked --target x86_64-pc-windows-msvc
+cargo doc -p fsr-sdk --features movable --no-deps --locked --target x86_64-pc-windows-msvc
 ```
 
 The Windows target must be installed; a host-only macOS/Linux build omits the DX12
-modules. docs.rs is configured to use Windows x64/MSVC as the default target.
+modules. docs.rs uses Windows x64/MSVC and includes the optional movable API.
 The [DX12 integration example](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/crates/fsr-sdk/examples/dx12_upscale.rs)
 accepts renderer-owned objects and uses only the public API. It compiles without
 implementing a renderer and does not execute GPU work when run.
@@ -116,7 +121,7 @@ GPU/driver/provider support. See the
 for current status and future scope.
 
 The [final 0.1.0 Windows verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-28-exp-final-windows-release-verification.md)
-also passed a three-frame moving smoke. Post-release source adds
+also passed a three-frame moving smoke. Version `0.2.0` includes
 [controlled horizontal-motion, jitter and history-reset comparisons](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-30-exp-dispatch-semantics.md)
 on that configuration. These are bounded regression evidence; they do not
 establish general temporal image quality or revalidate the published archives.

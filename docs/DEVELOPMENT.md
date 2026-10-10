@@ -4,11 +4,13 @@ Current contributor commands and verification boundaries live here. Dated
 release observations are retained in the [verification history](release/2026-09-30-development-history.md).
 See [CONTRIBUTING.md](../CONTRIBUTING.md) and [code heuristics](CODE_HEURISTICS.md) before changing contracts.
 
-## Published release
+## Release baseline
 
-Both crates were published as 0.1.0 on 2026-09-28. The
-[publication record](release/2026-09-29-publication-check.md) identifies the registry artefacts.
-Current source changes do not modify that published release.
+The release source is `fsr-sdk 0.2.0` with `fsr-sdk-sys 0.1.1`, including the
+optional movable family. The [release verification](release/2026-10-10-0.2.0-release-verification.md)
+records the exact package/consumer/native checks and the publication boundary.
+The earlier [0.1.0 publication record](release/2026-09-29-publication-check.md)
+remains a historical baseline.
 
 ## Local setup and checks
 
@@ -83,9 +85,9 @@ cargo doc --workspace --features fsr-sdk/movable --no-deps --locked --target x86
 ```
 
 The Windows target must be installed. A host-only Linux/macOS build documents
-common inputs and errors but omits native APIs. This command documents current
-source, including unreleased changes; published `0.1.0` documentation remains
-on docs.rs. Apply `RUSTDOCFLAGS="-D warnings"` as described above for validation.
+common inputs and errors but omits native APIs. docs.rs also includes the
+optional movable family for `0.2.0`. Apply `RUSTDOCFLAGS="-D warnings"` as described
+above for validation.
 
 The optional public family adds [movable cleanup coordination](../crates/fsr-sdk/examples/movable_upscale.rs).
 Its example is compiled directly into public consumer fixture tests, covering
@@ -138,9 +140,11 @@ cases using the real Arc-retained private owner; GBV is excluded. See its
 for commands, configuration and the provider-unload limitation.
 The implementation-verification `-Mode movable -Native` enables the actual public
 family, reruns local lifecycle/dispatch/semantic regressions, and checks two fenced
-public movable frames with independent siblings and coordinated destination-thread
+public movable frames per mode (Disabled and Native(0.35)), with independent
+siblings and coordinated destination-thread
 Drop during unwind/failed handoff. GBV is excluded. See the
-[2026-10-09 public-path record](release/2026-10-09-d013-public-api-verification.md).
+[2026-10-09 public-path record](release/2026-10-09-d013-public-api-verification.md)
+and the [combined release check](release/2026-10-10-0.2.0-release-verification.md).
 This is a bounded implementation check, not a new native research matrix.
 The follow-up `-Mode d013-cleanup -Native` first runs existing native regressions,
 then three isolated repetitions of each control/transfer case for creation after
@@ -163,7 +167,9 @@ integration repetition without retry. `-TestManifest <extracted-wrapper/Cargo.to
 builds the exact extracted wrapper artifact while retaining local SDK/equipment
 setup in the checkout; set its isolated Cargo home as in the
 [M9 verification record](release/2026-10-10-m9-verification.md).
-Development and final artifact runs passed on the recorded configuration.
+The original M9 projection excluded movable APIs. The
+[complete 0.2.0 verification](release/2026-10-10-0.2.0-release-verification.md)
+checks the combined release, including the extracted movable API.
 The historical sharpening
 runner retains its original failed effect assertions; running it does not
 establish M9 acceptance. `check-movable-api.ps1` also checks the new frame/resource

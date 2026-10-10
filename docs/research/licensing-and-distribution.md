@@ -24,7 +24,7 @@ added package-local copies of LICENSE, package READMEs, source SPDX markers and
 contribution rules preserving AMD notices. At audit time, wrapper packaging
 failed because the `fsr-sdk-sys` path dependency lacked a version requirement.
 The [current wrapper manifest](../../crates/fsr-sdk/Cargo.toml) supplies
-`version = "0.1.0"`. The later
+`version = "0.1.1"` for the `0.2.0` wrapper release. The later
 [final artifact recheck](../release/2026-09-28-final-artifact-recheck.md)
 inspected both archives, including notices and normalized manifests; the
 [publication check](../release/2026-09-29-publication-check.md) records the
@@ -57,6 +57,13 @@ byte-identical archives before aborting both uploads. The source projection and
 inventories identify the exact tested bytes; changed or regenerated candidates
 need separate verification. This is an unpublished local candidate, not registry
 server acceptance, hosted-docs verification or a binary redistribution review.
+
+**Combined release scope:** the maintainer superseded the movable exclusion on
+2026-10-10. The [complete release verification](../release/2026-10-10-0.2.0-release-verification.md)
+checks the actual `0.2.0` / `0.1.1` archives with movable retained, including
+licence/notice copies, registry-only consumers and native execution. The earlier
+projection above remains historical evidence; no new licensing interpretation
+or native binary redistribution is introduced.
 
 **Verified scope:** no SDK headers/DLLs or dependency sources are bundled in the
 raw archive. Runtime DLLs are only staged locally. AMD's pinned license inventory

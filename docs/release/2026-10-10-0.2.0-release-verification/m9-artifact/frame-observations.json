@@ -1,0 +1,1154 @@
+[
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 0,
+    "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 1,
+    "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 2,
+    "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 3,
+    "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 4,
+    "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 5,
+    "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 6,
+    "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 7,
+    "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 0,
+    "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 1,
+    "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 2,
+    "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 3,
+    "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 4,
+    "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 5,
+    "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 6,
+    "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 7,
+    "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 0,
+    "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 1,
+    "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 2,
+    "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 3,
+    "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 4,
+    "sha256": "d1b102fc0123cdbefe3779647a04214e71ebfb2c70fdde29b976a8c083edea2d",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 5,
+    "sha256": "7d08021733c54c0909bd3334a97fe5409eab4cd60aaf960c243605fe180f6bd7",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 6,
+    "sha256": "f78b965f207224a5f7417706bc0dd54f280797fe072522291ce7f91a9d38f8d9",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 7,
+    "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 0,
+    "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 1,
+    "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 2,
+    "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 3,
+    "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 4,
+    "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 5,
+    "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 6,
+    "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 7,
+    "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 0,
+    "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 1,
+    "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 2,
+    "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 3,
+    "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 4,
+    "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 5,
+    "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 6,
+    "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 7,
+    "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 0,
+    "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 1,
+    "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 2,
+    "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 3,
+    "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 4,
+    "sha256": "e64039d02fbe04770ec58756973c78a20f49a5127feb7b6f6f3afec9ce257677",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 5,
+    "sha256": "484cb3e753f05c4f89dc17f8940557f63d5e41aa27034fe098edf83b847f1794",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 6,
+    "sha256": "5b475f904d04d75be729ce53c0650921f294b842300f570cd65218face5d4ccb",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 1,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 7,
+    "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 0,
+    "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 1,
+    "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 2,
+    "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 3,
+    "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 4,
+    "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 5,
+    "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 6,
+    "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 7,
+    "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 0,
+    "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 1,
+    "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 2,
+    "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 3,
+    "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 4,
+    "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 5,
+    "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 6,
+    "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 7,
+    "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 0,
+    "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 1,
+    "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 2,
+    "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 3,
+    "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 4,
+    "sha256": "d1b102fc0123cdbefe3779647a04214e71ebfb2c70fdde29b976a8c083edea2d",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 5,
+    "sha256": "7d08021733c54c0909bd3334a97fe5409eab4cd60aaf960c243605fe180f6bd7",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 6,
+    "sha256": "f78b965f207224a5f7417706bc0dd54f280797fe072522291ce7f91a9d38f8d9",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 7,
+    "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 0,
+    "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 1,
+    "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 2,
+    "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 3,
+    "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 4,
+    "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 5,
+    "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 6,
+    "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 7,
+    "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 0,
+    "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 1,
+    "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 2,
+    "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 3,
+    "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 4,
+    "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 5,
+    "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 6,
+    "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 7,
+    "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 0,
+    "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 1,
+    "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 2,
+    "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 3,
+    "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 4,
+    "sha256": "e64039d02fbe04770ec58756973c78a20f49a5127feb7b6f6f3afec9ce257677",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 5,
+    "sha256": "484cb3e753f05c4f89dc17f8940557f63d5e41aa27034fe098edf83b847f1794",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 6,
+    "sha256": "5b475f904d04d75be729ce53c0650921f294b842300f570cd65218face5d4ccb",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 2,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 7,
+    "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 0,
+    "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 1,
+    "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 2,
+    "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 3,
+    "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 4,
+    "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 5,
+    "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 6,
+    "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-a",
+    "frame": 7,
+    "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8",
+    "observation": "M9_FRAME scene=0 arm=switch-a frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 0,
+    "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 1,
+    "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 2,
+    "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 3,
+    "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 4,
+    "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 5,
+    "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 6,
+    "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "switch-b",
+    "frame": 7,
+    "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8",
+    "observation": "M9_FRAME scene=0 arm=switch-b frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 0,
+    "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 1,
+    "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 2,
+    "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 3,
+    "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 4,
+    "sha256": "d1b102fc0123cdbefe3779647a04214e71ebfb2c70fdde29b976a8c083edea2d",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 5,
+    "sha256": "7d08021733c54c0909bd3334a97fe5409eab4cd60aaf960c243605fe180f6bd7",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 6,
+    "sha256": "f78b965f207224a5f7417706bc0dd54f280797fe072522291ce7f91a9d38f8d9",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 0,
+    "arm": "disabled",
+    "frame": 7,
+    "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8",
+    "observation": "M9_FRAME scene=0 arm=disabled frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 0,
+    "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 1,
+    "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 2,
+    "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 3,
+    "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 4,
+    "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 5,
+    "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 6,
+    "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-a",
+    "frame": 7,
+    "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239",
+    "observation": "M9_FRAME scene=1 arm=switch-a frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 0,
+    "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 1,
+    "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 2,
+    "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 3,
+    "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 4,
+    "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 5,
+    "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 6,
+    "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "switch-b",
+    "frame": 7,
+    "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239",
+    "observation": "M9_FRAME scene=1 arm=switch-b frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 0,
+    "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=0 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 1,
+    "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=1 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 2,
+    "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=2 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 3,
+    "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=3 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 4,
+    "sha256": "e64039d02fbe04770ec58756973c78a20f49a5127feb7b6f6f3afec9ce257677",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=4 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 5,
+    "sha256": "484cb3e753f05c4f89dc17f8940557f63d5e41aa27034fe098edf83b847f1794",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=5 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 6,
+    "sha256": "5b475f904d04d75be729ce53c0650921f294b842300f570cd65218face5d4ccb",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=6 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  },
+  {
+    "repeat": 3,
+    "scene": 1,
+    "arm": "disabled",
+    "frame": 7,
+    "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239",
+    "observation": "M9_FRAME scene=1 arm=disabled frame=7 finish_hr=0x0 fence=1 width=640 height=360 finite=230400 written=230400 debug_errors=0 device_removed=0x0"
+  }
+]

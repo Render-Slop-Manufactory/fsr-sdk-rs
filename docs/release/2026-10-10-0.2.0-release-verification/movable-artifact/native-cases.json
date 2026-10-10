@@ -1,0 +1,133 @@
+[
+  {
+    "case": "native-explicit",
+    "status": "started=2026-10-10T13:25:33.8972073+02:00\nfinished=2026-10-10T13:25:34.4276124+02:00\ntimeout=False exit=0",
+    "observations": [
+      "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0",
+      "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+      "Production owner: create A/B OK",
+      "Provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Production owner: destroy A/B OK; B via explicit destroy"
+    ]
+  },
+  {
+    "case": "native-drop",
+    "status": "started=2026-10-10T13:25:34.4325944+02:00\nfinished=2026-10-10T13:25:34.7830477+02:00\ntimeout=False exit=0",
+    "observations": [
+      "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0",
+      "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+      "Production owner: create A/B OK",
+      "Provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Production owner: destroy A/B OK; B via Drop"
+    ]
+  },
+  {
+    "case": "gate-a",
+    "status": "started=2026-10-10T13:25:34.7853091+02:00\nfinished=2026-10-10T13:25:35.2373690+02:00\ntimeout=False exit=0",
+    "observations": [
+      "Gate A debug layer: HRESULT=0x00000000",
+      "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0",
+      "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+      "Gate A device creation: HRESULT=0x00000000",
+      "Gate A public construction: OK native_code=0x00000000",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358085, right_red: 0.7556556, debug_errors: 0, device_removed: 0 }",
+      "Gate A explicit destroy: OK native_code=0x00000000",
+      "Gate A after explicit destroy and resource cleanup:",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "Gate A: PASSED"
+    ]
+  },
+  {
+    "case": "gate-b",
+    "status": "started=2026-10-10T13:25:35.2394798+02:00\nfinished=2026-10-10T13:25:35.7537640+02:00\ntimeout=False exit=0",
+    "observations": [
+      "Gate B debug layer: HRESULT=0x00000000",
+      "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0",
+      "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+      "Gate B device creation: HRESULT=0x00000000",
+      "Gate B public construction: OK native_code=0x00000000",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Gate B frame=0: translation=0px jitter=(0.25,-0.25) reset=true motion=(0,0) frame_time=16.667ms",
+      "Gate B frame=0 harness creation: HRESULT=0x00000000",
+      "Gate B frame=0 public dispatch: OK native_code=0x00000000",
+      "Gate B frame=0 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358033, right_red: 0.7556558, debug_errors: 0, device_removed: 0 }",
+      "Gate B frame=1: translation=1px jitter=(-0.25,0.25) reset=false motion=(-0.003125,0) frame_time=16.667ms",
+      "Gate B frame=1 harness creation: HRESULT=0x00000000",
+      "Gate B frame=1 public dispatch: OK native_code=0x00000000",
+      "Gate B frame=1 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.08795166, max_red: 0.8461914, left_red: 0.19121014, right_red: 0.7527847, debug_errors: 0, device_removed: 0 }",
+      "Gate B frame=2: translation=2px jitter=(0.125,-0.125) reset=false motion=(-0.003125,0) frame_time=16.667ms",
+      "Gate B frame=2 harness creation: HRESULT=0x00000000",
+      "Gate B frame=2 public dispatch: OK native_code=0x00000000",
+      "Gate B frame=2 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09069824, max_red: 0.8432617, left_red: 0.18860283, right_red: 0.7495062, debug_errors: 0, device_removed: 0 }",
+      "Gate B normal Drop completed; native destroy result is not exposed",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "Gate B after frame-resource cleanup:",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "Gate B: PASSED"
+    ]
+  },
+  {
+    "case": "gate-c",
+    "status": "started=2026-10-10T13:25:35.7560075+02:00\nfinished=2026-10-10T13:25:37.8134043+02:00\ntimeout=False exit=0",
+    "observations": [
+      "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0",
+      "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "Semantic deltas: motion=0.24122791 jitter=0.03519135 reset=0.00000000 history=0.01101808",
+      "Analytic red MAE: correct=0.01334815 reversed_motion=0.25143567 reversed_jitter=0.04247920",
+      "Gate C: PASSED"
+    ]
+  },
+  {
+    "case": "public-movable",
+    "status": "started=2026-10-10T13:25:37.8183282+02:00\nfinished=2026-10-10T13:25:38.3337514+02:00\ntimeout=False exit=0",
+    "observations": [
+      "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0",
+      "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+      "Public movable acquisition: thread=ThreadId(3)",
+      "Public movable construction: thread=ThreadId(4)",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Public movable fenced readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19305952, right_red: 0.7552217, debug_errors: 0, device_removed: 0 }",
+      "Public movable fenced readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19305952, right_red: 0.7552217, debug_errors: 0, device_removed: 0 }",
+      "Public movable Drop: thread=ThreadId(7) unwinding=true domain_held=true",
+      "D013 native destroy: thread=ThreadId(7) code=0x00000000",
+      "Public movable Drop: thread=ThreadId(8) unwinding=false domain_held=true",
+      "D013 native destroy: thread=ThreadId(8) code=0x00000000",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "Public movable: PASSED mode=Disabled (two fenced frames; separate siblings; unwind and failed-handoff Drop)"
+    ]
+  },
+  {
+    "case": "public-movable-sharpening",
+    "status": "started=2026-10-10T13:25:38.3358160+02:00\nfinished=2026-10-10T13:25:38.8463971+02:00\ntimeout=False exit=0",
+    "observations": [
+      "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0",
+      "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+      "Public movable acquisition: thread=ThreadId(3)",
+      "Public movable construction: thread=ThreadId(4)",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+      "Public movable fenced readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09942627, max_red: 0.84228516, left_red: 0.1916723, right_red: 0.74729055, debug_errors: 0, device_removed: 0 }",
+      "Public movable fenced readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09942627, max_red: 0.84228516, left_red: 0.1916723, right_red: 0.74729055, debug_errors: 0, device_removed: 0 }",
+      "Public movable Drop: thread=ThreadId(7) unwinding=true domain_held=true",
+      "D013 native destroy: thread=ThreadId(7) code=0x00000000",
+      "Public movable Drop: thread=ThreadId(8) unwinding=false domain_held=true",
+      "D013 native destroy: thread=ThreadId(8) code=0x00000000",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "Device checkpoint: debug_errors=0 device_removed=0x00000000",
+      "Public movable: PASSED mode=Native(NativeSharpness(0.35)) (two fenced frames; separate siblings; unwind and failed-handoff Drop)"
+    ]
+  }
+]

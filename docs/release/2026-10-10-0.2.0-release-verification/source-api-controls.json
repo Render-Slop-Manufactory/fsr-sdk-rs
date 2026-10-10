@@ -1,0 +1,268 @@
+{
+  "command": "./tools/check-movable-api.ps1 -Stage target/release-020-api-controls",
+  "script_sha256": "a950eeaf38b6e506142371f488d7b400e90185e2f5ff8cbf83d1f68b2c6e159d",
+  "observed_script_exit": 0,
+  "cases": [
+    {
+      "case": "common-movable-positive",
+      "expected_failure": false,
+      "diagnostics": [],
+      "output": "    Checking fsr-sdk v0.2.0 (<repo>\\crates\\fsr-sdk)\n    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.29s\n"
+    },
+    {
+      "case": "common-positive",
+      "expected_failure": false,
+      "diagnostics": [],
+      "output": "     Locking 19 packages to highest Rust 1.99.0 compatible versions\n    Checking fsr-sdk-sys v0.1.1 (<repo>\\crates\\fsr-sdk-sys)\n    Checking fsr-sdk v0.2.0 (<repo>\\crates\\fsr-sdk)\n    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.73s\n"
+    },
+    {
+      "case": "dispatch-field-private",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0616"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0oxa0vs4jzlvx\\s-hn2w5rlqc1-1iizxoi-working`\n\nerror[E0616]: field `reset` of struct `UpscaleDispatch` is private\n --> src\\main.rs:1:82\n  |\n1 | use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = f.reset; } fn main() {}\n  |                                                                                  ^^^^^ private field\n  |\nhelp: a method `reset` also exists, call it with parentheses\n  |\n1 | use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = f.reset(); } fn main() {}\n  |                                                                                       ++\n\nFor more information about this error, try `rustc --explain E0616`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "dispatch-inputs-positive",
+      "expected_failure": false,
+      "diagnostics": [],
+      "output": "   Compiling proc-macro2 v1.0.107\n   Compiling quote v1.0.47\n    Checking windows-link v0.2.1\n   Compiling unicode-ident v1.0.26\n    Checking windows-result v0.4.1\n    Checking windows-strings v0.5.1\n    Checking windows-threading v0.2.1\n    Checking libloading v0.9.0\n    Checking fsr-sdk-sys v0.1.1 (<repo>\\crates\\fsr-sdk-sys)\n   Compiling syn v2.0.119\n   Compiling windows-implement v0.60.2\n   Compiling windows-interface v0.59.3\n    Checking windows-core v0.62.2\n    Checking windows-numerics v0.3.1\n    Checking windows-collections v0.3.2\n    Checking windows-future v0.3.2\n    Checking windows v0.62.2\n    Checking fsr-sdk v0.2.0 (<repo>\\crates\\fsr-sdk)\n    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: function `frame` is never used\n --> src\\main.rs:1:197\n  |\n1 | ...ess, Sharpening, UpscaleDispatch, UpscaleResources, dx12}; fn frame<'a>(list: &'a ID3D12GraphicsCommandList, r: [&'a ID3D12Resourc...\n  |                                                                  ^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.69s\n"
+    },
+    {
+      "case": "dispatch-literal-private",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0451"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0oxa0vs4jzlvx\\s-hn2w5rdm0b-048gfnr-working`\n\nwarning: function `wrong` is never used\n --> src\\main.rs:1:44\n  |\n1 | use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = UpscaleDispatch { ..f }; } fn main() {}\n  |                                            ^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nerror[E0451]: fields `command_list`, `resources`, `jitter`, `frame_time`, `camera`, `reset` and `sharpening` of struct `UpscaleDispatch` are private\n --> src\\main.rs:1:100\n  |\n1 | use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = UpscaleDispatch { ..f }; } fn main() {}\n  |                                                                                                    ^ fields `command_list`, `resources`, `jitter`, `frame_time`, `camera`, `reset` and `sharpening` are private\n\nFor more information about this error, try `rustc --explain E0451`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 2 warnings\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 2 warnings emitted\n"
+    },
+    {
+      "case": "dx12-disabled",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5tenze-09czdr1-working`\n\nerror[E0432]: unresolved import `fsr_sdk::runtime`\n   --> src\\main.rs:1:14\n    |\n  1 | use fsr_sdk::runtime::MovableRuntime; fn main() { let _: Option<MovableRuntime> = None; }\n    |              ^^^^^^^ could not find `runtime` in `fsr_sdk`\n    |\nnote: found an item that was configured out\n   --> <repo>\\crates\\fsr-sdk\\src\\lib.rs:163:9\n    |\n161 | #[cfg(all(windows, feature = \"dx12\"))]\n    |                    ---------------- the item is gated behind the `dx12` feature\n162 | /// Explicit loading with local ownership and optional caller-coordinated movability.\n163 | pub mod runtime;\n    |         ^^^^^^^\nnote: found an item that was configured out\n   --> <repo>\\crates\\fsr-sdk\\src\\lib.rs:168:5\n    |\n166 | #[cfg(all(test, not(all(windows, feature = \"dx12\"))))]\n    |           ---- the item is gated here\n167 | #[path = \"context/test_runtime.rs\"]\n168 | mod runtime;\n    |     ^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "feature-disabled",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0oxa0vs4jzlvx\\s-hn2w5t8dxx-0vihmr5-working`\n\nerror[E0432]: unresolved import `fsr_sdk::runtime::MovableRuntime`\n   --> src\\main.rs:1:5\n    |\n  1 | use fsr_sdk::runtime::MovableRuntime; fn main() { let _: Option<MovableRuntime> = None; }\n    |     ^^^^^^^^^^^^^^^^^^--------------\n    |                       |\n    |                       no `MovableRuntime` in `runtime`\n    |\nnote: found an item that was configured out\n   --> <repo>\\crates\\fsr-sdk\\src\\runtime.rs:127:18\n    |\n126 | #[cfg(feature = \"movable\")]\n    |       ------------------- the item is gated behind the `movable` feature\n127 | pub use movable::MovableRuntime;\n    |                  ^^^^^^^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "local-positive",
+      "expected_failure": false,
+      "diagnostics": [],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0oxa0vs4jzlvx\\s-hn2w5smil2-0ilgoms-working`\n\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.41s\n"
+    },
+    {
+      "case": "local-to-movable-construction",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0308"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-2354plfx9ci9i\\s-hn2w5tmrtb-1bz2zm8-working`\n\nerror[E0308]: mismatched types\n  --> src\\main.rs:1:185\n   |\n 1 | ... o: UpscalerOptions) { let _ = MovableUpscaler::new(r, d, o); } fn main() {}\n   |                                   -------------------- ^ expected `&MovableRuntime`, found `&Runtime`\n   |                                   |\n   |                                   arguments to this function are incorrect\n   |\n   = note: expected reference `&MovableRuntime`\n              found reference `&Runtime`\nnote: associated function defined here\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler\\dx12\\movable.rs:80:12\n   |\n80 |     pub fn new(\n   |            ^^^\n\nFor more information about this error, try `rustc --explain E0308`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "movable-positive",
+      "expected_failure": false,
+      "diagnostics": [],
+      "output": "    Checking fsr-sdk v0.2.0 (<repo>\\crates\\fsr-sdk)\n    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.55s\n"
+    },
+    {
+      "case": "movable-to-local-construction",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0308"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-2354plfx9ci9i\\s-hn2w5tuvvd-08bghnw-working`\n\nerror[E0308]: mismatched types\n   --> src\\main.rs:1:185\n    |\n  1 | ...ce, o: UpscalerOptions) { let _ = Upscaler::new(r, d, o); } fn main() {}\n    |                                      ------------- ^ expected `&Runtime`, found `&MovableRuntime`\n    |                                      |\n    |                                      arguments to this function are incorrect\n    |\n    = note: expected reference `&Runtime`\n               found reference `&MovableRuntime`\nnote: associated function defined here\n   --> <repo>\\crates\\fsr-sdk\\src\\upscaler\\dx12.rs:149:12\n    |\n149 |     pub fn new(\n    |            ^^^\n\nFor more information about this error, try `rustc --explain E0308`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-dispatch-resources-",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0ndczfv3stj3o\\s-hn2w5imewx-0pfeuz2-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::UpscaleResources`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::UpscaleResources; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^----------------\n   |                        |\n   |                        no `UpscaleResources` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:27:22\n   |\n24 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n...\n27 |     UpscaleDispatch, UpscaleResources, Upscaler,\n   |                      ^^^^^^^^^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-dispatch-resources-movable",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5kbnya-0uxk0y9-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::UpscaleResources`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::UpscaleResources; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^----------------\n   |                        |\n   |                        no `UpscaleResources` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:27:22\n   |\n24 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n...\n27 |     UpscaleDispatch, UpscaleResources, Upscaler,\n   |                      ^^^^^^^^^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-dx12-module-",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0ndczfv3stj3o\\s-hn2w5ibdtr-1abbzv7-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::dx12`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::dx12; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^----\n   |                        |\n   |                        no `dx12` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:17:9\n   |\n16 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n17 | pub mod dx12;\n   |         ^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-dx12-module-movable",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5jvp65-01kaql1-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::dx12`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::dx12; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^----\n   |                        |\n   |                        no `dx12` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:17:9\n   |\n16 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n17 | pub mod dx12;\n   |         ^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-legacy-movable-",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0ndczfv3stj3o\\s-hn2w5j5uxt-1s6cmhb-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::MovableUpscaler`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::MovableUpscaler; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^---------------\n   |                        |\n   |                        no `MovableUpscaler` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:23:15\n   |\n22 | #[cfg(all(windows, feature = \"dx12\", feature = \"movable\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n23 | pub use dx12::MovableUpscaler;\n   |               ^^^^^^^^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-legacy-movable-movable",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5kzyg3-1yytgpd-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::MovableUpscaler`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::MovableUpscaler; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^---------------\n   |                        |\n   |                        no `MovableUpscaler` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:23:15\n   |\n22 | #[cfg(all(windows, feature = \"dx12\", feature = \"movable\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n23 | pub use dx12::MovableUpscaler;\n   |               ^^^^^^^^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-legacy-upscaler-",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0ndczfv3stj3o\\s-hn2w5igh62-1u4keiq-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::Upscaler`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::Upscaler; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^--------\n   |                        |\n   |                        no `Upscaler` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:27:40\n   |\n24 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n...\n27 |     UpscaleDispatch, UpscaleResources, Upscaler,\n   |                                        ^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-legacy-upscaler-movable",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5k51kc-0vjrpua-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::Upscaler`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::Upscaler; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^--------\n   |                        |\n   |                        no `Upscaler` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:27:40\n   |\n24 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n...\n27 |     UpscaleDispatch, UpscaleResources, Upscaler,\n   |                                        ^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-native-sharpness-",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0ndczfv3stj3o\\s-hn2w5irwgq-1ftlg5i-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::NativeSharpness`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::NativeSharpness; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^---------------\n   |                        |\n   |                        no `NativeSharpness` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:26:62\n   |\n24 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n25 | pub use dx12::{\n26 |     ID3D12Device, ID3D12GraphicsCommandList, ID3D12Resource, NativeSharpness, Sharpening,\n   |                                                              ^^^^^^^^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-native-sharpness-movable",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5khj25-0f70rrk-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::NativeSharpness`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::NativeSharpness; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^---------------\n   |                        |\n   |                        no `NativeSharpness` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:26:62\n   |\n24 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n25 | pub use dx12::{\n26 |     ID3D12Device, ID3D12GraphicsCommandList, ID3D12Resource, NativeSharpness, Sharpening,\n   |                                                              ^^^^^^^^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-raw-dx12-",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0ndczfv3stj3o\\s-hn2w5jl75v-0hcf4c9-working`\n\nerror[E0432]: unresolved import `fsr_sdk_sys::dx12`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk_sys::dx12; fn main() {}\n   |     ^^^^^^^^^^^^^----\n   |                  |\n   |                  no `dx12` in the root\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk-sys\\src\\lib.rs:43:9\n   |\n42 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n43 | pub mod dx12;\n   |         ^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-raw-dx12-movable",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5lxffy-18znepc-working`\n\nerror[E0432]: unresolved import `fsr_sdk_sys::dx12`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk_sys::dx12; fn main() {}\n   |     ^^^^^^^^^^^^^----\n   |                  |\n   |                  no `dx12` in the root\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk-sys\\src\\lib.rs:43:9\n   |\n42 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n43 | pub mod dx12;\n   |         ^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-raw-loader-",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0ndczfv3stj3o\\s-hn2w5jft3t-049yfs4-working`\n\nerror[E0432]: unresolved import `fsr_sdk_sys::loader`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk_sys::loader; fn main() {}\n   |     ^^^^^^^^^^^^^------\n   |                  |\n   |                  no `loader` in the root\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk-sys\\src\\lib.rs:40:9\n   |\n39 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n40 | pub mod loader;\n   |         ^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-raw-loader-movable",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5lgr1c-13o7srf-working`\n\nerror[E0432]: unresolved import `fsr_sdk_sys::loader`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk_sys::loader; fn main() {}\n   |     ^^^^^^^^^^^^^------\n   |                  |\n   |                  no `loader` in the root\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk-sys\\src\\lib.rs:40:9\n   |\n39 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n40 | pub mod loader;\n   |         ^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-runtime-",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0ndczfv3stj3o\\s-hn2w5i5vft-11rh64u-working`\n\nerror[E0432]: unresolved import `fsr_sdk::runtime`\n   --> src\\main.rs:1:5\n    |\n  1 | use fsr_sdk::runtime; fn main() {}\n    |     ^^^^^^^^^-------\n    |              |\n    |              no `runtime` in the root\n    |\nnote: found an item that was configured out\n   --> <repo>\\crates\\fsr-sdk\\src\\lib.rs:163:9\n    |\n161 | #[cfg(all(windows, feature = \"dx12\"))]\n    |                    ---------------- the item is gated behind the `dx12` feature\n162 | /// Explicit loading with local ownership and optional caller-coordinated movability.\n163 | pub mod runtime;\n    |         ^^^^^^^\nnote: found an item that was configured out\n   --> <repo>\\crates\\fsr-sdk\\src\\lib.rs:168:5\n    |\n166 | #[cfg(all(test, not(all(windows, feature = \"dx12\"))))]\n    |           ---- the item is gated here\n167 | #[path = \"context/test_runtime.rs\"]\n168 | mod runtime;\n    |     ^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-runtime-movable",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5jqm2n-1s8ol4l-working`\n\nerror[E0432]: unresolved import `fsr_sdk::runtime`\n   --> src\\main.rs:1:5\n    |\n  1 | use fsr_sdk::runtime; fn main() {}\n    |     ^^^^^^^^^-------\n    |              |\n    |              no `runtime` in the root\n    |\nnote: found an item that was configured out\n   --> <repo>\\crates\\fsr-sdk\\src\\lib.rs:163:9\n    |\n161 | #[cfg(all(windows, feature = \"dx12\"))]\n    |                    ---------------- the item is gated behind the `dx12` feature\n162 | /// Explicit loading with local ownership and optional caller-coordinated movability.\n163 | pub mod runtime;\n    |         ^^^^^^^\nnote: found an item that was configured out\n   --> <repo>\\crates\\fsr-sdk\\src\\lib.rs:168:5\n    |\n166 | #[cfg(all(test, not(all(windows, feature = \"dx12\"))))]\n    |           ---- the item is gated here\n167 | #[path = \"context/test_runtime.rs\"]\n168 | mod runtime;\n    |     ^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-sharpening-",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0ndczfv3stj3o\\s-hn2w5iyyij-03o9zb1-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::Sharpening`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::Sharpening; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^----------\n   |                        |\n   |                        no `Sharpening` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:26:79\n   |\n24 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n25 | pub use dx12::{\n26 |     ID3D12Device, ID3D12GraphicsCommandList, ID3D12Resource, NativeSharpness, Sharpening,\n   |                                                                               ^^^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "native-disabled-sharpening-movable",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0432"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-36dt7w6817ci1\\s-hn2w5kmy3l-1sxh4du-working`\n\nerror[E0432]: unresolved import `fsr_sdk::upscaler::Sharpening`\n  --> src\\main.rs:1:5\n   |\n 1 | use fsr_sdk::upscaler::Sharpening; fn main() {}\n   |     ^^^^^^^^^^^^^^^^^^^----------\n   |                        |\n   |                        no `Sharpening` in `upscaler`\n   |\nnote: found an item that was configured out\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler.rs:26:79\n   |\n24 | #[cfg(all(windows, feature = \"dx12\"))]\n   |                    ---------------- the item is gated behind the `dx12` feature\n25 | pub use dx12::{\n26 |     ID3D12Device, ID3D12GraphicsCommandList, ID3D12Resource, NativeSharpness, Sharpening,\n   |                                                                               ^^^^^^^^^^\n\nFor more information about this error, try `rustc --explain E0432`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "no-local-to-movable-conversion",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0277"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-2354plfx9ci9i\\s-hn2w5u31xb-0dhaxvr-working`\n\nerror[E0277]: the trait bound `MovableRuntime: From<Runtime>` is not satisfied\n --> src\\main.rs:1:93\n  |\n1 | use fsr_sdk::runtime::{Runtime, MovableRuntime}; fn wrong(r: Runtime) -> MovableRuntime { r.into() } fn main() {}\n  |                                                                                             ^^^^ the trait `From<Runtime>` is not implemented for `MovableRuntime`\n  |\n  = note: required for `Runtime` to implement `Into<MovableRuntime>`\n\nFor more information about this error, try `rustc --explain E0277`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "no-movable-to-local-conversion",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0277"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-2354plfx9ci9i\\s-hn2w5uar8f-0d6zslo-working`\n\nerror[E0277]: the trait bound `Runtime: From<MovableRuntime>` is not satisfied\n --> src\\main.rs:1:93\n  |\n1 | use fsr_sdk::runtime::{Runtime, MovableRuntime}; fn wrong(r: MovableRuntime) -> Runtime { r.into() } fn main() {}\n  |                                                                                             ^^^^ the trait `From<MovableRuntime>` is not implemented for `Runtime`\n  |\n  = note: required for `MovableRuntime` to implement `Into<Runtime>`\n\nFor more information about this error, try `rustc --explain E0277`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    },
+    {
+      "case": "raw-loader-positive",
+      "expected_failure": false,
+      "diagnostics": [],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0oxa0vs4jzlvx\\s-hn2w5scwxj-0anilgl-working`\n\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.33s\n"
+    },
+    {
+      "case": "resources-literal-private",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0451"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0oxa0vs4jzlvx\\s-hn2w5rv8i9-0v5o751-working`\n\nwarning: function `wrong` is never used\n --> src\\main.rs:1:45\n  |\n1 | use fsr_sdk::upscaler::UpscaleResources; fn wrong(r: UpscaleResources) { let _ = UpscaleResources { ..r }; } fn main() {}\n  |                                             ^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nerror[E0451]: fields `color`, `depth`, `motion_vectors`, `exposure` and `output` of struct `UpscaleResources` are private\n --> src\\main.rs:1:103\n  |\n1 | use fsr_sdk::upscaler::UpscaleResources; fn wrong(r: UpscaleResources) { let _ = UpscaleResources { ..r }; } fn main() {}\n  |                                                                                                       ^ fields `color`, `depth`, `motion_vectors`, `exposure` and `output` are private\n\nFor more information about this error, try `rustc --explain E0451`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 2 warnings\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 2 warnings emitted\n"
+    },
+    {
+      "case": "sharpness-construction-private",
+      "expected_failure": true,
+      "diagnostics": [
+        "E0423"
+      ],
+      "output": "    Checking movable-api-control v0.0.0 (<repo>\\target\\release-020-api-controls)\nwarning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\\\?\\<repo>\\target\\release-020-api-controls\\build\\debug\\incremental\\movable_api_control-0oxa0vs4jzlvx\\s-hn2w5s37w0-0wrc57t-working`\n\nerror[E0423]: cannot initialize a tuple struct which contains private fields\n  --> src\\main.rs:1:61\n   |\n 1 | use fsr_sdk::upscaler::NativeSharpness; fn main() { let _ = NativeSharpness(0.35); }\n   |                                                             ^^^^^^^^^^^^^^^\n   |\n   = note: a struct named `NativeSharpness` exists in another namespace\nnote: constructor is not visible here due to private fields\n  --> <repo>\\crates\\fsr-sdk\\src\\upscaler\\dx12\\dispatch\\sharpening.rs:16:28\n   |\n16 | pub struct NativeSharpness(f32);\n   |                            ^^^ private field\n\nFor more information about this error, try `rustc --explain E0423`.\nwarning: `movable-api-control` (bin \"movable-api-control\") generated 1 warning\nerror: could not compile `movable-api-control` (bin \"movable-api-control\") due to 1 previous error; 1 warning emitted\n"
+    }
+  ],
+  "additional_script_controls": "24 production dependency trees and the intentional Vulkan diagnostic passed"
+}

@@ -1,0 +1,35 @@
+{
+  "wrapper": "0.2.0",
+  "sys": "0.1.1",
+  "movable_included": true,
+  "gates": 64,
+  "expected_negative_controls": 12,
+  "archives_and_all_extracted_bytes_unchanged": true,
+  "dry_run_identical_archives": true,
+  "publish_dry_run_aborted_uploads": 2,
+  "publication_performed": false,
+  "movable_native": {
+    "runs": 2,
+    "children_each": 7,
+    "public_frames_each": 4,
+    "modes": [
+      "Disabled",
+      "Native(0.35)"
+    ],
+    "all_passed": true
+  },
+  "m9_native_artifact": {
+    "repetitions": 3,
+    "outputs": 144,
+    "all_passed": true
+  },
+  "source_api_controls": "tools/check-movable-api.ps1 completed successfully",
+  "setup_failures": [
+    "Sandbox package verification could not initialize Cargo's temporary registry hash/cache; unchanged unrestricted command passed.",
+    "Sandbox native runner failed in a compile fixture on denied temporary metadata output, before GPU children; fresh unrestricted source stage passed.",
+    "Verifier resume initially assumed an existing isolation record; guard corrected before registry setup.",
+    "Verifier initially read nested docs.rs TOML metadata as a dotted literal; corrected parser lookup, incomplete isolation retained locally.",
+    "Sandbox publication dry-run could not resolve the crates.io index; index-enabled dry-run passed and aborted both uploads."
+  ],
+  "native_acceptance_failures_or_retries": 0
+}

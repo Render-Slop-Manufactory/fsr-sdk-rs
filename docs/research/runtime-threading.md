@@ -410,4 +410,8 @@ records consumer traits/feature/family boundaries, failure fixtures, automatic
 cleanup coordination and selected native public-path checks. Historical records
 above remain evidence for their original test-only source. The new checks
 establish no universal AMD compatibility or provider termination guarantee;
-release selection remains separate and outside `0.2.0`.
+the maintainer explicitly included the optional family in `0.2.0` on 2026-10-10,
+superseding the earlier exclusion. The
+[combined release check](../release/2026-10-10-0.2.0-release-verification.md)
+verifies the selected archives and public movable paths. Historical experiments
+above retain their original inputs and limitations.

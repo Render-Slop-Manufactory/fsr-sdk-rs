@@ -2,6 +2,7 @@
 
 //! Bounded public-path implementation verification using existing fenced equipment.
 use super::*;
+use crate::upscaler::{NativeSharpness, Sharpening};
 use crate::{runtime::MovableRuntime, upscaler::MovableUpscaler};
 use std::{
     panic::{AssertUnwindSafe, catch_unwind},
@@ -14,9 +15,14 @@ struct Coordinated {
     gate: Arc<Mutex<()>>,
 }
 impl Coordinated {
-    fn record(&mut self, list: &ID3D12GraphicsCommandList, resources: &[ID3D12Resource]) {
+    fn record(
+        &mut self,
+        list: &ID3D12GraphicsCommandList,
+        resources: &[ID3D12Resource],
+        sharpening: Sharpening,
+    ) {
         let _guard = self.gate.lock().unwrap_or_else(|p| p.into_inner());
-        let frame = UpscaleDispatch::new(
+        let mut frame = UpscaleDispatch::new(
             list,
             UpscaleResources::new(
                 &resources[0],
@@ -30,6 +36,7 @@ impl Coordinated {
             CameraParameters::new(0.1, 100.0, std::f32::consts::PI / 3.0, 1.0).unwrap(),
             true,
         );
+        frame.set_sharpening(sharpening);
         // SAFETY: Existing harness supplies the supported fixed profile and states.
         // Main retains equipment/inputs/context through m6_finish's GPU fence;
         // all potentially shared calls and native cleanup use this common gate.
@@ -55,6 +62,16 @@ impl Drop for Coordinated {
 #[test]
 #[ignore = "requires trusted SDK/GPU; native/run.ps1 -Mode movable -Native"]
 fn public_siblings_dispatch_and_cleanup_after_thread_handoffs() {
+    verify_public_handoffs(Sharpening::Disabled);
+}
+
+#[test]
+#[ignore = "requires trusted SDK/GPU; native/run.ps1 -Mode movable -Native"]
+fn public_native_sharpening_after_thread_handoffs() {
+    verify_public_handoffs(Sharpening::Native(NativeSharpness::new(0.35).unwrap()));
+}
+
+fn verify_public_handoffs(sharpening: Sharpening) {
     assert!(std::env::var_os("FSR_SDK_TEST_GBV").is_none());
     let loader = PathBuf::from(std::env::var_os("FSR_SDK_TEST_DLL").unwrap());
     let helper_path = PathBuf::from(std::env::var_os("FSR_SDK_TEST_M6_DLL").unwrap());
@@ -137,10 +154,11 @@ fn public_siblings_dispatch_and_cleanup_after_thread_handoffs() {
         mpsc::sync_channel::<(ID3D12GraphicsCommandList, Vec<ID3D12Resource>)>(0);
     let (sibling_ready_tx, sibling_ready_rx) = mpsc::sync_channel(0);
     let (sibling_fenced_tx, sibling_fenced_rx) = mpsc::sync_channel(0);
+    let sibling_sharpening = sharpening.clone();
     let sibling_worker = thread::spawn(move || {
         let mut second = second;
         let (list, resources) = inputs_rx.recv().unwrap();
-        second.record(&list, &resources);
+        second.record(&list, &resources, sibling_sharpening);
         if sibling_ready_tx.send(()).is_err() || sibling_fenced_rx.recv().is_err() {
             std::process::exit(1); // Preserve owner/equipment if fence coordination fails.
         }
@@ -186,9 +204,10 @@ fn public_siblings_dispatch_and_cleanup_after_thread_handoffs() {
     let (list, resources) = retained_inputs.pop().unwrap();
     let (first_ready_tx, first_ready_rx) = mpsc::sync_channel(0);
     let (first_fenced_tx, first_fenced_rx) = mpsc::sync_channel(0);
+    let first_sharpening = sharpening.clone();
     let first_worker = thread::spawn(move || {
         let mut first = first;
-        first.record(&list, &resources);
+        first.record(&list, &resources, first_sharpening);
         if first_ready_tx.send(()).is_err() || first_fenced_rx.recv().is_err() {
             std::process::exit(1);
         }
@@ -272,6 +291,6 @@ fn public_siblings_dispatch_and_cleanup_after_thread_handoffs() {
     drop(device);
     drop(helper);
     eprintln!(
-        "Public movable: PASSED (two fenced frames; separate siblings; unwind and failed-handoff Drop)"
+        "Public movable: PASSED mode={sharpening:?} (two fenced frames; separate siblings; unwind and failed-handoff Drop)"
     );
 }

@@ -9,7 +9,14 @@ claims of completed functionality or verified platform support.
 ## Purpose
 
 Provide faithful Rust bindings and safe abstractions for AMD's official modern
-FidelityFX Super Resolution SDK and runtime. Make ordinary use straightforward:
+FSR SDK and runtime. The long-term goal is complete SDK coverage: Upscaling,
+Frame Generation (including presentation), Ray Regeneration, Radiance Caching,
+and the associated runtime, Query and Configure interfaces. Extend backend
+coverage where upstream provides a usable, verifiable integration. This is the
+project's intended scope; the current implementation is a selected subset,
+tracked in [ROADMAP.md](ROADMAP.md).
+
+Make ordinary use straightforward:
 most consumers should need only `fsr-sdk`, without resolving native symbols or
 reproducing descriptor and lifetime boilerplate themselves.
 

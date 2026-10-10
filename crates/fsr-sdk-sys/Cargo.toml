@@ -2,7 +2,7 @@
 
 [package]
 name = "fsr-sdk-sys"
-version = "0.1.0"
+version = "0.1.1"
 description = "Selected raw bindings and explicit Windows/DX12 runtime loading for AMD FSR SDK v2.3.0"
 keywords = ["fsr", "fidelityfx", "dx12", "graphics", "gamedev"]
 categories = ["external-ffi-bindings", "rendering", "game-development"]

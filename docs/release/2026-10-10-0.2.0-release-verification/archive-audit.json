@@ -1,0 +1,471 @@
+[
+  {
+    "archive": "fsr-sdk-0.2.0.crate",
+    "bytes": 106953,
+    "sha256": "076020dc8e0f28f3acabd37ed7dc17cdebc0e3b07ae942cbba44df10502faefc",
+    "files": [
+      {
+        "file": ".cargo_vcs_info.json",
+        "bytes": 127,
+        "sha256": "939ad89004b89b609a7710c78425b45ae6fdc986b52a07e16b8838c937434202"
+      },
+      {
+        "file": "Cargo.lock",
+        "bytes": 4567,
+        "sha256": "7ac7734360cbd698d0e2ffd5e41b08ab8196a8467c70acb74cd2ae47243121f2"
+      },
+      {
+        "file": "Cargo.toml",
+        "bytes": 1943,
+        "sha256": "dbf829fed94302c92747c859246d1cc821f2bb43bc1a43a5c052920291cc3e80"
+      },
+      {
+        "file": "Cargo.toml.orig",
+        "bytes": 1239,
+        "sha256": "7a92149990a0ed31258a416dd51154aed27bb4b370b4683d9258a2ff23fccebb"
+      },
+      {
+        "file": "LICENSE",
+        "bytes": 17099,
+        "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3"
+      },
+      {
+        "file": "LICENSE-AMD",
+        "bytes": 1195,
+        "sha256": "b29d76c1a6f598479438fa5b5cc8552f3aa3ad6831836dccf270ca5296064f1e"
+      },
+      {
+        "file": "README.md",
+        "bytes": 8360,
+        "sha256": "b7e2ddcc0c7cb3fded171f0f88967246322880843f8106bc01e0dc5c8b3ba298"
+      },
+      {
+        "file": "examples/dx12_upscale.rs",
+        "bytes": 4876,
+        "sha256": "26f2f1f3bc2dd4752dbc10083ec2d8d1ed224fb74889ce2cc8f4a2884655d6ae"
+      },
+      {
+        "file": "examples/movable_upscale.rs",
+        "bytes": 4727,
+        "sha256": "590d80c4f41653631ae6cc664f0fe4af50f31178cdc4909bb16353aae0adfeac"
+      },
+      {
+        "file": "src/context/d013_movable.rs",
+        "bytes": 15857,
+        "sha256": "43288318958597344345dd06196084efe06e526104e862a4628b669d3f2a947a"
+      },
+      {
+        "file": "src/context/d013_transfer.rs",
+        "bytes": 13189,
+        "sha256": "92cda51855e8572a5f740d02efade57a2edb4f4b04b114f91ca25f82ddb41426"
+      },
+      {
+        "file": "src/context/test_runtime.rs",
+        "bytes": 2587,
+        "sha256": "df56eabd48efc33d95546b527f0a87095f494a6085b7938729b9989d7b8f6434"
+      },
+      {
+        "file": "src/context/tests.rs",
+        "bytes": 13968,
+        "sha256": "d522868984e0451e35d7b7965a9f1722f20ad1509937b76db5222d7179c6dad0"
+      },
+      {
+        "file": "src/context.rs",
+        "bytes": 7761,
+        "sha256": "33633a6b9c764af21c527e6784dbb44bf11b9189090dfbaaceb2f0d2d84915a0"
+      },
+      {
+        "file": "src/dispatch_policy.rs",
+        "bytes": 888,
+        "sha256": "64ec8b12be4eb66ea6c89988f53710b82abe522cb7d92c43681e513aa75a1778"
+      },
+      {
+        "file": "src/error.rs",
+        "bytes": 8274,
+        "sha256": "64cad6a4fbfd209c310a39fcdf6d0720b930d6f1f24b47fd0d30208ff5b12f61"
+      },
+      {
+        "file": "src/lib.rs",
+        "bytes": 9187,
+        "sha256": "1fff74bbc41c9e77cc84ec4ed95f580c5e829c6c1d3101479562fadf073532bf"
+      },
+      {
+        "file": "src/query.rs",
+        "bytes": 37,
+        "sha256": "f52f65ba81af539ef4836eb7f2a7834245c17cafa0c54e0b1a07d26b9dc5ed6d"
+      },
+      {
+        "file": "src/runtime/movable.rs",
+        "bytes": 7181,
+        "sha256": "caba2bf41daa4e2d95d7c0c9203925d1be7be739c929eff7cb21ca1e1eba373d"
+      },
+      {
+        "file": "src/runtime/state.rs",
+        "bytes": 4947,
+        "sha256": "6ccb76437a38754a6ef6444eb0772ac7148883e4f3b263b0e672451690f04dcd"
+      },
+      {
+        "file": "src/runtime.rs",
+        "bytes": 8210,
+        "sha256": "52ded87459b9e0881c64180fd8d54570f851212df4a8efaedd393b4a56da5002"
+      },
+      {
+        "file": "src/upscaler/common.rs",
+        "bytes": 7418,
+        "sha256": "6f6f06e691c9900192ce6db84712daa19d112154671593da3bae3168e2fc92a8"
+      },
+      {
+        "file": "src/upscaler/dx12/dispatch/descriptor.rs",
+        "bytes": 2643,
+        "sha256": "c45f7d795157aa2a5236dd86c7946fa535266d7e572294f0580d005d1ab97578"
+      },
+      {
+        "file": "src/upscaler/dx12/dispatch/frame.rs",
+        "bytes": 7688,
+        "sha256": "5e707d378ec3aa8ecec281b1270fee83aeeb727b69f62f8e432908f023d022de"
+      },
+      {
+        "file": "src/upscaler/dx12/dispatch/resources.rs",
+        "bytes": 11479,
+        "sha256": "fd5aad8ea7fe32f96765ad811d5d4d9362b61cfc9671482bd10553789f483aec"
+      },
+      {
+        "file": "src/upscaler/dx12/dispatch/sharpening.rs",
+        "bytes": 2828,
+        "sha256": "ab61a5a7dfe983af4531424bae5267261f950bcdccd9b22611b9bd51257e14f3"
+      },
+      {
+        "file": "src/upscaler/dx12/dispatch/tests.rs",
+        "bytes": 7313,
+        "sha256": "1b24425ad5a144b22d252d96d312d0b04cb5f915926ba37bc9dd4c8a97fb485b"
+      },
+      {
+        "file": "src/upscaler/dx12/dispatch.rs",
+        "bytes": 6463,
+        "sha256": "ff8c6c7e41b04707d25525f46180d35348faf8eb654ed97fd50025211035fc20"
+      },
+      {
+        "file": "src/upscaler/dx12/movable.rs",
+        "bytes": 8080,
+        "sha256": "ba553fb1450952e91c0f65ca371f861facf4721cded5d3fbebbe810c3959f479"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/com.rs",
+        "bytes": 12853,
+        "sha256": "8eb11228f6b2aa23aac6348d0313d4f7a64aef1209469674c0adc48f19e04eea"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/construction.rs",
+        "bytes": 7595,
+        "sha256": "cfb5d68feeeead06968ba959d715459e4ee14bbbe00c1a09dad63561a60cfc22"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/dispatch.rs",
+        "bytes": 5659,
+        "sha256": "ac07a24b4ebd3c26e667a2cc3e9c0b9abf00f2e914e7ad5f7c4f0bd948bab767"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/inspection.rs",
+        "bytes": 5962,
+        "sha256": "4bf02f63065408340358a360fc23cfc0eb9268aa6169e09ad78e1428894bcb3b"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/lifecycle.rs",
+        "bytes": 4938,
+        "sha256": "04ca7dd92022bab0ca3fa67e10233a2166010edfe505a8c854a707266f377a41"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/mod.rs",
+        "bytes": 676,
+        "sha256": "75ba7591f1eda627b64c51da05b330e306e0bdf4c20779f0a30782dbaee8f2e2"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/movable.rs",
+        "bytes": 4562,
+        "sha256": "bbb62f8f146c966aa4c8f33fd5423812ea9ecdb783714943ddeccf10f26a2878"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/sharpening.rs",
+        "bytes": 9978,
+        "sha256": "eac6491927ef3dc6f1b52ea3fd7f1dc89e61bd9f971960d22f3a29a2f0145b83"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/support.rs",
+        "bytes": 4916,
+        "sha256": "d7da4bee3e5295de1ead74ca8a477ad57167d37ccae2dc0e67fdf4a49e948f37"
+      },
+      {
+        "file": "src/upscaler/dx12/tests/traits.rs",
+        "bytes": 1075,
+        "sha256": "8aecc476821f68417a7ea1ccdd24d7d6b65c7425447b86c2839cadd684206c7d"
+      },
+      {
+        "file": "src/upscaler/dx12.rs",
+        "bytes": 7382,
+        "sha256": "e4641231ae189c77cda0d803c0b612080879802b67fb00ea1015cdd80a902ca3"
+      },
+      {
+        "file": "src/upscaler.rs",
+        "bytes": 1134,
+        "sha256": "1e7ce54395aef4f97bca920c7598d4b61dd621aed1986a50b51959a8357a7cc2"
+      },
+      {
+        "file": "tests/dimensions.rs",
+        "bytes": 4898,
+        "sha256": "4f5d7e6dba74841ce07be838d2f7026e328310b6fd97bd8b82e745970940ddfb"
+      },
+      {
+        "file": "tests/dispatch_inputs.rs",
+        "bytes": 2569,
+        "sha256": "4f88716abad5c708f07acbc31e0caf8a14111ab6a664d2e1aca7a5aec307240c"
+      },
+      {
+        "file": "tests/fixtures/child.rs",
+        "bytes": 1518,
+        "sha256": "2739df78c1e16f79893321a9296a76181e664e60fde6f2b59f9f99c534dae86e"
+      },
+      {
+        "file": "tests/fixtures/directory.rs",
+        "bytes": 1882,
+        "sha256": "9531a6d7533de516040b3824bee17547e6fc571d571cd66f92f3b97e775e2c98"
+      },
+      {
+        "file": "tests/fixtures/lifecycle.rs",
+        "bytes": 2361,
+        "sha256": "9c92d59d99d60c691d4b347ee2cb192839c0bb42abc115797a33568cb6ed6f93"
+      },
+      {
+        "file": "tests/fixtures/upscaler.rs",
+        "bytes": 7718,
+        "sha256": "619d9b6e9e906b604dc9f20e7ec6e276d713ea420d78ba4786a13fbff7c91552"
+      },
+      {
+        "file": "tests/movable.rs",
+        "bytes": 9645,
+        "sha256": "6604f496e5f7a2ab316daa55abeb727185bc53e79fb87f5ebfdf92d222f0d9f2"
+      },
+      {
+        "file": "tests/native/dispatch_readback.rs",
+        "bytes": 1989,
+        "sha256": "599950472f007e806b0d0178818e518a57540750a35c6e3a2501ff1f9f26f686"
+      },
+      {
+        "file": "tests/native/gpu.cpp",
+        "bytes": 21069,
+        "sha256": "b512ef7a34aee89c8da80ea10e78d8f67c13af9c925c4db394b0a1ae0d334ecb"
+      },
+      {
+        "file": "tests/native/images.h",
+        "bytes": 6417,
+        "sha256": "d97ab5c4023dd10ade07c0fd6b112210cc2d49f06e70319b1d56f3e25de214a1"
+      },
+      {
+        "file": "tests/native/movable_public.rs",
+        "bytes": 11649,
+        "sha256": "053b7efaa59510cb18e4101adf74b1507e5ebb3e077a73b9b674d37b47e50b92"
+      },
+      {
+        "file": "tests/native/recording_ahead.rs",
+        "bytes": 8814,
+        "sha256": "418a990e61a001b8fe99b7913446011cf6e26eb412e73e4376ea7eb030f143bc"
+      },
+      {
+        "file": "tests/native/semantics.rs",
+        "bytes": 9931,
+        "sha256": "9332b8ff804ca882d190a261397309525a1be88e2c7fe84ac5637e2c764d1d57"
+      },
+      {
+        "file": "tests/native/sharpening.h",
+        "bytes": 2549,
+        "sha256": "a994c0eba5f1d1d3762e0939882d074e052a2176666208c159a9660501f8f79d"
+      },
+      {
+        "file": "tests/native/sharpening.rs",
+        "bytes": 13827,
+        "sha256": "ef7722df46fe10628425b164cf9850d23b468a4e73e25fdca54394caadf19977"
+      },
+      {
+        "file": "tests/native/sharpening_integration.rs",
+        "bytes": 11613,
+        "sha256": "f1c58cbba404526c95ee93fe15454178cc59e477d7e15215d370a73b0f56171e"
+      },
+      {
+        "file": "tests/native/single_frame.rs",
+        "bytes": 8600,
+        "sha256": "396cfe1c7a59da0c3a229d076c4553959c2ac76295d3906ce4e49899644e263f"
+      },
+      {
+        "file": "tests/native/support.rs",
+        "bytes": 2993,
+        "sha256": "caaae52d9966599c86d13a283788532d01bc593fe30cafd1b2b9460cde7035f8"
+      },
+      {
+        "file": "tests/native/temporal_smoke.rs",
+        "bytes": 8242,
+        "sha256": "65b020c3affad74570e24b7b7b690b7441c433e5f90e59668769eab3862a5c9f"
+      },
+      {
+        "file": "tests/native/thread_transfer_baseline.rs",
+        "bytes": 15878,
+        "sha256": "246cee3f204400eaf7b185aa8dcd2fe7adb0f681a14506e973e641e134badc96"
+      },
+      {
+        "file": "tests/native/thread_transfers.rs",
+        "bytes": 27575,
+        "sha256": "9aa866b70a8ccd18ba5bcfb681deb86c7a591ae6b56761df71c28112f8d45aa1"
+      }
+    ]
+  },
+  {
+    "archive": "fsr-sdk-sys-0.1.1.crate",
+    "bytes": 33188,
+    "sha256": "88cc65fcdd46905e4ff4ab55d7a127e260700493bdc281c1686523d05864a883",
+    "files": [
+      {
+        "file": ".cargo_vcs_info.json",
+        "bytes": 131,
+        "sha256": "9a46c0c862ecabdb9d02e602886539d25276bd7c89119682029c91da79d4e226"
+      },
+      {
+        "file": "Cargo.lock",
+        "bytes": 816,
+        "sha256": "baa12ad68405e18e9c5ce12d708d03d47581c09366d677fa7bb8cc2fd9a6f87b"
+      },
+      {
+        "file": "Cargo.toml",
+        "bytes": 1797,
+        "sha256": "a5394154136d5c31badb234beaef2e8d1f5bc78a15bad5e71956746dea6272ef"
+      },
+      {
+        "file": "Cargo.toml.orig",
+        "bytes": 899,
+        "sha256": "7ead2f7a88df11e16317da0e0c86dd55a2cd444dec45ad9be513974be0db79be"
+      },
+      {
+        "file": "LICENSE",
+        "bytes": 17099,
+        "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3"
+      },
+      {
+        "file": "LICENSE-AMD",
+        "bytes": 1195,
+        "sha256": "b29d76c1a6f598479438fa5b5cc8552f3aa3ad6831836dccf270ca5296064f1e"
+      },
+      {
+        "file": "README.md",
+        "bytes": 3779,
+        "sha256": "c6e696cdd46cf66de60e5e927774c90fda56d71bc42eb81a7583fc0a1840846b"
+      },
+      {
+        "file": "src/api.rs",
+        "bytes": 6208,
+        "sha256": "fecc201ec4ef8445f593aaae591ecec35be6277922b0a669f1f4b0caafb6b7de"
+      },
+      {
+        "file": "src/dx12.rs",
+        "bytes": 580,
+        "sha256": "30cd53f1b222282a437bb980c45373242e105184b33f33e305959622f230b080"
+      },
+      {
+        "file": "src/lib.rs",
+        "bytes": 2599,
+        "sha256": "5159a34c2d4ad5bc99abe815f92802e3f4a93c9a493574dcbf843312b4a5609e"
+      },
+      {
+        "file": "src/loader/mod.rs",
+        "bytes": 417,
+        "sha256": "68ea61e610cc4c8a558f859991ffbac4d9eb3c744cc8fbaae1a9e729c118a078"
+      },
+      {
+        "file": "src/loader/windows.rs",
+        "bytes": 11164,
+        "sha256": "31c9a137c998700ddfeee63bdde0ae4227bc5094b7e1fcea65623845883985bd"
+      },
+      {
+        "file": "src/upscale.rs",
+        "bytes": 2490,
+        "sha256": "19ed563413e262f703190a4ab6af16849e6e4ab5bbccd4d19a94afb0cfb432ad"
+      },
+      {
+        "file": "tests/abi.rs",
+        "bytes": 6501,
+        "sha256": "e4d2c64e09e5ff0009ccc0ca99d2b285727e6fb8968b3e7478381cc6b8eac51e"
+      },
+      {
+        "file": "tests/context_dimensions.rs",
+        "bytes": 6689,
+        "sha256": "f456a158c8959bde3a4f9f02ff4c6957f1dbfa4a01f724dadcdc858ae46666af"
+      },
+      {
+        "file": "tests/context_lifecycle/abi.rs",
+        "bytes": 2809,
+        "sha256": "abf6f2a084c3f7fe4705138cbb9c841cef4eabe2361805a2a0e3f20b0dcbdca4"
+      },
+      {
+        "file": "tests/context_lifecycle/allocator.rs",
+        "bytes": 4449,
+        "sha256": "7f16c250361cc0e517e42a70c316a330277d1e989d5b6da8b022edb15b5b8380"
+      },
+      {
+        "file": "tests/context_lifecycle/device.cpp",
+        "bytes": 4163,
+        "sha256": "e32996bb211a022696f5c87f89f2cd23fb87f4ed77344e64b11257b4f649b224"
+      },
+      {
+        "file": "tests/context_lifecycle/input_lifetime.rs",
+        "bytes": 3704,
+        "sha256": "8dde46b1e069c45b25876d95baccd2de0a8744322490d9eace231f380d1dc97c"
+      },
+      {
+        "file": "tests/context_lifecycle/native_abi.cpp",
+        "bytes": 2160,
+        "sha256": "e5d64e6bfcc9d12fbafa7f5a34e7fa48f28679f7dc25173c28cc99db18134935"
+      },
+      {
+        "file": "tests/context_lifecycle.rs",
+        "bytes": 10889,
+        "sha256": "3121147dbdb43074228bc9da0d7841c771c0df6280eacbd361752295936eeeb4"
+      },
+      {
+        "file": "tests/dispatch_abi.rs",
+        "bytes": 4326,
+        "sha256": "8501653c8f745d3e814c2203d3881a171b6663e5a87129d705e94736e01f011c"
+      },
+      {
+        "file": "tests/dispatch_native_abi.cpp",
+        "bytes": 3025,
+        "sha256": "66d0a4db60359dece0c8be08d7adcad75fe5242e8e02270c4ee295f5c1854162"
+      },
+      {
+        "file": "tests/fixtures/loader.rs",
+        "bytes": 1683,
+        "sha256": "674bcfa90ddec7a92e88dc62c4e78db38babb5da1121d4cf3ddc55af081e37bf"
+      },
+      {
+        "file": "tests/loader.rs",
+        "bytes": 7315,
+        "sha256": "853c160bb225d9847ae05565c0b0af3b66e7375a2767ed72c82e22a8202391a4"
+      },
+      {
+        "file": "tests/native_abi.cpp",
+        "bytes": 5188,
+        "sha256": "f17932f3e6516a2e7f623214d7c2e6cbc725638b4ca5f542fdb7d245bc7e7f63"
+      },
+      {
+        "file": "tests/provider_resolution/modules.rs",
+        "bytes": 1539,
+        "sha256": "7369a72c6a819ac2c82ecbb2f917e9d4d4ecfb68115cf13f5d68c87326af3da3"
+      },
+      {
+        "file": "tests/query.rs",
+        "bytes": 2100,
+        "sha256": "a0820ce7f4451ad4b46f2796b57afd2ceeeb445d6eb9c34518417985fdcd1ca4"
+      },
+      {
+        "file": "tests/shared_runtime.rs",
+        "bytes": 11322,
+        "sha256": "6a39946daf5771e1c625ec6a88c3ec26447585f797ff3d3cdb40a9a953148270"
+      }
+    ]
+  }
+]

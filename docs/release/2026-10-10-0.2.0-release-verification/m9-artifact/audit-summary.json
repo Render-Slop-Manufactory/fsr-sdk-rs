@@ -1,0 +1,111 @@
+{
+  "outputs": 144,
+  "process_repetitions": 3,
+  "comparisons_independently_audited": 78,
+  "all_execution_checks_passed": true,
+  "image_effect_thresholds": null,
+  "a_b_roi_bit_equal": true,
+  "return_to_disabled_roi_bit_equal": true,
+  "mode_diagnostics_first_repetition": [
+    {
+      "repeat": 1,
+      "scene": 0,
+      "frame": 3,
+      "pair": "a-disabled",
+      "roi_bit_equal": true,
+      "roi_bit_mismatches": 0,
+      "roi_mae_f64": 0.0,
+      "diagnostic_only": true
+    },
+    {
+      "repeat": 1,
+      "scene": 0,
+      "frame": 4,
+      "pair": "a-disabled",
+      "roi_bit_equal": false,
+      "roi_bit_mismatches": 162937,
+      "roi_mae_f64": 0.0021225478914048937,
+      "diagnostic_only": true
+    },
+    {
+      "repeat": 1,
+      "scene": 0,
+      "frame": 5,
+      "pair": "a-disabled",
+      "roi_bit_equal": false,
+      "roi_bit_mismatches": 163721,
+      "roi_mae_f64": 0.0029291673465534017,
+      "diagnostic_only": true
+    },
+    {
+      "repeat": 1,
+      "scene": 0,
+      "frame": 6,
+      "pair": "a-disabled",
+      "roi_bit_equal": false,
+      "roi_bit_mismatches": 170354,
+      "roi_mae_f64": 0.030040501474260208,
+      "diagnostic_only": true
+    },
+    {
+      "repeat": 1,
+      "scene": 0,
+      "frame": 7,
+      "pair": "a-disabled",
+      "roi_bit_equal": true,
+      "roi_bit_mismatches": 0,
+      "roi_mae_f64": 0.0,
+      "diagnostic_only": true
+    },
+    {
+      "repeat": 1,
+      "scene": 1,
+      "frame": 3,
+      "pair": "a-disabled",
+      "roi_bit_equal": true,
+      "roi_bit_mismatches": 0,
+      "roi_mae_f64": 0.0,
+      "diagnostic_only": true
+    },
+    {
+      "repeat": 1,
+      "scene": 1,
+      "frame": 4,
+      "pair": "a-disabled",
+      "roi_bit_equal": false,
+      "roi_bit_mismatches": 98787,
+      "roi_mae_f64": 0.0011054123486126507,
+      "diagnostic_only": true
+    },
+    {
+      "repeat": 1,
+      "scene": 1,
+      "frame": 5,
+      "pair": "a-disabled",
+      "roi_bit_equal": false,
+      "roi_bit_mismatches": 170247,
+      "roi_mae_f64": 0.002970796089630585,
+      "diagnostic_only": true
+    },
+    {
+      "repeat": 1,
+      "scene": 1,
+      "frame": 6,
+      "pair": "a-disabled",
+      "roi_bit_equal": false,
+      "roi_bit_mismatches": 170246,
+      "roi_mae_f64": 0.004250827673319224,
+      "diagnostic_only": true
+    },
+    {
+      "repeat": 1,
+      "scene": 1,
+      "frame": 7,
+      "pair": "a-disabled",
+      "roi_bit_equal": true,
+      "roi_bit_mismatches": 0,
+      "roi_mae_f64": 0.0,
+      "diagnostic_only": true
+    }
+  ]
+}

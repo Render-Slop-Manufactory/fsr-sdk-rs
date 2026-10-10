@@ -1,0 +1,36 @@
+    Updating crates.io index
+   Packaging fsr-sdk-sys v0.1.1 (<repo>\crates\fsr-sdk-sys)
+    Updating crates.io index
+    Packaged 29 files, 124.1KiB (32.4KiB compressed)
+   Packaging fsr-sdk v0.2.0 (<repo>\crates\fsr-sdk)
+    Updating crates.io index
+    Packaged 62 files, 428.3KiB (104.4KiB compressed)
+   Verifying fsr-sdk-sys v0.1.1 (<repo>\crates\fsr-sdk-sys)
+   Compiling fsr-sdk-sys v0.1.1 (<repo>\target\release-020-20261010\dry-run\package\fsr-sdk-sys-0.1.1)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.09s
+   Verifying fsr-sdk v0.2.0 (<repo>\crates\fsr-sdk)
+    Updating crates.io index
+   Unpacking fsr-sdk-sys v0.1.1 (registry `<repo>\target\release-020-20261010\dry-run\package\tmp-registry`)
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling windows-link v0.2.1
+   Compiling windows-result v0.4.1
+   Compiling windows-strings v0.5.1
+   Compiling windows-threading v0.2.1
+   Compiling libloading v0.9.0
+   Compiling fsr-sdk-sys v0.1.1
+   Compiling syn v2.0.119
+   Compiling windows-implement v0.60.2
+   Compiling windows-interface v0.59.3
+   Compiling windows-core v0.62.2
+   Compiling windows-collections v0.3.2
+   Compiling windows-future v0.3.2
+   Compiling windows-numerics v0.3.1
+   Compiling windows v0.62.2
+   Compiling fsr-sdk v0.2.0 (<repo>\target\release-020-20261010\dry-run\package\fsr-sdk-0.2.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.57s
+   Uploading fsr-sdk-sys v0.1.1 (<repo>\crates\fsr-sdk-sys)
+warning: aborting upload due to dry run
+   Uploading fsr-sdk v0.2.0 (<repo>\crates\fsr-sdk)
+warning: aborting upload due to dry run

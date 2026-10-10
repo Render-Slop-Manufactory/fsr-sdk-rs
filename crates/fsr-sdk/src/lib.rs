@@ -123,21 +123,22 @@
 //! dynamic resolution, auto exposure and masks are not exposed.
 //! Native sharpening is disabled by default. `Sharpening::Native(NativeSharpness)`
 //! forwards a finite `[0, 1]` parameter unchanged; enabled zero is not disabling.
-//! No wrapper filter or image-quality guarantee is provided. This frame API is
-//! unreleased; final public-route GPU verification remains pending under
-//! [D014](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D014.md).
+//! No wrapper filter or image-quality guarantee is provided. Version `0.2.0`
+//! includes this frame API and the optional movable family. The
+//! [release verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/release/2026-10-10-0.2.0-release-verification.md)
+//! records package, consumer and bounded native checks under D013/D014.
 //! Vulkan, Frame Generation, Ray Regeneration, Radiance Caching and engine
-//! integrations are not implemented. The published baseline is `0.1.0`.
+//! integrations are not implemented.
 //!
 //! [M6b](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-25-m6b-public-dispatch-verification.md)
 //! recorded one submitted, fenced public dispatch and plausible readback on one
 //! configuration. This does not establish image quality, nonzero-motion temporal
 //! behavior, performance or compatibility across GPUs/drivers/providers. The
 //! [final release verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-28-exp-final-windows-release-verification.md)
-//! subsequently passed a three-frame moving smoke, and post-release source adds
+//! subsequently passed a three-frame moving smoke. Version `0.2.0` includes
 //! [controlled motion/jitter/history-reset comparisons](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-30-exp-dispatch-semantics.md)
 //! on that configuration. These are bounded regressions, not general temporal
-//! image-quality evidence or revalidation of the published archives. See the
+//! image-quality evidence. See the
 //! [roadmap](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/ROADMAP.md)
 //! and accepted [D011](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D011.md).
 

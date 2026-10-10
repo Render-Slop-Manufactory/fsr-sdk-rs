@@ -6,6 +6,10 @@ This document defines the contribution workflow for people and coding agents.
 
 ## Before changing code
 
+Choose work from the [rolling roadmap](ROADMAP.md). Each open item has a stable
+identifier, status, prerequisites and completion checkpoint; update that item
+as work progresses. Completed work lives in [roadmap history](docs/ROADMAP_HISTORY.md).
+
 Read the relevant [project scope](SCOPE.md),
 [code heuristics](docs/CODE_HEURISTICS.md), and affected source. Scope defines goals and boundaries; manifests and code
 establish implemented facts. Keep changes

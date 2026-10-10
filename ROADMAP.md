@@ -1,308 +1,163 @@
 # Roadmap
 
-This document owns current project status, priorities, and sequencing.
-[SCOPE.md](SCOPE.md) defines durable goals and boundaries. Source and
-manifests remain authoritative for implemented behavior. Technical choices belong
-in [decisions](docs/DECISIONS.md), with supporting [research](docs/research/README.md).
+A rolling plan towards complete AMD FSR SDK coverage. Work is organized by
+capability, with stable item IDs, explicit prerequisites and completion
+checkpoints. Release versions are assigned when work is selected to ship.
+[SCOPE.md](SCOPE.md) defines the goal; [decisions](docs/DECISIONS.md) own accepted
+contracts; [roadmap history](docs/ROADMAP_HISTORY.md) retains completed work.
 
 ## Current state
 
-Both crates are published as `0.1.0` on crates.io, with Windows-target API
-documentation on docs.rs and the public GitHub `v0.1.0` release dated 2026-09-28.
-The [publication check](docs/release/2026-09-29-publication-check.md) records the
-public links, publication order and registry checksums.
+The implementation baseline is **`fsr-sdk 0.2.0` / `fsr-sdk-sys 0.1.1`**:
+partial DX12 upscaling, native sharpening, portable common inputs and optional
+movable ownership. Native support remains Windows x64/MSVC with SDK v2.3.0.
+The [release record](docs/release/2026-10-10-0.2.0-release-verification.md) describes
+local verification; the maintainer's publication handoff remains open below.
 
-The project implements DX12 upscaler construction and a narrow public unsafe
-dispatch method. The supported native target is `x86_64-pc-windows-msvc` with
-`dx12`. Windows/DX12 APIs are exposed on other Windows targets, but those targets
-are currently unverified and unsupported; compilation may succeed.
-[SCOPE.md](SCOPE.md#platform-and-compatibility-boundaries) owns this support policy.
-Native verification is limited to the SDK, runtime/provider, GPU, driver and
-workload configurations recorded in the verification records; target support
-does not imply compatibility with every hardware/provider configuration.
-[M6b](docs/research/records/2026-09-25-m6b-public-dispatch-verification.md) recorded
-one public-route native dispatch and plausible GPU readback on a tested
-configuration; no image-quality or broad hardware-support claim is available.
-The [final Windows verification](docs/research/records/2026-09-28-exp-final-windows-release-verification.md)
-repeated that public-route regression and passed three ordered moving frames
-through one upscaler on the recorded AMD configuration.
-
-The [2026-10-09 Windows native recheck](docs/release/2026-10-09-windows-native-recheck.md)
-exercised all 30 existing ignored native tests and their configured variants on
-the captured pre-M7 baseline. Ordinary GPU, recording and transfer regressions
-passed; the original sharpening effect gate and GBV dispatch timeout remain
-open. The report identifies its tested inputs and excludes later concurrent
-sharpening changes; it does not establish a new release or support guarantee.
-
-| Area | Current status |
-|---|---|
-| Selected FidelityFX ABI and explicit DLL loader | Implemented; bounded Windows x64/MSVC checks passed |
-| Public DX12 runtime and upscaler construction | Implemented; native lifecycle passed on one tested configuration |
-| Public DX12 upscaler dispatch | Implemented under D011; one submitted, fenced frame and readback passed on that configuration |
-| Extensible frames and native sharpening | Implemented under D014; [M9](docs/release/2026-10-10-m9-verification.md) public and extracted-candidate integration passes on the recorded configuration |
-| Common inputs and platform organization | Implemented under D015; common values work without backend features, native APIs retain Windows/DX12 gates, and production `libloading` is optional and Windows/DX12-only |
-| Optional movable runtime/upscaler family | Implemented and bounded public-path verification completed under D013; unreleased, outside `0.2.0`, with no later release selected |
-| Temporal multi-frame behavior | Three-frame moving smoke and [controlled motion/jitter/history-reset comparisons](docs/research/records/2026-09-30-exp-dispatch-semantics.md) passed on the recorded AMD configuration; general temporal reconstruction accuracy and image quality remain unverified |
-| Consumer documentation and examples | Windows-target Rustdoc published on docs.rs for both `0.1.0` crates; DX12 example compiled locally for Windows |
-| Packaging and release validation | Both `0.1.0` crates published on 2026-09-28; [publication verified](docs/release/2026-09-29-publication-check.md). Local wrapper `0.2.0` / sys `0.1.1` candidate verified in M9; publication pending |
-| Public Git history | Public repository and `v0.1.0` release/tag available |
-| Vulkan and other SDK effects | Not implemented; future work |
-
-**Current focus:** Prepare publication of the verified small `0.2.0` around
-dispatch-input extensibility and one contained addition: sharpening.
-Maintain the published `0.1.0` as the
-regression baseline. [D014](docs/adr/D014.md) was accepted on 2026-10-07;
-M7's API and migration contract is complete; M8 is implemented and checked in
-current source. The separate [M9 integration protocol](docs/release/2026-10-09-m9-native-sharpening-protocol.md)
-was executed on 2026-10-10. [M9 verification](docs/release/2026-10-10-m9-verification.md)
-passed through both the development API and unmodified extracted candidate,
-including the required regressions and final artifact/consumer checks. The local
-candidate is `fsr-sdk 0.2.0` with `fsr-sdk-sys 0.1.1`, excluding the D013 public
-family; publication remains separately authorized.
-The original native effect gate failed
-and stays failed. Publish the checked candidate when separately authorized,
-then broaden existing upscaler evidence before opening new effects.
-
-Current source also separates common checked upscaler inputs from the concrete
-DX12 backend ([D015](docs/adr/D015.md)), preserving existing imports. Common
-types are available on every host without backend features; native APIs retain
-their Windows/DX12 gates. [Portable-common verification](docs/release/2026-10-09-portable-common-verification.md)
-records consumer, feature, ABI and selected native regressions. It adds no Vulkan
-support or D014 functionality and does not select a release.
-
-[D016](docs/adr/D016.md) is accepted as the cross-feature constraint separating
-direct provider controls from explicit SDK quality policies. It selects no new
-API, policy implementation, verification milestone or release scope.
-
-- [x] Two-crate Cargo workspace: `fsr-sdk-sys` and `fsr-sdk`.
-- [x] Initial module scaffolding for ABI, loading, context, errors, queries, and upscaling.
-- [x] DX12 feature wiring and Windows loader gating; Vulkan explicitly rejects
-  compilation and is not an implemented backend.
-- [x] Contribution, development, decision, research, and agent-routing setup.
-- [x] Consolidate durable goals in SCOPE.md and finish documentation routing.
-- [x] Pin AMD FSR SDK `v2.3.0` as the initial native baseline
-  ([D002](docs/DECISIONS.md#d002--pin-amd-fsr-sdk-v230-as-the-initial-native-baseline)).
-
-The first common ABI slice is implemented: context and scalar aliases, return
-constants, base descriptor headers, allocation callbacks, and the five native
-function-pointer types ([D003](docs/DECISIONS.md#d003--handwrite-the-first-common-abi-slice)).
-The explicit-path Windows/DX12 loader now owns the library and exposes five
-unsafe forwarding methods with private function pointers
-([D004](docs/DECISIONS.md#d004--load-an-explicit-dll-with-private-entry-points)).
-The private M4 lifecycle owner, retained upscaler creation state and DX12 device
-ownership are implemented. M5 adds explicit public runtime acquisition and safe
-checked upscaler construction, with shared loader retention and independent COM
-device ownership. M6b adds the bounded unsafe public dispatch contract. M5 has
-Windows-target Rust compilation, host ownership fixtures, Windows CI fixture execution, and both
-opt-in native lifecycle cases passing on the tested Windows x64/MSVC machine
-([M5 verification](docs/research/records/2026-09-24-exp-m5-windows-native-verification.md)).
-Windows M4 fixture execution, paired
-native ABI checks and the real production-owner lifecycle now pass on the tested
-Windows x64/MSVC configuration
-([M4 verification](docs/research/records/2026-09-22-exp-m4-windows-verification.md)).
-An opt-in, experiment-only Windows/DX12
-[context lifecycle probe](docs/research/records/2026-09-20-exp-context-lifecycle.md)
-has successfully created, identified and destroyed a provider 4.1.1 context.
-Its creation ABI is now promoted into sys, while provider-identification ABI
-remains test-local. The ordinary lifecycle runner now targets the production
-owner; its Windows execution succeeded with provider 4.1.1. The later
-[M6a proof](docs/research/records/2026-09-24-exp-m6a-native-dispatch-proof.md)
-established one GPU dispatch and readback through the public M5 constructor.
-The first ABI verification is preserved in an
-[experiment record and API/safety synthesis](docs/research/api-and-safety.md).
-The local AMD loader DLL was loaded and all five symbols resolved.
-[Loader evidence](docs/research/records/2026-09-20-exp-explicit-dll-loader.md)
-covers fixture-based errors, forwarding and library release. A separate
-[count-only version query](docs/research/records/2026-09-20-exp-version-count-query.md)
-now succeeds without a context/device, using a locally staged loader and upscaler
-DLL beside the test executable. This does not establish GPU compatibility.
-The common ABI has Rust tests and a
-compile-only local header check. Checks and their limits
-are documented in [development](docs/DEVELOPMENT.md); passing builds do not imply
-runtime support.
-
-## Implementation sequence
-
-Milestone 1 has established the baseline needed for the common ABI and explicit
-loader; broader investigation remains open. Milestone 2 is complete for that
-bounded scope. Milestone 3 has its count-only smoke test completed. Milestone 4
-is complete for its bounded private Windows/DX12 ownership scope; M5's public
-construction path has Windows fixtures and both opt-in native cases passing on
-the tested configuration; [M6a](docs/MILESTONE_6.md) has a private dispatch
-implementation and one submitted/fenced GPU readback from the
-[recorded run](docs/research/records/2026-09-24-exp-m6a-native-dispatch-proof.md).
-The public dispatch contract is accepted in [D011](docs/adr/D011.md); M6b
-implementation and [public-route verification](docs/research/records/2026-09-25-m6b-public-dispatch-verification.md)
-are complete on one tested Windows/DX12 configuration. These milestones
-are not release dates or support promises.
-
-| Milestone | Work | Completion evidence |
-|---|---|---|
-| 1. Establish the native baseline | **Done:** pin SDK `v2.3.0` (D002), verify the common ABI (D003), identify the API DLL and select explicit-path loading (D004), select the handwritten-by-default policy with reviewed generated exceptions ([D006](docs/DECISIONS.md#d006--curate-abi-slices-and-permit-reviewed-generated-bindings)), and select explicit acquisition and executable-adjacent upscaler deployment for the bounded DX12 baseline (D007). **Pending:** broader safety contracts, effect runtime requirements beyond that baseline, applicable distribution terms and concrete additional binding slices. | Version-pinned research and decisions in the [API/safety synthesis](docs/research/api-and-safety.md). |
-| 2. Minimal ABI and loader | **Done for Windows x64/MSVC:** common ABI and explicit-path loader with five private entry points and retained library ownership. | Paired ABI checks, Windows build, successful local AMD DLL symbol resolution, fixture-based failure/forwarding/unload checks and ownership compile-fail tests. |
-| 3. Native query | **Done for Windows x64/MSVC:** one global count-only upscaler version query with its descriptor and two tags. | Opt-in local runtime test returned OK and count 2; paired ABI checks and both failed/successful deployment observations are [recorded](docs/research/records/2026-09-20-exp-version-count-query.md). |
-| 4. Context ownership | **Done for the tested Windows x64/MSVC configuration:** private creation, terminal destruction, dependency retention and error conversion. | Windows fixtures, paired native ABI compilation and production-owner AMD create/query/destroy passed; [recorded inputs and limits](docs/research/records/2026-09-22-exp-m4-windows-verification.md). No dispatch or public constructor. |
-| 5. Public DX12 construction | **Done for the tested Windows x64/MSVC configuration:** shared explicit runtime owner, checked dimensions, borrowed device with independent COM retention, safe upscaler constructor and terminal teardown. Query/Configure remain outside the accepted D008 construction scope. | Host ownership fixtures and Windows-target compilation passed; ordinary Windows CI fixtures passed in the [recorded run](docs/research/records/2026-09-24-exp-m5-windows-ci-verification.md). Both opt-in two-context native cases passed with [recorded inputs and limits](docs/research/records/2026-09-24-exp-m5-windows-native-verification.md). No dispatch. |
-| 6. Minimal native DX12 dispatch proof | **M6a and M6b done for the tested Windows x64/MSVC configuration:** narrow dispatch ABI, private proof followed by D011's borrowed public unsafe dispatch input, validation, and poison/error contract ([M6 plan](docs/MILESTONE_6.md)). | Paired ABI checks and AMD helper parity passed. The [M6a record](docs/research/records/2026-09-24-exp-m6a-native-dispatch-proof.md) and [M6b public-route record](docs/research/records/2026-09-25-m6b-public-dispatch-verification.md) each show OK dispatch, submission/fence and a 230,400-pixel finite changed readback with zero debug errors and no device removal on one setup. GPU-based validation remains inconclusive. |
-
-The first native milestone is loading, resolving symbols, and querying the
-runtime. It does not require image reconstruction or a complete public API.
-
-## 0.2.0 milestones
-
-The [2026-09-30 maintenance verification](docs/release/2026-09-30-review-verification.md)
-adds dimensions accessors, smaller implementation/test modules, pinned-header CI
-checks and Rust 1.88 CI coverage. The [semantic comparison](docs/research/records/2026-09-30-exp-dispatch-semantics.md)
-adds bounded motion/jitter/history-reset evidence and corrects the test image
-generator. These maintenance changes do not implement the 0.2.0 frame or
-sharpening extension below.
-
-Replace public `UpscaleDispatch` literals with a private, extensible frame
-representation and keep one dispatch path. Sharpening is the only new feature:
-a useful frame scalar requiring no new resources or creation flags.
-
-Basis: the [dispatch API synthesis](docs/research/upscaling-dispatch.md#broader-frame-surface-and-api-evolution)
-and [post-release surface record](docs/research/records/2026-09-29-src-dx12-upscaler-api-surface.md).
-These repository milestones continue M1–M6, independently of the record's
-numbering. D011 remains the published 0.1.0 baseline; D014 selects its limited
-0.2.0 replacement. D012 already covers creation-option extensibility.
-
-The accepted [D014 design](docs/adr/D014.md) supplies M7's API contract,
-migration, alternatives and verification gates. M7 was completed on 2026-10-07;
-M8's frame redesign and native sharpening are implemented, with
-[Windows and public-consumer checks](docs/release/2026-10-09-m8-implementation-verification.md).
-Its [native sharpening spike](docs/research/records/2026-09-30-exp-d014-native-sharpening.md)
-passed execution and repeat controls, but failed the predeclared effect criteria
-in all three repetitions, confirmed by an independent readback audit. The original
-failure remains evidence. The [2026-10-09 integration protocol](docs/release/2026-10-09-m9-native-sharpening-protocol.md)
-selected scenes, controls, diagnostics and repetitions before execution, informed
-by those results and including same-context mode switching. It adds no sharpening
-image-effect thresholds. The original thresholds were not adopted as release
-gates; no new run retrospectively passes the original experiment.
-The [2026-10-10 M9 record](docs/release/2026-10-10-m9-verification.md) completes
-the bounded native and artifact gates for the locally prepared candidate.
-
-| Milestone | Scope | Done when |
-|---|---|---|
-| M7 — Dispatch API contract | **Done 2026-10-07:** D014 accepted for private fields, construction/access methods, optional defaults and migration from `0.1.0` literals. | Contract approved; one unsafe dispatch route; GPU-lifetime, poison and cleanup obligations preserved. Implementation covered by M8. |
-| M8 — Extensible frame and sharpening | **Done 2026-10-09:** private frame/resource construction, accessors and typed native sharpening; disabled by default, finite `[0,1]` parameter; examples and test inputs migrated. | [Implementation checks](docs/release/2026-10-09-m8-implementation-verification.md) cover exact scalar bits/descriptor forwarding, rejection before FFI, same-context fixture switching, public consumers/traits and existing failure paths. No new GPU evidence. |
-| M9 — Verification and release | **Verified 2026-10-10 for the recorded candidate/configuration:** selected public integration protocol and native regressions pass through development source and the extracted `0.2.0` artifact, including same-context mode switching; final candidate checks pass. Publication pending. | [M9 evidence](docs/release/2026-10-10-m9-verification.md): exact descriptor/fixture mapping, completed GPU execution, finite/written readbacks, fenced cleanup, no debug errors/device removal, migration, stable/MSRV, Rustdoc, archives and registry-only consumers. No additional image-effect criteria. Candidate sys `0.1.1` includes the existing loader maintenance; D013 public APIs are excluded. Publication remains separately authorized. |
-
-`0.2.0` does not include pre-exposure, automatic exposure, masks, changing active
-extents, new depth/MV conventions, HDR/non-linear color, public Query/Configure,
-provider override, movable public types, callbacks or custom allocation.
-Future mandatory inputs can still require a break; native comparisons establish
-only their recorded scope.
-
-## Milestones after 0.2.0
-
-Proposed scopes, without committed release versions. Compatible additions can
-use `0.2.x`; a breaking contract needs another minor version. Reorder independent
-work for concrete requirements and add one bounded capability at a time.
-
-Before choosing the next large SDK slice or new effect, extend the existing
-upscaler's in-repository example/test harness with longer moving sequences and
-image comparisons. Keep it part of `fsr-sdk-rs` and preserve reproducible workload,
-runtime/provider, GPU and driver inputs. Seek a second hardware/provider
-configuration where available; record unavailable coverage explicitly. This
-is a later evidence step after M7–M9, not a separate renderer project or a completed
-image-quality claim.
-
-| Milestone | Scope | Required boundary/evidence |
-|---|---|---|
-| M10 — Provider metadata and selected Queries | Owned names/opaque IDs; choose needed resource, memory, quality or jitter utilities. | Required ABI slices, routing and lifetimes verified. Provider override reviewed separately. |
-| M11 — Pre-exposure | Finite-positive frame scalar, default `1.0`. | Equivalent scenes at different factors produce comparable normalized outputs. |
-| M12 — Depth/MV profiles | Typed creation conventions and matching frame units; one profile at a time. | Controlled depth/motion tests cover camera rules, MV scale and jitter handling. |
-| M13 — Automatic exposure | Typed creation mode and matching exposure input contract. | Provider resource requirements plus controlled luminance comparisons; explicit mode remains the default. |
-| M14 — Active extents | Dynamic render resolution first; variable output verified separately. | Allocation/maxima/active bounds, sentinel regions and temporal size transitions checked. |
-| M15 — Supplied masks | Optional reactive and transparency/composition resources. | Provider-aware requirements and transparency/disocclusion comparisons. |
-| M16 — HDR/non-linear color | Bounded creation, encoding and format/provider profile. | Comparative image-semantic tests with explicit exposure/tonemapping rules. |
-
-Configure tuning, debug callbacks/visualization, automatic mask generation,
-custom allocators, SDK acquisition, other effects and backends remain separate
-backlog items. Assign their milestones when a use case and contract justify
-them. Controlled temporal tests accompany relevant capabilities.
-
-### Independent D013 track
-
-[D013](docs/adr/D013.md) was accepted on 2026-10-09 after soundness review and
-contract revisions. Implementation remains outside `0.2.0` release scope and
-is not a gate for M7–M9; no later release version is selected.
-
-1. **D013-A — Evidence:** [compile/host probes passed](docs/research/records/2026-09-29-exp-d013-movable-compile-host.md).
-   [Windows fixtures passed](docs/research/records/2026-09-29-exp-d013-windows-fixtures.md).
-   The [bounded native spike](docs/research/records/2026-09-30-exp-d013-native-thread-transfer.md)
-   passed all three serialized, fenced transfer scenarios, their same-thread
-   controls and existing native regressions. Siblings, early external-runtime
-   drop and final loader release on another thread were covered. The
-   [failure/cleanup fixtures](docs/research/records/2026-10-07-exp-d013-transfer-failure-cleanup.md)
-   add transferred poison, preflight/recovery, terminal retention and coordinated
-   unwind. The [extended native follow-up](docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup.md)
-   passes all 11 prerequisites and 30 new children, covering creation after
-   runtime transfer, 64-frame history, independent siblings and successful fenced
-   Rust-unwind cleanup. The provider persists after all audited application refs
-   and worker exit. These bounded spikes are complete; provider/dependency
-   termination, native returned-error/partial-load cleanup, hidden work,
-   external-user coordination, outstanding GPU work, other configurations and
-   sanitizer coverage remain open.
-2. **D013-B — Review: done 2026-10-09.** The
-   [soundness review](docs/research/records/2026-10-09-src-d013-soundness-architecture-review.md)
-   revisions are incorporated and the design accepted for framework-independent
-   renderer-state migration. Remaining native assumptions are explicit in
-   [D013's safety contract](docs/adr/D013.md#conditional-safety-contract);
-   no unresolved design soundness blocker or further general research gate remains.
-3. **D013-C — Optional API: done 2026-10-09.** The optional `movable` family,
-   concrete field/cleanup audit, Rustdoc and consumer coordination example are
-   implemented. [Verification](docs/release/2026-10-09-d013-public-api-verification.md)
-   passes public traits/features/family controls, shared-core failure fixtures,
-   independently held siblings, unwind/failed-handoff cleanup and selected fenced
-   native transfers, including last runtime release and local-family regressions.
-   Select its later release and verify artifacts separately; these results
-   establish no universal AMD compatibility.
-
-## Deferred work
-
-- Broader dispatch behavior: temporal reconstruction, varying exposure, other
-  formats and providers need separate evidence before broadening D011's profile.
-- Automated SDK acquisition: decide download permission, pinned versions,
-  checksums, cache behavior, offline use, and redistribution before implementing.
-  This is separate from dynamic runtime loading.
-- CI: keep the existing host and Windows compilation checks useful as implementation grows;
-  keep hardware-dependent evidence separate from ordinary build jobs.
-- Future releases: maintain compatibility documentation, package checks,
-  examples, and required third-party notices as the implementation grows.
-- Additional backends and broader SDK coverage: revisit only when upstream
-  capabilities and a concrete use case justify them.
+The goal includes Upscaling, Frame Generation and presentation, Ray Regeneration,
+Radiance Caching, runtime controls and upstream-supported backends. The queues
+below distinguish further upscaler work from adding the other SDK capabilities.
 
 ## Next actions
 
-1. **Status/test hygiene — completed 2026-10-07:** current plans now reflect
-   completed D013/D014 evidence, the broken protocol link is repaired and
-   fixture directories tolerate stale paths.
-   Verification is recorded in the [2026-10-07 maintenance check](docs/release/2026-10-07-status-test-hygiene.md).
-2. **D014 / M7 — completed 2026-10-07:** API, migration and bounded native-pass
-   trust accepted after review. The original failed experiment remains failed;
-   the separate integration protocol was selected on 2026-10-09.
-3. **M8 and M9 verification completed:** the small `0.2.0` frame API, native
-   sharpening and migration are implemented and checked. The
-   [2026-10-10 M9 verification](docs/release/2026-10-10-m9-verification.md) passed
-   the selected public-API protocol, regressions and final package/consumer checks.
-   A source projection preserves the separate D013 development work while
-   excluding its public APIs from the candidate. Publish the checked sys `0.1.1`
-   then wrapper `0.2.0` only when separately authorized; maintain published
-   `0.1.0` guidance until publication.
-4. **Broader existing-upscaler evidence:** extend the in-repo example/test harness
-   with longer moving sequences, image comparisons and, where available, a second
-   hardware/provider configuration before choosing the next large SDK slice.
-5. **D013 independently:** design, optional API and bounded public-path
-   verification completed on 2026-10-09. Select a later release and verify its
-   artifacts separately. Native assumptions remain caller obligations under
-   [D013](docs/adr/D013.md), not verified AMD guarantees. This track stays
-   outside `0.2.0`.
+The selected near-term queue, in priority order. An item appears in only one
+table; promoting a later item moves its row here with the same ID.
 
-The [GBV spike](docs/research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md)
-localized a timeout to native `ffxDispatch` on the tested setup; its
-provider/driver/validation cause remains unresolved. Prior
-[candidate artifact checks](docs/release/2026-09-28-final-artifact-recheck.md)
-and the separate [publication check](docs/release/2026-09-29-publication-check.md)
-remain historical baselines, not validation of future releases.
+| Item | Status | Needs | Completion checkpoint |
+|---|---|---|---|
+| R01 — Publish verified baseline | Next | Maintainer publication | Recheck final-commit packages; publish sys 0.1.1 before wrapper 0.2.0; confirm hosted docs and matching GitHub release |
+| V01 — Temporal/image baseline | Next | Existing upscaler harness | Repeatable longer motion, disocclusion, jitter and reset sequences; predeclared comparisons and retained readbacks |
+| M10 — Provider metadata and selected Queries | Next | Contract review | Owned names/opaque IDs and selected read-only queries; ABI, lifetime, consumer and native checks; provider override stays separate |
+
+Complete V01 before selecting another large effect implementation. Investigation
+and smaller independent tasks can proceed alongside it. No later row is a
+commitment to a particular crate version or an already accepted API design.
+
+## Upscaling
+
+Extend the existing effect in small, independently checked steps. M10–M16 keep
+their existing milestone IDs; numbers are identifiers, not a global execution
+order. The first rows are the preferred progression within this track.
+
+| Item | Status | Needs | Completion checkpoint |
+|---|---|---|---|
+| M11 — Pre-exposure | Planned | V01 | Finite-positive scalar, default 1.0; equivalent scenes remain comparable after normalization |
+| M12 — Depth and motion-vector profiles | Planned | V01 | Typed conventions/units; controlled camera, motion-scale and jitter comparisons |
+| M13 — Automatic exposure | Planned | M10, V01 | Explicit creation/input contract; provider-aware luminance comparisons and resource validation |
+| M14 — Active render/output extents | Planned | V01 | Allocation/maxima/active bounds; sentinel checks and temporal size transitions |
+| M15 — Supplied masks | Planned | M10, V01 | Provider-aware mask requirements; transparency and disocclusion comparisons |
+| M16 — HDR and non-linear color | Planned | M11, V01 | Explicit encoding/format/exposure contract; bounded provider and tonemapping comparisons |
+| U01 — Automatic reactive masks | Explore | M15 | Separate GPU operation and ownership contract; generated/supplied mask controls |
+| U02 — Remaining Queries and Configure controls | Explore | M10 | Inventory remaining descriptors/helpers, select typed APIs and verify provider-specific semantics |
+| U03 — Quality/size/jitter helpers and presets | Explore | V01, M10 | Justified helpers and reproducible calibration; preserve direct native controls and document policy separately |
+
+[Existing surface research](docs/research/records/2026-09-29-src-dx12-upscaler-api-surface.md)
+supplies candidates, not accepted contracts. [D016](docs/adr/D016.md) keeps direct
+provider controls distinct from SDK-selected quality policies.
+
+## Other SDK effects
+
+Each effect has its own discovery, API and integration checkpoints. These tracks
+are all in scope; table order does not choose which effect ships first. Discovery
+must pin an upstream surface and the usable hardware/runtime requirements before
+implementation scope or public contracts are accepted.
+
+### Frame Generation and presentation
+
+| Item | Status | Needs | Completion checkpoint |
+|---|---|---|---|
+| FG01 — Effect and presentation contract | Explore | — | Map interpolation, preparation inputs, callbacks, swapchain/frame pacing and supported providers; choose an engine-independent integration boundary |
+| FG02 — Bindings and ownership | Planned | FG01, V01 | Selected ABI with independent native checks; owned context/presentation types and explicit callback, thread and resource lifetimes |
+| FG03 — Public integration | Planned | FG02 | Deterministic real/generated-frame sequence; presentation order, pacing, enable/disable, resize and cleanup exercised through the public API |
+
+### Ray Regeneration
+
+| Item | Status | Needs | Completion checkpoint |
+|---|---|---|---|
+| RR01 — Denoising contract | Explore | — | Pin inputs/signals, history, camera/material conventions and provider requirements; select a bounded first profile |
+| RR02 — Bindings and ownership | Planned | RR01, V01 | Verified ABI, checked profile/context inputs and explicit resource/history ownership |
+| RR03 — Public integration | Planned | RR02 | Repeatable noisy-scene input; recorded/submitted GPU output, history/reset controls and clean teardown |
+
+### Radiance Caching
+
+| Item | Status | Needs | Completion checkpoint |
+|---|---|---|---|
+| RC01 — Cache integration contract | Explore | — | Pin available SDK API, training/query phases, scene data and hardware requirements; select the renderer boundary |
+| RC02 — Bindings and ownership | Planned | RC01, V01 | Verified ABI and cache lifecycle; explicit scene/buffer lifetime and update/query ordering |
+| RC03 — Public integration | Planned | RC02 | Bounded scene update and cache-query sequence; native/GPU observations, reset/rebuild and cleanup controls |
+
+The [pinned AMD SDK inventory](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/tree/v2.3.0)
+lists these technologies; Radiance Caching is a preview in that baseline. Their
+presence upstream does not establish Rust coverage here.
+
+## Backends and runtime
+
+Backend support and effect coverage are separate dimensions. A working upscaler
+does not establish another effect or backend, and compiling on an OS does not
+establish native runtime support. Keep portable inputs usable independently.
+
+| Item | Status | Needs | Completion checkpoint |
+|---|---|---|---|
+| B01 — Vulkan native path | Blocked | Usable upstream integration | Pin a supported SDK/runtime path; then define device retention, resource metadata, layouts, queue-family/synchronization and cleanup contracts |
+| B02 — Additional native targets | Explore | Suitable upstream artifacts | Select a concrete OS/architecture + effect/backend combination; verify loader ABI, deployment, execution and cleanup before support claims |
+| R02 — Explicit SDK acquisition/deployment | Explore | Distribution review | Choose local/offline and optional verified acquisition paths; pin artifacts, integrity, cache behavior, notices and runtime dependency closure |
+| R03 — Callbacks and custom allocation | Explore | Concrete ownership use case | Separate host/backend allocation and message callbacks; prove callback lifetimes, panic containment, threading and teardown |
+| R04 — Provider/version selection | Explore | M10 | Explicit override semantics, retained identity and provider compatibility checks; no silent version-dependent policy |
+| R05 — Complete SDK-surface inventory | Planned | Pinned SDK v2.3.0 | Map all public slices; distinguish raw declarations, wrapper APIs and native coverage; turn remaining gaps into scoped queue items |
+| R06 — Next SDK baseline review | Explore | Candidate upstream version | Compare one candidate with the pin; review migration/artifacts/notices and verify affected ABI, consumers and native paths before adopting it |
+
+B01 is blocked by the selected upstream path: AMD's
+[pinned v2.3.0 documentation](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/tree/v2.3.0)
+explicitly marks Vulkan unsupported. An older SDK path or a new pin needs its
+own compatibility decision. [Platform findings](docs/research/platform-and-backends.md)
+retain the current evidence and loader hazards.
+
+## Verification and compatibility
+
+V01 starts this track from the near-term queue. The work below expands what can
+be claimed about correctness, provider behavior and compatibility independently
+of adding API surface. Native results remain scoped to recorded configurations.
+
+| Item | Status | Needs | Completion checkpoint |
+|---|---|---|---|
+| V02 — Sharpening image-effect follow-up | Planned | V01 | Predeclare bounded scenes/metrics; distinguish native execution from image effect and retain failures as well as passes |
+| V03 — Second hardware/provider configuration | Blocked | Access to another configuration | Run the same protocols, record SDK/provider/GPU/driver inputs and compare results/limitations |
+| V04 — GPU-based validation stall | Planned | Reproducible instrumented setup | Reduce the known dispatch stall; record cause/fix or a bounded unresolved result; rerun ordinary controls |
+| V05 — In-flight recording and shared-context limits | Explore | V01 | Bounded recording-ahead, sibling and ordering cases; no inferred unlimited capacity or cross-queue guarantee |
+| V06 — Movable native lifetime follow-up | Explore | Instrumented native setup | Investigate hidden activity/provider retention, worker exit and outstanding-work transfers; record limits and revisit the accepted contract if contrary evidence appears |
+
+V02 starts from the [failed original effect criteria](docs/research/records/2026-09-30-exp-d014-native-sharpening.md),
+which remain failed. V04 retains the [GBV stall](docs/research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md).
+V06 follows [the accepted movable contract](docs/adr/D013.md); these investigations
+are not new blockers imposed on the already verified release.
+
+## Keeping the roadmap rolling
+
+| Status | Meaning |
+|---|---|
+| Explore | First deliverable is a scoped investigation/design; implementation details remain open |
+| Planned | A completion checkpoint is described; work has not started |
+| Next | Selected to start next; any required contract review is part of the work |
+| Active | Work is actually underway |
+| Blocked | The Needs cell names a missing external input |
+| Verified | The row's checkpoint is checked; release/publication handoff remains where relevant |
+
+1. Keep one row per item. Preserve IDs when moving rows; never renumber M10–M16
+   or reuse an archived ID. New ideas go at the bottom of the relevant track.
+2. Promote a row into **Next actions**, rather than copying it. Dependencies
+   refer to stable IDs, including completed prerequisites in roadmap history;
+   the Needs cell also names any external requirement.
+3. Update status and checkpoint as work progresses. Accept consequential
+   contracts through the decision process; a roadmap row alone accepts no API,
+   SDK pin, safety or platform claim.
+4. A feature checkpoint needs source, ABI/consumer checks, documentation and
+   native evidence appropriate to the claimed behavior. An investigation ends
+   with its bounded findings and a recorded follow-up or limitation.
+5. At release close, move shipped/finished rows to **roadmap history**, recording
+   the release/date and completion evidence. Update the baseline and README
+   coverage table; keep unfinished rows and their order. Completed investigations
+   may be archived independently, without inventing a release assignment.
+6. Append new scoped work below the remaining queue. Routine releases change
+   rows and baseline metadata; they do not replace the plan with a new before/
+   after-release narrative. Repeat release checks as needed without making a
+   permanent milestone for every routine test run.

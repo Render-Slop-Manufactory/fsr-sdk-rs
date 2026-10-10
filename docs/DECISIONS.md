@@ -97,7 +97,9 @@ for 0.2.0
 **Status:** accepted 2026-10-09 after soundness review and contract revisions;
 caller-established native transfer/coordination assumptions explicitly accepted.
 Optional API implemented; [bounded public-path verification](release/2026-10-09-d013-public-api-verification.md)
-completed separately. Outside `0.2.0` scope; no release selected
+completed separately. Included in `0.2.0` by explicit 2026-10-10 maintainer
+selection; combined release evidence is recorded
+[here](release/2026-10-10-0.2.0-release-verification.md)
 
 [Read D013](adr/D013.md)
 
@@ -106,7 +108,9 @@ completed separately. Outside `0.2.0` scope; no release selected
 **Status:** accepted 2026-10-07; 0.2.0 API, migration and bounded native-sharpening
 trust selected. M8 implemented and checked on 2026-10-09; the direct-native M9
 integration protocol and final local candidate checks passed on 2026-10-10
-([M9 verification](release/2026-10-10-m9-verification.md)). Publication remains pending.
+([M9 verification](release/2026-10-10-m9-verification.md)). The
+[combined 0.2.0 release check](release/2026-10-10-0.2.0-release-verification.md)
+includes the optional D013 family. Publication remains a maintainer action.
 Original native effect criteria failed and stay failed.
 
 [Read D014](adr/D014.md)
@@ -136,7 +140,8 @@ M7's contract decision and M8 implementation are complete. Its separate
 [native integration protocol](release/2026-10-09-m9-native-sharpening-protocol.md)
 passed in [M9 verification](release/2026-10-10-m9-verification.md), including
 same-context mode switching and final local candidate checks. Publication remains
-separate; the candidate excludes D013 and uses sys `0.1.1` for existing loader maintenance.
+separate. The historical M9 projection excluded D013; the selected combined
+release includes it and uses sys `0.1.1` for existing loader maintenance.
 The original sharpening effect gate failed in the
 [native spike](research/records/2026-09-30-exp-d014-native-sharpening.md)
 and remains failed. D011 remains the published 0.1.0 dispatch baseline;
@@ -150,7 +155,8 @@ coordination assumptions; missing AMD guarantees and unobserved provider
 termination remain unverified facts, not design-acceptance blockers. The optional
 public family, concrete field audit and bounded public-path verification are
 complete in current source; the existing D008 types stay confined to their
-acquiring thread. Release selection and artifact verification remain separate.
+acquiring thread. Explicit 2026-10-10 selection includes movable in `0.2.0`;
+the combined release record verifies its actual artifacts.
 
 Concrete binding-slice selections under D006 and public APIs beyond D008/D011/D012/D013/D014
 remain undecided. [D011](adr/D011.md) accepts the first public DX12 dispatch

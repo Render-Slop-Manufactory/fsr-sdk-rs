@@ -19,19 +19,19 @@ preserves one tested public-dispatch configuration.
 
 ## Installation and API documentation
 
-The [`0.1.0` crate](https://crates.io/crates/fsr-sdk-sys) and its
-[API documentation](https://docs.rs/fsr-sdk-sys/0.1.0/fsr_sdk_sys/) are published.
+Use [`fsr-sdk-sys 0.1.1`](https://crates.io/crates/fsr-sdk-sys) and its
+[API documentation](https://docs.rs/fsr-sdk-sys/0.1.1/fsr_sdk_sys/).
 For direct Windows/DX12 use, enable the feature explicitly:
 
 ```toml
 [dependencies]
-fsr-sdk-sys = { version = "0.1.0", features = ["dx12"] }
+fsr-sdk-sys = { version = "0.1.1", features = ["dx12"] }
 ```
 
 Most applications should use [`fsr-sdk`](https://crates.io/crates/fsr-sdk) for
 context ownership and checked inputs.
 
-## Loader organization in current source
+## Loader organization
 
 `fsr_sdk_sys::loader::{FfxLibrary, LoadError}` retains its Windows plus `dx12`
 gate. `src/loader/mod.rs` reexports the existing interface from the private
@@ -42,7 +42,8 @@ Its error and unsafe lifetime contracts are unchanged.
 `libloading` is optional, Windows-target-specific and enabled by `dx12`.
 Common-only production consumers do not depend on it. OS targets select platform
 code; backend features select graphics capabilities. No Linux loader or Vulkan
-support is added. These current-source changes do not alter published `0.1.0`.
+support is added. Version `0.1.1` contains this loader/dependency maintenance;
+the selected raw ABI and SDK pin are unchanged from `0.1.0`.
 
 ## Licensing and provenance
 

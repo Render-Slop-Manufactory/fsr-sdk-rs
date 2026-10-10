@@ -2,7 +2,7 @@
 
 [package]
 name = "fsr-sdk"
-version = "0.1.0"
+version = "0.2.0"
 description = "Engine-independent Windows/DX12 upscaling wrapper for AMD FSR SDK v2.3.0"
 keywords = ["fsr", "fidelityfx", "dx12", "graphics", "gamedev"]
 categories = ["rendering", "game-development"]
@@ -17,6 +17,7 @@ repository.workspace = true
 [package.metadata.docs.rs]
 default-target = "x86_64-pc-windows-msvc"
 targets = []
+features = ["movable"]
 
 [features]
 default = ["dx12"]
@@ -29,7 +30,7 @@ vulkan = ["fsr-sdk-sys/vulkan"]
 
 [dependencies.fsr-sdk-sys]
 path = "../fsr-sdk-sys"
-version = "0.1.0"
+version = "0.1.1"
 default-features = false
 
 [target.'cfg(windows)'.dependencies]

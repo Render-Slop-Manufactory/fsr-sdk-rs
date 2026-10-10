@@ -131,7 +131,8 @@ try {
             @{Name='gate-a'; Test='upscaler::dx12::m6::native_dispatch_readback'; Marker='Gate A: PASSED'},
             @{Name='gate-b'; Test='upscaler::dx12::m6::native_temporal_smoke'; Marker='Gate B: PASSED'},
             @{Name='gate-c'; Test='upscaler::dx12::m6::native_semantic_comparisons'; Marker='Gate C: PASSED'},
-            @{Name='public-movable'; Test='upscaler::dx12::m6::movable_public::public_siblings_dispatch_and_cleanup_after_thread_handoffs'; Marker='Public movable: PASSED'; Trace=$true}
+            @{Name='public-movable'; Test='upscaler::dx12::m6::movable_public::public_siblings_dispatch_and_cleanup_after_thread_handoffs'; Marker='Public movable: PASSED'; Trace=$true},
+            @{Name='public-movable-sharpening'; Test='upscaler::dx12::m6::movable_public::public_native_sharpening_after_thread_handoffs'; Marker='Public movable: PASSED mode=Native'; Trace=$true}
         )
     } elseif ($Mode -eq 'd013') {
         @(

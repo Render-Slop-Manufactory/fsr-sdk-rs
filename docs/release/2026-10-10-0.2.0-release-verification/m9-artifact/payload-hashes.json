@@ -1,0 +1,737 @@
+[
+  {
+    "Repeat": 1,
+    "Files": [
+      {
+        "File": "scene-0-disabled-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "12182AC00DF016AF2410FC67BE1C3A9AEEE44CCFAFA10C8C7ECE720B08957B94"
+      },
+      {
+        "File": "scene-0-disabled-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "DD5A90EDFE6BE33B10562A1BCCAD64EA26063222C3AFF54F7AD266294130BB75"
+      },
+      {
+        "File": "scene-0-disabled-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "988E2798F4612C9B85754C8B8B18F84E66269FAEA594401AB434A7160F5BE43B"
+      },
+      {
+        "File": "scene-0-disabled-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F19BF197CB1F179F176F862AE1C3CDFD0BA66BC3323F7F871B6CB69B3B8AC29A"
+      },
+      {
+        "File": "scene-0-disabled-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "D1B102FC0123CDBEFE3779647A04214E71EBFB2C70FDDE29B976A8C083EDEA2D"
+      },
+      {
+        "File": "scene-0-disabled-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D08021733C54C0909BD3334A97FE5409EAB4CD60AAF960C243605FE180F6BD7"
+      },
+      {
+        "File": "scene-0-disabled-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F78B965F207224A5F7417706BC0DD54F280797FE072522291CE7F91A9D38F8D9"
+      },
+      {
+        "File": "scene-0-disabled-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "8254106978242259C2FD5ABB2EFB0E1FCE600C61B4887D12F9549E008145B0F8"
+      },
+      {
+        "File": "scene-0-switch-a-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "12182AC00DF016AF2410FC67BE1C3A9AEEE44CCFAFA10C8C7ECE720B08957B94"
+      },
+      {
+        "File": "scene-0-switch-a-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "DD5A90EDFE6BE33B10562A1BCCAD64EA26063222C3AFF54F7AD266294130BB75"
+      },
+      {
+        "File": "scene-0-switch-a-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "988E2798F4612C9B85754C8B8B18F84E66269FAEA594401AB434A7160F5BE43B"
+      },
+      {
+        "File": "scene-0-switch-a-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F19BF197CB1F179F176F862AE1C3CDFD0BA66BC3323F7F871B6CB69B3B8AC29A"
+      },
+      {
+        "File": "scene-0-switch-a-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1777158D180EBFA0751E8439872EA2705BC6ADA75A31118834066819ED630D11"
+      },
+      {
+        "File": "scene-0-switch-a-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "9227280EFE51903C98984127E1CD5132886500AC7B0FC6560D770CFED742C04E"
+      },
+      {
+        "File": "scene-0-switch-a-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "359B20A03E721CFE6210F5A39843021C39A8BA93E27DE826C5B42A74D8DE37F9"
+      },
+      {
+        "File": "scene-0-switch-a-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "8254106978242259C2FD5ABB2EFB0E1FCE600C61B4887D12F9549E008145B0F8"
+      },
+      {
+        "File": "scene-0-switch-b-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "12182AC00DF016AF2410FC67BE1C3A9AEEE44CCFAFA10C8C7ECE720B08957B94"
+      },
+      {
+        "File": "scene-0-switch-b-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "DD5A90EDFE6BE33B10562A1BCCAD64EA26063222C3AFF54F7AD266294130BB75"
+      },
+      {
+        "File": "scene-0-switch-b-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "988E2798F4612C9B85754C8B8B18F84E66269FAEA594401AB434A7160F5BE43B"
+      },
+      {
+        "File": "scene-0-switch-b-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F19BF197CB1F179F176F862AE1C3CDFD0BA66BC3323F7F871B6CB69B3B8AC29A"
+      },
+      {
+        "File": "scene-0-switch-b-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1777158D180EBFA0751E8439872EA2705BC6ADA75A31118834066819ED630D11"
+      },
+      {
+        "File": "scene-0-switch-b-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "9227280EFE51903C98984127E1CD5132886500AC7B0FC6560D770CFED742C04E"
+      },
+      {
+        "File": "scene-0-switch-b-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "359B20A03E721CFE6210F5A39843021C39A8BA93E27DE826C5B42A74D8DE37F9"
+      },
+      {
+        "File": "scene-0-switch-b-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "8254106978242259C2FD5ABB2EFB0E1FCE600C61B4887D12F9549E008145B0F8"
+      },
+      {
+        "File": "scene-1-disabled-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D67BB5136D3957DCDD2AA6436CE96D562D61E894A443CC5A9F236F1F65725FE"
+      },
+      {
+        "File": "scene-1-disabled-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1D9C04CF63AC295C6A4FFEB0040D90F20A617F67C7A3AC8437850265C674C632"
+      },
+      {
+        "File": "scene-1-disabled-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "41E19D087504F973478446DA8F96A896A3D9A8FB768E83FDCECD87CD31400033"
+      },
+      {
+        "File": "scene-1-disabled-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "97330000594CBBD17C4AA144CC1EBC3AE2634DEC0C5FD2B24E8A4FF2E681A49D"
+      },
+      {
+        "File": "scene-1-disabled-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "E64039D02FBE04770EC58756973C78A20F49A5127FEB7B6F6F3AFEC9CE257677"
+      },
+      {
+        "File": "scene-1-disabled-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "484CB3E753F05C4F89DC17F8940557F63D5E41AA27034FE098EDF83B847F1794"
+      },
+      {
+        "File": "scene-1-disabled-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "5B475F904D04D75BE729CE53C0650921F294B842300F570CD65218FACE5D4CCB"
+      },
+      {
+        "File": "scene-1-disabled-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "4FC6D0DFC4DF5765F60624CFC6F379BCFFAB5029C9DC9F31765ED342F9B23239"
+      },
+      {
+        "File": "scene-1-switch-a-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D67BB5136D3957DCDD2AA6436CE96D562D61E894A443CC5A9F236F1F65725FE"
+      },
+      {
+        "File": "scene-1-switch-a-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1D9C04CF63AC295C6A4FFEB0040D90F20A617F67C7A3AC8437850265C674C632"
+      },
+      {
+        "File": "scene-1-switch-a-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "41E19D087504F973478446DA8F96A896A3D9A8FB768E83FDCECD87CD31400033"
+      },
+      {
+        "File": "scene-1-switch-a-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "97330000594CBBD17C4AA144CC1EBC3AE2634DEC0C5FD2B24E8A4FF2E681A49D"
+      },
+      {
+        "File": "scene-1-switch-a-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "918BBFE8323FCEC7540288F8337C31E67B4AC08FF63C03E40F3AE751D7BAC468"
+      },
+      {
+        "File": "scene-1-switch-a-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "306C3B8BD999B48E233B5D6BAF793AD0E09435B3FF11087C6F7D7CC554BCDA7F"
+      },
+      {
+        "File": "scene-1-switch-a-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "D1F6784B59D597600684ACAC46EEBAD285E17A92E678834108C65AB2D8E7A627"
+      },
+      {
+        "File": "scene-1-switch-a-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "4FC6D0DFC4DF5765F60624CFC6F379BCFFAB5029C9DC9F31765ED342F9B23239"
+      },
+      {
+        "File": "scene-1-switch-b-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D67BB5136D3957DCDD2AA6436CE96D562D61E894A443CC5A9F236F1F65725FE"
+      },
+      {
+        "File": "scene-1-switch-b-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1D9C04CF63AC295C6A4FFEB0040D90F20A617F67C7A3AC8437850265C674C632"
+      },
+      {
+        "File": "scene-1-switch-b-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "41E19D087504F973478446DA8F96A896A3D9A8FB768E83FDCECD87CD31400033"
+      },
+      {
+        "File": "scene-1-switch-b-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "97330000594CBBD17C4AA144CC1EBC3AE2634DEC0C5FD2B24E8A4FF2E681A49D"
+      },
+      {
+        "File": "scene-1-switch-b-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "918BBFE8323FCEC7540288F8337C31E67B4AC08FF63C03E40F3AE751D7BAC468"
+      },
+      {
+        "File": "scene-1-switch-b-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "306C3B8BD999B48E233B5D6BAF793AD0E09435B3FF11087C6F7D7CC554BCDA7F"
+      },
+      {
+        "File": "scene-1-switch-b-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "D1F6784B59D597600684ACAC46EEBAD285E17A92E678834108C65AB2D8E7A627"
+      },
+      {
+        "File": "scene-1-switch-b-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "4FC6D0DFC4DF5765F60624CFC6F379BCFFAB5029C9DC9F31765ED342F9B23239"
+      }
+    ]
+  },
+  {
+    "Repeat": 2,
+    "Files": [
+      {
+        "File": "scene-0-disabled-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "12182AC00DF016AF2410FC67BE1C3A9AEEE44CCFAFA10C8C7ECE720B08957B94"
+      },
+      {
+        "File": "scene-0-disabled-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "DD5A90EDFE6BE33B10562A1BCCAD64EA26063222C3AFF54F7AD266294130BB75"
+      },
+      {
+        "File": "scene-0-disabled-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "988E2798F4612C9B85754C8B8B18F84E66269FAEA594401AB434A7160F5BE43B"
+      },
+      {
+        "File": "scene-0-disabled-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F19BF197CB1F179F176F862AE1C3CDFD0BA66BC3323F7F871B6CB69B3B8AC29A"
+      },
+      {
+        "File": "scene-0-disabled-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "D1B102FC0123CDBEFE3779647A04214E71EBFB2C70FDDE29B976A8C083EDEA2D"
+      },
+      {
+        "File": "scene-0-disabled-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D08021733C54C0909BD3334A97FE5409EAB4CD60AAF960C243605FE180F6BD7"
+      },
+      {
+        "File": "scene-0-disabled-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F78B965F207224A5F7417706BC0DD54F280797FE072522291CE7F91A9D38F8D9"
+      },
+      {
+        "File": "scene-0-disabled-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "8254106978242259C2FD5ABB2EFB0E1FCE600C61B4887D12F9549E008145B0F8"
+      },
+      {
+        "File": "scene-0-switch-a-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "12182AC00DF016AF2410FC67BE1C3A9AEEE44CCFAFA10C8C7ECE720B08957B94"
+      },
+      {
+        "File": "scene-0-switch-a-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "DD5A90EDFE6BE33B10562A1BCCAD64EA26063222C3AFF54F7AD266294130BB75"
+      },
+      {
+        "File": "scene-0-switch-a-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "988E2798F4612C9B85754C8B8B18F84E66269FAEA594401AB434A7160F5BE43B"
+      },
+      {
+        "File": "scene-0-switch-a-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F19BF197CB1F179F176F862AE1C3CDFD0BA66BC3323F7F871B6CB69B3B8AC29A"
+      },
+      {
+        "File": "scene-0-switch-a-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1777158D180EBFA0751E8439872EA2705BC6ADA75A31118834066819ED630D11"
+      },
+      {
+        "File": "scene-0-switch-a-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "9227280EFE51903C98984127E1CD5132886500AC7B0FC6560D770CFED742C04E"
+      },
+      {
+        "File": "scene-0-switch-a-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "359B20A03E721CFE6210F5A39843021C39A8BA93E27DE826C5B42A74D8DE37F9"
+      },
+      {
+        "File": "scene-0-switch-a-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "8254106978242259C2FD5ABB2EFB0E1FCE600C61B4887D12F9549E008145B0F8"
+      },
+      {
+        "File": "scene-0-switch-b-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "12182AC00DF016AF2410FC67BE1C3A9AEEE44CCFAFA10C8C7ECE720B08957B94"
+      },
+      {
+        "File": "scene-0-switch-b-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "DD5A90EDFE6BE33B10562A1BCCAD64EA26063222C3AFF54F7AD266294130BB75"
+      },
+      {
+        "File": "scene-0-switch-b-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "988E2798F4612C9B85754C8B8B18F84E66269FAEA594401AB434A7160F5BE43B"
+      },
+      {
+        "File": "scene-0-switch-b-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F19BF197CB1F179F176F862AE1C3CDFD0BA66BC3323F7F871B6CB69B3B8AC29A"
+      },
+      {
+        "File": "scene-0-switch-b-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1777158D180EBFA0751E8439872EA2705BC6ADA75A31118834066819ED630D11"
+      },
+      {
+        "File": "scene-0-switch-b-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "9227280EFE51903C98984127E1CD5132886500AC7B0FC6560D770CFED742C04E"
+      },
+      {
+        "File": "scene-0-switch-b-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "359B20A03E721CFE6210F5A39843021C39A8BA93E27DE826C5B42A74D8DE37F9"
+      },
+      {
+        "File": "scene-0-switch-b-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "8254106978242259C2FD5ABB2EFB0E1FCE600C61B4887D12F9549E008145B0F8"
+      },
+      {
+        "File": "scene-1-disabled-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D67BB5136D3957DCDD2AA6436CE96D562D61E894A443CC5A9F236F1F65725FE"
+      },
+      {
+        "File": "scene-1-disabled-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1D9C04CF63AC295C6A4FFEB0040D90F20A617F67C7A3AC8437850265C674C632"
+      },
+      {
+        "File": "scene-1-disabled-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "41E19D087504F973478446DA8F96A896A3D9A8FB768E83FDCECD87CD31400033"
+      },
+      {
+        "File": "scene-1-disabled-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "97330000594CBBD17C4AA144CC1EBC3AE2634DEC0C5FD2B24E8A4FF2E681A49D"
+      },
+      {
+        "File": "scene-1-disabled-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "E64039D02FBE04770EC58756973C78A20F49A5127FEB7B6F6F3AFEC9CE257677"
+      },
+      {
+        "File": "scene-1-disabled-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "484CB3E753F05C4F89DC17F8940557F63D5E41AA27034FE098EDF83B847F1794"
+      },
+      {
+        "File": "scene-1-disabled-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "5B475F904D04D75BE729CE53C0650921F294B842300F570CD65218FACE5D4CCB"
+      },
+      {
+        "File": "scene-1-disabled-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "4FC6D0DFC4DF5765F60624CFC6F379BCFFAB5029C9DC9F31765ED342F9B23239"
+      },
+      {
+        "File": "scene-1-switch-a-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D67BB5136D3957DCDD2AA6436CE96D562D61E894A443CC5A9F236F1F65725FE"
+      },
+      {
+        "File": "scene-1-switch-a-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1D9C04CF63AC295C6A4FFEB0040D90F20A617F67C7A3AC8437850265C674C632"
+      },
+      {
+        "File": "scene-1-switch-a-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "41E19D087504F973478446DA8F96A896A3D9A8FB768E83FDCECD87CD31400033"
+      },
+      {
+        "File": "scene-1-switch-a-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "97330000594CBBD17C4AA144CC1EBC3AE2634DEC0C5FD2B24E8A4FF2E681A49D"
+      },
+      {
+        "File": "scene-1-switch-a-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "918BBFE8323FCEC7540288F8337C31E67B4AC08FF63C03E40F3AE751D7BAC468"
+      },
+      {
+        "File": "scene-1-switch-a-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "306C3B8BD999B48E233B5D6BAF793AD0E09435B3FF11087C6F7D7CC554BCDA7F"
+      },
+      {
+        "File": "scene-1-switch-a-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "D1F6784B59D597600684ACAC46EEBAD285E17A92E678834108C65AB2D8E7A627"
+      },
+      {
+        "File": "scene-1-switch-a-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "4FC6D0DFC4DF5765F60624CFC6F379BCFFAB5029C9DC9F31765ED342F9B23239"
+      },
+      {
+        "File": "scene-1-switch-b-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D67BB5136D3957DCDD2AA6436CE96D562D61E894A443CC5A9F236F1F65725FE"
+      },
+      {
+        "File": "scene-1-switch-b-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1D9C04CF63AC295C6A4FFEB0040D90F20A617F67C7A3AC8437850265C674C632"
+      },
+      {
+        "File": "scene-1-switch-b-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "41E19D087504F973478446DA8F96A896A3D9A8FB768E83FDCECD87CD31400033"
+      },
+      {
+        "File": "scene-1-switch-b-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "97330000594CBBD17C4AA144CC1EBC3AE2634DEC0C5FD2B24E8A4FF2E681A49D"
+      },
+      {
+        "File": "scene-1-switch-b-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "918BBFE8323FCEC7540288F8337C31E67B4AC08FF63C03E40F3AE751D7BAC468"
+      },
+      {
+        "File": "scene-1-switch-b-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "306C3B8BD999B48E233B5D6BAF793AD0E09435B3FF11087C6F7D7CC554BCDA7F"
+      },
+      {
+        "File": "scene-1-switch-b-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "D1F6784B59D597600684ACAC46EEBAD285E17A92E678834108C65AB2D8E7A627"
+      },
+      {
+        "File": "scene-1-switch-b-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "4FC6D0DFC4DF5765F60624CFC6F379BCFFAB5029C9DC9F31765ED342F9B23239"
+      }
+    ]
+  },
+  {
+    "Repeat": 3,
+    "Files": [
+      {
+        "File": "scene-0-disabled-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "12182AC00DF016AF2410FC67BE1C3A9AEEE44CCFAFA10C8C7ECE720B08957B94"
+      },
+      {
+        "File": "scene-0-disabled-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "DD5A90EDFE6BE33B10562A1BCCAD64EA26063222C3AFF54F7AD266294130BB75"
+      },
+      {
+        "File": "scene-0-disabled-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "988E2798F4612C9B85754C8B8B18F84E66269FAEA594401AB434A7160F5BE43B"
+      },
+      {
+        "File": "scene-0-disabled-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F19BF197CB1F179F176F862AE1C3CDFD0BA66BC3323F7F871B6CB69B3B8AC29A"
+      },
+      {
+        "File": "scene-0-disabled-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "D1B102FC0123CDBEFE3779647A04214E71EBFB2C70FDDE29B976A8C083EDEA2D"
+      },
+      {
+        "File": "scene-0-disabled-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D08021733C54C0909BD3334A97FE5409EAB4CD60AAF960C243605FE180F6BD7"
+      },
+      {
+        "File": "scene-0-disabled-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F78B965F207224A5F7417706BC0DD54F280797FE072522291CE7F91A9D38F8D9"
+      },
+      {
+        "File": "scene-0-disabled-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "8254106978242259C2FD5ABB2EFB0E1FCE600C61B4887D12F9549E008145B0F8"
+      },
+      {
+        "File": "scene-0-switch-a-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "12182AC00DF016AF2410FC67BE1C3A9AEEE44CCFAFA10C8C7ECE720B08957B94"
+      },
+      {
+        "File": "scene-0-switch-a-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "DD5A90EDFE6BE33B10562A1BCCAD64EA26063222C3AFF54F7AD266294130BB75"
+      },
+      {
+        "File": "scene-0-switch-a-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "988E2798F4612C9B85754C8B8B18F84E66269FAEA594401AB434A7160F5BE43B"
+      },
+      {
+        "File": "scene-0-switch-a-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F19BF197CB1F179F176F862AE1C3CDFD0BA66BC3323F7F871B6CB69B3B8AC29A"
+      },
+      {
+        "File": "scene-0-switch-a-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1777158D180EBFA0751E8439872EA2705BC6ADA75A31118834066819ED630D11"
+      },
+      {
+        "File": "scene-0-switch-a-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "9227280EFE51903C98984127E1CD5132886500AC7B0FC6560D770CFED742C04E"
+      },
+      {
+        "File": "scene-0-switch-a-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "359B20A03E721CFE6210F5A39843021C39A8BA93E27DE826C5B42A74D8DE37F9"
+      },
+      {
+        "File": "scene-0-switch-a-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "8254106978242259C2FD5ABB2EFB0E1FCE600C61B4887D12F9549E008145B0F8"
+      },
+      {
+        "File": "scene-0-switch-b-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "12182AC00DF016AF2410FC67BE1C3A9AEEE44CCFAFA10C8C7ECE720B08957B94"
+      },
+      {
+        "File": "scene-0-switch-b-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "DD5A90EDFE6BE33B10562A1BCCAD64EA26063222C3AFF54F7AD266294130BB75"
+      },
+      {
+        "File": "scene-0-switch-b-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "988E2798F4612C9B85754C8B8B18F84E66269FAEA594401AB434A7160F5BE43B"
+      },
+      {
+        "File": "scene-0-switch-b-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "F19BF197CB1F179F176F862AE1C3CDFD0BA66BC3323F7F871B6CB69B3B8AC29A"
+      },
+      {
+        "File": "scene-0-switch-b-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1777158D180EBFA0751E8439872EA2705BC6ADA75A31118834066819ED630D11"
+      },
+      {
+        "File": "scene-0-switch-b-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "9227280EFE51903C98984127E1CD5132886500AC7B0FC6560D770CFED742C04E"
+      },
+      {
+        "File": "scene-0-switch-b-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "359B20A03E721CFE6210F5A39843021C39A8BA93E27DE826C5B42A74D8DE37F9"
+      },
+      {
+        "File": "scene-0-switch-b-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "8254106978242259C2FD5ABB2EFB0E1FCE600C61B4887D12F9549E008145B0F8"
+      },
+      {
+        "File": "scene-1-disabled-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D67BB5136D3957DCDD2AA6436CE96D562D61E894A443CC5A9F236F1F65725FE"
+      },
+      {
+        "File": "scene-1-disabled-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1D9C04CF63AC295C6A4FFEB0040D90F20A617F67C7A3AC8437850265C674C632"
+      },
+      {
+        "File": "scene-1-disabled-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "41E19D087504F973478446DA8F96A896A3D9A8FB768E83FDCECD87CD31400033"
+      },
+      {
+        "File": "scene-1-disabled-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "97330000594CBBD17C4AA144CC1EBC3AE2634DEC0C5FD2B24E8A4FF2E681A49D"
+      },
+      {
+        "File": "scene-1-disabled-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "E64039D02FBE04770EC58756973C78A20F49A5127FEB7B6F6F3AFEC9CE257677"
+      },
+      {
+        "File": "scene-1-disabled-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "484CB3E753F05C4F89DC17F8940557F63D5E41AA27034FE098EDF83B847F1794"
+      },
+      {
+        "File": "scene-1-disabled-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "5B475F904D04D75BE729CE53C0650921F294B842300F570CD65218FACE5D4CCB"
+      },
+      {
+        "File": "scene-1-disabled-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "4FC6D0DFC4DF5765F60624CFC6F379BCFFAB5029C9DC9F31765ED342F9B23239"
+      },
+      {
+        "File": "scene-1-switch-a-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D67BB5136D3957DCDD2AA6436CE96D562D61E894A443CC5A9F236F1F65725FE"
+      },
+      {
+        "File": "scene-1-switch-a-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1D9C04CF63AC295C6A4FFEB0040D90F20A617F67C7A3AC8437850265C674C632"
+      },
+      {
+        "File": "scene-1-switch-a-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "41E19D087504F973478446DA8F96A896A3D9A8FB768E83FDCECD87CD31400033"
+      },
+      {
+        "File": "scene-1-switch-a-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "97330000594CBBD17C4AA144CC1EBC3AE2634DEC0C5FD2B24E8A4FF2E681A49D"
+      },
+      {
+        "File": "scene-1-switch-a-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "918BBFE8323FCEC7540288F8337C31E67B4AC08FF63C03E40F3AE751D7BAC468"
+      },
+      {
+        "File": "scene-1-switch-a-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "306C3B8BD999B48E233B5D6BAF793AD0E09435B3FF11087C6F7D7CC554BCDA7F"
+      },
+      {
+        "File": "scene-1-switch-a-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "D1F6784B59D597600684ACAC46EEBAD285E17A92E678834108C65AB2D8E7A627"
+      },
+      {
+        "File": "scene-1-switch-a-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "4FC6D0DFC4DF5765F60624CFC6F379BCFFAB5029C9DC9F31765ED342F9B23239"
+      },
+      {
+        "File": "scene-1-switch-b-frame-0.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "7D67BB5136D3957DCDD2AA6436CE96D562D61E894A443CC5A9F236F1F65725FE"
+      },
+      {
+        "File": "scene-1-switch-b-frame-1.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "1D9C04CF63AC295C6A4FFEB0040D90F20A617F67C7A3AC8437850265C674C632"
+      },
+      {
+        "File": "scene-1-switch-b-frame-2.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "41E19D087504F973478446DA8F96A896A3D9A8FB768E83FDCECD87CD31400033"
+      },
+      {
+        "File": "scene-1-switch-b-frame-3.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "97330000594CBBD17C4AA144CC1EBC3AE2634DEC0C5FD2B24E8A4FF2E681A49D"
+      },
+      {
+        "File": "scene-1-switch-b-frame-4.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "918BBFE8323FCEC7540288F8337C31E67B4AC08FF63C03E40F3AE751D7BAC468"
+      },
+      {
+        "File": "scene-1-switch-b-frame-5.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "306C3B8BD999B48E233B5D6BAF793AD0E09435B3FF11087C6F7D7CC554BCDA7F"
+      },
+      {
+        "File": "scene-1-switch-b-frame-6.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "D1F6784B59D597600684ACAC46EEBAD285E17A92E678834108C65AB2D8E7A627"
+      },
+      {
+        "File": "scene-1-switch-b-frame-7.red.u16le",
+        "Bytes": 460800,
+        "SHA256": "4FC6D0DFC4DF5765F60624CFC6F379BCFFAB5029C9DC9F31765ED342F9B23239"
+      }
+    ]
+  }
+]
