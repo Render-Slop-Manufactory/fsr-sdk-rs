@@ -4,7 +4,7 @@
 > The supplied source table identifies a commit and file paths but contains no
 > direct source URLs; several implementation entries use descriptive names only.
 > Findings below are preserved as received, not independently reverified at intake.
-> This citation gap is tracked in the [current synthesis](../api-and-safety.md#m5-source-intake-and-provenance).
+> This citation gap is tracked in the [current synthesis](../upscaler-construction.md#m5-source-intake-and-provenance).
 
 **Investigation date:** 2026-09-22  
 **Target record:** `docs/research/records/2026-09-22-src-m5-upscaler-construction-validation.md`  

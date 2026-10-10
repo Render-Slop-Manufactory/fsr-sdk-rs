@@ -4,13 +4,19 @@
 //! Windows/DX12 tests use the production FfxLibrary instead.
 #![allow(non_snake_case)]
 use fsr_sdk_sys::api::*;
-use std::{cell::Cell, path::Path, rc::Rc};
+use std::{
+    path::Path,
+    sync::{
+        Arc,
+        atomic::{AtomicBool, Ordering},
+    },
+};
 
 pub(crate) struct FfxLibrary {
     create: PfnFfxCreateContext,
     destroy: PfnFfxDestroyContext,
     _library: libloading::Library,
-    release_probe: Option<Rc<Cell<bool>>>,
+    release_probe: Option<Arc<AtomicBool>>,
 }
 
 pub(crate) struct RuntimeState {
@@ -20,13 +26,13 @@ pub(crate) struct RuntimeState {
 impl Drop for FfxLibrary {
     fn drop(&mut self) {
         if let Some(probe) = &self.release_probe {
-            probe.set(true);
+            probe.store(true, Ordering::SeqCst);
         }
     }
 }
 
 impl FfxLibrary {
-    pub(crate) fn observe_release(&mut self, probe: Rc<Cell<bool>>) {
+    pub(crate) fn observe_release(&mut self, probe: Arc<AtomicBool>) {
         self.release_probe = Some(probe);
     }
 

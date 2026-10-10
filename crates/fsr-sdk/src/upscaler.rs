@@ -27,6 +27,16 @@ pub struct Dimensions {
 }
 
 impl Dimensions {
+    /// Width in pixels, suitable for renderer resource descriptions.
+    pub fn width(self) -> u32 {
+        self.width.get()
+    }
+
+    /// Height in pixels, suitable for renderer resource descriptions.
+    pub fn height(self) -> u32 {
+        self.height.get()
+    }
+
     /// Rejects either zero component before any native call.
     ///
     /// Returns [`Error::InvalidDimensions`] with the original values on failure.
@@ -214,13 +224,13 @@ impl Upscaler {
 mod dispatch;
 
 #[cfg(test)]
-#[path = "upscaler/tests.rs"]
+#[path = "upscaler/tests/mod.rs"]
 mod tests;
 
 #[cfg(test)]
-#[path = "upscaler/m6.rs"]
+#[path = "../tests/native/dispatch_readback.rs"]
 mod m6;
 
 #[cfg(test)]
-#[path = "upscaler/m6_recording.rs"]
+#[path = "../tests/native/recording_ahead.rs"]
 mod m6_recording;

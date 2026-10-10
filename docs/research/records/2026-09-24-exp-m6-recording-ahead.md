@@ -18,8 +18,8 @@
 ## Setup and reproduction
 
 The baseline was repository commit `76a604167f00679fc81c9247446fa65770ecad37`
-plus the uncommitted, opt-in probe in [the Rust test](../../../crates/fsr-sdk/src/upscaler/m6_recording.rs),
-[DX12 helper](../../../crates/fsr-sdk/tests/m6_gpu.cpp), and
+plus the uncommitted, opt-in probe in [the Rust test](../../../crates/fsr-sdk/tests/native/recording_ahead.rs),
+[DX12 helper](../../../crates/fsr-sdk/tests/native/gpu.cpp), and
 [runner](../../../crates/fsr-sdk/tests/run-m6-recording-spike.ps1). The helper's
 existing M6a path was factored to share readback logic and rerun as a control.
 No public dispatch method, constructor option, or production native ABI was

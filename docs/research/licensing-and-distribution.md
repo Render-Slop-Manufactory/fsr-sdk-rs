@@ -1,6 +1,6 @@
 # Licensing and distribution
 
-- Updated: 2026-09-25.
+- Updated: 2026-09-30.
 - Evidence: [license and package audit](records/2026-09-21-src-license-and-package-audit.md)
   and [DX12 provider-DLL resolution](records/2026-09-21-src-dx12-provider-dll-resolution.md),
   [distribution and artifact provenance](records/2026-09-22-src-distribution-artifact-provenance.md),
@@ -23,7 +23,11 @@ added package-local copies of LICENSE, package READMEs, source SPDX markers and
 contribution rules preserving AMD notices. At audit time, wrapper packaging
 failed because the `fsr-sdk-sys` path dependency lacked a version requirement.
 The [current wrapper manifest](../../crates/fsr-sdk/Cargo.toml) supplies
-`version = "0.1.0"`; a wrapper archive still has not been inspected. The
+`version = "0.1.0"`. The later
+[final artifact recheck](../release/2026-09-28-final-artifact-recheck.md)
+inspected both archives, including notices and normalized manifests; the
+[publication check](../release/2026-09-29-publication-check.md) records the
+published packages. The
 historical missing text is not by itself labeled a proven legal violation.
 
 **Setup verification:** both updated Cargo file lists include LICENSE and
@@ -40,7 +44,7 @@ This is not clearance of a future bundle or a claim about arbitrary AMD binaries
 
 **Deployment evidence:** AMD's tagged sample and documentation use executable-adjacent
 loader/effect DLLs, consistent with the recorded query experiment discussed in the
-[API and safety synthesis](api-and-safety.md#dx12-provider-discovery-and-deployment).
+[API and safety synthesis](runtime-loading.md#dx12-provider-discovery-and-deployment).
 **Verified runtime refinement:** the signed v2.3.0 directory experiment found that
 colocating loader and provider in a private directory was insufficient on the
 tested Windows configuration: acquisition succeeded but enumeration returned
@@ -123,8 +127,8 @@ or distribution choices are not completed by importing this report.
   attribution. The setup retains existing `MPL-2.0` metadata and documents the
   MIT notice separately; a future expression change requires an explicit decision.
   `OR` would incorrectly suggest an already-authorized package-wide license choice.
-- Inspect a local wrapper archive, including its notices, before claiming
-  package readiness. The path-dependency version is now present.
+- Repeat the archive and notice inspection for future releases. Both `0.1.0`
+  archives were inspected in the final artifact recheck linked above.
 - For any future binary distribution, inspect the exact contents and applicable
   dependency notices, rather than treating local test staging as a release bundle.
 - Copyrightability of individual ABI declarations, all-contributor title and

@@ -7,7 +7,7 @@
 > substantive findings and direct source links were retained. They were not
 > independently reverified at intake. See the later
 > [source provenance repair](2026-09-22-src-m5-construction-query-provenance-repair.md)
-> and [current synthesis](../api-and-safety.md#m5-source-intake-and-provenance).
+> and [current synthesis](../upscaler-construction.md#m5-source-intake-and-provenance).
 
 **Investigation date:** 2026-09-22  
 **Topic:** Public `ffxQuery` / `ffxConfigure` surface relevant to the modern FidelityFX upscaler  

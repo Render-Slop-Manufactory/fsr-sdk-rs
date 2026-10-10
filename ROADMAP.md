@@ -38,9 +38,10 @@ through one upscaler on the recorded AMD configuration.
 | Public Git history | Public repository and `v0.1.0` release/tag available |
 | Vulkan and other SDK effects | Not implemented; future work |
 
-**Current focus:** Maintain the published `0.1.0` baseline and its consumer
-documentation; select further API or profile work when a concrete requirement
-and supporting evidence are available.
+**Current focus:** Plan a small `0.2.0` around dispatch-input extensibility and
+one contained addition: sharpening. Maintain the published `0.1.0` as the
+regression baseline. The milestones below are planning scope; public contracts
+still need their own reviewed decisions before implementation.
 
 - [x] Two-crate Cargo workspace: `fsr-sdk-sys` and `fsr-sdk`.
 - [x] Initial module scaffolding for ABI, loading, context, errors, queries, and upscaling.
@@ -116,6 +117,73 @@ are not release dates or support promises.
 The first native milestone is loading, resolving symbols, and querying the
 runtime. It does not require image reconstruction or a complete public API.
 
+## Proposed 0.2.0 milestones
+
+The [2026-09-30 maintenance verification](docs/release/2026-09-30-review-verification.md)
+adds dimensions accessors, smaller implementation/test modules, pinned-header CI
+checks and Rust 1.88 CI coverage. The [semantic comparison](docs/research/records/2026-09-30-exp-dispatch-semantics.md)
+adds bounded motion/jitter/history-reset evidence and corrects the test image
+generator. These maintenance changes do not implement the proposed frame or
+sharpening extension below.
+
+Replace public `UpscaleDispatch` literals with a private, extensible frame
+representation and keep one dispatch path. Sharpening is the only new feature:
+a useful frame scalar requiring no new resources or creation flags.
+
+Basis: the [dispatch API synthesis](docs/research/upscaling-dispatch.md#broader-frame-surface-and-api-evolution)
+and [post-release surface record](docs/research/records/2026-09-29-src-dx12-upscaler-api-surface.md).
+These repository milestones continue M1–M6, independently of the record's
+numbering. D011 remains the current contract until the extension ADR is reviewed;
+D012 already covers creation-option extensibility.
+
+| Milestone | Scope | Done when |
+|---|---|---|
+| M7 — Dispatch API contract | ADR for private fields, construction/access methods, optional defaults and migration from `0.1.0` literals. | Approved contract; one unsafe dispatch route; GPU-lifetime, poison and cleanup obligations preserved. |
+| M8 — Extensible frame and sharpening | Implement the frame API and typed sharpening: disabled by default, finite `[0,1]` strength. Migrate examples. | Host/Windows checks cover defaults, rejection before FFI, descriptor mapping and existing failure paths. |
+| M9 — Verification and release | Repeat native lifecycle/dispatch/three-frame regressions; compare disabled/enabled sharpening on controlled detail inputs with matching history. | Recorded sharpening effect, finite readback, fenced cleanup, no debug errors/device removal; migration, Rustdoc and package/consumer checks complete. Publication remains separately authorized. |
+
+`0.2.0` does not include pre-exposure, automatic exposure, masks, changing active
+extents, new depth/MV conventions, HDR/non-linear color, public Query/Configure,
+provider override, movable public types, callbacks or custom allocation.
+Future mandatory inputs can still require a break; native comparisons establish
+only their recorded scope.
+
+## Milestones after 0.2.0
+
+Proposed scopes, without committed release versions. Compatible additions can
+use `0.2.x`; a breaking contract needs another minor version. Reorder independent
+work for concrete requirements and add one bounded capability at a time.
+
+| Milestone | Scope | Required boundary/evidence |
+|---|---|---|
+| M10 — Provider metadata and selected Queries | Owned names/opaque IDs; choose needed resource, memory, quality or jitter utilities. | Required ABI slices, routing and lifetimes verified. Provider override reviewed separately. |
+| M11 — Pre-exposure | Finite-positive frame scalar, default `1.0`. | Equivalent scenes at different factors produce comparable normalized outputs. |
+| M12 — Depth/MV profiles | Typed creation conventions and matching frame units; one profile at a time. | Controlled depth/motion tests cover camera rules, MV scale and jitter handling. |
+| M13 — Automatic exposure | Typed creation mode and matching exposure input contract. | Provider resource requirements plus controlled luminance comparisons; explicit mode remains the default. |
+| M14 — Active extents | Dynamic render resolution first; variable output verified separately. | Allocation/maxima/active bounds, sentinel regions and temporal size transitions checked. |
+| M15 — Supplied masks | Optional reactive and transparency/composition resources. | Provider-aware requirements and transparency/disocclusion comparisons. |
+| M16 — HDR/non-linear color | Bounded creation, encoding and format/provider profile. | Comparative image-semantic tests with explicit exposure/tonemapping rules. |
+
+Configure tuning, debug callbacks/visualization, automatic mask generation,
+custom allocators, SDK acquisition, other effects and backends remain separate
+backlog items. Assign their milestones when a use case and contract justify
+them. Controlled temporal tests accompany relevant capabilities.
+
+### Independent D013 track
+
+[D013](docs/adr/D013.md) remains proposed and is outside `0.2.0` release scope.
+Its evidence work can proceed in parallel; it is not a gate for M7–M9.
+
+1. **D013-A — Evidence:** [compile/host probes passed](docs/research/records/2026-09-29-exp-d013-movable-compile-host.md).
+   [Windows fixtures passed](docs/research/records/2026-09-29-exp-d013-windows-fixtures.md).
+   Sanitizers, controlled native fenced transfers and
+   regressions remain open; include siblings and final release elsewhere.
+2. **D013-B — Review:** assess a concrete integration and the lasting transfer,
+   serialization and cleanup contract. Accept, revise or defer explicitly.
+3. **D013-C — Optional API:** after acceptance, implement/document the movable
+   family and verify public traits/features plus native behavior. Select its
+   later release then; one passing configuration is no universal AMD guarantee.
+
 ## Deferred work
 
 - Broader dispatch behavior: temporal reconstruction, varying exposure, other
@@ -132,7 +200,11 @@ runtime. It does not require image reconstruction or a complete public API.
 
 ## Next actions
 
-1. Maintain the published `0.1.0` consumer guidance and use the recorded checks
+1. Start M7 with the concrete migration and sharpening contract. Keep `0.2.0`
+   scoped to M7–M9; defer the later capabilities to their own milestones.
+2. Continue D013-A independently, without coupling the `0.2.0` release to native
+   threading research.
+3. Maintain the published `0.1.0` consumer guidance and use the recorded checks
    as a baseline for subsequent changes. The
    [final Windows verification](docs/research/records/2026-09-28-exp-final-windows-release-verification.md)
    passed the public-route regression and the bounded three-frame moving smoke
@@ -141,12 +213,10 @@ runtime. It does not require image reconstruction or a complete public API.
    [GBV spike](docs/research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md)
    localized a separate timeout to native `ffxDispatch` on the tested setup;
    its provider/driver/validation cause remains unresolved.
-2. Repeat the relevant package and consumer checks for future releases. The
+4. Repeat the relevant package and consumer checks for future releases. The
    [final post-Windows artifact recheck](docs/release/2026-09-28-final-artifact-recheck.md)
    passed for the committed candidate, including regenerated archives,
    publish dry-runs, isolated consumers and Windows-target checks. Its source and
    archive identities describe the pre-publication candidate. The
    [publication check](docs/release/2026-09-29-publication-check.md) separately
    records the public `0.1.0` packages and hosted documentation.
-3. Pursue broader profiles, other SDK `v2.3.0` questions and new backends only
-   when a concrete follow-on requirement calls for them.

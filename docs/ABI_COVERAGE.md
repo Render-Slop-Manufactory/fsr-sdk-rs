@@ -19,8 +19,9 @@ No `bindgen` output is currently checked in. The public raw crate binds no other
 Query or Configure descriptor payloads and only the narrow upscaler Dispatch
 payload and resources above.
 The five common function-pointer signatures exist, but they do not by themselves
-provide those operations. Windows CI does not compile the paired C++ checks or
-run tests requiring AMD DLLs or a DX12 device; see [development](DEVELOPMENT.md)
+provide those operations. Windows CI compiles all three paired C++ probes against
+hash-verified headers at the pinned commit. It does not run tests requiring AMD
+DLLs or a DX12 device; see [development](DEVELOPMENT.md)
 for the separate verification paths and [roadmap](../ROADMAP.md) for current
 runtime status.
 

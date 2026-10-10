@@ -9,6 +9,7 @@ categories = ["external-ffi-bindings", "rendering", "game-development"]
 # These runners require the complete repository checkout.
 exclude = ["tests/**/*.ps1"]
 edition.workspace = true
+rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
 

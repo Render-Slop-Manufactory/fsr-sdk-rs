@@ -108,7 +108,7 @@
 //! at the configured output size. Active sizes equal the context maxima. HDR,
 //! dynamic resolution, auto exposure, masks and sharpening are not exposed.
 //! Vulkan, Frame Generation, Ray Regeneration, Radiance Caching and engine
-//! integrations are not implemented. The crate is preparing its first release.
+//! integrations are not implemented. The published baseline is `0.1.0`.
 //!
 //! [M6b](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-25-m6b-public-dispatch-verification.md)
 //! recorded one submitted, fenced public dispatch and plausible readback on one

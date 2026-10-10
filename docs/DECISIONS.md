@@ -90,7 +90,18 @@ the replacement. Update SCOPE.md if project boundaries change.
 
 [Read D012](adr/D012.md)
 
+## D013 — Optional movable runtime/upscaler family
+
+**Status:** proposed; compile/host and Windows fixture experiments completed,
+no public movable API
+
+[Read D013](adr/D013.md)
+
 ## Open choices
+
+The optional movable runtime/upscaler family in [D013](adr/D013.md) remains a
+proposal. Its conditional thread-transfer contract and acceptance gates require
+review; the existing D008 types remain confined to their acquiring thread.
 
 Concrete binding-slice selections under D006 and public APIs beyond D008/D011/D012
 remain undecided. [D011](adr/D011.md) accepts the first public DX12 dispatch

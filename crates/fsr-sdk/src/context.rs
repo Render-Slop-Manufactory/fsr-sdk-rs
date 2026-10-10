@@ -9,28 +9,54 @@ use crate::{
 #[cfg(all(windows, feature = "dx12"))]
 use fsr_sdk_sys::api::ffxDispatchDescHeader;
 use fsr_sdk_sys::api::{FFX_API_RETURN_OK, ffxContext, ffxCreateContextDescHeader};
-use std::{marker::PhantomData, mem, ptr::null_mut, rc::Rc};
+use std::{marker::PhantomData, mem, ptr::null_mut, rc::Rc, sync::Arc};
+
+mod sealed {
+    use super::*;
+
+    pub trait Retention {}
+    impl Retention for Rc<RuntimeState> {}
+    impl Retention for Arc<RuntimeState> {}
+}
+
+// Closed ownership choices for the D013 experiment. Production still uses Rc;
+// Arc instantiations and the only manual Send implementation live in tests.
+pub(crate) trait RuntimeRetention: sealed::Retention {
+    fn runtime_state(&self) -> &RuntimeState;
+}
+
+impl RuntimeRetention for Rc<RuntimeState> {
+    fn runtime_state(&self) -> &RuntimeState {
+        self
+    }
+}
+
+impl RuntimeRetention for Arc<RuntimeState> {
+    fn runtime_state(&self) -> &RuntimeState {
+        self
+    }
+}
 
 // Field order is cleanup order: retained state, owned device, then runtime.
 // D is a private owned dependency, not a backend trait or public extension point.
 // Production instantiates it only with an owned ID3D12Device; tests use drop spies.
-struct Dependencies<S, D> {
+struct Dependencies<S, D, R> {
     state: S,
     device: D,
-    runtime: Rc<RuntimeState>,
+    runtime: R,
 }
 
-struct LiveContext<S, D> {
+struct LiveContext<S, D, R> {
     handle: ffxContext,
-    dependencies: Dependencies<S, D>,
+    dependencies: Dependencies<S, D, R>,
 }
 
-pub(crate) struct NativeContextOwner<S, D> {
-    live: Option<LiveContext<S, D>>,
+pub(crate) struct NativeContextOwner<S, D, R: RuntimeRetention = Rc<RuntimeState>> {
+    live: Option<LiveContext<S, D, R>>,
     _not_send_sync: PhantomData<Rc<()>>,
 }
 
-impl<S, D> NativeContextOwner<S, D> {
+impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
     /// # Safety
     /// `root` must point into valid, address-stable storage retained by `state`.
     /// It must describe the matching owned device and runtime. All referenced
@@ -46,7 +72,7 @@ impl<S, D> NativeContextOwner<S, D> {
     pub(crate) unsafe fn create(
         state: S,
         device: D,
-        runtime: Rc<RuntimeState>,
+        runtime: R,
         root: *mut ffxCreateContextDescHeader,
     ) -> Result<Self, Error> {
         let dependencies = Dependencies {
@@ -60,6 +86,7 @@ impl<S, D> NativeContextOwner<S, D> {
         let code = unsafe {
             dependencies
                 .runtime
+                .runtime_state()
                 .library
                 .ffxCreateContext(&mut handle, root, std::ptr::null())
         };
@@ -104,6 +131,7 @@ impl<S, D> NativeContextOwner<S, D> {
         let code = unsafe {
             live.dependencies
                 .runtime
+                .runtime_state()
                 .library
                 .ffxDestroyContext(&mut live.handle, std::ptr::null())
         };
@@ -143,6 +171,7 @@ impl<S, D> NativeContextOwner<S, D> {
         unsafe {
             live.dependencies
                 .runtime
+                .runtime_state()
                 .library
                 .ffxDispatch(&mut live.handle, desc)
         }
@@ -159,13 +188,14 @@ impl<S, D> NativeContextOwner<S, D> {
         unsafe {
             live.dependencies
                 .runtime
+                .runtime_state()
                 .library
                 .ffxQuery(&mut live.handle, desc)
         }
     }
 }
 
-impl<S, D> Drop for NativeContextOwner<S, D> {
+impl<S, D, R: RuntimeRetention> Drop for NativeContextOwner<S, D, R> {
     fn drop(&mut self) {
         let _ = self.teardown();
     }
@@ -174,3 +204,7 @@ impl<S, D> Drop for NativeContextOwner<S, D> {
 #[cfg(test)]
 #[path = "context/tests.rs"]
 mod tests;
+
+#[cfg(test)]
+#[path = "context/d013_movable.rs"]
+mod d013_movable;

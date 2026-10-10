@@ -1,8 +1,8 @@
 # Upscaling dispatch: DX12 and frame semantics
 
-- Updated: 2026-09-29.
+- Updated: 2026-09-30.
 - Scope: source research and bounded Windows/DX12 public dispatch, recording-ahead
-  and temporal smoke evidence against AMD FSR SDK `v2.3.0`
+  temporal smoke and controlled semantic comparisons against AMD FSR SDK `v2.3.0`
   (`60f4ea81909200d8542eca14dccb2628b763a9a3`), whose upscaler API version
   is 4.1.1. Source analysis and executed GPU results are distinguished below.
 - Included records: [dispatch ABI](records/2026-09-24-src-m6-upscale-dispatch-abi.md),
@@ -35,6 +35,15 @@ came from a brief; this intake compared it with the records and proposed D011
 here. Their source findings are not new GPU results.
 
 ## Current findings
+
+**Verified controlled comparisons:** the
+[2026-09-30 semantic experiment](records/2026-09-30-exp-dispatch-semantics.md)
+found and corrected the synthetic image generator's jitter sign. On the recorded
+provider, matching horizontal UV motion and projection jitter now have lower
+analytic error than deliberately reversed inputs; accumulated history affects
+output, and a reset matches a fresh reset context. This adds bounded semantic
+coverage to the smoke tests, with 33 finite, fenced outputs and clean debug/device
+checks. It is not a general temporal image-quality result.
 
 **Verified current Windows coverage:** the
 [final verification record](records/2026-09-28-exp-final-windows-release-verification.md)
@@ -319,7 +328,7 @@ agrees with the narrow D011 profile at the same SDK commit. Its inventory and
 design proposals add no GPU execution or temporal-quality evidence. Selected
 header declarations were checked at intake; the complete source claim set was
 not independently reverified. Provider/Query/Configure findings are integrated
-in [API and safety](api-and-safety.md#post-v010-upscaler-surface).
+in [API and safety](runtime-threading.md#post-v010-upscaler-surface).
 
 **Verified source surface:** the existing raw dispatch descriptor already has
 sharpening, pre-exposure, masks, active render/output extents and dispatch flags.
@@ -445,7 +454,10 @@ contracts remain unresolved within their existing scope.
    with applied jitter and current-to-previous UV motion. Its coarse finite/
    changed-output assertions do not establish correct reconstruction, history
    use, reset effectiveness or image quality. Recording ahead with zero motion
-   also does not answer those questions. No arbitrary overlap or general
+   also does not answer those questions. The [controlled semantic comparisons](records/2026-09-30-exp-dispatch-semantics.md)
+   now cover horizontal motion direction, jitter direction, history sensitivity
+   and reset for one scene/configuration; broader reconstruction remains open.
+   No arbitrary overlap or general
    cross-queue support is established.
 5. **Later scope:** output format range, alpha behavior, aliasing, nontrivial
    resource shapes, COMPUTE lists, dynamic output size and general concurrency.

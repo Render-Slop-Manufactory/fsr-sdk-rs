@@ -6,7 +6,7 @@ use crate::runtime::FfxLibrary;
 #[cfg(all(windows, feature = "dx12"))]
 use fsr_sdk_sys::loader::FfxLibrary;
 #[cfg(not(all(windows, feature = "dx12")))]
-use std::cell::Cell;
+use std::sync::{Arc, atomic::AtomicBool};
 use std::{
     cell::RefCell,
     ffi::c_void,
@@ -16,7 +16,7 @@ use std::{
 };
 
 #[path = "../../tests/fixtures/lifecycle.rs"]
-mod fixture;
+pub(super) mod fixture;
 
 static NEXT: AtomicUsize = AtomicUsize::new(0);
 
@@ -30,7 +30,7 @@ fn directory() -> PathBuf {
     path
 }
 
-fn library() -> (FfxLibrary, PathBuf) {
+pub(super) fn library() -> (FfxLibrary, PathBuf) {
     let path = directory().join(format!("fixture{}", std::env::consts::DLL_SUFFIX));
     let output = Command::new("rustc")
         .args([
@@ -59,7 +59,7 @@ fn assert_loaded(ledger: &Ledger, expected: bool) {
         expected
     );
     #[cfg(not(all(windows, feature = "dx12")))]
-    assert_eq!(!ledger.released.get(), expected);
+    assert_eq!(!ledger.released.load(Ordering::SeqCst), expected);
 }
 
 struct Ledger {
@@ -67,7 +67,7 @@ struct Ledger {
     #[cfg(all(windows, feature = "dx12"))]
     path: PathBuf,
     #[cfg(not(all(windows, feature = "dx12")))]
-    released: Rc<Cell<bool>>,
+    released: Arc<AtomicBool>,
 }
 
 extern "C" fn event(data: *mut c_void, value: u32) {
@@ -107,7 +107,7 @@ fn create(
         #[cfg(all(windows, feature = "dx12"))]
         path,
         #[cfg(not(all(windows, feature = "dx12")))]
-        released: Rc::new(Cell::new(false)),
+        released: Arc::new(AtomicBool::new(false)),
     });
     #[cfg(not(all(windows, feature = "dx12")))]
     let library = {
@@ -164,7 +164,7 @@ fn shared_runtime() -> (Rc<crate::runtime::RuntimeState>, Rc<Ledger>) {
         #[cfg(all(windows, feature = "dx12"))]
         path,
         #[cfg(not(all(windows, feature = "dx12")))]
-        released: Rc::new(Cell::new(false)),
+        released: Arc::new(AtomicBool::new(false)),
     });
     #[cfg(not(all(windows, feature = "dx12")))]
     let library = {
@@ -373,6 +373,21 @@ use context::NativeContextOwner;
             "consumed",
             "fn use_owner(owner: NativeContextOwner<(), ()>) { let _ = owner.destroy(); drop(owner); }",
             Some("E0382"),
+        ),
+        (
+            "arc_positive",
+            "fn use_owner(owner: NativeContextOwner<(), (), std::sync::Arc<runtime::RuntimeState>>) { let _ = owner.destroy(); }",
+            None,
+        ),
+        (
+            "family_mismatch",
+            "fn requires_local(_: NativeContextOwner<(), ()>) {} fn mix(owner: NativeContextOwner<(), (), std::sync::Arc<runtime::RuntimeState>>) { requires_local(owner); }",
+            Some("E0308"),
+        ),
+        (
+            "retention_sealed",
+            "struct CustomRuntime(runtime::RuntimeState); impl context::RuntimeRetention for CustomRuntime { fn runtime_state(&self) -> &runtime::RuntimeState { &self.0 } }",
+            Some("E0277"),
         ),
         (
             "private",

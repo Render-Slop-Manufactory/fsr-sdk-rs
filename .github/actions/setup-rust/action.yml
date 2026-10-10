@@ -1,9 +1,13 @@
 # SPDX-License-Identifier: MPL-2.0
 
 name: Set up Rust
-description: Install stable Rust and restore the Cargo cache
+description: Install the selected Rust toolchain and restore the Cargo cache
 
 inputs:
+  toolchain:
+    description: Rust toolchain version
+    required: false
+    default: stable
   components:
     description: Comma-separated rustup components
     required: false
@@ -12,9 +16,10 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Install stable Rust
+    - name: Install Rust
       shell: bash
       env:
+        SETUP_RUST_TOOLCHAIN: ${{ inputs.toolchain }}
         SETUP_RUST_COMPONENTS: ${{ inputs.components }}
       run: |
         set -euo pipefail
@@ -30,8 +35,8 @@ runs:
           done
         fi
 
-        rustup toolchain install stable "${install_args[@]}"
-        rustup default stable
+        rustup toolchain install "$SETUP_RUST_TOOLCHAIN" "${install_args[@]}"
+        rustup default "$SETUP_RUST_TOOLCHAIN"
         rustc --version --verbose
         cargo --version --verbose
 

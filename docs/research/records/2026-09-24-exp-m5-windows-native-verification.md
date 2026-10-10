@@ -18,7 +18,7 @@ manifest, or lockfile changed for the native run. The public path under test
 used `Runtime::load` and `Upscaler::new`, with shared loader retention and an
 independent COM reference to the borrowed device. The existing
 [M5 runner](../../../crates/fsr-sdk/tests/run-m5.ps1),
-[native lifecycle tests](../../../crates/fsr-sdk/src/upscaler/tests.rs), and
+[native lifecycle tests](../../../crates/fsr-sdk/src/upscaler/tests/lifecycle.rs), and
 [paired C++ ABI check](../../../crates/fsr-sdk-sys/tests/context_lifecycle/native_abi.cpp)
 were the executable evidence. Documentation was updated after the run. This
 record does not archive the tested source tree; a later checkout requires a new

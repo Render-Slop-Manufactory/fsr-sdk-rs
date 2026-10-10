@@ -36,8 +36,8 @@ GPU-based validation was disabled for the successful run.
 
 These hashes identify the local test inputs, not an independently authenticated
 SDK archive. The [runner](../../../crates/fsr-sdk/tests/run-m6.ps1),
-[Rust native test](../../../crates/fsr-sdk/src/upscaler/m6.rs), and
-[DX12 helper](../../../crates/fsr-sdk/tests/m6_gpu.cpp) contain the executable
+[Rust native test](../../../crates/fsr-sdk/tests/native/dispatch_readback.rs), and
+[DX12 helper](../../../crates/fsr-sdk/tests/native/gpu.cpp) contain the executable
 setup. In an x64 Visual Studio developer environment with the local SDK at
 `external/FidelityFX-SDK/v2.3.0`, the successful invocation was:
 

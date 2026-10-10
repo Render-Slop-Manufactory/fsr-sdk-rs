@@ -23,7 +23,7 @@ loader and upscaler DLLs, unchanged public M5 `Runtime::load` and
 
 The probe adds only test instrumentation: two test-build markers around the
 private native call in [`dispatch.rs`](../../../crates/fsr-sdk/src/upscaler/dispatch.rs),
-an optional control branch in [`m6.rs`](../../../crates/fsr-sdk/src/upscaler/m6.rs)
+an optional control branch in [`m6.rs`](../../../crates/fsr-sdk/tests/native/dispatch_readback.rs)
 selected by `FSR_SDK_TEST_M6_CONTROL`, and a bounded
 [runner](../../../crates/fsr-sdk/tests/run-m6-gbv-spike.ps1). The control
 still creates the signed provider context and checks all five DX12-to-FFX

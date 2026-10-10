@@ -53,11 +53,18 @@ upscaler. These results do not establish temporal image quality or support acros
 drivers, or providers. Native verification is limited to the recorded SDK,
 runtime/provider, GPU, driver and workload configurations; target support does
 not imply compatibility with every hardware/provider configuration.
+The current source also includes [controlled motion, jitter and history-reset
+comparisons](docs/research/records/2026-09-30-exp-dispatch-semantics.md), verified
+on that configuration; these add bounded semantic checks rather than a general
+image-quality benchmark.
 Vulkan and the other named SDK effects are not implemented.
 See [ROADMAP.md](ROADMAP.md) for current priorities and [D011](docs/adr/D011.md)
 for the dispatch contract.
 
 ## Crates
+
+The current source workspace requires Rust 1.88 or newer. CI tests exactly 1.88.0
+and current stable Rust on Ubuntu and Windows; see [development](docs/DEVELOPMENT.md).
 
 - [`fsr-sdk-sys`](https://crates.io/crates/fsr-sdk-sys) — low-level bindings to the native FidelityFX API
 - [`fsr-sdk`](https://crates.io/crates/fsr-sdk) — checked Rust abstractions built on the raw bindings, with an

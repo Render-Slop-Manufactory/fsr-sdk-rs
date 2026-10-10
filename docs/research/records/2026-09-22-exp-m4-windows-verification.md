@@ -16,7 +16,7 @@ worktree before execution. No production code, test code, manifests or lockfile
 were changed for this experiment. The existing
 [M4 runner](../../../crates/fsr-sdk/tests/run-m4.ps1),
 [owner fixtures](../../../crates/fsr-sdk/src/context/tests.rs),
-[native test](../../../crates/fsr-sdk/src/upscaler/tests.rs) and
+[native test](../../../crates/fsr-sdk/src/upscaler/tests/lifecycle.rs) and
 [C++ ABI probe](../../../crates/fsr-sdk-sys/tests/context_lifecycle/native_abi.cpp)
 are the executable evidence. Documentation was written after the run.
 

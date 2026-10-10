@@ -22,6 +22,30 @@ env:
   RUST_BACKTRACE: "1"
 
 jobs:
+  msrv:
+    name: Rust 1.88 (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2025]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Set up minimum Rust version
+        uses: ./.github/actions/setup-rust
+        with:
+          toolchain: 1.88.0
+      - name: Check all targets
+        run: cargo check --workspace --all-targets --locked
+      - name: Run tests
+        run: cargo test --workspace --locked
+      - name: Check without default features
+        run: cargo check --workspace --all-targets --no-default-features --locked
+
   rust-quality:
     name: Rust quality (Ubuntu)
     runs-on: ubuntu-24.04
@@ -68,6 +92,10 @@ jobs:
         uses: ./.github/actions/setup-rust
         with:
           components: clippy
+
+      - name: Check pinned native headers and ABI
+        shell: pwsh
+        run: ./tools/check-native-abi.ps1
 
       - name: Run Clippy
         run: cargo clippy --workspace --all-targets --locked -- -D warnings

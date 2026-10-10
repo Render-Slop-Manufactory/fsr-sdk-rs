@@ -1,0 +1,21 @@
+{
+  "commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+  "headers": [
+    {
+      "path": "api/include/ffx_api.h",
+      "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+    },
+    {
+      "path": "api/include/ffx_api_types.h",
+      "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+    },
+    {
+      "path": "api/include/dx12/ffx_api_dx12.h",
+      "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+    },
+    {
+      "path": "upscalers/include/ffx_upscale.h",
+      "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "sdk": "v2.3.0",
+  "header_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+  "source_fingerprints": [
+    {
+      "file": "crates/fsr-sdk/Cargo.toml",
+      "sha256_lf": "5c4abe61da2ec1ace7aaa9766de3f5277afe19cdc46ec2580e84c78f3c8bb760"
+    },
+    {
+      "file": "crates/fsr-sdk/LICENSE",
+      "sha256_lf": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04"
+    },
+    {
+      "file": "crates/fsr-sdk/LICENSE-AMD",
+      "sha256_lf": "53f952b9d392d281f3208be9bd4cd126f20b0fe10fc28cf316763b80173aa76f"
+    },
+    {
+      "file": "crates/fsr-sdk/README.md",
+      "sha256_lf": "78203397a10d049235a7b0fd485d9812db9f36f528b7df17b5cc97aac06efb05"
+    },
+    {
+      "file": "crates/fsr-sdk/examples/dx12_upscale.rs",
+      "sha256_lf": "a8663f1531a9a8605a0364944f0af762959e7b36c22778cd6c77ee5e32044bf3"
+    },
+    {
+      "file": "crates/fsr-sdk/src/context.rs",
+      "sha256_lf": "712bfa9d89af4396477499b5d0d6e891d41665cec7aefc8ba92fdd42bdc09951"
+    },
+    {
+      "file": "crates/fsr-sdk/src/error.rs",
+      "sha256_lf": "2e0941d4251d9ab2c966aecc1ce70d08e0ddef2a17323cbb2fd616ac2a946e14"
+    },
+    {
+      "file": "crates/fsr-sdk/src/lib.rs",
+      "sha256_lf": "8be2ccce53291149739dc71b793e1ed80fb16d1e5d93bb36dcf2bfa215c39924"
+    },
+    {
+      "file": "crates/fsr-sdk/src/query.rs",
+      "sha256_lf": "8b61287d73f06806e83a63ce6f2e8f135a6f728fbbede39111b576cb945af5e0"
+    },
+    {
+      "file": "crates/fsr-sdk/src/runtime.rs",
+      "sha256_lf": "e8cd070968b693fdbc363f6319302d0df51e4388e073499eb1829320e994e08d"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler.rs",
+      "sha256_lf": "dff06f099e7729e9c865877f37463ec479b041610f45239a80fe0168073eae89"
+    },
+    {
+      "file": "crates/fsr-sdk/src/context/d013_movable.rs",
+      "sha256_lf": "c228605b2f5d2151d3aaed14d46f183ded80901a91424919fec39279376852ac"
+    },
+    {
+      "file": "crates/fsr-sdk/src/context/test_runtime.rs",
+      "sha256_lf": "f90f5b5130f33f37b7ea3acb9d817a7d4bad62ee72c5db3fd64489be3bf203c4"
+    },
+    {
+      "file": "crates/fsr-sdk/src/context/tests.rs",
+      "sha256_lf": "f55788bfa085828f03901d2c0defb79ee87191f93769ea5a0e7fc1c247b10057"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/dispatch.rs",
+      "sha256_lf": "188e35a4d1f86cd99f1b5a572da2cf91af6eeb277e5eef684dd7550534e60ea4"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/dispatch/descriptor.rs",
+      "sha256_lf": "9cb33475f0b918de2314f638741909ce1c723ba431dad8db89bf06348bc37668"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/dispatch/frame.rs",
+      "sha256_lf": "ad0d1b4009abb7c646a92aa14dc895ed6b6c4697b992fe0a3a4764c589d4be9a"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/dispatch/resources.rs",
+      "sha256_lf": "4e4314f141d4b2a44e092b8af3335314c248dfec5f3d832537ad194023958bee"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/dispatch/tests.rs",
+      "sha256_lf": "e1e2904c34a32add3099bc525ac134f40c84473f4504d1cc96b5422319755d79"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/tests/com.rs",
+      "sha256_lf": "1297b991e2f105c1753e8dab829f96ae42107a894ec537fde63bb71196d2b336"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/tests/construction.rs",
+      "sha256_lf": "cfb5d68feeeead06968ba959d715459e4ee14bbbe00c1a09dad63561a60cfc22"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/tests/dispatch.rs",
+      "sha256_lf": "f72f2458a57a4432b618b65a62c01e75bd56d3d2346c81f4d072e4897659151c"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/tests/inspection.rs",
+      "sha256_lf": "4bf02f63065408340358a360fc23cfc0eb9268aa6169e09ad78e1428894bcb3b"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/tests/lifecycle.rs",
+      "sha256_lf": "dc7ea0408c0e244fda895fa0090e354509e98b69baa29985ba2249bcacd2c143"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/tests/mod.rs",
+      "sha256_lf": "e7d2059191cf834838b68f798c3d60c4ff634a3efca8afb700b9558cc7b60ac9"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/tests/support.rs",
+      "sha256_lf": "4b4c3df2b6e9d8ebd79e3789969f623517b745f16417b0b3e0cdc233f197e994"
+    },
+    {
+      "file": "crates/fsr-sdk/src/upscaler/tests/traits.rs",
+      "sha256_lf": "8aecc476821f68417a7ea1ccdd24d7d6b65c7425447b86c2839cadd684206c7d"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/dimensions.rs",
+      "sha256_lf": "f9c51406f69a0490f6d62d0f5b0ad6230cf6fe5b0a58ec23c144524f94d7ff3e"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/run-m4.ps1",
+      "sha256_lf": "9582fe92709aa072f8c36a083535f939b0b67ee4ae8c0ab28dbd26a4f99a044d"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/run-m5.ps1",
+      "sha256_lf": "0a1127e75ebf4112dd9b092e23c8cf463e4baea569e7a052196f462e10b51e7f"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/run-m6-gbv-spike.ps1",
+      "sha256_lf": "b243d53209c4cd0031358e92a34244c86fa5fca417a2ba61a6360c6ec29d9dc9"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/run-m6-recording-spike.ps1",
+      "sha256_lf": "582f8254b5868783dcb7ac0f383bf43fa02a7ebd571489f674a2a020179af7a7"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/run-m6.ps1",
+      "sha256_lf": "d232239a1327137cde25f37448f29ccdc4ab14d372528e586076a838a1e3a5cf"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/fixtures/lifecycle.rs",
+      "sha256_lf": "41eef79a0c5c91d36ba06e02671136bf349d8c7718aeb4a533d7a26942f2d101"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/fixtures/upscaler.rs",
+      "sha256_lf": "31e3f14f45f1889ad78bccd355de74e803fd9b6181e716fd6f4cb9bda75beb6a"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/native/dispatch_readback.rs",
+      "sha256_lf": "cbf30d2edd55eeb06b164e30e1dd981329ebc834b35ff3df49b290ac021e8228"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/native/gpu.cpp",
+      "sha256_lf": "4e481a75db094ae26e5544f80c8c43760ddf1461cb06fe049ad6adc40ed550c2"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/native/images.h",
+      "sha256_lf": "d97ab5c4023dd10ade07c0fd6b112210cc2d49f06e70319b1d56f3e25de214a1"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/native/recording_ahead.rs",
+      "sha256_lf": "4eacdc4e34553563ac9b6d093896aba5035fefb54b212432eac8286c3cea0e50"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/native/run.ps1",
+      "sha256_lf": "da56a67ef2ea20b1f251474db9abaab8e47a7e3c032ec2bbf616cdcd53637d86"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/native/semantics.rs",
+      "sha256_lf": "5f96d37a79d5dce80cf9f7a58a13ebf7ce7f7036c291f112e2fea8f2a3f5a2ae"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/native/single_frame.rs",
+      "sha256_lf": "07435a11658da05556fabb5ba3426b2bbc4c8453ca7e0bc3f64baaea53f4e958"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/native/support.rs",
+      "sha256_lf": "8876778dcb6a342e1d1b853b5c4cb6230a69cd2971cbee587973301527cef0b6"
+    },
+    {
+      "file": "crates/fsr-sdk/tests/native/temporal_smoke.rs",
+      "sha256_lf": "72ed5ff0ff26fc43b4e2bcec349b5a2955f39a5204f842bf4362d0624045a8ad"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/Cargo.toml",
+      "sha256_lf": "913c480885890ac013676a2d1a5992379a48451e3373f941876348fc78d394fa"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/LICENSE",
+      "sha256_lf": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/LICENSE-AMD",
+      "sha256_lf": "53f952b9d392d281f3208be9bd4cd126f20b0fe10fc28cf316763b80173aa76f"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/README.md",
+      "sha256_lf": "87bfa2b92e8899143530756f4b7433f0ab998649fb0ff1c5c3ab69fcf79e00ae"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/src/api.rs",
+      "sha256_lf": "9a7715837870294da27fb151cacfb7504ac49ad82c776c845a1b07abd180b42e"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/src/dx12.rs",
+      "sha256_lf": "dc1ac06c2bac22298ed7b16d272b1afb4ea27f2b82e32242fa2cfb6840f20af2"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/src/lib.rs",
+      "sha256_lf": "e6104fefe739cc2b37e5af2dc5ada9708b3596326b9e4d82752bce999ec017d6"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/src/loader.rs",
+      "sha256_lf": "6a17b88814e83e16de5fa6b5ae653338f0b584fd59c7ef883e0a9cd3abf7621a"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/src/upscale.rs",
+      "sha256_lf": "965fe75a5a2f6ed048ebb43f70afa290da12c84128b6dd5948bdb4b70bb0f968"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/abi.rs",
+      "sha256_lf": "49be46d02d41274b9e368304451a49c17af00971c5ce8350a9fd3970c0b4cf10"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/context_dimensions.rs",
+      "sha256_lf": "b0b5d367f8ccab23ed69bb73f0d01d16c14f44320870b5b5e1a1580253108a8a"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/context_lifecycle.rs",
+      "sha256_lf": "19f441de340037642c7173aeb110448f7dcb4e57b5116eb26952e7ec1ab0771c"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/dispatch_abi.rs",
+      "sha256_lf": "ac26876602baf820df05d3066b388656b84d074225ca67a3768b310d6c4c6bcd"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/dispatch_native_abi.cpp",
+      "sha256_lf": "66d0a4db60359dece0c8be08d7adcad75fe5242e8e02270c4ee295f5c1854162"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/loader.rs",
+      "sha256_lf": "78168b5da4096a98fed0ad84f6afb383d9dfe831888d70cb62de1d541382ac13"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/native_abi.cpp",
+      "sha256_lf": "db30b63877ad7dd777c0198f7bce6c1005d4accd58d9d337e818fc069e41401b"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/query.rs",
+      "sha256_lf": "2ab38a056af878881c6f87194d22c4cafe1ffe4c2ac819388b6e0380bea11606"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/shared_runtime.rs",
+      "sha256_lf": "b69737490532d1e9f64c36acf0b2d321e9b20e4dc809d6595880dfd17a354805"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/context_dimensions/run.ps1",
+      "sha256_lf": "e3227456c56fcd80922aedfe1ae6448a0f1027da016b480651d6588cabdd4adc"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/context_lifecycle/abi.rs",
+      "sha256_lf": "a4cdc4320355573eb61add896b2f240ddbd1fa5020204b261839763dff221ab0"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/context_lifecycle/allocator.rs",
+      "sha256_lf": "9dda7aa65334e7d69afe8d9a400c1014acf91bd861f83468fab8ddd210e95fc8"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp",
+      "sha256_lf": "e32996bb211a022696f5c87f89f2cd23fb87f4ed77344e64b11257b4f649b224"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/context_lifecycle/input_lifetime.rs",
+      "sha256_lf": "25e077f2f0113f886e62d1f7f081cd9ffaf522061ad208f71f9843a81965c913"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/context_lifecycle/native_abi.cpp",
+      "sha256_lf": "a1727da7904034acf4024557db1a0f870e420c0b6e1998ba44d2041b98733b39"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/context_lifecycle/run.ps1",
+      "sha256_lf": "e8fa9ef649933c16514c76d7087d1af67267fe199e976473b14748c8dfd42b31"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/fixtures/loader.rs",
+      "sha256_lf": "3c6df36202c459e4488cf4158480196168836fdf7f760f0e0542746206af1e21"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/provider_resolution/modules.rs",
+      "sha256_lf": "48a62c05996e40ba6b02898622915746672c52197ca2d63e89ba012f96cb601e"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/provider_resolution/run.ps1",
+      "sha256_lf": "f83232350c1e5932f355cb6d3354ca2371468ab93c561f485788a816dab63190"
+    },
+    {
+      "file": "crates/fsr-sdk-sys/tests/shared_runtime/run.ps1",
+      "sha256_lf": "26e011f9c8f50212c7adf0353f71711464dd4552bff0c464ddec5072d3daa279"
+    },
+    {
+      "file": "Cargo.toml",
+      "sha256_lf": "8f0c9575c90e06e252a824a0c2d26a3e4ebba8317700be501f3ec4e834f2f889"
+    },
+    {
+      "file": "Cargo.lock",
+      "sha256_lf": "9bfce6f10c4c9cd4f79afb03e4c88c8d11f89aa6fa11dfe3a8475beb9329caec"
+    },
+    {
+      "file": "tools/check-native-abi.ps1",
+      "sha256_lf": "50a7a201eff17a78654c0f1b1e82f7379b549c8c267476d26e097762d0b6c880"
+    },
+    {
+      "file": "tools/native-headers.json",
+      "sha256_lf": "ceaf9b7d9987749ad9b77ce8e8a05e321b095d471c9af9d73d8a99160c663ff6"
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "sha256_lf": "c63081394d6fd9cd3e77a1cef5ea3967a9d042ed73c8fed7c87adf73745bf737"
+    },
+    {
+      "file": ".github/actions/setup-rust/action.yml",
+      "sha256_lf": "282358542a665d3626c1ce2249d7c379846609b8f63d5135e5827bd3a0894630"
+    }
+  ]
+}

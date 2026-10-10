@@ -71,7 +71,7 @@ for current status and future scope.
 
 Original code is licensed under [MPL-2.0](LICENSE).
 The `fsr-sdk-sys` dependency retains AMD's MIT notice for its header-derived
-declarations. The test-only provider-query declaration in `src/upscaler/tests.rs`
+declarations. The test-only provider-query declaration in `src/upscaler/tests/lifecycle.rs`
 and the constructor fixture in `tests/fixtures/upscaler.rs` follow SDK v2.3.0
 `Kits/FidelityFX/api/include/ffx_api.h` at commit
 `60f4ea81909200d8542eca14dccb2628b763a9a3`; its AMD notice is retained in
