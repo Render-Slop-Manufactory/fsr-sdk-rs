@@ -1,9 +1,9 @@
 # Upscaling dispatch: DX12 and frame semantics
 
-- Updated: 2026-10-09 (D014/D016 status, M8 implementation and selected M9 integration protocol integrated; existing native protocols rerun separately).
+- Updated: 2026-10-10 (M9 public native integration and exact candidate-artifact verification integrated; original failed effect gate preserved).
 - Scope: source research and bounded Windows/DX12 public dispatch, recording-ahead
-  temporal smoke, controlled semantic comparisons and a test-only sharpening
-  experiment against AMD FSR SDK `v2.3.0`
+  temporal smoke, controlled semantic comparisons, a test-only sharpening
+  experiment and public sharpening integration against AMD FSR SDK `v2.3.0`
   (`60f4ea81909200d8542eca14dccb2628b763a9a3`), whose upscaler API version
   is 4.1.1. Source analysis and executed GPU results are distinguished below.
 - Included records: [dispatch ABI](records/2026-09-24-src-m6-upscale-dispatch-abi.md),
@@ -20,7 +20,8 @@
   the [final Windows regression/temporal smoke](records/2026-09-28-exp-final-windows-release-verification.md),
   the [broader DX12 upscaler surface](records/2026-09-29-src-dx12-upscaler-api-surface.md),
   the [controlled semantic comparisons](records/2026-09-30-exp-dispatch-semantics.md),
-  and the [D014 native sharpening spike](records/2026-09-30-exp-d014-native-sharpening.md).
+  the [D014 native sharpening spike](records/2026-09-30-exp-d014-native-sharpening.md),
+  and the [M9 public native and candidate verification](../release/2026-10-10-m9-verification.md).
 
 The initial M6 source records list pinned primary sources, but their original inline
 citation tokens had no index-to-source map. Those tokens were removed at intake.
@@ -38,6 +39,16 @@ came from a brief; this intake compared it with the records and proposed D011
 here. Their source findings are not new GPU results.
 
 ## Current findings
+
+**Verified M9 public integration:** the
+[2026-10-10 verification](../release/2026-10-10-m9-verification.md) passed the
+selected protocol through both development source and the unmodified extracted
+`fsr-sdk 0.2.0` candidate. Each run completed three isolated repetitions and
+144 finite, written, fenced outputs, including same-context sharpening changes
+with continuing history, clean ordinary debug/device checks and explicit cleanup.
+This closes the public-API native integration and local artifact-verification
+gap on the recorded AMD configuration; publication remains pending. The original
+sharpening effect gate remains failed, and no general quality or GBV claim follows.
 
 **Maintenance recheck:** the [2026-10-09 verification](../release/2026-10-09-windows-native-recheck.md)
 reran public dispatch, temporal/semantic comparisons and all six recording-ahead
@@ -371,8 +382,10 @@ retaining the existing route plus an extensible advanced frame input, or a
 breaking release with one private-field frame representation. The maintainer
 subsequently accepted [D014](../adr/D014.md) for the latter `0.2.0` route;
 M8 is now implemented and checked in the
-[2026-10-09 implementation record](../release/2026-10-09-m8-implementation-verification.md),
-while M9 native and final artifact verification remain pending. This preserves
+[2026-10-09 implementation record](../release/2026-10-09-m8-implementation-verification.md).
+[M9](../release/2026-10-10-m9-verification.md) subsequently passed public native
+integration and exact local candidate-artifact checks on the recorded configuration.
+This preserves
 `unsafe dispatch(&mut self, ...)`, renderer ownership, poison behavior and
 GPU-completion obligations.
 
@@ -441,13 +454,51 @@ for D014 now selects exact mapping and bounded successful native/GPU execution
 without additional sharpening image-effect thresholds, while this original
 result stays failed. The original thresholds were not adopted as release gates.
 The maintainer accepted D014's API/migration and bounded native-pass trust on
-2026-10-07; M8 is implemented and its M9 protocol selected, with native execution
-and final artifact verification pending. D011's unsafe
+2026-10-07; M8 is implemented and the selected M9 protocol subsequently passed
+through public development and extracted-candidate APIs, as detailed below.
+D011's unsafe
 boundary, application GPU lifetimes and poison/cleanup obligations persist;
 its bounded allocator trust is extended to the native sharpening pass as a
 maintainer decision, not an experimental guarantee. The experiment establishes
 no new queue depth, cross-queue behavior, thread transfer or general provider
 support.
+
+## M9 public sharpening integration and candidate verification
+
+The [2026-10-10 record](../release/2026-10-10-m9-verification.md) executes the
+unchanged [selected protocol](../release/2026-10-09-m9-native-sharpening-protocol.md).
+It uses public `UpscaleResources`, `UpscaleDispatch`, the sharpening setter and
+unsafe `Upscaler::dispatch`; it does not use the historical spike's private
+descriptor override. Both runs identify signed SDK v2.3.0/provider 4.1.1,
+RX 9060 XT and driver `32.0.31041.1004`, with DLL fingerprints in the record.
+
+**Verified bounded execution:** development source and the unmodified extracted
+wrapper `0.2.0` artifact each completed three isolated repetitions of 48 outputs.
+For each of the two stationary scenes, switching A/B and always-Disabled contexts
+process eight matched jittered frames. Only frame 0 resets history; frames 3–7
+retain one context through `Disabled → Native(0) → Native(0.35) → Native(1) → Disabled`.
+All 288 outputs had completed fences, 230,400 finite RGBA pixels and full sentinel
+replacement. Each run had zero ordinary debug errors/device removal and 18
+successful explicit context destructions with post-teardown checks. Existing
+disabled lifecycle, single-frame, three-frame and semantic regressions also passed.
+
+**Verified diagnostic comparisons:** independent half-float audits
+confirmed 78 ROI comparisons per run, with matching diagnostics across both runs
+and their repetitions. Switching A/B were bit-equal; enabled zero differed from
+Disabled on both scenes. Returning to Disabled at frame 7 matched the control's
+ROI bits on this setup. This does not promise equality for arbitrary temporal
+histories. Exact native parameter forwarding, including negative zero, is
+established separately by scalar/descriptor and controlled-FFI fixtures; GPU
+success or output differences alone cannot establish mapping.
+
+**Artifact boundary:** the local candidate pairs `fsr-sdk 0.2.0` with
+`fsr-sdk-sys 0.1.1` and excludes D013's public `movable` family. Stable/MSRV,
+Rustdoc, migration/consumer controls, unchanged archives/extracted files and the
+publication dry-run passed; see [distribution findings](licensing-and-distribution.md).
+It remains unpublished. The selected integration gate has no image-effect
+thresholds and does not reinterpret the original failed experiment. GBV, moving
+scene sharpening quality, broader providers, allocation capacity, recording ahead
+with sharpening and cross-queue behavior gain no new evidence.
 
 [D016](../adr/D016.md) is the accepted cross-feature constraint for direct
 provider controls and explicit SDK quality policies. It adds no experimental
@@ -553,8 +604,9 @@ D014's API, native mapping or separately selected release protocol.
    resource shapes, COMPUTE lists, dynamic output size and general concurrency.
 6. **Later per-frame extensions:** D014's breaking private-frame representation
    and native sharpening are implemented and checked under
-   [M8](../release/2026-10-09-m8-implementation-verification.md); M9 GPU and final
-   artifact verification remain pending. Shared flag support, changing active extents,
+   [M8](../release/2026-10-09-m8-implementation-verification.md), with public GPU
+   integration and local candidate artifacts verified under
+   [M9](../release/2026-10-10-m9-verification.md). Shared flag support, changing active extents,
    exposure/mask requirements and image semantics need provider-specific evidence;
    the [surface record](records/2026-09-29-src-dx12-upscaler-api-surface.md)
    supplies proposals, not implementation authorization.
@@ -563,9 +615,9 @@ D014's API, native mapping or separately selected release protocol.
    enabled-pass execution and measurable changes on one configuration, including
    enabled zero, but fails the proposed effect criteria. The selected
    [M9 protocol](../release/2026-10-09-m9-native-sharpening-protocol.md) requires
-   integration evidence without new sharpening image-effect thresholds. Brightness
-   behavior, moving-scene quality and broader provider coverage remain unresolved;
-   D014 was separately accepted by the maintainer on 2026-10-07. Neither the
-   synthesis nor the spike verifies the now-implemented public sharpening API;
-   [M8 checks](../release/2026-10-09-m8-implementation-verification.md) establish
-   compilation and controlled FFI, with M9 GPU execution pending.
+   integration evidence without new sharpening image-effect thresholds and passed
+   in [M9 verification](../release/2026-10-10-m9-verification.md). D014 was separately
+   accepted by the maintainer on 2026-10-07. M8 fixtures establish exact wrapper
+   mapping; M9 establishes bounded public-API recording, GPU execution and cleanup.
+   Brightness preservation, moving-scene quality and broader provider coverage
+   remain unresolved. The original failed effect gate supplies no quality promise.

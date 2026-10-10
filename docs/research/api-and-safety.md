@@ -8,7 +8,7 @@ observations are summarized in [loading](runtime-loading.md),
 Existing failure-contract gaps, sharpening's failed effect gate and GBV's
 dispatch timeout remain; no architecture or safety contract changed.
 
-- Updated: 2026-10-09 (D013 review, acceptance and separate public implementation verification recorded; D014/M8 implementation and selected M9 protocol integrated).
+- Updated: 2026-10-10 (D014/M9 public native integration and candidate verification integrated; existing failure-contract and effect-gate limits preserved).
 - Scope: common ABI, loading, provider deployment, version enumeration, context
   lifecycle contracts and isolated create-failure experiments; M5 construction,
   Query/Configure, runtime-sharing source findings and bounded signed-runtime
@@ -18,8 +18,8 @@ dispatch timeout remain; no architecture or safety contract changed.
   Windows/DX12 transfers, native Rust-unwind cleanup and staged residency,
   transfer/cleanup source limits, Windows failure/unwind fixtures and a supplied
   soundness/architecture review;
-  D014's test-only native sharpening experiment; and older
-  FSR2 Rust binding comparisons. AMD execution/native layout evidence is limited to
+  D014's test-only native sharpening experiment and M9 public/candidate integration;
+  and older FSR2 Rust binding comparisons. AMD execution/native layout evidence is limited to
   Windows x64/MSVC; D013 fixture execution also covers macOS ARM64. Native D013
   transfer and loader-release observations cover one identified AMD configuration.
 - Included evidence: [common ABI verification record](records/2026-09-20-exp-common-abi-verification.md)
@@ -53,7 +53,8 @@ dispatch timeout remain; no architecture or safety contract changed.
   [D013 transferred failure/cleanup fixtures](records/2026-10-07-exp-d013-transfer-failure-cleanup.md),
   [D013 extended native transfers and cleanup](records/2026-10-08-exp-d013-native-transfer-cleanup.md),
   [D013 soundness/architecture review](records/2026-10-09-src-d013-soundness-architecture-review.md),
-  and the [D014 native sharpening spike](records/2026-09-30-exp-d014-native-sharpening.md).
+  the [D014 native sharpening spike](records/2026-09-30-exp-d014-native-sharpening.md),
+  and the [M9 public native and candidate verification](../release/2026-10-10-m9-verification.md).
 
 ## Topic map
 
@@ -214,10 +215,24 @@ Current source implements its public frame and native sharpening API under
 FFI and consumer checks cover scalar validation, exact descriptor forwarding,
 same-context switching, traits and existing error paths. The separate
 [M9 integration protocol](../release/2026-10-09-m9-native-sharpening-protocol.md)
-is selected; public-API GPU execution and final artifact verification remain
-pending. The historical spike adds bounded native execution evidence, while M8
-checks add no AMD/GPU evidence. Neither establishes safe GPU lifetimes,
-signed-provider allocation capacity or broader hardware support.
+was subsequently executed in
+[2026-10-10 verification](../release/2026-10-10-m9-verification.md). Development
+source and the unmodified extracted wrapper `0.2.0` candidate each passed three
+isolated repetitions, 144 finite/written/fenced outputs, same-context mode changes
+with continuing history, zero ordinary debug/device errors and explicit cleanup.
+Native regressions, exact candidate archives, registry-only consumers, Rust 1.88,
+Rustdoc and publication dry-run checks also passed; the candidate remains unpublished
+and excludes D013's public movable family.
+
+The historical spike supplies private native execution/effect observations;
+M8 fixtures establish exact validation, mapping and error behavior; M9 adds
+bounded public-API AMD/GPU and extracted-artifact evidence. Independently audited
+M9 diagnostics again show enabled-zero differences, and return to Disabled matched
+the control ROI on this setup. Neither observation is a universal output guarantee.
+No new effect threshold was adopted; the original failed effect gate is unchanged.
+Successful native paths establish no general failure cleanup contract, safe GPU
+lifetimes, signed-provider allocation capacity or broader hardware support. See
+[the M9 dispatch findings](upscaling-dispatch.md#m9-public-sharpening-integration-and-candidate-verification).
 
 **Safety boundary:** explicit input paths are canonicalized before loading the
 main DLL. Dependency resolution still follows Windows loading rules. Loading
@@ -379,7 +394,7 @@ lifecycle results; their native failure and ownership limits remain unchanged.
   and completed three-frame moving smoke. Neither those bounded results nor
   recording-ahead tests establish general threading, synchronization or
   image-quality guarantees. Temporal reconstruction accuracy remains open.
-- **D014 release protocol:** the
+- **D014 coverage and remaining limits:** the
   [sharpening experiment](records/2026-09-30-exp-d014-native-sharpening.md)
   resolves whether the selected enabled passes execute and whether enabled zero
   can differ from disabled, but its proposed effect criteria failed. The selected
@@ -388,10 +403,12 @@ lifecycle results; their native failure and ownership limits remain unchanged.
   public API, without additional sharpening image-effect criteria. The original
   failed measurements remain unchanged; they are not an observed native safety
   failure. D014's public API is implemented and checked under
-  [M8](../release/2026-10-09-m8-implementation-verification.md), with M9 GPU and
-  final artifact verification pending. Existing D011 lifetime, ordering and
-  terminal-error obligations remain in force; HDR, exposure modes, GBV,
-  moving-scene sharpening and other providers gained no new coverage.
+  [M8](../release/2026-10-09-m8-implementation-verification.md), with the selected
+  public-API GPU protocol and local candidate-artifact checks passed in
+  [M9](../release/2026-10-10-m9-verification.md). Existing D011 lifetime, ordering
+  and terminal-error obligations remain in force; HDR, exposure modes, GBV,
+  moving-scene sharpening quality and other providers gained no new coverage.
+  Publication is separate from verification and remains pending.
 - **Policy selected, implementation deferred:**
   [D006](../DECISIONS.md#d006--curate-abi-slices-and-permit-reviewed-generated-bindings)
   establishes handwritten bindings as the default and permits reviewed generated

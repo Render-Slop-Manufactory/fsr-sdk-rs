@@ -1,0 +1,12 @@
+{
+  "Command": "./crates/fsr-sdk/tests/native/run.ps1 -Mode m9 -Native -Stage target/m9-20261010-artifact -TestManifest target/m9-release-20261010-final/isolation/packages/fsr-sdk-0.2.0/Cargo.toml",
+  "Protocol": "docs/release/2026-10-09-m9-native-sharpening-protocol.md",
+  "ProtocolSHA256": "36FDC713CCE9DEE0DDD204BFE685A7EF0CFA09D5915C9606AABB1B6634EF3726",
+  "IntegrationTest": "upscaler::dx12::m6::native_sharpening_integration",
+  "Repetitions": 3,
+  "OutputsPerRepetition": 48,
+  "WatchdogMilliseconds": 180000,
+  "DebugLayer": true,
+  "GPUValidation": false,
+  "ImageComparisons": "diagnostics only"
+}

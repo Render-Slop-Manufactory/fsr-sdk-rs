@@ -1,0 +1,75 @@
+Started=2026-10-10T05:31:12.6299092+02:00
+Timezone={
+  "Id": "W. Europe Standard Time",
+  "BaseUtcOffset": {
+    "Ticks": 36000000000,
+    "Days": 0,
+    "Hours": 1,
+    "Milliseconds": 0,
+    "Microseconds": 0,
+    "Nanoseconds": 0,
+    "Minutes": 0,
+    "Seconds": 0,
+    "TotalDays": 0.041666666666666664,
+    "TotalHours": 1.0,
+    "TotalMilliseconds": 3600000.0,
+    "TotalMicroseconds": 3600000000.0,
+    "TotalNanoseconds": 3600000000000.0,
+    "TotalMinutes": 60.0,
+    "TotalSeconds": 3600.0
+  }
+}
+SDK=v2.3.0
+GPUValidation=False
+Rust=rustc 1.99.0 (b940084d7 2026-09-28)
+binary: rustc
+commit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4
+commit-date: 2026-09-28
+host: x86_64-pc-windows-msvc
+release: 1.99.0
+LLVM version: 23.1.1
+
+MSVC=14.44.35207
+Compiler=19.44.35224.0
+PowerShell=7.6.6
+WindowsSDK=10.0.22621.0\
+TargetArch=x64
+OS=
+Caption     : Microsoft Windows 11 Pro
+Version     : 10.0.26300
+BuildNumber : 26300
+
+
+GPU=
+Name          : AMD Radeon RX 9060 XT
+DriverVersion : 32.0.31041.1004
+
+
+SHA256=[
+  {
+    "File": "amd_fidelityfx_loader_dx12.dll",
+    "Hash": "E2D85AA05A9BD9ED8B38935FDF5199372CCA6F74C12015143BB6F945EE1608AA"
+  },
+  {
+    "File": "amd_fidelityfx_upscaler_dx12.dll",
+    "Hash": "D0DCCCC74A43C44BA435B7A369B456E0970D8A4464E4BD683119B374F2C9FB46"
+  },
+  {
+    "File": "m6_gpu.dll",
+    "Hash": "E3036F4B77F7ED06EF4296AC0E52D37A375B234488F3E2AF33E77BBE14517DC9"
+  }
+]
+Signatures=[
+  {
+    "File": "amd_fidelityfx_loader_dx12.dll",
+    "Status": 0
+  },
+  {
+    "File": "amd_fidelityfx_upscaler_dx12.dll",
+    "Status": 0
+  }
+]
+FSR_SDK_TEST_DLL=target/m9-20261010-artifact/amd_fidelityfx_loader_dx12.dll (absolute at execution)
+FSR_SDK_TEST_M6_DLL=target/m9-20261010-artifact/m6_gpu.dll (absolute at execution)
+FSR_SDK_TEST_GBV=<unset unless -GpuValidation>
+FSR_SDK_TEST_M6_CONTROL=<unset>

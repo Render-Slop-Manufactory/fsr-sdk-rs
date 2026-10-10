@@ -45,6 +45,9 @@ impl NativeSharpness {
 /// include enabled-zero differences, brightness changes and edge overshoot and
 /// undershoot on one scene/provider/GPU/driver configuration. They are bounded
 /// observations, not universal filter semantics or public-API verification.
+/// [Public-API integration observations](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/release/2026-10-10-m9-verification.md)
+/// separately cover mode changes with continuing history. Enabled zero differed
+/// from Disabled on those two scenes; this is not a universal output guarantee.
 #[derive(Debug, Clone)]
 #[non_exhaustive]
 pub enum Sharpening {

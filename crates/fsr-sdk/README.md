@@ -29,8 +29,10 @@ continue to apply. The published `0.1.0` API is still available separately.
 [D014](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D014.md)
 contains migration and the original failed sharpening-effect evidence.
 [M8 verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/release/2026-10-09-m8-implementation-verification.md)
-covers compilation and controlled FFI; M9 public-route GPU and final release
-artifact verification remain pending.
+covers compilation and controlled FFI. The
+[M9 verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/release/2026-10-10-m9-verification.md)
+records public-route GPU execution, same-context mode changes, candidate artifact
+checks and their configuration limits. These checks do not publish the candidate.
 
 ## Optional movable ownership in current source
 

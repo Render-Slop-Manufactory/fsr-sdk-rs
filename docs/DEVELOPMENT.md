@@ -156,7 +156,15 @@ preserves the successful execution and failed proposed effect criteria.
 M8's private frame API and native sharpening mapping are implemented and checked
 in the [2026-10-09 implementation record](release/2026-10-09-m8-implementation-verification.md).
 The selected [M9 integration protocol](release/2026-10-09-m9-native-sharpening-protocol.md)
-needs a separate public-API runner and GPU execution. The historical sharpening
+is implemented by `-Mode m9 -Native`: five prerequisite native regressions followed
+by three isolated public-API integration repetitions. It requires a fresh stage,
+retains all 144 red half-float readbacks and diagnostics, and stops on a failed
+integration repetition without retry. `-TestManifest <extracted-wrapper/Cargo.toml>`
+builds the exact extracted wrapper artifact while retaining local SDK/equipment
+setup in the checkout; set its isolated Cargo home as in the
+[M9 verification record](release/2026-10-10-m9-verification.md).
+Development and final artifact runs passed on the recorded configuration.
+The historical sharpening
 runner retains its original failed effect assertions; running it does not
 establish M9 acceptance. `check-movable-api.ps1` also checks the new frame/resource
 constructors, private fields, checked scalar and feature-gated reexports.

@@ -105,7 +105,8 @@ completed separately. Outside `0.2.0` scope; no release selected
 
 **Status:** accepted 2026-10-07; 0.2.0 API, migration and bounded native-sharpening
 trust selected. M8 implemented and checked on 2026-10-09; the direct-native M9
-integration protocol is selected, with GPU and final artifact verification pending.
+integration protocol and final local candidate checks passed on 2026-10-10
+([M9 verification](release/2026-10-10-m9-verification.md)). Publication remains pending.
 Original native effect criteria failed and stay failed.
 
 [Read D014](adr/D014.md)
@@ -133,8 +134,9 @@ invariant; existing feature contracts and release scope are unchanged.
 The dispatch-input and sharpening design in [D014](adr/D014.md) is accepted;
 M7's contract decision and M8 implementation are complete. Its separate
 [native integration protocol](release/2026-10-09-m9-native-sharpening-protocol.md)
-is selected; M9 GPU execution and final artifact verification remain pending,
-including same-context mode switching.
+passed in [M9 verification](release/2026-10-10-m9-verification.md), including
+same-context mode switching and final local candidate checks. Publication remains
+separate; the candidate excludes D013 and uses sys `0.1.1` for existing loader maintenance.
 The original sharpening effect gate failed in the
 [native spike](research/records/2026-09-30-exp-d014-native-sharpening.md)
 and remains failed. D011 remains the published 0.1.0 dispatch baseline;

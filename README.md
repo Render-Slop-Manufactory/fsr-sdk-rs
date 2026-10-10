@@ -23,8 +23,10 @@ Regeneration, Radiance Caching, and other backends.
 
 **Next release:** [D014](docs/adr/D014.md) selects a small `0.2.0` with extensible
 dispatch inputs and explicit native sharpening, disabled by default. The design
-was accepted on 2026-10-07; M8 is implemented in current source and M9 release
-verification is pending.
+was accepted on 2026-10-07; M8 is implemented and
+[M9 verification](docs/release/2026-10-10-m9-verification.md) passed on the recorded
+Windows/DX12 configuration, including the local candidate artifacts. The prepared
+candidate uses `fsr-sdk 0.2.0` with `fsr-sdk-sys 0.1.1`; publication remains pending.
 The [roadmap](ROADMAP.md#next-actions) tracks that work. The examples below use
 the published `0.1.0` API; checkout examples use the new constructors.
 

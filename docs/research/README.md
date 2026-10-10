@@ -25,14 +25,14 @@ from the historical research records below.
 
 | Current topic | Evidence and coverage |
 |---|---|
-| [Licensing and distribution](licensing-and-distribution.md) | Header/package audit, [v2.3.0 acquisition and artifact provenance](records/2026-09-22-src-distribution-artifact-provenance.md), AMD DLL terms and bounded deployment findings. Released wrapper archives were inspected; broader runtime dependency closure remains open. |
-| [API and safety](api-and-safety.md) | ABI, loader, construction/lifecycle evidence, broader DX12 surface, D013 source/fixture/native evidence and conditional-contract review. Sharpening's proposed effect gate failed; broader provider contracts remain open. |
+| [Licensing and distribution](licensing-and-distribution.md) | Header/package audit, [v2.3.0 acquisition and artifact provenance](records/2026-09-22-src-distribution-artifact-provenance.md), AMD DLL terms and bounded deployment findings. Published `0.1.0` and exact local M9 candidate archives inspected; candidate publication and broader runtime dependency closure remain open. |
+| [API and safety](api-and-safety.md) | ABI, loader, construction/lifecycle evidence, broader DX12 surface, D013 source/fixture/native evidence and conditional-contract review. M9 public sharpening and extracted-candidate integration verified; original effect gate failed and broader provider contracts remain open. |
 | [Runtime loading](runtime-loading.md) | Entry DLL, provider discovery, executable-adjacent deployment, D013 worker acquisition failures and staged native residency after application refs/worker exit; provider termination remains unattributed. |
 | [Platform and graphics backends](platform-and-backends.md) | Windows/Linux versus DX12/Vulkan separation, production dependency graphs, pinned upstream support limits and loader portability hazards; Windows loader/dependency cleanup implemented under D015, no new backend support. |
 | [Context lifecycle](context-lifecycle.md) | Retained inputs, native cleanup, D013 transferred failure fixtures and successful fenced native Rust-unwind destruction/sibling survival; D005's bounded trust remains in force. |
 | [Upscaler construction](upscaler-construction.md) | D008's constructor, numerical trust boundary, provider sharing and construction evidence. |
 | [Runtime threading](runtime-threading.md) | D013 traits/failure fixtures, extended fenced native transfers and soundness review; design accepted and optional public implementation verified on 2026-10-09. AMD guarantees/termination remain unresolved; release selection is separate. |
-| [Upscaling dispatch](upscaling-dispatch.md) | D011's public route, temporal smoke, controlled semantics and D014's native sharpening comparisons. Enabled zero differs from disabled; the proposed effect gate failed. General temporal quality, GBV and signed-provider allocation/sharing remain unresolved. |
+| [Upscaling dispatch](upscaling-dispatch.md) | D011's public route, temporal smoke, controlled semantics and D014's original spike plus M9 public integration with continuing history. Enabled zero differed from disabled on the tested scenes; the original effect gate failed. General temporal quality, GBV and signed-provider allocation/sharing remain unresolved. |
 
 The [M4 Windows experiment](records/2026-09-22-exp-m4-windows-verification.md)
 adds production-owner fixture, native ABI and successful AMD lifecycle evidence
@@ -114,9 +114,14 @@ separately accepted [D014](../adr/D014.md) on 2026-10-07. Its public frame and
 sharpening API is implemented and checked under
 [M8](../release/2026-10-09-m8-implementation-verification.md). The separate
 [M9 integration protocol](../release/2026-10-09-m9-native-sharpening-protocol.md)
-is selected; public-API GPU execution and final artifact verification remain
-pending. The implementation checks add no AMD/GPU evidence and do not change
-the original failed effect results.
+subsequently passed in [2026-10-10 verification](../release/2026-10-10-m9-verification.md),
+integrated in dispatch, API/safety and licensing/distribution. Development source
+and the unmodified extracted wrapper candidate each completed 144 outputs with
+continuing-history mode changes, clean ordinary debug/device checks and cleanup.
+Exact local `fsr-sdk 0.2.0` / `fsr-sdk-sys 0.1.1` archives and registry-only consumers
+passed verification; publication remains pending and D013's public movable family
+is excluded. Mapping fixtures, GPU execution and quality remain distinct evidence;
+the original failed effect results are unchanged.
 
 The SDK version is already decided: AMD FSR SDK `v2.3.0`
 ([D002](../DECISIONS.md#d002--pin-amd-fsr-sdk-v230-as-the-initial-native-baseline)).
@@ -126,7 +131,7 @@ The following are remaining research questions, not findings:
 |---|---|
 | API and safety | Public v2.3.0 evidence still defines no complete numerical construction domain; accepted D008 uses a bounded runtime trust assumption for M5. Future Query/Configure lifetimes and semantics, broader native concurrency, general returned-create-error and destroy-failure contracts, signed-provider chain/device retention and GPU synchronization remain open. Contradictory safety evidence requires revisiting the M5 contract. |
 | Runtime threading | Provider/dependency termination and retention cause, native returned-error/partial-load cleanup, hidden work/TLS, external-user coordination, outstanding GPU work, other configurations and sanitizers remain open. D013 accepts explicit caller assumptions and its optional public implementation has bounded verification; no missing AMD guarantee is resolved. Release selection and artifact verification remain separate. |
-| Upscaling dispatch | Broader temporal quality, frame/provider profiles, signed-provider sharing and GBV remain open. D014's breaking private-frame API and native sharpening are implemented and checked under [M8](../release/2026-10-09-m8-implementation-verification.md); its separate [M9 integration protocol](../release/2026-10-09-m9-native-sharpening-protocol.md) is selected, with same-context public-API GPU and final artifact verification pending. The original effect gate remains failed. Controlled semantics and sharpening evidence establish no general recording capacity or cross-queue guarantee. |
+| Upscaling dispatch | Broader temporal quality, frame/provider profiles, signed-provider sharing and GBV remain open. M8 implements D014's private-frame API and native sharpening; [M9](../release/2026-10-10-m9-verification.md) verifies same-context public GPU integration and exact local candidate artifacts on the recorded configuration. The original effect gate remains failed. Controlled semantics and sharpening evidence establish no general recording capacity or cross-queue guarantee. |
 | SDK acquisition and distribution | Private colocation sufficiency is resolved for the tested signed v2.3.0 inputs; exact loading calls, basename collisions and transitive dependencies remain unresolved. Further runtime tests depend on later deployment requirements. Complete the [remaining package and distribution checks](licensing-and-distribution.md); audit exact future binary bundles. Acquisition, caching, verified downloads and offline paths remain undecided. |
 
 Add linked topic entries as investigations are integrated. Keep open questions

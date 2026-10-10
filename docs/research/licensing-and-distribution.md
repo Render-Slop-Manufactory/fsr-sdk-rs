@@ -1,10 +1,11 @@
 # Licensing and distribution
 
-- Updated: 2026-10-09 (historical setup checks distinguished from later artifact/publication verification; no new licensing evidence).
+- Updated: 2026-10-10 (M9 exact local candidate archives and consumer verification integrated; no new licensing interpretation or binary distribution).
 - Evidence: [license and package audit](records/2026-09-21-src-license-and-package-audit.md)
   and [DX12 provider-DLL resolution](records/2026-09-21-src-dx12-provider-dll-resolution.md),
   [distribution and artifact provenance](records/2026-09-22-src-distribution-artifact-provenance.md),
-  plus the [signed-runtime directory experiment](records/2026-09-22-exp-dx12-provider-dll-resolution.md).
+  the [signed-runtime directory experiment](records/2026-09-22-exp-dx12-provider-dll-resolution.md),
+  and [M9 candidate verification](../release/2026-10-10-m9-verification.md).
 - Scope: existing header-derived ABI and present Cargo packages against AMD SDK
   v2.3.0, acquisition provenance and bounded runtime deployment evidence.
   Research findings, not a new licensing or distribution decision.
@@ -36,7 +37,26 @@ those files plus LICENSE-AMD. Both crate LICENSE copies matched the root;
 source markers, links and formatting were checked. Those setup checks alone
 did not establish wrapper archive contents or release readiness. The later
 artifact recheck and publication check linked above cover both `0.1.0` packages;
-current source changes still need separate artifact verification before release.
+the later M9 record below separately identifies and verifies the local candidate.
+
+**Verified local M9 candidate:** the
+[2026-10-10 verification](../release/2026-10-10-m9-verification.md) identifies
+Cargo-generated `fsr-sdk 0.2.0` and `fsr-sdk-sys 0.1.1` archives with full
+[file inventories and hashes](../release/2026-10-10-m9-verification/archive-audit.json).
+Both contain READMEs and MPL texts byte-identical to the root licence;
+sys retains LICENSE-AMD.
+Neither packages DLLs, SDK trees, executables or compiled artifacts. The sys patch
+identifies already accepted loader/dependency maintenance, without a new ABI or
+SDK pin. D013's public movable family is excluded from this candidate.
+
+Unmodified extracted packages, registry-only downstream consumers, examples,
+feature/private-field controls, stable/MSRV and Rustdoc checks passed. Public native
+integration also passed through the extracted wrapper. The archives and every
+extracted file remained unchanged, and the publication dry-run regenerated
+byte-identical archives before aborting both uploads. The source projection and
+inventories identify the exact tested bytes; changed or regenerated candidates
+need separate verification. This is an unpublished local candidate, not registry
+server acceptance, hosted-docs verification or a binary redistribution review.
 
 **Verified scope:** no SDK headers/DLLs or dependency sources are bundled in the
 raw archive. Runtime DLLs are only staged locally. AMD's pinned license inventory
@@ -129,8 +149,9 @@ or distribution choices are not completed by importing this report.
   attribution. The setup retains existing `MPL-2.0` metadata and documents the
   MIT notice separately; a future expression change requires an explicit decision.
   `OR` would incorrectly suggest an already-authorized package-wide license choice.
-- Repeat the archive and notice inspection for future releases. Both `0.1.0`
-  archives were inspected in the final artifact recheck linked above.
+- Repeat the archive and notice inspection for future releases. Both published
+  `0.1.0` archives and the exact local M9 candidate archives were inspected in the
+  records linked above; M9 publication remains pending.
 - For any future binary distribution, inspect the exact contents and applicable
   dependency notices, rather than treating local test staging as a release bundle.
 - Copyrightability of individual ABI declarations, all-contributor title and

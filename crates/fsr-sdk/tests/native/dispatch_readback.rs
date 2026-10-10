@@ -32,6 +32,7 @@ use support::*;
 mod movable_public;
 mod semantics;
 mod sharpening;
+mod sharpening_integration;
 mod single_frame;
 mod temporal_smoke;
 mod thread_transfer_baseline;
@@ -59,4 +60,10 @@ fn native_semantic_comparisons() {
 #[ignore = "requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode sharpening -Native"]
 fn native_sharpening_comparisons() {
     sharpening::compare();
+}
+
+#[test]
+#[ignore = "requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode m9 -Native"]
+fn native_sharpening_integration() {
+    sharpening_integration::run();
 }

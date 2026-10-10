@@ -2,13 +2,15 @@
 
 # Run in an x64 VS developer shell. -Native opts into the trusted SDK and GPU.
 param(
-    [ValidateSet('lifecycle', 'dispatch', 'd013', 'd013-cleanup', 'movable', 'sharpening')][string]$Mode = 'dispatch',
+    [ValidateSet('lifecycle', 'dispatch', 'd013', 'd013-cleanup', 'movable', 'sharpening', 'm9')][string]$Mode = 'dispatch',
     [switch]$Native, [switch]$GpuValidation,
-    [string]$Stage = 'target/native-verification'
+    [string]$Stage = 'target/native-verification',
+    # Verify an extracted wrapper artifact while keeping SDK/equipment in this checkout.
+    [string]$TestManifest
 )
 $ErrorActionPreference = 'Stop'
 if ($Mode -in @('d013', 'd013-cleanup', 'movable') -and $GpuValidation) { throw 'D013 excludes GBV; use ordinary debug layer only' }
-if ($Mode -eq 'sharpening' -and $GpuValidation) { throw 'Sharpening protocol excludes GBV; use ordinary debug layer only' }
+if ($Mode -in @('sharpening', 'm9') -and $GpuValidation) { throw 'Sharpening protocol excludes GBV; use ordinary debug layer only' }
 Push-Location (Resolve-Path (Join-Path $PSScriptRoot '../../../..'))
 $previousLoader = $env:FSR_SDK_TEST_DLL
 $previousHelper = $env:FSR_SDK_TEST_M6_DLL
@@ -16,6 +18,9 @@ $previousDeviceHelper = $env:FSR_SDK_TEST_DEVICE_DLL
 $previousGpuValidation = $env:FSR_SDK_TEST_GBV
 $previousControl = $env:FSR_SDK_TEST_M6_CONTROL
 $stage = $Stage
+if ($Mode -eq 'm9' -and (Test-Path -LiteralPath "$stage/runner.log")) {
+    throw 'M9 requires a fresh stage; preserve prior attempts without overwriting or retrying'
+}
 New-Item -ItemType Directory -Force $stage | Out-Null
 $transcriptStarted = $false
 
@@ -40,6 +45,16 @@ try {
             [pscustomobject]@{File=$_; SHA256=(Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash}
         }
         [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/source-inputs.json"), ($sourceHashes | ConvertTo-Json))
+        if ($Mode -eq 'm9') {
+            $protocol = 'docs/release/2026-10-09-m9-native-sharpening-protocol.md'
+            [pscustomobject]@{
+                Command="./crates/fsr-sdk/tests/native/run.ps1 -Mode m9 -Native -Stage $stage" + $(if ($TestManifest) { " -TestManifest $TestManifest" } else { '' })
+                Protocol=$protocol; ProtocolSHA256=(Get-FileHash -LiteralPath $protocol).Hash
+                IntegrationTest='upscaler::dx12::m6::native_sharpening_integration'
+                Repetitions=3; OutputsPerRepetition=48; WatchdogMilliseconds=180000
+                DebugLayer=$true; GPUValidation=$false; ImageComparisons='diagnostics only'
+            } | ConvertTo-Json | Set-Content -LiteralPath "$stage/execution-plan.json"
+        }
     }
     & cargo fmt --all -- --check
     Save-CheckResult 'cargo fmt --all -- --check' $LASTEXITCODE
@@ -56,8 +71,19 @@ try {
     & cl /nologo /std:c++17 /W4 /WX /MT /LD /I"$sdk/api/include/dx12" crates/fsr-sdk/tests/native/gpu.cpp crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp /Fo"$stage/" /link /OUT:"$stage/m6_gpu.dll" /IMPLIB:"$stage/m6_gpu.lib" d3d12.lib dxgi.lib
     Save-CheckResult "cl /nologo /std:c++17 /W4 /WX /MT /LD /I$sdk/api/include/dx12 crates/fsr-sdk/tests/native/gpu.cpp crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp /Fo$stage/ /link /OUT:$stage/m6_gpu.dll /IMPLIB:$stage/m6_gpu.lib d3d12.lib dxgi.lib" $LASTEXITCODE
     $publicFeatures = if ($Mode -eq 'movable') { 'dx12,movable' } else { 'dx12' }
-    $messages = & cargo test -p fsr-sdk --lib --features $publicFeatures --locked --offline --no-run --message-format=json
-    Save-CheckResult "cargo test -p fsr-sdk --lib --features $publicFeatures --locked --offline --no-run --message-format=json" $LASTEXITCODE
+    $testArguments = @('test', '-p', 'fsr-sdk', '--lib', '--features', $publicFeatures, '--locked', '--offline', '--no-run', '--message-format=json')
+    if ($TestManifest) {
+        $testArguments += @('--manifest-path', $TestManifest)
+        $packageRoot = Split-Path (Resolve-Path -LiteralPath $TestManifest).Path
+        $packageHashes = Get-ChildItem -LiteralPath $packageRoot -File -Recurse | Where-Object {
+            -not [IO.Path]::GetRelativePath($packageRoot, $_.FullName).StartsWith('target' + [IO.Path]::DirectorySeparatorChar)
+        } | ForEach-Object {
+            [pscustomobject]@{File=[IO.Path]::GetRelativePath($packageRoot,$_.FullName).Replace('\','/'); SHA256=(Get-FileHash -LiteralPath $_.FullName).Hash}
+        }
+        $packageHashes | ConvertTo-Json | Set-Content -LiteralPath "$stage/test-package-inputs.json"
+    }
+    $messages = & cargo @testArguments
+    Save-CheckResult ('cargo ' + ($testArguments -join ' ')) $LASTEXITCODE
     $artifact = $messages | ForEach-Object { $_ | ConvertFrom-Json } | Where-Object {
         $_.reason -eq 'compiler-artifact' -and $_.target.name -eq 'fsr_sdk' -and $_.executable
     } | Select-Object -Last 1
@@ -149,6 +175,18 @@ try {
                 }
             }
         )
+    } elseif ($Mode -eq 'm9') {
+        @(
+            @{Name='native-explicit'; Test='upscaler::dx12::tests::native_lifecycle'; Marker='Production owner: destroy A/B OK'},
+            @{Name='native-drop'; Test='upscaler::dx12::tests::native_lifecycle_drop'; Marker='Production owner: destroy A/B OK'},
+            @{Name='gate-a'; Test='upscaler::dx12::m6::native_dispatch_readback'; Marker='Gate A: PASSED'},
+            @{Name='gate-b'; Test='upscaler::dx12::m6::native_temporal_smoke'; Marker='Gate B: PASSED'},
+            @{Name='gate-c'; Test='upscaler::dx12::m6::native_semantic_comparisons'; Marker='Gate C: PASSED'}
+            foreach ($repeat in 1..3) {
+                @{Name="m9-repeat-$repeat"; Test='upscaler::dx12::m6::native_sharpening_integration';
+                  Marker='M9 integration: PASSED outputs=48'; M9=$true; Repeat=$repeat}
+            }
+        )
     } elseif ($Mode -eq 'sharpening') {
         @(1..3 | ForEach-Object {
             @{Name="sharpening-repeat-$_"; Test='upscaler::dx12::m6::native_sharpening_comparisons'; Marker='Sharpening gate: PASSED'}
@@ -163,6 +201,7 @@ try {
     $payloadResults = @()
     $newMatrixStarted = $false
     foreach ($gate in $gates) {
+        if ($gate.M9 -and $failed.Count) { throw "M9 prerequisite failed: $($failed -join '; ')" }
         if ($gate.NewCase -and -not $newMatrixStarted) {
             if ($failed.Count) { throw "D013-2 prerequisite failed: $($failed -join '; ')" }
             $newMatrixStarted = $true
@@ -179,6 +218,13 @@ try {
         if ($Mode -eq 'sharpening') {
             $imageDirectory = New-Item -ItemType Directory -Force "$stage/$name.images"
             $start.Environment['FSR_SDK_TEST_SHARPENING_OUTPUT'] = $imageDirectory.FullName
+        }
+        if ($gate.M9) {
+            $imageDirectory = New-Item -ItemType Directory -Force "$stage/$name.images"
+            if (Get-ChildItem -LiteralPath $imageDirectory.FullName -File) {
+                throw "M9 requires fresh output: $name"
+            }
+            $start.Environment['FSR_SDK_TEST_M9_OUTPUT'] = $imageDirectory.FullName
         }
         if ($gate.NewCase) {
             $imageDirectory = New-Item -ItemType Directory -Force "$stage/$name.images"
@@ -207,7 +253,19 @@ try {
         Write-Host $stderr.Result
         if ($timeout -or $exitCode -ne 0 -or !$stderr.Result.Contains($gate.Marker)) {
             $failed += "$name timeout=$timeout exit=$exitCode"
+            if ($gate.M9) { throw "M9 failed; preserved attempt: $($failed -join '; ')" }
             if ($gate.NewCase) { throw "D013-2 case failed; preserved attempt: $($failed -join '; ')" }
+        }
+        if ($gate.M9) {
+            $payloads = @(Get-ChildItem -LiteralPath $imageDirectory.FullName -Filter '*.red.u16le' -File |
+                Sort-Object Name | ForEach-Object {
+                    [pscustomobject]@{File=$_.Name; Bytes=$_.Length; SHA256=(Get-FileHash -LiteralPath $_.FullName).Hash}
+                })
+            if ($payloads.Count -ne 48 -or ($payloads | Where-Object Bytes -ne 460800)) {
+                throw "M9 payload oracle failed: $name"
+            }
+            $payloadResults += [pscustomobject]@{Repeat=$gate.Repeat; Files=$payloads}
+            [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/payload-hashes.json"), ($payloadResults | ConvertTo-Json -Depth 6))
         }
         if ($gate.NewCase) {
             $payloads = @(Get-ChildItem -LiteralPath $imageDirectory.FullName -Filter '*.rgba16f' -File |

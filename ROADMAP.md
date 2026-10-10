@@ -39,23 +39,29 @@ sharpening changes; it does not establish a new release or support guarantee.
 | Selected FidelityFX ABI and explicit DLL loader | Implemented; bounded Windows x64/MSVC checks passed |
 | Public DX12 runtime and upscaler construction | Implemented; native lifecycle passed on one tested configuration |
 | Public DX12 upscaler dispatch | Implemented under D011; one submitted, fenced frame and readback passed on that configuration |
+| Extensible frames and native sharpening | Implemented under D014; [M9](docs/release/2026-10-10-m9-verification.md) public and extracted-candidate integration passes on the recorded configuration |
 | Common inputs and platform organization | Implemented under D015; common values work without backend features, native APIs retain Windows/DX12 gates, and production `libloading` is optional and Windows/DX12-only |
 | Optional movable runtime/upscaler family | Implemented and bounded public-path verification completed under D013; unreleased, outside `0.2.0`, with no later release selected |
 | Temporal multi-frame behavior | Three-frame moving smoke and [controlled motion/jitter/history-reset comparisons](docs/research/records/2026-09-30-exp-dispatch-semantics.md) passed on the recorded AMD configuration; general temporal reconstruction accuracy and image quality remain unverified |
 | Consumer documentation and examples | Windows-target Rustdoc published on docs.rs for both `0.1.0` crates; DX12 example compiled locally for Windows |
-| Packaging and release validation | Both `0.1.0` crates published on 2026-09-28, sys then wrapper; [publication verified](docs/release/2026-09-29-publication-check.md) |
+| Packaging and release validation | Both `0.1.0` crates published on 2026-09-28; [publication verified](docs/release/2026-09-29-publication-check.md). Local wrapper `0.2.0` / sys `0.1.1` candidate verified in M9; publication pending |
 | Public Git history | Public repository and `v0.1.0` release/tag available |
 | Vulkan and other SDK effects | Not implemented; future work |
 
-**Current focus:** Implement a small `0.2.0` around dispatch-input extensibility and
-one contained addition: sharpening. Maintain the published `0.1.0` as the
+**Current focus:** Prepare publication of the verified small `0.2.0` around
+dispatch-input extensibility and one contained addition: sharpening.
+Maintain the published `0.1.0` as the
 regression baseline. [D014](docs/adr/D014.md) was accepted on 2026-10-07;
 M7's API and migration contract is complete; M8 is implemented and checked in
 current source. The separate [M9 integration protocol](docs/release/2026-10-09-m9-native-sharpening-protocol.md)
-is selected; native execution and final artifact verification remain pending.
+was executed on 2026-10-10. [M9 verification](docs/release/2026-10-10-m9-verification.md)
+passed through both the development API and unmodified extracted candidate,
+including the required regressions and final artifact/consumer checks. The local
+candidate is `fsr-sdk 0.2.0` with `fsr-sdk-sys 0.1.1`, excluding the D013 public
+family; publication remains separately authorized.
 The original native effect gate failed
-and stays failed. Complete and verify the small `0.2.0`, then broaden existing
-upscaler evidence before opening new effects.
+and stays failed. Publish the checked candidate when separately authorized,
+then broaden existing upscaler evidence before opening new effects.
 
 Current source also separates common checked upscaler inputs from the concrete
 DX12 backend ([D015](docs/adr/D015.md)), preserving existing imports. Common
@@ -169,16 +175,18 @@ Its [native sharpening spike](docs/research/records/2026-09-30-exp-d014-native-s
 passed execution and repeat controls, but failed the predeclared effect criteria
 in all three repetitions, confirmed by an independent readback audit. The original
 failure remains evidence. The [2026-10-09 integration protocol](docs/release/2026-10-09-m9-native-sharpening-protocol.md)
-selects scenes, controls, diagnostics and repetitions before execution, informed
+selected scenes, controls, diagnostics and repetitions before execution, informed
 by those results and including same-context mode switching. It adds no sharpening
 image-effect thresholds. The original thresholds were not adopted as release
 gates; no new run retrospectively passes the original experiment.
+The [2026-10-10 M9 record](docs/release/2026-10-10-m9-verification.md) completes
+the bounded native and artifact gates for the locally prepared candidate.
 
 | Milestone | Scope | Done when |
 |---|---|---|
 | M7 — Dispatch API contract | **Done 2026-10-07:** D014 accepted for private fields, construction/access methods, optional defaults and migration from `0.1.0` literals. | Contract approved; one unsafe dispatch route; GPU-lifetime, poison and cleanup obligations preserved. Implementation covered by M8. |
 | M8 — Extensible frame and sharpening | **Done 2026-10-09:** private frame/resource construction, accessors and typed native sharpening; disabled by default, finite `[0,1]` parameter; examples and test inputs migrated. | [Implementation checks](docs/release/2026-10-09-m8-implementation-verification.md) cover exact scalar bits/descriptor forwarding, rejection before FFI, same-context fixture switching, public consumers/traits and existing failure paths. No new GPU evidence. |
-| M9 — Verification and release | **Pending:** execute the selected integration protocol and native regressions through the final public API, including same-context mode switching; verify final release artifacts. | Exact descriptor mapping and successful native recording plus completed GPU execution; finite/written readbacks, fenced cleanup, no debug errors/device removal; existing regressions, migration, Rustdoc and package/consumer checks complete. No additional sharpening image-effect criteria. Publication remains separately authorized. |
+| M9 — Verification and release | **Verified 2026-10-10 for the recorded candidate/configuration:** selected public integration protocol and native regressions pass through development source and the extracted `0.2.0` artifact, including same-context mode switching; final candidate checks pass. Publication pending. | [M9 evidence](docs/release/2026-10-10-m9-verification.md): exact descriptor/fixture mapping, completed GPU execution, finite/written readbacks, fenced cleanup, no debug errors/device removal, migration, stable/MSRV, Rustdoc, archives and registry-only consumers. No additional image-effect criteria. Candidate sys `0.1.1` includes the existing loader maintenance; D013 public APIs are excluded. Publication remains separately authorized. |
 
 `0.2.0` does not include pre-exposure, automatic exposure, masks, changing active
 extents, new depth/MV conventions, HDR/non-linear color, public Query/Configure,
@@ -275,13 +283,14 @@ is not a gate for M7–M9; no later release version is selected.
 2. **D014 / M7 — completed 2026-10-07:** API, migration and bounded native-pass
    trust accepted after review. The original failed experiment remains failed;
    the separate integration protocol was selected on 2026-10-09.
-3. **M8 completed; M9 pending:** the small `0.2.0` frame API, native sharpening
-   and migration are implemented and checked. Implement the M9 runner for the
-   selected [integration protocol](docs/release/2026-10-09-m9-native-sharpening-protocol.md),
-   including same-context mode switching. Repeat native regressions, the selected
-   sharpening protocol, documentation and package/consumer checks on the final
-   implementation and artifacts. Maintain published `0.1.0` consumer guidance.
-   Publication remains separately authorized.
+3. **M8 and M9 verification completed:** the small `0.2.0` frame API, native
+   sharpening and migration are implemented and checked. The
+   [2026-10-10 M9 verification](docs/release/2026-10-10-m9-verification.md) passed
+   the selected public-API protocol, regressions and final package/consumer checks.
+   A source projection preserves the separate D013 development work while
+   excluding its public APIs from the candidate. Publish the checked sys `0.1.1`
+   then wrapper `0.2.0` only when separately authorized; maintain published
+   `0.1.0` guidance until publication.
 4. **Broader existing-upscaler evidence:** extend the in-repo example/test harness
    with longer moving sequences, image comparisons and, where available, a second
    hardware/provider configuration before choosing the next large SDK slice.
