@@ -8,6 +8,12 @@
   ([native verification](research/records/2026-09-24-exp-m5-windows-native-verification.md)).
 - Basis: [accepted D008](adr/D008.md)
 
+This is the completed M5 implementation plan. Its implementation steps retain
+the module names and acquisition spelling used at planning time. Current code
+uses `Runtime::load_unchecked`, private options under [D012](adr/D012.md), and
+the organization in [D015](adr/D015.md). Use [development](DEVELOPMENT.md) for
+current commands and the [roadmap](../ROADMAP.md) for remaining work.
+
 ## Verification of the supplied proposal
 
 The table records the repository state when this plan was written, before M5
@@ -112,4 +118,6 @@ D008's ownership, device API, fixed flags, unsafe integration obligations and
 bounded numerical trust assumption are accepted. No substantive maintainer
 decision remains open for this construction scope. M5's Rust implementation,
 ordinary Windows CI fixtures, and both opt-in native lifecycle cases have passed
-within their recorded scope. M6 remains separate.
+within their recorded scope. The separate M6 dispatch work subsequently completed;
+[D011](adr/D011.md) and its [public-route verification](research/records/2026-09-25-m6b-public-dispatch-verification.md)
+record that contract and bounded result.

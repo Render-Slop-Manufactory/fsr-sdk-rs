@@ -8,6 +8,10 @@ exposed borrowed-device construction; see [D008](adr/D008.md) and
 [M5](MILESTONE_5.md). The M4 verification status below distinguishes host tests,
 Windows compilation and native execution.
 The [roadmap](../ROADMAP.md) remains authoritative for milestone status.
+The representation and file map below describe the original M4 plan, not the
+current module layout. [D013](adr/D013.md) later added optional movable ownership;
+[D015](adr/D015.md) records the current common/DX12 and loader organization.
+Use [development](DEVELOPMENT.md) for current checks.
 
 ## Preconditions and scope
 
@@ -166,7 +170,7 @@ Frame-generation swapchain integration, for example, involves queues and other
 objects beyond the upscaler chain; storing S alone does not prove safe shutdown.
 No refactor-free guarantee or new backend support follows from this design.
 
-## Current verification and remaining work
+## Recorded M4 verification and subsequent status
 
 On macOS, the actual generic lifecycle owner is tested through a test-only
 runtime adapter loading a locally compiled fixture library. Drop counters verify
@@ -202,7 +206,10 @@ records reproduction, fingerprints and limits. M4 verification is complete for
 this bounded configuration. No GPU dispatch is included; native failure
 postconditions and global threading guarantees remain outside this evidence.
 
-Package file lists include the new source/tests and notices. The local sys Cargo
-archive contains LICENSE and LICENSE-AMD. Wrapper Cargo archive creation remains
-blocked by the pre-existing path-only sys dependency lacking a version requirement;
-release packaging is not part of M4 and that manifest policy was not changed.
+At M4 verification time, package file lists included the source/tests and notices,
+and the local sys archive contained LICENSE and LICENSE-AMD. Wrapper archive
+creation was then blocked by a path-only sys dependency without a version
+requirement; M4 did not change that manifest policy. The later
+[artifact recheck](release/2026-09-28-final-artifact-recheck.md) inspected both
+archives, and the [publication check](release/2026-09-29-publication-check.md)
+records both published `0.1.0` packages. That historical blocker is resolved.

@@ -4,7 +4,8 @@
 - Evidence: [platform/backend investigation](records/2026-10-09-src-platform-backend-separation.md),
   [D015](../adr/D015.md), and
   [portable-common implementation verification](../release/2026-10-09-portable-common-verification.md),
-  followed by [loader refactor verification](../release/2026-10-09-loader-platform-verification.md).
+  followed by [loader refactor verification](../release/2026-10-09-loader-platform-verification.md)
+  and the [independent loader audit](../release/2026-10-09-loader-refactor-audit.md).
 - Scope: current Rust dependencies, module/API gates and the pinned AMD FSR SDK
   v2.3.0 path. Recommendations do not accept a new platform or backend.
 
@@ -67,6 +68,14 @@ trees and unsupported Vulkan diagnostics also pass their controls. Linux Rust
 compilation, Windows executable tests, MSVC header ABI checks and native AMD/GPU
 execution were not performed. The PowerShell CI script was extended but could
 not run locally; remote success is not claimed.
+
+The subsequent independent audit also records passing source/consumer checks
+and eight real package configurations against Linux and Windows production
+dependency trees. Its authorized CI follow-up added those 16 package/target
+checks to the existing PowerShell script, with separate mutation controls for
+defaults and feature forwarding. That audit still executed no Windows binaries,
+MSVC header probes or AMD/GPU work; the script itself was not run locally there.
+These are documented follow-up results, not fresh execution in this synthesis.
 
 Before native Linux implementation, choose whether the requirement is portable
 configuration, Windows compatibility-layer use, or native Vulkan execution.

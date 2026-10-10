@@ -52,6 +52,7 @@
 Detailed findings are split by the contract they explain:
 
 - [runtime loading](runtime-loading.md)
+- [platform and graphics backends](platform-and-backends.md)
 - [context lifecycle](context-lifecycle.md)
 - [upscaler construction](upscaler-construction.md)
 - [runtime threading](runtime-threading.md)
@@ -262,8 +263,10 @@ fingerprinted but its correspondence to the upstream release tree was not
 independently authenticated in this work.
 
 [D003](../DECISIONS.md#d003--handwrite-the-first-common-abi-slice) authorizes
-handwritten bindings only for this slice; successful tests do not settle the
-full-SDK binding strategy. The Rust module is production-intended implementation;
+handwritten bindings only for this slice; successful tests alone did not settle
+the broader binding strategy. [D006](../adr/D006.md) subsequently selected the
+handwritten-by-default policy with reviewed generated exceptions; concrete
+additional slices remain undecided. The Rust module is production implementation;
 the native probe is verification evidence. Evidence records preserve the state
 at investigation time and do not independently accept architecture changes.
 

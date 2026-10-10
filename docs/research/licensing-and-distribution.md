@@ -1,6 +1,6 @@
 # Licensing and distribution
 
-- Updated: 2026-09-30.
+- Updated: 2026-10-09 (historical setup checks distinguished from later artifact/publication verification; no new licensing evidence).
 - Evidence: [license and package audit](records/2026-09-21-src-license-and-package-audit.md)
   and [DX12 provider-DLL resolution](records/2026-09-21-src-dx12-provider-dll-resolution.md),
   [distribution and artifact provenance](records/2026-09-22-src-distribution-artifact-provenance.md),
@@ -30,11 +30,13 @@ inspected both archives, including notices and normalized manifests; the
 published packages. The
 historical missing text is not by itself labeled a proven legal violation.
 
-**Setup verification:** both updated Cargo file lists include LICENSE and
-README.md. A newly generated raw-crate archive includes those files plus
-LICENSE-AMD. Both crate LICENSE copies match the root byte-for-byte; source
-markers, local documentation links and formatting were checked. This verifies
-notice packaging, not release readiness or a newly built wrapper archive.
+**Historical setup verification:** the initial setup checks found LICENSE and
+README.md in both Cargo file lists and inspected a raw-crate archive containing
+those files plus LICENSE-AMD. Both crate LICENSE copies matched the root;
+source markers, links and formatting were checked. Those setup checks alone
+did not establish wrapper archive contents or release readiness. The later
+artifact recheck and publication check linked above cover both `0.1.0` packages;
+current source changes still need separate artifact verification before release.
 
 **Verified scope:** no SDK headers/DLLs or dependency sources are bundled in the
 raw archive. Runtime DLLs are only staged locally. AMD's pinned license inventory

@@ -19,6 +19,11 @@
   That recommendation proposed a different auto-exposure profile; accepted
   [D011](adr/D011.md) owns the implemented public contract.
 
+This completed plan retains M6-era scope and terminology. `Runtime::load` was
+renamed to `Runtime::load_unchecked` before `0.1.0`; current module organization
+follows [D015](adr/D015.md). Use [development](DEVELOPMENT.md) for current commands
+and the [roadmap](../ROADMAP.md) for the pending D014 implementation/release work.
+
 ## Question and boundary
 
 Can a context created by the public M5 constructor record an upscaler dispatch,

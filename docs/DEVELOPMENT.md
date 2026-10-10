@@ -76,6 +76,17 @@ resources; its executable is guidance rather than a stand-alone renderer.
 `Runtime::load_unchecked` requires caller-established DLL trust, while
 `Upscaler::dispatch` requires states, submission and GPU lifetimes from the caller.
 
+To generate the current Windows API, including the optional movable family, use:
+
+```sh
+cargo doc --workspace --features fsr-sdk/movable --no-deps --locked --target x86_64-pc-windows-msvc
+```
+
+The Windows target must be installed. A host-only Linux/macOS build documents
+common inputs and errors but omits native APIs. This command documents current
+source, including unreleased changes; published `0.1.0` documentation remains
+on docs.rs. Apply `RUSTDOCFLAGS="-D warnings"` as described above for validation.
+
 The optional public family adds [movable cleanup coordination](../crates/fsr-sdk/examples/movable_upscale.rs).
 Its example is compiled directly into public consumer fixture tests, covering
 independent siblings, early runtime release, failed handoff, unwind and poisoned
@@ -149,6 +160,20 @@ Renderer objects, submission, fences and readback belong to test equipment under
 
 Earlier release records link to the anchors below. Their exact commands and
 observations remain in the dated history; they are not instructions to publish.
+
+Historical records and verification reports also retain source links from before
+D015's module split. Some no longer resolve in the current checkout. Use this
+navigation map without changing their recorded paths, fingerprints or results:
+
+| Historical source path | Current location |
+|---|---|
+| `crates/fsr-sdk/src/upscaler/dispatch.rs` | [DX12 dispatch](../crates/fsr-sdk/src/upscaler/dx12/dispatch.rs) |
+| `crates/fsr-sdk/src/upscaler/dispatch/` | [DX12 dispatch inputs and conversion](../crates/fsr-sdk/src/upscaler/dx12/dispatch/) |
+| `crates/fsr-sdk/src/upscaler/movable.rs` | [Movable DX12 upscaler](../crates/fsr-sdk/src/upscaler/dx12/movable.rs) |
+| `crates/fsr-sdk/src/upscaler/tests/` | [DX12 tests](../crates/fsr-sdk/src/upscaler/dx12/tests/) |
+
+These locations explain navigation after the move; current code does not
+reconstruct the source state or revalidate the results of a historical run.
 
 ### Crate packaging
 

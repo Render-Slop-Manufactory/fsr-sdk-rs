@@ -46,37 +46,17 @@ Readability and correct domain contracts matter more than mechanical rules.
 - Check ABI assumptions against pinned headers; a successful Rust build alone
   does not verify native compatibility.
 
-## Direct Provider Controls and Wrapper Policy
+## Direct Provider Controls and SDK-Level Policies
 
-Make it clear who chooses a value or behavior: the caller, the native provider,
-or an explicit wrapper policy. Use this distinction when it clarifies a real
-choice; do not add speculative modes or prefix every SDK-facing type with Native.
+[D016](adr/D016.md) is the authoritative architecture decision for preserving
+direct provider controls alongside explicit SDK quality policies. Consult it
+for control provenance, naming, calibration evidence and extension review
+rather than maintaining separate rules here.
 
-- Use `Native` for direct provider controls when that distinction matters, as in
-  the sharpening API discussion. Validate the documented input domain, then
-  preserve the parameter's meaning and value without hidden clamping, tuning or
-  output filtering. Native does not mean raw ABI access, unchecked inputs,
-  experimental maturity, or a quality level.
-- Keep a direct mode's meaning stable if wrapper-selected profiles are added.
-  Such profiles may still use the native implementation internally; distinguish
-  the selection policy rather than implying a different execution backend.
-- Give wrapper policies explicit names, documented transformations and bounded
-  evidence for their intended outcomes. State the tested provider/configuration
-  and workload limits. Correct mapping, successful execution, observed effects
-  and image-quality claims require distinct evidence, including for native modes.
-- Prefer more precise provenance names where appropriate: caller-supplied inputs,
-  provider recommendations and wrapper-selected settings are different contracts.
-  Units, camera conventions and resource roles usually need domain names, not a
-  Native label. There is no universal Native-versus-Validated split: direct
-  provider inputs are validated too.
-- Introduce an extensible mode selection only for a justified API distinction.
-  Future variants still need their own resource, lifetime, synchronization and
-  compatibility review; an open enum alone does not make new capabilities
-  additive. Review public traits as part of that compatibility contract.
-
-This is design guidance, not acceptance of a feature or release gate. Concrete
-contracts remain in the relevant [decisions](DECISIONS.md); the current
-[D014 proposal](adr/D014.md) remains subject to its own review.
+Concrete feature contracts remain in their [decisions](DECISIONS.md).
+[D014](adr/D014.md) owns the accepted sharpening API and mapping; implementation
+and release verification remain pending. D016 selects no new policy, API or
+release gate and preserves the existing support and safety contracts.
 
 ## Performance
 

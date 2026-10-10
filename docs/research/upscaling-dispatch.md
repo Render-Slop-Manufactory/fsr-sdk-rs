@@ -1,6 +1,6 @@
 # Upscaling dispatch: DX12 and frame semantics
 
-- Updated: 2026-10-07 (D014 acceptance status; no new research evidence).
+- Updated: 2026-10-09 (D014/D016 decision status and bounded semantic coverage clarified; no new research evidence).
 - Scope: source research and bounded Windows/DX12 public dispatch, recording-ahead
   temporal smoke, controlled semantic comparisons and a test-only sharpening
   experiment against AMD FSR SDK `v2.3.0`
@@ -48,7 +48,7 @@ output, and a reset matches a fresh reset context. This adds bounded semantic
 coverage to the smoke tests, with 33 finite, fenced outputs and clean debug/device
 checks. It is not a general temporal image-quality result.
 
-**Verified current Windows coverage:** the
+**Verified 0.1.0 Windows release coverage:** the
 [final verification record](records/2026-09-28-exp-final-windows-release-verification.md)
 reports **WINDOWS RELEASE VERIFICATION PASSED** for its captured source and
 harness state. It exercises `Runtime::load_unchecked`, D012's
@@ -77,8 +77,11 @@ frame. Gate B adds a reset frame followed by two non-reset frames, each moving
 one render pixel right with jitter-free current-to-previous UV motion
 `(-1/320, 0)` and native scale `(320, 180)`. Applied jitter affects the analytic
 image and matches the dispatch value. This completes the bounded temporal smoke
-check on the recorded configuration. Temporal reconstruction accuracy, history
-use and reset effectiveness still require a separate correctness experiment.
+check on the recorded configuration. At that stage, history use and reset
+effectiveness still needed targeted comparisons. The later
+[controlled semantic experiment](records/2026-09-30-exp-dispatch-semantics.md)
+adds bounded horizontal-motion/jitter/history/reset evidence; general temporal
+reconstruction accuracy remains unverified.
 The fixed extents/formats, explicit exposure 1.0, pre-exposure 1.0 and zero flags
 were preserved; broader profiles and provider allocation behavior gained no
 new evidence. Per-frame fencing is this test's strategy, not a wrapper rule or
@@ -350,14 +353,16 @@ FSR3/FSR4 guidance differs. The DX12 helper's format-conversion table is not an
 upscaler acceptance whitelist. D011's fixed extents, formats and exposure remain
 the supported wrapper profile.
 
-**Design inference, not an accepted choice:** adding even an optional public
+**Earlier design inference and subsequent decision:** adding even an optional public
 field to `UpscaleDispatch` breaks existing exhaustive struct literals. D012's
 private creation options solve a different extensibility problem. Before the
 first per-frame extension, the record recommends an explicit choice between
 retaining the existing route plus an extensible advanced frame input, or a
-breaking release with one private-field frame representation. Neither is
-required now; no finding weakens `unsafe dispatch(&mut self, ...)`, renderer
-ownership, poison behavior or GPU-completion obligations.
+breaking release with one private-field frame representation. The maintainer
+subsequently accepted [D014](../adr/D014.md) for the latter `0.2.0` route;
+implementation and release verification remain pending. This preserves
+`unsafe dispatch(&mut self, ...)`, renderer ownership, poison behavior and
+GPU-completion obligations.
 
 **Subsequent experiments and remaining work:** the
 [controlled semantic comparisons](records/2026-09-30-exp-dispatch-semantics.md)
@@ -428,6 +433,11 @@ maintainer decision, not an experimental guarantee. The experiment establishes
 no new queue depth, cross-queue behavior, thread transfer or general provider
 support.
 
+[D016](../adr/D016.md) is the accepted cross-feature constraint for direct
+provider controls and explicit SDK quality policies. It adds no experimental
+result, future sharpening variant or quality guarantee and does not change
+D014's API, native mapping or outstanding release protocol.
+
 ## Disagreements and limitations
 
 - The [sample/readback record](records/2026-09-24-src-m6-dx12-dispatch-example.md)
@@ -451,9 +461,11 @@ support.
   makes its subsequent `(W,H)` scale consistent. An omitted conversion is the
   best-supported explanation; the text's historical cause and signed-provider
   response to the literal pair remain unknown. The final Windows analytic
-  moving scene exercised the accepted UV profile at smoke level. Establishing
-  motion direction/scale correctness still needs assertions that can distinguish
-  incorrect reprojection; finite changed output alone cannot do that.
+  moving scene exercised the accepted UV profile at smoke level. The subsequent
+  [controlled comparisons](records/2026-09-30-exp-dispatch-semantics.md) distinguish
+  matching from reversed horizontal motion and jitter on one scene/configuration.
+  They do not resolve the guide's discrepancy or establish all-axis motion/scale
+  accuracy and general reconstruction quality.
 - Jitter signs in the sample are internally consistent because both its
   projection offset and dispatch value negate the queried offset. The API
   invariant is that dispatch receives the pixel offset actually used to render,
@@ -523,9 +535,9 @@ support.
    cross-queue support is established.
 5. **Later scope:** output format range, alpha behavior, aliasing, nontrivial
    resource shapes, COMPUTE lists, dynamic output size and general concurrency.
-6. **Per-frame extension decision:** choose compatibility with current struct
-   literals versus a breaking private-frame representation only when a deferred
-   frame capability is accepted. Shared flag support, changing active extents,
+6. **Later per-frame extensions:** D014 has selected the breaking private-frame
+   representation for `0.2.0`; implement and verify that accepted contract.
+   Shared flag support, changing active extents,
    exposure/mask requirements and image semantics need provider-specific evidence;
    the [surface record](records/2026-09-29-src-dx12-upscaler-api-surface.md)
    supplies proposals, not implementation authorization.

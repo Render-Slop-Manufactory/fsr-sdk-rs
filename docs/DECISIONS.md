@@ -119,6 +119,14 @@ Vulkan remains unsupported.
 
 [Read D015](adr/D015.md)
 
+## D016 — Separation of Native Provider Controls and SDK-Level Policies
+
+**Status:** accepted 2026-10-09 after consistency review and explicit maintainer
+authorization. Owns the cross-feature direct-control and SDK quality-policy
+invariant; existing feature contracts and release scope are unchanged.
+
+[Read D016](adr/D016.md)
+
 ## Open choices
 
 The dispatch-input and sharpening design in [D014](adr/D014.md) is accepted;

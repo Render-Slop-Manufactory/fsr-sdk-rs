@@ -18,6 +18,11 @@ layout checks below is Windows x64/MSVC.
 No `bindgen` output is currently checked in. The public raw crate binds no other
 Query or Configure descriptor payloads and only the narrow upscaler Dispatch
 payload and resources above.
+The optional `MovableRuntime` / `MovableUpscaler` family reuses these same slices
+for construction and dispatch; [D013's public-path verification](release/2026-10-09-d013-public-api-verification.md)
+records its bounded checks. [D015](adr/D015.md) changes module/dependency gates,
+not ABI coverage. [D014](adr/D014.md) sharpening remains unimplemented despite
+the existing native descriptor fields and test-only experiment.
 The five common function-pointer signatures exist, but they do not by themselves
 provide those operations. Windows CI compiles all three paired C++ probes against
 hash-verified headers at the pinned commit. It does not run tests requiring AMD

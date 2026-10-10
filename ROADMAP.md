@@ -32,13 +32,15 @@ through one upscaler on the recorded AMD configuration.
 | Selected FidelityFX ABI and explicit DLL loader | Implemented; bounded Windows x64/MSVC checks passed |
 | Public DX12 runtime and upscaler construction | Implemented; native lifecycle passed on one tested configuration |
 | Public DX12 upscaler dispatch | Implemented under D011; one submitted, fenced frame and readback passed on that configuration |
+| Common inputs and platform organization | Implemented under D015; common values work without backend features, native APIs retain Windows/DX12 gates, and production `libloading` is optional and Windows/DX12-only |
+| Optional movable runtime/upscaler family | Implemented and bounded public-path verification completed under D013; unreleased, outside `0.2.0`, with no later release selected |
 | Temporal multi-frame behavior | Three-frame moving smoke and [controlled motion/jitter/history-reset comparisons](docs/research/records/2026-09-30-exp-dispatch-semantics.md) passed on the recorded AMD configuration; general temporal reconstruction accuracy and image quality remain unverified |
 | Consumer documentation and examples | Windows-target Rustdoc published on docs.rs for both `0.1.0` crates; DX12 example compiled locally for Windows |
 | Packaging and release validation | Both `0.1.0` crates published on 2026-09-28, sys then wrapper; [publication verified](docs/release/2026-09-29-publication-check.md) |
 | Public Git history | Public repository and `v0.1.0` release/tag available |
 | Vulkan and other SDK effects | Not implemented; future work |
 
-**Current focus:** Plan a small `0.2.0` around dispatch-input extensibility and
+**Current focus:** Implement a small `0.2.0` around dispatch-input extensibility and
 one contained addition: sharpening. Maintain the published `0.1.0` as the
 regression baseline. [D014](docs/adr/D014.md) was accepted on 2026-10-07;
 M7's API and migration contract is complete. Implementation and the separate
@@ -52,6 +54,10 @@ types are available on every host without backend features; native APIs retain
 their Windows/DX12 gates. [Portable-common verification](docs/release/2026-10-09-portable-common-verification.md)
 records consumer, feature, ABI and selected native regressions. It adds no Vulkan
 support or D014 functionality and does not select a release.
+
+[D016](docs/adr/D016.md) is accepted as the cross-feature constraint separating
+direct provider controls from explicit SDK quality policies. It selects no new
+API, policy implementation, verification milestone or release scope.
 
 - [x] Two-crate Cargo workspace: `fsr-sdk-sys` and `fsr-sdk`.
 - [x] Initial module scaffolding for ABI, loading, context, errors, queries, and upscaling.
@@ -127,7 +133,7 @@ are not release dates or support promises.
 The first native milestone is loading, resolving symbols, and querying the
 runtime. It does not require image reconstruction or a complete public API.
 
-## Proposed 0.2.0 milestones
+## 0.2.0 milestones
 
 The [2026-09-30 maintenance verification](docs/release/2026-09-30-review-verification.md)
 adds dimensions accessors, smaller implementation/test modules, pinned-header CI

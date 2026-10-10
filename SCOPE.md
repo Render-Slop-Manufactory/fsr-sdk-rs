@@ -38,6 +38,8 @@ obligations, but it does not own the rendering pipeline.
 
 Correctness and a clear correspondence with AMD's API take priority over an
 elaborate facade. Implement only the API surface justified by real use.
+The separation of supported direct provider controls and explicit SDK quality
+policies is governed by [D016](docs/adr/D016.md).
 
 ### Public API surface
 
