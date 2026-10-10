@@ -113,7 +113,12 @@
 //! [M6b](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-25-m6b-public-dispatch-verification.md)
 //! recorded one submitted, fenced public dispatch and plausible readback on one
 //! configuration. This does not establish image quality, nonzero-motion temporal
-//! behavior, performance or compatibility across GPUs/drivers/providers. See the
+//! behavior, performance or compatibility across GPUs/drivers/providers. The
+//! [final release verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-28-exp-final-windows-release-verification.md)
+//! subsequently passed a three-frame moving smoke, and post-release source adds
+//! [controlled motion/jitter/history-reset comparisons](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-30-exp-dispatch-semantics.md)
+//! on that configuration. These are bounded regressions, not general temporal
+//! image-quality evidence or revalidation of the published archives. See the
 //! [roadmap](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/ROADMAP.md)
 //! and accepted [D011](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D011.md).
 
@@ -121,6 +126,10 @@
 
 /// Owned errors and rejection reasons, available on every host.
 pub mod error;
+
+#[cfg(test)]
+#[path = "../tests/fixtures/directory.rs"]
+mod test_directory;
 
 #[cfg(any(test, all(windows, feature = "dx12")))]
 mod context;

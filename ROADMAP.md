@@ -32,7 +32,7 @@ through one upscaler on the recorded AMD configuration.
 | Selected FidelityFX ABI and explicit DLL loader | Implemented; bounded Windows x64/MSVC checks passed |
 | Public DX12 runtime and upscaler construction | Implemented; native lifecycle passed on one tested configuration |
 | Public DX12 upscaler dispatch | Implemented under D011; one submitted, fenced frame and readback passed on that configuration |
-| Temporal multi-frame behavior | Bounded three-frame moving smoke passed on the recorded AMD configuration; temporal reconstruction accuracy and image quality remain unverified |
+| Temporal multi-frame behavior | Three-frame moving smoke and [controlled motion/jitter/history-reset comparisons](docs/research/records/2026-09-30-exp-dispatch-semantics.md) passed on the recorded AMD configuration; general temporal reconstruction accuracy and image quality remain unverified |
 | Consumer documentation and examples | Windows-target Rustdoc published on docs.rs for both `0.1.0` crates; DX12 example compiled locally for Windows |
 | Packaging and release validation | Both `0.1.0` crates published on 2026-09-28, sys then wrapper; [publication verified](docs/release/2026-09-29-publication-check.md) |
 | Public Git history | Public repository and `v0.1.0` release/tag available |
@@ -42,6 +42,9 @@ through one upscaler on the recorded AMD configuration.
 one contained addition: sharpening. Maintain the published `0.1.0` as the
 regression baseline. The milestones below are planning scope; public contracts
 still need their own reviewed decisions before implementation.
+Review D014's API shape and sharpening evidence separately: its original native
+effect gate failed. Complete the small `0.2.0` contract and broaden existing
+upscaler evidence before opening new effects.
 
 - [x] Two-crate Cargo workspace: `fsr-sdk-sys` and `fsr-sdk`.
 - [x] Initial module scaffolding for ABI, loading, context, errors, queries, and upscaling.
@@ -139,6 +142,12 @@ D012 already covers creation-option extensibility.
 The concrete [D014 design proposal](docs/adr/D014.md) supplies M7's API sketch,
 migration, alternatives and verification gates. It remains proposed pending
 review; the frame redesign and sharpening are not implemented.
+Its [native sharpening spike](docs/research/records/2026-09-30-exp-d014-native-sharpening.md)
+passed execution and repeat controls, but failed the predeclared effect criteria
+in all three repetitions, confirmed by an independent readback audit. The original
+failure remains evidence. M7 must review the API shape and effect policy separately;
+any changed scene or threshold policy needs an explicit amendment before a new
+complete validation run, without retrospectively passing the original gate.
 
 | Milestone | Scope | Done when |
 |---|---|---|
@@ -157,6 +166,14 @@ only their recorded scope.
 Proposed scopes, without committed release versions. Compatible additions can
 use `0.2.x`; a breaking contract needs another minor version. Reorder independent
 work for concrete requirements and add one bounded capability at a time.
+
+Before choosing the next large SDK slice or new effect, extend the existing
+upscaler's in-repository example/test harness with longer moving sequences and
+image comparisons. Keep it part of `fsr-sdk-rs` and preserve reproducible workload,
+runtime/provider, GPU and driver inputs. Seek a second hardware/provider
+configuration where available; record unavailable coverage explicitly. This
+is a later evidence step after M7–M9, not a separate renderer project or a completed
+image-quality claim.
 
 | Milestone | Scope | Required boundary/evidence |
 |---|---|---|
@@ -180,8 +197,13 @@ Its evidence work can proceed in parallel; it is not a gate for M7–M9.
 
 1. **D013-A — Evidence:** [compile/host probes passed](docs/research/records/2026-09-29-exp-d013-movable-compile-host.md).
    [Windows fixtures passed](docs/research/records/2026-09-29-exp-d013-windows-fixtures.md).
-   Sanitizers, controlled native fenced transfers and
-   regressions remain open; include siblings and final release elsewhere.
+   The [bounded native spike](docs/research/records/2026-09-30-exp-d013-native-thread-transfer.md)
+   passed all three serialized, fenced transfer scenarios, their same-thread
+   controls and existing native regressions. Siblings, early external-runtime
+   drop and final loader release on another thread were covered. The requested
+   spike is complete; provider/dependency termination on the destination thread,
+   native error/unwind and partial-load transfer paths, unfenced work and
+   sanitizer coverage remain open.
 2. **D013-B — Review:** assess a concrete integration and the lasting transfer,
    serialization and cleanup contract. Accept, revise or defer explicitly.
 3. **D013-C — Optional API:** after acceptance, implement/document the movable
@@ -204,23 +226,29 @@ Its evidence work can proceed in parallel; it is not a gate for M7–M9.
 
 ## Next actions
 
-1. Start M7 with the concrete migration and sharpening contract. Keep `0.2.0`
-   scoped to M7–M9; defer the later capabilities to their own milestones.
-2. Continue D013-A independently, without coupling the `0.2.0` release to native
-   threading research.
-3. Maintain the published `0.1.0` consumer guidance and use the recorded checks
-   as a baseline for subsequent changes. The
-   [final Windows verification](docs/research/records/2026-09-28-exp-final-windows-release-verification.md)
-   passed the public-route regression and the bounded three-frame moving smoke
-   with zero debug errors and no device removal. This adds smoke coverage after
-   D012; it does not establish temporal reconstruction accuracy or image quality. The
-   [GBV spike](docs/research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md)
-   localized a separate timeout to native `ffxDispatch` on the tested setup;
-   its provider/driver/validation cause remains unresolved.
-4. Repeat the relevant package and consumer checks for future releases. The
-   [final post-Windows artifact recheck](docs/release/2026-09-28-final-artifact-recheck.md)
-   passed for the committed candidate, including regenerated archives,
-   publish dry-runs, isolated consumers and Windows-target checks. Its source and
-   archive identities describe the pre-publication candidate. The
-   [publication check](docs/release/2026-09-29-publication-check.md) separately
-   records the public `0.1.0` packages and hosted documentation.
+1. **Status/test hygiene — completed 2026-10-07:** current plans now reflect
+   completed D013/D014 evidence, the broken protocol link is repaired and
+   fixture directories tolerate stale paths.
+   Verification is recorded in the [2026-10-07 maintenance check](docs/release/2026-10-07-status-test-hygiene.md).
+2. **D014 / M7:** decide the extensible API and migration contract, reviewing
+   sharpening evidence separately. Preserve failed tests; do not redefine their
+   historical outcomes. No acceptance or new effect policy is implied by hygiene work.
+3. **M8–M9:** implement and verify a deliberately small `0.2.0`: extensible frame
+   API, sharpening and migration. Repeat native regressions, the selected
+   sharpening protocol, documentation and package/consumer checks on the final
+   implementation and artifacts. Maintain published `0.1.0` consumer guidance.
+   Publication remains separately authorized.
+4. **Broader existing-upscaler evidence:** extend the in-repo example/test harness
+   with longer moving sequences, image comparisons and, where available, a second
+   hardware/provider configuration before choosing the next large SDK slice.
+5. **D013 independently:** the bounded native spike is complete. Review the
+   remaining integration, conditional transfer contract and provider-cleanup
+   questions, then accept, narrow or defer explicitly. Public implementation
+   stays outside `0.2.0`; these results alone do not authorize a public Send guarantee.
+
+The [GBV spike](docs/research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md)
+localized a timeout to native `ffxDispatch` on the tested setup; its
+provider/driver/validation cause remains unresolved. Prior
+[candidate artifact checks](docs/release/2026-09-28-final-artifact-recheck.md)
+and the separate [publication check](docs/release/2026-09-29-publication-check.md)
+remain historical baselines, not validation of future releases.

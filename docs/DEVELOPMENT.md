@@ -31,6 +31,13 @@ Use `RUSTDOCFLAGS="-D warnings"` when validating documentation. Add
 exercise the consumer-visible interface and relevant failures or boundaries.
 The [dimensions test](../crates/fsr-sdk/tests/dimensions.rs) illustrates this.
 
+Fixture directories are created exclusively and skip existing names after
+process-ID reuse, without reusing or deleting old fixture artifacts. Other I/O
+errors still fail the test. Context and upscaler fixtures share the test-only
+[directory helper](../crates/fsr-sdk/tests/fixtures/directory.rs); raw loader tests
+use the same collision policy. See the
+[2026-10-07 hygiene verification](release/2026-10-07-status-test-hygiene.md).
+
 ### Continuous integration
 
 The [workflow](../.github/workflows/ci.yml) checks current stable Rust and exactly

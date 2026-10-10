@@ -92,26 +92,34 @@ the replacement. Update SCOPE.md if project boundaries change.
 
 ## D013 — Optional movable runtime/upscaler family
 
-**Status:** proposed; compile/host and Windows fixture experiments completed,
-no public movable API
+**Status:** proposed; compile/host, Windows fixtures and bounded fenced native
+transfer experiments passed; provider termination and public-contract review
+remain open; no public movable API
 
 [Read D013](adr/D013.md)
 
 ## D014 — Extensible DX12 dispatch inputs and sharpening
 
-**Status:** proposed; concrete 0.2.0 API, migration and verification contract
-prepared for review; not implemented or accepted
+**Status:** proposed; concrete 0.2.0 API and migration prepared for review;
+native sharpening execution/repeat controls passed, original effect criteria
+failed; API design and effect policy need separate review; not implemented or accepted
 
 [Read D014](adr/D014.md)
 
 ## Open choices
 
 The dispatch-input and sharpening design in [D014](adr/D014.md) is proposed
-for the roadmap's M7 review. D011 remains the accepted current dispatch contract.
+for the roadmap's M7 review. Its original sharpening effect gate failed in the
+[native spike](research/records/2026-09-30-exp-d014-native-sharpening.md);
+reviewing the API design does not accept or retrospectively pass that gate.
+D011 remains the accepted current dispatch contract.
 
 The optional movable runtime/upscaler family in [D013](adr/D013.md) remains a
 proposal. Its conditional thread-transfer contract and acceptance gates require
-review; the existing D008 types remain confined to their acquiring thread.
+review after the successful
+[bounded native transfer spike](research/records/2026-09-30-exp-d013-native-thread-transfer.md).
+Provider termination on the destination thread remains unresolved; the existing
+D008 types remain confined to their acquiring thread.
 
 Concrete binding-slice selections under D006 and public APIs beyond D008/D011/D012
 remain undecided. [D011](adr/D011.md) accepts the first public DX12 dispatch

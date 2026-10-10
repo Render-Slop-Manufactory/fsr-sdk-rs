@@ -4,6 +4,9 @@ Snapshot taken from D014 before native execution on 2026-09-30. Outcomes and
 configuration are recorded in the adjacent experiment record. The text below
 is the policy evaluated by that spike; it is not an accepted release requirement.
 
+Clerical correction on 2026-10-07: the relative semantic-experiment link was
+repaired. The scene, metrics, thresholds and repeat policy are unchanged.
+
 This is a proposed fixture-specific acceptance policy, not measured data, an
 AMD guarantee or an image-quality standard. Approve and record the fixture,
 metrics and thresholds before inspecting enabled-sharpening outputs. The
@@ -12,7 +15,7 @@ a directional detail response in addition to output differences.
 
 Use 320x180 render and 640x360 output, the existing fixed formats/flags, explicit
 exposure `1.0`, ordinary constant depth `0.5`, camera/time values and eight jitter
-pairs from the [semantic experiment](../research/records/2026-09-30-exp-dispatch-semantics.md).
+pairs from the [semantic experiment](../2026-09-30-exp-dispatch-semantics.md).
 Keep motion zero and the scene stationary. For unjittered render coordinates
 `u = x + 0.5 - jitter_x`, `v = y + 0.5 - jitter_y`, use two separate scenes:
 

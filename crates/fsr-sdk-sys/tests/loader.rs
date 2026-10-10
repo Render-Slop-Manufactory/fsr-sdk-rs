@@ -16,13 +16,42 @@ use std::{
 static NEXT: AtomicUsize = AtomicUsize::new(0);
 
 fn work_dir() -> PathBuf {
-    let path = std::env::temp_dir().join(format!(
-        "fsr-sdk-loader-{}-{}",
-        std::process::id(),
-        NEXT.fetch_add(1, Ordering::Relaxed)
-    ));
-    std::fs::create_dir(&path).expect("unique test directory");
-    path
+    create_work_dir(&std::env::temp_dir(), &NEXT).expect("create loader fixture directory")
+}
+
+fn create_work_dir(root: &Path, next: &AtomicUsize) -> std::io::Result<PathBuf> {
+    loop {
+        let path = root.join(format!(
+            "fsr-sdk-loader-{}-{}",
+            std::process::id(),
+            next.fetch_add(1, Ordering::Relaxed)
+        ));
+        match std::fs::create_dir(&path) {
+            Ok(()) => return Ok(path),
+            Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => continue,
+            Err(error) => return Err(error),
+        }
+    }
+}
+
+#[test]
+fn fixture_directory_skips_stale_paths_and_preserves_other_errors() {
+    let root = work_dir();
+    let next = AtomicUsize::new(0);
+    let stale = root.join(format!("fsr-sdk-loader-{}-0", std::process::id()));
+    std::fs::create_dir(&stale).unwrap();
+    let fresh = create_work_dir(&root, &next).unwrap();
+    assert_ne!(fresh, stale);
+    assert!(stale.is_dir());
+    assert_eq!(
+        create_work_dir(&root.join("missing"), &next)
+            .unwrap_err()
+            .kind(),
+        std::io::ErrorKind::NotFound
+    );
+    std::fs::remove_dir(fresh).unwrap();
+    std::fs::remove_dir(stale).unwrap();
+    std::fs::remove_dir(root).unwrap();
 }
 
 fn fixture(dir: &Path, missing: Option<&str>) -> PathBuf {

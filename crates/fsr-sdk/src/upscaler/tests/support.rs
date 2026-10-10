@@ -2,15 +2,8 @@
 
 //! Locally compiled runtime fixture and minimal ownership-only COM device.
 use super::super::*;
-use std::{
-    cell::Cell,
-    path::Path,
-    process::Command,
-    sync::atomic::{AtomicUsize, Ordering},
-};
+use std::{cell::Cell, path::Path, process::Command};
 use windows::core::{GUID, HRESULT, IUnknown_Vtbl};
-
-static NEXT_FIXTURE: AtomicUsize = AtomicUsize::new(0);
 
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -87,12 +80,7 @@ pub(super) fn fake_device() -> (ID3D12Device, &'static FakeDevice) {
 }
 
 pub(super) fn fixture_runtime() -> (Runtime, libloading::Library) {
-    let dir = std::env::temp_dir().join(format!(
-        "fsr-sdk-upscaler-{}-{}",
-        std::process::id(),
-        NEXT_FIXTURE.fetch_add(1, Ordering::Relaxed)
-    ));
-    std::fs::create_dir(&dir).unwrap();
+    let dir = crate::test_directory::directory("fsr-sdk-upscaler");
     let path = dir.join(format!("fixture{}", std::env::consts::DLL_SUFFIX));
     let output = Command::new("rustc")
         .args([

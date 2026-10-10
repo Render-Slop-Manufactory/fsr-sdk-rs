@@ -67,6 +67,12 @@ GPU/driver/provider support. See the
 [roadmap](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/ROADMAP.md)
 for current status and future scope.
 
+The [final 0.1.0 Windows verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-28-exp-final-windows-release-verification.md)
+also passed a three-frame moving smoke. Post-release source adds
+[controlled horizontal-motion, jitter and history-reset comparisons](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-30-exp-dispatch-semantics.md)
+on that configuration. These are bounded regression evidence; they do not
+establish general temporal image quality or revalidate the published archives.
+
 ## Licensing and provenance
 
 Original code is licensed under [MPL-2.0](LICENSE).

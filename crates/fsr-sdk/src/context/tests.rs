@@ -6,28 +6,22 @@ use crate::runtime::FfxLibrary;
 #[cfg(all(windows, feature = "dx12"))]
 use fsr_sdk_sys::loader::FfxLibrary;
 #[cfg(not(all(windows, feature = "dx12")))]
-use std::sync::{Arc, atomic::AtomicBool};
+use std::sync::{
+    Arc,
+    atomic::{AtomicBool, Ordering},
+};
 use std::{
     cell::RefCell,
     ffi::c_void,
     path::{Path, PathBuf},
     process::Command,
-    sync::atomic::{AtomicUsize, Ordering},
 };
 
 #[path = "../../tests/fixtures/lifecycle.rs"]
 pub(super) mod fixture;
 
-static NEXT: AtomicUsize = AtomicUsize::new(0);
-
 fn directory() -> PathBuf {
-    let path = std::env::temp_dir().join(format!(
-        "fsr-sdk-context-{}-{}",
-        std::process::id(),
-        NEXT.fetch_add(1, Ordering::Relaxed)
-    ));
-    std::fs::create_dir(&path).unwrap();
-    path
+    crate::test_directory::directory("fsr-sdk-context")
 }
 
 pub(super) fn library() -> (FfxLibrary, PathBuf) {
