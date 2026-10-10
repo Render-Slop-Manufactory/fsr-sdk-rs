@@ -1,0 +1,4 @@
+   Packaging fsr-sdk-sys v0.1.0 (<repo>\crates\fsr-sdk-sys)
+    Packaged 28 files, 122.8KiB (32.0KiB compressed)
+   Packaging fsr-sdk v0.1.0 (<repo>\crates\fsr-sdk)
+    Packaged 48 files, 307.0KiB (76.9KiB compressed)

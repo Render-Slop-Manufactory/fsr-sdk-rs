@@ -85,14 +85,19 @@ fn assert_unloaded(path: &Path) {
 
 #[test]
 fn missing_file_reports_path_and_source() {
-    let path = work_dir().join("does-not-exist.dll");
-    // SAFETY: The file does not exist; no DLL code can execute.
-    let error = unsafe { FfxLibrary::load(&path) }
-        .err()
-        .expect("missing file");
-    assert!(matches!(&error, LoadError::Path { path: p, .. } if p == &path));
-    assert!(error.source().is_some());
-    assert!(error.to_string().contains("does-not-exist.dll"));
+    std::thread::Builder::new().name("d013-load-failure".into()).spawn(|| {
+        assert_eq!(std::thread::current().name(), Some("d013-load-failure"));
+        let path = work_dir().join("does-not-exist.dll");
+        // SAFETY: The file does not exist; no DLL code can execute.
+        let error = unsafe { FfxLibrary::load(&path) }.err().expect("missing file");
+        assert!(matches!(&error, LoadError::Path { path: p, .. } if p == &path));
+        let source = error.source().unwrap().downcast_ref::<std::io::Error>().unwrap();
+        assert_eq!(source.kind(), std::io::ErrorKind::NotFound);
+        assert!(error.to_string().contains("does-not-exist.dll"));
+        assert_unloaded(&path);
+        println!("worker=d013-load-failure category=Path source=io/NotFound runtime=none module=absent");
+    }).unwrap().join().unwrap();
+    println!("CASE PASS missing-file");
 }
 
 #[test]
@@ -119,16 +124,21 @@ fn each_missing_symbol_reports_name_and_releases_library() {
     ] {
         let dir = work_dir();
         let path = fixture(&dir, Some(symbol));
-        // SAFETY: Test-controlled DLL with matching remaining exports and no
-        // custom initialization or termination routines.
-        let error = unsafe { FfxLibrary::load(&path) }
-            .err()
-            .expect("missing export");
-        assert!(matches!(&error, LoadError::Symbol { symbol: s, .. } if *s == symbol));
-        assert!(error.source().is_some());
-        assert!(error.to_string().contains(symbol));
-        assert_unloaded(&path);
+        std::thread::Builder::new().name("d013-load-failure".into()).spawn(move || {
+            assert_eq!(std::thread::current().name(), Some("d013-load-failure"));
+            assert_unloaded(&path);
+            // SAFETY: Controlled DLL with matching remaining exports and no
+            // custom initialization or termination routines. No observer owns it.
+            let error = unsafe { FfxLibrary::load(&path) }.err().expect("missing export");
+            assert!(matches!(&error, LoadError::Symbol { symbol: s, path: p, .. }
+                if *s == symbol && *p == path.canonicalize().unwrap()));
+            assert!(error.source().unwrap().downcast_ref::<libloading::Error>().is_some());
+            assert!(error.to_string().contains(symbol));
+            assert_unloaded(&path);
+            println!("worker=d013-load-failure category=Symbol symbol={symbol} source=libloading runtime=none module=released");
+        }).unwrap().join().unwrap();
     }
+    println!("CASE PASS missing-exports");
 }
 
 #[test]

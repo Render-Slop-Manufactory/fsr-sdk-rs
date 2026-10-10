@@ -1,0 +1,6 @@
+cargo fmt --all -- --check => exit=0
+cargo clippy --workspace --all-targets --locked --offline -- -D warnings => exit=0
+cargo test --workspace --locked --offline => exit=0
+cargo check --workspace --no-default-features --locked --offline => exit=0
+cl /nologo /std:c++17 /W4 /WX /MT /LD /Iexternal/FidelityFX-SDK/v2.3.0/Kits/FidelityFX/api/include/dx12 crates/fsr-sdk/tests/native/gpu.cpp crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp /Fotarget/d013-native-cleanup/attempt-1/ /link /OUT:target/d013-native-cleanup/attempt-1/m6_gpu.dll /IMPLIB:target/d013-native-cleanup/attempt-1/m6_gpu.lib d3d12.lib dxgi.lib => exit=0
+cargo test -p fsr-sdk --lib --features dx12 --locked --offline --no-run --message-format=json => exit=0

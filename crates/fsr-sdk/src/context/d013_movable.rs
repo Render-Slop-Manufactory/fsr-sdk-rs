@@ -28,10 +28,12 @@ struct Event {
     kind: u32,
     thread: ThreadId,
     library_live: bool,
+    coordination_held: Option<bool>,
 }
 
 struct Ledger {
     events: Mutex<Vec<Event>>,
+    coordination: Mutex<Option<Arc<Mutex<()>>>>,
     #[cfg(all(windows, feature = "dx12"))]
     path: PathBuf,
     #[cfg(not(all(windows, feature = "dx12")))]
@@ -53,6 +55,12 @@ impl Ledger {
 
     fn record(&self, context: u32, kind: u32) {
         // No assert or panic crosses the fixture callback or dependency Drop.
+        let coordination_held = self
+            .coordination
+            .lock()
+            .unwrap_or_else(|p| p.into_inner())
+            .as_ref()
+            .map(|gate| matches!(gate.try_lock(), Err(std::sync::TryLockError::WouldBlock)));
         self.events
             .lock()
             .unwrap_or_else(|p| p.into_inner())
@@ -61,6 +69,7 @@ impl Ledger {
                 kind,
                 thread: thread::current().id(),
                 library_live: self.library_live(),
+                coordination_held,
             });
     }
 
@@ -121,7 +130,7 @@ struct MovableRuntimeProbe {
     _not_sync: PhantomData<Cell<()>>,
 }
 
-struct MovableOwnerProbe(ArcOwner);
+struct MovableOwnerProbe(ArcOwner, bool);
 
 impl MovableOwnerProbe {
     fn destroy(self) -> Result<(), Error> {
@@ -138,12 +147,15 @@ impl MovableOwnerProbe {
 // points into its own retained Box, whose address is stable across moves. The
 // reused fixture has no thread-local state, COM or GPU obligations. Joins order
 // every call and cleanup. This does NOT assert that an AMD context is movable.
+// The additional bool is dispatch eligibility, owned and transferred with the
+// context. Dispatch uses only stack-local fixture descriptors, not COM objects.
 unsafe impl Send for MovableOwnerProbe {}
 
 fn fixture_state() -> (RuntimeState, Arc<Ledger>) {
     let (library, path) = super::tests::library();
     let ledger = Arc::new(Ledger {
         events: Mutex::new(Vec::new()),
+        coordination: Mutex::new(None),
         #[cfg(all(windows, feature = "dx12"))]
         path,
         #[cfg(not(all(windows, feature = "dx12")))]
@@ -184,7 +196,7 @@ impl MovableRuntimeProbe {
             destroy_code,
             null,
         )
-        .map(MovableOwnerProbe)
+        .map(|owner| MovableOwnerProbe(owner, false))
     }
 }
 
@@ -495,3 +507,6 @@ fn runtime_without_context_can_release_on_another_thread() {
         ledger.expect(&[]);
     }
 }
+
+#[path = "d013_transfer.rs"]
+mod transfer;

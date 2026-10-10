@@ -1,0 +1,209 @@
+{
+  "date": "2026-10-07",
+  "initial_worktree": "clean",
+  "sdk_baseline": "v2.3.0 / 60f4ea81909200d8542eca14dccb2628b763a9a3 (not executed)",
+  "sources": [
+    {
+      "path": "Cargo.toml",
+      "sha256": "df4d45780257b3189372209baf694ae6ecae7c1590ecb48ef797d22b75b8ea31",
+      "sha256_lf": "8f0c9575c90e06e252a824a0c2d26a3e4ebba8317700be501f3ec4e834f2f889"
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "cae6468b152bbddf918e5fe6c16d54f697957f3793cffe7da07c995dc8ff5a7c",
+      "sha256_lf": "9bfce6f10c4c9cd4f79afb03e4c88c8d11f89aa6fa11dfe3a8475beb9329caec"
+    },
+    {
+      "path": "crates/fsr-sdk/Cargo.toml",
+      "sha256": "94e6880f4c49434d6e36425ab15356a43e7e6b1d12354f1a2fee506f28562cc4",
+      "sha256_lf": "5c4abe61da2ec1ace7aaa9766de3f5277afe19cdc46ec2580e84c78f3c8bb760"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/Cargo.toml",
+      "sha256": "61d132f34161dd68d6f0b146f40f08fd311e9e0c6ed37d6e33ed42577aa69c0e",
+      "sha256_lf": "913c480885890ac013676a2d1a5992379a48451e3373f941876348fc78d394fa"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/loader.rs",
+      "sha256": "853c160bb225d9847ae05565c0b0af3b66e7375a2767ed72c82e22a8202391a4",
+      "sha256_lf": "853c160bb225d9847ae05565c0b0af3b66e7375a2767ed72c82e22a8202391a4"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/fixtures/loader.rs",
+      "sha256": "674bcfa90ddec7a92e88dc62c4e78db38babb5da1121d4cf3ddc55af081e37bf",
+      "sha256_lf": "3c6df36202c459e4488cf4158480196168836fdf7f760f0e0542746206af1e21"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler.rs",
+      "sha256": "dff06f099e7729e9c865877f37463ec479b041610f45239a80fe0168073eae89",
+      "sha256_lf": "dff06f099e7729e9c865877f37463ec479b041610f45239a80fe0168073eae89"
+    },
+    {
+      "path": "crates/fsr-sdk/src/error.rs",
+      "sha256": "9f614475d9769d17b2149cc774c45eb92ae1545efef248507b046bd108e2ccd3",
+      "sha256_lf": "2e0941d4251d9ab2c966aecc1ce70d08e0ddef2a17323cbb2fd616ac2a946e14"
+    },
+    {
+      "path": "crates/fsr-sdk/src/dispatch_policy.rs",
+      "sha256": "64ec8b12be4eb66ea6c89988f53710b82abe522cb7d92c43681e513aa75a1778",
+      "sha256_lf": "64ec8b12be4eb66ea6c89988f53710b82abe522cb7d92c43681e513aa75a1778"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context.rs",
+      "sha256": "39e03351f3bce220b7c58b818ce7e3ce2ebe7089fc87c448503c699cc4a1b9c2",
+      "sha256_lf": "5ff537e3adbadb618f90d2e74e35086583f1fce0ade9621a880df8e8796e3222"
+    },
+    {
+      "path": "crates/fsr-sdk/src/query.rs",
+      "sha256": "f52f65ba81af539ef4836eb7f2a7834245c17cafa0c54e0b1a07d26b9dc5ed6d",
+      "sha256_lf": "8b61287d73f06806e83a63ce6f2e8f135a6f728fbbede39111b576cb945af5e0"
+    },
+    {
+      "path": "crates/fsr-sdk/src/runtime.rs",
+      "sha256": "431f754c50f84e093f7360d3c57c208714c24538d950c0312f11af684065841e",
+      "sha256_lf": "e8cd070968b693fdbc363f6319302d0df51e4388e073499eb1829320e994e08d"
+    },
+    {
+      "path": "crates/fsr-sdk/src/lib.rs",
+      "sha256": "1c4cd209fc5d8d5ac80ac4c6dda6ec241956b09ad2fe920d536939e2f34d2679",
+      "sha256_lf": "440249c3b6268a9c0ee9806582e04d46c91a5692004259b48f1e1e596af4d136"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/fixtures/upscaler.rs",
+      "sha256": "97c2469ab4a32dbd1eff685574a4963d642177eb9210218255f82b359f9abda6",
+      "sha256_lf": "31e3f14f45f1889ad78bccd355de74e803fd9b6181e716fd6f4cb9bda75beb6a"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/fixtures/lifecycle.rs",
+      "sha256": "9c92d59d99d60c691d4b347ee2cb192839c0bb42abc115797a33568cb6ed6f93",
+      "sha256_lf": "f09ca761c36554d7b69fc508390a08e8615b62bc0e56091e4660f8003601cdc1"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/fixtures/directory.rs",
+      "sha256": "9531a6d7533de516040b3824bee17547e6fc571d571cd66f92f3b97e775e2c98",
+      "sha256_lf": "9531a6d7533de516040b3824bee17547e6fc571d571cd66f92f3b97e775e2c98"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/fixtures/child.rs",
+      "sha256": "2739df78c1e16f79893321a9296a76181e664e60fde6f2b59f9f99c534dae86e",
+      "sha256_lf": "2739df78c1e16f79893321a9296a76181e664e60fde6f2b59f9f99c534dae86e"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context/test_runtime.rs",
+      "sha256": "4e43bb8d683210444efb52af080a712d1f146c1b8c6df2f69bb9bcee821fb821",
+      "sha256_lf": "942347e22ea112b891b2ff62fffd2ffc620a182dec24637c633b99dfcf020403"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context/tests.rs",
+      "sha256": "f2e9d6d5dfc4e20c22d34f59ce430d8e2c639744b407d9fc455438249f5af51d",
+      "sha256_lf": "f2e9d6d5dfc4e20c22d34f59ce430d8e2c639744b407d9fc455438249f5af51d"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context/d013_transfer.rs",
+      "sha256": "92cda51855e8572a5f740d02efade57a2edb4f4b04b114f91ca25f82ddb41426",
+      "sha256_lf": "92cda51855e8572a5f740d02efade57a2edb4f4b04b114f91ca25f82ddb41426"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context/d013_movable.rs",
+      "sha256": "c57ac94f119029a23efc4f3d98ca463ec30dad0e655fdeff97ebf2f7f94c47fe",
+      "sha256_lf": "c57ac94f119029a23efc4f3d98ca463ec30dad0e655fdeff97ebf2f7f94c47fe"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/upscale.rs",
+      "sha256": "19ed563413e262f703190a4ab6af16849e6e4ab5bbccd4d19a94afb0cfb432ad",
+      "sha256_lf": "965fe75a5a2f6ed048ebb43f70afa290da12c84128b6dd5948bdb4b70bb0f968"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/loader.rs",
+      "sha256": "6bfbcac3c25f7c91e0209d94cc136455fb92d5de63e171dae5c0ec9650b1a7d3",
+      "sha256_lf": "6a17b88814e83e16de5fa6b5ae653338f0b584fd59c7ef883e0a9cd3abf7621a"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/lib.rs",
+      "sha256": "5159a34c2d4ad5bc99abe815f92802e3f4a93c9a493574dcbf843312b4a5609e",
+      "sha256_lf": "e6104fefe739cc2b37e5af2dc5ada9708b3596326b9e4d82752bce999ec017d6"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/dx12.rs",
+      "sha256": "30cd53f1b222282a437bb980c45373242e105184b33f33e305959622f230b080",
+      "sha256_lf": "dc1ac06c2bac22298ed7b16d272b1afb4ea27f2b82e32242fa2cfb6840f20af2"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/api.rs",
+      "sha256": "fecc201ec4ef8445f593aaae591ecec35be6277922b0a669f1f4b0caafb6b7de",
+      "sha256_lf": "9a7715837870294da27fb151cacfb7504ac49ad82c776c845a1b07abd180b42e"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dispatch.rs",
+      "sha256": "ecb8dc01edef5390e76203dcea7ec1b66b7166a213dbbc4d7a78ca2efebb7cfc",
+      "sha256_lf": "ecb8dc01edef5390e76203dcea7ec1b66b7166a213dbbc4d7a78ca2efebb7cfc"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/tests/traits.rs",
+      "sha256": "8aecc476821f68417a7ea1ccdd24d7d6b65c7425447b86c2839cadd684206c7d",
+      "sha256_lf": "8aecc476821f68417a7ea1ccdd24d7d6b65c7425447b86c2839cadd684206c7d"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/tests/support.rs",
+      "sha256": "d14d97a80d4f2c559e72585dfd3ef11090ca4ee093ef5ef57608cfd5c4648801",
+      "sha256_lf": "d14d97a80d4f2c559e72585dfd3ef11090ca4ee093ef5ef57608cfd5c4648801"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/tests/mod.rs",
+      "sha256": "e7d2059191cf834838b68f798c3d60c4ff634a3efca8afb700b9558cc7b60ac9",
+      "sha256_lf": "e7d2059191cf834838b68f798c3d60c4ff634a3efca8afb700b9558cc7b60ac9"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/tests/lifecycle.rs",
+      "sha256": "dc7ea0408c0e244fda895fa0090e354509e98b69baa29985ba2249bcacd2c143",
+      "sha256_lf": "dc7ea0408c0e244fda895fa0090e354509e98b69baa29985ba2249bcacd2c143"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/tests/inspection.rs",
+      "sha256": "4bf02f63065408340358a360fc23cfc0eb9268aa6169e09ad78e1428894bcb3b",
+      "sha256_lf": "4bf02f63065408340358a360fc23cfc0eb9268aa6169e09ad78e1428894bcb3b"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/tests/dispatch.rs",
+      "sha256": "f72f2458a57a4432b618b65a62c01e75bd56d3d2346c81f4d072e4897659151c",
+      "sha256_lf": "f72f2458a57a4432b618b65a62c01e75bd56d3d2346c81f4d072e4897659151c"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/tests/construction.rs",
+      "sha256": "cfb5d68feeeead06968ba959d715459e4ee14bbbe00c1a09dad63561a60cfc22",
+      "sha256_lf": "cfb5d68feeeead06968ba959d715459e4ee14bbbe00c1a09dad63561a60cfc22"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/tests/com.rs",
+      "sha256": "1297b991e2f105c1753e8dab829f96ae42107a894ec537fde63bb71196d2b336",
+      "sha256_lf": "1297b991e2f105c1753e8dab829f96ae42107a894ec537fde63bb71196d2b336"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dispatch/tests.rs",
+      "sha256": "e1e2904c34a32add3099bc525ac134f40c84473f4504d1cc96b5422319755d79",
+      "sha256_lf": "e1e2904c34a32add3099bc525ac134f40c84473f4504d1cc96b5422319755d79"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dispatch/resources.rs",
+      "sha256": "a0aa3a75e4a767071d4ca35edfb0cf0ad1b0f3cee4db8c4d2cea1c4a77d51e87",
+      "sha256_lf": "a0aa3a75e4a767071d4ca35edfb0cf0ad1b0f3cee4db8c4d2cea1c4a77d51e87"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dispatch/frame.rs",
+      "sha256": "ad0d1b4009abb7c646a92aa14dc895ed6b6c4697b992fe0a3a4764c589d4be9a",
+      "sha256_lf": "ad0d1b4009abb7c646a92aa14dc895ed6b6c4697b992fe0a3a4764c589d4be9a"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dispatch/descriptor.rs",
+      "sha256": "9cb33475f0b918de2314f638741909ce1c723ba431dad8db89bf06348bc37668",
+      "sha256_lf": "9cb33475f0b918de2314f638741909ce1c723ba431dad8db89bf06348bc37668"
+    }
+  ],
+  "observed_head_during_verification": "1b97a92dec11924469e8c666b5ea55e99f2c0bff",
+  "read_only_late_source_report": {
+    "path": "fsr-sdk-rs/docs/research/records/2026-10-07-src-d013-transfer-cleanup-contract.md",
+    "sha256": "1b72c75eec49283cc157c4f734f873b8caa07e51871344d38e7821e9ca9f2a37",
+    "inspected_after_execution": true,
+    "independently_verified_sources": false
+  }
+}

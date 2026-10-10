@@ -1,13 +1,16 @@
 # API and safety
 
-- Updated: 2026-09-30 (native D013 and D014 evidence integrated).
+- Updated: 2026-10-09 (D013 soundness/architecture review integrated; D014 acceptance retained).
 - Scope: common ABI, loading, provider deployment, version enumeration, context
   lifecycle contracts and isolated create-failure experiments; M5 construction,
   Query/Configure, runtime-sharing source findings and bounded signed-runtime
   experiments for FidelityFX SDK v2.3.0; post-dispatch teardown observations;
   the broader modern DX12 upscaler API surface and design implications;
   D013 trait compilation, serialized macOS/Windows fixtures and fenced native
-  Windows/DX12 transfers; D014's test-only native sharpening experiment; and older
+  Windows/DX12 transfers, native Rust-unwind cleanup and staged residency,
+  transfer/cleanup source limits, Windows failure/unwind fixtures and a supplied
+  soundness/architecture review;
+  D014's test-only native sharpening experiment; and older
   FSR2 Rust binding comparisons. AMD execution/native layout evidence is limited to
   Windows x64/MSVC; D013 fixture execution also covers macOS ARM64. Native D013
   transfer and loader-release observations cover one identified AMD configuration.
@@ -38,6 +41,10 @@
   the [D013 compile/host experiment](records/2026-09-29-exp-d013-movable-compile-host.md),
   [D013 Windows fixture execution](records/2026-09-29-exp-d013-windows-fixtures.md),
   [D013 native transfers](records/2026-09-30-exp-d013-native-thread-transfer.md),
+  [D013 transfer/cleanup source intake](records/2026-10-07-src-d013-transfer-cleanup-contract.md),
+  [D013 transferred failure/cleanup fixtures](records/2026-10-07-exp-d013-transfer-failure-cleanup.md),
+  [D013 extended native transfers and cleanup](records/2026-10-08-exp-d013-native-transfer-cleanup.md),
+  [D013 soundness/architecture review](records/2026-10-09-src-d013-soundness-architecture-review.md),
   and the [D014 native sharpening spike](records/2026-09-30-exp-d014-native-sharpening.md).
 
 ## Topic map
@@ -114,17 +121,59 @@ types remain `!Send + !Sync`.
 This adds no AMD transfer or concurrency guarantee; see
 [the bounded threading findings](runtime-threading.md#d013-compiled-traits-and-serialized-host-lifecycles).
 
-**Verified bounded D013 native results:** three serialized, fenced AMD transfer
-scenarios and their same-thread controls pass on the recorded RX 9060 XT,
-driver `32.0.31041.1004`, SDK v2.3.0/provider 4.1.1 configuration. This includes
-dispatch, sibling retention, destination-thread destruction and final loader
-release, with finite/changed readbacks and clean debug/device checks. Current
-public Rc lifecycle/dispatch regressions also pass on the same changed source.
-The provider DLL remains loaded after final wrapper release in both controls
-and transfers; its termination on the destination thread is unverified.
-See [native threading results and remaining gates](runtime-threading.md#d013-fenced-native-transfers-and-final-release).
-D013 remains proposed; this adds no public movable API or universal AMD threading
-guarantee.
+**Verified bounded D013 native results:** the September spike passed three
+serialized, fenced AMD transfer scenarios and same-thread controls on RX 9060 XT,
+driver `32.0.31041.1004`, SDK v2.3.0/provider 4.1.1. The October follow-up passes
+all 11 prerequisites on its changed source, closing the native regression gap
+after dispatch-policy extraction, then all 30 new children. These add creation
+after runtime transfer, 64-frame continuous history, independently held siblings
+and actual automatic native cleanup during Rust unwind. All 516 new frames and
+42 destroy calls pass, including 12 unwind cleanups; 96 selected packed RGBA16F
+payloads match controls/repetitions by SHA-256. Unselected frames have metric/
+status checks rather than full image-equivalence evidence.
+
+The provider remains loaded after all audited application frame/device/helper
+refs are released and workers exit; the loader and helper are absent. This does
+not attribute native retention, prove actual COM device destruction or establish
+provider termination on the destination thread. See
+[extended native threading results and remaining gates](runtime-threading.md#d013-extended-native-transfers-unwind-cleanup-and-staged-residency).
+D013 remains proposed; public types remain `!Send + !Sync`, with no public movable
+API or universal AMD threading guarantee.
+
+**Verified D013 failure-fixture results:** 14 control/transfer owner children and
+six worker acquisition failures pass on Windows x64/MSVC. Shared dispatch policy
+preserves known/unknown errors, poison, preflight rejection/recovery and terminal
+no-retry retention; coordinated ready/poisoned unwind preserves sibling usability
+and final fixture release. All 39 recorded source fingerprints matched at the
+2026-10-07 intake.
+Stable/MSRV regressions pass after preserved sandbox metadata-write failures;
+AMD tests remain ignored. The injected inspection error and device surrogate
+are not transferred real COM operations. See
+[failure-fixture coverage](runtime-threading.md#d013-transferred-failure-state-and-coordinated-fixture-cleanup).
+
+**Source intake limit and policy tension:** the source report could not inspect
+the requested pinned implementation and establishes no affirmative AMD transfer
+guarantee. Its platform sources were not independently revalidated during intake.
+The native follow-up supplies its own preregistered matrix and does not complete
+the missing pinned implementation audit. Loader residency is distinct from
+provider termination/thread attribution. Its ambiguous-create-error quarantine
+recommendation supplies no new contrary observation to D005's bounded returned-
+error RAII policy and does not replace it. Native returned-error cleanup and
+public-contract review remain open; see [source intake](runtime-threading.md#d013-transfer-contract-source-intake).
+
+**D013 review recommendation:** the
+[supplied soundness/architecture review](records/2026-10-09-src-d013-soundness-architecture-review.md)
+finds no confirmed Rust soundness defect and recommends acceptance with revisions.
+Unsafe acquisition must support every subsequent destination thread and maintain
+shared-state coordination through safe calls, implicit Drop/unwind and all derived
+contexts. A concrete upscaler field audit and narrow Send implementation, explicit
+runtime `!Sync` marker and separate local/movable families remain necessary.
+The review considers further exploratory native experiments unnecessary before
+implementation if those caller assumptions are accepted; this is a design judgment,
+not new native evidence. Its date, author and source revision were not supplied;
+2026-10-09 is the intake date. Existing D005/D008/D011 policies remain intact.
+D013's integration/maintainer gates and verification of the eventual public types
+remain open; see [review synthesis](runtime-threading.md#d013-soundness-and-architecture-review).
 
 **Verified bounded D014 sharpening results:** the
 [native spike](records/2026-09-30-exp-d014-native-sharpening.md) changes only the
@@ -143,7 +192,9 @@ decoding and metric computation confirmed the results. Edge overshoot is a
 diagnostic observation, not a quality guarantee. See the
 [dispatch synthesis](upscaling-dispatch.md#d014-sharpening-native-execution-and-failed-effect-gate)
 for the policy conflict and scope limits. Production still fixes sharpening
-off, and D014 remains proposed. These results add bounded execution evidence;
+off. [D014](../adr/D014.md) was accepted on 2026-10-07 as an API/migration
+and bounded native-pass trust decision; implementation and the new release
+protocol remain pending. These results add bounded execution evidence;
 they do not establish new public scalar validation, trait guarantees, safe GPU
 lifetimes, signed-provider allocation capacity or broader hardware support.
 
@@ -253,15 +304,25 @@ lifecycle results; their native failure and ownership limits remain unchanged.
   where later public operations require them. The two-context sequential result
   does not establish general native concurrency safety.
 - **D013 native transfer:** the [compile/host findings](runtime-threading.md#d013-compiled-traits-and-serialized-host-lifecycles)
-  resolve the Rust trait questions for the tested shapes; eight probes now also
-  pass [Windows fixture execution](records/2026-09-29-exp-d013-windows-fixtures.md).
-  Sanitizer evidence, transferred dispatch-poison coverage and actual AMD
-  transfer remain open. A bounded native harness still needs same-thread
-  controls, serialized load/create,
-  fenced dispatch and destroy/final release on separate threads, sibling and
-  multi-frame cases, debug-layer/device checks and watchdog isolation. It must
-  also validate native regressions after the shared-core refactor. A passing
-  configuration would not supply a universal transfer or concurrency contract.
+  resolve the Rust trait questions for the tested shapes. The
+  [September native spike](runtime-threading.md#d013-fenced-native-transfers-and-final-release)
+  passed three fenced transfer scenarios, controls and then-current native
+  regressions; the [October fixtures](runtime-threading.md#d013-transferred-failure-state-and-coordinated-fixture-cleanup)
+  add transferred poison, exact preflight, terminal-retention and coordinated
+  unwind coverage. The [extended native follow-up](runtime-threading.md#d013-extended-native-transfers-unwind-cleanup-and-staged-residency)
+  closes the extraction's native regression gap and adds creation after runtime
+  transfer, longer history, independent siblings and successful fenced Rust-unwind
+  cleanup. Native returned-error cleanup, partial-load cleanup, provider/
+  dependency termination, hidden work, external-user coordination, outstanding
+  GPU work, other configurations and sanitizer evidence remain open.
+  The access-limited source intake establishes
+  no universal transfer guarantee; concrete integration and lasting caller-contract
+  review are still required before D013 acceptance. The
+  [new review](runtime-threading.md#d013-soundness-and-architecture-review)
+  recommends accepting strengthened unsafe assumptions without further exploratory
+  execution; the native uncertainties remain unresolved. Acquisition failures
+  occur before publication of a movable owner, rather than transferring incomplete
+  state. Actual public API/trait and native regression checks remain future work.
 - **Policy selected, broader questions open:** D007 selects explicit acquisition
   and executable-adjacent upscaler deployment for the tested v2.3.0 DX12 baseline;
   automatic runtime discovery is not part of that policy. Other effect artifacts,
@@ -292,13 +353,14 @@ lifecycle results; their native failure and ownership limits remain unchanged.
   and completed three-frame moving smoke. Neither those bounded results nor
   recording-ahead tests establish general threading, synchronization or
   image-quality guarantees. Temporal reconstruction accuracy remains open.
-- **D014 effect gate and API review:** the
+- **D014 release protocol:** the
   [sharpening experiment](records/2026-09-30-exp-d014-native-sharpening.md)
   resolves whether the selected enabled passes execute and whether enabled zero
   can differ from disabled, but its proposed effect criteria failed. Review the
   intended acceptance policy before any threshold/scene amendment and new full
-  run. This is not an observed native safety failure or acceptance of D014's
-  public API. Existing D011 lifetime, ordering and terminal-error obligations
+  run. This is not an observed native safety failure. The maintainer separately
+  accepted D014's public API and bounded native-pass trust on 2026-10-07;
+  release verification remains pending. Existing D011 lifetime, ordering and terminal-error obligations
   remain in force; HDR, exposure modes, GBV, moving scenes and other providers
   gained no new coverage.
 - **Policy selected, implementation deferred:**

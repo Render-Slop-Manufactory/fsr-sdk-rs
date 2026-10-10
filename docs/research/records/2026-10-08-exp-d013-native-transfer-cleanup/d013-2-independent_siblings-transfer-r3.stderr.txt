@@ -1,0 +1,218 @@
+D013-2 case=3 transfer=true preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads")
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+D013-2 persistent worker start thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 persistent worker start thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 persistent worker start thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 load runtime (no context yet) thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 persistent worker start thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 create context=0 domain_held=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 create context=0 native_code=0x00000000 thread=ThreadId(3) name=Some("d013-2-A")
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+D013-2 create context=1 domain_held=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 create context=1 native_code=0x00000000 thread=ThreadId(3) name=Some("d013-2-A")
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+D013-2 residency checkpoint=1-contexts-live runtime_strong=Some(3) loader=true provider=true helper=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 external runtime release domain_held=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 residency checkpoint=2-external-runtime-gone runtime_strong=Some(2) loader=true provider=true helper=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 handoff context=0 from=ThreadId(3) completed_frame=None exclusive=true thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 handoff context=1 from=ThreadId(3) completed_frame=None exclusive=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch context=0 frame=0 translation=0 jitter=(0.25,-0.25) reset=true domain_held=true thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 dispatch OK context=0 frame=0 native_code=0 thread=ThreadId(4) name=Some("d013-2-B")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=0 frame=0 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.099975586, max_red: 0.89941406, left_red: 0.49598166, right_red: 0.49558884, debug_errors: 0, device_removed: 0 } thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 payload file=context0-frame0.rgba16f bytes=1843200 padding=excluded thread=ThreadId(4) name=Some("d013-2-B")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=1 frame=0 translation=0 jitter=(0.25,-0.25) reset=true domain_held=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch OK context=1 frame=0 native_code=0 thread=ThreadId(5) name=Some("d013-2-C")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=1 frame=0 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.099975586, max_red: 0.89941406, left_red: 0.49598166, right_red: 0.49558884, debug_errors: 0, device_removed: 0 } thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 payload file=context1-frame0.rgba16f bytes=1843200 padding=excluded thread=ThreadId(5) name=Some("d013-2-C")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=0 frame=1 translation=2 jitter=(-0.25,0.25) reset=false domain_held=true thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 dispatch OK context=0 frame=1 native_code=0 thread=ThreadId(4) name=Some("d013-2-B")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=0 frame=1 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09454346, max_red: 0.89941406, left_red: 0.49447376, right_red: 0.4939501, debug_errors: 0, device_removed: 0 } thread=ThreadId(4) name=Some("d013-2-B")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=1 frame=1 translation=2 jitter=(-0.25,0.25) reset=false domain_held=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch OK context=1 frame=1 native_code=0 thread=ThreadId(5) name=Some("d013-2-C")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=1 frame=1 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09454346, max_red: 0.89941406, left_red: 0.49447376, right_red: 0.4939501, debug_errors: 0, device_removed: 0 } thread=ThreadId(5) name=Some("d013-2-C")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=0 frame=2 translation=4 jitter=(0.125,-0.375) reset=false domain_held=true thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 dispatch OK context=0 frame=2 native_code=0 thread=ThreadId(4) name=Some("d013-2-B")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=0 frame=2 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09454346, max_red: 0.89941406, left_red: 0.49411222, right_red: 0.49439403, debug_errors: 0, device_removed: 0 } thread=ThreadId(4) name=Some("d013-2-B")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=1 frame=2 translation=4 jitter=(0.125,-0.375) reset=false domain_held=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch OK context=1 frame=2 native_code=0 thread=ThreadId(5) name=Some("d013-2-C")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=1 frame=2 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09454346, max_red: 0.89941406, left_red: 0.49411222, right_red: 0.49439403, debug_errors: 0, device_removed: 0 } thread=ThreadId(5) name=Some("d013-2-C")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=0 frame=3 translation=6 jitter=(-0.375,0.125) reset=false domain_held=true thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 dispatch OK context=0 frame=3 native_code=0 thread=ThreadId(4) name=Some("d013-2-B")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=0 frame=3 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.093688965, max_red: 0.8989258, left_red: 0.49353835, right_red: 0.4935007, debug_errors: 0, device_removed: 0 } thread=ThreadId(4) name=Some("d013-2-B")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=1 frame=3 translation=6 jitter=(-0.375,0.125) reset=false domain_held=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch OK context=1 frame=3 native_code=0 thread=ThreadId(5) name=Some("d013-2-C")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=1 frame=3 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.093688965, max_red: 0.8989258, left_red: 0.49353835, right_red: 0.4935007, debug_errors: 0, device_removed: 0 } thread=ThreadId(5) name=Some("d013-2-C")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 handoff context=0 from=ThreadId(4) completed_frame=Some(3) exclusive=true thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 dispatch context=0 frame=4 translation=8 jitter=(0.375,-0.125) reset=false domain_held=true thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 dispatch OK context=0 frame=4 native_code=0 thread=ThreadId(6) name=Some("d013-2-D")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=0 frame=4 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.083984375, max_red: 0.89941406, left_red: 0.49315906, right_red: 0.49206898, debug_errors: 0, device_removed: 0 } thread=ThreadId(6) name=Some("d013-2-D")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=1 frame=4 translation=8 jitter=(0.375,-0.125) reset=false domain_held=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch OK context=1 frame=4 native_code=0 thread=ThreadId(5) name=Some("d013-2-C")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=1 frame=4 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.083984375, max_red: 0.89941406, left_red: 0.49315906, right_red: 0.49206898, debug_errors: 0, device_removed: 0 } thread=ThreadId(5) name=Some("d013-2-C")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=0 frame=5 translation=10 jitter=(-0.125,0.375) reset=false domain_held=true thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 dispatch OK context=0 frame=5 native_code=0 thread=ThreadId(6) name=Some("d013-2-D")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=0 frame=5 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.087890625, max_red: 0.89941406, left_red: 0.49201182, right_red: 0.49091727, debug_errors: 0, device_removed: 0 } thread=ThreadId(6) name=Some("d013-2-D")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=1 frame=5 translation=10 jitter=(-0.125,0.375) reset=false domain_held=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch OK context=1 frame=5 native_code=0 thread=ThreadId(5) name=Some("d013-2-C")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=1 frame=5 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.087890625, max_red: 0.89941406, left_red: 0.49201182, right_red: 0.49091727, debug_errors: 0, device_removed: 0 } thread=ThreadId(5) name=Some("d013-2-C")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=0 frame=6 translation=12 jitter=(0.0625,-0.0625) reset=false domain_held=true thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 dispatch OK context=0 frame=6 native_code=0 thread=ThreadId(6) name=Some("d013-2-D")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=0 frame=6 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.087646484, max_red: 0.89941406, left_red: 0.4905858, right_red: 0.49024704, debug_errors: 0, device_removed: 0 } thread=ThreadId(6) name=Some("d013-2-D")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=1 frame=6 translation=12 jitter=(0.0625,-0.0625) reset=false domain_held=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch OK context=1 frame=6 native_code=0 thread=ThreadId(5) name=Some("d013-2-C")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=1 frame=6 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.087646484, max_red: 0.89941406, left_red: 0.4905858, right_red: 0.49024704, debug_errors: 0, device_removed: 0 } thread=ThreadId(5) name=Some("d013-2-C")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=0 frame=7 translation=14 jitter=(-0.0625,0.0625) reset=false domain_held=true thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 dispatch OK context=0 frame=7 native_code=0 thread=ThreadId(6) name=Some("d013-2-D")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=0 frame=7 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.091430664, max_red: 0.89941406, left_red: 0.489667, right_red: 0.4890298, debug_errors: 0, device_removed: 0 } thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 payload file=context0-frame7.rgba16f bytes=1843200 padding=excluded thread=ThreadId(6) name=Some("d013-2-D")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 dispatch context=1 frame=7 translation=14 jitter=(-0.0625,0.0625) reset=false domain_held=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch OK context=1 frame=7 native_code=0 thread=ThreadId(5) name=Some("d013-2-C")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=1 frame=7 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.091430664, max_red: 0.89941406, left_red: 0.489667, right_red: 0.4890298, debug_errors: 0, device_removed: 0 } thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 payload file=context1-frame7.rgba16f bytes=1843200 padding=excluded thread=ThreadId(5) name=Some("d013-2-C")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 explicit destroy context=0 domain_held=true thread=ThreadId(6) name=Some("d013-2-D")
+D013 native destroy: thread=ThreadId(6) code=0x00000000
+D013-2 residency checkpoint=3-first-sibling-destroyed runtime_strong=Some(1) loader=true provider=true helper=true thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads")
+D013-2 dispatch context=1 frame=8 translation=16 jitter=(0.25,-0.25) reset=false domain_held=true thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 dispatch OK context=1 frame=8 native_code=0 thread=ThreadId(5) name=Some("d013-2-C")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=1 frame=8 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.091674805, max_red: 0.8989258, left_red: 0.488755, right_red: 0.48740387, debug_errors: 0, device_removed: 0 } thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 payload file=context1-frame8.rgba16f bytes=1843200 padding=excluded thread=ThreadId(5) name=Some("d013-2-C")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 handoff context=1 from=ThreadId(5) completed_frame=Some(8) exclusive=true thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 automatic Drop begin context=1 domain_held=true unwinding=false thread=ThreadId(4) name=Some("d013-2-B")
+D013 native destroy: thread=ThreadId(4) code=0x00000000
+D013-2 automatic Drop end context=1 thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 residency checkpoint=4-final-context-runtime-gone runtime_strong=Some(0) loader=false provider=true helper=true thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 release frames count=17 thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 residency checkpoint=4a-frames-gone-device-live runtime_strong=Some(0) loader=false provider=true helper=true thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads")
+D013-2 residency checkpoint=5-all-application-equipment-device-helper-gone runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads")
+D013-2 persistent worker normal exit (no owners) thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 persistent worker normal exit (no owners) thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 persistent worker normal exit (no owners) thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 persistent worker normal exit (no owners) thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads")
+D013-2 case=3 transfer=true: PASSED thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads")

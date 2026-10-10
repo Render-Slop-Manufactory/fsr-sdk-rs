@@ -1,0 +1,11 @@
+Commit=82f8d8163b817634e796aade40822d88198a087e
+BaseTree=d3724199f2f463c9fe7208b7d31751189f6ed241
+Captured=2026-10-08T22:49:12.2611589+02:00
+Status= M crates/fsr-sdk/src/context.rs
+ D crates/fsr-sdk/tests/native/d013.rs
+ M crates/fsr-sdk/tests/native/dispatch_readback.rs
+ M crates/fsr-sdk/tests/native/gpu.cpp
+ M crates/fsr-sdk/tests/native/run.ps1
+?? crates/fsr-sdk/tests/native/thread_transfer_baseline.rs
+?? crates/fsr-sdk/tests/native/thread_transfers.rs
+?? docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup/

@@ -6,7 +6,7 @@ use crate::{
     error::{Error, InvariantViolation, Operation},
     runtime::RuntimeState,
 };
-#[cfg(all(windows, feature = "dx12"))]
+#[cfg(any(test, all(windows, feature = "dx12")))]
 use fsr_sdk_sys::api::ffxDispatchDescHeader;
 use fsr_sdk_sys::api::{FFX_API_RETURN_OK, ffxContext, ffxCreateContextDescHeader};
 use std::{marker::PhantomData, mem, ptr::null_mut, rc::Rc, sync::Arc};
@@ -135,6 +135,15 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
                 .library
                 .ffxDestroyContext(&mut live.handle, std::ptr::null())
         };
+        #[cfg(test)]
+        if std::env::var_os("FSR_SDK_TEST_D013_TRACE").is_some() {
+            use std::io::Write as _;
+            let _ = writeln!(
+                std::io::stderr().lock(),
+                "D013 native destroy: thread={:?} code={code:#010x}",
+                std::thread::current().id()
+            );
+        }
         if code != FFX_API_RETURN_OK {
             mem::forget(live.dependencies);
             return Err(Error::Native {
@@ -163,7 +172,7 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
     /// The descriptor, list and resources must satisfy the native contract.
     /// The caller must retain the allocator, resources, context and runtime
     /// through GPU completion, with truthful states and ordered submission.
-    #[cfg(all(windows, feature = "dx12"))]
+    #[cfg(any(test, all(windows, feature = "dx12")))]
     pub(crate) unsafe fn dispatch(&mut self, desc: *const ffxDispatchDescHeader) -> u32 {
         let live = self.live.as_mut().expect("live owner");
         // SAFETY: The caller supplies the native descriptor and GPU obligations;

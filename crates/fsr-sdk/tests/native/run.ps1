@@ -2,12 +2,12 @@
 
 # Run in an x64 VS developer shell. -Native opts into the trusted SDK and GPU.
 param(
-    [ValidateSet('lifecycle', 'dispatch', 'd013', 'sharpening')][string]$Mode = 'dispatch',
+    [ValidateSet('lifecycle', 'dispatch', 'd013', 'd013-cleanup', 'sharpening')][string]$Mode = 'dispatch',
     [switch]$Native, [switch]$GpuValidation,
     [string]$Stage = 'target/native-verification'
 )
 $ErrorActionPreference = 'Stop'
-if ($Mode -eq 'd013' -and $GpuValidation) { throw 'D013 excludes GBV; use ordinary debug layer only' }
+if ($Mode -in @('d013', 'd013-cleanup') -and $GpuValidation) { throw 'D013 excludes GBV; use ordinary debug layer only' }
 if ($Mode -eq 'sharpening' -and $GpuValidation) { throw 'Sharpening protocol excludes GBV; use ordinary debug layer only' }
 Push-Location (Resolve-Path (Join-Path $PSScriptRoot '../../../..'))
 $previousLoader = $env:FSR_SDK_TEST_DLL
@@ -99,12 +99,45 @@ try {
         )
     } elseif ($Mode -eq 'd013') {
         @(
-            @{Name='d013-control-abc'; Test='upscaler::m6::d013::control_abc'; Marker='D013 scenario=1 transfer=false: PASSED'},
-            @{Name='d013-transfer-abc'; Test='upscaler::m6::d013::transfer_abc'; Marker='D013 scenario=1 transfer=true: PASSED'},
-            @{Name='d013-control-three-frames'; Test='upscaler::m6::d013::control_three_frames'; Marker='D013 scenario=2 transfer=false: PASSED'},
-            @{Name='d013-transfer-three-frames'; Test='upscaler::m6::d013::transfer_three_frames'; Marker='D013 scenario=2 transfer=true: PASSED'},
-            @{Name='d013-control-siblings'; Test='upscaler::m6::d013::control_siblings'; Marker='D013 scenario=3 transfer=false: PASSED'},
-            @{Name='d013-transfer-siblings'; Test='upscaler::m6::d013::transfer_siblings'; Marker='D013 scenario=3 transfer=true: PASSED'}
+            @{Name='d013-control-abc'; Test='upscaler::m6::thread_transfer_baseline::same_thread_load_create_dispatch_and_cleanup'; Marker='D013 scenario=1 transfer=false: PASSED'},
+            @{Name='d013-transfer-abc'; Test='upscaler::m6::thread_transfer_baseline::load_create_then_dispatch_and_cleanup_on_other_threads'; Marker='D013 scenario=1 transfer=true: PASSED'},
+            @{Name='d013-control-three-frames'; Test='upscaler::m6::thread_transfer_baseline::same_thread_three_moving_frames'; Marker='D013 scenario=2 transfer=false: PASSED'},
+            @{Name='d013-transfer-three-frames'; Test='upscaler::m6::thread_transfer_baseline::three_moving_frames_on_successive_threads'; Marker='D013 scenario=2 transfer=true: PASSED'},
+            @{Name='d013-control-siblings'; Test='upscaler::m6::thread_transfer_baseline::same_thread_siblings_survive_runtime_release'; Marker='D013 scenario=3 transfer=false: PASSED'},
+            @{Name='d013-transfer-siblings'; Test='upscaler::m6::thread_transfer_baseline::siblings_survive_runtime_release_and_thread_transfers'; Marker='D013 scenario=3 transfer=true: PASSED'}
+        )
+    } elseif ($Mode -eq 'd013-cleanup') {
+        @(
+            @{Name='native-explicit'; Test='upscaler::tests::native_lifecycle'; Marker='Production owner: destroy A/B OK'},
+            @{Name='native-drop'; Test='upscaler::tests::native_lifecycle_drop'; Marker='Production owner: destroy A/B OK'},
+            @{Name='gate-a'; Test='upscaler::m6::native_dispatch_readback'; Marker='Gate A: PASSED'},
+            @{Name='gate-b'; Test='upscaler::m6::native_temporal_smoke'; Marker='Gate B: PASSED'},
+            @{Name='gate-c'; Test='upscaler::m6::native_semantic_comparisons'; Marker='Gate C: PASSED'},
+            @{Name='d013-control-abc'; Test='upscaler::m6::thread_transfer_baseline::same_thread_load_create_dispatch_and_cleanup'; Marker='D013 scenario=1 transfer=false: PASSED'},
+            @{Name='d013-transfer-abc'; Test='upscaler::m6::thread_transfer_baseline::load_create_then_dispatch_and_cleanup_on_other_threads'; Marker='D013 scenario=1 transfer=true: PASSED'},
+            @{Name='d013-control-three-frames'; Test='upscaler::m6::thread_transfer_baseline::same_thread_three_moving_frames'; Marker='D013 scenario=2 transfer=false: PASSED'},
+            @{Name='d013-transfer-three-frames'; Test='upscaler::m6::thread_transfer_baseline::three_moving_frames_on_successive_threads'; Marker='D013 scenario=2 transfer=true: PASSED'},
+            @{Name='d013-control-siblings'; Test='upscaler::m6::thread_transfer_baseline::same_thread_siblings_survive_runtime_release'; Marker='D013 scenario=3 transfer=false: PASSED'},
+            @{Name='d013-transfer-siblings'; Test='upscaler::m6::thread_transfer_baseline::siblings_survive_runtime_release_and_thread_transfers'; Marker='D013 scenario=3 transfer=true: PASSED'}
+            $cases = @(
+                @{Case=1; Test='create_after_transfer'; ControlTest='same_thread_runtime_transfer_before_context_creation'; TransferTest='runtime_transfer_before_context_creation_on_another_thread'; Payloads=1},
+                @{Case=2; Test='history'; ControlTest='same_thread_continuous_history_across_ownership_handoffs'; TransferTest='continuous_history_across_worker_thread_transfers'; Payloads=6},
+                @{Case=3; Test='independent_siblings'; ControlTest='same_thread_independent_siblings_share_cleanup_coordination'; TransferTest='independent_siblings_share_cleanup_coordination_across_threads'; Payloads=5},
+                @{Case=4; Test='unwind'; ControlTest='same_thread_automatic_context_cleanup_during_unwind'; TransferTest='transferred_context_automatic_cleanup_during_unwind'; Payloads=1},
+                @{Case=5; Test='sibling_unwind'; ControlTest='same_thread_sibling_cleanup_during_unwind_preserves_survivor'; TransferTest='transferred_sibling_cleanup_during_unwind_preserves_survivor'; Payloads=3}
+            )
+            foreach ($case in $cases) {
+                foreach ($arm in @('control', 'transfer')) {
+                    foreach ($repeat in 1..3) {
+                        $moving = if ($arm -eq 'transfer') { 'true' } else { 'false' }
+                        $testName = if ($arm -eq 'transfer') { $case.TransferTest } else { $case.ControlTest }
+                        @{Name="d013-2-$($case.Test)-$arm-r$repeat";
+                          Test="upscaler::m6::thread_transfers::$testName";
+                          Marker="case=$($case.Case) transfer=$($moving): PASSED";
+                          NewCase=$true; Case=$case.Test; Arm=$arm; Repeat=$repeat; Payloads=$case.Payloads}
+                    }
+                }
+            }
         )
     } elseif ($Mode -eq 'sharpening') {
         @(1..3 | ForEach-Object {
@@ -117,7 +150,13 @@ try {
             @{Name='gate-c'; Test='upscaler::m6::native_semantic_comparisons'; Marker='Gate C: PASSED'}
         )
     }
+    $payloadResults = @()
+    $newMatrixStarted = $false
     foreach ($gate in $gates) {
+        if ($gate.NewCase -and -not $newMatrixStarted) {
+            if ($failed.Count) { throw "D013-2 prerequisite failed: $($failed -join '; ')" }
+            $newMatrixStarted = $true
+        }
         $name = $gate.Name
         [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/$name.status.txt"), 'not_started')
         $start = New-Object System.Diagnostics.ProcessStartInfo
@@ -130,6 +169,14 @@ try {
         if ($Mode -eq 'sharpening') {
             $imageDirectory = New-Item -ItemType Directory -Force "$stage/$name.images"
             $start.Environment['FSR_SDK_TEST_SHARPENING_OUTPUT'] = $imageDirectory.FullName
+        }
+        if ($gate.NewCase) {
+            $imageDirectory = New-Item -ItemType Directory -Force "$stage/$name.images"
+            if (Get-ChildItem -LiteralPath $imageDirectory.FullName -File) {
+                throw "Use a fresh stage: payload directory already populated: $name"
+            }
+            $start.Environment['FSR_SDK_TEST_D013_OUTPUT'] = $imageDirectory.FullName
+            $start.Environment['FSR_SDK_TEST_D013_TRACE'] = '1'
         }
         $started = Get-Date -Format o
         Write-Host "Child command: $stage/m6.exe $($start.Arguments)"
@@ -149,7 +196,35 @@ try {
         Write-Host $stderr.Result
         if ($timeout -or $exitCode -ne 0 -or !$stderr.Result.Contains($gate.Marker)) {
             $failed += "$name timeout=$timeout exit=$exitCode"
+            if ($gate.NewCase) { throw "D013-2 case failed; preserved attempt: $($failed -join '; ')" }
         }
+        if ($gate.NewCase) {
+            $payloads = @(Get-ChildItem -LiteralPath $imageDirectory.FullName -Filter '*.rgba16f' -File |
+                Sort-Object Name | ForEach-Object {
+                    [pscustomobject]@{File=$_.Name; Bytes=$_.Length; SHA256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash}
+                })
+            if ($payloads.Count -ne $gate.Payloads -or ($payloads | Where-Object Bytes -ne 1843200)) {
+                throw "D013-2 payload oracle failed: $name"
+            }
+            $payloadResults += [pscustomobject]@{Case=$gate.Case; Arm=$gate.Arm; Repeat=$gate.Repeat; Files=$payloads}
+            [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/payload-hashes.json"), ($payloadResults | ConvertTo-Json -Depth 6))
+        }
+    }
+    if ($Mode -eq 'd013-cleanup') {
+        $comparisons = foreach ($caseName in ($payloadResults.Case | Sort-Object -Unique)) {
+            $controls = @($payloadResults | Where-Object { $_.Case -eq $caseName -and $_.Arm -eq 'control' } | Sort-Object Repeat)
+            $transfers = @($payloadResults | Where-Object { $_.Case -eq $caseName -and $_.Arm -eq 'transfer' } | Sort-Object Repeat)
+            if ($controls.Count -ne 3 -or $transfers.Count -ne 3) { throw "Incomplete D013-2 repetitions: $caseName" }
+            $controlReference = $controls[0].Files | ConvertTo-Json -Depth 4 -Compress
+            $controlStable = @($controls | Where-Object { ($_.Files | ConvertTo-Json -Depth 4 -Compress) -ne $controlReference }).Count -eq 0
+            $transferReference = $transfers[0].Files | ConvertTo-Json -Depth 4 -Compress
+            $transferStable = @($transfers | Where-Object { ($_.Files | ConvertTo-Json -Depth 4 -Compress) -ne $transferReference }).Count -eq 0
+            $equal = @($transfers | Where-Object { ($_.Files | ConvertTo-Json -Depth 4 -Compress) -ne $controlReference }).Count -eq 0
+            $result = if (-not $controlStable) { 'inconclusive-controls-vary' } elseif ($equal) { 'exact-payload-equivalence' } else { 'different-payloads' }
+            [pscustomobject]@{Case=$caseName; ControlRepeatable=$controlStable; TransferRepeatable=$transferStable; AllMatchControl=$equal; ImageResult=$result}
+        }
+        [IO.File]::WriteAllText((Join-Path (Get-Location) "$stage/payload-comparison.json"), ($comparisons | ConvertTo-Json))
+        Write-Host ($comparisons | Format-Table | Out-String)
     }
     if ($failed.Count) { throw "Windows verification failed: $($failed -join '; ')" }
 } finally {

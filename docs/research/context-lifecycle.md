@@ -1,6 +1,6 @@
 # context lifecycle
 
-Updated: 2026-09-30 (topic reorganization; evidence dates retained).
+Updated: 2026-10-09 (D013 lifecycle review recommendation integrated).
 
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
@@ -241,6 +241,13 @@ universal failure contract.
 
 ## Returned create error: caller input lifetime
 
+The later [D013 source intake](records/2026-10-07-src-d013-transfer-cleanup-contract.md)
+recommends quarantine for ambiguous returned-create-error ownership, but supplies
+no new contradictory execution or pinned provider postcondition. D005's accepted
+bounded RAII trust assumption below remains in force; it never authorizes
+destroying an ambiguous failed handle. Fixture postconditions and source
+recommendations do not substitute for the selected provider's native contract.
+
 The [D005 input-lifetime spike](records/2026-09-22-exp-create-error-input-lifetime.md)
 adds a normally returned error from the signed v2.3.0 runtime on Windows
 x64/MSVC, RX 9060 XT and driver `32.0.31041.1004`. It uses a correctly tagged
@@ -288,3 +295,74 @@ bounded policies that M5 implements. Repeating this wait or adding a staged clea
 matrix cannot establish the missing universal contract. Further investigation
 would need provider-specific source/contract evidence or an independently
 justified deeper returned-failure path.
+
+## D013: terminal cleanup after transferred fixture failures
+
+**Verified wrapper-policy result:** the
+[2026-10-07 experiment](records/2026-10-07-exp-d013-transfer-failure-cleanup.md)
+tests seven control/transfer pairs on Windows x64/MSVC through the real owner
+and shared dispatch policy. Known/unknown dispatch errors preserve poison across
+handoffs and allow exactly one terminal destroy. A subsequent destroy failure
+retains the complete descriptor/callback state, device surrogate, runtime and
+fixture DLL with no retry, under both explicit destruction and Drop. Ready and
+poisoned Rust unwinds clean up on the destination while holding the common
+mutex; a waiting sibling recovers mutex poison, remains usable and completes
+final release. Library liveness and pointer identity are checked through cleanup.
+
+These controlled returned codes and injected inspection errors establish ownership
+and cleanup behavior, not AMD failed-recording recovery, rollback/quiescence or
+native unwind/device-release compatibility. Earlier create-error/OK-null controls
+were reused; new creation-after-runtime-transfer and extra native-slot mutations
+were not tested. Module absence does not attribute termination callbacks to a
+thread. The [threading synthesis](runtime-threading.md#d013-transferred-failure-state-and-coordinated-fixture-cleanup)
+records the complete coverage and remaining gates; D013 remains proposed.
+
+## D013: native Rust-unwind cleanup after fenced transfers
+
+**Verified bounded native result:** the
+[2026-10-08 experiment](records/2026-10-08-exp-d013-native-transfer-cleanup.md)
+executes actual automatic owner destruction during Rust unwind outside FFI on
+the recorded SDK v2.3.0/provider 4.1.1, RX 9060 XT/driver 32.0.31041.1004 inputs.
+All 12 unwind cleanups return native OK in isolated control/transfer repetitions.
+Guard/drop order keeps cleanup inside the common domain; the surviving sibling
+recovers mutex poison, successfully dispatches another fenced frame and later
+Drops on another worker. Across the full matrix, all 42 explicit/automatic native
+destroy calls return OK. Test-only post-call tracing observes these return codes;
+the public Drop API still exposes no result.
+
+The matrix also covers creation after runtime transfer and independently held
+siblings. After all contexts/runtime and audited application frame/device/helper
+refs are released, the loader and helper are absent but the provider remains,
+including after worker exit. This does not establish actual COM device destruction
+or complete provider termination; see [loading observations](runtime-loading.md#d013-acquisition-failures-and-release-observations).
+
+**Limit:** these successful fenced paths add native compatibility evidence for
+Rust-unwind cleanup, not native error recovery, failed recording, outstanding
+work, quiescence or arbitrary unwind states. The fixture's poisoned native
+dispatch/destroy paths remain fixture evidence. D005's terminal no-retry and
+exceptional retention policy and D011's GPU obligations remain intact. The
+[threading synthesis](runtime-threading.md#d013-extended-native-transfers-unwind-cleanup-and-staged-residency)
+keeps source/coordination limits and D013's unresolved acceptance gates.
+
+## D013: reviewed ownership and lasting cleanup obligations
+
+The [soundness/architecture review imported on 2026-10-09](records/2026-10-09-src-d013-soundness-architecture-review.md)
+finds no confirmed double-destruction, descriptor-movement or reference-counting
+defect in the proposed ownership structure. Intake source comparison confirms
+the existing sealed Rc/Arc seam, pinned allocation and ordered terminal cleanup;
+the review does not independently rerun fixtures or native tests, and supplies
+no reviewed source revision. A real public movable bundle still needs its own
+complete field and cleanup audit.
+
+**Design recommendation:** retain D005's at-most-once destruction, ordered
+state/device/runtime release on success, full exceptional retention and bounded
+returned-create-error RAII trust. The earlier source report's quarantine proposal
+remains a recommendation, without new contrary evidence overturning D005.
+The strengthened acquisition contract must cover safe destruction and automatic
+Drop on every possible destination thread, including unwind, while common-domain
+coordination persists for siblings and external native users. Dropping the public
+runtime or retaining dependencies after a failure does not discharge those
+obligations or establish native quiescence. GPU completion remains independent.
+These are proposed contract requirements, not proven AMD error/termination
+behavior; [D013 review and acceptance](runtime-threading.md#d013-soundness-and-architecture-review)
+remain distinct from implementation and support verification.

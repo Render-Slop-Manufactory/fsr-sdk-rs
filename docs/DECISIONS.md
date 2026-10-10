@@ -80,7 +80,9 @@ the replacement. Update SCOPE.md if project boundaries change.
 
 ## D011 — Bound the first public DX12 upscaler dispatch contract
 
-**Status:** accepted; M6b implemented and verified on one tested configuration
+**Status:** accepted; M6b implemented and verified on one tested configuration;
+public input representation and fixed sharpening partially superseded by D014
+for 0.2.0
 
 [Read D011](adr/D011.md)
 
@@ -93,35 +95,41 @@ the replacement. Update SCOPE.md if project boundaries change.
 ## D013 — Optional movable runtime/upscaler family
 
 **Status:** proposed; compile/host, Windows fixtures and bounded fenced native
-transfer experiments passed; provider termination and public-contract review
+transfer/Rust-unwind experiments passed; provider termination and public-contract review
 remain open; no public movable API
 
 [Read D013](adr/D013.md)
 
 ## D014 — Extensible DX12 dispatch inputs and sharpening
 
-**Status:** proposed; concrete 0.2.0 API and migration prepared for review;
-native sharpening execution/repeat controls passed, original effect criteria
-failed; API design and effect policy need separate review; not implemented or accepted
+**Status:** accepted 2026-10-07; 0.2.0 API, migration and bounded native-sharpening
+trust selected. Implementation and release verification pending; the new release
+protocol remains open. Original native effect criteria failed and stay failed.
 
 [Read D014](adr/D014.md)
 
 ## Open choices
 
-The dispatch-input and sharpening design in [D014](adr/D014.md) is proposed
-for the roadmap's M7 review. Its original sharpening effect gate failed in the
-[native spike](research/records/2026-09-30-exp-d014-native-sharpening.md);
-reviewing the API design does not accept or retrospectively pass that gate.
-D011 remains the accepted current dispatch contract.
+The dispatch-input and sharpening design in [D014](adr/D014.md) is accepted;
+M7's contract decision is complete. Its separate native release protocol must
+still be selected before execution, including same-context mode switching.
+The original sharpening effect gate failed in the
+[native spike](research/records/2026-09-30-exp-d014-native-sharpening.md)
+and remains failed. D011 remains the implemented 0.1.0 dispatch baseline;
+D014 selects its limited 0.2.0 replacement and provider-trust extension.
 
 The optional movable runtime/upscaler family in [D013](adr/D013.md) remains a
 proposal. Its conditional thread-transfer contract and acceptance gates require
 review after the successful
-[bounded native transfer spike](research/records/2026-09-30-exp-d013-native-thread-transfer.md).
-Provider termination on the destination thread remains unresolved; the existing
+[bounded native transfer spike](research/records/2026-09-30-exp-d013-native-thread-transfer.md)
+and [extended native cleanup follow-up](research/records/2026-10-08-exp-d013-native-transfer-cleanup.md).
+Successful fenced Rust-unwind cleanup is now covered on the recorded inputs;
+native returned-error cleanup and provider termination on the destination thread
+remain unresolved. The provider persists after all audited application refs and
+worker exit; this does not establish its retention cause. The existing
 D008 types remain confined to their acquiring thread.
 
-Concrete binding-slice selections under D006 and public APIs beyond D008/D011/D012
+Concrete binding-slice selections under D006 and public APIs beyond D008/D011/D012/D014
 remain undecided. [D011](adr/D011.md) accepts the first public DX12 dispatch
 contract; M6b implementation and bounded public-route GPU verification are
 complete. D008 selects the first construction

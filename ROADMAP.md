@@ -40,10 +40,10 @@ through one upscaler on the recorded AMD configuration.
 
 **Current focus:** Plan a small `0.2.0` around dispatch-input extensibility and
 one contained addition: sharpening. Maintain the published `0.1.0` as the
-regression baseline. The milestones below are planning scope; public contracts
-still need their own reviewed decisions before implementation.
-Review D014's API shape and sharpening evidence separately: its original native
-effect gate failed. Complete the small `0.2.0` contract and broaden existing
+regression baseline. [D014](docs/adr/D014.md) was accepted on 2026-10-07;
+M7's API and migration contract is complete. Implementation and the separate
+native release protocol remain pending. The original native effect gate failed
+and stays failed. Complete and verify the small `0.2.0`, then broaden existing
 upscaler evidence before opening new effects.
 
 - [x] Two-crate Cargo workspace: `fsr-sdk-sys` and `fsr-sdk`.
@@ -126,7 +126,7 @@ The [2026-09-30 maintenance verification](docs/release/2026-09-30-review-verific
 adds dimensions accessors, smaller implementation/test modules, pinned-header CI
 checks and Rust 1.88 CI coverage. The [semantic comparison](docs/research/records/2026-09-30-exp-dispatch-semantics.md)
 adds bounded motion/jitter/history-reset evidence and corrects the test image
-generator. These maintenance changes do not implement the proposed frame or
+generator. These maintenance changes do not implement the 0.2.0 frame or
 sharpening extension below.
 
 Replace public `UpscaleDispatch` literals with a private, extensible frame
@@ -136,24 +136,25 @@ a useful frame scalar requiring no new resources or creation flags.
 Basis: the [dispatch API synthesis](docs/research/upscaling-dispatch.md#broader-frame-surface-and-api-evolution)
 and [post-release surface record](docs/research/records/2026-09-29-src-dx12-upscaler-api-surface.md).
 These repository milestones continue M1–M6, independently of the record's
-numbering. D011 remains the current contract until the extension ADR is reviewed;
-D012 already covers creation-option extensibility.
+numbering. D011 remains the implemented 0.1.0 baseline; D014 selects its limited
+0.2.0 replacement. D012 already covers creation-option extensibility.
 
-The concrete [D014 design proposal](docs/adr/D014.md) supplies M7's API sketch,
-migration, alternatives and verification gates. It remains proposed pending
-review; the frame redesign and sharpening are not implemented.
+The accepted [D014 design](docs/adr/D014.md) supplies M7's API contract,
+migration, alternatives and verification gates. M7 was completed on 2026-10-07;
+the frame redesign and sharpening are not implemented.
 Its [native sharpening spike](docs/research/records/2026-09-30-exp-d014-native-sharpening.md)
 passed execution and repeat controls, but failed the predeclared effect criteria
 in all three repetitions, confirmed by an independent readback audit. The original
-failure remains evidence. M7 must review the API shape and effect policy separately;
-any changed scene or threshold policy needs an explicit amendment before a new
-complete validation run, without retrospectively passing the original gate.
+failure remains evidence. API acceptance does not select the new release protocol.
+Its scenes, controls, metrics, thresholds and repeat policy must be recorded
+before execution, explicitly informed by the known results and including
+same-context sharpening switches. No new run retrospectively passes the original gate.
 
 | Milestone | Scope | Done when |
 |---|---|---|
-| M7 — Dispatch API contract | ADR for private fields, construction/access methods, optional defaults and migration from `0.1.0` literals. | Approved contract; one unsafe dispatch route; GPU-lifetime, poison and cleanup obligations preserved. |
+| M7 — Dispatch API contract | **Done 2026-10-07:** D014 accepted for private fields, construction/access methods, optional defaults and migration from `0.1.0` literals. | Contract approved; one unsafe dispatch route; GPU-lifetime, poison and cleanup obligations preserved. Implementation remains M8. |
 | M8 — Extensible frame and sharpening | Implement the frame API and typed sharpening: disabled by default, finite `[0,1]` strength. Migrate examples. | Host/Windows checks cover defaults, rejection before FFI, descriptor mapping and existing failure paths. |
-| M9 — Verification and release | Repeat native lifecycle/dispatch/three-frame regressions; compare disabled/enabled sharpening on controlled detail inputs with matching history. | Recorded sharpening effect, finite readback, fenced cleanup, no debug errors/device removal; migration, Rustdoc and package/consumer checks complete. Publication remains separately authorized. |
+| M9 — Verification and release | Predeclare the separate sharpening release protocol; repeat native regressions and public-route comparisons, including mode switching within one context. | Exact descriptor mapping and recorded native execution/effect under the selected protocol; finite readback, fenced cleanup, no debug errors/device removal; migration, Rustdoc and package/consumer checks complete. Publication remains separately authorized. |
 
 `0.2.0` does not include pre-exposure, automatic exposure, masks, changing active
 extents, new depth/MV conventions, HDR/non-linear color, public Query/Configure,
@@ -200,9 +201,16 @@ Its evidence work can proceed in parallel; it is not a gate for M7–M9.
    The [bounded native spike](docs/research/records/2026-09-30-exp-d013-native-thread-transfer.md)
    passed all three serialized, fenced transfer scenarios, their same-thread
    controls and existing native regressions. Siblings, early external-runtime
-   drop and final loader release on another thread were covered. The requested
-   spike is complete; provider/dependency termination on the destination thread,
-   native error/unwind and partial-load transfer paths, unfenced work and
+   drop and final loader release on another thread were covered. The
+   [failure/cleanup fixtures](docs/research/records/2026-10-07-exp-d013-transfer-failure-cleanup.md)
+   add transferred poison, preflight/recovery, terminal retention and coordinated
+   unwind. The [extended native follow-up](docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup.md)
+   passes all 11 prerequisites and 30 new children, covering creation after
+   runtime transfer, 64-frame history, independent siblings and successful fenced
+   Rust-unwind cleanup. The provider persists after all audited application refs
+   and worker exit. These bounded spikes are complete; provider/dependency
+   termination, native returned-error cleanup, partial-load transfer, hidden work,
+   external-user coordination, outstanding GPU work, other configurations and
    sanitizer coverage remain open.
 2. **D013-B — Review:** assess a concrete integration and the lasting transfer,
    serialization and cleanup contract. Accept, revise or defer explicitly.
@@ -230,18 +238,21 @@ Its evidence work can proceed in parallel; it is not a gate for M7–M9.
    completed D013/D014 evidence, the broken protocol link is repaired and
    fixture directories tolerate stale paths.
    Verification is recorded in the [2026-10-07 maintenance check](docs/release/2026-10-07-status-test-hygiene.md).
-2. **D014 / M7:** decide the extensible API and migration contract, reviewing
-   sharpening evidence separately. Preserve failed tests; do not redefine their
-   historical outcomes. No acceptance or new effect policy is implied by hygiene work.
+2. **D014 / M7 — completed 2026-10-07:** API, migration and bounded native-pass
+   trust accepted after review. The original failed experiment remains failed;
+   the separate release protocol is still open.
 3. **M8–M9:** implement and verify a deliberately small `0.2.0`: extensible frame
-   API, sharpening and migration. Repeat native regressions, the selected
+   API, sharpening and migration. Select and record the separate release
+   protocol before native execution, including same-context mode switching.
+   Repeat native regressions, the selected
    sharpening protocol, documentation and package/consumer checks on the final
    implementation and artifacts. Maintain published `0.1.0` consumer guidance.
    Publication remains separately authorized.
 4. **Broader existing-upscaler evidence:** extend the in-repo example/test harness
    with longer moving sequences, image comparisons and, where available, a second
    hardware/provider configuration before choosing the next large SDK slice.
-5. **D013 independently:** the bounded native spike is complete. Review the
+5. **D013 independently:** the [extended native spike](docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup.md)
+   is complete. Review the
    remaining integration, conditional transfer contract and provider-cleanup
    questions, then accept, narrow or defer explicitly. Public implementation
    stays outside `0.2.0`; these results alone do not authorize a public Send guarantee.

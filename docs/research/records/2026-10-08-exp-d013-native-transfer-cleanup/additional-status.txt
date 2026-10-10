@@ -1,0 +1,7 @@
+cargo check --workspace --all-targets --no-default-features --locked --offline => exit=0
+cargo test -p fsr-sdk --lib d013_movable --locked --offline -- --nocapture => exit=0
+cargo test -p fsr-sdk --lib d013_movable --no-default-features --locked --offline -- --nocapture => exit=0
+cargo +1.88.0 check --workspace --all-targets --locked --offline => exit=0
+cargo +1.88.0 test --workspace --locked --offline => exit=0
+cargo +1.88.0 check --workspace --all-targets --no-default-features --locked --offline => exit=0
+cargo doc --workspace --no-deps --locked --offline => exit=0

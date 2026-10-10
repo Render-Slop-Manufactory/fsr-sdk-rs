@@ -1,0 +1,3 @@
+ Documenting fsr-sdk v0.1.0 (<repo>\crates\fsr-sdk)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.75s
+   Generated <repo>\target\doc\fsr_sdk\index.html and 1 other file

@@ -21,6 +21,12 @@ published on 2026-09-28.
 **Today:** Windows/DX12 upscaling. **Future scope:** Frame Generation, Ray
 Regeneration, Radiance Caching, and other backends.
 
+**Next release:** [D014](docs/adr/D014.md) selects a small `0.2.0` with extensible
+dispatch inputs and explicit native sharpening, disabled by default. The design
+was accepted on 2026-10-07; implementation and release verification are pending.
+The [roadmap](ROADMAP.md#next-actions) tracks that work. The examples below use
+the implemented `0.1.0` API.
+
 The project wraps AMD's official FSR SDK and runtime. It does not reimplement FidelityFX Super Resolution.
 
 >[!NOTE]

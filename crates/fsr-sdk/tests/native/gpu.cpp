@@ -419,6 +419,35 @@ extern "C" __declspec(dllexport) void __cdecl m6_destroy(void* handle) {
     delete static_cast<Harness*>(handle);
 }
 
+// Test-only D013 observations. Call after successful submission/fence, while
+// the harness and helper are retained. UINT64_MAX means device removal.
+extern "C" __declspec(dllexport) uint64_t __cdecl d013_fence_value(void* handle) {
+    return handle ? static_cast<Harness*>(handle)->fence->GetCompletedValue() : UINT64_MAX;
+}
+
+// Exact RGBA16F payload, excluding row padding; no conversion or channel loss.
+extern "C" __declspec(dllexport) int32_t __cdecl d013_copy_payload(
+    void* handle, uint8_t* output, uint32_t bytes) {
+    const uint32_t row_bytes = output_width * 8;
+    if (!handle || !output || bytes != row_bytes * output_height) return E_INVALIDARG;
+    auto& h = *static_cast<Harness*>(handle);
+    const uint64_t completed = h.fence->GetCompletedValue();
+    if (completed == UINT64_MAX || completed < 1) return E_FAIL;
+    uint8_t* mapped = nullptr;
+    D3D12_RANGE range{0, static_cast<SIZE_T>(h.output_bytes)};
+    const HRESULT hr = h.readback->Map(0, &range, reinterpret_cast<void**>(&mapped));
+    if (FAILED(hr)) return hr;
+    for (uint32_t y = 0; y < output_height; ++y) {
+        std::memcpy(output + y * row_bytes,
+                    mapped + h.output_footprint.Offset
+                        + y * h.output_footprint.Footprint.RowPitch,
+                    row_bytes);
+    }
+    const D3D12_RANGE written{0, 0};
+    h.readback->Unmap(0, &written);
+    return S_OK;
+}
+
 extern "C" __declspec(dllexport) int32_t __cdecl semantic_set_frame(
     void* handle, uint32_t frame, float jitter_x, float jitter_y, uint32_t reverse_motion) {
     if (!handle) return E_INVALIDARG;

@@ -1,0 +1,29 @@
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\fsr_sdk_sys-14anxb8mawg6o\s-hmz2tmmfib-0uva74r-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\fsr_sdk_sys-3gk0cdm7f0z3j\s-hmz2tmmfij-09k6x7w-working`
+
+warning: `fsr-sdk-sys` (lib) generated 1 warning
+warning: `fsr-sdk-sys` (lib test) generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\context_lifecycle-3n9pig68w66li\s-hmz2tmtsq1-07qee0a-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\dispatch_abi-219c3b0eyio7x\s-hmz2tmunf6-1goijos-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\shared_runtime-2g7umo11gjdhn\s-hmz2tmu7a9-1u05z1e-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\abi-0mo47rr48ux0h\s-hmz2tmtmxh-0yklttr-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\context_dimensions-3l01turros5au\s-hmz2tmtzjj-1fnvhzf-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\query-01bkyjyu623o7\s-hmz2tmuanj-1rsw5ga-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\loader-09t19z8lt46z8\s-hmz4301fzd-1nt8mkb-working`
+
+warning: `fsr-sdk-sys` (test "context_lifecycle") generated 1 warning
+warning: `fsr-sdk-sys` (test "dispatch_abi") generated 1 warning
+warning: `fsr-sdk-sys` (test "shared_runtime") generated 1 warning
+warning: `fsr-sdk-sys` (test "abi") generated 1 warning
+warning: `fsr-sdk-sys` (test "context_dimensions") generated 1 warning
+warning: `fsr-sdk-sys` (test "query") generated 1 warning
+warning: `fsr-sdk-sys` (test "loader") generated 1 warning
+    Checking fsr-sdk v0.1.0 (<repo>\crates\fsr-sdk)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.26s

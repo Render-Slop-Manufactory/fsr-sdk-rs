@@ -1,6 +1,6 @@
 # runtime loading
 
-Updated: 2026-09-30 (topic reorganization; evidence dates retained).
+Updated: 2026-10-09 (D013 acquisition/termination review integrated).
 
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
@@ -85,3 +85,59 @@ needed to answer private-directory colocation sufficiency for these inputs.
 Alternate loading mechanisms, runtime coexistence, other systems and dependency
 closure remain unresolved and would need their own evidence. The decision does
 not establish AMD's internal search algorithm or authorize binary redistribution.
+
+## D013: acquisition failures and release observations
+
+The [2026-10-07 fixture experiment](records/2026-10-07-exp-d013-transfer-failure-cleanup.md)
+adds six failure observations on named acquiring workers using the actual Windows
+loader: missing-file Path/io/NotFound and each of the five missing required
+exports as an exact Symbol error with its owned libloading source. No runtime
+is published. Each missing-export fixture module is absent before loading and
+after failure; temporary observation handles do not span cleanup. This is
+acquisition-local release, not transfer of partially initialized runtime state
+or evidence of AMD initialization rollback.
+
+The [source intake](records/2026-10-07-src-d013-transfer-cleanup-contract.md)
+reports Windows module-reference and loader-lock rules, with no successful
+inspection of the requested pinned AMD implementation. **Inference:** observer
+load references/pinning can alter residency; module snapshots and errors need
+explicit semantics. Natural absence does not independently identify a detach
+callback's thread or full provider/dependency termination. Process exit is not
+ordinary release evidence. The earlier native loader disappearance and persistent
+upscaler residency remain bounded observations described in
+[runtime threading](runtime-threading.md#d013-fenced-native-transfers-and-final-release).
+
+**Verified staged native residency:** the
+[2026-10-08 follow-up](records/2026-10-08-exp-d013-native-transfer-cleanup.md)
+observes all 30 control/transfer children after final contexts/runtime, frame
+equipment, caller-device and helper references are naturally released, then
+after ordinary worker exit. The loader and helper are absent; the upscaler
+provider remains present. `GetModuleHandleW` supplies only an instantaneous
+boolean and adds no module reference; no forced unload or reference-count
+manipulation is used. All debug/device checks occur before device release.
+
+**Inference and limit:** retaining the previously held application equipment/
+device references is not necessary for provider persistence on these inputs.
+Native/platform references and the provider's retention cause remain opaque;
+actual COM device destruction, leak freedom, provider/dependency termination
+and detach-thread attribution are not established. Process exit adds no normal
+unload evidence. The [extended threading findings](runtime-threading.md#d013-extended-native-transfers-unwind-cleanup-and-staged-residency)
+retain the tested synchronization premises; D013 remains proposed.
+
+**Later review recommendation:** the
+[soundness/architecture review imported on 2026-10-09](records/2026-10-09-src-d013-soundness-architecture-review.md)
+distinguishes acquisition-local failure cleanup, final wrapper-owned loader
+release and actual provider termination. Intake source comparison agrees that
+failed symbol resolution releases its local library before publishing a runtime;
+no partly constructed movable owner is transferred. Native rollback and
+termination safety remain caller-established trust obligations.
+
+The review considers additional provider-unload observation unnecessary before
+implementation if the conditional unsafe contract covers any termination on its
+actual executing thread. This is a recommendation, not an unload guarantee or
+fresh execution result. The wrapper must not promise provider unload or its
+thread, and the observed retention cause remains unresolved. No investigation
+date or reviewed revision was supplied; the intake date is used. See
+[the contract review](runtime-threading.md#d013-soundness-and-architecture-review)
+for arbitrary-destination, lifetime and coordination requirements; D013 remains
+proposed pending explicit maintainer acceptance.

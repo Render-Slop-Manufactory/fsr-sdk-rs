@@ -15,6 +15,7 @@ use std::{
 pub(crate) struct FfxLibrary {
     create: PfnFfxCreateContext,
     destroy: PfnFfxDestroyContext,
+    dispatch: PfnFfxDispatch,
     _library: libloading::Library,
     release_probe: Option<Arc<AtomicBool>>,
 }
@@ -42,9 +43,11 @@ impl FfxLibrary {
             let library = libloading::Library::new(path.as_ref())?;
             let create = *library.get(c"ffxCreateContext")?;
             let destroy = *library.get(c"ffxDestroyContext")?;
+            let dispatch = *library.get(c"ffxDispatch")?;
             Ok(Self {
                 create,
                 destroy,
+                dispatch,
                 _library: library,
                 release_probe: None,
             })
@@ -66,5 +69,14 @@ impl FfxLibrary {
     ) -> u32 {
         // SAFETY: Caller supplies a live fixture context, exactly once.
         unsafe { (self.destroy.unwrap())(context, allocator) }
+    }
+
+    pub(crate) unsafe fn ffxDispatch(
+        &self,
+        context: *mut ffxContext,
+        desc: *const ffxDispatchDescHeader,
+    ) -> u32 {
+        // SAFETY: Caller supplies the live context and fixture dispatch protocol.
+        unsafe { (self.dispatch.unwrap())(context, desc) }
     }
 }

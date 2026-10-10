@@ -133,6 +133,8 @@ mod test_directory;
 
 #[cfg(any(test, all(windows, feature = "dx12")))]
 mod context;
+#[cfg(any(test, all(windows, feature = "dx12")))]
+mod dispatch_policy;
 #[cfg(all(windows, feature = "dx12"))]
 /// DX12 upscaler ownership, checked frame inputs and unsafe command recording.
 pub mod upscaler;

@@ -2,8 +2,8 @@
 
 //! Narrow Windows/DX12 dispatch orchestration and terminal error policy.
 use super::Upscaler;
-use crate::error::{Error, Operation};
-use fsr_sdk_sys::{api::FFX_API_RETURN_OK, upscale::ffxDispatchDescUpscale};
+use crate::error::Error;
+use fsr_sdk_sys::upscale::ffxDispatchDescUpscale;
 
 mod descriptor;
 mod frame;
@@ -82,23 +82,18 @@ impl Upscaler {
         &mut self,
         inspect: impl FnOnce(&Self) -> Result<ffxDispatchDescUpscale, Error>,
     ) -> Result<(), Error> {
-        if self.dispatch_poisoned {
-            return Err(Error::DispatchPoisoned);
-        }
-        let desc = inspect(self)?;
-        // SAFETY: All descriptor storage lives through the call; the private
-        // owner retains the context/runtime. The unsafe caller fulfills the
-        // resource-state and post-return GPU obligations described above.
-        let code = unsafe { self.owner.dispatch(&desc.header) };
-        if code == FFX_API_RETURN_OK {
-            Ok(())
-        } else {
-            self.dispatch_poisoned = true;
-            Err(Error::Native {
-                operation: Operation::Dispatch,
-                code,
-            })
-        }
+        // A local copy permits inspection to borrow the complete Upscaler.
+        // Inspection may unwind before FFI without changing eligibility; the
+        // native invocation must not unwind, so its transition is written back.
+        let mut poisoned = self.dispatch_poisoned;
+        let result =
+            crate::dispatch_policy::dispatch(&mut poisoned, self, inspect, |this, desc| {
+                // SAFETY: The inspected descriptor lives through the call. The
+                // caller upholds the native resource/state/GPU lifetime contract.
+                unsafe { this.owner.dispatch(&desc.header) }
+            });
+        self.dispatch_poisoned = poisoned;
+        result
     }
 }
 

@@ -1,0 +1,109 @@
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\loader-1zp8k0zycuruw\s-hmz42sid3z-025e57q-working`
+
+warning: `fsr-sdk-sys` (test "loader") generated 1 warning
+   Compiling fsr-sdk v0.1.0 (<repo>\crates\fsr-sdk)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\fsr_sdk-1gku0c6pu9801\s-hmz42yp3ez-1gcm6w3-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\fsr_sdk-1u6xlvwv5ypy4\s-hmz42yp3i7-0d9zkgm-working`
+
+warning: `fsr-sdk` (lib) generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\dx12_upscale-10x42u1s1a8u7\s-hmz42z3t5a-1vg25g9-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\dimensions-0wtzdvi9kmna5\s-hmz42z3q5l-1kenaxu-working`
+
+warning: `fsr-sdk` (example "dx12_upscale") generated 1 warning
+warning: `fsr-sdk` (test "dimensions") generated 1 warning
+warning: `fsr-sdk` (lib test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.34s
+     Running unittests src\lib.rs (target\debug\deps\fsr_sdk-3b56f04a3280a2f1.exe)
+
+running 49 tests
+test context::d013_movable::trait_matrix ... ok
+test context::d013_movable::transfer::isolated_case ... ok
+test context::tests::consumed_owner_and_private_handle_are_compile_errors ... FAILED
+test context::d013_movable::runtime_and_siblings_cross_threads_with_stable_handles ... ok
+test context::tests::ok_null_retains_every_dependency_without_destroy ... ok
+test context::tests::failed_sibling_create_preserves_live_sibling ... ok
+test context::d013_movable::returned_create_error_releases_inputs_without_destroy_on_either_thread ... ok
+test context::d013_movable::destroy_error_is_terminal_and_retains_dependencies_on_either_thread ... ok
+test error::tests::preserves_unknown_codes_and_operation ... ok
+test error::tests::preserves_hresult_bits_separately_from_native_codes ... ok
+test runtime::tests::public_load_unchecked_maps_path_error_and_retains_io_source ... ok
+test runtime::tests::library_and_symbol_errors_keep_their_causes ... ok
+test upscaler::dispatch::tests::exact_extents_and_canonical_identity_reject_before_native_call ... ok
+test upscaler::dispatch::tests::narrow_conversion_and_descriptor ... ok
+test upscaler::dispatch::tests::rejects_invalid_resources_and_frame_before_native_call ... ok
+test upscaler::m6::d013::control_abc ... ignored, requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode d013 -Native
+test upscaler::m6::d013::control_siblings ... ignored, requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode d013 -Native
+test upscaler::m6::d013::control_three_frames ... ignored, requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode d013 -Native
+test upscaler::m6::d013::transfer_abc ... ignored, requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode d013 -Native
+test upscaler::m6::d013::transfer_siblings ... ignored, requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode d013 -Native
+test upscaler::m6::d013::transfer_three_frames ... ignored, requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode d013 -Native
+test upscaler::m6::native_dispatch_readback ... ignored, requires trusted SDK DLLs and hardware DX12; use tests/run-m6.ps1 -Native
+test upscaler::m6::native_semantic_comparisons ... ignored, requires trusted SDK DLLs and hardware DX12; use tests/run-m6.ps1 -Native
+test upscaler::m6::native_sharpening_comparisons ... ignored, requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode sharpening -Native
+test upscaler::m6::native_temporal_smoke ... ignored, requires trusted SDK DLLs and hardware DX12; use tests/run-m6.ps1 -Native
+test upscaler::m6_recording::native_recording_ahead_spike ... ignored, requires staged v2.3.0 DLLs, MSVC-built m6_gpu.dll and a hardware DX12 GPU; use tests/run-m6-recording-spike.ps1
+test upscaler::tests::construction::descriptor_links_survive_moves_of_outer_storage ... ok
+test upscaler::tests::construction::dimensions_reject_every_zero_component ... ok
+test test_directory::skips_existing_fixture_paths_without_reusing_or_overwriting_them ... ok
+test context::tests::shared_runtime_survives_public_owner_and_first_context ... ok
+test context::d013_movable::unwinding_cleans_up_on_either_thread ... ok
+test context::d013_movable::null_success_retains_dependencies_on_either_thread ... ok
+test context::tests::sibling_destroy_failure_retains_runtime_after_other_cleanup ... ok
+test context::d013_movable::rc_and_arc_single_thread_controls ... ok
+test upscaler::tests::construction::public_constructor_forwards_checked_chain_and_owns_device ... ok
+test context::d013_movable::runtime_without_context_can_release_on_another_thread ... ok
+test upscaler::tests::native_lifecycle ... ignored, requires staged trusted AMD v2.3.0 DLLs and the native DX12 helper; use tests/run-m5.ps1
+test upscaler::tests::native_lifecycle_drop ... ignored, requires staged trusted AMD v2.3.0 DLLs and the native DX12 helper; use tests/run-m5.ps1
+test upscaler::tests::construction::public_siblings_survive_failed_create_and_destroy ... ok
+test context::tests::returned_create_errors_never_destroy_even_nonnull_outputs ... ok
+test upscaler::tests::construction::zero_is_rejected_without_entering_native_create ... ok
+test upscaler::tests::dispatch::poisoned_dispatch_still_uses_terminal_destroy_retention ... ok
+test context::tests::destroy_errors_retain_every_dependency_and_never_retry ... ok
+test upscaler::tests::dispatch::public_dispatch_core_preserves_preflight_errors_and_poison_policy ... ok
+test upscaler::tests::inspection::public_dispatch_inspects_com_and_recovers_after_each_preflight_error ... ok
+test upscaler::tests::dispatch::private_dispatch_forwards_once_and_preserves_unknown_native_code ... ok
+test upscaler::tests::construction::public_failure_paths_preserve_com_and_runtime_policy ... ok
+test context::tests::successful_teardown_is_once_and_ordered_for_explicit_destroy_and_drop ... ok
+test context::d013_movable::transfer::transfer_failure_cleanup_matrix ... ok
+
+failures:
+
+---- context::tests::consumed_owner_and_private_handle_are_compile_errors stdout ----
+
+thread 'context::tests::consumed_owner_and_private_handle_are_compile_errors' (<thread-id>) panicked at crates\fsr-sdk\src\context\tests.rs:403:21:
+warning: method `ffxCreateContext` should have a snake case name
+  --> <temp>\fsr-sdk-context-<process>-<case-dir>\positive.rs:20:23
+   |
+20 | ...   pub unsafe fn ffxCreateContext(&self, _: *mut ffxContext, _: *mut ffxCreateContextDescHeader, _: *const ffxAllocationCallbacks...
+   |                     ^^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `ffx_create_context`
+   |
+   = note: `#[warn(non_snake_case)]` (part of `#[warn(nonstandard_style)]`) on by default
+
+warning: method `ffxDestroyContext` should have a snake case name
+  --> <temp>\fsr-sdk-context-<process>-<case-dir>\positive.rs:21:23
+   |
+21 |         pub unsafe fn ffxDestroyContext(&self, _: *mut ffxContext, _: *const ffxAllocationCallbacks) -> u32 { 0 }
+   |                       ^^^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `ffx_destroy_context`
+
+warning: method `ffxDispatch` should have a snake case name
+  --> <temp>\fsr-sdk-context-<process>-<case-dir>\positive.rs:22:23
+   |
+22 |         pub unsafe fn ffxDispatch(&self, _: *mut ffxContext, _: *const ffxDispatchDescHeader) -> u32 { 0 }
+   |                       ^^^^^^^^^^^ help: convert the identifier to snake case: `ffx_dispatch`
+
+error: failed to write <temp>\fsr-sdk-context-<process>-<case-dir>\libpositive.rmeta: Zugriff verweigert (os error 5)
+
+error: aborting due to 1 previous error; 3 warnings emitted
+
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    context::tests::consumed_owner_and_private_handle_are_compile_errors
+
+test result: FAILED. 35 passed; 1 failed; 13 ignored; 0 measured; 0 filtered out; finished in 4.70s
+
+error: test failed, to rerun pass `-p fsr-sdk --lib`

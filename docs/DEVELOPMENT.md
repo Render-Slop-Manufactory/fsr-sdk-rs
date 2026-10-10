@@ -74,6 +74,11 @@ Run it in an x64 VS developer shell. It stages helpers and DLLs under `target`,
 records fingerprints, checks signatures, and executes each GPU case in an isolated
 process with a timeout. Existing `run-m4.ps1`, `run-m5.ps1` and `run-m6.ps1`
 commands remain compatibility entry points. `-GpuValidation` is an opt-in diagnostic.
+The [D013 transfer-failure fixture spike](research/records/2026-10-07-exp-d013-transfer-failure-cleanup.md)
+runs in ordinary tests: fourteen watchdog-bounded control/transfer children and
+acquiring-worker loader failures exercise the shared private dispatch/terminal
+owner. It uses locally compiled fixtures only and establishes no AMD transfer
+or public movable-API support.
 Dispatch mode includes the [controlled semantic comparisons](research/records/2026-09-30-exp-dispatch-semantics.md)
 for motion direction, jitter direction and history reset, alongside the earlier
 single-frame and three-frame regressions.
@@ -81,6 +86,12 @@ The experiment-only `-Mode d013 -Native` runs six isolated same-thread/transfer
 cases using the real Arc-retained private owner; GBV is excluded. See its
 [native transfer record](research/records/2026-09-30-exp-d013-native-thread-transfer.md)
 for commands, configuration and the provider-unload limitation.
+The follow-up `-Mode d013-cleanup -Native` first runs existing native regressions,
+then three isolated repetitions of each control/transfer case for creation after
+runtime transfer, continuous history, independently held siblings and unwind
+cleanup. Tests under `tests/native/thread_transfers.rs` have functional names.
+Its [2026-10-08 record](research/records/2026-10-08-exp-d013-native-transfer-cleanup.md)
+separates exact selected readback comparisons from natural provider residency.
 The experiment-only `-Mode sharpening -Native` runs D014's three isolated
 stationary-scene comparisons and writes final red half images under the target
 stage for independent auditing; GBV is excluded. Its

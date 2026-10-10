@@ -1,6 +1,6 @@
 # runtime threading
 
-Updated: 2026-09-30 (native D013 evidence integrated).
+Updated: 2026-10-09 (D013 soundness/architecture review integrated; no acceptance).
 
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
@@ -169,10 +169,224 @@ for that concrete test bundle; public local types and the generic owner keep
 their existing traits. This is consistent with the fixtures and earlier
 same-thread evidence, not an upstream native threading guarantee.
 
-Provider/dependency termination on the destination thread, native error/unwind
-and partial-load transfer paths, unfenced work, other configurations, callbacks,
-custom allocators and coordination with other native users remain unverified.
-Miri/ThreadSanitizer were not run. The source findings' missing universal AMD
+At this September stage, native Rust-unwind transfers had not been tested; the
+[October follow-up](#d013-extended-native-transfers-unwind-cleanup-and-staged-residency)
+adds bounded evidence for that path. Provider/dependency termination on the
+destination thread, native returned-error and partial-load transfer paths,
+unfenced work, other configurations, callbacks, custom allocators and coordination
+with other native users remain unverified. Miri/ThreadSanitizer were not run.
+The source findings' missing universal AMD
 transfer guarantees remain unresolved. D013's concrete-integration and lasting
 caller-contract review gates still apply: [D013](../adr/D013.md) remains
 **proposed**, with no public movable family or accepted native transfer contract.
+
+## D013: transfer contract source intake
+
+The [2026-10-07 source record](records/2026-10-07-src-d013-transfer-cleanup-contract.md)
+examines serialized transfer and final cleanup. **Provenance limit:** retrieval
+of the requested v2.3.0 commit failed. Its accessible AMD SDK 2.3.0 manuals
+were not matched byte-for-byte to the pin; those manuals, Microsoft platform
+documentation and Rust/dependency sources were not independently revalidated
+during this synthesis.
+The record treats prior project experiments as supplied evidence; it adds no
+execution or fresh pinned implementation audit. Its failure to establish an
+affirmative AMD transfer guarantee is neither an exhaustive absence finding nor
+evidence that the tested transfers fail.
+
+**Reported platform findings and design inference:** Arc retention and
+`Send + !Sync` do not coordinate independently owned siblings, other runtime
+families or external native users. Coordination must survive safe operations,
+implicit Drop and unwind; loader notifications/internal workers are not brought
+under an application mutex merely by serializing exports. D3D12's recording,
+queue and fence permissions do not establish AMD affinity or a blanket apartment
+contract for every retained helper. GPU completion and CPU ownership handoff
+remain separate requirements. Review actual interfaces, guard/drop order and
+loader-lock ordering before extending the contract.
+
+**Cleanup interpretation:** loader disappearance on C remains the earlier
+bounded observation. It does not attribute provider termination, dependency
+cleanup or a DLL callback's executing thread to C. Continued upscaler residency
+in both arms is unattributed, not a transfer-specific failure or demonstrated
+leak. Device-associated references, caching, other owners and delayed release
+are hypotheses only. Same-adapter D3D12 acquisition need not create independent
+devices; separate runtime/device values do not prove native-state isolation.
+The [loading synthesis](runtime-loading.md#d013-acquisition-failures-and-release-observations)
+retains the associated acquisition and observation limits.
+
+**Policy tension:** the report recommends quarantine for ambiguous native
+create-error ownership. Accepted D005 already permits ordinary RAII cleanup of
+caller dependencies after a returned create error under a bounded runtime trust
+assumption; it does not destroy an ambiguous failed handle. The report identifies
+no new contrary observation or pinned provider postcondition, so this
+recommendation does not replace D005. Native dispatch/destroy error cleanup,
+hidden work, affinity and provider termination remain unresolved.
+
+## D013: transferred failure state and coordinated fixture cleanup
+
+The [2026-10-07 experiment](records/2026-10-07-exp-d013-transfer-failure-cleanup.md)
+extends the earlier eight probes through the real terminal owner and a shared
+private dispatch policy. **Verified fixture scope:** all 14 isolated owner
+children (seven scenarios, each with a control/transfer arm) and six acquiring-
+worker loader-failure observations passed on Windows x64/MSVC. No AMD DLL,
+real transferred COM device or GPU work was used. All 39 LF-normalized source
+fingerprints matched the implementation at the 2026-10-07 synthesis intake.
+
+| Scenario | Added observation |
+|---|---|
+| Known/unknown dispatch poison | Codes 1 and 4294967295 survive transfer; later rejection occurs before inspection/FFI; one dispatch and one successful terminal destroy, followed by complete release |
+| Preflight rejection/recovery | CommandListType and CommandList/GetDevice HRESULT 0x80004005 remain exact; two rejections make no native dispatch and do not poison; later recovery succeeds |
+| Explicit/Drop destroy failure after poison | Destroy code 4294967295 is terminal with no retry; explicit destruction reports it, Drop discards it; complete state/device-surrogate/runtime/DLL bundle remains retained |
+| Ready/poisoned unwind with a sibling | Destination cleanup holds the common mutex; a waiting sibling recovers the poisoned mutex, dispatches successfully and releases the final runtime; exact panic payloads and event threads match |
+| Worker acquisition failures | Missing file preserves owned io/NotFound; each missing required export preserves its exact symbol and libloading source; no runtime is published and the acquired fixture module is absent after failure |
+
+Joined moves, channels and the shared mutex supply ordering. The external runtime
+owner is dropped after creation. Handle/input/callback pointers remain stable;
+native callbacks and dependency destructors observe a live library. Each owner
+child has a 60-second watchdog and required completion marker. Intentional
+retention ends with process isolation, not an invented cleanup attempt. Module
+residency checks establish presence/absence after calls, not detach-thread
+attribution; missing-export cleanup is acquisition-local, not transfer of an
+incomplete runtime.
+
+**Verified regression scope:** stable 1.99.0 and MSRV 1.88.0 workspace reruns
+passed, including local inspection/poison/ownership and trait controls. Initial
+sandbox compiler-control metadata writes failed with access denied; unchanged-
+source reruns outside the sandbox passed. Clippy, formatting, Rustdoc and feature-
+disabled checks passed. The no-default-features fixture run used the host adapter
+on Windows, not Linux/macOS. Nineteen AMD/hardware/research tests stayed ignored. No new AMD
+regression was executed as part of this fixture experiment after its dispatch-
+policy extraction; the September native result covers its recorded earlier
+source state. The October native follow-up below closes this bounded regression
+gap on its own fingerprinted source.
+
+**Remaining evidence and acceptance gates:** the inspection HRESULT is injected
+at the seam, and fixture descriptors/device surrogates do not audit a real movable
+DX12 bundle. The source report arrived after execution; its larger matrix was
+not the fixture experiment's oracle. Prior successful dispatch before fixture
+poison, extra native-slot mutations, independently acquired families/external
+fixture clients and detach instrumentation remain follow-ups. The native
+follow-up below executes creation after runtime transfer, longer history,
+independently held siblings, destination Rust unwind and staged residency.
+Native returned-error cleanup, provider/device termination, hidden work, other
+configurations, outstanding GPU work and sanitizers remain unverified. D013 remains
+**proposed** pending concrete integration and lasting caller-contract review;
+public `Runtime`/`Upscaler` remain `!Send + !Sync` with no public movable family.
+
+## D013: extended native transfers, unwind cleanup and staged residency
+
+The [2026-10-08 native experiment](records/2026-10-08-exp-d013-native-transfer-cleanup.md)
+extends the September execution and October fixtures on Windows x64/MSVC,
+SDK v2.3.0 at the same pin, RX 9060 XT, driver `32.0.31041.1004` and provider
+`4.1.1`/`0xf5a5ca1e01001001`. AMD DLL hashes and hardware match September;
+Rust is now 1.99.0 and the helper, test executable and source changed. All 83
+executed source fingerprints match at this synthesis intake. The complete
+preregistered protocol, per-child outcomes, hashes and audits remain in the record.
+
+**Verified native execution:** all 11 prerequisites passed on the executed
+source, including public local lifecycle/dispatch regressions and the earlier
+six transfer/control children. All 30 new children passed: five cases, each with
+a same-thread control and transfer arm, repeated in three isolated processes.
+
+| Added case | Transfer observation |
+|---|---|
+| Runtime before creation | A loads, B creates, C dispatches/fences, D explicitly destroys and releases the final external runtime |
+| Continuous history | One context executes 64 moving frames with 63 handoffs across four persistent workers; reset only on frame 0 |
+| Independent siblings | Distinct workers retain siblings; one transfers and is destroyed while the other stays live, dispatches again and later Drops elsewhere |
+| Context unwind | A fenced context transfers to D and its actual native owner Drops during a deliberate Rust panic outside FFI |
+| Sibling unwind | Destination unwind destroys one sibling; the survivor recovers the poisoned common mutex, dispatches again and finally Drops on B |
+
+The common domain serializes application calls, inspection and all cleanup,
+including automatic Drop. Guard/drop order keeps native destruction inside the
+domain during unwind. Owning channels establish CPU handoff; every submitted
+frame completes its GPU fence before transfer, another frame or cleanup. This
+coordinates application operations, not unknown provider workers or external
+native users. Narrow Send implementations apply only to audited test bundles;
+the public types and generic owner gain no traits.
+
+All 516 new frames completed with finite/changed output, zero debug-layer
+errors/corruption and no device removal. All 42 actual native destroy results
+were OK, including 12 unwind cleanups. There were no unexpected panics or
+timeouts. All 96 selected complete packed RGBA16F payloads match corresponding
+controls and repetitions by SHA-256; unselected frames have status/metric checks,
+not full image-equivalence evidence. No temporal accuracy or quality claim follows.
+Stable/MSRV, ABI, fixture, trait and feature-disabled checks also passed on the
+recorded source. Local archive inspection used `--no-verify`; it establishes
+contents, not package-build verification or publication.
+
+**Verified residency, unresolved termination:** all applicable checkpoints agree
+in controls and transfers. After final context/runtime release, the loader is
+absent and the provider remains. Releasing all audited frame, caller-device and
+helper references makes the helper absent while the provider remains; ordinary
+worker exit does not change this. The observer adds no module reference. The
+previously retained application equipment/device refs are therefore not necessary
+for provider persistence in this experiment. This neither proves a leak nor
+attributes persistence to a cache, driver or native owner, and does not establish
+actual COM device destruction, provider termination or its executing thread.
+
+**Remaining evidence and decision boundary:** successful fenced Rust-unwind
+cleanup, longer history,
+creation after runtime transfer and independent siblings now have bounded native
+evidence. Native returned-error/partial-load cleanup, hidden
+work/TLS, provider/dependency termination, external-user coordination, outstanding
+GPU work, callbacks/allocators, other configurations and sanitizers remain open.
+The missing pinned implementation audit and affirmative AMD transfer guarantee
+are unchanged. No observation requires revising D005/D011's tested policy.
+[D013](../adr/D013.md) remains **proposed**, pending concrete integration and
+explicit lasting-contract review; no public movable API or blanket Send guarantee
+is accepted.
+
+## D013: soundness and architecture review
+
+The [review imported on 2026-10-09](records/2026-10-09-src-d013-soundness-architecture-review.md)
+recommends **acceptance with revisions**, finding no confirmed Rust soundness
+defect in the proposed architecture. **Provenance limit:** no investigation date,
+reviewer identity or reviewed revision was supplied. It reviews existing records
+without rerunning them and adds no AMD guarantee or pinned upstream audit.
+Intake compared the cited current source paths and prior evidence; the verdict
+is a design assessment, not verification of a production movable family.
+
+**Required contract refinements:** unsafe acquisition must cover every thread
+where a general `Send` owner can later be used or dropped, including unwind,
+through the lifetime of all derived contexts. A promise limited to a predefined
+A-to-B handoff cannot support unrestricted safe Rust movement. Common-domain
+serialization and non-reentrancy must cover independently held siblings,
+separate acquisitions, local/movable families, external native users and all
+explicit/implicit cleanup. `&mut self` and Arc reference counting enforce
+neither that shared-state coordination nor native thread compatibility.
+
+**Implementation direction:** retain separate public families without safe
+conversion, sealed Rc/Arc retention and shared private construction, validation,
+dispatch and terminal cleanup. Use an explicit `PhantomData<Cell<()>>` marker
+for a `Send + !Sync` movable runtime; audit every retained field and cleanup path
+before adding only a concrete `unsafe impl Send for MovableUpscaler`. Do not
+widen the generic owner's traits. These shapes agree with the existing fixture
+source; production still uses Rc and exposes neither a `movable` feature nor
+public movable types. D005's ordered cleanup, terminal no-retry and exceptional
+retention and D011's unsafe GPU boundary remain the review's baseline.
+
+**Cleanup clarification:** partial symbol-resolution failure is cleaned up
+inside acquisition before a movable value exists; it is not transfer of an
+incomplete runtime. Native failure cleanup remains a trust obligation. Final
+wrapper-owned loader release and actual provider termination are separate events.
+The proposed wording must assume any native termination is safe on its actual
+executing thread, without promising provider unload or its thread.
+
+**Evidence sufficiency is a recommendation:** this review considers the existing
+serialized, fenced evidence sufficient for the explicitly
+unsafe design if the strengthened caller-established assumptions are accepted.
+It does not resolve missing AMD guarantees, native returned-error behavior,
+hidden work, provider termination, external-user coordination, outstanding-work
+transfers or other configurations. Those remain uncertainties bounded by the
+contract, rather than newly verified properties. It identifies no reason to
+replace D005's returned-create-error policy, differing from the earlier source
+report's quarantine recommendation without adding contrary execution evidence.
+
+**Decision and verification boundary:** the review supplies technical contract
+feedback, not the concrete integration rationale or explicit maintainer approval
+required by [D013](../adr/D013.md#review-and-acceptance-gates). D013 remains
+**proposed**. If accepted and implemented, verify the actual public types:
+Windows traits and family separation, feature/host boundaries, shared-core
+failure/retention fixtures, bounded public-path native transfers including final
+Drop, and existing local-family regressions. Historical test bundles cannot
+substitute for those checks. The recommendation selects no release and changes
+neither D014 nor `0.2.0` scope.

@@ -1,0 +1,43 @@
+D013-2 case=1 transfer=false preregistered protocol 2026-10-08 thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation")
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+D013-2 persistent worker start thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 persistent worker start thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 persistent worker start thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 persistent worker start thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 load runtime (no context yet) thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 create context=0 domain_held=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 create context=0 native_code=0x00000000 thread=ThreadId(3) name=Some("d013-2-A")
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+D013-2 residency checkpoint=1-context-live-after-runtime-transfer runtime_strong=Some(2) loader=true provider=true helper=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 handoff context=0 from=ThreadId(3) completed_frame=None exclusive=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 dispatch context=0 frame=0 translation=0 jitter=(0.25,-0.25) reset=true domain_held=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 dispatch OK context=0 frame=0 native_code=0 thread=ThreadId(3) name=Some("d013-2-A")
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+D013-2 fenced context=0 frame=0 completed=1 metrics=Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.099975586, max_red: 0.89941406, left_red: 0.49598166, right_red: 0.49558884, debug_errors: 0, device_removed: 0 } thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 payload file=context0-frame0.rgba16f bytes=1843200 padding=excluded thread=ThreadId(3) name=Some("d013-2-A")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 handoff context=0 from=ThreadId(3) completed_frame=Some(0) exclusive=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 explicit destroy context=0 domain_held=true thread=ThreadId(3) name=Some("d013-2-A")
+D013 native destroy: thread=ThreadId(3) code=0x00000000
+D013-2 external runtime release domain_held=true thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 residency checkpoint=4-final-context-runtime-gone runtime_strong=Some(0) loader=false provider=true helper=true thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 release frames count=1 thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation")
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+D013-2 residency checkpoint=4a-frames-gone-device-live runtime_strong=Some(0) loader=false provider=true helper=true thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation")
+D013-2 residency checkpoint=5-all-application-equipment-device-helper-gone runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation")
+D013-2 persistent worker normal exit (no owners) thread=ThreadId(3) name=Some("d013-2-A")
+D013-2 persistent worker normal exit (no owners) thread=ThreadId(4) name=Some("d013-2-B")
+D013-2 persistent worker normal exit (no owners) thread=ThreadId(5) name=Some("d013-2-C")
+D013-2 persistent worker normal exit (no owners) thread=ThreadId(6) name=Some("d013-2-D")
+D013-2 residency checkpoint=6-before-normal-child-exit runtime_strong=Some(0) loader=false provider=true helper=false thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation")
+D013-2 case=1 transfer=false: PASSED thread=ThreadId(2) name=Some("upscaler::m6::thread_transfers::same_thread_runtime_transfer_before_context_creation")

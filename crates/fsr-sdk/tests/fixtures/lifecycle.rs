@@ -61,6 +61,22 @@ pub unsafe extern "C" fn ffxConfigure(_: *mut *mut c_void, _: *const c_void) -> 
     0
 }
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn ffxDispatch(_: *mut *mut c_void, _: *const c_void) -> u32 {
-    0
+pub unsafe extern "C" fn ffxDispatch(out: *mut *mut c_void, desc: *const Dispatch) -> u32 {
+    // SAFETY: The retained handle is the original boxed Input. The harness
+    // supplies the fixture-specific Dispatch for the duration of this call.
+    unsafe {
+        let input = (*out).cast::<Input>();
+        ((*input).event)((*input).data, 5);
+        if (*desc).tag != 0xd013 || !(*desc).next.is_null() {
+            return 0xf0000003;
+        }
+        (*desc).code
+    }
+}
+
+#[repr(C)]
+pub struct Dispatch {
+    pub tag: u64,
+    pub next: *mut c_void,
+    pub code: u32,
 }

@@ -1,0 +1,25 @@
+   Compiling fsr-sdk-sys v0.1.0 (<repo>\crates\fsr-sdk-sys)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\loader-1zp8k0zycuruw\s-hmz42sid3z-025e57q-working`
+
+warning: `fsr-sdk-sys` (test "loader") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.09s
+     Running tests\loader.rs (target\debug\deps\loader-09877ded65287c50.exe)
+
+running 6 tests
+test loads_amd_runtime_without_api_calls ... ignored, requires an explicitly supplied trusted AMD v2.3.0 loader DLL
+worker=d013-load-failure category=Path source=io/NotFound runtime=none module=absent
+CASE PASS missing-file
+test invalid_library_reports_load_failure ... ok
+test fixture_directory_skips_stale_paths_and_preserves_other_errors ... ok
+test missing_file_reports_path_and_source ... ok
+test forwards_all_arguments_and_returns_and_unloads_on_drop ... ok
+worker=d013-load-failure category=Symbol symbol=ffxCreateContext source=libloading runtime=none module=released
+worker=d013-load-failure category=Symbol symbol=ffxDestroyContext source=libloading runtime=none module=released
+worker=d013-load-failure category=Symbol symbol=ffxConfigure source=libloading runtime=none module=released
+worker=d013-load-failure category=Symbol symbol=ffxQuery source=libloading runtime=none module=released
+worker=d013-load-failure category=Symbol symbol=ffxDispatch source=libloading runtime=none module=released
+CASE PASS missing-exports
+test each_missing_symbol_reports_name_and_releases_library ... ok
+
+test result: ok. 5 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.96s
+

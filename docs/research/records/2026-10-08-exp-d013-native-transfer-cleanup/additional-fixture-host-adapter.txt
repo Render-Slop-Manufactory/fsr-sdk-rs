@@ -1,0 +1,299 @@
+   Compiling fsr-sdk v0.1.0 (<repo>\crates\fsr-sdk)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.94s
+     Running unittests src\lib.rs (target\debug\deps\fsr_sdk-60e93aee032ea07a.exe)
+
+running 10 tests
+test context::d013_movable::trait_matrix ... ok
+test context::d013_movable::transfer::isolated_case ... ok
+CHILD control-known-poison: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=0 library=live coordination_held=None
+event context=1 kind=dispatch actor=0 library=live coordination_held=None
+event context=1 kind=destroy actor=0 library=live coordination_held=None
+event context=1 kind=state-release actor=0 library=live coordination_held=None
+event context=1 kind=device-release actor=0 library=live coordination_held=None
+dispatch_code=1 dispatch_calls=1 destroy_code=0 destroy_calls=1 inspect_calls=1 pointers=stable retained=false
+CASE PASS control-known-poison
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.34s
+
+
+
+
+thread 'context::d013_movable::unwinding_cleans_up_on_either_thread' (<os-thread>) panicked at crates\fsr-sdk\src\context\d013_movable.rs:473:13:
+D013 intentional fixture unwind
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test context::d013_movable::runtime_and_siblings_cross_threads_with_stable_handles ... ok
+test context::d013_movable::destroy_error_is_terminal_and_retains_dependencies_on_either_thread ... ok
+CHILD control-unknown-poison: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=0 library=live coordination_held=None
+event context=1 kind=dispatch actor=0 library=live coordination_held=None
+event context=1 kind=destroy actor=0 library=live coordination_held=None
+event context=1 kind=state-release actor=0 library=live coordination_held=None
+event context=1 kind=device-release actor=0 library=live coordination_held=None
+dispatch_code=4294967295 dispatch_calls=1 destroy_code=0 destroy_calls=1 inspect_calls=1 pointers=stable retained=false
+CASE PASS control-unknown-poison
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.31s
+
+
+
+test context::d013_movable::null_success_retains_dependencies_on_either_thread ... ok
+test context::d013_movable::runtime_without_context_can_release_on_another_thread ... ok
+
+thread 'd013-unwind' (<os-thread>) panicked at crates\fsr-sdk\src\context\d013_movable.rs:473:13:
+D013 intentional fixture unwind
+test context::d013_movable::rc_and_arc_single_thread_controls ... ok
+test context::d013_movable::unwinding_cleans_up_on_either_thread ... ok
+test context::d013_movable::returned_create_error_releases_inputs_without_destroy_on_either_thread ... ok
+CHILD control-preflight: timeout=false, exit=exit code: 0
+
+running 1 test
+preflight=InvalidDispatch { reason: CommandListType } dispatch_calls=0 poisoned=false
+preflight=Dx12Inspection { object: CommandList, operation: GetDevice, hresult: -2147467259 } dispatch_calls=0 poisoned=false
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=0 library=live coordination_held=None
+event context=1 kind=dispatch actor=0 library=live coordination_held=None
+event context=1 kind=destroy actor=0 library=live coordination_held=None
+event context=1 kind=state-release actor=0 library=live coordination_held=None
+event context=1 kind=device-release actor=0 library=live coordination_held=None
+recovery_code=0 dispatch_calls=1 destroy_calls=1 pointers=stable retained=false
+CASE PASS control-preflight
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.24s
+
+
+
+CHILD control-destroy-explicit: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=0 library=live coordination_held=None
+event context=1 kind=dispatch actor=0 library=live coordination_held=None
+event context=1 kind=destroy actor=0 library=live coordination_held=None
+dispatch_code=1 dispatch_calls=1 destroy_code=4294967295 destroy_calls=1 inspect_calls=1 pointers=stable retained=true
+CASE PASS control-destroy-explicit
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.19s
+
+
+
+CHILD control-destroy-drop: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=0 library=live coordination_held=None
+event context=1 kind=dispatch actor=0 library=live coordination_held=None
+event context=1 kind=destroy actor=0 library=live coordination_held=None
+dispatch_code=1 dispatch_calls=1 destroy_code=4294967295 destroy_calls=1 inspect_calls=1 pointers=stable retained=true
+CASE PASS control-destroy-drop
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.22s
+
+
+
+CHILD control-unwind-ready: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=2 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=destroy actor=0 library=live coordination_held=Some(true)
+event context=1 kind=state-release actor=0 library=live coordination_held=Some(true)
+event context=1 kind=device-release actor=0 library=live coordination_held=Some(true)
+event context=2 kind=inspect actor=1 library=live coordination_held=Some(true)
+event context=2 kind=dispatch actor=1 library=live coordination_held=Some(true)
+event context=2 kind=destroy actor=1 library=live coordination_held=Some(true)
+event context=2 kind=state-release actor=1 library=live coordination_held=Some(true)
+event context=2 kind=device-release actor=1 library=live coordination_held=Some(true)
+unwind=declared mutex_poison=recovered sibling_dispatch=0 destroys=2 retained=false
+CASE PASS control-unwind-ready
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.18s
+
+
+
+thread 'context::d013_movable::transfer::isolated_case' (<os-thread>) panicked at crates\fsr-sdk\src\context\d013_transfer.rs:287:9:
+D013 declared destination unwind
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+CHILD control-unwind-poisoned: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=2 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=0 library=live coordination_held=Some(true)
+event context=1 kind=dispatch actor=0 library=live coordination_held=Some(true)
+event context=1 kind=destroy actor=0 library=live coordination_held=Some(true)
+event context=1 kind=state-release actor=0 library=live coordination_held=Some(true)
+event context=1 kind=device-release actor=0 library=live coordination_held=Some(true)
+event context=2 kind=inspect actor=1 library=live coordination_held=Some(true)
+event context=2 kind=dispatch actor=1 library=live coordination_held=Some(true)
+event context=2 kind=destroy actor=1 library=live coordination_held=Some(true)
+event context=2 kind=state-release actor=1 library=live coordination_held=Some(true)
+event context=2 kind=device-release actor=1 library=live coordination_held=Some(true)
+unwind=declared mutex_poison=recovered sibling_dispatch=0 destroys=2 retained=false
+CASE PASS control-unwind-poisoned
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.18s
+
+
+
+thread 'context::d013_movable::transfer::isolated_case' (<os-thread>) panicked at crates\fsr-sdk\src\context\d013_transfer.rs:287:9:
+D013 declared destination unwind
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+CHILD transfer-known-poison: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=1 library=live coordination_held=None
+event context=1 kind=dispatch actor=1 library=live coordination_held=None
+event context=1 kind=destroy actor=2 library=live coordination_held=None
+event context=1 kind=state-release actor=2 library=live coordination_held=None
+event context=1 kind=device-release actor=2 library=live coordination_held=None
+dispatch_code=1 dispatch_calls=1 destroy_code=0 destroy_calls=1 inspect_calls=1 pointers=stable retained=false
+CASE PASS transfer-known-poison
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.18s
+
+
+
+CHILD transfer-unknown-poison: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=1 library=live coordination_held=None
+event context=1 kind=dispatch actor=1 library=live coordination_held=None
+event context=1 kind=destroy actor=2 library=live coordination_held=None
+event context=1 kind=state-release actor=2 library=live coordination_held=None
+event context=1 kind=device-release actor=2 library=live coordination_held=None
+dispatch_code=4294967295 dispatch_calls=1 destroy_code=0 destroy_calls=1 inspect_calls=1 pointers=stable retained=false
+CASE PASS transfer-unknown-poison
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.19s
+
+
+
+CHILD transfer-preflight: timeout=false, exit=exit code: 0
+
+running 1 test
+preflight=InvalidDispatch { reason: CommandListType } dispatch_calls=0 poisoned=false
+preflight=Dx12Inspection { object: CommandList, operation: GetDevice, hresult: -2147467259 } dispatch_calls=0 poisoned=false
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=1 library=live coordination_held=None
+event context=1 kind=inspect actor=1 library=live coordination_held=None
+event context=1 kind=inspect actor=2 library=live coordination_held=None
+event context=1 kind=dispatch actor=2 library=live coordination_held=None
+event context=1 kind=destroy actor=2 library=live coordination_held=None
+event context=1 kind=state-release actor=2 library=live coordination_held=None
+event context=1 kind=device-release actor=2 library=live coordination_held=None
+recovery_code=0 dispatch_calls=1 destroy_calls=1 pointers=stable retained=false
+CASE PASS transfer-preflight
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.18s
+
+
+
+CHILD transfer-destroy-explicit: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=1 library=live coordination_held=None
+event context=1 kind=dispatch actor=1 library=live coordination_held=None
+event context=1 kind=destroy actor=2 library=live coordination_held=None
+dispatch_code=1 dispatch_calls=1 destroy_code=4294967295 destroy_calls=1 inspect_calls=1 pointers=stable retained=true
+CASE PASS transfer-destroy-explicit
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.18s
+
+
+
+CHILD transfer-destroy-drop: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=1 library=live coordination_held=None
+event context=1 kind=dispatch actor=1 library=live coordination_held=None
+event context=1 kind=destroy actor=2 library=live coordination_held=None
+dispatch_code=1 dispatch_calls=1 destroy_code=4294967295 destroy_calls=1 inspect_calls=1 pointers=stable retained=true
+CASE PASS transfer-destroy-drop
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.18s
+
+
+
+CHILD transfer-unwind-ready: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=2 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=destroy actor=1 library=live coordination_held=Some(true)
+event context=1 kind=state-release actor=1 library=live coordination_held=Some(true)
+event context=1 kind=device-release actor=1 library=live coordination_held=Some(true)
+event context=2 kind=inspect actor=2 library=live coordination_held=Some(true)
+event context=2 kind=dispatch actor=2 library=live coordination_held=Some(true)
+event context=2 kind=destroy actor=2 library=live coordination_held=Some(true)
+event context=2 kind=state-release actor=2 library=live coordination_held=Some(true)
+event context=2 kind=device-release actor=2 library=live coordination_held=Some(true)
+unwind=declared mutex_poison=recovered sibling_dispatch=0 destroys=2 retained=false
+CASE PASS transfer-unwind-ready
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.18s
+
+
+
+thread 'd013-unwind-B' (<os-thread>) panicked at crates\fsr-sdk\src\context\d013_transfer.rs:287:9:
+D013 declared destination unwind
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+CHILD transfer-unwind-poisoned: timeout=false, exit=exit code: 0
+
+running 1 test
+event context=1 kind=create actor=0 library=live coordination_held=None
+event context=2 kind=create actor=0 library=live coordination_held=None
+event context=1 kind=inspect actor=1 library=live coordination_held=Some(true)
+event context=1 kind=dispatch actor=1 library=live coordination_held=Some(true)
+event context=1 kind=destroy actor=1 library=live coordination_held=Some(true)
+event context=1 kind=state-release actor=1 library=live coordination_held=Some(true)
+event context=1 kind=device-release actor=1 library=live coordination_held=Some(true)
+event context=2 kind=inspect actor=2 library=live coordination_held=Some(true)
+event context=2 kind=dispatch actor=2 library=live coordination_held=Some(true)
+event context=2 kind=destroy actor=2 library=live coordination_held=Some(true)
+event context=2 kind=state-release actor=2 library=live coordination_held=Some(true)
+event context=2 kind=device-release actor=2 library=live coordination_held=Some(true)
+unwind=declared mutex_poison=recovered sibling_dispatch=0 destroys=2 retained=false
+CASE PASS transfer-unwind-poisoned
+test context::d013_movable::transfer::isolated_case ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.18s
+
+
+
+thread 'd013-unwind-B' (<os-thread>) panicked at crates\fsr-sdk\src\context\d013_transfer.rs:287:9:
+D013 declared destination unwind
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+test context::d013_movable::transfer::transfer_failure_cleanup_matrix ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 3.28s
+

@@ -1,0 +1,14 @@
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\fsr_sdk-3gf2t7c7td90o\s-hmz4c7uv6r-04rozym-working`
+
+warning: `fsr-sdk` (lib) generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\dx12_upscale-08crua3clrka5\s-hmz4c7xm4f-11rvkh4-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\dimensions-0f0co7kanmbw6\s-hmz4c7xibj-1gdd5h0-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\debug\incremental\loader-3a4ykoao4nk18\s-hmz4c7uxjb-02ptnac-working`
+
+    Checking fsr-sdk v0.1.0 (<repo>\crates\fsr-sdk)
+warning: `fsr-sdk` (example "dx12_upscale") generated 1 warning
+warning: `fsr-sdk` (test "dimensions") generated 1 warning
+warning: `fsr-sdk-sys` (test "loader") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.88s

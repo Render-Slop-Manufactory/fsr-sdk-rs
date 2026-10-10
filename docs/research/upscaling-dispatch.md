@@ -1,6 +1,6 @@
 # Upscaling dispatch: DX12 and frame semantics
 
-- Updated: 2026-09-30.
+- Updated: 2026-10-07 (D014 acceptance status; no new research evidence).
 - Scope: source research and bounded Windows/DX12 public dispatch, recording-ahead
   temporal smoke, controlled semantic comparisons and a test-only sharpening
   experiment against AMD FSR SDK `v2.3.0`
@@ -376,7 +376,7 @@ contracts remain unresolved within their existing scope.
 The [2026-09-30 spike](records/2026-09-30-exp-d014-native-sharpening.md) tests the
 existing native fields after shared descriptor inspection, through the existing
 owner/poisoning core. Production dispatch still fixes sharpening off; the spike
-does not implement or verify D014's proposed public frame API.
+does not implement or verify D014's accepted, unimplemented public frame API.
 
 **Verified bounded execution:** on the RX 9060 XT, driver `32.0.31041.1004`,
 signed SDK v2.3.0/provider 4.1.1 configuration, two stationary grayscale scenes
@@ -418,11 +418,13 @@ RCAS behavior does not explain the signed FSR4 internals by itself.
 **Design inference and unresolved policy:** the source inventory's available
 fields now have bounded enabled-pass runtime evidence. Successful execution
 does not establish the proposed 1% gradient/0.005 mean-preservation policy.
-Before adopting D014's effect gate, review what response it is intended to
-establish; changing scenes or thresholds requires a declared amendment and a
-new complete run, while this original result stays failed. D014 remains
-proposed. D011's unsafe boundary, application GPU lifetimes, poison/cleanup
-obligations and bounded allocator trust are unchanged; the experiment establishes
+The new release protocol for [D014](../adr/D014.md) must define the intended
+response before a new complete run, while this original result stays failed.
+The maintainer accepted D014's API/migration and bounded native-pass trust on
+2026-10-07; the release protocol and implementation remain pending. D011's unsafe
+boundary, application GPU lifetimes and poison/cleanup obligations persist;
+its bounded allocator trust is extended to the native sharpening pass as a
+maintainer decision, not an experimental guarantee. The experiment establishes
 no new queue depth, cross-queue behavior, thread transfer or general provider
 support.
 
@@ -533,4 +535,5 @@ support.
    enabled zero, but fails the proposed effect criteria. Decide the gate's intended
    response before amending it and running a new complete validation. Brightness
    behavior, moving-scene quality and broader provider coverage remain unresolved;
-   neither synthesis nor the spike accepts D014 or adds a public sharpening API.
+   D014 was separately accepted by the maintainer on 2026-10-07. Neither the
+   synthesis nor the spike implements or verifies that public sharpening API.

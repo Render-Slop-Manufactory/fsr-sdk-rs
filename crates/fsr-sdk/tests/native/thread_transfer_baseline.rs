@@ -391,9 +391,17 @@ macro_rules! scenario {
         fn $name() { run($number, $transfer); }
     };
 }
-scenario!(control_abc, 1, false);
-scenario!(transfer_abc, 1, true);
-scenario!(control_three_frames, 2, false);
-scenario!(transfer_three_frames, 2, true);
-scenario!(control_siblings, 3, false);
-scenario!(transfer_siblings, 3, true);
+scenario!(same_thread_load_create_dispatch_and_cleanup, 1, false);
+scenario!(
+    load_create_then_dispatch_and_cleanup_on_other_threads,
+    1,
+    true
+);
+scenario!(same_thread_three_moving_frames, 2, false);
+scenario!(three_moving_frames_on_successive_threads, 2, true);
+scenario!(same_thread_siblings_survive_runtime_release, 3, false);
+scenario!(
+    siblings_survive_runtime_release_and_thread_transfers,
+    3,
+    true
+);
