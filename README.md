@@ -13,6 +13,11 @@
 
 Rust bindings and higher-level abstractions for the AMD FSR SDK.
 
+**Released:** `0.1.0` on [crates.io](https://crates.io/crates/fsr-sdk), with
+[API documentation](https://docs.rs/fsr-sdk/0.1.0/fsr_sdk/) and a
+[GitHub release](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/releases/tag/v0.1.0)
+published on 2026-09-28.
+
 **Today:** Windows/DX12 upscaling. **Future scope:** Frame Generation, Ray
 Regeneration, Radiance Caching, and other backends.
 
@@ -54,8 +59,8 @@ for the dispatch contract.
 
 ## Crates
 
-- `fsr-sdk-sys` — low-level bindings to the native FidelityFX API
-- `fsr-sdk` — checked Rust abstractions built on the raw bindings, with an
+- [`fsr-sdk-sys`](https://crates.io/crates/fsr-sdk-sys) — low-level bindings to the native FidelityFX API
+- [`fsr-sdk`](https://crates.io/crates/fsr-sdk) — checked Rust abstractions built on the raw bindings, with an
   explicit unsafe DX12 dispatch boundary
 
 The native API currently centres around:
@@ -79,11 +84,11 @@ ffxConfigure
 
 ## Usage
 
-During development, depend on the crate directly from Git:
+Add the published crate to your application:
 
 ```toml
 [dependencies]
-fsr-sdk = { git = "https://github.com/Render-Slop-Manufactory/fsr-sdk-rs" }
+fsr-sdk = "0.1.0"
 ```
 
 The sketch below assumes a Windows/DX12 caller already has a device, an open
@@ -136,10 +141,14 @@ See [SCOPE.md](SCOPE.md) for goals, boundaries, crate responsibilities, and
 durable engineering principles. [ROADMAP.md](ROADMAP.md) tracks implementation
 status and next steps.
 
-The detailed public API contract lives in Rustdoc; generate it locally with the
+The detailed public API contract is published on docs.rs for
+[`fsr-sdk 0.1.0`](https://docs.rs/fsr-sdk/0.1.0/fsr_sdk/) and
+[`fsr-sdk-sys 0.1.0`](https://docs.rs/fsr-sdk-sys/0.1.0/fsr_sdk_sys/).
+Generate it locally with the
 [`Windows-target documentation command`](docs/DEVELOPMENT.md#consumer-api-documentation-and-example).
-The [crate README](crates/fsr-sdk/README.md) is the package-page overview. A stable
-public documentation link belongs to release validation.
+The [crate README](crates/fsr-sdk/README.md) is the package-page overview. The
+[publication check](docs/release/2026-09-29-publication-check.md) records the public
+registry, documentation and release status.
 
 See the [research index](docs/research/README.md) for investigation topics,
 evidence conventions, and research templates.

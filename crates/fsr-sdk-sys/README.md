@@ -17,6 +17,20 @@ The [project scope](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/m
 owns this policy; the [M6b record](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/research/records/2026-09-25-m6b-public-dispatch-verification.md)
 preserves one tested public-dispatch configuration.
 
+## Installation and API documentation
+
+The [`0.1.0` crate](https://crates.io/crates/fsr-sdk-sys) and its
+[API documentation](https://docs.rs/fsr-sdk-sys/0.1.0/fsr_sdk_sys/) are published.
+For direct Windows/DX12 use, enable the feature explicitly:
+
+```toml
+[dependencies]
+fsr-sdk-sys = { version = "0.1.0", features = ["dx12"] }
+```
+
+Most applications should use [`fsr-sdk`](https://crates.io/crates/fsr-sdk) for
+context ownership and checked inputs.
+
 ## Licensing and provenance
 
 Original code is licensed under [MPL-2.0](LICENSE). Portions derived from AMD

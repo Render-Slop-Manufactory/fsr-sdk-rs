@@ -12,6 +12,13 @@ owns this policy. Other SDK effects and Vulkan are not implemented.
 
 ## Consumer workflow
 
+Install the [published `0.1.0` crate](https://crates.io/crates/fsr-sdk):
+
+```toml
+[dependencies]
+fsr-sdk = "0.1.0"
+```
+
 1. Load a separately acquired, trusted runtime with `unsafe Runtime::load_unchecked`.
 2. Create options with `UpscalerOptions::new` from checked dimensions, then create
    `Upscaler` with those options and a borrowed DX12 device.
@@ -34,7 +41,9 @@ masks and sharpening are not exposed. The API uses `windows` 0.62 DX12 interface
 
 ## API contract and example
 
-Full field, error and safety contracts live in Rustdoc. In a repository checkout,
+Full field, error and safety contracts are published in the
+[`0.1.0` API documentation](https://docs.rs/fsr-sdk/0.1.0/fsr_sdk/).
+In a repository checkout,
 generate the Windows API with:
 
 ```sh
@@ -56,7 +65,7 @@ fail or abort. One public-route dispatch, fence and plausible readback passed in
 This is evidence for one configuration, not image-quality, temporal or broad
 GPU/driver/provider support. See the
 [roadmap](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/ROADMAP.md)
-for release work and future scope.
+for current status and future scope.
 
 ## Licensing and provenance
 

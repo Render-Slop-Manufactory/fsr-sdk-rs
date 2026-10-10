@@ -5,6 +5,19 @@ lives in [CONTRIBUTING.md](../CONTRIBUTING.md); design guidance lives in
 [CODE_HEURISTICS.md](CODE_HEURISTICS.md). Manifests, source, and any future CI
 configuration establish the checks and features actually implemented.
 
+## Published release
+
+Both crates were published as `0.1.0` on 2026-09-28, followed by the GitHub
+`v0.1.0` release. Windows-target API documentation is available for
+[`fsr-sdk`](https://docs.rs/fsr-sdk/0.1.0/fsr_sdk/) and
+[`fsr-sdk-sys`](https://docs.rs/fsr-sdk-sys/0.1.0/fsr_sdk_sys/).
+The [publication check](release/2026-09-29-publication-check.md) records the public
+registry entries, timestamps and checksums.
+
+The packaging and release-simulation sections below preserve pre-publication
+observations. Their missing registry dependency and pending hosted-documentation
+statements describe those historical runs, rather than the current release status.
+
 ## Local setup and checks
 
 Use a stable Rust toolchain supporting the workspace's Rust 2024 edition and

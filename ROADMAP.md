@@ -7,6 +7,11 @@ in [decisions](docs/DECISIONS.md), with supporting [research](docs/research/READ
 
 ## Current state
 
+Both crates are published as `0.1.0` on crates.io, with Windows-target API
+documentation on docs.rs and the public GitHub `v0.1.0` release dated 2026-09-28.
+The [publication check](docs/release/2026-09-29-publication-check.md) records the
+public links, publication order and registry checksums.
+
 The project implements DX12 upscaler construction and a narrow public unsafe
 dispatch method. The supported native target is `x86_64-pc-windows-msvc` with
 `dx12`. Windows/DX12 APIs are exposed on other Windows targets, but those targets
@@ -28,14 +33,14 @@ through one upscaler on the recorded AMD configuration.
 | Public DX12 runtime and upscaler construction | Implemented; native lifecycle passed on one tested configuration |
 | Public DX12 upscaler dispatch | Implemented under D011; one submitted, fenced frame and readback passed on that configuration |
 | Temporal multi-frame behavior | Bounded three-frame moving smoke passed on the recorded AMD configuration; temporal reconstruction accuracy and image quality remain unverified |
-| Consumer documentation and examples | Updated public Rustdoc and DX12 example compiled locally for Windows; support policy aligned; hosted documentation pending |
-| Packaging and release validation | Technical `0.1.0` release candidate frozen; [final post-Windows artifact recheck](docs/release/2026-09-28-final-artifact-recheck.md) passed locally; both crates ready for the sys-then-wrapper release sequence |
-| Public Git history | Review and curate before the `0.1.0` tag |
+| Consumer documentation and examples | Windows-target Rustdoc published on docs.rs for both `0.1.0` crates; DX12 example compiled locally for Windows |
+| Packaging and release validation | Both `0.1.0` crates published on 2026-09-28, sys then wrapper; [publication verified](docs/release/2026-09-29-publication-check.md) |
+| Public Git history | Public repository and `v0.1.0` release/tag available |
 | Vulkan and other SDK effects | Not implemented; future work |
 
-**Current focus:** Preserve the frozen, verified `0.1.0` release candidate,
-curate the public Git history, perform the final hostile/privacy audit, and
-validate the reconstructed release tree before publication.
+**Current focus:** Maintain the published `0.1.0` baseline and its consumer
+documentation; select further API or profile work when a concrete requirement
+and supporting evidence are available.
 
 - [x] Two-crate Cargo workspace: `fsr-sdk-sys` and `fsr-sdk`.
 - [x] Initial module scaffolding for ABI, loading, context, errors, queries, and upscaling.
@@ -120,16 +125,15 @@ runtime. It does not require image reconstruction or a complete public API.
   This is separate from dynamic runtime loading.
 - CI: keep the existing host and Windows compilation checks useful as implementation grows;
   keep hardware-dependent evidence separate from ordinary build jobs.
-- Release readiness: establish compatibility documentation, package checks,
-  examples, and any required third-party notices before publishing crates or
-  distributable releases.
+- Future releases: maintain compatibility documentation, package checks,
+  examples, and required third-party notices as the implementation grows.
 - Additional backends and broader SDK coverage: revisit only when upstream
   capabilities and a concrete use case justify them.
 
 ## Next actions
 
-1. Preserve the frozen technical `0.1.0` candidate and finalize consumer/release
-   guidance. The
+1. Maintain the published `0.1.0` consumer guidance and use the recorded checks
+   as a baseline for subsequent changes. The
    [final Windows verification](docs/research/records/2026-09-28-exp-final-windows-release-verification.md)
    passed the public-route regression and the bounded three-frame moving smoke
    with zero debug errors and no device removal. This adds smoke coverage after
@@ -137,13 +141,12 @@ runtime. It does not require image reconstruction or a complete public API.
    [GBV spike](docs/research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md)
    localized a separate timeout to native `ffxDispatch` on the tested setup;
    its provider/driver/validation cause remains unresolved.
-2. Curate the public Git history before the `0.1.0` tag, perform the final
-   hostile/privacy audit, and validate the reconstructed release tree before
-   publication in sys-then-wrapper order. The
+2. Repeat the relevant package and consumer checks for future releases. The
    [final post-Windows artifact recheck](docs/release/2026-09-28-final-artifact-recheck.md)
    passed for the committed candidate, including regenerated archives,
    publish dry-runs, isolated consumers and Windows-target checks. Its source and
-   archive identities define the frozen technical release candidate. Hosted
-   documentation and public registry publication remain unverified.
+   archive identities describe the pre-publication candidate. The
+   [publication check](docs/release/2026-09-29-publication-check.md) separately
+   records the public `0.1.0` packages and hosted documentation.
 3. Pursue broader profiles, other SDK `v2.3.0` questions and new backends only
    when a concrete follow-on requirement calls for them.
