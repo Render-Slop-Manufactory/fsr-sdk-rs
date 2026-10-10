@@ -109,6 +109,14 @@ protocol remains open. Original native effect criteria failed and stay failed.
 
 [Read D014](adr/D014.md)
 
+## D015 — Separate common upscaler inputs and the DX12 backend
+
+**Status:** accepted 2026-10-09, including the follow-up that makes common inputs
+available without platform/backend gates. Existing imports, native gates and
+safety contracts are preserved. Vulkan remains unsupported.
+
+[Read D015](adr/D015.md)
+
 ## Open choices
 
 The dispatch-input and sharpening design in [D014](adr/D014.md) is accepted;

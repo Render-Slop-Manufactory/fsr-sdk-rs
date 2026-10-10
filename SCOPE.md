@@ -55,6 +55,12 @@ obligations and public compatibility costs are explicit and recorded in a
 [decision](docs/DECISIONS.md). The owned load-error boundary is recorded in
 [D010](docs/adr/D010.md).
 
+The current upscaler surface separates common checked values from the DX12
+backend, with existing imports retained as reexports ([D015](docs/adr/D015.md)).
+Common checked values are available independently of the host and backend
+features; native runtime and DX12 APIs retain their Windows/DX12 gates.
+This organization does not add native targets or another backend.
+
 ## Platform and compatibility boundaries
 
 This section is authoritative for native target support. The supported native

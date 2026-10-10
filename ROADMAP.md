@@ -46,6 +46,13 @@ native release protocol remain pending. The original native effect gate failed
 and stays failed. Complete and verify the small `0.2.0`, then broaden existing
 upscaler evidence before opening new effects.
 
+Current source also separates common checked upscaler inputs from the concrete
+DX12 backend ([D015](docs/adr/D015.md)), preserving existing imports. Common
+types are available on every host without backend features; native APIs retain
+their Windows/DX12 gates. [Portable-common verification](docs/release/2026-10-09-portable-common-verification.md)
+records consumer, feature, ABI and selected native regressions. It adds no Vulkan
+support or D014 functionality and does not select a release.
+
 - [x] Two-crate Cargo workspace: `fsr-sdk-sys` and `fsr-sdk`.
 - [x] Initial module scaffolding for ABI, loading, context, errors, queries, and upscaling.
 - [x] DX12 feature wiring and Windows loader gating; Vulkan explicitly rejects

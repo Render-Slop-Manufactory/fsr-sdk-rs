@@ -31,6 +31,15 @@ Use `RUSTDOCFLAGS="-D warnings"` when validating documentation. Add
 exercise the consumer-visible interface and relevant failures or boundaries.
 The [dimensions test](../crates/fsr-sdk/tests/dimensions.rs) illustrates this.
 
+Current source separates `upscaler::common` and `upscaler::dx12`, retaining the
+old imports ([D015](adr/D015.md)). Common inputs are available on every host
+without backend features; only native APIs retain the Windows/DX12 gate. The
+[portable-common verification](release/2026-10-09-portable-common-verification.md)
+records consumer compatibility, feature boundaries, pinned ABI and selected
+native regressions, including the limits of local platform verification.
+Native exact filters now use `upscaler::dx12::tests` / `upscaler::dx12::m6`;
+the existing runner commands select them automatically.
+
 Fixture directories are created exclusively and skip existing names after
 process-ID reuse, without reusing or deleting old fixture artifacts. Other I/O
 errors still fail the test. Context and upscaler fixtures share the test-only
@@ -42,12 +51,13 @@ use the same collision policy. See the
 
 The [workflow](../.github/workflows/ci.yml) checks current stable Rust and exactly
 Rust 1.88.0 on Ubuntu and Windows x64/MSVC. Minimum-version jobs check all targets,
-run tests, and check without default features. Stable jobs also deny Clippy and
+run tests with and without default features. Stable jobs also deny Clippy and
 Rustdoc warnings. Windows additionally compiles the independent native ABI checks
 against four hash-verified headers at the pinned SDK commit.
 Feature-enabled tests, Clippy and Rustdoc cover `movable`; minimum-version jobs
-also compile it without DX12. Windows checks downstream feature/family boundaries
-with [check-movable-api.ps1](../tools/check-movable-api.ps1).
+also compile it without DX12. Windows and Ubuntu check downstream common/native
+API boundaries with [check-movable-api.ps1](../tools/check-movable-api.ps1).
+Windows additionally checks the movable feature and family boundaries.
 CI does not download AMD binaries or execute GPU work. Ignored native tests need
 the opt-in local runner below; successful host builds are not native evidence.
 
@@ -74,8 +84,9 @@ cargo doc --workspace --features fsr-sdk/movable --no-deps --locked
 cargo +1.88.0 test --workspace --features fsr-sdk/movable --locked
 ```
 
-On Windows, run `./tools/check-movable-api.ps1` for positive consumer baselines
-and expected compile failures for missing features, crossed families and
+Run `./tools/check-movable-api.ps1` in PowerShell 7 for positive common/raw-ABI
+consumer baselines and diagnostic-specific failures for unavailable native APIs.
+On Windows it also checks missing movable features, crossed families and
 conversions. It uses cached dependencies offline. Ordinary Cargo builds with
 `movable` but without `dx12`, or on non-Windows hosts, omit the movable API.
 

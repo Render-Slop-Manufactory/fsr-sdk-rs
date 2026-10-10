@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MPL-2.0
 
 //! Explicit local ownership and optional movable ownership of a FidelityFX loader.
+//!
+//! Runtime ownership retains the library and common entry points, with no GPU
+//! resources. The current loader and native acquisition contracts require
+//! Windows/DX12, so this module retains that platform/feature gate.
 
 use fsr_sdk_sys::loader::{FfxLibrary, LoadError as SysLoadError};
 use std::{

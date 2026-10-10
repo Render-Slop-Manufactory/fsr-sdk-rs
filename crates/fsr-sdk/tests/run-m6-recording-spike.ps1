@@ -35,7 +35,7 @@ try {
         Write-Host "Running $label"
         $start = New-Object System.Diagnostics.ProcessStartInfo
         $start.FileName = $exe
-        $start.Arguments = '--ignored --exact upscaler::m6_recording::native_recording_ahead_spike --nocapture --test-threads=1'
+        $start.Arguments = '--ignored --exact upscaler::dx12::m6_recording::native_recording_ahead_spike --nocapture --test-threads=1'
         $start.UseShellExecute = $false
         $start.CreateNoWindow = $true
         $start.RedirectStandardOutput = $true

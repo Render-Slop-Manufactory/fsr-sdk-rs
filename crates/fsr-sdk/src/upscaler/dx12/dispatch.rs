@@ -9,7 +9,8 @@ use fsr_sdk_sys::upscale::ffxDispatchDescUpscale;
 mod descriptor;
 mod frame;
 mod resources;
-pub use frame::{CameraParameters, FrameTimeMillis, JitterOffsetPixels, UpscaleDispatch};
+use crate::upscaler::common::{CameraParameters, FrameTimeMillis, JitterOffsetPixels};
+pub use frame::UpscaleDispatch;
 #[cfg(test)]
 pub(super) use resources::inspect_dispatch;
 #[cfg(test)]

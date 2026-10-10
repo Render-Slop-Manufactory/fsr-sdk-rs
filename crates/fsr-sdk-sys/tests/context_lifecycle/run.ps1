@@ -17,7 +17,7 @@ $previousLifetime = $env:FSR_SDK_INPUT_LIFETIME
 
 function Invoke-InputProbe([string]$Mode) {
     $env:FSR_SDK_INPUT_LIFETIME = if ($Mode -eq 'control') { $null } else { $Mode }
-    $test = if ($Mode -eq 'control') { 'upscaler::tests::native_lifecycle' } else { 'probes_create_error_input_lifetime' }
+    $test = if ($Mode -eq 'control') { 'upscaler::dx12::tests::native_lifecycle' } else { 'probes_create_error_input_lifetime' }
     $start = New-Object System.Diagnostics.ProcessStartInfo
     $executable = if ($Mode -eq 'control') { "$stage/m4.exe" } else { "$stage/context_lifecycle.exe" }
     $start.FileName = (Resolve-Path $executable).Path

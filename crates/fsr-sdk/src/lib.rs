@@ -16,7 +16,8 @@
 //! With `dx12`, `runtime::Runtime` loads an explicit trusted loader
 //! DLL and `upscaler::Upscaler` owns an upscaling context. Its unsafe `dispatch`
 //! method records a frame from renderer-owned DX12 objects. Owned error types
-//! remain available on other hosts, but the runtime and upscaler modules do not.
+//! and `upscaler::common` remain available on other hosts and without `dx12`.
+//! The runtime and `upscaler::dx12` APIs require Windows and `dx12`.
 //!
 //! # Supported workflow
 //!
@@ -145,8 +146,7 @@ mod test_directory;
 mod context;
 #[cfg(any(test, all(windows, feature = "dx12")))]
 mod dispatch_policy;
-#[cfg(all(windows, feature = "dx12"))]
-/// DX12 upscaler ownership, checked frame inputs and unsafe command recording.
+/// Common checked inputs and the DX12 upscaler backend, with legacy reexports.
 pub mod upscaler;
 
 #[cfg(all(windows, feature = "dx12"))]

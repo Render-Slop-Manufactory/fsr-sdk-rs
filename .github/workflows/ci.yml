@@ -43,8 +43,8 @@ jobs:
         run: cargo check --workspace --all-targets --locked
       - name: Run tests
         run: cargo test --workspace --features fsr-sdk/movable --locked
-      - name: Check without default features
-        run: cargo check --workspace --all-targets --no-default-features --locked
+      - name: Run tests without default features
+        run: cargo test --workspace --no-default-features --locked
 
       - name: Check movable without DX12
         run: cargo check --workspace --all-targets --no-default-features --features fsr-sdk/movable --locked
@@ -76,8 +76,17 @@ jobs:
       - name: Run movable tests
         run: cargo test --workspace --features fsr-sdk/movable --locked
 
-      - name: Check without default features
-        run: cargo check --workspace --no-default-features --locked
+      - name: Run tests without default features
+        run: cargo test --workspace --no-default-features --locked
+
+      - name: Check downstream common and native API boundaries
+        shell: pwsh
+        run: ./tools/check-movable-api.ps1
+
+      - name: Build documentation without default features
+        env:
+          RUSTDOCFLAGS: -D warnings
+        run: cargo doc --workspace --no-default-features --no-deps --locked
 
       - name: Build documentation
         env:
@@ -112,12 +121,17 @@ jobs:
       - name: Run movable tests
         run: cargo test --workspace --features fsr-sdk/movable --locked
 
-      - name: Check downstream movable API boundaries
+      - name: Check downstream common, native and movable API boundaries
         shell: pwsh
         run: ./tools/check-movable-api.ps1
 
-      - name: Check without default features
-        run: cargo check --workspace --no-default-features --locked
+      - name: Run tests without default features
+        run: cargo test --workspace --no-default-features --locked
+
+      - name: Build documentation without default features
+        env:
+          RUSTDOCFLAGS: -D warnings
+        run: cargo doc --workspace --no-default-features --no-deps --locked
 
       - name: Build documentation
         env:

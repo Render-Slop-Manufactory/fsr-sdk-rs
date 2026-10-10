@@ -2,11 +2,10 @@
 
 use super::{
     descriptor::build_descriptor,
-    frame::invalid_scalar,
     resources::{check_extents, check_identity, convert_desc, invalid_resource},
     *,
 };
-use crate::error::{DispatchScalar, ResourceProperty, ResourceRole};
+use crate::error::{ResourceProperty, ResourceRole};
 use fsr_sdk_sys::{api::*, upscale::FFX_API_DISPATCH_DESC_TYPE_UPSCALE};
 use std::{ffi::c_void, ptr::null_mut};
 use windows::Win32::Graphics::{Direct3D12::*, Dxgi::Common::*};
@@ -183,49 +182,6 @@ fn rejects_invalid_resources_and_frame_before_native_call() {
         .err()
         .unwrap(),
         invalid_resource(ResourceRole::Depth, ResourceProperty::ShaderReadable)
-    );
-    assert_eq!(
-        JitterOffsetPixels::new(f32::NAN, 0.0),
-        Err(invalid_scalar(DispatchScalar::JitterX))
-    );
-    assert_eq!(
-        JitterOffsetPixels::new(0.0, f32::INFINITY),
-        Err(invalid_scalar(DispatchScalar::JitterY))
-    );
-    for invalid in [0.0, -1.0, f32::NAN, f32::INFINITY] {
-        assert_eq!(
-            FrameTimeMillis::new(invalid),
-            Err(invalid_scalar(DispatchScalar::FrameTimeMillis))
-        );
-    }
-    assert_eq!(
-        CameraParameters::new(0.0, 100.0, 1.0, 1.0),
-        Err(invalid_scalar(DispatchScalar::CameraNear))
-    );
-    assert_eq!(
-        CameraParameters::new(0.1, 0.1, 1.0, 1.0),
-        Err(invalid_scalar(DispatchScalar::CameraFar))
-    );
-    assert_eq!(
-        CameraParameters::new(0.1, 100.0, std::f32::consts::PI, 1.0),
-        Err(invalid_scalar(DispatchScalar::VerticalFovRadians))
-    );
-    assert_eq!(
-        CameraParameters::new(0.1, 100.0, 1.0, 0.0),
-        Err(invalid_scalar(DispatchScalar::ViewSpaceToMeters))
-    );
-    let jitter = JitterOffsetPixels::new(0.25, -0.25).unwrap();
-    assert_eq!((jitter.x(), jitter.y()), (0.25, -0.25));
-    assert_eq!(FrameTimeMillis::new(16.667).unwrap().milliseconds(), 16.667);
-    let camera = CameraParameters::new(0.1, 100.0, 1.0, 1.0).unwrap();
-    assert_eq!(
-        (
-            camera.near(),
-            camera.far(),
-            camera.vertical_fov_radians(),
-            camera.view_space_to_meters()
-        ),
-        (0.1, 100.0, 1.0, 1.0)
     );
 }
 

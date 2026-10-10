@@ -252,7 +252,7 @@ resource and observed a successful dispatch. The older contract recommendation
 instead proposes auto exposure and four textures. That is a different creation
 policy, untested by M6a or M6b; D011 retains explicit exposure and leaves a
 later public auto-exposure option undecided.
-[Current construction](../../crates/fsr-sdk/src/upscaler.rs) ·
+[Current construction](../../crates/fsr-sdk/src/upscaler/dx12.rs) ·
 [D008](../adr/D008.md).
 
 ## Public dispatch decision and earlier recommendation

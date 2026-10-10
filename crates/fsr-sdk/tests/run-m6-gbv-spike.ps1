@@ -17,7 +17,7 @@ try {
     )) {
         $start = [System.Diagnostics.ProcessStartInfo]::new()
         $start.FileName = (Join-Path $stage 'm6.exe')
-        $start.Arguments = '--ignored --exact upscaler::m6::native_dispatch_readback --nocapture --test-threads=1'
+        $start.Arguments = '--ignored --exact upscaler::dx12::m6::native_dispatch_readback --nocapture --test-threads=1'
         $start.UseShellExecute = $false
         $start.CreateNoWindow = $true
         $start.RedirectStandardOutput = $true

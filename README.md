@@ -38,6 +38,13 @@ cover independently transferred contexts. Existing local types remain
 
 The project wraps AMD's official FSR SDK and runtime. It does not reimplement FidelityFX Super Resolution.
 
+Current source separates checked sizes, options and frame scalars in
+`upscaler::common` from GPU construction and dispatch in `upscaler::dx12`
+([D015](docs/adr/D015.md)). Existing `upscaler::{Upscaler, UpscaleDispatch, ...}`
+imports remain valid. Common inputs are available on every host without backend
+features; `upscaler::dx12`, its reexports and `runtime` require Windows plus
+`dx12`. Vulkan remains unsupported. These source changes are unreleased.
+
 >[!NOTE]
 >**Naming note:** AMD currently brands the FidelityFX SDK as the **FSR SDK**, hence the repository name `fsr-sdk-rs`. Historically, FSR meant *FidelityFX Super Resolution*, but the current SDK also includes technologies such as Frame Generation, Ray Regeneration, and Radiance Caching. This project aims to cover those parts of the SDK as well, rather than only super-resolution functionality.
 
@@ -145,7 +152,7 @@ let recorded = unsafe { upscaler.dispatch(frame) };
 // On native error: discard this list, finish earlier work, then tear down.
 ```
 
-Read the [`dispatch` safety contract](crates/fsr-sdk/src/upscaler/dispatch.rs)
+Read the [`dispatch` safety contract](crates/fsr-sdk/src/upscaler/dx12/dispatch.rs)
 before calling it. A successful return only records work; it does not submit or
 wait. Loading and construction also have native obligations under
 [D008](docs/adr/D008.md). Zero dimensions are rejected in Rust; further size

@@ -29,6 +29,12 @@ from published `0.1.0` and is outside `0.2.0` scope; no later release is selecte
 
 ## Consumer workflow
 
+Current unreleased source exposes `upscaler::common` for checked sizes, options
+and frame scalars, and `upscaler::dx12` for GPU construction and dispatch.
+Existing imports from `upscaler` remain reexports of the same types. Common inputs
+are available on every host without backend features. `upscaler::dx12`, its
+reexports and `runtime` require Windows plus `dx12`; Vulkan remains unsupported.
+
 Install the [published `0.1.0` crate](https://crates.io/crates/fsr-sdk):
 
 ```toml
@@ -94,7 +100,7 @@ establish general temporal image quality or revalidate the published archives.
 
 Original code is licensed under [MPL-2.0](LICENSE).
 The `fsr-sdk-sys` dependency retains AMD's MIT notice for its header-derived
-declarations. The test-only provider-query declaration in `src/upscaler/tests/lifecycle.rs`
+declarations. The test-only provider-query declaration in `src/upscaler/dx12/tests/lifecycle.rs`
 and the constructor fixture in `tests/fixtures/upscaler.rs` follow SDK v2.3.0
 `Kits/FidelityFX/api/include/ffx_api.h` at commit
 `60f4ea81909200d8542eca14dccb2628b763a9a3`; its AMD notice is retained in

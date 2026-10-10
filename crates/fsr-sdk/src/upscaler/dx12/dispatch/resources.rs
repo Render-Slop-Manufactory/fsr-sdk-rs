@@ -7,7 +7,7 @@ use crate::error::{
     DispatchValidation, Error, InspectionObject, InspectionOperation, ResourceProperty,
     ResourceRole,
 };
-use crate::upscaler::UpscalerOptions;
+use crate::upscaler::common::UpscalerOptions;
 use fsr_sdk_sys::{
     api::{
         FFX_API_RESOURCE_FLAGS_NONE, FFX_API_RESOURCE_STATE_COMPUTE_READ,
@@ -252,12 +252,12 @@ pub(in crate::upscaler) fn inspect_dispatch(
         true,
     )?;
     let render_size = (
-        options.max_render_size.width.get(),
-        options.max_render_size.height.get(),
+        options.max_render_size().width(),
+        options.max_render_size().height(),
     );
     let output_size = (
-        options.max_upscale_size.width.get(),
-        options.max_upscale_size.height.get(),
+        options.max_upscale_size().width(),
+        options.max_upscale_size().height(),
     );
     check_extents(
         [
