@@ -1,6 +1,6 @@
 # Upscaling dispatch: DX12 and frame semantics
 
-- Updated: 2026-10-09 (D014/D016 decision status and bounded semantic coverage clarified; no new research evidence).
+- Updated: 2026-10-09 (D014/D016 status, M8 implementation and selected M9 integration protocol integrated; existing native protocols rerun separately).
 - Scope: source research and bounded Windows/DX12 public dispatch, recording-ahead
   temporal smoke, controlled semantic comparisons and a test-only sharpening
   experiment against AMD FSR SDK `v2.3.0`
@@ -38,6 +38,14 @@ came from a brief; this intake compared it with the records and proposed D011
 here. Their source findings are not new GPU results.
 
 ## Current findings
+
+**Maintenance recheck:** the [2026-10-09 verification](../release/2026-10-09-windows-native-recheck.md)
+reran public dispatch, temporal/semantic comparisons and all six recording-ahead
+configurations on its captured pre-M7 baseline. These regressions passed. The
+unchanged sharpening effect assertion failed in all three repeats, with the
+independent readback audit confirming execution and metrics. The GBV control
+passed, while dispatch again timed out at 90 seconds. Later concurrent public
+sharpening edits are outside this verification; no release criterion changed.
 
 **Verified controlled comparisons:** the
 [2026-09-30 semantic experiment](records/2026-09-30-exp-dispatch-semantics.md)
@@ -338,8 +346,10 @@ in [API and safety](runtime-threading.md#post-v010-upscaler-surface).
 
 **Verified source surface:** the existing raw dispatch descriptor already has
 sharpening, pre-exposure, masks, active render/output extents and dispatch flags.
-The public Rust method fixes or omits those capabilities. Sharpening and
-pre-exposure are per-frame scalars; automatic exposure, depth/MV conventions and
+At the time of the source investigation, the public Rust method fixed or omitted
+those capabilities. Current M8 source exposes native sharpening; the other
+controls remain fixed or omitted. Sharpening and pre-exposure are per-frame
+scalars; automatic exposure, depth/MV conventions and
 HDR are creation choices. Non-linear input combines a creation capability with
 per-frame encoding flags. Reactive-mask generation is a separate tagged GPU
 dispatch through the same export, not merely another main-frame input.
@@ -360,7 +370,9 @@ first per-frame extension, the record recommends an explicit choice between
 retaining the existing route plus an extensible advanced frame input, or a
 breaking release with one private-field frame representation. The maintainer
 subsequently accepted [D014](../adr/D014.md) for the latter `0.2.0` route;
-implementation and release verification remain pending. This preserves
+M8 is now implemented and checked in the
+[2026-10-09 implementation record](../release/2026-10-09-m8-implementation-verification.md),
+while M9 native and final artifact verification remain pending. This preserves
 `unsafe dispatch(&mut self, ...)`, renderer ownership, poison behavior and
 GPU-completion obligations.
 
@@ -380,8 +392,9 @@ contracts remain unresolved within their existing scope.
 
 The [2026-09-30 spike](records/2026-09-30-exp-d014-native-sharpening.md) tests the
 existing native fields after shared descriptor inspection, through the existing
-owner/poisoning core. Production dispatch still fixes sharpening off; the spike
-does not implement or verify D014's accepted, unimplemented public frame API.
+owner/poisoning core. At the time, production dispatch fixed sharpening off.
+Current source implements D014's public frame API and native control under M8;
+the spike does not verify that later public implementation.
 
 **Verified bounded execution:** on the RX 9060 XT, driver `32.0.31041.1004`,
 signed SDK v2.3.0/provider 4.1.1 configuration, two stationary grayscale scenes
@@ -420,13 +433,16 @@ edge profiles narrowed and showed overshoot, with a finite ROI maximum of
 not an independent effect gate or a general image-quality result. Open FSR3/FSR2
 RCAS behavior does not explain the signed FSR4 internals by itself.
 
-**Design inference and unresolved policy:** the source inventory's available
+**Design inference and subsequent integration policy:** the source inventory's available
 fields now have bounded enabled-pass runtime evidence. Successful execution
 does not establish the proposed 1% gradient/0.005 mean-preservation policy.
-The new release protocol for [D014](../adr/D014.md) must define the intended
-response before a new complete run, while this original result stays failed.
+The [2026-10-09 integration protocol](../release/2026-10-09-m9-native-sharpening-protocol.md)
+for D014 now selects exact mapping and bounded successful native/GPU execution
+without additional sharpening image-effect thresholds, while this original
+result stays failed. The original thresholds were not adopted as release gates.
 The maintainer accepted D014's API/migration and bounded native-pass trust on
-2026-10-07; the release protocol and implementation remain pending. D011's unsafe
+2026-10-07; M8 is implemented and its M9 protocol selected, with native execution
+and final artifact verification pending. D011's unsafe
 boundary, application GPU lifetimes and poison/cleanup obligations persist;
 its bounded allocator trust is extended to the native sharpening pass as a
 maintainer decision, not an experimental guarantee. The experiment establishes
@@ -436,7 +452,7 @@ support.
 [D016](../adr/D016.md) is the accepted cross-feature constraint for direct
 provider controls and explicit SDK quality policies. It adds no experimental
 result, future sharpening variant or quality guarantee and does not change
-D014's API, native mapping or outstanding release protocol.
+D014's API, native mapping or separately selected release protocol.
 
 ## Disagreements and limitations
 
@@ -535,17 +551,21 @@ D014's API, native mapping or outstanding release protocol.
    cross-queue support is established.
 5. **Later scope:** output format range, alpha behavior, aliasing, nontrivial
    resource shapes, COMPUTE lists, dynamic output size and general concurrency.
-6. **Later per-frame extensions:** D014 has selected the breaking private-frame
-   representation for `0.2.0`; implement and verify that accepted contract.
-   Shared flag support, changing active extents,
+6. **Later per-frame extensions:** D014's breaking private-frame representation
+   and native sharpening are implemented and checked under
+   [M8](../release/2026-10-09-m8-implementation-verification.md); M9 GPU and final
+   artifact verification remain pending. Shared flag support, changing active extents,
    exposure/mask requirements and image semantics need provider-specific evidence;
    the [surface record](records/2026-09-29-src-dx12-upscaler-api-surface.md)
    supplies proposals, not implementation authorization.
 7. **Sharpening acceptance policy:** the
    [D014 spike](records/2026-09-30-exp-d014-native-sharpening.md) supplies clean
    enabled-pass execution and measurable changes on one configuration, including
-   enabled zero, but fails the proposed effect criteria. Decide the gate's intended
-   response before amending it and running a new complete validation. Brightness
+   enabled zero, but fails the proposed effect criteria. The selected
+   [M9 protocol](../release/2026-10-09-m9-native-sharpening-protocol.md) requires
+   integration evidence without new sharpening image-effect thresholds. Brightness
    behavior, moving-scene quality and broader provider coverage remain unresolved;
    D014 was separately accepted by the maintainer on 2026-10-07. Neither the
-   synthesis nor the spike implements or verifies that public sharpening API.
+   synthesis nor the spike verifies the now-implemented public sharpening API;
+   [M8 checks](../release/2026-10-09-m8-implementation-verification.md) establish
+   compilation and controlled FFI, with M9 GPU execution pending.

@@ -5,6 +5,13 @@ Updated: 2026-10-09 (D013 acquisition/termination review, acceptance and separat
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
 
+The [2026-10-09 maintenance recheck](../release/2026-10-09-windows-native-recheck.md)
+repeated trusted AMD loader acquisition, all four isolated provider layouts,
+shared-runtime queries and D013 residency observations on its captured baseline.
+Executable-adjacent providers again succeeded, private-directory-only/absent
+providers returned code 4 and count 0, and provider residency survived final
+loader release. D007 and the provider-termination uncertainty remain unchanged.
+
 ## DX12 provider discovery and deployment
 
 The [provider-resolution investigation](records/2026-09-21-src-dx12-provider-dll-resolution.md)

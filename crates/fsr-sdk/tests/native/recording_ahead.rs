@@ -2,8 +2,8 @@
 
 //! Opt-in M6 recording-ahead experiment.
 use super::{
-    CameraParameters, Dimensions, FrameTimeMillis, JitterOffsetPixels, UpscaleDispatch, Upscaler,
-    UpscalerOptions,
+    CameraParameters, Dimensions, FrameTimeMillis, JitterOffsetPixels, UpscaleDispatch,
+    UpscaleResources, Upscaler, UpscalerOptions,
 };
 use crate::runtime::Runtime;
 use std::{ffi::c_void, path::PathBuf, ptr::null_mut};
@@ -142,19 +142,20 @@ fn native_recording_ahead_spike() {
         // SAFETY: The helper has recorded input transitions on this fresh list;
         // all contexts, resources and allocators remain live until the fence.
         let dispatch = unsafe {
-            contexts[context].dispatch(UpscaleDispatch {
-                command_list: &list,
-                color: &resources[0],
-                depth: &resources[1],
-                motion_vectors: &resources[2],
-                exposure: &resources[3],
-                output: &resources[4],
-                jitter: JitterOffsetPixels::new(0.25, -0.25).unwrap(),
-                frame_time: FrameTimeMillis::new(16.667).unwrap(),
-                camera: CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0)
-                    .unwrap(),
-                reset: mode == "sibling" || index == 0,
-            })
+            contexts[context].dispatch(UpscaleDispatch::new(
+                &list,
+                UpscaleResources::new(
+                    &resources[0],
+                    &resources[1],
+                    &resources[2],
+                    &resources[3],
+                    &resources[4],
+                ),
+                JitterOffsetPixels::new(0.25, -0.25).unwrap(),
+                FrameTimeMillis::new(16.667).unwrap(),
+                CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
+                mode == "sibling" || index == 0,
+            ))
         };
         if let Err(error) = dispatch {
             eprintln!("dispatch {index} failed: {error:?}");

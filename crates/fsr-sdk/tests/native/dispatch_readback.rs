@@ -3,8 +3,8 @@
 //! Isolated M6 GPU proof, now exercising the public M6b route.
 //! C++ DX12 equipment lives under tests/.
 use super::{
-    CameraParameters, Dimensions, FrameTimeMillis, JitterOffsetPixels, UpscaleDispatch, Upscaler,
-    UpscalerOptions, dispatch::resource_for_parity,
+    CameraParameters, Dimensions, FrameTimeMillis, JitterOffsetPixels, UpscaleDispatch,
+    UpscaleResources, Upscaler, UpscalerOptions, dispatch::resource_for_parity,
 };
 use crate::{error::Error, runtime::Runtime};
 use fsr_sdk_sys::api::{

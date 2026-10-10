@@ -118,19 +118,20 @@ impl Equipment {
                     unsafe { ID3D12Resource::from_raw(raw) }
                 })
                 .collect();
-            let dispatch = UpscaleDispatch {
-                command_list: &list,
-                color: &resources[0],
-                depth: &resources[1],
-                motion_vectors: &resources[2],
-                exposure: &resources[3],
-                output: &resources[4],
-                jitter: JitterOffsetPixels::new(jx, jy).unwrap(),
-                frame_time: FrameTimeMillis::new(16.667).unwrap(),
-                camera: CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0)
-                    .unwrap(),
-                reset: frame == 0,
-            };
+            let dispatch = UpscaleDispatch::new(
+                &list,
+                UpscaleResources::new(
+                    &resources[0],
+                    &resources[1],
+                    &resources[2],
+                    &resources[3],
+                    &resources[4],
+                ),
+                JitterOffsetPixels::new(jx, jy).unwrap(),
+                FrameTimeMillis::new(16.667).unwrap(),
+                CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
+                frame == 0,
+            );
             // SAFETY: Normal preflight and owner/poison orchestration are shared
             // with public dispatch. Only the two already-bound native fields
             // differ. Values are fixed finite [0,1] constants; all dependencies

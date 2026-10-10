@@ -2,7 +2,7 @@
 
 //! Standalone Windows fixture for the public constructor, not an AMD provider.
 //! Descriptor layouts mirror SDK v2.3.0; AMD notice is in this crate's LICENSE-AMD.
-use std::{ffi::c_void, sync::atomic::{AtomicU32, AtomicUsize, Ordering}};
+use std::{ffi::c_void, sync::{Mutex, atomic::{AtomicU32, AtomicUsize, Ordering}}};
 
 #[repr(C)]
 pub struct Header {
@@ -74,6 +74,13 @@ static CHAIN_VALID: AtomicU32 = AtomicU32::new(0);
 static DISPATCH_CODE: AtomicU32 = AtomicU32::new(0);
 static DISPATCH_CALLS: AtomicU32 = AtomicU32::new(0);
 static DISPATCH_TAG: AtomicUsize = AtomicUsize::new(0);
+static DISPATCH_OBSERVER: Mutex<Option<unsafe extern "C" fn(*const Header)>> = Mutex::new(None);
+
+/// Opt-in typed inspection for calls supplying a complete dispatch descriptor.
+#[unsafe(no_mangle)]
+pub extern "C" fn fixture_set_dispatch_observer(observer: Option<unsafe extern "C" fn(*const Header)>) {
+    *DISPATCH_OBSERVER.lock().unwrap() = observer;
+}
 
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -197,6 +204,11 @@ pub unsafe extern "C" fn ffxDispatch(context: *mut *mut c_void, desc: *const Hea
         }
         DISPATCH_CALLS.fetch_add(1, Ordering::SeqCst);
         DISPATCH_TAG.store((*desc).tag as usize, Ordering::SeqCst);
+        let observer = *DISPATCH_OBSERVER.lock().unwrap();
+        if let Some(observer) = observer {
+            // The registering test supplies the matching descriptor and callback.
+            observer(desc);
+        }
     }
     DISPATCH_CODE.load(Ordering::SeqCst)
 }

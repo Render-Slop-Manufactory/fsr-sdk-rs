@@ -5,6 +5,14 @@ Updated: 2026-10-09 (D013 lifecycle review, acceptance and separate public imple
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
 
+The [2026-10-09 maintenance recheck](../release/2026-10-09-windows-native-recheck.md)
+repeated explicit/Drop lifecycle, shared contexts, public movable cleanup and
+the existing isolated failure probes on its captured baseline. Normal cleanup
+passed; injected allocation failures again caused access violations before create
+returned. Returned-error retain/protect/cleanup variants completed the existing
+two-second observation after a stale prerequisite marker was repaired in the
+runner. D005's bounded assumptions and universal native failure gaps remain.
+
 ## Context lifecycle: v2.3.0 source findings
 
 The [lifecycle report](records/2026-09-20-src-context-lifecycle.md) examines tag

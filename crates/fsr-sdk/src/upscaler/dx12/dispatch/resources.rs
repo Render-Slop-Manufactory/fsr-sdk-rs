@@ -193,7 +193,12 @@ pub(in crate::upscaler) fn inspect_dispatch(
     options: &UpscalerOptions,
     dispatch: UpscaleDispatch<'_>,
 ) -> Result<ffxDispatchDescUpscale, Error> {
-    let list = dispatch.command_list;
+    let list = dispatch.command_list();
+    let resources = dispatch.resources();
+    // Every current constructor requires an explicit exposure texture.
+    let exposure_resource = resources
+        .exposure()
+        .expect("explicit exposure required by construction");
     // SAFETY: GetType inspects the live command-list COM object.
     if unsafe { list.GetType() } != D3D12_COMMAND_LIST_TYPE_DIRECT {
         return Err(Error::InvalidDispatch {
@@ -201,11 +206,11 @@ pub(in crate::upscaler) fn inspect_dispatch(
         });
     }
     let objects = [
-        (ResourceRole::Color, dispatch.color),
-        (ResourceRole::Depth, dispatch.depth),
-        (ResourceRole::MotionVectors, dispatch.motion_vectors),
-        (ResourceRole::Exposure, dispatch.exposure),
-        (ResourceRole::Output, dispatch.output),
+        (ResourceRole::Color, resources.color()),
+        (ResourceRole::Depth, resources.depth()),
+        (ResourceRole::MotionVectors, resources.motion_vectors()),
+        (ResourceRole::Exposure, exposure_resource),
+        (ResourceRole::Output, resources.output()),
     ];
     let mut identities: [Option<IUnknown>; 5] = std::array::from_fn(|_| None);
     let mut identity_pointers = [std::ptr::null_mut(); 5];
@@ -222,31 +227,31 @@ pub(in crate::upscaler) fn inspect_dispatch(
         identities[index] = Some(identity);
     }
     let color = convert(
-        dispatch.color,
+        resources.color(),
         ResourceRole::Color,
         DXGI_FORMAT_R16G16B16A16_FLOAT,
         false,
     )?;
     let depth = convert(
-        dispatch.depth,
+        resources.depth(),
         ResourceRole::Depth,
         DXGI_FORMAT_R32_FLOAT,
         false,
     )?;
     let motion = convert(
-        dispatch.motion_vectors,
+        resources.motion_vectors(),
         ResourceRole::MotionVectors,
         DXGI_FORMAT_R16G16_FLOAT,
         false,
     )?;
     let exposure = convert(
-        dispatch.exposure,
+        exposure_resource,
         ResourceRole::Exposure,
         DXGI_FORMAT_R32_FLOAT,
         false,
     )?;
     let output = convert(
-        dispatch.output,
+        resources.output(),
         ResourceRole::Output,
         DXGI_FORMAT_R16G16B16A16_FLOAT,
         true,
@@ -333,10 +338,11 @@ pub(in crate::upscaler) fn inspect_dispatch(
         list.as_raw(),
         [color, depth, motion, exposure, output],
         (
-            dispatch.jitter,
-            dispatch.frame_time,
-            dispatch.camera,
-            dispatch.reset,
+            dispatch.jitter(),
+            dispatch.frame_time(),
+            dispatch.camera(),
+            dispatch.reset(),
         ),
+        dispatch.sharpening(),
     ))
 }

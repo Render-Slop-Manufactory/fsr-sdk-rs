@@ -23,5 +23,6 @@ pub use common::{
 pub use dx12::MovableUpscaler;
 #[cfg(all(windows, feature = "dx12"))]
 pub use dx12::{
-    ID3D12Device, ID3D12GraphicsCommandList, ID3D12Resource, UpscaleDispatch, Upscaler,
+    ID3D12Device, ID3D12GraphicsCommandList, ID3D12Resource, NativeSharpness, Sharpening,
+    UpscaleDispatch, UpscaleResources, Upscaler,
 };

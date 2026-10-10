@@ -1,6 +1,14 @@
 # API and safety
 
-- Updated: 2026-10-09 (D013 review, acceptance and separate public implementation verification recorded; D014 acceptance retained).
+The [2026-10-09 maintenance recheck](../release/2026-10-09-windows-native-recheck.md)
+refreshes the existing native tests on its captured pre-M7 baseline. Updated
+observations are summarized in [loading](runtime-loading.md),
+[lifecycle](context-lifecycle.md), [construction](upscaler-construction.md),
+[threading](runtime-threading.md) and [dispatch](upscaling-dispatch.md).
+Existing failure-contract gaps, sharpening's failed effect gate and GBV's
+dispatch timeout remain; no architecture or safety contract changed.
+
+- Updated: 2026-10-09 (D013 review, acceptance and separate public implementation verification recorded; D014/M8 implementation and selected M9 protocol integrated).
 - Scope: common ABI, loading, provider deployment, version enumeration, context
   lifecycle contracts and isolated create-failure experiments; M5 construction,
   Query/Configure, runtime-sharing source findings and bounded signed-runtime
@@ -199,12 +207,17 @@ strength 1 shifted mean red by 0.01952 against a 0.005 bound. Independent half
 decoding and metric computation confirmed the results. Edge overshoot is a
 diagnostic observation, not a quality guarantee. See the
 [dispatch synthesis](upscaling-dispatch.md#d014-sharpening-native-execution-and-failed-effect-gate)
-for the policy conflict and scope limits. Production still fixes sharpening
-off. [D014](../adr/D014.md) was accepted on 2026-10-07 as an API/migration
-and bounded native-pass trust decision; implementation and the new release
-protocol remain pending. These results add bounded execution evidence;
-they do not establish new public scalar validation, trait guarantees, safe GPU
-lifetimes, signed-provider allocation capacity or broader hardware support.
+for the original effect failures and scope limits. [D014](../adr/D014.md) was
+accepted on 2026-10-07 as an API/migration and bounded native-pass trust decision.
+Current source implements its public frame and native sharpening API under
+[M8](../release/2026-10-09-m8-implementation-verification.md), whose controlled
+FFI and consumer checks cover scalar validation, exact descriptor forwarding,
+same-context switching, traits and existing error paths. The separate
+[M9 integration protocol](../release/2026-10-09-m9-native-sharpening-protocol.md)
+is selected; public-API GPU execution and final artifact verification remain
+pending. The historical spike adds bounded native execution evidence, while M8
+checks add no AMD/GPU evidence. Neither establishes safe GPU lifetimes,
+signed-provider allocation capacity or broader hardware support.
 
 **Safety boundary:** explicit input paths are canonicalized before loading the
 main DLL. Dependency resolution still follows Windows loading rules. Loading
@@ -369,13 +382,16 @@ lifecycle results; their native failure and ownership limits remain unchanged.
 - **D014 release protocol:** the
   [sharpening experiment](records/2026-09-30-exp-d014-native-sharpening.md)
   resolves whether the selected enabled passes execute and whether enabled zero
-  can differ from disabled, but its proposed effect criteria failed. Review the
-  intended acceptance policy before any threshold/scene amendment and new full
-  run. This is not an observed native safety failure. The maintainer separately
-  accepted D014's public API and bounded native-pass trust on 2026-10-07;
-  release verification remains pending. Existing D011 lifetime, ordering and terminal-error obligations
-  remain in force; HDR, exposure modes, GBV, moving scenes and other providers
-  gained no new coverage.
+  can differ from disabled, but its proposed effect criteria failed. The selected
+  [M9 integration protocol](../release/2026-10-09-m9-native-sharpening-protocol.md)
+  requires correct native control and completed GPU execution through the final
+  public API, without additional sharpening image-effect criteria. The original
+  failed measurements remain unchanged; they are not an observed native safety
+  failure. D014's public API is implemented and checked under
+  [M8](../release/2026-10-09-m8-implementation-verification.md), with M9 GPU and
+  final artifact verification pending. Existing D011 lifetime, ordering and
+  terminal-error obligations remain in force; HDR, exposure modes, GBV,
+  moving-scene sharpening and other providers gained no new coverage.
 - **Policy selected, implementation deferred:**
   [D006](../DECISIONS.md#d006--curate-abi-slices-and-permit-reviewed-generated-bindings)
   establishes handwritten bindings as the default and permits reviewed generated

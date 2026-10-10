@@ -153,8 +153,26 @@ stationary-scene comparisons and writes final red half images under the target
 stage for independent auditing; GBV is excluded. Its
 [research record](research/records/2026-09-30-exp-d014-native-sharpening.md)
 preserves the successful execution and failed proposed effect criteria.
+M8's private frame API and native sharpening mapping are implemented and checked
+in the [2026-10-09 implementation record](release/2026-10-09-m8-implementation-verification.md).
+The selected [M9 integration protocol](release/2026-10-09-m9-native-sharpening-protocol.md)
+needs a separate public-API runner and GPU execution. The historical sharpening
+runner retains its original failed effect assertions; running it does not
+establish M9 acceptance. `check-movable-api.ps1` also checks the new frame/resource
+constructors, private fields, checked scalar and feature-gated reexports.
 Renderer objects, submission, fences and readback belong to test equipment under
 `crates/fsr-sdk/tests/native`; production modules contain no GPU harness.
+
+The [2026-10-09 complete native recheck](release/2026-10-09-windows-native-recheck.md)
+indexes all 30 ignored Windows native test declarations and the commands covering
+their variants. Its captured baseline predates later concurrent M7 changes.
+The raw sys runners additionally cover loader/query, provider deployment, shared
+runtime, all twelve dimension cases, allocation-failure injection and returned-error
+input lifetime. The last three deliberately include rejected inputs or native
+process aborts; execute them only through their isolated runners. Recording-ahead
+and GBV have separate runners. A diagnostic runner's exit 0 does not mean every
+child passed: read the recorded child statuses. In particular, GBV dispatch still
+times out and the original sharpening effect gate still fails.
 
 ## Historical command index
 

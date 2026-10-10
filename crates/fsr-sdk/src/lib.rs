@@ -25,7 +25,8 @@
 //!    The upscaler provider DLL belongs beside the application executable.
 //! 2. Create an upscaler from a DX12 device and checked render/output dimensions.
 //! 3. Prepare the five textures, their states, and an open DIRECT command list.
-//! 4. Construct the checked jitter, timing and camera values, then record dispatch.
+//! 4. Assemble `UpscaleResources` and an `UpscaleDispatch` from checked jitter,
+//!    timing and camera values. Optionally select native sharpening, then record.
 //! 5. Close and submit the list through your renderer, establish queue/fence
 //!    ordering, and retain the context and GPU resources until completion.
 //!
@@ -89,15 +90,17 @@
 //! #     motion_vectors: &fsr_sdk::upscaler::ID3D12Resource,
 //! #     exposure: &fsr_sdk::upscaler::ID3D12Resource, output: &fsr_sdk::upscaler::ID3D12Resource)
 //! #     -> Result<(), fsr_sdk::error::Error> {
-//! use fsr_sdk::upscaler::{CameraParameters, FrameTimeMillis, JitterOffsetPixels, UpscaleDispatch};
+//! use fsr_sdk::upscaler::{CameraParameters, FrameTimeMillis, JitterOffsetPixels,
+//!     UpscaleDispatch, UpscaleResources};
 //!
-//! let frame = UpscaleDispatch {
-//!     command_list, color, depth, motion_vectors, exposure, output,
-//!     jitter: JitterOffsetPixels::new(0.25, -0.25)?,
-//!     frame_time: FrameTimeMillis::new(16.667)?,
-//!     camera: CameraParameters::new(0.1, 100.0, std::f32::consts::PI / 3.0, 1.0)?,
-//!     reset: true,
-//! };
+//! let frame = UpscaleDispatch::new(
+//!     command_list,
+//!     UpscaleResources::new(color, depth, motion_vectors, exposure, output),
+//!     JitterOffsetPixels::new(0.25, -0.25)?,
+//!     FrameTimeMillis::new(16.667)?,
+//!     CameraParameters::new(0.1, 100.0, std::f32::consts::PI / 3.0, 1.0)?,
+//!     true,
+//! );
 //! // SAFETY: The renderer establishes the states, storage and GPU lifetime contract.
 //! let recorded = unsafe { upscaler.dispatch(frame) };
 //! // On Ok: submit once in order; keep the upscaler/resources alive through a fence.
@@ -117,7 +120,12 @@
 //! color, R32F ordinary finite depth, RG16F jitter-free current-to-previous
 //! top-down UV motion, 1×1 R32F explicit exposure, and a UAV-capable RGBA16F output
 //! at the configured output size. Active sizes equal the context maxima. HDR,
-//! dynamic resolution, auto exposure, masks and sharpening are not exposed.
+//! dynamic resolution, auto exposure and masks are not exposed.
+//! Native sharpening is disabled by default. `Sharpening::Native(NativeSharpness)`
+//! forwards a finite `[0, 1]` parameter unchanged; enabled zero is not disabling.
+//! No wrapper filter or image-quality guarantee is provided. This frame API is
+//! unreleased; final public-route GPU verification remains pending under
+//! [D014](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D014.md).
 //! Vulkan, Frame Generation, Ray Regeneration, Radiance Caching and engine
 //! integrations are not implemented. The published baseline is `0.1.0`.
 //!

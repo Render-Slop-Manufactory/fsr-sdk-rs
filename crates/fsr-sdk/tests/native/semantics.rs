@@ -122,23 +122,24 @@ impl Equipment {
             // SAFETY: Upload copies and transitions are already recorded;
             // this context and every external dependency survive the fence.
             let dispatch = unsafe {
-                context.dispatch(UpscaleDispatch {
-                    command_list: &list,
-                    color: &resources[0],
-                    depth: &resources[1],
-                    motion_vectors: &resources[2],
-                    exposure: &resources[3],
-                    output: &resources[4],
-                    jitter: JitterOffsetPixels::new(
+                context.dispatch(UpscaleDispatch::new(
+                    &list,
+                    UpscaleResources::new(
+                        &resources[0],
+                        &resources[1],
+                        &resources[2],
+                        &resources[3],
+                        &resources[4],
+                    ),
+                    JitterOffsetPixels::new(
                         if wrong_jitter { -jx } else { jx },
                         if wrong_jitter { -jy } else { jy },
                     )
                     .unwrap(),
-                    frame_time: FrameTimeMillis::new(16.667).unwrap(),
-                    camera: CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0)
-                        .unwrap(),
+                    FrameTimeMillis::new(16.667).unwrap(),
+                    CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
                     reset,
-                })
+                ))
             };
             if let Err(error) = dispatch {
                 abort_dispatch(error, frame as u32);

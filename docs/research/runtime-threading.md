@@ -5,6 +5,13 @@ Updated: 2026-10-09 (D013 review, design acceptance and separate public implemen
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
 
+The [2026-10-09 maintenance recheck](../release/2026-10-09-windows-native-recheck.md)
+repeated all six private transfer prerequisites, all 30 extended cleanup children
+and the public movable regression on its captured baseline. The audit verified
+96 selected payloads matching their controls and 12 unwind Drops. Provider
+residency persisted after application cleanup; this adds no general threading
+or termination guarantee and excludes later concurrent source edits.
+
 ## Post-v0.1.0 upscaler surface
 
 The [2026-09-29 source record](records/2026-09-29-src-dx12-upscaler-api-surface.md)

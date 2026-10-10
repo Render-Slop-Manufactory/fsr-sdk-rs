@@ -99,7 +99,7 @@ try {
         if (!$wrapper) { throw 'No wrapper test executable' }
         Copy-Item -LiteralPath $wrapper.executable -Destination "$stage/m4.exe"
         $baseline = Invoke-InputProbe 'control'
-        if (!($baseline -match '^CASE .*timeout=False exit_signed=0 ') -or !($baseline -match '^Production owner: destroy OK$')) {
+        if (!($baseline -match '^CASE .*timeout=False exit_signed=0 ') -or !($baseline -match '^Production owner: destroy A/B OK; B via explicit destroy$')) {
             throw 'Successful lifecycle control required'
         }
         $retained = Invoke-InputProbe 'retain'

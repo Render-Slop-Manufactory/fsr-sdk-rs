@@ -22,7 +22,8 @@
 This completed plan retains M6-era scope and terminology. `Runtime::load` was
 renamed to `Runtime::load_unchecked` before `0.1.0`; current module organization
 follows [D015](adr/D015.md). Use [development](DEVELOPMENT.md) for current commands
-and the [roadmap](../ROADMAP.md) for the pending D014 implementation/release work.
+and the [roadmap](../ROADMAP.md) for the implemented D014/M8 API and pending
+M9 native integration/release verification.
 
 ## Question and boundary
 

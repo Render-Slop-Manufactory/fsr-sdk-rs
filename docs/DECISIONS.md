@@ -104,8 +104,9 @@ completed separately. Outside `0.2.0` scope; no release selected
 ## D014 — Extensible DX12 dispatch inputs and sharpening
 
 **Status:** accepted 2026-10-07; 0.2.0 API, migration and bounded native-sharpening
-trust selected. Implementation and release verification pending; the new release
-protocol remains open. Original native effect criteria failed and stay failed.
+trust selected. M8 implemented and checked on 2026-10-09; the direct-native M9
+integration protocol is selected, with GPU and final artifact verification pending.
+Original native effect criteria failed and stay failed.
 
 [Read D014](adr/D014.md)
 
@@ -130,11 +131,13 @@ invariant; existing feature contracts and release scope are unchanged.
 ## Open choices
 
 The dispatch-input and sharpening design in [D014](adr/D014.md) is accepted;
-M7's contract decision is complete. Its separate native release protocol must
-still be selected before execution, including same-context mode switching.
+M7's contract decision and M8 implementation are complete. Its separate
+[native integration protocol](release/2026-10-09-m9-native-sharpening-protocol.md)
+is selected; M9 GPU execution and final artifact verification remain pending,
+including same-context mode switching.
 The original sharpening effect gate failed in the
 [native spike](research/records/2026-09-30-exp-d014-native-sharpening.md)
-and remains failed. D011 remains the implemented 0.1.0 dispatch baseline;
+and remains failed. D011 remains the published 0.1.0 dispatch baseline;
 D014 selects its limited 0.2.0 replacement and provider-trust extension.
 
 The optional movable family in [D013](adr/D013.md) is accepted after the

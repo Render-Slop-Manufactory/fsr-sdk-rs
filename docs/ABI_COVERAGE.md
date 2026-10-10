@@ -21,8 +21,9 @@ payload and resources above.
 The optional `MovableRuntime` / `MovableUpscaler` family reuses these same slices
 for construction and dispatch; [D013's public-path verification](release/2026-10-09-d013-public-api-verification.md)
 records its bounded checks. [D015](adr/D015.md) changes module/dependency gates,
-not ABI coverage. [D014](adr/D014.md) sharpening remains unimplemented despite
-the existing native descriptor fields and test-only experiment.
+not ABI coverage. [D014](adr/D014.md) sharpening is implemented using the existing
+native descriptor fields; [M8 checks](release/2026-10-09-m8-implementation-verification.md)
+cover mapping/controlled FFI, with M9 public-API GPU verification still pending.
 The five common function-pointer signatures exist, but they do not by themselves
 provide those operations. Windows CI compiles all three paired C++ probes against
 hash-verified headers at the pinned commit. It does not run tests requiring AMD

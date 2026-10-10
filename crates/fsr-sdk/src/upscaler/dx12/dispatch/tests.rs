@@ -60,6 +60,7 @@ fn narrow_conversion_and_descriptor() {
             CameraParameters::new(0.1, 100.0, 1.0, 1.0).unwrap(),
             true,
         ),
+        &Sharpening::Disabled,
     );
     assert_eq!(result.header.r#type, FFX_API_DISPATCH_DESC_TYPE_UPSCALE);
     assert!(result.header.pNext.is_null());

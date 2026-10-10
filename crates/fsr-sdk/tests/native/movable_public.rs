@@ -16,18 +16,20 @@ struct Coordinated {
 impl Coordinated {
     fn record(&mut self, list: &ID3D12GraphicsCommandList, resources: &[ID3D12Resource]) {
         let _guard = self.gate.lock().unwrap_or_else(|p| p.into_inner());
-        let frame = UpscaleDispatch {
-            command_list: list,
-            color: &resources[0],
-            depth: &resources[1],
-            motion_vectors: &resources[2],
-            exposure: &resources[3],
-            output: &resources[4],
-            jitter: JitterOffsetPixels::new(0.0, 0.0).unwrap(),
-            frame_time: FrameTimeMillis::new(16.667).unwrap(),
-            camera: CameraParameters::new(0.1, 100.0, std::f32::consts::PI / 3.0, 1.0).unwrap(),
-            reset: true,
-        };
+        let frame = UpscaleDispatch::new(
+            list,
+            UpscaleResources::new(
+                &resources[0],
+                &resources[1],
+                &resources[2],
+                &resources[3],
+                &resources[4],
+            ),
+            JitterOffsetPixels::new(0.0, 0.0).unwrap(),
+            FrameTimeMillis::new(16.667).unwrap(),
+            CameraParameters::new(0.1, 100.0, std::f32::consts::PI / 3.0, 1.0).unwrap(),
+            true,
+        );
         // SAFETY: Existing harness supplies the supported fixed profile and states.
         // Main retains equipment/inputs/context through m6_finish's GPU fence;
         // all potentially shared calls and native cleanup use this common gate.

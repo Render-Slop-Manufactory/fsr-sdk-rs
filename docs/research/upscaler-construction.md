@@ -1,8 +1,15 @@
 # Upscaler construction
 
-- Updated: 2026-09-30 (reorganized; evidence dates remain as recorded).
+- Updated: 2026-10-09 (existing native construction/dimension tests rerun; historical evidence unchanged).
 - Scope: public construction, numerical trust, provider sharing and M5 evidence.
 - Overview: [API and safety](api-and-safety.md).
+
+The [2026-10-09 maintenance recheck](../release/2026-10-09-windows-native-recheck.md)
+repeated public two-context construction and all twelve raw dimension cases on
+its captured baseline. The five positive controls completed create/destroy;
+the four zero-dimension cases again aborted inside native create, and widths
+16383/16384/16385 returned generic error 1 with null handles. These are bounded
+construction observations, not dispatch support or new numerical contracts.
 
 ## M5 source intake and provenance
 

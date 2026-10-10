@@ -18,7 +18,7 @@ use windows::core::Interface;
 #[cfg(test)]
 use super::common::{CameraParameters, FrameTimeMillis, JitterOffsetPixels};
 use super::common::{Dimensions, UpscalerOptions};
-pub use dispatch::UpscaleDispatch;
+pub use dispatch::{NativeSharpness, Sharpening, UpscaleDispatch, UpscaleResources};
 /// The exact `windows` 0.62 DX12 interface types accepted by this API.
 pub use windows::Win32::Graphics::Direct3D12::{
     ID3D12Device, ID3D12GraphicsCommandList, ID3D12Resource,

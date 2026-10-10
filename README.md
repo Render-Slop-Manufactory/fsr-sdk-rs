@@ -23,9 +23,20 @@ Regeneration, Radiance Caching, and other backends.
 
 **Next release:** [D014](docs/adr/D014.md) selects a small `0.2.0` with extensible
 dispatch inputs and explicit native sharpening, disabled by default. The design
-was accepted on 2026-10-07; implementation and release verification are pending.
+was accepted on 2026-10-07; M8 is implemented in current source and M9 release
+verification is pending.
 The [roadmap](ROADMAP.md#next-actions) tracks that work. The examples below use
-the implemented `0.1.0` API.
+the published `0.1.0` API; checkout examples use the new constructors.
+
+**Current source frame API:** construct `UpscaleResources::new(color, depth,
+motion_vectors, exposure, output)` and pass it to `UpscaleDispatch::new` with
+explicit jitter, timing, camera and reset. Inspect inputs with accessors; clone
+the resource bundle for later frames. Native sharpening starts disabled.
+`set_sharpening(Sharpening::Native(NativeSharpness::new(v)?))` enables the provider
+pass and forwards a finite `[0,1]` parameter unchanged; enabled zero is distinct
+from `Sharpening::Disabled`. No additional filter or image-quality guarantee is
+provided. See [D014's migration](docs/adr/D014.md#migration-example) and the
+[M8 checks](docs/release/2026-10-09-m8-implementation-verification.md).
 
 **Current source, unreleased:** [D013](docs/adr/D013.md) adds the optional
 `movable` feature with `MovableRuntime` / `MovableUpscaler` (`Send + !Sync`).

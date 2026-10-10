@@ -9,12 +9,14 @@ use fsr_sdk_sys::upscale::ffxDispatchDescUpscale;
 mod descriptor;
 mod frame;
 mod resources;
+mod sharpening;
 use crate::upscaler::common::{CameraParameters, FrameTimeMillis, JitterOffsetPixels};
-pub use frame::UpscaleDispatch;
+pub use frame::{UpscaleDispatch, UpscaleResources};
 #[cfg(test)]
 pub(super) use resources::inspect_dispatch;
 #[cfg(test)]
 pub(super) use resources::resource_for_parity;
+pub use sharpening::{NativeSharpness, Sharpening};
 
 impl Upscaler {
     /// Record one upscaler dispatch on an open DIRECT command list.

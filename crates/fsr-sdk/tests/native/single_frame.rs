@@ -138,18 +138,20 @@ pub(super) fn native_dispatch_readback() {
     // SAFETY: The helper recorded matching transitions; all resources, the
     // allocator, context and runtime are retained until the fence completes.
     let dispatch = unsafe {
-        upscaler.dispatch(UpscaleDispatch {
-            command_list: &list,
-            color: &resources[0],
-            depth: &resources[1],
-            motion_vectors: &resources[2],
-            exposure: &resources[3],
-            output: &resources[4],
-            jitter: JitterOffsetPixels::new(0.25, -0.25).unwrap(),
-            frame_time: FrameTimeMillis::new(16.667).unwrap(),
-            camera: CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
-            reset: true,
-        })
+        upscaler.dispatch(UpscaleDispatch::new(
+            &list,
+            UpscaleResources::new(
+                &resources[0],
+                &resources[1],
+                &resources[2],
+                &resources[3],
+                &resources[4],
+            ),
+            JitterOffsetPixels::new(0.25, -0.25).unwrap(),
+            FrameTimeMillis::new(16.667).unwrap(),
+            CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
+            true,
+        ))
     };
     if let Err(error) = dispatch {
         abort_dispatch(error, 0);

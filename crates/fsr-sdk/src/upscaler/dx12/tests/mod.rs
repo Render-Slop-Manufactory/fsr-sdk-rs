@@ -7,6 +7,7 @@ mod inspection;
 mod lifecycle;
 #[cfg(feature = "movable")]
 mod movable;
+mod sharpening;
 mod support;
 mod traits;
 

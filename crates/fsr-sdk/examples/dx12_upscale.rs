@@ -17,7 +17,8 @@ pub mod renderer_integration {
         runtime::Runtime,
         upscaler::{
             CameraParameters, Dimensions, FrameTimeMillis, ID3D12Device, ID3D12GraphicsCommandList,
-            ID3D12Resource, JitterOffsetPixels, UpscaleDispatch, Upscaler, UpscalerOptions,
+            ID3D12Resource, JitterOffsetPixels, UpscaleDispatch, UpscaleResources, Upscaler,
+            UpscalerOptions,
         },
     };
     use std::path::Path;
@@ -71,18 +72,14 @@ pub mod renderer_integration {
         exposure: &ID3D12Resource,
         output: &ID3D12Resource,
     ) -> Result<(), Error> {
-        let frame = UpscaleDispatch {
+        let frame = UpscaleDispatch::new(
             command_list,
-            color,
-            depth,
-            motion_vectors,
-            exposure,
-            output,
-            jitter: JitterOffsetPixels::new(0.25, -0.25)?,
-            frame_time: FrameTimeMillis::new(16.667)?,
-            camera: CameraParameters::new(0.1, 100.0, std::f32::consts::PI / 3.0, 1.0)?,
-            reset: true,
-        };
+            UpscaleResources::new(color, depth, motion_vectors, exposure, output),
+            JitterOffsetPixels::new(0.25, -0.25)?,
+            FrameTimeMillis::new(16.667)?,
+            CameraParameters::new(0.1, 100.0, std::f32::consts::PI / 3.0, 1.0)?,
+            true,
+        );
         // SAFETY: The renderer establishes the dispatch state/storage/lifetime contract.
         let recorded = unsafe { upscaler.dispatch(frame) };
 

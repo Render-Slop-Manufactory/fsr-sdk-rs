@@ -13,6 +13,14 @@ Use the [source record](templates/source.md),
 Historical evidence goes in [records/](records/); current topic syntheses live
 beside this file and link the records they use.
 
+The [2026-10-09 Windows native regression recheck](../release/2026-10-09-windows-native-recheck.md)
+reran existing tests and protocols without changing historical records. It
+refreshes bounded execution evidence for loading, construction, lifecycle,
+threading and dispatch; the sharpening effect gate, GBV dispatch timeout and
+native failure/termination uncertainties remain open. Its captured baseline
+excludes later concurrent M7 edits. Routine verification reports remain separate
+from the historical research records below.
+
 ## Coverage
 
 | Current topic | Evidence and coverage |
@@ -102,9 +110,13 @@ is integrated in [upscaling dispatch](upscaling-dispatch.md#d014-sharpening-nati
 and [API and safety](api-and-safety.md). Execution and repeat controls passed;
 enabled zero differed from disabled. The proposed effect gate failed in all three
 repetitions, confirmed by an independent readback-audit run. The maintainer
-separately accepted [D014](../adr/D014.md) on 2026-10-07; its public sharpening
-API is unimplemented and its new release protocol remains open. This status
-update adds no research evidence.
+separately accepted [D014](../adr/D014.md) on 2026-10-07. Its public frame and
+sharpening API is implemented and checked under
+[M8](../release/2026-10-09-m8-implementation-verification.md). The separate
+[M9 integration protocol](../release/2026-10-09-m9-native-sharpening-protocol.md)
+is selected; public-API GPU execution and final artifact verification remain
+pending. The implementation checks add no AMD/GPU evidence and do not change
+the original failed effect results.
 
 The SDK version is already decided: AMD FSR SDK `v2.3.0`
 ([D002](../DECISIONS.md#d002--pin-amd-fsr-sdk-v230-as-the-initial-native-baseline)).
@@ -114,7 +126,7 @@ The following are remaining research questions, not findings:
 |---|---|
 | API and safety | Public v2.3.0 evidence still defines no complete numerical construction domain; accepted D008 uses a bounded runtime trust assumption for M5. Future Query/Configure lifetimes and semantics, broader native concurrency, general returned-create-error and destroy-failure contracts, signed-provider chain/device retention and GPU synchronization remain open. Contradictory safety evidence requires revisiting the M5 contract. |
 | Runtime threading | Provider/dependency termination and retention cause, native returned-error/partial-load cleanup, hidden work/TLS, external-user coordination, outstanding GPU work, other configurations and sanitizers remain open. D013 accepts explicit caller assumptions and its optional public implementation has bounded verification; no missing AMD guarantee is resolved. Release selection and artifact verification remain separate. |
-| Upscaling dispatch | Broader temporal quality, frame/provider profiles, signed-provider sharing and GBV remain open. D014's breaking private-frame API is accepted but unimplemented; its separate sharpening release protocol remains open after the failed native gate, including same-context switching comparisons. Controlled semantics and sharpening evidence establish no general recording capacity or cross-queue guarantee. |
+| Upscaling dispatch | Broader temporal quality, frame/provider profiles, signed-provider sharing and GBV remain open. D014's breaking private-frame API and native sharpening are implemented and checked under [M8](../release/2026-10-09-m8-implementation-verification.md); its separate [M9 integration protocol](../release/2026-10-09-m9-native-sharpening-protocol.md) is selected, with same-context public-API GPU and final artifact verification pending. The original effect gate remains failed. Controlled semantics and sharpening evidence establish no general recording capacity or cross-queue guarantee. |
 | SDK acquisition and distribution | Private colocation sufficiency is resolved for the tested signed v2.3.0 inputs; exact loading calls, basename collisions and transitive dependencies remain unresolved. Further runtime tests depend on later deployment requirements. Complete the [remaining package and distribution checks](licensing-and-distribution.md); audit exact future binary bundles. Acquisition, caching, verified downloads and offline paths remain undecided. |
 
 Add linked topic entries as investigations are integrated. Keep open questions

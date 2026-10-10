@@ -27,6 +27,13 @@ The [final Windows verification](docs/research/records/2026-09-28-exp-final-wind
 repeated that public-route regression and passed three ordered moving frames
 through one upscaler on the recorded AMD configuration.
 
+The [2026-10-09 Windows native recheck](docs/release/2026-10-09-windows-native-recheck.md)
+exercised all 30 existing ignored native tests and their configured variants on
+the captured pre-M7 baseline. Ordinary GPU, recording and transfer regressions
+passed; the original sharpening effect gate and GBV dispatch timeout remain
+open. The report identifies its tested inputs and excludes later concurrent
+sharpening changes; it does not establish a new release or support guarantee.
+
 | Area | Current status |
 |---|---|
 | Selected FidelityFX ABI and explicit DLL loader | Implemented; bounded Windows x64/MSVC checks passed |
@@ -43,8 +50,10 @@ through one upscaler on the recorded AMD configuration.
 **Current focus:** Implement a small `0.2.0` around dispatch-input extensibility and
 one contained addition: sharpening. Maintain the published `0.1.0` as the
 regression baseline. [D014](docs/adr/D014.md) was accepted on 2026-10-07;
-M7's API and migration contract is complete. Implementation and the separate
-native release protocol remain pending. The original native effect gate failed
+M7's API and migration contract is complete; M8 is implemented and checked in
+current source. The separate [M9 integration protocol](docs/release/2026-10-09-m9-native-sharpening-protocol.md)
+is selected; native execution and final artifact verification remain pending.
+The original native effect gate failed
 and stays failed. Complete and verify the small `0.2.0`, then broaden existing
 upscaler evidence before opening new effects.
 
@@ -149,25 +158,27 @@ a useful frame scalar requiring no new resources or creation flags.
 Basis: the [dispatch API synthesis](docs/research/upscaling-dispatch.md#broader-frame-surface-and-api-evolution)
 and [post-release surface record](docs/research/records/2026-09-29-src-dx12-upscaler-api-surface.md).
 These repository milestones continue M1–M6, independently of the record's
-numbering. D011 remains the implemented 0.1.0 baseline; D014 selects its limited
+numbering. D011 remains the published 0.1.0 baseline; D014 selects its limited
 0.2.0 replacement. D012 already covers creation-option extensibility.
 
 The accepted [D014 design](docs/adr/D014.md) supplies M7's API contract,
 migration, alternatives and verification gates. M7 was completed on 2026-10-07;
-the frame redesign and sharpening are not implemented.
+M8's frame redesign and native sharpening are implemented, with
+[Windows and public-consumer checks](docs/release/2026-10-09-m8-implementation-verification.md).
 Its [native sharpening spike](docs/research/records/2026-09-30-exp-d014-native-sharpening.md)
 passed execution and repeat controls, but failed the predeclared effect criteria
 in all three repetitions, confirmed by an independent readback audit. The original
-failure remains evidence. API acceptance does not select the new release protocol.
-Its scenes, controls, metrics, thresholds and repeat policy must be recorded
-before execution, explicitly informed by the known results and including
-same-context sharpening switches. No new run retrospectively passes the original gate.
+failure remains evidence. The [2026-10-09 integration protocol](docs/release/2026-10-09-m9-native-sharpening-protocol.md)
+selects scenes, controls, diagnostics and repetitions before execution, informed
+by those results and including same-context mode switching. It adds no sharpening
+image-effect thresholds. The original thresholds were not adopted as release
+gates; no new run retrospectively passes the original experiment.
 
 | Milestone | Scope | Done when |
 |---|---|---|
-| M7 — Dispatch API contract | **Done 2026-10-07:** D014 accepted for private fields, construction/access methods, optional defaults and migration from `0.1.0` literals. | Contract approved; one unsafe dispatch route; GPU-lifetime, poison and cleanup obligations preserved. Implementation remains M8. |
-| M8 — Extensible frame and sharpening | Implement the frame API and typed sharpening: disabled by default, finite `[0,1]` strength. Migrate examples. | Host/Windows checks cover defaults, rejection before FFI, descriptor mapping and existing failure paths. |
-| M9 — Verification and release | Predeclare the separate sharpening release protocol; repeat native regressions and public-route comparisons, including mode switching within one context. | Exact descriptor mapping and recorded native execution/effect under the selected protocol; finite readback, fenced cleanup, no debug errors/device removal; migration, Rustdoc and package/consumer checks complete. Publication remains separately authorized. |
+| M7 — Dispatch API contract | **Done 2026-10-07:** D014 accepted for private fields, construction/access methods, optional defaults and migration from `0.1.0` literals. | Contract approved; one unsafe dispatch route; GPU-lifetime, poison and cleanup obligations preserved. Implementation covered by M8. |
+| M8 — Extensible frame and sharpening | **Done 2026-10-09:** private frame/resource construction, accessors and typed native sharpening; disabled by default, finite `[0,1]` parameter; examples and test inputs migrated. | [Implementation checks](docs/release/2026-10-09-m8-implementation-verification.md) cover exact scalar bits/descriptor forwarding, rejection before FFI, same-context fixture switching, public consumers/traits and existing failure paths. No new GPU evidence. |
+| M9 — Verification and release | **Pending:** execute the selected integration protocol and native regressions through the final public API, including same-context mode switching; verify final release artifacts. | Exact descriptor mapping and successful native recording plus completed GPU execution; finite/written readbacks, fenced cleanup, no debug errors/device removal; existing regressions, migration, Rustdoc and package/consumer checks complete. No additional sharpening image-effect criteria. Publication remains separately authorized. |
 
 `0.2.0` does not include pre-exposure, automatic exposure, masks, changing active
 extents, new depth/MV conventions, HDR/non-linear color, public Query/Configure,
@@ -263,11 +274,11 @@ is not a gate for M7–M9; no later release version is selected.
    Verification is recorded in the [2026-10-07 maintenance check](docs/release/2026-10-07-status-test-hygiene.md).
 2. **D014 / M7 — completed 2026-10-07:** API, migration and bounded native-pass
    trust accepted after review. The original failed experiment remains failed;
-   the separate release protocol is still open.
-3. **M8–M9:** implement and verify a deliberately small `0.2.0`: extensible frame
-   API, sharpening and migration. Select and record the separate release
-   protocol before native execution, including same-context mode switching.
-   Repeat native regressions, the selected
+   the separate integration protocol was selected on 2026-10-09.
+3. **M8 completed; M9 pending:** the small `0.2.0` frame API, native sharpening
+   and migration are implemented and checked. Implement the M9 runner for the
+   selected [integration protocol](docs/release/2026-10-09-m9-native-sharpening-protocol.md),
+   including same-context mode switching. Repeat native regressions, the selected
    sharpening protocol, documentation and package/consumer checks on the final
    implementation and artifacts. Maintain published `0.1.0` consumer guidance.
    Publication remains separately authorized.

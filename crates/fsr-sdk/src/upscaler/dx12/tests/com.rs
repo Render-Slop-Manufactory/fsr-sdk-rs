@@ -318,18 +318,20 @@ impl Scene {
     }
 
     pub(super) fn input(&self) -> UpscaleDispatch<'_> {
-        UpscaleDispatch {
-            command_list: &self.list,
-            color: &self.resources[0],
-            depth: &self.resources[1],
-            motion_vectors: &self.resources[2],
-            exposure: &self.resources[3],
-            output: &self.resources[4],
-            jitter: JitterOffsetPixels::new(0.0, 0.0).unwrap(),
-            frame_time: FrameTimeMillis::new(16.0).unwrap(),
-            camera: CameraParameters::new(0.1, 1000.0, 1.0, 1.0).unwrap(),
-            reset: true,
-        }
+        UpscaleDispatch::new(
+            &self.list,
+            UpscaleResources::new(
+                &self.resources[0],
+                &self.resources[1],
+                &self.resources[2],
+                &self.resources[3],
+                &self.resources[4],
+            ),
+            JitterOffsetPixels::new(0.0, 0.0).unwrap(),
+            FrameTimeMillis::new(16.0).unwrap(),
+            CameraParameters::new(0.1, 1000.0, 1.0, 1.0).unwrap(),
+            true,
+        )
     }
 
     pub(super) fn list_object(&self) -> &ComObject {

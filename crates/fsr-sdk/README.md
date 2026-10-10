@@ -10,6 +10,28 @@ with every hardware/provider configuration. The
 [project scope](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/SCOPE.md#platform-and-compatibility-boundaries)
 owns this policy. Other SDK effects and Vulkan are not implemented.
 
+## Extensible frames and native sharpening in current source
+
+The unreleased M8 API replaces public `UpscaleDispatch` literals with
+`UpscaleResources::new(color, depth, motion_vectors, exposure, output)` and
+`UpscaleDispatch::new(list, resources, jitter, frame_time, camera, reset)`.
+Accessors expose the inputs; clone the resource bundle to reuse its borrows.
+Construction performs no COM inspection or independent COM retention.
+
+Frames default to `Sharpening::Disabled`. The only setter selects Disabled or
+`Sharpening::Native(NativeSharpness::new(v)?)`, forwarding finite `[0,1]` values
+unchanged, including negative zero. Enabled zero is distinct from Disabled.
+There is no wrapper filter, clamping, quality profile or image-quality promise.
+The frame and sharpening types require Windows plus `dx12`; common inputs keep
+their portable availability. Native error, poison and renderer GPU obligations
+continue to apply. The published `0.1.0` API is still available separately.
+
+[D014](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D014.md)
+contains migration and the original failed sharpening-effect evidence.
+[M8 verification](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/release/2026-10-09-m8-implementation-verification.md)
+covers compilation and controlled FFI; M9 public-route GPU and final release
+artifact verification remain pending.
+
 ## Optional movable ownership in current source
 
 The unreleased `movable` feature exposes `runtime::MovableRuntime` and
@@ -60,7 +82,8 @@ completion and recording cleanup.
 The first profile uses fixed extents, linear non-HDR RGBA16F color, ordinary R32F
 depth, jitter-free current-to-previous top-down UV RG16F motion, explicit 1×1 R32F
 exposure and a UAV-capable RGBA16F output. HDR, auto exposure, dynamic resolution,
-masks and sharpening are not exposed. The API uses `windows` 0.62 DX12 interfaces.
+masks are not exposed. Current source additionally exposes the native sharpening
+control described above. The API uses `windows` 0.62 DX12 interfaces.
 
 ## API contract and example
 

@@ -32,6 +32,8 @@ pub enum DispatchScalar {
     VerticalFovRadians,
     /// Positive finite conversion factor from view-space units to metres.
     ViewSpaceToMeters,
+    /// Finite native sharpening parameter in inclusive `[0, 1]`.
+    NativeSharpness,
 }
 
 /// A resource supplied for an upscaler dispatch.

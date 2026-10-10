@@ -38,6 +38,9 @@ foreach ($features in $disabledFeatures) {
         @{ Name='runtime'; Import='fsr_sdk::runtime' },
         @{ Name='dx12-module'; Import='fsr_sdk::upscaler::dx12' },
         @{ Name='legacy-upscaler'; Import='fsr_sdk::upscaler::Upscaler' },
+        @{ Name='dispatch-resources'; Import='fsr_sdk::upscaler::UpscaleResources' },
+        @{ Name='native-sharpness'; Import='fsr_sdk::upscaler::NativeSharpness' },
+        @{ Name='sharpening'; Import='fsr_sdk::upscaler::Sharpening' },
         @{ Name='legacy-movable'; Import='fsr_sdk::upscaler::MovableUpscaler' },
         @{ Name='raw-loader'; Import='fsr_sdk_sys::loader' },
         @{ Name='raw-dx12'; Import='fsr_sdk_sys::dx12' }
@@ -46,6 +49,11 @@ foreach ($features in $disabledFeatures) {
     }
 }
 if ($IsWindows) { $cases += @(
+    @{ Name='dispatch-inputs-positive'; Features='dx12'; Diagnostic=$null; Source='use fsr_sdk::upscaler::{CameraParameters, FrameTimeMillis, JitterOffsetPixels, ID3D12GraphicsCommandList, ID3D12Resource, NativeSharpness, Sharpening, UpscaleDispatch, UpscaleResources, dx12}; fn frame<''a>(list: &''a ID3D12GraphicsCommandList, r: [&''a ID3D12Resource; 5]) -> UpscaleDispatch<''a> { let resources = UpscaleResources::new(r[0], r[1], r[2], r[3], r[4]); let copy: dx12::UpscaleResources = resources.clone(); let mut f = UpscaleDispatch::new(list, copy, JitterOffsetPixels::new(0.0, 0.0).unwrap(), FrameTimeMillis::new(16.0).unwrap(), CameraParameters::new(0.1, 100.0, 1.0, 1.0).unwrap(), true); let _: &Sharpening = f.sharpening(); f.set_sharpening(Sharpening::Native(NativeSharpness::new(0.35).unwrap())); match f.sharpening() { Sharpening::Disabled => {}, Sharpening::Native(v) => { let _ = v.value(); }, _ => {} } f } fn main() {}' },
+    @{ Name='dispatch-literal-private'; Features='dx12'; Diagnostic='E0451'; Source='use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = UpscaleDispatch { ..f }; } fn main() {}' },
+    @{ Name='dispatch-field-private'; Features='dx12'; Diagnostic='E0616'; Source='use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = f.reset; } fn main() {}' },
+    @{ Name='resources-literal-private'; Features='dx12'; Diagnostic='E0451'; Source='use fsr_sdk::upscaler::UpscaleResources; fn wrong(r: UpscaleResources) { let _ = UpscaleResources { ..r }; } fn main() {}' },
+    @{ Name='sharpness-construction-private'; Features='dx12'; Diagnostic='E0423'; Source='use fsr_sdk::upscaler::NativeSharpness; fn main() { let _ = NativeSharpness(0.35); }' },
     @{ Name='raw-loader-positive'; Features='dx12'; Diagnostic=$null; Source='use fsr_sdk_sys::loader::{FfxLibrary, LoadError}; fn main() { let _: Option<FfxLibrary> = None; let _: Option<LoadError> = None; }' },
     @{ Name='local-positive'; Features='dx12'; Diagnostic=$null; Source='use fsr_sdk::runtime::Runtime; fn main() { let _: Option<Runtime> = None; }' },
     @{ Name='movable-positive'; Features='dx12,movable'; Diagnostic=$null; Source='use fsr_sdk::{runtime::MovableRuntime, upscaler::MovableUpscaler}; fn send<T: Send>() {} fn main() { send::<MovableRuntime>(); send::<MovableUpscaler>(); }' },

@@ -54,8 +54,8 @@ for control provenance, naming, calibration evidence and extension review
 rather than maintaining separate rules here.
 
 Concrete feature contracts remain in their [decisions](DECISIONS.md).
-[D014](adr/D014.md) owns the accepted sharpening API and mapping; implementation
-and release verification remain pending. D016 selects no new policy, API or
+[D014](adr/D014.md) owns the implemented sharpening API and mapping; M9 native
+and final artifact verification remain pending. D016 selects no new policy, API or
 release gate and preserves the existing support and safety contracts.
 
 ## Performance
