@@ -20,9 +20,9 @@ pub(crate) struct FfxLibrary {
     release_probe: Option<Arc<AtomicBool>>,
 }
 
-pub(crate) struct RuntimeState {
-    pub(crate) library: FfxLibrary,
-}
+#[path = "../runtime/state.rs"]
+mod state;
+pub(crate) use state::RuntimeState;
 
 impl Drop for FfxLibrary {
     fn drop(&mut self) {

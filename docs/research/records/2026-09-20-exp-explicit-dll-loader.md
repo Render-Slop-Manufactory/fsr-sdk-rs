@@ -12,7 +12,7 @@
 ## Setup and evidence
 
 Base revision: `e01b9185f6666893d84d20db3eaee4608bba15d9`, plus uncommitted
-[loader implementation](../../../crates/fsr-sdk-sys/src/loader.rs),
+[loader implementation](../../../crates/fsr-sdk-sys/src/loader/windows.rs),
 [tests](../../../crates/fsr-sdk-sys/tests/loader.rs) and
 [Rust DLL fixture](../../../crates/fsr-sdk-sys/tests/fixtures/loader.rs).
 The loader is production code; the fixture and ignored AMD test are probes.

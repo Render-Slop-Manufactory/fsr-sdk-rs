@@ -110,7 +110,7 @@ fn create(
         library.observe_release(ledger.released.clone());
         library
     };
-    let runtime = Rc::new(crate::runtime::RuntimeState { library });
+    let runtime = Rc::new(crate::runtime::RuntimeState::new(library));
     (
         create_on(
             &runtime,
@@ -167,7 +167,7 @@ fn shared_runtime() -> (Rc<crate::runtime::RuntimeState>, Rc<Ledger>) {
         library.observe_release(ledger.released.clone());
         library
     };
-    (Rc::new(crate::runtime::RuntimeState { library }), ledger)
+    (Rc::new(crate::runtime::RuntimeState::new(library)), ledger)
 }
 
 #[test]
@@ -338,6 +338,7 @@ mod api {{
     pub type ffxCreateContextDescHeader = std::ffi::c_void;
     pub type ffxDispatchDescHeader = std::ffi::c_void;
     pub type ffxAllocationCallbacks = std::ffi::c_void;
+    pub type ffxReturnCode_t = u32;
     pub const FFX_API_RETURN_OK: u32 = 0;
 }}
 #[path = {:?}] mod error;
@@ -345,7 +346,8 @@ mod api {{
 mod runtime {{
     use crate::api::*;
     pub struct FfxLibrary;
-    pub struct RuntimeState {{ pub library: FfxLibrary }}
+    #[path = {:?}] mod state;
+    pub(crate) use state::RuntimeState;
     impl FfxLibrary {{
         pub unsafe fn ffxCreateContext(&self, _: *mut ffxContext, _: *mut ffxCreateContextDescHeader, _: *const ffxAllocationCallbacks) -> u32 {{ 0 }}
         pub unsafe fn ffxDestroyContext(&self, _: *mut ffxContext, _: *const ffxAllocationCallbacks) -> u32 {{ 0 }}
@@ -355,7 +357,8 @@ mod runtime {{
 use context::NativeContextOwner;
 "#,
         root.join("error.rs"),
-        root.join("context.rs")
+        root.join("context.rs"),
+        root.join("runtime/state.rs")
     );
     for (name, body, diagnostic) in [
         (
@@ -386,6 +389,11 @@ use context::NativeContextOwner;
         (
             "private",
             "fn use_owner(owner: NativeContextOwner<(), ()>) { let _ = owner.live; }",
+            Some("E0616"),
+        ),
+        (
+            "runtime_library_private",
+            "fn extract_library(state: runtime::RuntimeState) { let _ = state.library; }",
             Some("E0616"),
         ),
     ] {

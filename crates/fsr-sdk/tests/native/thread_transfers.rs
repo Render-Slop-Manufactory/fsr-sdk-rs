@@ -231,7 +231,7 @@ impl RuntimeBundle {
         // SAFETY: Trusted signed pinned deployment; the isolated matrix's common
         // gate covers all calls/cleanup. Transfer compatibility is the hypothesis.
         let library = unsafe { fsr_sdk_sys::loader::FfxLibrary::load(&equipment.loader) }.unwrap();
-        let runtime = Arc::new(RuntimeState { library });
+        let runtime = Arc::new(RuntimeState::new(library));
         *lock(&equipment.weak) = Arc::downgrade(&runtime);
         Self {
             runtime: Some(runtime),

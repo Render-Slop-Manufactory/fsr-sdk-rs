@@ -58,6 +58,12 @@ Feature-enabled tests, Clippy and Rustdoc cover `movable`; minimum-version jobs
 also compile it without DX12. Windows and Ubuntu check downstream common/native
 API boundaries with [check-movable-api.ps1](../tools/check-movable-api.ps1).
 Windows additionally checks the movable feature and family boundaries.
+The consumer script also verifies Linux/Windows production dependency trees:
+both the consumer's explicit features and each real package's defaults, no-default
+and DX12 configurations, plus wrapper movable configurations. `libloading` must
+occur only for Windows with DX12. It checks the raw loader's
+public imports and the intentional unsupported-Vulkan diagnostic. Portable
+fixture dev-dependencies are excluded from these trees.
 CI does not download AMD binaries or execute GPU work. Ignored native tests need
 the opt-in local runner below; successful host builds are not native evidence.
 
@@ -211,6 +217,16 @@ operation works. The native SDK baseline is `v2.3.0`
 ([D002](DECISIONS.md#d002--pin-amd-fsr-sdk-v230-as-the-initial-native-baseline)).
 No automated SDK acquisition or public Query/Configure operations are implemented.
 The raw loader's forwarding methods do not validate native operation contracts.
+
+The wrapper's private `RuntimeState` acquires the loader, translates load failures
+and owns it behind native-call methods. Local and movable runtimes use the same
+acquisition method, then retain the state through `Rc` or `Arc`; partial-load
+cleanup stays on the acquiring thread. Context code cannot access its library
+field. Context ownership, native result handling and terminal cleanup remain in
+`NativeContextOwner`. Host fixtures share
+the actual [runtime state](../crates/fsr-sdk/src/runtime/state.rs) while replacing
+only the platform loader. This boundary changes neither public API nor native,
+GPU or threading contracts.
 
 ## FFI safety and verification
 

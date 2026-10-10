@@ -87,8 +87,7 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
             dependencies
                 .runtime
                 .runtime_state()
-                .library
-                .ffxCreateContext(&mut handle, root, std::ptr::null())
+                .create_context(&mut handle, root, std::ptr::null())
         };
         if code != FFX_API_RETURN_OK {
             // No output-handle operation, including destroy, even if non-null.
@@ -132,8 +131,7 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
             live.dependencies
                 .runtime
                 .runtime_state()
-                .library
-                .ffxDestroyContext(&mut live.handle, std::ptr::null())
+                .destroy_context(&mut live.handle, std::ptr::null())
         };
         #[cfg(test)]
         if std::env::var_os("FSR_SDK_TEST_D013_TRACE").is_some() {
@@ -181,8 +179,7 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
             live.dependencies
                 .runtime
                 .runtime_state()
-                .library
-                .ffxDispatch(&mut live.handle, desc)
+                .dispatch(&mut live.handle, desc)
         }
     }
 
@@ -198,8 +195,7 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
             live.dependencies
                 .runtime
                 .runtime_state()
-                .library
-                .ffxQuery(&mut live.handle, desc)
+                .query_for_test(&mut live.handle, desc)
         }
     }
 }

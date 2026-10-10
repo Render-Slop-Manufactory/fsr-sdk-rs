@@ -113,7 +113,9 @@ protocol remains open. Original native effect criteria failed and stay failed.
 
 **Status:** accepted 2026-10-09, including the follow-up that makes common inputs
 available without platform/backend gates. Existing imports, native gates and
-safety contracts are preserved. Vulkan remains unsupported.
+safety contracts are preserved. The later authorized loader follow-up isolates
+Windows implementation and makes raw `libloading` optional and target-specific.
+Vulkan remains unsupported.
 
 [Read D015](adr/D015.md)
 

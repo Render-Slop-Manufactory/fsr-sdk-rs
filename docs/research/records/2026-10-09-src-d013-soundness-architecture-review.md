@@ -14,7 +14,7 @@
   [upscaler](../../../crates/fsr-sdk/src/upscaler.rs),
   [movable fixtures](../../../crates/fsr-sdk/src/context/d013_movable.rs),
   [native transfer harness](../../../crates/fsr-sdk/tests/native/thread_transfers.rs)
-  and [loader](../../../crates/fsr-sdk-sys/src/loader.rs). The review's abbreviated
+  and [loader](../../../crates/fsr-sdk-sys/src/loader/windows.rs). The review's abbreviated
   paths and line numbers refer to these files; their original revision is unknown.
 - Referenced execution evidence: [compile/host probes](2026-09-29-exp-d013-movable-compile-host.md),
   [Windows fixtures](2026-09-29-exp-d013-windows-fixtures.md),

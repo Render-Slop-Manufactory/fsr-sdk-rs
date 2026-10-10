@@ -142,7 +142,7 @@ impl SerialFamily {
         // SAFETY: Runner stages trusted signed v2.3.0 DLLs. All operations in
         // this child are serialized, with the conditional transfer hypothesis.
         let library = unsafe { fsr_sdk_sys::loader::FfxLibrary::load(&loader_path) }.unwrap();
-        let runtime = Arc::new(RuntimeState { library });
+        let runtime = Arc::new(RuntimeState::new(library));
         let weak = Arc::downgrade(&runtime);
         let options = UpscalerOptions::new(
             Dimensions::new(320, 180).unwrap(),

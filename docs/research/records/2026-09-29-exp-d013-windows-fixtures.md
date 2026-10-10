@@ -47,7 +47,7 @@ The tested implementation is self-contained in these repository inputs:
   [lifecycle.rs](../../../crates/fsr-sdk/tests/fixtures/lifecycle.rs), a Rust
   `cdylib` with five exports and a fixture-specific protocol.
 - [runtime.rs](../../../crates/fsr-sdk/src/runtime.rs) and
-  [loader.rs](../../../crates/fsr-sdk-sys/src/loader.rs): actual Windows/DX12
+  [loader.rs](../../../crates/fsr-sdk-sys/src/loader/windows.rs): actual Windows/DX12
   runtime state and `FfxLibrary`, used by these feature-enabled Windows probes.
   The [host adapter](../../../crates/fsr-sdk/src/context/test_runtime.rs) is
   not the runtime path of this focused run.

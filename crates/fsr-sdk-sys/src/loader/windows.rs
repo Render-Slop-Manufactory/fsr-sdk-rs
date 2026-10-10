@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! Explicit-path loading of the five FidelityFX API entry points.
+//! Windows explicit-path loading of the five FidelityFX API entry points.
 //!
 //! No discovery or SDK calls are performed during loading. Windows may execute
 //! DLL initialization/termination code. Dependency resolution remains Windows'

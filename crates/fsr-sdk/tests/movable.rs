@@ -80,7 +80,15 @@ fn invalid_acquisition_returns_existing_path_error_without_loading() {
     let error = unsafe { MovableRuntime::load_unchecked("") }
         .err()
         .expect("empty path must fail before acquisition");
-    assert!(matches!(error, fsr_sdk::runtime::LoadError::Path { .. }));
+    assert!(
+        matches!(&error, fsr_sdk::runtime::LoadError::Path { path, .. }
+        if path.as_os_str().is_empty())
+    );
+    assert!(
+        std::error::Error::source(&error)
+            .and_then(|source| source.downcast_ref::<std::io::Error>())
+            .is_some()
+    );
 }
 
 #[repr(C)]

@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
 use super::{LoadError, RuntimeState};
-use fsr_sdk_sys::loader::FfxLibrary;
 use std::{cell::Cell, marker::PhantomData, path::Path, sync::Arc};
 
 /// Optional movable Windows/DX12 runtime: `Send`, but never `Sync` or `Clone`.
@@ -101,9 +100,9 @@ impl MovableRuntime {
     pub unsafe fn load_unchecked(path: impl AsRef<Path>) -> Result<Self, LoadError> {
         // SAFETY: The caller establishes initialization, failure cleanup and all
         // lasting arbitrary-thread compatibility/coordination requirements above.
-        let library = unsafe { FfxLibrary::load(path) }.map_err(LoadError::from_sys)?;
+        let state = unsafe { RuntimeState::load_unchecked(path) }?;
         Ok(Self {
-            state: Arc::new(RuntimeState { library }),
+            state: Arc::new(state),
             _not_sync: PhantomData,
         })
     }

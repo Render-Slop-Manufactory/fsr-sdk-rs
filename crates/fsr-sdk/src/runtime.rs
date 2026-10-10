@@ -6,7 +6,7 @@
 //! resources. The current loader and native acquisition contracts require
 //! Windows/DX12, so this module retains that platform/feature gate.
 
-use fsr_sdk_sys::loader::{FfxLibrary, LoadError as SysLoadError};
+use fsr_sdk_sys::loader::LoadError as SysLoadError;
 use std::{
     error::Error as StdError,
     fmt,
@@ -106,9 +106,8 @@ impl StdError for LoadError {
     }
 }
 
-pub(crate) struct RuntimeState {
-    pub(crate) library: FfxLibrary,
-}
+mod state;
+pub(crate) use state::RuntimeState;
 
 /// A loaded Windows/DX12 FidelityFX runtime.
 ///
@@ -160,9 +159,9 @@ impl Runtime {
     /// exceptional native failure can retain dependencies indefinitely.
     pub unsafe fn load_unchecked(path: impl AsRef<Path>) -> Result<Self, LoadError> {
         // SAFETY: The caller establishes the native acquisition obligations.
-        let library = unsafe { FfxLibrary::load(path) }.map_err(LoadError::from_sys)?;
+        let state = unsafe { RuntimeState::load_unchecked(path) }?;
         Ok(Self {
-            state: Rc::new(RuntimeState { library }),
+            state: Rc::new(state),
         })
     }
 }

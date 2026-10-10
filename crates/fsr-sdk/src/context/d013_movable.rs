@@ -168,7 +168,7 @@ fn fixture_state() -> (RuntimeState, Arc<Ledger>) {
         library.observe_release(ledger.released.clone());
         library
     };
-    (RuntimeState { library }, ledger)
+    (RuntimeState::new(library), ledger)
 }
 
 impl MovableRuntimeProbe {

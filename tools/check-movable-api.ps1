@@ -46,6 +46,7 @@ foreach ($features in $disabledFeatures) {
     }
 }
 if ($IsWindows) { $cases += @(
+    @{ Name='raw-loader-positive'; Features='dx12'; Diagnostic=$null; Source='use fsr_sdk_sys::loader::{FfxLibrary, LoadError}; fn main() { let _: Option<FfxLibrary> = None; let _: Option<LoadError> = None; }' },
     @{ Name='local-positive'; Features='dx12'; Diagnostic=$null; Source='use fsr_sdk::runtime::Runtime; fn main() { let _: Option<Runtime> = None; }' },
     @{ Name='movable-positive'; Features='dx12,movable'; Diagnostic=$null; Source='use fsr_sdk::{runtime::MovableRuntime, upscaler::MovableUpscaler}; fn send<T: Send>() {} fn main() { send::<MovableRuntime>(); send::<MovableUpscaler>(); }' },
     @{ Name='feature-disabled'; Features='dx12'; Diagnostic='E0432'; Source='use fsr_sdk::runtime::MovableRuntime; fn main() { let _: Option<MovableRuntime> = None; }' },
@@ -69,6 +70,52 @@ foreach ($case in $cases) {
     } elseif ($code -ne 0) { throw "Positive control failed $($case.Name):`n$output" }
     Write-Host "$($case.Name): PASS (exit=$code; expected=$($case.Diagnostic))"
 }
+
+# Inspect production dependencies independently of fixture dev-dependencies.
+# Cargo can resolve these target trees without installing their Rust std libraries.
+foreach ($treeTarget in @('x86_64-unknown-linux-gnu', 'x86_64-pc-windows-msvc')) {
+    foreach ($features in @('', 'movable', 'dx12', 'dx12,movable')) {
+        $treeArgs = @('tree', '--manifest-path', (Join-Path $stagePath 'Cargo.toml'), '--offline', '--target', $treeTarget, '--edges', 'normal', '--prefix', 'none')
+        if ($features) { $treeArgs += @('--features', $features) }
+        $tree = & cargo @treeArgs 2>&1 | Out-String
+        if ($LASTEXITCODE -ne 0) { throw "Dependency tree failed: $treeTarget / $features`n$tree" }
+        $hasLoader = $tree -match '(?m)^libloading v'
+        $expectsLoader = $treeTarget -eq 'x86_64-pc-windows-msvc' -and $features.Split(',').Contains('dx12')
+        if ($hasLoader -ne $expectsLoader) { throw "Wrong production loader dependency: $treeTarget / $features`n$tree" }
+        Write-Host "production-dependencies-$treeTarget-$features`: PASS (libloading=$hasLoader)"
+    }
+}
+
+# Check each real package's defaults independently of the consumer's feature wiring.
+$packageTrees = @(
+    @{ Package='fsr-sdk-sys'; Name='defaults'; CargoArgs=@(); WindowsLoader=$false },
+    @{ Package='fsr-sdk-sys'; Name='no-defaults'; CargoArgs=@('--no-default-features'); WindowsLoader=$false },
+    @{ Package='fsr-sdk-sys'; Name='dx12'; CargoArgs=@('--no-default-features', '--features', 'dx12'); WindowsLoader=$true },
+    @{ Package='fsr-sdk'; Name='defaults'; CargoArgs=@(); WindowsLoader=$true },
+    @{ Package='fsr-sdk'; Name='no-defaults'; CargoArgs=@('--no-default-features'); WindowsLoader=$false },
+    @{ Package='fsr-sdk'; Name='dx12'; CargoArgs=@('--no-default-features', '--features', 'dx12'); WindowsLoader=$true },
+    @{ Package='fsr-sdk'; Name='movable'; CargoArgs=@('--features', 'movable'); WindowsLoader=$true },
+    @{ Package='fsr-sdk'; Name='no-defaults-movable'; CargoArgs=@('--no-default-features', '--features', 'movable'); WindowsLoader=$false }
+)
+foreach ($treeTarget in @('x86_64-unknown-linux-gnu', 'x86_64-pc-windows-msvc')) {
+    foreach ($treeConfig in $packageTrees) {
+        $treeArgs = @('tree', '--manifest-path', (Join-Path $taskRoot 'Cargo.toml'), '-p', $treeConfig.Package, '--locked', '--offline', '--target', $treeTarget, '--edges', 'normal', '--prefix', 'none')
+        $treeArgs += $treeConfig.CargoArgs
+        $tree = & cargo @treeArgs 2>&1 | Out-String
+        if ($LASTEXITCODE -ne 0) { throw "Package dependency tree failed: $($treeConfig.Package) / $treeTarget / $($treeConfig.Name)`n$tree" }
+        $hasLoader = $tree -match '(?m)^libloading v'
+        $expectsLoader = $treeTarget -eq 'x86_64-pc-windows-msvc' -and $treeConfig.WindowsLoader
+        if ($hasLoader -ne $expectsLoader) { throw "Wrong package loader dependency: $($treeConfig.Package) / $treeTarget / $($treeConfig.Name)`n$tree" }
+        Write-Host "package-dependencies-$($treeConfig.Package)-$treeTarget-$($treeConfig.Name): PASS (libloading=$hasLoader)"
+    }
+}
+
+# Vulkan remains an explicitly unsupported feature, including on portable hosts.
+$vulkan = & cargo check --manifest-path (Join-Path $taskRoot 'crates/fsr-sdk/Cargo.toml') --no-default-features --features vulkan --offline 2>&1 | Out-String
+if ($LASTEXITCODE -eq 0 -or !$vulkan.Contains('the `vulkan` feature is intentionally unsupported')) {
+    throw "Invalid unsupported-Vulkan control`n$vulkan"
+}
+Write-Host 'unsupported-vulkan: PASS (expected compile error)'
 
 # All expected compiler failures were validated; report overall success to CI.
 exit 0
