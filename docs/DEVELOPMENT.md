@@ -106,7 +106,8 @@ cargo +1.88.0 test --workspace --features fsr-sdk/movable --locked
 Run `./tools/check-movable-api.ps1` in PowerShell 7 for positive common/raw-ABI
 consumer baselines and diagnostic-specific failures for unavailable native APIs.
 On Windows it also checks missing movable features, crossed families and
-conversions. It uses cached dependencies offline. Ordinary Cargo builds with
+conversions. Cargo may download missing dependencies; no prefilled cache is required.
+For a cached offline run, set `CARGO_NET_OFFLINE=true`. Ordinary Cargo builds with
 `movable` but without `dx12`, or on non-Windows hosts, omit the movable API.
 
 ### Common ABI verification

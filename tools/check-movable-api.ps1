@@ -66,7 +66,7 @@ if ($IsWindows) { $cases += @(
 ) }
 foreach ($case in $cases) {
     [IO.File]::WriteAllText((Join-Path $stagePath 'src/main.rs'), $case.Source)
-    $cargoArgs = @('check', '--manifest-path', (Join-Path $stagePath 'Cargo.toml'), '--offline', '--target-dir', (Join-Path $stagePath 'build'))
+    $cargoArgs = @('check', '--manifest-path', (Join-Path $stagePath 'Cargo.toml'), '--target-dir', (Join-Path $stagePath 'build'))
     if ($case.Features) { $cargoArgs += @('--features', $case.Features) }
     $output = & cargo @cargoArgs 2>&1 | Out-String
     $code = $LASTEXITCODE
@@ -83,7 +83,7 @@ foreach ($case in $cases) {
 # Cargo can resolve these target trees without installing their Rust std libraries.
 foreach ($treeTarget in @('x86_64-unknown-linux-gnu', 'x86_64-pc-windows-msvc')) {
     foreach ($features in @('', 'movable', 'dx12', 'dx12,movable')) {
-        $treeArgs = @('tree', '--manifest-path', (Join-Path $stagePath 'Cargo.toml'), '--offline', '--target', $treeTarget, '--edges', 'normal', '--prefix', 'none')
+        $treeArgs = @('tree', '--manifest-path', (Join-Path $stagePath 'Cargo.toml'), '--target', $treeTarget, '--edges', 'normal', '--prefix', 'none')
         if ($features) { $treeArgs += @('--features', $features) }
         $tree = & cargo @treeArgs 2>&1 | Out-String
         if ($LASTEXITCODE -ne 0) { throw "Dependency tree failed: $treeTarget / $features`n$tree" }
@@ -107,7 +107,7 @@ $packageTrees = @(
 )
 foreach ($treeTarget in @('x86_64-unknown-linux-gnu', 'x86_64-pc-windows-msvc')) {
     foreach ($treeConfig in $packageTrees) {
-        $treeArgs = @('tree', '--manifest-path', (Join-Path $taskRoot 'Cargo.toml'), '-p', $treeConfig.Package, '--locked', '--offline', '--target', $treeTarget, '--edges', 'normal', '--prefix', 'none')
+        $treeArgs = @('tree', '--manifest-path', (Join-Path $taskRoot 'Cargo.toml'), '-p', $treeConfig.Package, '--locked', '--target', $treeTarget, '--edges', 'normal', '--prefix', 'none')
         $treeArgs += $treeConfig.CargoArgs
         $tree = & cargo @treeArgs 2>&1 | Out-String
         if ($LASTEXITCODE -ne 0) { throw "Package dependency tree failed: $($treeConfig.Package) / $treeTarget / $($treeConfig.Name)`n$tree" }
@@ -119,7 +119,7 @@ foreach ($treeTarget in @('x86_64-unknown-linux-gnu', 'x86_64-pc-windows-msvc'))
 }
 
 # Vulkan remains an explicitly unsupported feature, including on portable hosts.
-$vulkan = & cargo check --manifest-path (Join-Path $taskRoot 'crates/fsr-sdk/Cargo.toml') --no-default-features --features vulkan --offline 2>&1 | Out-String
+$vulkan = & cargo check --manifest-path (Join-Path $taskRoot 'crates/fsr-sdk/Cargo.toml') --no-default-features --features vulkan 2>&1 | Out-String
 if ($LASTEXITCODE -eq 0 -or !$vulkan.Contains('the `vulkan` feature is intentionally unsupported')) {
     throw "Invalid unsupported-Vulkan control`n$vulkan"
 }
