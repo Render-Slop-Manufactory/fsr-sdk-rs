@@ -44,6 +44,16 @@
 //! and non-reentrant. Read `Runtime::load_unchecked` and `Upscaler::dispatch` for
 //! the full safety and failure contracts, including native provider trust.
 //!
+//! With the optional `movable` feature, `runtime::MovableRuntime` and
+//! `upscaler::MovableUpscaler` instead provide `Send + !Sync` ownership, acquired
+//! through an explicit unsafe load. The acquisition contract requires native
+//! compatibility on every subsequent destination thread and common coordination
+//! through all calls and implicit Drop/unwind. It provides no mutex or concurrency
+//! guarantee and leaves dispatch unsafe. The existing local family remains
+//! `!Send + !Sync`. The repository's
+//! [movable example](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/crates/fsr-sdk/examples/movable_upscale.rs)
+//! demonstrates consumer-owned cleanup coordination, including failed handoffs.
+//!
 //! # Minimal integration
 //!
 //! These excerpts assume an existing renderer and a trusted runtime deployment.
@@ -140,7 +150,7 @@ mod dispatch_policy;
 pub mod upscaler;
 
 #[cfg(all(windows, feature = "dx12"))]
-/// Explicit loading and thread-confined ownership of the native runtime.
+/// Explicit loading with local ownership and optional caller-coordinated movability.
 pub mod runtime;
 
 // Host-only fixture adapter. It does not enable an AMD runtime on other OSes.

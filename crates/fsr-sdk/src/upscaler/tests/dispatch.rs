@@ -21,7 +21,7 @@ fn private_dispatch_forwards_once_and_preserves_unknown_native_code() {
             r#type: FFX_API_DISPATCH_DESC_TYPE_UPSCALE,
             pNext: null_mut(),
         };
-        assert_eq!(upscaler.owner.dispatch(&header), u32::MAX);
+        assert_eq!(upscaler.core.owner.dispatch(&header), u32::MAX);
         let result = snapshot();
         assert_eq!(result.calls, 1);
         assert_eq!(result.tag, FFX_API_DISPATCH_DESC_TYPE_UPSCALE);

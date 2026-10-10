@@ -21,6 +21,8 @@ targets = []
 [features]
 default = ["dx12"]
 dx12 = ["fsr-sdk-sys/dx12", "dep:windows"]
+# Opt-in caller-established cross-thread native compatibility and coordination.
+movable = []
 # Reserved unsupported backend marker.
 # Enabling this intentionally produces a compile error.
 vulkan = ["fsr-sdk-sys/vulkan"]

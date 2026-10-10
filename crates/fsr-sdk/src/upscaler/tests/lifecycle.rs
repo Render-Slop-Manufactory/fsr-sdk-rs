@@ -80,7 +80,7 @@ pub(super) fn native_lifecycle_case(drop_b: bool) {
         name: null(),
     };
     // SAFETY: Correct test-only ABI, live owner and writable query storage.
-    let result = unsafe { context_b.owner.query_for_test(&raw mut query.header) };
+    let result = unsafe { context_b.core.owner.query_for_test(&raw mut query.header) };
     let valid = result == FFX_API_RETURN_OK && query.id != 0 && !query.name.is_null();
     if valid {
         // SAFETY: Read the returned name while native context/runtime remain live.

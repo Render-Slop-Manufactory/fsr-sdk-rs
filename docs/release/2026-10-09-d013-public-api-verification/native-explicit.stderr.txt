@@ -1,0 +1,10 @@
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5279744
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Dimensions: render=1280x720 upscale=1920x1080; zero rejected in Rust
+Production owner: create A/B OK
+Loader after public owner drop: resident=true
+Loader after A destroy: resident=true
+Provider: id=0xf5a5ca1e01001001; name=4.1.1
+Production owner: destroy A/B OK; B via explicit destroy
+Loader after B cleanup: resident=false

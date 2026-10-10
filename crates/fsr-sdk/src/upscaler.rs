@@ -1,12 +1,16 @@
 // SPDX-License-Identifier: MPL-2.0
 
-use crate::{context::NativeContextOwner, error::Error, runtime::Runtime};
+use crate::{
+    context::{NativeContextOwner, RuntimeRetention},
+    error::Error,
+    runtime::{Runtime, RuntimeState},
+};
 use fsr_sdk_sys::{
     api::*,
     dx12::{FFX_API_CREATE_CONTEXT_DESC_TYPE_BACKEND_DX12, ffxCreateBackendDX12Desc},
     upscale::*,
 };
-use std::{marker::PhantomPinned, num::NonZeroU32, pin::Pin, ptr::null_mut};
+use std::{marker::PhantomPinned, num::NonZeroU32, pin::Pin, ptr::null_mut, rc::Rc};
 use windows::core::Interface;
 
 /// Checked frame scalars and borrowed dispatch inputs for the fixed DX12 profile.
@@ -98,7 +102,14 @@ struct UpscaleCreateState {
     _pinned: PhantomPinned,
 }
 
-type Owner = NativeContextOwner<Pin<Box<UpscaleCreateState>>, ID3D12Device>;
+type Owner<R> = NativeContextOwner<Pin<Box<UpscaleCreateState>>, ID3D12Device, R>;
+
+// Sealed Rc/Arc retention; this core deliberately remains !Send + !Sync.
+struct UpscalerCore<R: RuntimeRetention> {
+    owner: Owner<R>,
+    options: UpscalerOptions,
+    dispatch_poisoned: bool,
+}
 
 /// Owned DX12 upscaler context. Neither `Send`, `Sync`, `Copy` nor `Clone`.
 ///
@@ -117,10 +128,13 @@ type Owner = NativeContextOwner<Pin<Box<UpscaleCreateState>>, ID3D12Device>;
 /// the same operation but discards its error. Neither waits for the GPU. A native
 /// destroy failure retains dependencies rather than retrying or unloading them.
 pub struct Upscaler {
-    owner: Owner,
-    options: UpscalerOptions,
-    dispatch_poisoned: bool,
+    core: UpscalerCore<Rc<RuntimeState>>,
 }
+
+#[cfg(feature = "movable")]
+mod movable;
+#[cfg(feature = "movable")]
+pub use movable::MovableUpscaler;
 
 impl UpscaleCreateState {
     fn new(
@@ -166,6 +180,23 @@ impl UpscaleCreateState {
     }
 }
 
+impl<R: RuntimeRetention> UpscalerCore<R> {
+    fn new(runtime: R, device: &ID3D12Device, options: UpscalerOptions) -> Result<Self, Error> {
+        // Independent COM reference retained through terminal or exceptional cleanup.
+        let device = device.clone();
+        let (state, root) = UpscaleCreateState::new(device.as_raw().cast(), &options);
+        // SAFETY: The sealed retention came from the matching acquired family.
+        // Its unsafe acquisition establishes native threading/coordination and
+        // D008's trust boundary. The pinned chain owns all creation dependencies.
+        let owner = unsafe { NativeContextOwner::create(state, device, runtime, root) }?;
+        Ok(Self {
+            owner,
+            options,
+            dispatch_poisoned: false,
+        })
+    }
+}
+
 impl Upscaler {
     /// Create from an acquired runtime and a borrowed DX12 device.
     ///
@@ -191,20 +222,8 @@ impl Upscaler {
         device: &ID3D12Device,
         options: UpscalerOptions,
     ) -> Result<Self, Error> {
-        // COM Clone calls AddRef: this attempt owns a reference independent of
-        // the caller and retains it on exceptional native outcomes.
-        let device = device.clone();
-        let (state, root) = UpscaleCreateState::new(device.as_raw().cast(), &options);
-        // SAFETY: The private pinned chain is valid, uses the owned device, and
-        // belongs to the runtime family acquired under its unsafe contract.
-        // Creation supplies no callbacks or dispatch; native calls are serial
-        // on the acquiring thread. D008 bounds further numerical runtime trust.
-        let owner =
-            unsafe { NativeContextOwner::create(state, device, runtime.state.clone(), root) }?;
         Ok(Self {
-            owner,
-            options,
-            dispatch_poisoned: false,
+            core: UpscalerCore::new(runtime.state.clone(), device, options)?,
         })
     }
 
@@ -217,7 +236,7 @@ impl Upscaler {
     /// poison. On native failure it returns [`Error::Native`] and retains the
     /// native dependencies indefinitely; `Drop` does not retry that attempt.
     pub fn destroy(self) -> Result<(), Error> {
-        self.owner.destroy()
+        self.core.owner.destroy()
     }
 }
 

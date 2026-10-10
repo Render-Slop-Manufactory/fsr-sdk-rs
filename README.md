@@ -27,6 +27,15 @@ was accepted on 2026-10-07; implementation and release verification are pending.
 The [roadmap](ROADMAP.md#next-actions) tracks that work. The examples below use
 the implemented `0.1.0` API.
 
+**Current source, unreleased:** [D013](docs/adr/D013.md) adds the optional
+`movable` feature with `MovableRuntime` / `MovableUpscaler` (`Send + !Sync`).
+Unsafe acquisition requires lasting native compatibility and common-domain
+coordination, including implicit cleanup. The
+[consumer example](crates/fsr-sdk/examples/movable_upscale.rs) and
+[bounded public-path verification](docs/release/2026-10-09-d013-public-api-verification.md)
+cover independently transferred contexts. Existing local types remain
+`!Send + !Sync`; this independent track is outside `0.2.0`, with no release selected.
+
 The project wraps AMD's official FSR SDK and runtime. It does not reimplement FidelityFX Super Resolution.
 
 >[!NOTE]

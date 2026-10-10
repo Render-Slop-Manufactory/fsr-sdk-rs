@@ -80,6 +80,22 @@ pub(super) fn fake_device() -> (ID3D12Device, &'static FakeDevice) {
 }
 
 pub(super) fn fixture_runtime() -> (Runtime, libloading::Library) {
+    let (path, observer) = fixture_library();
+    // SAFETY: The locally compiled fixture has exactly the tested signatures.
+    let runtime = unsafe { Runtime::load_unchecked(&path) }.unwrap();
+    (runtime, observer)
+}
+
+#[cfg(feature = "movable")]
+pub(super) fn fixture_movable_runtime() -> (crate::runtime::MovableRuntime, libloading::Library) {
+    let (path, observer) = fixture_library();
+    // SAFETY: Controlled fixture; these tests serialize every native operation
+    // and cleanup. It has no hidden workers or thread affinity and records no GPU work.
+    let runtime = unsafe { crate::runtime::MovableRuntime::load_unchecked(&path) }.unwrap();
+    (runtime, observer)
+}
+
+fn fixture_library() -> (std::path::PathBuf, libloading::Library) {
     let dir = crate::test_directory::directory("fsr-sdk-upscaler");
     let path = dir.join(format!("fixture{}", std::env::consts::DLL_SUFFIX));
     let output = Command::new("rustc")
@@ -100,8 +116,7 @@ pub(super) fn fixture_runtime() -> (Runtime, libloading::Library) {
     );
     // SAFETY: The locally compiled fixture has exactly the tested signatures.
     let observer = unsafe { libloading::Library::new(&path) }.unwrap();
-    let runtime = unsafe { Runtime::load_unchecked(&path) }.unwrap();
-    (runtime, observer)
+    (path, observer)
 }
 
 pub(super) fn fixture_set(

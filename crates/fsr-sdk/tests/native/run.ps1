@@ -2,12 +2,12 @@
 
 # Run in an x64 VS developer shell. -Native opts into the trusted SDK and GPU.
 param(
-    [ValidateSet('lifecycle', 'dispatch', 'd013', 'd013-cleanup', 'sharpening')][string]$Mode = 'dispatch',
+    [ValidateSet('lifecycle', 'dispatch', 'd013', 'd013-cleanup', 'movable', 'sharpening')][string]$Mode = 'dispatch',
     [switch]$Native, [switch]$GpuValidation,
     [string]$Stage = 'target/native-verification'
 )
 $ErrorActionPreference = 'Stop'
-if ($Mode -in @('d013', 'd013-cleanup') -and $GpuValidation) { throw 'D013 excludes GBV; use ordinary debug layer only' }
+if ($Mode -in @('d013', 'd013-cleanup', 'movable') -and $GpuValidation) { throw 'D013 excludes GBV; use ordinary debug layer only' }
 if ($Mode -eq 'sharpening' -and $GpuValidation) { throw 'Sharpening protocol excludes GBV; use ordinary debug layer only' }
 Push-Location (Resolve-Path (Join-Path $PSScriptRoot '../../../..'))
 $previousLoader = $env:FSR_SDK_TEST_DLL
@@ -55,8 +55,9 @@ try {
     & ./tools/check-native-abi.ps1 -SdkRoot $sdk -Stage "$stage/abi"
     & cl /nologo /std:c++17 /W4 /WX /MT /LD /I"$sdk/api/include/dx12" crates/fsr-sdk/tests/native/gpu.cpp crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp /Fo"$stage/" /link /OUT:"$stage/m6_gpu.dll" /IMPLIB:"$stage/m6_gpu.lib" d3d12.lib dxgi.lib
     Save-CheckResult "cl /nologo /std:c++17 /W4 /WX /MT /LD /I$sdk/api/include/dx12 crates/fsr-sdk/tests/native/gpu.cpp crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp /Fo$stage/ /link /OUT:$stage/m6_gpu.dll /IMPLIB:$stage/m6_gpu.lib d3d12.lib dxgi.lib" $LASTEXITCODE
-    $messages = & cargo test -p fsr-sdk --lib --features dx12 --locked --offline --no-run --message-format=json
-    Save-CheckResult 'cargo test -p fsr-sdk --lib --features dx12 --locked --offline --no-run --message-format=json' $LASTEXITCODE
+    $publicFeatures = if ($Mode -eq 'movable') { 'dx12,movable' } else { 'dx12' }
+    $messages = & cargo test -p fsr-sdk --lib --features $publicFeatures --locked --offline --no-run --message-format=json
+    Save-CheckResult "cargo test -p fsr-sdk --lib --features $publicFeatures --locked --offline --no-run --message-format=json" $LASTEXITCODE
     $artifact = $messages | ForEach-Object { $_ | ConvertFrom-Json } | Where-Object {
         $_.reason -eq 'compiler-artifact' -and $_.target.name -eq 'fsr_sdk' -and $_.executable
     } | Select-Object -Last 1
@@ -96,6 +97,15 @@ try {
         @(
             @{Name='native-explicit'; Test='upscaler::tests::native_lifecycle'; Marker='Production owner: destroy A/B OK'},
             @{Name='native-drop'; Test='upscaler::tests::native_lifecycle_drop'; Marker='Production owner: destroy A/B OK'}
+        )
+    } elseif ($Mode -eq 'movable') {
+        @(
+            @{Name='native-explicit'; Test='upscaler::tests::native_lifecycle'; Marker='Production owner: destroy A/B OK'},
+            @{Name='native-drop'; Test='upscaler::tests::native_lifecycle_drop'; Marker='Production owner: destroy A/B OK'},
+            @{Name='gate-a'; Test='upscaler::m6::native_dispatch_readback'; Marker='Gate A: PASSED'},
+            @{Name='gate-b'; Test='upscaler::m6::native_temporal_smoke'; Marker='Gate B: PASSED'},
+            @{Name='gate-c'; Test='upscaler::m6::native_semantic_comparisons'; Marker='Gate C: PASSED'},
+            @{Name='public-movable'; Test='upscaler::m6::movable_public::public_siblings_dispatch_and_cleanup_after_thread_handoffs'; Marker='Public movable: PASSED'; Trace=$true}
         )
     } elseif ($Mode -eq 'd013') {
         @(
@@ -178,6 +188,7 @@ try {
             $start.Environment['FSR_SDK_TEST_D013_OUTPUT'] = $imageDirectory.FullName
             $start.Environment['FSR_SDK_TEST_D013_TRACE'] = '1'
         }
+        if ($gate.Trace) { $start.Environment['FSR_SDK_TEST_D013_TRACE'] = '1' }
         $started = Get-Date -Format o
         Write-Host "Child command: $stage/m6.exe $($start.Arguments)"
         $child = [System.Diagnostics.Process]::Start($start)

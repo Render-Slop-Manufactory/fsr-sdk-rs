@@ -19,8 +19,8 @@ mod sealed {
     impl Retention for Arc<RuntimeState> {}
 }
 
-// Closed ownership choices for the D013 experiment. Production still uses Rc;
-// Arc instantiations and the only manual Send implementation live in tests.
+// Closed ownership choices: local Rc and optional movable Arc. The generic
+// native owner remains !Send + !Sync; only the audited public movable type is Send.
 pub(crate) trait RuntimeRetention: sealed::Retention {
     fn runtime_state(&self) -> &RuntimeState;
 }

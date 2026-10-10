@@ -167,6 +167,18 @@ pub unsafe extern "C" fn ffxDestroyContext(out: *mut *mut c_void, allocator: *co
             return 0xf0000001;
         }
         DESTROYS.fetch_add(1, Ordering::SeqCst);
+        // Read the original retained chain again after outer ownership moves.
+        let root = &*((*out).cast::<Root>());
+        let version = &*(root.header.next.cast::<Version>());
+        let backend = &*(version.header.next.cast::<Backend>());
+        if root.header.tag != ROOT_TAG.load(Ordering::SeqCst) as u64
+            || version.header.tag != VERSION_TAG.load(Ordering::SeqCst) as u64
+            || backend.header.tag != BACKEND_TAG.load(Ordering::SeqCst) as u64
+            || backend.device.is_null()
+            || !backend.header.next.is_null()
+        {
+            return 0xf0000003;
+        }
         DESTROY_CODE.load(Ordering::SeqCst)
     }
 }

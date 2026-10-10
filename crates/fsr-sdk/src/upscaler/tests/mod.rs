@@ -5,6 +5,8 @@ mod construction;
 mod dispatch;
 mod inspection;
 mod lifecycle;
+#[cfg(feature = "movable")]
+mod movable;
 mod support;
 mod traits;
 

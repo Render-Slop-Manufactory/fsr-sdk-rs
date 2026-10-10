@@ -1,0 +1,16 @@
+{
+  "File": "target/package/fsr-sdk-0.1.0.crate",
+  "Bytes": 98011,
+  "SHA256": "E9265169B1832D3DE9760A91D0E6DB161A2B1FA3B32EA7252B7A6A9257B82F75",
+  "VerifyBuild": false,
+  "Published": false,
+  "MatchedFiles": [
+    "LICENSE",
+    "LICENSE-AMD",
+    "examples/movable_upscale.rs",
+    "src/runtime/movable.rs",
+    "src/upscaler/movable.rs",
+    "tests/movable.rs",
+    "tests/native/movable_public.rs"
+  ]
+}

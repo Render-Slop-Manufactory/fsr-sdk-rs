@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
 
 //! Narrow Windows/DX12 dispatch orchestration and terminal error policy.
-use super::Upscaler;
+use super::{Upscaler, UpscalerCore};
+use crate::context::RuntimeRetention;
 use crate::error::Error;
 use fsr_sdk_sys::upscale::ffxDispatchDescUpscale;
 
@@ -72,13 +73,32 @@ impl Upscaler {
     pub unsafe fn dispatch(&mut self, dispatch: UpscaleDispatch<'_>) -> Result<(), Error> {
         // SAFETY: The caller accepted this method's GPU lifetime and state
         // obligations. Inspection runs before the native entry point.
-        unsafe { self.dispatch_core(|this| this.inspect_dispatch(dispatch)) }
+        unsafe { self.core.dispatch(dispatch) }
     }
 
     /// # Safety
     /// The inspected descriptor must satisfy this module's dispatch contract
     /// and the caller must uphold GPU lifetime, state and ordering obligations.
+    #[cfg(test)]
     pub(super) unsafe fn dispatch_core(
+        &mut self,
+        inspect: impl FnOnce(
+            &UpscalerCore<std::rc::Rc<crate::runtime::RuntimeState>>,
+        ) -> Result<ffxDispatchDescUpscale, Error>,
+    ) -> Result<(), Error> {
+        // SAFETY: The fixture/native caller upholds the inspected descriptor contract.
+        unsafe { self.core.dispatch_core(inspect) }
+    }
+}
+
+impl<R: RuntimeRetention> UpscalerCore<R> {
+    // SAFETY contract: same renderer and native obligations as public dispatch.
+    pub(super) unsafe fn dispatch(&mut self, dispatch: UpscaleDispatch<'_>) -> Result<(), Error> {
+        // SAFETY: Caller establishes states, storage, ordering and GPU lifetimes.
+        unsafe { self.dispatch_core(|this| this.inspect_dispatch(dispatch)) }
+    }
+
+    unsafe fn dispatch_core(
         &mut self,
         inspect: impl FnOnce(&Self) -> Result<ffxDispatchDescUpscale, Error>,
     ) -> Result<(), Error> {

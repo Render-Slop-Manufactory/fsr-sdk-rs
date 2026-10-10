@@ -1,0 +1,35 @@
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Public movable acquisition: thread=ThreadId(3)
+Public movable construction: thread=ThreadId(4)
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Public movable fenced readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19305952, right_red: 0.7552217, debug_errors: 0, device_removed: 0 }
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Public movable fenced readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19305952, right_red: 0.7552217, debug_errors: 0, device_removed: 0 }
+
+thread '<unnamed>' (<os-thread-id>) panicked at crates\fsr-sdk\src\..\tests\native\movable_public.rs:237:13:
+declared public movable unwind
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+Public movable Drop: thread=ThreadId(7) unwinding=true domain_held=true
+D013 native destroy: thread=ThreadId(7) code=0x00000000
+Public movable Drop: thread=ThreadId(8) unwinding=false domain_held=true
+D013 native destroy: thread=ThreadId(8) code=0x00000000
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Public movable: PASSED (two fenced frames; separate siblings; unwind and failed-handoff Drop)

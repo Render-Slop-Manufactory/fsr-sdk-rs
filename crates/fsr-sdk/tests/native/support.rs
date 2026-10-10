@@ -37,7 +37,7 @@ pub(super) type Finish = unsafe extern "C" fn(*mut c_void, *mut Metrics) -> i32;
 pub(super) type Destroy = unsafe extern "C" fn(*mut c_void);
 
 pub(super) fn log_provider(upscaler: &mut Upscaler) {
-    log_provider_owner(&mut upscaler.owner);
+    log_provider_owner(&mut upscaler.core.owner);
 }
 
 pub(super) fn log_provider_owner<S, D, R: crate::context::RuntimeRetention>(

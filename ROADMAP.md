@@ -193,8 +193,9 @@ them. Controlled temporal tests accompany relevant capabilities.
 
 ### Independent D013 track
 
-[D013](docs/adr/D013.md) remains proposed and is outside `0.2.0` release scope.
-Its evidence work can proceed in parallel; it is not a gate for M7–M9.
+[D013](docs/adr/D013.md) was accepted on 2026-10-09 after soundness review and
+contract revisions. Implementation remains outside `0.2.0` release scope and
+is not a gate for M7–M9; no later release version is selected.
 
 1. **D013-A — Evidence:** [compile/host probes passed](docs/research/records/2026-09-29-exp-d013-movable-compile-host.md).
    [Windows fixtures passed](docs/research/records/2026-09-29-exp-d013-windows-fixtures.md).
@@ -209,14 +210,23 @@ Its evidence work can proceed in parallel; it is not a gate for M7–M9.
    runtime transfer, 64-frame history, independent siblings and successful fenced
    Rust-unwind cleanup. The provider persists after all audited application refs
    and worker exit. These bounded spikes are complete; provider/dependency
-   termination, native returned-error cleanup, partial-load transfer, hidden work,
+   termination, native returned-error/partial-load cleanup, hidden work,
    external-user coordination, outstanding GPU work, other configurations and
    sanitizer coverage remain open.
-2. **D013-B — Review:** assess a concrete integration and the lasting transfer,
-   serialization and cleanup contract. Accept, revise or defer explicitly.
-3. **D013-C — Optional API:** after acceptance, implement/document the movable
-   family and verify public traits/features plus native behavior. Select its
-   later release then; one passing configuration is no universal AMD guarantee.
+2. **D013-B — Review: done 2026-10-09.** The
+   [soundness review](docs/research/records/2026-10-09-src-d013-soundness-architecture-review.md)
+   revisions are incorporated and the design accepted for framework-independent
+   renderer-state migration. Remaining native assumptions are explicit in
+   [D013's safety contract](docs/adr/D013.md#conditional-safety-contract);
+   no unresolved design soundness blocker or further general research gate remains.
+3. **D013-C — Optional API: done 2026-10-09.** The optional `movable` family,
+   concrete field/cleanup audit, Rustdoc and consumer coordination example are
+   implemented. [Verification](docs/release/2026-10-09-d013-public-api-verification.md)
+   passes public traits/features/family controls, shared-core failure fixtures,
+   independently held siblings, unwind/failed-handoff cleanup and selected fenced
+   native transfers, including last runtime release and local-family regressions.
+   Select its later release and verify artifacts separately; these results
+   establish no universal AMD compatibility.
 
 ## Deferred work
 
@@ -251,11 +261,11 @@ Its evidence work can proceed in parallel; it is not a gate for M7–M9.
 4. **Broader existing-upscaler evidence:** extend the in-repo example/test harness
    with longer moving sequences, image comparisons and, where available, a second
    hardware/provider configuration before choosing the next large SDK slice.
-5. **D013 independently:** the [extended native spike](docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup.md)
-   is complete. Review the
-   remaining integration, conditional transfer contract and provider-cleanup
-   questions, then accept, narrow or defer explicitly. Public implementation
-   stays outside `0.2.0`; these results alone do not authorize a public Send guarantee.
+5. **D013 independently:** design, optional API and bounded public-path
+   verification completed on 2026-10-09. Select a later release and verify its
+   artifacts separately. Native assumptions remain caller obligations under
+   [D013](docs/adr/D013.md), not verified AMD guarantees. This track stays
+   outside `0.2.0`.
 
 The [GBV spike](docs/research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md)
 localized a timeout to native `ffxDispatch` on the tested setup; its

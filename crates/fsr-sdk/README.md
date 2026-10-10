@@ -10,6 +10,23 @@ with every hardware/provider configuration. The
 [project scope](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/SCOPE.md#platform-and-compatibility-boundaries)
 owns this policy. Other SDK effects and Vulkan are not implemented.
 
+## Optional movable ownership in current source
+
+The unreleased `movable` feature exposes `runtime::MovableRuntime` and
+`upscaler::MovableUpscaler` with Windows + `dx12`. Both are `Send + !Sync`;
+the existing local types remain `!Send + !Sync`. Unsafe acquisition requires
+lasting arbitrary-thread native compatibility and serialization across all
+potentially shared state, including implicit Drop/unwinding. Dispatch retains
+its independent unsafe GPU contract. There are no family conversions or internal locks.
+
+The [consumer example](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/crates/fsr-sdk/examples/movable_upscale.rs)
+coordinates independently transferred contexts and automatic cleanup.
+Generate its current Rustdoc with `cargo doc -p fsr-sdk --features movable --no-deps --locked`
+on Windows. [D013](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D013.md)
+and the [verification record](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/release/2026-10-09-d013-public-api-verification.md)
+separate the contract from bounded native observations. This feature is absent
+from published `0.1.0` and is outside `0.2.0` scope; no later release is selected.
+
 ## Consumer workflow
 
 Install the [published `0.1.0` crate](https://crates.io/crates/fsr-sdk):

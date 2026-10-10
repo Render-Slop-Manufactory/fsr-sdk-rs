@@ -45,6 +45,9 @@ Rust 1.88.0 on Ubuntu and Windows x64/MSVC. Minimum-version jobs check all targe
 run tests, and check without default features. Stable jobs also deny Clippy and
 Rustdoc warnings. Windows additionally compiles the independent native ABI checks
 against four hash-verified headers at the pinned SDK commit.
+Feature-enabled tests, Clippy and Rustdoc cover `movable`; minimum-version jobs
+also compile it without DX12. Windows checks downstream feature/family boundaries
+with [check-movable-api.ps1](../tools/check-movable-api.ps1).
 CI does not download AMD binaries or execute GPU work. Ignored native tests need
 the opt-in local runner below; successful host builds are not native evidence.
 
@@ -56,6 +59,25 @@ enabled. docs.rs targets `x86_64-pc-windows-msvc`. The
 resources; its executable is guidance rather than a stand-alone renderer.
 `Runtime::load_unchecked` requires caller-established DLL trust, while
 `Upscaler::dispatch` requires states, submission and GPU lifetimes from the caller.
+
+The optional public family adds [movable cleanup coordination](../crates/fsr-sdk/examples/movable_upscale.rs).
+Its example is compiled directly into public consumer fixture tests, covering
+independent siblings, early runtime release, failed handoff, unwind and poisoned
+lock recovery. These checks use a controlled DLL and an atomic ownership-only
+COM stub; they establish no AMD threading guarantee. Run:
+
+```sh
+cargo clippy --workspace --all-targets --features fsr-sdk/movable --locked -- -D warnings
+cargo test --workspace --features fsr-sdk/movable --locked
+cargo test --workspace --no-default-features --features fsr-sdk/movable --locked
+cargo doc --workspace --features fsr-sdk/movable --no-deps --locked
+cargo +1.88.0 test --workspace --features fsr-sdk/movable --locked
+```
+
+On Windows, run `./tools/check-movable-api.ps1` for positive consumer baselines
+and expected compile failures for missing features, crossed families and
+conversions. It uses cached dependencies offline. Ordinary Cargo builds with
+`movable` but without `dx12`, or on non-Windows hosts, omit the movable API.
 
 ### Common ABI verification
 
@@ -86,6 +108,12 @@ The experiment-only `-Mode d013 -Native` runs six isolated same-thread/transfer
 cases using the real Arc-retained private owner; GBV is excluded. See its
 [native transfer record](research/records/2026-09-30-exp-d013-native-thread-transfer.md)
 for commands, configuration and the provider-unload limitation.
+The implementation-verification `-Mode movable -Native` enables the actual public
+family, reruns local lifecycle/dispatch/semantic regressions, and checks two fenced
+public movable frames with independent siblings and coordinated destination-thread
+Drop during unwind/failed handoff. GBV is excluded. See the
+[2026-10-09 public-path record](release/2026-10-09-d013-public-api-verification.md).
+This is a bounded implementation check, not a new native research matrix.
 The follow-up `-Mode d013-cleanup -Native` first runs existing native regressions,
 then three isolated repetitions of each control/transfer case for creation after
 runtime transfer, continuous history, independently held siblings and unwind

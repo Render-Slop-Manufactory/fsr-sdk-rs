@@ -42,9 +42,12 @@ jobs:
       - name: Check all targets
         run: cargo check --workspace --all-targets --locked
       - name: Run tests
-        run: cargo test --workspace --locked
+        run: cargo test --workspace --features fsr-sdk/movable --locked
       - name: Check without default features
         run: cargo check --workspace --all-targets --no-default-features --locked
+
+      - name: Check movable without DX12
+        run: cargo check --workspace --all-targets --no-default-features --features fsr-sdk/movable --locked
 
   rust-quality:
     name: Rust quality (Ubuntu)
@@ -65,10 +68,13 @@ jobs:
         run: cargo fmt --all -- --check
 
       - name: Run Clippy
-        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+        run: cargo clippy --workspace --all-targets --features fsr-sdk/movable --locked -- -D warnings
 
       - name: Run tests
         run: cargo test --workspace --locked
+
+      - name: Run movable tests
+        run: cargo test --workspace --features fsr-sdk/movable --locked
 
       - name: Check without default features
         run: cargo check --workspace --no-default-features --locked
@@ -76,7 +82,7 @@ jobs:
       - name: Build documentation
         env:
           RUSTDOCFLAGS: -D warnings
-        run: cargo doc --workspace --no-deps --locked
+        run: cargo doc --workspace --features fsr-sdk/movable --no-deps --locked
 
   windows-dx12:
     name: Windows DX12 (x64 MSVC)
@@ -98,10 +104,17 @@ jobs:
         run: ./tools/check-native-abi.ps1
 
       - name: Run Clippy
-        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+        run: cargo clippy --workspace --all-targets --features fsr-sdk/movable --locked -- -D warnings
 
       - name: Run tests
         run: cargo test --workspace --locked
+
+      - name: Run movable tests
+        run: cargo test --workspace --features fsr-sdk/movable --locked
+
+      - name: Check downstream movable API boundaries
+        shell: pwsh
+        run: ./tools/check-movable-api.ps1
 
       - name: Check without default features
         run: cargo check --workspace --no-default-features --locked
@@ -109,4 +122,4 @@ jobs:
       - name: Build documentation
         env:
           RUSTDOCFLAGS: -D warnings
-        run: cargo doc --workspace --no-deps --locked
+        run: cargo doc --workspace --features fsr-sdk/movable --no-deps --locked

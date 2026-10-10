@@ -28,6 +28,8 @@ use windows::{
 
 mod support;
 use support::*;
+#[cfg(feature = "movable")]
+mod movable_public;
 mod semantics;
 mod sharpening;
 mod single_frame;

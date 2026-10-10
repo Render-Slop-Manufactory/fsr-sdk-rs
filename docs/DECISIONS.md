@@ -94,9 +94,10 @@ for 0.2.0
 
 ## D013 — Optional movable runtime/upscaler family
 
-**Status:** proposed; compile/host, Windows fixtures and bounded fenced native
-transfer/Rust-unwind experiments passed; provider termination and public-contract review
-remain open; no public movable API
+**Status:** accepted 2026-10-09 after soundness review and contract revisions;
+caller-established native transfer/coordination assumptions explicitly accepted.
+Optional API implemented; [bounded public-path verification](release/2026-10-09-d013-public-api-verification.md)
+completed separately. Outside `0.2.0` scope; no release selected
 
 [Read D013](adr/D013.md)
 
@@ -118,18 +119,17 @@ The original sharpening effect gate failed in the
 and remains failed. D011 remains the implemented 0.1.0 dispatch baseline;
 D014 selects its limited 0.2.0 replacement and provider-trust extension.
 
-The optional movable runtime/upscaler family in [D013](adr/D013.md) remains a
-proposal. Its conditional thread-transfer contract and acceptance gates require
-review after the successful
-[bounded native transfer spike](research/records/2026-09-30-exp-d013-native-thread-transfer.md)
-and [extended native cleanup follow-up](research/records/2026-10-08-exp-d013-native-transfer-cleanup.md).
-Successful fenced Rust-unwind cleanup is now covered on the recorded inputs;
-native returned-error cleanup and provider termination on the destination thread
-remain unresolved. The provider persists after all audited application refs and
-worker exit; this does not establish its retention cause. The existing
-D008 types remain confined to their acquiring thread.
+The optional movable family in [D013](adr/D013.md) is accepted after the
+[soundness review](research/records/2026-10-09-src-d013-soundness-architecture-review.md).
+Renderer-owned state migration motivates the separate `Send + !Sync` types.
+The lasting unsafe acquisition contract carries native compatibility and
+coordination assumptions; missing AMD guarantees and unobserved provider
+termination remain unverified facts, not design-acceptance blockers. The optional
+public family, concrete field audit and bounded public-path verification are
+complete in current source; the existing D008 types stay confined to their
+acquiring thread. Release selection and artifact verification remain separate.
 
-Concrete binding-slice selections under D006 and public APIs beyond D008/D011/D012/D014
+Concrete binding-slice selections under D006 and public APIs beyond D008/D011/D012/D013/D014
 remain undecided. [D011](adr/D011.md) accepts the first public DX12 dispatch
 contract; M6b implementation and bounded public-route GPU verification are
 complete. D008 selects the first construction

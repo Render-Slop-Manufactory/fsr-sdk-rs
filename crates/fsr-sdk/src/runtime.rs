@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! Explicit, thread-confined ownership of one FidelityFX loader.
+//! Explicit local ownership and optional movable ownership of a FidelityFX loader.
 
 use fsr_sdk_sys::loader::{FfxLibrary, LoadError as SysLoadError};
 use std::{
@@ -117,6 +117,11 @@ pub(crate) struct RuntimeState {
 pub struct Runtime {
     pub(crate) state: Rc<RuntimeState>,
 }
+
+#[cfg(feature = "movable")]
+mod movable;
+#[cfg(feature = "movable")]
+pub use movable::MovableRuntime;
 
 impl Runtime {
     /// Load an explicit FidelityFX loader DLL path.

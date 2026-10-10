@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
 
 //! DX12 metadata, identity and device inspection before native recording.
-use super::{UpscaleDispatch, Upscaler, descriptor::build_descriptor};
+use super::{UpscaleDispatch, UpscalerCore, descriptor::build_descriptor};
+use crate::context::RuntimeRetention;
 use crate::error::{
     DispatchValidation, Error, InspectionObject, InspectionOperation, ResourceProperty,
     ResourceRole,
@@ -178,7 +179,7 @@ pub(in crate::upscaler) fn resource_for_parity(
     Ok(convert(resource, ResourceRole::Color, expected_format, output)?.native)
 }
 
-impl Upscaler {
+impl<R: RuntimeRetention> UpscalerCore<R> {
     pub(super) fn inspect_dispatch(
         &self,
         dispatch: UpscaleDispatch<'_>,

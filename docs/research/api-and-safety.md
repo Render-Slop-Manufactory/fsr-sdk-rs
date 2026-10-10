@@ -1,6 +1,6 @@
 # API and safety
 
-- Updated: 2026-10-09 (D013 soundness/architecture review integrated; D014 acceptance retained).
+- Updated: 2026-10-09 (D013 review, acceptance and separate public implementation verification recorded; D014 acceptance retained).
 - Scope: common ABI, loading, provider deployment, version enumeration, context
   lifecycle contracts and isolated create-failure experiments; M5 construction,
   Query/Configure, runtime-sharing source findings and bounded signed-runtime
@@ -137,8 +137,9 @@ refs are released and workers exit; the loader and helper are absent. This does
 not attribute native retention, prove actual COM device destruction or establish
 provider termination on the destination thread. See
 [extended native threading results and remaining gates](runtime-threading.md#d013-extended-native-transfers-unwind-cleanup-and-staged-residency).
-D013 remains proposed; public types remain `!Send + !Sync`, with no public movable
-API or universal AMD threading guarantee.
+D013's conditional design is now accepted; the existing public types remain
+`!Send + !Sync`. This experiment implemented no public movable API and establishes
+no universal AMD threading guarantee.
 
 **Verified D013 failure-fixture results:** 14 control/transfer owner children and
 six worker acquisition failures pass on Windows x64/MSVC. Shared dispatch policy
@@ -158,8 +159,8 @@ The native follow-up supplies its own preregistered matrix and does not complete
 the missing pinned implementation audit. Loader residency is distinct from
 provider termination/thread attribution. Its ambiguous-create-error quarantine
 recommendation supplies no new contrary observation to D005's bounded returned-
-error RAII policy and does not replace it. Native returned-error cleanup and
-public-contract review remain open; see [source intake](runtime-threading.md#d013-transfer-contract-source-intake).
+error RAII policy and does not replace it. Native returned-error cleanup remains
+unverified; see [source intake](runtime-threading.md#d013-transfer-contract-source-intake).
 
 **D013 review recommendation:** the
 [supplied soundness/architecture review](records/2026-10-09-src-d013-soundness-architecture-review.md)
@@ -172,8 +173,14 @@ The review considers further exploratory native experiments unnecessary before
 implementation if those caller assumptions are accepted; this is a design judgment,
 not new native evidence. Its date, author and source revision were not supplied;
 2026-10-09 is the intake date. Existing D005/D008/D011 policies remain intact.
-D013's integration/maintainer gates and verification of the eventual public types
-remain open; see [review synthesis](runtime-threading.md#d013-soundness-and-architecture-review).
+[D013](../adr/D013.md#acceptance-rationale-and-remaining-assumptions) was separately
+accepted on 2026-10-09 with the revisions and renderer-state migration rationale.
+No design soundness blocker remains. The subsequent optional public implementation
+and [bounded verification](../release/2026-10-09-d013-public-api-verification.md)
+record the actual field audit, traits/features/family boundaries, shared failure
+fixtures and coordinated native cleanup separately from this review.
+The [ADR safety contract](../adr/D013.md#conditional-safety-contract)
+owns the requirements; see [review synthesis](runtime-threading.md#d013-soundness-and-architecture-review).
 
 **Verified bounded D014 sharpening results:** the
 [native spike](records/2026-09-30-exp-d014-native-sharpening.md) changes only the
@@ -316,13 +323,16 @@ lifecycle results; their native failure and ownership limits remain unchanged.
   dependency termination, hidden work, external-user coordination, outstanding
   GPU work, other configurations and sanitizer evidence remain open.
   The access-limited source intake establishes
-  no universal transfer guarantee; concrete integration and lasting caller-contract
-  review are still required before D013 acceptance. The
+  no universal transfer guarantee. Concrete renderer-state migration and the
+  lasting caller-contract review informed D013 acceptance. The
   [new review](runtime-threading.md#d013-soundness-and-architecture-review)
   recommends accepting strengthened unsafe assumptions without further exploratory
   execution; the native uncertainties remain unresolved. Acquisition failures
   occur before publication of a movable owner, rather than transferring incomplete
-  state. Actual public API/trait and native regression checks remain future work.
+  state. The subsequent [public-path verification](../release/2026-10-09-d013-public-api-verification.md)
+  checks the actual optional API, consumer traits/features/families, coordinated
+  automatic cleanup and selected fenced native regressions; it resolves none of
+  the missing native guarantees.
 - **Policy selected, broader questions open:** D007 selects explicit acquisition
   and executable-adjacent upscaler deployment for the tested v2.3.0 DX12 baseline;
   automatic runtime discovery is not part of that policy. Other effect artifacts,

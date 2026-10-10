@@ -1,6 +1,6 @@
 # runtime threading
 
-Updated: 2026-10-09 (D013 soundness/architecture review integrated; no acceptance).
+Updated: 2026-10-09 (D013 review, design acceptance and separate public implementation verification recorded).
 
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
@@ -109,8 +109,9 @@ predate the shared-core refactor.
 These fixture results alone leave native regressions and fenced thread transfer
 unverified; the later native experiment below supplies bounded evidence for
 those paths.
-[D013](../adr/D013.md) remains proposed; no public movable API or native transfer
-contract is accepted by these experiments.
+These experiments themselves accept no native transfer contract. The later
+[D013 decision](../adr/D013.md) accepts the conditional design; at experiment time no public movable
+API is implemented.
 
 ## D013: fenced native transfers and final release
 
@@ -172,13 +173,13 @@ same-thread evidence, not an upstream native threading guarantee.
 At this September stage, native Rust-unwind transfers had not been tested; the
 [October follow-up](#d013-extended-native-transfers-unwind-cleanup-and-staged-residency)
 adds bounded evidence for that path. Provider/dependency termination on the
-destination thread, native returned-error and partial-load transfer paths,
+destination thread, native returned-error and partial-load cleanup paths,
 unfenced work, other configurations, callbacks, custom allocators and coordination
 with other native users remain unverified. Miri/ThreadSanitizer were not run.
-The source findings' missing universal AMD
-transfer guarantees remain unresolved. D013's concrete-integration and lasting
-caller-contract review gates still apply: [D013](../adr/D013.md) remains
-**proposed**, with no public movable family or accepted native transfer contract.
+The source findings' missing universal AMD transfer guarantees remain unresolved.
+The later [D013 acceptance](../adr/D013.md#acceptance-rationale-and-remaining-assumptions)
+selects an explicit caller-established trust boundary, not a verified AMD
+transfer guarantee. No public movable family was implemented by that experiment.
 
 ## D013: transfer contract source intake
 
@@ -259,7 +260,7 @@ policy extraction; the September native result covers its recorded earlier
 source state. The October native follow-up below closes this bounded regression
 gap on its own fingerprinted source.
 
-**Remaining evidence and acceptance gates:** the inspection HRESULT is injected
+**Remaining evidence limits:** the inspection HRESULT is injected
 at the seam, and fixture descriptors/device surrogates do not audit a real movable
 DX12 bundle. The source report arrived after execution; its larger matrix was
 not the fixture experiment's oracle. Prior successful dispatch before fixture
@@ -268,9 +269,9 @@ fixture clients and detach instrumentation remain follow-ups. The native
 follow-up below executes creation after runtime transfer, longer history,
 independently held siblings, destination Rust unwind and staged residency.
 Native returned-error cleanup, provider/device termination, hidden work, other
-configurations, outstanding GPU work and sanitizers remain unverified. D013 remains
-**proposed** pending concrete integration and lasting caller-contract review;
-public `Runtime`/`Upscaler` remain `!Send + !Sync` with no public movable family.
+configurations, outstanding GPU work and sanitizers remain unverified. The later
+D013 acceptance does not convert these gaps into verified properties;
+public `Runtime`/`Upscaler` remain `!Send + !Sync`. That experiment added no public movable family.
 
 ## D013: extended native transfers, unwind cleanup and staged residency
 
@@ -331,9 +332,9 @@ work/TLS, provider/dependency termination, external-user coordination, outstandi
 GPU work, callbacks/allocators, other configurations and sanitizers remain open.
 The missing pinned implementation audit and affirmative AMD transfer guarantee
 are unchanged. No observation requires revising D005/D011's tested policy.
-[D013](../adr/D013.md) remains **proposed**, pending concrete integration and
-explicit lasting-contract review; no public movable API or blanket Send guarantee
-is accepted.
+[D013](../adr/D013.md) subsequently accepts the conditional design after review,
+without resolving those native uncertainties. That experiment implemented no
+public movable API; blanket Send implementations remain prohibited.
 
 ## D013: soundness and architecture review
 
@@ -360,8 +361,8 @@ dispatch and terminal cleanup. Use an explicit `PhantomData<Cell<()>>` marker
 for a `Send + !Sync` movable runtime; audit every retained field and cleanup path
 before adding only a concrete `unsafe impl Send for MovableUpscaler`. Do not
 widen the generic owner's traits. These shapes agree with the existing fixture
-source; production still uses Rc and exposes neither a `movable` feature nor
-public movable types. D005's ordered cleanup, terminal no-retry and exceptional
+source; at review intake production used Rc and exposed neither a `movable`
+feature nor public movable types. D005's ordered cleanup, terminal no-retry and exceptional
 retention and D011's unsafe GPU boundary remain the review's baseline.
 
 **Cleanup clarification:** partial symbol-resolution failure is cleaned up
@@ -382,11 +383,24 @@ replace D005's returned-create-error policy, differing from the earlier source
 report's quarantine recommendation without adding contrary execution evidence.
 
 **Decision and verification boundary:** the review supplies technical contract
-feedback, not the concrete integration rationale or explicit maintainer approval
-required by [D013](../adr/D013.md#review-and-acceptance-gates). D013 remains
-**proposed**. If accepted and implemented, verify the actual public types:
+feedback, not acceptance by itself. Under explicit authorization,
+[D013 was accepted on 2026-10-09](../adr/D013.md#acceptance-rationale-and-remaining-assumptions)
+with the revisions and framework-independent renderer-state migration rationale.
+Its [unsafe contract](../adr/D013.md#conditional-safety-contract) is authoritative;
+the remaining native assumptions are not design soundness blockers. Acceptance
+required no further general research phase. Implementation verification required the actual public types:
 Windows traits and family separation, feature/host boundaries, shared-core
 failure/retention fixtures, bounded public-path native transfers including final
 Drop, and existing local-family regressions. Historical test bundles cannot
 substitute for those checks. The recommendation selects no release and changes
 neither D014 nor `0.2.0` scope.
+
+## D013: public implementation verification
+
+Current source now implements the optional family, shared sealed private core
+and concrete Send audit. The [2026-10-09 implementation check](../release/2026-10-09-d013-public-api-verification.md)
+records consumer traits/feature/family boundaries, failure fixtures, automatic
+cleanup coordination and selected native public-path checks. Historical records
+above remain evidence for their original test-only source. The new checks
+establish no universal AMD compatibility or provider termination guarantee;
+release selection remains separate and outside `0.2.0`.

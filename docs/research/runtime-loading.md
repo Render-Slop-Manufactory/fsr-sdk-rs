@@ -1,6 +1,6 @@
 # runtime loading
 
-Updated: 2026-10-09 (D013 acquisition/termination review integrated).
+Updated: 2026-10-09 (D013 acquisition/termination review, acceptance and separate public implementation verification recorded).
 
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
@@ -122,7 +122,7 @@ Native/platform references and the provider's retention cause remain opaque;
 actual COM device destruction, leak freedom, provider/dependency termination
 and detach-thread attribution are not established. Process exit adds no normal
 unload evidence. The [extended threading findings](runtime-threading.md#d013-extended-native-transfers-unwind-cleanup-and-staged-residency)
-retain the tested synchronization premises; D013 remains proposed.
+retain the tested synchronization premises; later D013 acceptance adds no unload evidence.
 
 **Later review recommendation:** the
 [soundness/architecture review imported on 2026-10-09](records/2026-10-09-src-d013-soundness-architecture-review.md)
@@ -139,5 +139,9 @@ fresh execution result. The wrapper must not promise provider unload or its
 thread, and the observed retention cause remains unresolved. No investigation
 date or reviewed revision was supplied; the intake date is used. See
 [the contract review](runtime-threading.md#d013-soundness-and-architecture-review)
-for arbitrary-destination, lifetime and coordination requirements; D013 remains
-proposed pending explicit maintainer acceptance.
+for the reviewed requirements. [D013 was separately accepted on 2026-10-09](../adr/D013.md#acceptance-rationale-and-remaining-assumptions);
+its [unsafe acquisition contract](../adr/D013.md#conditional-safety-contract)
+adopts these assumptions without resolving provider termination. The subsequent
+[public implementation check](../release/2026-10-09-d013-public-api-verification.md)
+verifies early runtime release, sibling retention and destination-thread final
+runtime release; it establishes no provider termination guarantee.

@@ -1,6 +1,6 @@
 # context lifecycle
 
-Updated: 2026-10-09 (D013 lifecycle review recommendation integrated).
+Updated: 2026-10-09 (D013 lifecycle review, acceptance and separate public implementation verification recorded).
 
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
@@ -315,7 +315,7 @@ native unwind/device-release compatibility. Earlier create-error/OK-null control
 were reused; new creation-after-runtime-transfer and extra native-slot mutations
 were not tested. Module absence does not attribute termination callbacks to a
 thread. The [threading synthesis](runtime-threading.md#d013-transferred-failure-state-and-coordinated-fixture-cleanup)
-records the complete coverage and remaining gates; D013 remains proposed.
+records the complete coverage and limits; later D013 acceptance adds no execution evidence.
 
 ## D013: native Rust-unwind cleanup after fenced transfers
 
@@ -342,7 +342,7 @@ work, quiescence or arbitrary unwind states. The fixture's poisoned native
 dispatch/destroy paths remain fixture evidence. D005's terminal no-retry and
 exceptional retention policy and D011's GPU obligations remain intact. The
 [threading synthesis](runtime-threading.md#d013-extended-native-transfers-unwind-cleanup-and-staged-residency)
-keeps source/coordination limits and D013's unresolved acceptance gates.
+keeps source/coordination limits, distinct from later D013 design acceptance.
 
 ## D013: reviewed ownership and lasting cleanup obligations
 
@@ -351,8 +351,11 @@ finds no confirmed double-destruction, descriptor-movement or reference-counting
 defect in the proposed ownership structure. Intake source comparison confirms
 the existing sealed Rc/Arc seam, pinned allocation and ordered terminal cleanup;
 the review does not independently rerun fixtures or native tests, and supplies
-no reviewed source revision. A real public movable bundle still needs its own
-complete field and cleanup audit.
+no reviewed source revision. The review required the real public movable bundle's
+own complete field and cleanup audit; the subsequent
+[implementation verification](../release/2026-10-09-d013-public-api-verification.md)
+records that audit and actual public consumer/cleanup checks. It does not change
+these historical findings or establish native returned-error recovery.
 
 **Design recommendation:** retain D005's at-most-once destruction, ordered
 state/device/runtime release on success, full exceptional retention and bounded
@@ -363,6 +366,7 @@ Drop on every possible destination thread, including unwind, while common-domain
 coordination persists for siblings and external native users. Dropping the public
 runtime or retaining dependencies after a failure does not discharge those
 obligations or establish native quiescence. GPU completion remains independent.
-These are proposed contract requirements, not proven AMD error/termination
-behavior; [D013 review and acceptance](runtime-threading.md#d013-soundness-and-architecture-review)
-remain distinct from implementation and support verification.
+These requirements were adopted in the
+[accepted D013 safety contract](../adr/D013.md#conditional-safety-contract) on
+2026-10-09. They are not proven AMD error/termination behavior; design acceptance
+remains distinct from implementation and support verification.
