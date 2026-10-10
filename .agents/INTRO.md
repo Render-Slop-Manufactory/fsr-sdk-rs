@@ -27,10 +27,11 @@ understand a result.
 
 Read only the routes relevant to the task, and reconsider them if scope changes.
 
-- Large standalone task prompts (pasted or attached), recognizable AI task
-  prompts of any length, or explicit prompt-review requests: use
-  [task-prompt-review](skills/task-prompt-review/SKILL.md). Existing implementation
-  approval remains valid; ordinary direct requests follow normal routing.
+- Use [task-prompt-review](skills/task-prompt-review/SKILL.md) only when the user
+  explicitly invokes `$task-prompt-review` or asks to use that named skill.
+  Prompt length, AI-like wording, pasted instructions, opinion questions and
+  ordinary reviews do not trigger it. Other requests follow normal routing;
+  existing implementation approval remains valid.
 - Repository changes or SDK, dependency, packaging, or licensing work: read
   [CONTRIBUTING.md](../CONTRIBUTING.md).
 - Code changes or reviews: read [development guidance](../docs/DEVELOPMENT.md),

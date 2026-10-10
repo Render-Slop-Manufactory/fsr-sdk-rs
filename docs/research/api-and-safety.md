@@ -1,10 +1,11 @@
 # API and safety
 
-- Updated: 2026-09-28.
+- Updated: 2026-09-29.
 - Scope: common ABI, loading, provider deployment, version enumeration, context
   lifecycle contracts and isolated create-failure experiments; M5 construction,
   Query/Configure, runtime-sharing source findings and bounded signed-runtime
   experiments for FidelityFX SDK v2.3.0; post-dispatch teardown observations;
+  the broader modern DX12 upscaler API surface and design implications;
   and older FSR2 Rust binding comparisons.
   Execution/layout evidence is limited to Windows x64/MSVC.
 - Included evidence: [common ABI verification record](records/2026-09-20-exp-common-abi-verification.md)
@@ -29,7 +30,8 @@
   [signed-runtime DX12 width-boundary probe](records/2026-09-23-exp-m5-dx12-dimension-boundary.md),
   [sequential shared-runtime probe](records/2026-09-22-exp-m5-shared-runtime-provider-lifetime.md),
   [M5 Windows native verification](records/2026-09-24-exp-m5-windows-native-verification.md),
-  and [final Windows verification](records/2026-09-28-exp-final-windows-release-verification.md).
+  [final Windows verification](records/2026-09-28-exp-final-windows-release-verification.md),
+  and the [DX12 upscaler API surface investigation](records/2026-09-29-src-dx12-upscaler-api-surface.md).
 
 ## Current findings
 
@@ -495,6 +497,51 @@ performance, or other GPU/provider compatibility follows. The first two M5
 runner attempts stopped at local PowerShell command availability and restricted
 OS inventory access before reaching native execution; the record retains them
 separately from the passing hardware cases.
+
+## Post-v0.1.0 upscaler surface
+
+The [2026-09-29 source record](records/2026-09-29-src-dx12-upscaler-api-surface.md)
+maps the broader modern DX12 upscaler surface at the same pinned SDK v2.3.0
+commit. It agrees with the earlier M5 inventory and D008/D011/D012; it adds no
+runtime evidence or reason to reopen those decisions. Intake checked selected
+pinned headers and Query/Configure routing against the current Rust surface,
+not every claim in the report. Implementation-specific claims without direct
+inline links remain reported findings; the
+[prior provenance repair](records/2026-09-22-src-m5-construction-query-provenance-repair.md)
+supplies relevant implementation references and qualifications.
+
+**Verified source surface:** the ten creation bits, two generic/seven upscaler
+Queries and global-debug/five-key Configure inventory match the pinned headers.
+These are upstream capabilities, not complete sys bindings or high-level APIs.
+Modern operations use the five generic exports; C++ helpers and legacy direct
+FSR3 functions are distinct surfaces. Host allocation callbacks and DX12 backend
+allocation extensions belong to ownership/infrastructure, with separate lifetime
+contracts if exposed.
+
+**Provider and query implications:** enumeration/override IDs should remain
+opaque and runtime-obtained; native names should be copied into owned strings.
+Neither names nor IDs establish persistent identity or universal capability.
+Resource-requirement Queries report provider-dependent required/optional inputs,
+including masks and exposure. They inform future validation without becoming a
+new prerequisite for today's fixed profile. Nominal quality ratios do not
+establish universal helper rounding or supported modes for every provider.
+
+**Routing qualification:** section 5.4's generic chained-device description
+must not imply that memory V2 needs an additional backend node. Both GetVersions
+and memory V2 embed a device; pinned `GetDevice` recognizes each. Other
+null-context utilities need the chained DX12 device to reach external providers.
+The intake also confirms the public loader ignores global-debug `effectId`;
+the earlier discrepancy with release guidance and signed-runtime behavior
+remains unresolved.
+
+**Design inference:** D012 permits optional typed creation settings with defaults
+preserving today's zero flags. Read-only/provider utilities can also be additive.
+Each still needs its own supported contract: shared bits do not prove uniform
+provider behavior. Callback lifetime/threading, Configure pointer consumption,
+reset/persistence, numerical limits and broader native concurrency remain open.
+The report's proposed sequence is a recommendation, not a roadmap change.
+Per-frame extensibility and image-semantic experiments are integrated in the
+[dispatch topic](upscaling-dispatch.md#broader-frame-surface-and-api-evolution).
 
 ## Teardown after submitted GPU work
 

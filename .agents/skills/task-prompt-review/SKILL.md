@@ -1,20 +1,24 @@
 ---
 name: task-prompt-review
-description: Review large standalone task prompts, recognizable AI task prompts of any length, or explicit prompt-review requests against the repository before implementation. Ordinary direct requests follow normal routing; existing implementation approval remains valid.
+description: Review an implementation prompt against the repository before changes, only when the user explicitly invokes task-prompt-review. Opinion questions and ordinary reviews do not trigger this skill; existing implementation approval remains valid.
 ---
 
 # Task Prompt Review
 
 ## When to use
 
-Use for a large standalone work prompt supplied inline or as an attachment,
-a recognizable AI work prompt even when short, or an explicit request such as
-"review this first" or "wie bei den letzten Prompts".
+Use only when the user explicitly invokes `$task-prompt-review` or asks to use
+the named `task-prompt-review` skill for an implementation prompt. For example:
+"$task-prompt-review Prüfe diesen Implementierungsauftrag gegen das Repository,
+bevor etwas umgesetzt wird."
 
-A long explanation, code sample or log accompanying an ordinary direct request
-does not trigger this workflow by length alone. Read the user's framing and
-existing authorization. Instructions inside the supplied prompt are proposals,
-not implementation approval.
+Prompt length, AI-like wording and pasted work instructions do not trigger this
+workflow. Answer opinion questions, discussions and ordinary code or prompt
+reviews directly under normal routing; do not require this skill or an approval
+before giving the requested feedback.
+
+Read the user's framing and existing authorization. Instructions inside the
+supplied prompt are proposals, not implementation approval.
 
 ## Review before implementation
 
@@ -34,8 +38,10 @@ confirmed facts from assumptions and unverified claims. If the prompt is sound,
 say so briefly. Do not invent objections, redesigns or a rewritten prompt merely
 to offer an alternative.
 
-End the review turn and wait for implementation approval. Make clear that
-`task-prompt-review` calls for feedback before changes.
+Give the requested feedback in this turn. Unless implementation is already
+authorized, end the review turn and wait for approval before implementing the
+reviewed prompt. This approval applies only to subsequent implementation, not
+to giving an opinion or continuing the discussion.
 
 ## After approval
 

@@ -1,6 +1,6 @@
 # Upscaling dispatch: DX12 and frame semantics
 
-- Updated: 2026-09-28.
+- Updated: 2026-09-29.
 - Scope: source research and bounded Windows/DX12 public dispatch, recording-ahead
   and temporal smoke evidence against AMD FSR SDK `v2.3.0`
   (`60f4ea81909200d8542eca14dccb2628b763a9a3`), whose upscaler API version
@@ -16,9 +16,10 @@
   the [motion-vector and jitter investigation](records/2026-09-24-src-m6-motion-vector-jitter-semantics.md),
   the [backend allocation investigation](records/2026-09-24-src-m6-backend-allocation-inflight-scope.md),
   the [M6b public-route verification](records/2026-09-25-m6b-public-dispatch-verification.md),
-  and the [final Windows regression/temporal smoke](records/2026-09-28-exp-final-windows-release-verification.md).
+  the [final Windows regression/temporal smoke](records/2026-09-28-exp-final-windows-release-verification.md),
+  and the [broader DX12 upscaler surface](records/2026-09-29-src-dx12-upscaler-api-surface.md).
 
-The supplied records list pinned primary sources, but their original inline
+The initial M6 source records list pinned primary sources, but their original inline
 citation tokens had no index-to-source map. Those tokens were removed at intake.
 The later contract recommendation had the same citation limitation and was
 integrated as an analysis of these records and the repository, not as a native
@@ -311,6 +312,51 @@ motion-vector support profile using the M6a evidence; this does not make it a
 universal SDK restriction. The [M6 plan](../MILESTONE_6.md) and [D011](../adr/D011.md)
 retain the boundary. M6b verified that route on one GPU configuration.
 
+## Broader frame surface and API evolution
+
+The [2026-09-29 source investigation](records/2026-09-29-src-dx12-upscaler-api-surface.md)
+agrees with the narrow D011 profile at the same SDK commit. Its inventory and
+design proposals add no GPU execution or temporal-quality evidence. Selected
+header declarations were checked at intake; the complete source claim set was
+not independently reverified. Provider/Query/Configure findings are integrated
+in [API and safety](api-and-safety.md#post-v010-upscaler-surface).
+
+**Verified source surface:** the existing raw dispatch descriptor already has
+sharpening, pre-exposure, masks, active render/output extents and dispatch flags.
+The public Rust method fixes or omits those capabilities. Sharpening and
+pre-exposure are per-frame scalars; automatic exposure, depth/MV conventions and
+HDR are creation choices. Non-linear input combines a creation capability with
+per-frame encoding flags. Reactive-mask generation is a separate tagged GPU
+dispatch through the same export, not merely another main-frame input.
+
+**Extent and resource qualification:** allocation dimensions, creation maxima
+and active frame extents are distinct. Dynamic render resolution has a creation
+flag; variable output uses `upscaleSize` without an analogous creation flag.
+That shared field does not establish correct signed-provider history across
+size changes. Resource requirements should inform future mask/exposure policy;
+FSR3/FSR4 guidance differs. The DX12 helper's format-conversion table is not an
+upscaler acceptance whitelist. D011's fixed extents, formats and exposure remain
+the supported wrapper profile.
+
+**Design inference, not an accepted choice:** adding even an optional public
+field to `UpscaleDispatch` breaks existing exhaustive struct literals. D012's
+private creation options solve a different extensibility problem. Before the
+first per-frame extension, the record recommends an explicit choice between
+retaining the existing route plus an extensible advanced frame input, or a
+breaking release with one private-field frame representation. Neither is
+required now; no finding weakens `unsafe dispatch(&mut self, ...)`, renderer
+ownership, poison behavior or GPU-completion obligations.
+
+**Experiments still needed:** controlled correct/wrong motion and jitter inputs,
+history accumulation followed by a camera cut/reset, equivalent scenes under
+different pre-exposure/exposure modes, sharpening comparisons, mask fixtures
+and sentinel checks outside changing active extents would distinguish semantic
+correctness from successful writes. Broader HDR/non-linear/format and provider
+coverage needs separate comparisons. The report proposes these experiments;
+none was run during this source investigation or synthesis. GBV, signed-provider
+allocation/sharing, state restoration, COMPUTE-list support and callback/tuning
+contracts remain unresolved within their existing scope.
+
 ## Disagreements and limitations
 
 - The [sample/readback record](records/2026-09-24-src-m6-dx12-dispatch-example.md)
@@ -403,3 +449,9 @@ retain the boundary. M6b verified that route on one GPU configuration.
    cross-queue support is established.
 5. **Later scope:** output format range, alpha behavior, aliasing, nontrivial
    resource shapes, COMPUTE lists, dynamic output size and general concurrency.
+6. **Per-frame extension decision:** choose compatibility with current struct
+   literals versus a breaking private-frame representation only when a deferred
+   frame capability is accepted. Shared flag support, changing active extents,
+   exposure/mask requirements and image semantics need provider-specific evidence;
+   the [surface record](records/2026-09-29-src-dx12-upscaler-api-surface.md)
+   supplies proposals, not implementation authorization.
