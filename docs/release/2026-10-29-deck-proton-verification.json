@@ -1,0 +1,2468 @@
+{
+  "date": "2026-10-29",
+  "scope": "Steam Deck bounded exact-package Proton compatibility and timeout cleanup; no publication or full release qualification",
+  "runs": [
+    {
+      "attempt": "20261029T022510Z-proton-offline-4001f29aefa0",
+      "summary": {
+        "schema_version": 1,
+        "profile": "proton-offline",
+        "started_utc": "2026-10-29T02:25:14.332727+00:00",
+        "status": "passed",
+        "input_identity": "c19fce498118d566c20dac5d2def7502ca285ba5f5cf578651a6b266631751b9",
+        "required": [
+          "equipment.toolchain",
+          "proton.equipment",
+          "release.package",
+          "release.registry",
+          "artifact.bind",
+          "proton.offline.missing-manifest",
+          "proton.offline.missing-proton",
+          "proton.offline.missing-runtime",
+          "proton.sdk",
+          "proton.helper",
+          "proton.build",
+          "proton.launch",
+          "proton.queries",
+          "proton.dispatch",
+          "proton.offline.integrity",
+          "release.integrity"
+        ],
+        "cases": {
+          "equipment.toolchain": "passed",
+          "proton.equipment": "passed",
+          "release.package": "passed",
+          "release.registry": "passed",
+          "artifact.bind": "passed",
+          "proton.offline.missing-manifest": "passed",
+          "proton.offline.missing-proton": "passed",
+          "proton.offline.missing-runtime": "passed",
+          "proton.sdk": "passed",
+          "proton.helper": "passed",
+          "proton.build": "passed",
+          "proton.launch": "passed",
+          "proton.queries": "passed",
+          "proton.dispatch": "passed",
+          "proton.offline.integrity": "passed",
+          "release.integrity": "passed"
+        },
+        "finished_utc": "2026-10-29T02:26:45.909094+00:00",
+        "inputs_unchanged": true,
+        "completed": 16
+      },
+      "run_json_sha256": "0ba6a25306e12e58b6823b1c256ce8c48b2f7771a902da90b5126e504c414309",
+      "artifacts_json_sha256": "5d6219f2237de33df276020e4427fe26f45a704f86c51373db222664b5ce3545",
+      "cases": [
+        {
+          "id": "equipment.toolchain",
+          "claim": "Actual compiler, Cargo, Python and host identity",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:14.333024+00:00",
+          "finished_utc": "2026-10-29T02:25:14.574346+00:00",
+          "case_json_sha256": "36d408e0e4e9d773ffd1c84bd58fd099dcfb67a3b42188cf549b9158407fc05b",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/cj8n4q3jalzf2xszns6gmi9dim6pjifr-rustup-1.29.1/bin/rustc",
+                "+stable",
+                "-vV"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.166
+            },
+            {
+              "args": [
+                "/nix/store/cj8n4q3jalzf2xszns6gmi9dim6pjifr-rustup-1.29.1/bin/cargo",
+                "+stable",
+                "-V"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.066
+            }
+          ],
+          "observations": {
+            "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+            "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+            "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [GCC 15.3.0]",
+            "host": "Linux-7.2.7-valve2-2-neptune-72-g31504582a073-x86_64-with-glibc2.42",
+            "resume": "disabled"
+          }
+        },
+        {
+          "id": "proton.equipment",
+          "claim": "Linux Vulkan identity and prepared cross/launch tools",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:14.575461+00:00",
+          "finished_utc": "2026-10-29T02:25:25.340203+00:00",
+          "case_json_sha256": "6744f779766bc62466455d925b1f30c0186b2c2dc1ef8222cbd2a77b9efa8105",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/fx3xhn3cya5kqblgly1nnyk7ywd4g9xl-cargo-xwin-0.23.1/bin/cargo-xwin",
+                "--version"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.033
+            },
+            {
+              "args": [
+                "/nix/store/0skhb15j2szcq05929gs9m1dbpiydhb7-clang-21.1.8/bin/clang-cl",
+                "--version"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.266
+            },
+            {
+              "args": [
+                "/nix/store/abkc3qmszv6pks24qyak9mhyk7z6vrz1-lld-21.1.8/bin/lld-link",
+                "--version"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.066
+            },
+            {
+              "args": [
+                "/usr/bin/vulkaninfo",
+                "--summary"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 30,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.116
+            }
+          ],
+          "observations": {
+            "offline_runtime": {
+              "proton": {
+                "entries": 8138,
+                "bytes": 1404192639,
+                "sha256": "ceeed77a92488627402161d2f255799d606c2dda777d50025d2b5911fd6bb3ef"
+              },
+              "runtime": {
+                "entries": 9593,
+                "bytes": 810303158,
+                "sha256": "ec3b47dbb379a66706fa35894dfbc29deba4f9a986355d63c6bf255782ba8a84"
+              },
+              "launcher": {
+                "entries": 63,
+                "bytes": 1484292,
+                "sha256": "ecc31faf8fa5ac3347278ea24fc1d6da74a97ee71483614731f11f7ead565517"
+              }
+            },
+            "provenance": "Existing Steam installation Proton 10.0-4b and umu-prepared sniper 3.0.20260928.262393; explicit local trust, not independent upstream signature verification",
+            "manifest_sha256": "ff4406dce8d0b43b2360f11c5d533ad74e0c6c1ea6e579fff45291e2a7db84d1",
+            "runtime_versions": "#Name\tVersion\t\tRuntime\tRuntime_Version\tComment\ndepot\t3.0.20260928.262393\t\t\t# Overall version number\npressure-vessel\t0.20260925.0\t\t\t\npressure-vessel-arm64\t0.20260925.0\t\t\t\nscripts\t0.20260925.0\t\t\t# from steam-runtime-tools\nsniper\t3.0.20260928.262393\tsniper\t3.0.20260928.262393\t# sniper_platform_3.0.20260928.262393/\n",
+            "launcher_package": "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4",
+            "vulkan_layer": {
+              "manifest": "/nix/store/2p3ff6vbl8i2gyf2zvickc48k7hm9x0k-vulkan-validation-layers-1.4.357.0/share/vulkan/explicit_layer.d/VkLayer_khronos_validation.json",
+              "library": "/nix/store/2p3ff6vbl8i2gyf2zvickc48k7hm9x0k-vulkan-validation-layers-1.4.357.0/lib/libVkLayer_khronos_validation.so",
+              "sha256": "21532eb6dc6f587ffc276b07f048c7de6ced8db2929caaf9fabe30962001e963",
+              "gpu_assisted": false
+            },
+            "cargo_xwin": {
+              "version": "cargo-xwin 0.23.1\n",
+              "sha256": "c360d5e87df2bf66337d330a5a76647c36a1552b0782f9c06ea73908f3c1a338"
+            },
+            "clang": {
+              "version": "clang version 21.1.8\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: /nix/store/0skhb15j2szcq05929gs9m1dbpiydhb7-clang-21.1.8/bin\n",
+              "sha256": "f53f4d9b4eefe3f3f19e8eac7db8208428d8501fb8a9761552ef3e8bff4e7251"
+            },
+            "linker": {
+              "version": "LLD 21.1.8\n",
+              "sha256": "c5a5ea250dec3818a88e8d1f6bc246263864cc791711c9c1ce4c2a5e1da7dc9a"
+            },
+            "host": "Linux-7.2.7-valve2-2-neptune-72-g31504582a073-x86_64-with-glibc2.42",
+            "os_release": "NAME=\"SteamOS\"\nPRETTY_NAME=\"SteamOS\"\nVERSION_CODENAME=holo\nID=steamos\nID_LIKE=arch\nANSI_COLOR=\"1;35\"\nHOME_URL=\"https://www.steampowered.com/\"\nDOCUMENTATION_URL=\"https://support.steampowered.com/\"\nSUPPORT_URL=\"https://support.steampowered.com/\"\nBUG_REPORT_URL=\"https://support.steampowered.com/\"\nLOGO=steamos\nVARIANT_ID=steamdeck\nVERSION_ID=3.9.5\nBUILD_ID=20261023.100\nSTEAMOS_DEFAULT_UPDATE_BRANCH=stable\n",
+            "proton_version": "1785139158 proton-10.0-4b",
+            "target": "x86_64-pc-windows-msvc",
+            "validation": {
+              "required": "Pinned SDK, module paths, public queries, shared single-frame numerical checks, dispatch/fence/readback, no device removal and teardown",
+              "directx_debug_layer": "Availability observed separately; unavailable count remains UINT64_MAX. This is not the Windows Gate A case.",
+              "gpu_based_validation": "Not enabled; not claimed",
+              "vulkan_validation": "Core and synchronization required in both GPU children",
+              "windows_signature_policy": "Unavailable on Linux; hash pins are the explicit trust input"
+            },
+            "acquisition": "Prepared checksum-selected local runtime; every umu launch has an isolated network namespace."
+          }
+        },
+        {
+          "id": "release.package",
+          "claim": "Create or select the exact pair of Cargo archives",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:25.341365+00:00",
+          "finished_utc": "2026-10-29T02:25:26.414792+00:00",
+          "case_json_sha256": "31e99948e50258290261a60bf5994f3a7ea59eb5cc45c0ba82ca732a20675775",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/cj8n4q3jalzf2xszns6gmi9dim6pjifr-rustup-1.29.1/bin/cargo",
+                "+stable",
+                "package",
+                "--workspace",
+                "--allow-dirty",
+                "--locked",
+                "--offline"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 1.069
+            }
+          ],
+          "observations": {
+            "archives": [
+              {
+                "file": "fsr-sdk-0.3.0.crate",
+                "sha256": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5"
+              },
+              {
+                "file": "fsr-sdk-sys-0.1.2.crate",
+                "sha256": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5"
+              }
+            ],
+            "published": false
+          }
+        },
+        {
+          "id": "release.registry",
+          "claim": "Validate every archive byte and construct an isolated local registry",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:26.415752+00:00",
+          "finished_utc": "2026-10-29T02:25:26.770918+00:00",
+          "case_json_sha256": "839b32bc70736e814aec53acbb6285485a28edafcc7404fd3573632620dabf58",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/cj8n4q3jalzf2xszns6gmi9dim6pjifr-rustup-1.29.1/bin/cargo",
+                "+stable",
+                "generate-lockfile",
+                "--manifest-path",
+                "<run>/isolation/packages/Cargo.toml",
+                "--offline"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.115
+            }
+          ],
+          "observations": {
+            "archives": [
+              {
+                "archive": "fsr-sdk-0.3.0.crate",
+                "sha256": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5",
+                "file_count": 160,
+                "file_inventory_sha256": "0e66b42f92d54ffadc2e7170791f0f1f67bf4f9a0495c6bce6724f283e8c8159"
+              },
+              {
+                "archive": "fsr-sdk-sys-0.1.2.crate",
+                "sha256": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5",
+                "file_count": 33,
+                "file_inventory_sha256": "ccd9e1e4d3d8adbbb872ef9d6a37f3c73decf81969a34e20479cb7c728529f31"
+              }
+            ],
+            "registry_inputs": [
+              {
+                "archive": "cfg-if-1.0.4.crate",
+                "sha256": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
+              },
+              {
+                "archive": "fsr-sdk-0.3.0.crate",
+                "sha256": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5"
+              },
+              {
+                "archive": "fsr-sdk-sys-0.1.2.crate",
+                "sha256": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5"
+              },
+              {
+                "archive": "libloading-0.9.0.crate",
+                "sha256": "754ca22de805bb5744484a5b151a9e1a8e837d5dc232c2d7d8c2e3492edc8b60"
+              },
+              {
+                "archive": "proc-macro2-1.0.107.crate",
+                "sha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9"
+              },
+              {
+                "archive": "quote-1.0.47.crate",
+                "sha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001"
+              },
+              {
+                "archive": "syn-2.0.119.crate",
+                "sha256": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297"
+              },
+              {
+                "archive": "unicode-ident-1.0.26.crate",
+                "sha256": "d245f478577f809a851594d02313b640fb437e0bb33866753cff937863096954"
+              },
+              {
+                "archive": "windows-0.62.2.crate",
+                "sha256": "527fadee13e0c05939a6a05d5bd6eec6cd2e3dbd648b9f8e447c6518133d8580"
+              },
+              {
+                "archive": "windows-collections-0.3.2.crate",
+                "sha256": "23b2d95af1a8a14a3c7367e1ed4fc9c20e0a26e79551b1454d72583c97cc6610"
+              },
+              {
+                "archive": "windows-core-0.62.2.crate",
+                "sha256": "b8e83a14d34d0623b51dce9581199302a221863196a1dde71a7663a4c2be9deb"
+              },
+              {
+                "archive": "windows-future-0.3.2.crate",
+                "sha256": "e1d6f90251fe18a279739e78025bd6ddc52a7e22f921070ccdc67dde84c605cb"
+              },
+              {
+                "archive": "windows-implement-0.60.2.crate",
+                "sha256": "053e2e040ab57b9dc951b72c264860db7eb3b0200ba345b4e4c3b14f67855ddf"
+              },
+              {
+                "archive": "windows-interface-0.59.3.crate",
+                "sha256": "3f316c4a2570ba26bbec722032c4099d8c8bc095efccdc15688708623367e358"
+              },
+              {
+                "archive": "windows-link-0.2.1.crate",
+                "sha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
+              },
+              {
+                "archive": "windows-numerics-0.3.1.crate",
+                "sha256": "6e2e40844ac143cdb44aead537bbf727de9b044e107a0f1220392177d15b0f26"
+              },
+              {
+                "archive": "windows-result-0.4.1.crate",
+                "sha256": "7781fa89eaf60850ac3d2da7af8e5242a5ea78d1a11c49bf2910bb5a73853eb5"
+              },
+              {
+                "archive": "windows-strings-0.5.1.crate",
+                "sha256": "7837d08f69c77cf6b07689544538e017c1bfcf57e34b4c0ff58e6c2cd3b37091"
+              },
+              {
+                "archive": "windows-threading-0.2.1.crate",
+                "sha256": "3949bd5b99cafdf1c7ca86b43ca564028dfe27d66958f2470940f73d86d75b37"
+              }
+            ],
+            "unchanged_extracted_bytes": true
+          }
+        },
+        {
+          "id": "artifact.bind",
+          "claim": "Use verified extracted packages for native builds",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:26.772225+00:00",
+          "finished_utc": "2026-10-29T02:25:26.772588+00:00",
+          "case_json_sha256": "61b57d6208eb0a3ca058a04abcba900139d5601f9f18bfd1fc0688f03d468446",
+          "commands": [],
+          "observations": {
+            "archive_hashes": {
+              "fsr-sdk": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5",
+              "fsr-sdk-sys": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5"
+            },
+            "registry_artifact": true
+          }
+        },
+        {
+          "id": "proton.offline.missing-manifest",
+          "claim": "Missing manifest fails without downloads",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:26.773422+00:00",
+          "finished_utc": "2026-10-29T02:25:27.142594+00:00",
+          "case_json_sha256": "b306475d84e1aee50607d49c63c13a6d4f1608c58e746f37c0669497162f5a57",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/run.py",
+                "runtime",
+                "verify",
+                "--manifest",
+                "<run>/cases/proton.offline.missing-manifest/absent.json",
+                "--sha256",
+                "ff4406dce8d0b43b2360f11c5d533ad74e0c6c1ea6e579fff45291e2a7db84d1"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 90,
+              "execution": "completed",
+              "exit_code": 1,
+              "elapsed_seconds": 0.366
+            }
+          ],
+          "observations": {
+            "missing": "manifest",
+            "exit": 1,
+            "runtime_acquired": false,
+            "network_proof": "OFFLINE NETWORK: {\"distinct_namespace\": true, \"interfaces\": [\"lo\"], \"unreachable_errno\": [101, 101]}"
+          }
+        },
+        {
+          "id": "proton.offline.missing-proton",
+          "claim": "Missing proton fails without downloads",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:27.143584+00:00",
+          "finished_utc": "2026-10-29T02:25:27.622898+00:00",
+          "case_json_sha256": "59df0cbeeafe90b418c2732505af2eff98a5dcc6028f9f7db23786bd1485fb32",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/run.py",
+                "runtime",
+                "verify",
+                "--manifest",
+                "<run>/cases/proton.offline.missing-proton/missing-input.json",
+                "--sha256",
+                "2862a6e33062d7a8e8f936ba3cd322237a1f304dc407cf5f70184ef40a7439b8"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 90,
+              "execution": "completed",
+              "exit_code": 1,
+              "elapsed_seconds": 0.366
+            }
+          ],
+          "observations": {
+            "missing": "proton",
+            "exit": 1,
+            "runtime_acquired": false,
+            "network_proof": "OFFLINE NETWORK: {\"distinct_namespace\": true, \"interfaces\": [\"lo\"], \"unreachable_errno\": [101, 101]}"
+          }
+        },
+        {
+          "id": "proton.offline.missing-runtime",
+          "claim": "Missing runtime fails without downloads",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:27.623927+00:00",
+          "finished_utc": "2026-10-29T02:25:28.093363+00:00",
+          "case_json_sha256": "a5eaaaf504c0fc63e66096eec4bfd750cc6338a17fb33d94eff43da07de185c9",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/run.py",
+                "runtime",
+                "verify",
+                "--manifest",
+                "<run>/cases/proton.offline.missing-runtime/missing-input.json",
+                "--sha256",
+                "0695cdc1acf5dac98c6ef24ae58fc1cd45dad7cbef3ea57f58a0c28b12e5223b"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 90,
+              "execution": "completed",
+              "exit_code": 1,
+              "elapsed_seconds": 0.366
+            }
+          ],
+          "observations": {
+            "missing": "runtime",
+            "exit": 1,
+            "runtime_acquired": false,
+            "network_proof": "OFFLINE NETWORK: {\"distinct_namespace\": true, \"interfaces\": [\"lo\"], \"unreachable_errno\": [101, 101]}"
+          }
+        },
+        {
+          "id": "proton.sdk",
+          "claim": "D017 pinned deployment and separate signature observations",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:28.095208+00:00",
+          "finished_utc": "2026-10-29T02:25:28.688746+00:00",
+          "case_json_sha256": "cbf2e5f2aa2c024b29cf10c1a71485e165343ffb2efe6ac7e473e532a86e5635",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/71c7x068xjwp7q9yl10dv3jl000l2h5i-osslsigncode-2.14/bin/osslsigncode",
+                "verify",
+                "-in",
+                "<run>/native/amd_fidelityfx_loader_dx12.dll"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 30,
+              "execution": "completed",
+              "exit_code": 1,
+              "elapsed_seconds": 0.172
+            },
+            {
+              "args": [
+                "/nix/store/71c7x068xjwp7q9yl10dv3jl000l2h5i-osslsigncode-2.14/bin/osslsigncode",
+                "verify",
+                "-in",
+                "<run>/native/amd_fidelityfx_upscaler_dx12.dll"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 30,
+              "execution": "completed",
+              "exit_code": 1,
+              "elapsed_seconds": 0.316
+            }
+          ],
+          "observations": {
+            "files": {
+              "3rdpartynotice.md": "94401a90486d1b53b528bb7f845a7b8daf7227b60eb7c0fc3b8c5571ba202a27",
+              "Kits/FidelityFX/upscalers/include/ffx_upscale.h": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf",
+              "Kits/FidelityFX/api/include/ffx_api.h": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd",
+              "Kits/FidelityFX/api/include/ffx_api_types.h": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49",
+              "Kits/FidelityFX/api/include/dx12/ffx_api_dx12.h": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530",
+              "Kits/FidelityFX/signedbin/amd_fidelityfx_upscaler_dx12.dll": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46",
+              "Kits/FidelityFX/signedbin/amd_fidelityfx_loader_dx12.dll": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa",
+              "docs/license.md": "6757f2fec461238da6f84f83536ec195e8c036b1773a06f6f34301b9ed8c0963"
+            },
+            "signatures": [
+              {
+                "file": "amd_fidelityfx_loader_dx12.dll",
+                "method": "osslsigncode verify",
+                "exit": 1
+              },
+              {
+                "file": "amd_fidelityfx_upscaler_dx12.dll",
+                "method": "osslsigncode verify",
+                "exit": 1
+              }
+            ],
+            "trust_input": "D017 pinned bytes; Windows strict trust not evaluated"
+          }
+        },
+        {
+          "id": "proton.helper",
+          "claim": "Linux-hosted MSVC ABI C++ helper build",
+          "scope": "linux-cross-compilation",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:28.690299+00:00",
+          "finished_utc": "2026-10-29T02:25:31.917657+00:00",
+          "case_json_sha256": "27eeb7319317536ecacf878e08a2731e7d5a6fea79a4cf782d4407cc831f137f",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/0skhb15j2szcq05929gs9m1dbpiydhb7-clang-21.1.8/bin/clang-cl",
+                "--target=x86_64-pc-windows-msvc",
+                "/nologo",
+                "/std:c++17",
+                "/EHsc",
+                "/W4",
+                "/WX",
+                "/MT",
+                "/LD",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/crt/include",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/ucrt",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/um",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/shared",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/winrt",
+                "/I<repo>/target/sdk-proton/v2.3.0/Kits/FidelityFX/api/include/dx12",
+                "<run>/isolation/packages/fsr-sdk-0.3.0/tests/native/gpu.cpp",
+                "<run>/isolation/packages/fsr-sdk-sys-0.1.2/tests/context_lifecycle/device.cpp",
+                "/Fo<run>/native/",
+                "-fuse-ld=lld",
+                "/link",
+                "/OUT:<run>/native/gpu_helper.dll",
+                "/IMPLIB:<run>/native/gpu_helper.lib",
+                "/LIBPATH:<repo>/target/proton-toolchain/xwin/crt/lib/x86_64",
+                "/LIBPATH:<repo>/target/proton-toolchain/xwin/sdk/lib/um/x86_64",
+                "/LIBPATH:<repo>/target/proton-toolchain/xwin/sdk/lib/ucrt/x86_64",
+                "d3d12.lib",
+                "dxgi.lib"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 3.223
+            }
+          ],
+          "observations": {
+            "helper_sha256": "4a7ff708cdee6fa830f14f56c954ee4de7a910cc425ed56c03f8e2b8e67c5c7d",
+            "wrapper_source": "<run>/isolation/packages/fsr-sdk-0.3.0",
+            "raw_source": "<run>/isolation/packages/fsr-sdk-sys-0.1.2",
+            "registry_artifact": true
+          }
+        },
+        {
+          "id": "proton.build",
+          "claim": "Linux-hosted Windows Rust test build",
+          "scope": "linux-cross-compilation",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:31.918321+00:00",
+          "finished_utc": "2026-10-29T02:25:53.607752+00:00",
+          "case_json_sha256": "13fadbc09f7ae7fe9041acf329b4ee964e26d0e7947f8ab03803e7a077a9b435",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/fx3xhn3cya5kqblgly1nnyk7ywd4g9xl-cargo-xwin-0.23.1/bin/cargo-xwin",
+                "test",
+                "--manifest-path",
+                "<run>/isolation/packages/Cargo.toml",
+                "-p",
+                "fsr-sdk",
+                "--lib",
+                "--features",
+                "dx12,movable",
+                "--target",
+                "x86_64-pc-windows-msvc",
+                "--no-run",
+                "--message-format=json",
+                "--locked",
+                "--offline"
+              ],
+              "cwd": "<run>/isolation/packages",
+              "timeout_seconds": 600,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 21.68
+            }
+          ],
+          "observations": {
+            "executable_sha256": "4232b27a3f8c3750434dc97582fe674bcc3e458395b72e63e99effb7cdbf11a9",
+            "manifest": "<run>/isolation/packages/Cargo.toml",
+            "registry_artifact": true,
+            "archive_hashes": {
+              "fsr-sdk": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5",
+              "fsr-sdk-sys": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5"
+            }
+          }
+        },
+        {
+          "id": "proton.launch",
+          "claim": "Proton starts the exact Windows test executable",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:25:53.608620+00:00",
+          "finished_utc": "2026-10-29T02:26:18.587556+00:00",
+          "case_json_sha256": "eab0cb9217b3e21b9d3d19c4be880ee024e70bceb50a8ef24e32afb80b6f97e6",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--list"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 18.011
+            },
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--list"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 6.932
+            }
+          ],
+          "observations": {
+            "proton_commands": [
+              {
+                "logs": "<run>/cases/proton.launch/proton-00",
+                "required_markers": [],
+                "exit": 0,
+                "execution": "completed"
+              },
+              {
+                "logs": "<run>/cases/proton.launch/proton-01",
+                "required_markers": [
+                  "upscaler::dx12::tests::queries::native_public_queries: test"
+                ],
+                "exit": 0,
+                "execution": "completed"
+              }
+            ],
+            "process_containment": [
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              },
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              }
+            ],
+            "offline_network": [
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              },
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              }
+            ],
+            "prefix": "<repo>/target/proton-prefixes/20261029T022553Z-proton-6da16f620b7a",
+            "translator_overrides": "d3d12=n;d3d12core=n;dxgi=n",
+            "translators": {
+              "d3d12.dll": {
+                "source": "<repo>/target/proton-runtime/v08-deck/proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12.dll",
+                "prefix_sha256": "8283fda74b73bec09c02b63f1ad19a459f1657d1da4efcb8ec55921a000ae4bf"
+              },
+              "d3d12core.dll": {
+                "source": "<repo>/target/proton-runtime/v08-deck/proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12core.dll",
+                "prefix_sha256": "e6e829f8f7b1d61f7f95faf6cb7ffd369c04d10d6342252b5792597c9aa6c018"
+              },
+              "dxgi.dll": {
+                "source": "<repo>/target/proton-runtime/v08-deck/proton/files/lib/wine/dxvk/x86_64-windows/dxgi.dll",
+                "prefix_sha256": "aa9308a7c097eca0ba95bbf9c63ff4badfa204bafa63738aee7990e2067c8d1e"
+              }
+            },
+            "claim": "Windows Rust executable launched; no AMD calls in --list"
+          }
+        },
+        {
+          "id": "proton.queries",
+          "claim": "Shared public-queries workload under explicit Proton validation contract",
+          "scope": "proton-gpu",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:26:18.606611+00:00",
+          "finished_utc": "2026-10-29T02:26:28.249823+00:00",
+          "case_json_sha256": "c21a0cb56ff0f7b71b1a883a6a491edce928333e8fdf6dc9eb4090b6558d8b58",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--ignored",
+                "--exact",
+                "upscaler::dx12::tests::queries::native_public_queries",
+                "--nocapture",
+                "--test-threads=1"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 9.588
+            }
+          ],
+          "observations": {
+            "proton_commands": [
+              {
+                "logs": "<run>/cases/proton.queries/proton-00",
+                "required_markers": [
+                  "Public queries: PASSED",
+                  "1 passed; 0 failed"
+                ],
+                "exit": 0,
+                "execution": "completed"
+              }
+            ],
+            "vulkan_validation": {
+              "active": true,
+              "synchronization": true,
+              "instances": 3,
+              "errors": 0,
+              "warnings": 0,
+              "log": "<run>/cases/proton.queries/proton-00/validation.log"
+            },
+            "process_containment": [
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              }
+            ],
+            "offline_network": [
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              }
+            ],
+            "loaded_modules": {
+              "amd_fidelityfx_loader_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+                "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+              },
+              "amd_fidelityfx_upscaler_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+                "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+              }
+            },
+            "adapter_provider_metrics": [
+              "Local queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 71172096, aliasable_bytes: 11010048 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 78970880, aliasable_bytes: 11010048 }",
+              "Movable queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 71172096, aliasable_bytes: 11010048 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 78970880, aliasable_bytes: 11010048 }",
+              "Public queries: PASSED",
+              "Adapter: AMD Custom GPU 0405 (RADV VANGOGH); vendor=0x1002 device=0x163f; feature_level=12_0; index=0; luid=0x00000000000003f2"
+            ]
+          }
+        },
+        {
+          "id": "proton.dispatch",
+          "claim": "Shared gate-a workload under explicit Proton validation contract",
+          "scope": "proton-gpu",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:26:28.250467+00:00",
+          "finished_utc": "2026-10-29T02:26:37.465838+00:00",
+          "case_json_sha256": "db2485c7c801995b5e016ff4eb6ee535fbd537d4fe8a3fc11dbf3ba96981b6fe",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--ignored",
+                "--exact",
+                "upscaler::dx12::native_dispatch::proton_dispatch_readback",
+                "--nocapture",
+                "--test-threads=1"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 9.188
+            }
+          ],
+          "observations": {
+            "proton_commands": [
+              {
+                "logs": "<run>/cases/proton.dispatch/proton-00",
+                "required_markers": [
+                  "Proton single-frame: PASSED",
+                  "1 passed; 0 failed"
+                ],
+                "exit": 0,
+                "execution": "completed"
+              }
+            ],
+            "vulkan_validation": {
+              "active": true,
+              "synchronization": true,
+              "instances": 3,
+              "errors": 0,
+              "warnings": 0,
+              "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+            },
+            "process_containment": [
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              }
+            ],
+            "offline_network": [
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              }
+            ],
+            "loaded_modules": {
+              "amd_fidelityfx_loader_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+                "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+              },
+              "amd_fidelityfx_upscaler_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+                "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+              }
+            },
+            "adapter_provider_metrics": [
+              "Gate A debug layer: HRESULT=0x887a002d",
+              "Proton validation: DirectX debug HRESULT=0x887a002d; D3D12 GBV not enabled; Vulkan diagnostics recorded by launcher",
+              "Gate A device creation: HRESULT=0x00000000",
+              "Gate A queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 7012352, aliasable_bytes: 917504 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 7536640, aliasable_bytes: 917504 }",
+              "Gate A public construction: OK native_code=0x00000000",
+              "Upscaler provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+              "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+              "Proton validation: DirectX info queue unavailable; error count unavailable",
+              "Gate A explicit destroy: OK native_code=0x00000000",
+              "Gate A after explicit destroy and resource cleanup:",
+              "Proton single-frame: PASSED",
+              "Adapter: AMD Custom GPU 0405 (RADV VANGOGH); vendor=0x1002 device=0x163f; feature_level=12_0; index=0; luid=0x00000000000003f2",
+              "Selected-device AMD check: vendor=0x1002 device=0x163f hardware_amd=true",
+              "Proton device checkpoint: device_removed=0x00000000"
+            ]
+          }
+        },
+        {
+          "id": "proton.offline.integrity",
+          "claim": "Prepared distribution bytes unchanged after offline GPU execution",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:26:37.466904+00:00",
+          "finished_utc": "2026-10-29T02:26:44.098889+00:00",
+          "case_json_sha256": "9c658120d95eb8e402915aad51112dcf50c1dc755e7f6597108d183dff3e3edf",
+          "commands": [],
+          "observations": {
+            "runtime": {
+              "proton": {
+                "entries": 8138,
+                "bytes": 1404192639,
+                "sha256": "ceeed77a92488627402161d2f255799d606c2dda777d50025d2b5911fd6bb3ef"
+              },
+              "runtime": {
+                "entries": 9593,
+                "bytes": 810303158,
+                "sha256": "ec3b47dbb379a66706fa35894dfbc29deba4f9a986355d63c6bf255782ba8a84"
+              },
+              "launcher": {
+                "entries": 63,
+                "bytes": 1484292,
+                "sha256": "ecc31faf8fa5ac3347278ea24fc1d6da74a97ee71483614731f11f7ead565517"
+              }
+            },
+            "runtime_unchanged": true
+          }
+        },
+        {
+          "id": "release.integrity",
+          "claim": "Recheck selected archives and extracted bytes after all checks",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:26:44.099836+00:00",
+          "finished_utc": "2026-10-29T02:26:44.202971+00:00",
+          "case_json_sha256": "a6fd4fb8a18ab239cd587000b96bd2e63e569be66fe4320eabd39ea378311592",
+          "commands": [],
+          "observations": {
+            "selected_archives_unchanged": true,
+            "extracted_bytes_unchanged": true
+          }
+        }
+      ]
+    },
+    {
+      "attempt": "20261029T022709Z-proton-timeout-c01a9616ddf3",
+      "summary": {
+        "schema_version": 1,
+        "profile": "proton-timeout",
+        "started_utc": "2026-10-29T02:27:12.230188+00:00",
+        "status": "passed",
+        "input_identity": "30c2bfb7bdad77062e34b679f538ee90c750a268702a2656e75a9efb610c0eb9",
+        "required": [
+          "equipment.toolchain",
+          "proton.equipment",
+          "release.package",
+          "release.registry",
+          "artifact.bind",
+          "proton.sdk",
+          "proton.helper",
+          "proton.build",
+          "proton.launch",
+          "proton.queries",
+          "proton.dispatch",
+          "proton.timeout.fixture",
+          "proton.timeout.expiry",
+          "proton.timeout.post-queries",
+          "proton.timeout.post-dispatch",
+          "proton.offline.integrity",
+          "release.integrity"
+        ],
+        "cases": {
+          "equipment.toolchain": "passed",
+          "proton.equipment": "passed",
+          "release.package": "passed",
+          "release.registry": "passed",
+          "artifact.bind": "passed",
+          "proton.sdk": "passed",
+          "proton.helper": "passed",
+          "proton.build": "passed",
+          "proton.launch": "passed",
+          "proton.queries": "passed",
+          "proton.dispatch": "passed",
+          "proton.timeout.fixture": "passed",
+          "proton.timeout.expiry": "passed",
+          "proton.timeout.post-queries": "passed",
+          "proton.timeout.post-dispatch": "passed",
+          "proton.offline.integrity": "passed",
+          "release.integrity": "passed"
+        },
+        "finished_utc": "2026-10-29T02:29:09.725290+00:00",
+        "inputs_unchanged": true,
+        "completed": 17
+      },
+      "run_json_sha256": "d8064dfe1ca1686afaa2056744ac40957719e31f5351b843c173832078f0aee5",
+      "artifacts_json_sha256": "bd50a82ec77499be268a1f720a9020a07c222ab7bb8392153fc59df079eadcb4",
+      "cases": [
+        {
+          "id": "equipment.toolchain",
+          "claim": "Actual compiler, Cargo, Python and host identity",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:12.230602+00:00",
+          "finished_utc": "2026-10-29T02:27:12.345833+00:00",
+          "case_json_sha256": "ef8402092fed98ea575ad68a66a50571e7121daac98d136a054963bde0037d33",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/cj8n4q3jalzf2xszns6gmi9dim6pjifr-rustup-1.29.1/bin/rustc",
+                "+stable",
+                "-vV"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.065
+            },
+            {
+              "args": [
+                "/nix/store/cj8n4q3jalzf2xszns6gmi9dim6pjifr-rustup-1.29.1/bin/cargo",
+                "+stable",
+                "-V"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.033
+            }
+          ],
+          "observations": {
+            "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+            "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+            "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [GCC 15.3.0]",
+            "host": "Linux-7.2.7-valve2-2-neptune-72-g31504582a073-x86_64-with-glibc2.42",
+            "resume": "disabled"
+          }
+        },
+        {
+          "id": "proton.equipment",
+          "claim": "Linux Vulkan identity and prepared cross/launch tools",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:12.346586+00:00",
+          "finished_utc": "2026-10-29T02:27:17.734293+00:00",
+          "case_json_sha256": "c9f8e2b5361adcbf7f5c3b95f330b6de978863f99277a6e79b42d3161105f9e6",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/fx3xhn3cya5kqblgly1nnyk7ywd4g9xl-cargo-xwin-0.23.1/bin/cargo-xwin",
+                "--version"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.004
+            },
+            {
+              "args": [
+                "/nix/store/0skhb15j2szcq05929gs9m1dbpiydhb7-clang-21.1.8/bin/clang-cl",
+                "--version"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.032
+            },
+            {
+              "args": [
+                "/nix/store/abkc3qmszv6pks24qyak9mhyk7z6vrz1-lld-21.1.8/bin/lld-link",
+                "--version"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.033
+            },
+            {
+              "args": [
+                "/usr/bin/vulkaninfo",
+                "--summary"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 30,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.065
+            }
+          ],
+          "observations": {
+            "offline_runtime": {
+              "proton": {
+                "entries": 8138,
+                "bytes": 1404192639,
+                "sha256": "ceeed77a92488627402161d2f255799d606c2dda777d50025d2b5911fd6bb3ef"
+              },
+              "runtime": {
+                "entries": 9593,
+                "bytes": 810303158,
+                "sha256": "ec3b47dbb379a66706fa35894dfbc29deba4f9a986355d63c6bf255782ba8a84"
+              },
+              "launcher": {
+                "entries": 63,
+                "bytes": 1484292,
+                "sha256": "ecc31faf8fa5ac3347278ea24fc1d6da74a97ee71483614731f11f7ead565517"
+              }
+            },
+            "provenance": "Existing Steam installation Proton 10.0-4b and umu-prepared sniper 3.0.20260928.262393; explicit local trust, not independent upstream signature verification",
+            "manifest_sha256": "ff4406dce8d0b43b2360f11c5d533ad74e0c6c1ea6e579fff45291e2a7db84d1",
+            "runtime_versions": "#Name\tVersion\t\tRuntime\tRuntime_Version\tComment\ndepot\t3.0.20260928.262393\t\t\t# Overall version number\npressure-vessel\t0.20260925.0\t\t\t\npressure-vessel-arm64\t0.20260925.0\t\t\t\nscripts\t0.20260925.0\t\t\t# from steam-runtime-tools\nsniper\t3.0.20260928.262393\tsniper\t3.0.20260928.262393\t# sniper_platform_3.0.20260928.262393/\n",
+            "launcher_package": "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4",
+            "vulkan_layer": {
+              "manifest": "/nix/store/2p3ff6vbl8i2gyf2zvickc48k7hm9x0k-vulkan-validation-layers-1.4.357.0/share/vulkan/explicit_layer.d/VkLayer_khronos_validation.json",
+              "library": "/nix/store/2p3ff6vbl8i2gyf2zvickc48k7hm9x0k-vulkan-validation-layers-1.4.357.0/lib/libVkLayer_khronos_validation.so",
+              "sha256": "21532eb6dc6f587ffc276b07f048c7de6ced8db2929caaf9fabe30962001e963",
+              "gpu_assisted": false
+            },
+            "cargo_xwin": {
+              "version": "cargo-xwin 0.23.1\n",
+              "sha256": "c360d5e87df2bf66337d330a5a76647c36a1552b0782f9c06ea73908f3c1a338"
+            },
+            "clang": {
+              "version": "clang version 21.1.8\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: /nix/store/0skhb15j2szcq05929gs9m1dbpiydhb7-clang-21.1.8/bin\n",
+              "sha256": "f53f4d9b4eefe3f3f19e8eac7db8208428d8501fb8a9761552ef3e8bff4e7251"
+            },
+            "linker": {
+              "version": "LLD 21.1.8\n",
+              "sha256": "c5a5ea250dec3818a88e8d1f6bc246263864cc791711c9c1ce4c2a5e1da7dc9a"
+            },
+            "host": "Linux-7.2.7-valve2-2-neptune-72-g31504582a073-x86_64-with-glibc2.42",
+            "os_release": "NAME=\"SteamOS\"\nPRETTY_NAME=\"SteamOS\"\nVERSION_CODENAME=holo\nID=steamos\nID_LIKE=arch\nANSI_COLOR=\"1;35\"\nHOME_URL=\"https://www.steampowered.com/\"\nDOCUMENTATION_URL=\"https://support.steampowered.com/\"\nSUPPORT_URL=\"https://support.steampowered.com/\"\nBUG_REPORT_URL=\"https://support.steampowered.com/\"\nLOGO=steamos\nVARIANT_ID=steamdeck\nVERSION_ID=3.9.5\nBUILD_ID=20261023.100\nSTEAMOS_DEFAULT_UPDATE_BRANCH=stable\n",
+            "proton_version": "1785139158 proton-10.0-4b",
+            "target": "x86_64-pc-windows-msvc",
+            "validation": {
+              "required": "Pinned SDK, module paths, public queries, shared single-frame numerical checks, dispatch/fence/readback, no device removal and teardown",
+              "directx_debug_layer": "Availability observed separately; unavailable count remains UINT64_MAX. This is not the Windows Gate A case.",
+              "gpu_based_validation": "Not enabled; not claimed",
+              "vulkan_validation": "Core and synchronization required in both GPU children",
+              "windows_signature_policy": "Unavailable on Linux; hash pins are the explicit trust input"
+            },
+            "acquisition": "Prepared checksum-selected local runtime; every umu launch has an isolated network namespace."
+          }
+        },
+        {
+          "id": "release.package",
+          "claim": "Create or select the exact pair of Cargo archives",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:17.735141+00:00",
+          "finished_utc": "2026-10-29T02:27:17.736156+00:00",
+          "case_json_sha256": "072e021c26f0621fbbbd94f6faf6895a1251f3b62803b4145ab580c14d5c707a",
+          "commands": [],
+          "observations": {
+            "archives": [
+              {
+                "file": "fsr-sdk-0.3.0.crate",
+                "sha256": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5"
+              },
+              {
+                "file": "fsr-sdk-sys-0.1.2.crate",
+                "sha256": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5"
+              }
+            ],
+            "published": false
+          }
+        },
+        {
+          "id": "release.registry",
+          "claim": "Validate every archive byte and construct an isolated local registry",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:17.737087+00:00",
+          "finished_utc": "2026-10-29T02:27:18.010684+00:00",
+          "case_json_sha256": "6369697a25d17297f349abd1cde1f9f008b36051f6f011e656184d7f97b4616f",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/cj8n4q3jalzf2xszns6gmi9dim6pjifr-rustup-1.29.1/bin/cargo",
+                "+stable",
+                "generate-lockfile",
+                "--manifest-path",
+                "<run>/isolation/packages/Cargo.toml",
+                "--offline"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 1200,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 0.115
+            }
+          ],
+          "observations": {
+            "archives": [
+              {
+                "archive": "fsr-sdk-0.3.0.crate",
+                "sha256": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5",
+                "file_count": 160,
+                "file_inventory_sha256": "0e66b42f92d54ffadc2e7170791f0f1f67bf4f9a0495c6bce6724f283e8c8159"
+              },
+              {
+                "archive": "fsr-sdk-sys-0.1.2.crate",
+                "sha256": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5",
+                "file_count": 33,
+                "file_inventory_sha256": "ccd9e1e4d3d8adbbb872ef9d6a37f3c73decf81969a34e20479cb7c728529f31"
+              }
+            ],
+            "registry_inputs": [
+              {
+                "archive": "cfg-if-1.0.4.crate",
+                "sha256": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
+              },
+              {
+                "archive": "fsr-sdk-0.3.0.crate",
+                "sha256": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5"
+              },
+              {
+                "archive": "fsr-sdk-sys-0.1.2.crate",
+                "sha256": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5"
+              },
+              {
+                "archive": "libloading-0.9.0.crate",
+                "sha256": "754ca22de805bb5744484a5b151a9e1a8e837d5dc232c2d7d8c2e3492edc8b60"
+              },
+              {
+                "archive": "proc-macro2-1.0.107.crate",
+                "sha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9"
+              },
+              {
+                "archive": "quote-1.0.47.crate",
+                "sha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001"
+              },
+              {
+                "archive": "syn-2.0.119.crate",
+                "sha256": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297"
+              },
+              {
+                "archive": "unicode-ident-1.0.26.crate",
+                "sha256": "d245f478577f809a851594d02313b640fb437e0bb33866753cff937863096954"
+              },
+              {
+                "archive": "windows-0.62.2.crate",
+                "sha256": "527fadee13e0c05939a6a05d5bd6eec6cd2e3dbd648b9f8e447c6518133d8580"
+              },
+              {
+                "archive": "windows-collections-0.3.2.crate",
+                "sha256": "23b2d95af1a8a14a3c7367e1ed4fc9c20e0a26e79551b1454d72583c97cc6610"
+              },
+              {
+                "archive": "windows-core-0.62.2.crate",
+                "sha256": "b8e83a14d34d0623b51dce9581199302a221863196a1dde71a7663a4c2be9deb"
+              },
+              {
+                "archive": "windows-future-0.3.2.crate",
+                "sha256": "e1d6f90251fe18a279739e78025bd6ddc52a7e22f921070ccdc67dde84c605cb"
+              },
+              {
+                "archive": "windows-implement-0.60.2.crate",
+                "sha256": "053e2e040ab57b9dc951b72c264860db7eb3b0200ba345b4e4c3b14f67855ddf"
+              },
+              {
+                "archive": "windows-interface-0.59.3.crate",
+                "sha256": "3f316c4a2570ba26bbec722032c4099d8c8bc095efccdc15688708623367e358"
+              },
+              {
+                "archive": "windows-link-0.2.1.crate",
+                "sha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
+              },
+              {
+                "archive": "windows-numerics-0.3.1.crate",
+                "sha256": "6e2e40844ac143cdb44aead537bbf727de9b044e107a0f1220392177d15b0f26"
+              },
+              {
+                "archive": "windows-result-0.4.1.crate",
+                "sha256": "7781fa89eaf60850ac3d2da7af8e5242a5ea78d1a11c49bf2910bb5a73853eb5"
+              },
+              {
+                "archive": "windows-strings-0.5.1.crate",
+                "sha256": "7837d08f69c77cf6b07689544538e017c1bfcf57e34b4c0ff58e6c2cd3b37091"
+              },
+              {
+                "archive": "windows-threading-0.2.1.crate",
+                "sha256": "3949bd5b99cafdf1c7ca86b43ca564028dfe27d66958f2470940f73d86d75b37"
+              }
+            ],
+            "unchanged_extracted_bytes": true
+          }
+        },
+        {
+          "id": "artifact.bind",
+          "claim": "Use verified extracted packages for native builds",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:18.011610+00:00",
+          "finished_utc": "2026-10-29T02:27:18.011822+00:00",
+          "case_json_sha256": "0521a18e672cca6d6fb568c36a67af29994fecfba2cc14726010759f18f7723b",
+          "commands": [],
+          "observations": {
+            "archive_hashes": {
+              "fsr-sdk": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5",
+              "fsr-sdk-sys": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5"
+            },
+            "registry_artifact": true
+          }
+        },
+        {
+          "id": "proton.sdk",
+          "claim": "D017 pinned deployment and separate signature observations",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:18.014930+00:00",
+          "finished_utc": "2026-10-29T02:27:18.824325+00:00",
+          "case_json_sha256": "b266300e5ee2504b3595748dd6da99d7b7adc83ff79a477f402b5fe2763fd0d2",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/71c7x068xjwp7q9yl10dv3jl000l2h5i-osslsigncode-2.14/bin/osslsigncode",
+                "verify",
+                "-in",
+                "<run>/native/amd_fidelityfx_loader_dx12.dll"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 30,
+              "execution": "completed",
+              "exit_code": 1,
+              "elapsed_seconds": 0.466
+            },
+            {
+              "args": [
+                "/nix/store/71c7x068xjwp7q9yl10dv3jl000l2h5i-osslsigncode-2.14/bin/osslsigncode",
+                "verify",
+                "-in",
+                "<run>/native/amd_fidelityfx_upscaler_dx12.dll"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 30,
+              "execution": "completed",
+              "exit_code": 1,
+              "elapsed_seconds": 0.266
+            }
+          ],
+          "observations": {
+            "files": {
+              "3rdpartynotice.md": "94401a90486d1b53b528bb7f845a7b8daf7227b60eb7c0fc3b8c5571ba202a27",
+              "Kits/FidelityFX/upscalers/include/ffx_upscale.h": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf",
+              "Kits/FidelityFX/api/include/ffx_api.h": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd",
+              "Kits/FidelityFX/api/include/ffx_api_types.h": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49",
+              "Kits/FidelityFX/api/include/dx12/ffx_api_dx12.h": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530",
+              "Kits/FidelityFX/signedbin/amd_fidelityfx_upscaler_dx12.dll": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46",
+              "Kits/FidelityFX/signedbin/amd_fidelityfx_loader_dx12.dll": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa",
+              "docs/license.md": "6757f2fec461238da6f84f83536ec195e8c036b1773a06f6f34301b9ed8c0963"
+            },
+            "signatures": [
+              {
+                "file": "amd_fidelityfx_loader_dx12.dll",
+                "method": "osslsigncode verify",
+                "exit": 1
+              },
+              {
+                "file": "amd_fidelityfx_upscaler_dx12.dll",
+                "method": "osslsigncode verify",
+                "exit": 1
+              }
+            ],
+            "trust_input": "D017 pinned bytes; Windows strict trust not evaluated"
+          }
+        },
+        {
+          "id": "proton.helper",
+          "claim": "Linux-hosted MSVC ABI C++ helper build",
+          "scope": "linux-cross-compilation",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:18.830959+00:00",
+          "finished_utc": "2026-10-29T02:27:21.706191+00:00",
+          "case_json_sha256": "e5301004a6522c7a2d9fb21429c55493e8487575fd38c980569674a852887e3b",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/0skhb15j2szcq05929gs9m1dbpiydhb7-clang-21.1.8/bin/clang-cl",
+                "--target=x86_64-pc-windows-msvc",
+                "/nologo",
+                "/std:c++17",
+                "/EHsc",
+                "/W4",
+                "/WX",
+                "/MT",
+                "/LD",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/crt/include",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/ucrt",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/um",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/shared",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/winrt",
+                "/I<repo>/target/sdk-proton/v2.3.0/Kits/FidelityFX/api/include/dx12",
+                "<run>/isolation/packages/fsr-sdk-0.3.0/tests/native/gpu.cpp",
+                "<run>/isolation/packages/fsr-sdk-sys-0.1.2/tests/context_lifecycle/device.cpp",
+                "/Fo<run>/native/",
+                "-fuse-ld=lld",
+                "/link",
+                "/OUT:<run>/native/gpu_helper.dll",
+                "/IMPLIB:<run>/native/gpu_helper.lib",
+                "/LIBPATH:<repo>/target/proton-toolchain/xwin/crt/lib/x86_64",
+                "/LIBPATH:<repo>/target/proton-toolchain/xwin/sdk/lib/um/x86_64",
+                "/LIBPATH:<repo>/target/proton-toolchain/xwin/sdk/lib/ucrt/x86_64",
+                "d3d12.lib",
+                "dxgi.lib"
+              ],
+              "cwd": "<repo>",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 2.872
+            }
+          ],
+          "observations": {
+            "helper_sha256": "4a7ff708cdee6fa830f14f56c954ee4de7a910cc425ed56c03f8e2b8e67c5c7d",
+            "wrapper_source": "<run>/isolation/packages/fsr-sdk-0.3.0",
+            "raw_source": "<run>/isolation/packages/fsr-sdk-sys-0.1.2",
+            "registry_artifact": true
+          }
+        },
+        {
+          "id": "proton.build",
+          "claim": "Linux-hosted Windows Rust test build",
+          "scope": "linux-cross-compilation",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:21.706866+00:00",
+          "finished_utc": "2026-10-29T02:27:38.577077+00:00",
+          "case_json_sha256": "bec903e6d936b774d0fa0829a93df0a43ffab222135eff2aee10d2ebf8038b33",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/fx3xhn3cya5kqblgly1nnyk7ywd4g9xl-cargo-xwin-0.23.1/bin/cargo-xwin",
+                "test",
+                "--manifest-path",
+                "<run>/isolation/packages/Cargo.toml",
+                "-p",
+                "fsr-sdk",
+                "--lib",
+                "--features",
+                "dx12,movable",
+                "--target",
+                "x86_64-pc-windows-msvc",
+                "--no-run",
+                "--message-format=json",
+                "--locked",
+                "--offline"
+              ],
+              "cwd": "<run>/isolation/packages",
+              "timeout_seconds": 600,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 16.861
+            }
+          ],
+          "observations": {
+            "executable_sha256": "5670c5c0d22db45b8a8617bed730889e71c5c2569ea1fcf95a8c242e131c2c5f",
+            "manifest": "<run>/isolation/packages/Cargo.toml",
+            "registry_artifact": true,
+            "archive_hashes": {
+              "fsr-sdk": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5",
+              "fsr-sdk-sys": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5"
+            }
+          }
+        },
+        {
+          "id": "proton.launch",
+          "claim": "Proton starts the exact Windows test executable",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:38.577779+00:00",
+          "finished_utc": "2026-10-29T02:27:55.623713+00:00",
+          "case_json_sha256": "47d9b827a5fc73d9127e2b3704605676a8f30ba23c5fe6a6bab7b3537f1aaca1",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--list"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 10.442
+            },
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--list"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 6.581
+            }
+          ],
+          "observations": {
+            "proton_commands": [
+              {
+                "logs": "<run>/cases/proton.launch/proton-00",
+                "required_markers": [],
+                "exit": 0,
+                "execution": "completed"
+              },
+              {
+                "logs": "<run>/cases/proton.launch/proton-01",
+                "required_markers": [
+                  "upscaler::dx12::tests::queries::native_public_queries: test"
+                ],
+                "exit": 0,
+                "execution": "completed"
+              }
+            ],
+            "process_containment": [
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              },
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              }
+            ],
+            "offline_network": [
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              },
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              }
+            ],
+            "prefix": "<repo>/target/proton-prefixes/20261029T022738Z-proton-7a3fde421f55",
+            "translator_overrides": "d3d12=n;d3d12core=n;dxgi=n",
+            "translators": {
+              "d3d12.dll": {
+                "source": "<repo>/target/proton-runtime/v08-deck/proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12.dll",
+                "prefix_sha256": "8283fda74b73bec09c02b63f1ad19a459f1657d1da4efcb8ec55921a000ae4bf"
+              },
+              "d3d12core.dll": {
+                "source": "<repo>/target/proton-runtime/v08-deck/proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12core.dll",
+                "prefix_sha256": "e6e829f8f7b1d61f7f95faf6cb7ffd369c04d10d6342252b5792597c9aa6c018"
+              },
+              "dxgi.dll": {
+                "source": "<repo>/target/proton-runtime/v08-deck/proton/files/lib/wine/dxvk/x86_64-windows/dxgi.dll",
+                "prefix_sha256": "aa9308a7c097eca0ba95bbf9c63ff4badfa204bafa63738aee7990e2067c8d1e"
+              }
+            },
+            "claim": "Windows Rust executable launched; no AMD calls in --list"
+          }
+        },
+        {
+          "id": "proton.queries",
+          "claim": "Shared public-queries workload under explicit Proton validation contract",
+          "scope": "proton-gpu",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:27:55.649016+00:00",
+          "finished_utc": "2026-10-29T02:28:04.811814+00:00",
+          "case_json_sha256": "71ac1455c1aef82cd41fd8223f5aafb32bb40c6ec0053a386a5743fb66582d25",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--ignored",
+                "--exact",
+                "upscaler::dx12::tests::queries::native_public_queries",
+                "--nocapture",
+                "--test-threads=1"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 9.136
+            }
+          ],
+          "observations": {
+            "proton_commands": [
+              {
+                "logs": "<run>/cases/proton.queries/proton-00",
+                "required_markers": [
+                  "Public queries: PASSED",
+                  "1 passed; 0 failed"
+                ],
+                "exit": 0,
+                "execution": "completed"
+              }
+            ],
+            "vulkan_validation": {
+              "active": true,
+              "synchronization": true,
+              "instances": 3,
+              "errors": 0,
+              "warnings": 0,
+              "log": "<run>/cases/proton.queries/proton-00/validation.log"
+            },
+            "process_containment": [
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              }
+            ],
+            "offline_network": [
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              }
+            ],
+            "loaded_modules": {
+              "amd_fidelityfx_loader_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+                "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+              },
+              "amd_fidelityfx_upscaler_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+                "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+              }
+            },
+            "adapter_provider_metrics": [
+              "Local queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 71172096, aliasable_bytes: 11010048 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 78970880, aliasable_bytes: 11010048 }",
+              "Movable queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 71172096, aliasable_bytes: 11010048 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 78970880, aliasable_bytes: 11010048 }",
+              "Public queries: PASSED",
+              "Adapter: AMD Custom GPU 0405 (RADV VANGOGH); vendor=0x1002 device=0x163f; feature_level=12_0; index=0; luid=0x00000000000003f2"
+            ]
+          }
+        },
+        {
+          "id": "proton.dispatch",
+          "claim": "Shared gate-a workload under explicit Proton validation contract",
+          "scope": "proton-gpu",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:28:04.812401+00:00",
+          "finished_utc": "2026-10-29T02:28:14.233533+00:00",
+          "case_json_sha256": "60c505066b8bd234df5b6c0536ad16668e45155d7880fff7837b2d6c875dfea3",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--ignored",
+                "--exact",
+                "upscaler::dx12::native_dispatch::proton_dispatch_readback",
+                "--nocapture",
+                "--test-threads=1"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 9.388
+            }
+          ],
+          "observations": {
+            "proton_commands": [
+              {
+                "logs": "<run>/cases/proton.dispatch/proton-00",
+                "required_markers": [
+                  "Proton single-frame: PASSED",
+                  "1 passed; 0 failed"
+                ],
+                "exit": 0,
+                "execution": "completed"
+              }
+            ],
+            "vulkan_validation": {
+              "active": true,
+              "synchronization": true,
+              "instances": 3,
+              "errors": 0,
+              "warnings": 0,
+              "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+            },
+            "process_containment": [
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              }
+            ],
+            "offline_network": [
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              }
+            ],
+            "loaded_modules": {
+              "amd_fidelityfx_loader_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+                "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+              },
+              "amd_fidelityfx_upscaler_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+                "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+              }
+            },
+            "adapter_provider_metrics": [
+              "Gate A debug layer: HRESULT=0x887a002d",
+              "Proton validation: DirectX debug HRESULT=0x887a002d; D3D12 GBV not enabled; Vulkan diagnostics recorded by launcher",
+              "Gate A device creation: HRESULT=0x00000000",
+              "Gate A queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 7012352, aliasable_bytes: 917504 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 7536640, aliasable_bytes: 917504 }",
+              "Gate A public construction: OK native_code=0x00000000",
+              "Upscaler provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+              "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+              "Proton validation: DirectX info queue unavailable; error count unavailable",
+              "Gate A explicit destroy: OK native_code=0x00000000",
+              "Gate A after explicit destroy and resource cleanup:",
+              "Proton single-frame: PASSED",
+              "Adapter: AMD Custom GPU 0405 (RADV VANGOGH); vendor=0x1002 device=0x163f; feature_level=12_0; index=0; luid=0x00000000000003f2",
+              "Selected-device AMD check: vendor=0x1002 device=0x163f hardware_amd=true",
+              "Proton device checkpoint: device_removed=0x00000000"
+            ]
+          }
+        },
+        {
+          "id": "proton.timeout.fixture",
+          "claim": "Cross-build bounded Windows parent/detached-child fixture",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:28:14.234232+00:00",
+          "finished_utc": "2026-10-29T02:28:15.254263+00:00",
+          "case_json_sha256": "a61a8cf22159617f4f1ad7961baf263437b8366194e4f9cb4f38a0f2026b1aa4",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/0skhb15j2szcq05929gs9m1dbpiydhb7-clang-21.1.8/bin/clang-cl",
+                "--target=x86_64-pc-windows-msvc",
+                "/nologo",
+                "/std:c++17",
+                "/EHsc",
+                "/MT",
+                "<repo>/tools/verification/fixtures/proton_timeout.cpp",
+                "/Fe<run>/native/timeout-fixture.exe",
+                "/Fo<run>/native/timeout-fixture.obj",
+                "-fuse-ld=lld",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/crt/include",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/ucrt",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/um",
+                "/imsvc",
+                "<repo>/target/proton-toolchain/xwin/sdk/include/shared",
+                "/link",
+                "/SUBSYSTEM:CONSOLE",
+                "/LIBPATH:<repo>/target/proton-toolchain/xwin/crt/lib/x86_64",
+                "/LIBPATH:<repo>/target/proton-toolchain/xwin/sdk/lib/um/x86_64",
+                "/LIBPATH:<repo>/target/proton-toolchain/xwin/sdk/lib/ucrt/x86_64"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 1.017
+            }
+          ],
+          "observations": {
+            "fixture_sha256": "adbf02577bbaf2f1ac557404c66092401083013a9df4ad5d415eae0fd04bfa8c",
+            "fixture_lifetime_seconds": 120
+          }
+        },
+        {
+          "id": "proton.timeout.expiry",
+          "claim": "Forced watchdog expiry stops all owned descendants and preserves unrelated Wine prefix",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:28:15.261827+00:00",
+          "finished_utc": "2026-10-29T02:28:43.126831+00:00",
+          "case_json_sha256": "9f5c1a19cb9ceb7c8c8207c7342928e564c2fc2c37ecd78341472680fa6fa9c1",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/timeout-fixture.exe",
+                "once",
+                "unused"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 11.694
+            },
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/timeout-fixture.exe",
+                "parent",
+                "z:<run>\\cases\\proton.timeout.expiry\\target"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 1,
+              "execution": "timed_out",
+              "exit_code": -9,
+              "elapsed_seconds": 8.873
+            }
+          ],
+          "observations": {
+            "proton_commands": [
+              {
+                "logs": "<run>/cases/proton.timeout.expiry/proton-00",
+                "required_markers": [],
+                "exit": 0,
+                "execution": "completed"
+              }
+            ],
+            "process_containment": [
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              }
+            ],
+            "offline_network": [
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              }
+            ],
+            "target_prefix": "<repo>/target/proton-prefixes/20261029T022738Z-proton-7a3fde421f55",
+            "unrelated_prefix": "<repo>/target/proton-prefixes/20261029T022815Z-timeout-sentinel-65ae4dbf274b",
+            "watchdog_root": 13677,
+            "detached_groups": true,
+            "ready_parent_and_detached_child": true,
+            "descendants_stopped": true,
+            "surviving_processes": [],
+            "heartbeats_stopped": true,
+            "unrelated_heartbeat_advanced": true,
+            "unrelated_processes_preserved": true,
+            "emergency_cleanup": [],
+            "observed_descendant_count": 15,
+            "observed_executables": [
+              ".umu-run-wrappe",
+              "bwrap",
+              "plugplay.exe",
+              "pv-adverb",
+              "python3",
+              "services.exe",
+              "srt-bwrap",
+              "start.exe",
+              "svchost.exe",
+              "timeout-fixture",
+              "winedevice.exe",
+              "wineserver"
+            ]
+          }
+        },
+        {
+          "id": "proton.timeout.post-queries",
+          "claim": "Normal queries succeeds after forced timeout and fixture cleanup",
+          "scope": "proton-gpu",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:28:43.127996+00:00",
+          "finished_utc": "2026-10-29T02:28:53.747654+00:00",
+          "case_json_sha256": "4a05a267b330a4a55bbc43ae95ede0dfe3b518a1c58f6436b1b76e9159d5d80c",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--ignored",
+                "--exact",
+                "upscaler::dx12::tests::queries::native_public_queries",
+                "--nocapture",
+                "--test-threads=1"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 10.592
+            }
+          ],
+          "observations": {
+            "proton_commands": [
+              {
+                "logs": "<run>/cases/proton.timeout.post-queries/proton-00",
+                "required_markers": [
+                  "Public queries: PASSED",
+                  "1 passed; 0 failed"
+                ],
+                "exit": 0,
+                "execution": "completed"
+              }
+            ],
+            "vulkan_validation": {
+              "active": true,
+              "synchronization": true,
+              "instances": 3,
+              "errors": 0,
+              "warnings": 0,
+              "log": "<run>/cases/proton.timeout.post-queries/proton-00/validation.log"
+            },
+            "process_containment": [
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              }
+            ],
+            "offline_network": [
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              }
+            ],
+            "loaded_modules": {
+              "amd_fidelityfx_loader_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+                "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+              },
+              "amd_fidelityfx_upscaler_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+                "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+              }
+            },
+            "adapter_provider_metrics": [
+              "Local queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 71172096, aliasable_bytes: 11010048 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 78970880, aliasable_bytes: 11010048 }",
+              "Movable queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 71172096, aliasable_bytes: 11010048 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 78970880, aliasable_bytes: 11010048 }",
+              "Public queries: PASSED",
+              "Adapter: AMD Custom GPU 0405 (RADV VANGOGH); vendor=0x1002 device=0x163f; feature_level=12_0; index=0; luid=0x00000000000003f2"
+            ]
+          }
+        },
+        {
+          "id": "proton.timeout.post-dispatch",
+          "claim": "Normal dispatch succeeds after forced timeout and fixture cleanup",
+          "scope": "proton-gpu",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:28:53.748355+00:00",
+          "finished_utc": "2026-10-29T02:29:02.814053+00:00",
+          "case_json_sha256": "fbc81d4aad5f4738af90a314bc12e7e1f286a845afdd632fe763f2a31c69dbd9",
+          "commands": [
+            {
+              "args": [
+                "/nix/store/zri6pfys37ih88s5yckr47khz5zw1rzk-bubblewrap-0.12.0/bin/bwrap",
+                "--unshare-user",
+                "--unshare-pid",
+                "--die-with-parent",
+                "--unshare-net",
+                "--bind",
+                "/",
+                "/",
+                "--dev-bind",
+                "/dev",
+                "/dev",
+                "--proc",
+                "/proc",
+                "--",
+                "/nix/store/zc827mp1bp2ix1paiwwfnc03acwqwrk5-python3-3.14.7-env/bin/python3",
+                "<repo>/tools/verification/proton_runtime.py",
+                "--network-exec",
+                "net:[4026531833]",
+                "pid:[4026531836]",
+                "--",
+                "/nix/store/3dwzqgm2n8h634cgvyl9xfbnxwx9ih8q-python3.14-umu-launcher-unwrapped-1.4.4/bin/umu-run",
+                "<run>/native/proton-fsr_sdk.exe",
+                "--ignored",
+                "--exact",
+                "upscaler::dx12::native_dispatch::proton_dispatch_readback",
+                "--nocapture",
+                "--test-threads=1"
+              ],
+              "cwd": "<run>/native",
+              "timeout_seconds": 180,
+              "execution": "completed",
+              "exit_code": 0,
+              "elapsed_seconds": 9.039
+            }
+          ],
+          "observations": {
+            "proton_commands": [
+              {
+                "logs": "<run>/cases/proton.timeout.post-dispatch/proton-00",
+                "required_markers": [
+                  "Proton single-frame: PASSED",
+                  "1 passed; 0 failed"
+                ],
+                "exit": 0,
+                "execution": "completed"
+              }
+            ],
+            "vulkan_validation": {
+              "active": true,
+              "synchronization": true,
+              "instances": 3,
+              "errors": 0,
+              "warnings": 0,
+              "log": "<run>/cases/proton.timeout.post-dispatch/proton-00/validation.log"
+            },
+            "process_containment": [
+              {
+                "distinct_pid_namespace": true,
+                "parent_death_policy": "--die-with-parent"
+              }
+            ],
+            "offline_network": [
+              {
+                "distinct_namespace": true,
+                "interfaces": [
+                  "lo"
+                ],
+                "unreachable_errno": [
+                  101,
+                  101
+                ]
+              }
+            ],
+            "loaded_modules": {
+              "amd_fidelityfx_loader_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+                "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+              },
+              "amd_fidelityfx_upscaler_dx12.dll": {
+                "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+                "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+              }
+            },
+            "adapter_provider_metrics": [
+              "Gate A debug layer: HRESULT=0x887a002d",
+              "Proton validation: DirectX debug HRESULT=0x887a002d; D3D12 GBV not enabled; Vulkan diagnostics recorded by launcher",
+              "Gate A device creation: HRESULT=0x00000000",
+              "Gate A queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 7012352, aliasable_bytes: 917504 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 7536640, aliasable_bytes: 917504 }",
+              "Gate A public construction: OK native_code=0x00000000",
+              "Upscaler provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+              "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+              "Proton validation: DirectX info queue unavailable; error count unavailable",
+              "Gate A explicit destroy: OK native_code=0x00000000",
+              "Gate A after explicit destroy and resource cleanup:",
+              "Proton single-frame: PASSED",
+              "Adapter: AMD Custom GPU 0405 (RADV VANGOGH); vendor=0x1002 device=0x163f; feature_level=12_0; index=0; luid=0x00000000000003f2",
+              "Selected-device AMD check: vendor=0x1002 device=0x163f hardware_amd=true",
+              "Proton device checkpoint: device_removed=0x00000000"
+            ]
+          }
+        },
+        {
+          "id": "proton.offline.integrity",
+          "claim": "Prepared distribution bytes unchanged after offline GPU execution",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:29:02.814727+00:00",
+          "finished_utc": "2026-10-29T02:29:08.272843+00:00",
+          "case_json_sha256": "aae4dd790e838b6f77c259146a4930cce505c393972e0fca2766154fffbe0b77",
+          "commands": [],
+          "observations": {
+            "runtime": {
+              "proton": {
+                "entries": 8138,
+                "bytes": 1404192639,
+                "sha256": "ceeed77a92488627402161d2f255799d606c2dda777d50025d2b5911fd6bb3ef"
+              },
+              "runtime": {
+                "entries": 9593,
+                "bytes": 810303158,
+                "sha256": "ec3b47dbb379a66706fa35894dfbc29deba4f9a986355d63c6bf255782ba8a84"
+              },
+              "launcher": {
+                "entries": 63,
+                "bytes": 1484292,
+                "sha256": "ecc31faf8fa5ac3347278ea24fc1d6da74a97ee71483614731f11f7ead565517"
+              }
+            },
+            "runtime_unchanged": true
+          }
+        },
+        {
+          "id": "release.integrity",
+          "claim": "Recheck selected archives and extracted bytes after all checks",
+          "scope": "host",
+          "evaluation": "passed",
+          "execution": "completed",
+          "started_utc": "2026-10-29T02:29:08.273743+00:00",
+          "finished_utc": "2026-10-29T02:29:08.343855+00:00",
+          "case_json_sha256": "65460c83f2d647c4020a885c6da0035dcdc439eb29dd76408058c70f996684c1",
+          "commands": [],
+          "observations": {
+            "selected_archives_unchanged": true,
+            "extracted_bytes_unchanged": true
+          }
+        }
+      ]
+    }
+  ]
+}

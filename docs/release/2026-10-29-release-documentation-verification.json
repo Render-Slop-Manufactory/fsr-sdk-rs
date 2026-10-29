@@ -1,0 +1,262 @@
+{
+  "date": "2026-10-29",
+  "scope": "Release-facing documentation and descriptive metadata only; top-level README expressly excluded. Final archive/registry/platform checks and publication remain separate.",
+  "started_utc": "2026-10-29T16:01:15.023232+00:00",
+  "finished_utc": "2026-10-29T16:01:33.841411+00:00",
+  "environment_overrides": {
+    "CARGO_TARGET_DIR": "<repo>/target/verification-build/current",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_INCREMENTAL": "0",
+    "RUSTDOCFLAGS": "-D warnings"
+  },
+  "commands": [
+    {
+      "args": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-29T16:01:15.023272+00:00",
+      "finished_utc": "2026-10-29T16:01:17.515587+00:00"
+    },
+    {
+      "args": [
+        "cargo",
+        "doc",
+        "--workspace",
+        "--locked",
+        "--offline",
+        "--features",
+        "fsr-sdk/movable,fsr-sdk/utils",
+        "--no-deps"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-29T16:01:17.516223+00:00",
+      "finished_utc": "2026-10-29T16:01:22.776426+00:00"
+    },
+    {
+      "args": [
+        "cargo",
+        "doc",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--no-default-features",
+        "--features",
+        "utils",
+        "--no-deps"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-29T16:01:22.777074+00:00",
+      "finished_utc": "2026-10-29T16:01:31.271018+00:00"
+    },
+    {
+      "args": [
+        "cargo",
+        "metadata",
+        "--locked",
+        "--offline",
+        "--no-deps",
+        "--format-version",
+        "1"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-29T16:01:31.271760+00:00",
+      "finished_utc": "2026-10-29T16:01:31.666642+00:00"
+    },
+    {
+      "args": [
+        "cargo",
+        "package",
+        "-p",
+        "fsr-sdk",
+        "--list",
+        "--allow-dirty",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-29T16:01:31.667991+00:00",
+      "finished_utc": "2026-10-29T16:01:33.476717+00:00"
+    },
+    {
+      "args": [
+        "cargo",
+        "package",
+        "-p",
+        "fsr-sdk-sys",
+        "--list",
+        "--allow-dirty",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-10-29T16:01:33.477337+00:00",
+      "finished_utc": "2026-10-29T16:01:33.840722+00:00"
+    }
+  ],
+  "packages": [
+    {
+      "name": "fsr-sdk-sys",
+      "version": "0.1.2",
+      "description": "Selected raw bindings and explicit Windows/DX12 runtime loading for AMD FSR SDK v2.3.0",
+      "documentation": "https://docs.rs/fsr-sdk-sys/0.1.2/fsr_sdk_sys/",
+      "readme": "README.md",
+      "license": "MPL-2.0",
+      "rust_version": "1.88",
+      "keywords": [
+        "fsr",
+        "fidelityfx",
+        "dx12",
+        "graphics",
+        "gamedev"
+      ],
+      "categories": [
+        "external-ffi-bindings",
+        "rendering",
+        "game-development"
+      ]
+    },
+    {
+      "name": "fsr-sdk",
+      "version": "0.3.0",
+      "description": "Engine-independent Windows/DX12 upscaling wrapper for AMD FSR SDK v2.3.0",
+      "documentation": "https://docs.rs/fsr-sdk/0.3.0/fsr_sdk/",
+      "readme": "README.md",
+      "license": "MPL-2.0",
+      "rust_version": "1.88",
+      "keywords": [
+        "fsr",
+        "fidelityfx",
+        "dx12",
+        "graphics",
+        "gamedev"
+      ],
+      "categories": [
+        "rendering",
+        "game-development"
+      ]
+    }
+  ],
+  "package_lists": [
+    {
+      "package": "fsr-sdk",
+      "entries": 171,
+      "licenses_and_readme_present": true,
+      "no_candidate_archives_or_native_build_products": true
+    },
+    {
+      "package": "fsr-sdk-sys",
+      "entries": 33,
+      "licenses_and_readme_present": true,
+      "no_candidate_archives_or_native_build_products": true
+    }
+  ],
+  "implementation_unchanged": true,
+  "rust_examples_unchanged": true,
+  "features_dependencies_msrv_and_lockfile_unchanged": true,
+  "top_level_readme_unchanged_sha256": "8440ecc1843cba91fbd153a31b7394fa949d2edbd4758c79f055711588988208",
+  "content_screen": {
+    "tool": "ripgrep 15.1.0 (rev af60c2de9d)",
+    "scope": "Current non-ignored worktree text; excludes .git, target and external. No final .crate or historical Git content claim.",
+    "searches": [
+      {
+        "screen": "private-key",
+        "args": [
+          "rg",
+          "-l",
+          "--hidden",
+          "-g",
+          "!.git/**",
+          "-g",
+          "!target/**",
+          "-g",
+          "!external/**",
+          "--",
+          "-----BEGIN ([A-Z ]+ )?PRIVATE KEY-----",
+          "."
+        ],
+        "exit_code": 1,
+        "matched_files": [],
+        "disposition": "No matches for this bounded pattern."
+      },
+      {
+        "screen": "token",
+        "args": [
+          "rg",
+          "-l",
+          "--hidden",
+          "-g",
+          "!.git/**",
+          "-g",
+          "!target/**",
+          "-g",
+          "!external/**",
+          "--",
+          "\\b(gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|AKIA[0-9A-Z]{16})\\b",
+          "."
+        ],
+        "exit_code": 1,
+        "matched_files": [],
+        "disposition": "No matches for these bounded token patterns."
+      },
+      {
+        "screen": "email",
+        "args": [
+          "rg",
+          "-l",
+          "--hidden",
+          "-g",
+          "!.git/**",
+          "-g",
+          "!target/**",
+          "-g",
+          "!external/**",
+          "--",
+          "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
+          "."
+        ],
+        "exit_code": 0,
+        "matched_files": [
+          ".\\tools\\verification\\tests\\test_sdk.py"
+        ],
+        "disposition": "One intentional URL-userinfo rejection fixture in test_sdk.py; no maintainer contact data."
+      },
+      {
+        "screen": "workspace",
+        "args": [
+          "rg",
+          "-l",
+          "--hidden",
+          "-g",
+          "!.git/**",
+          "-g",
+          "!target/**",
+          "-g",
+          "!external/**",
+          "-i",
+          "--",
+          "(/home/[^/<>[:space:]]+|/Users/[^/<>[:space:]]+|\\b[A-Z]:\\\\+Users\\\\+[^\\\\<>[:space:]]+|\\b[A-Z]:[\\\\/]+[^<>\"[:space:]]*fsr-sdk-rs[\\\\/])",
+          "."
+        ],
+        "exit_code": 0,
+        "matched_files": [
+          ".\\tools\\verification\\records.py",
+          ".\\tools\\verification\\README.md",
+          ".\\docs\\release\\2026-10-29-release-documentation-verification.json",
+          ".\\docs\\release-content-review.md",
+          ".\\docs\\research\\records\\2026-10-25-exp-upscaler-callback-allocation\\evidence.json",
+          ".\\docs\\research\\records\\2026-10-11-exp-v01-verification-calibration.md",
+          ".\\docs\\research\\records\\2026-10-15-exp-independent-cpp-cpu-comparison.md"
+        ],
+        "disposition": "Matches are the documented search expression, screening metadata, or normalization prose saying repository/home/run; no private workspace value in the reviewed matches."
+      }
+    ]
+  },
+  "privacy_correction": "2026-10-29-evidence-privacy-correction.json"
+}

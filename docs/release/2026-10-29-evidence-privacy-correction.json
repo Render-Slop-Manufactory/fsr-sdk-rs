@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-29",
+  "scope": "Sanitized historical JSON derivatives; original inventory hashes and native outcomes are not regenerated.",
+  "files": [
+    {
+      "file": "docs/research/records/2026-10-14-exp-steam-machine-proton-temporal-regression/results.json",
+      "original_bytes": 412416,
+      "original_sha256": "b849f1d60f86393b8486532a2c0f9f6be8967cfacc195bbef95de41e38965aad",
+      "sanitized_bytes": 399177,
+      "sanitized_sha256": "b92185edeb42d75237319aff0434129c8cd716c614bb95e2be817390256473d2",
+      "replacements": {
+        "workspace_paths": 122,
+        "email_addresses": 0
+      },
+      "changed_string_fields": 122,
+      "original_newlines": "CRLF",
+      "sanitized_newlines": "LF",
+      "numerical_and_structural_values_unchanged": true
+    },
+    {
+      "file": "docs/release/2026-10-10-m9-verification/checks.json",
+      "original_bytes": 304115,
+      "original_sha256": "036ab2612ea6e49a7fa3e166da1a4b94807fef4bc60c3df0b1af77288939168c",
+      "sanitized_bytes": 303304,
+      "sanitized_sha256": "5673b022a8076d3739a36630b658cedd79aff3d7c11355d3c6606f4ae09a210e",
+      "replacements": {
+        "workspace_paths": 0,
+        "email_addresses": 14
+      },
+      "changed_string_fields": 2,
+      "original_newlines": "CRLF",
+      "sanitized_newlines": "LF",
+      "numerical_and_structural_values_unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,1660 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "checkpoint": "rc1-publication-verification",
+  "scope": "Clean frozen-source archive regeneration and Cargo workspace publication dry-run, with exact rc1 byte comparisons; no upload.",
+  "package_reproduction": {
+    "schema_version": 1,
+    "candidate": "0.3.0-rc1",
+    "scope": "Reproduce frozen package bytes with Cargo builtin verification; no publish invocation.",
+    "started_utc": "2026-10-29T22:24:43.427732+00:00",
+    "status": "passed",
+    "attempt": "20261029T222443Z-rc1-package-b58048b66ea3",
+    "manifest_sha256": "f2d6a51756c3d76b07a5a3e181ea83d5f9cb41637fa98cb6063f5cfb0f897901",
+    "source_revision": "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa",
+    "commands": [
+      {
+        "args": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:24:43.495238+00:00",
+        "finished_utc": "2026-10-29T22:24:43.567481+00:00",
+        "elapsed_seconds": 0.072,
+        "exit_code": 0,
+        "stdout": "00-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "00-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:24:43.568730+00:00",
+        "finished_utc": "2026-10-29T22:24:43.647929+00:00",
+        "elapsed_seconds": 0.079,
+        "exit_code": 0,
+        "stdout": "01-stdout.txt",
+        "stdout_sha256": "81d2d5e0a0d1fb82c9b3a62fc233d7e69877ac77a3f4efb52ab29c96b3cb1e00",
+        "stderr": "01-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "055a2d8b1147214fc795c6c5de39e78915eaabc7\n",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "cargo",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:24:43.650244+00:00",
+        "finished_utc": "2026-10-29T22:24:43.726602+00:00",
+        "elapsed_seconds": 0.076,
+        "exit_code": 0,
+        "stdout": "02-stdout.txt",
+        "stdout_sha256": "ee139a5b7be0ef730dbafe80147d873715dbc532a4637a5965df0592867e9b0e",
+        "stderr": "02-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "cargo 1.99.0 (5f94df478 2026-08-27)\nrelease: 1.99.0\ncommit-hash: 5f94df4789f005f9a352888e8355ffc645b7ed0e\ncommit-date: 2026-08-27\nhost: x86_64-pc-windows-msvc\nlibgit2: 1.9.6 (sys:0.21.0 vendored)\nlibcurl: 8.21.0-DEV (sys:0.4.90+curl-8.21.0 vendored ssl:Schannel)\nos: Windows 10.0.26300 (Windows 11 Professional) [64-bit]\n",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "rustc",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:24:43.728874+00:00",
+        "finished_utc": "2026-10-29T22:24:43.833158+00:00",
+        "elapsed_seconds": 0.104,
+        "exit_code": 0,
+        "stdout": "03-stdout.txt",
+        "stdout_sha256": "5477f9bad65b15c4c5b31fc050fc72feba651ea1b330bc75cf356a4d6b0fbc80",
+        "stderr": "03-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "git",
+          "clone",
+          "--shared",
+          "--no-checkout",
+          "--config",
+          "core.autocrlf=false",
+          "--config",
+          "core.eol=lf",
+          "--config",
+          "gc.auto=0",
+          "<repo>",
+          "<run>\\source"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:24:43.836121+00:00",
+        "finished_utc": "2026-10-29T22:24:44.052667+00:00",
+        "elapsed_seconds": 0.217,
+        "exit_code": 0,
+        "stdout": "04-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "04-stderr.txt",
+        "stderr_sha256": "6fdcab5944d205c5aaa062ed2b7ec179ccc9a5b11cbaae1c93b78c60e3078265",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": "Cloning into '<run>\\source'...\ndone.\n"
+      },
+      {
+        "args": [
+          "git",
+          "checkout",
+          "--detach",
+          "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa"
+        ],
+        "cwd": "<run>\\source",
+        "started_utc": "2026-10-29T22:24:44.060100+00:00",
+        "finished_utc": "2026-10-29T22:24:46.098744+00:00",
+        "elapsed_seconds": 2.039,
+        "exit_code": 0,
+        "stdout": "05-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "05-stderr.txt",
+        "stderr_sha256": "31d3b3dddaabade7c3d9b736361efedf368dcb5d324bf7a5be4535b0248230d5",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": "HEAD is now at 6e1c93e docs update\n"
+      },
+      {
+        "args": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "<run>\\source",
+        "started_utc": "2026-10-29T22:24:46.105813+00:00",
+        "finished_utc": "2026-10-29T22:24:46.154110+00:00",
+        "elapsed_seconds": 0.048,
+        "exit_code": 0,
+        "stdout": "06-stdout.txt",
+        "stdout_sha256": "5436deb5eeab49c11ec07debd7f7b70e1b63352eadc8511639524ff4c76d919c",
+        "stderr": "06-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa\n",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "<run>\\source",
+        "started_utc": "2026-10-29T22:24:46.161215+00:00",
+        "finished_utc": "2026-10-29T22:24:46.263354+00:00",
+        "elapsed_seconds": 0.102,
+        "exit_code": 0,
+        "stdout": "07-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "07-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "cargo",
+          "package",
+          "--workspace",
+          "--locked",
+          "--offline",
+          "--target-dir",
+          "<run>\\build"
+        ],
+        "cwd": "<run>\\source",
+        "started_utc": "2026-10-29T22:24:46.266265+00:00",
+        "finished_utc": "2026-10-29T22:25:00.071813+00:00",
+        "elapsed_seconds": 13.806,
+        "exit_code": 0,
+        "stdout": "08-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "08-stderr.txt",
+        "stderr_sha256": "4b84af623fd5fdfe8057e8e045bd9ebb6e3a8f12ed99630bb27b840e9bb99416",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": "   Packaging fsr-sdk-sys v0.1.2 (<run>\\source\\crates\\fsr-sdk-sys)\n    Packaged 33 files, 177.0KiB (42.6KiB compressed)\n   Packaging fsr-sdk v0.3.0 (<run>\\source\\crates\\fsr-sdk)\n    Packaged 171 files, 1.4MiB (311.5KiB compressed)\n   Verifying fsr-sdk-sys v0.1.2 (<run>\\source\\crates\\fsr-sdk-sys)\n   Compiling fsr-sdk-sys v0.1.2 (<run>\\build\\package\\fsr-sdk-sys-0.1.2)\n    Finished `dev` profile [unoptimized] target(s) in 2.01s\n   Verifying fsr-sdk v0.3.0 (<run>\\source\\crates\\fsr-sdk)\n   Unpacking fsr-sdk-sys v0.1.2 (registry `<run>\\build\\package\\tmp-registry`)\n   Compiling proc-macro2 v1.0.107\n   Compiling windows-link v0.2.1\n   Compiling unicode-ident v1.0.26\n   Compiling quote v1.0.47\n   Compiling windows-strings v0.5.1\n   Compiling windows-result v0.4.1\n   Compiling windows-threading v0.2.1\n   Compiling libloading v0.9.0\n   Compiling fsr-sdk-sys v0.1.2\n   Compiling syn v2.0.119\n   Compiling windows-interface v0.59.3\n   Compiling windows-implement v0.60.2\n   Compiling windows-core v0.62.2\n   Compiling windows-future v0.3.2\n   Compiling windows-collections v0.3.2\n   Compiling windows-numerics v0.3.1\n   Compiling windows v0.62.2\n   Compiling fsr-sdk v0.3.0 (<run>\\build\\package\\fsr-sdk-0.3.0)\n    Finished `dev` profile [unoptimized] target(s) in 13.70s\n"
+      },
+      {
+        "args": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "<run>\\source",
+        "started_utc": "2026-10-29T22:25:00.212212+00:00",
+        "finished_utc": "2026-10-29T22:25:03.016475+00:00",
+        "elapsed_seconds": 2.804,
+        "exit_code": 0,
+        "stdout": "09-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "09-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:25:03.020020+00:00",
+        "finished_utc": "2026-10-29T22:25:03.087713+00:00",
+        "elapsed_seconds": 0.068,
+        "exit_code": 0,
+        "stdout": "10-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "10-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": ""
+      }
+    ],
+    "packages": [
+      {
+        "name": "fsr-sdk",
+        "version": "0.3.0",
+        "file": "fsr-sdk-0.3.0.crate",
+        "bytes": 318967,
+        "sha256": "e198d6f87938bfe3f321fdd61355ba0ec8cb4b133633f72ad83e3713fbfed766",
+        "expected_bytes": 318967,
+        "expected_sha256": "e198d6f87938bfe3f321fdd61355ba0ec8cb4b133633f72ad83e3713fbfed766",
+        "builtin_verification_passed": true,
+        "matches_frozen_archive": true,
+        "vcs_info": {
+          "git": {
+            "sha1": "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa"
+          },
+          "path_in_vcs": "crates/fsr-sdk"
+        },
+        "members": [
+          {
+            "path": ".cargo_vcs_info.json",
+            "bytes": 108,
+            "sha256": "e805a1fd3880130bf9db605e7a94aab92861524c15ed3d582f0cb8358dece403"
+          },
+          {
+            "path": "Cargo.lock",
+            "bytes": 4567,
+            "sha256": "bd62edcfdb8a2ede5a32d0d796028f5132292bc432f4b043d7da7169e61c9870"
+          },
+          {
+            "path": "Cargo.toml",
+            "bytes": 2905,
+            "sha256": "04846202bb45e2072c0994f5ed08ad0f235807a019fe42a76db384db56c50cc2"
+          },
+          {
+            "path": "Cargo.toml.orig",
+            "bytes": 1282,
+            "sha256": "192457b0d220a6538ebbd043ab8b0dbc3488f614002b0a9ce41a8aea114a4b8f"
+          },
+          {
+            "path": "LICENSE",
+            "bytes": 16726,
+            "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04"
+          },
+          {
+            "path": "LICENSE-AMD",
+            "bytes": 1174,
+            "sha256": "53f952b9d392d281f3208be9bd4cd126f20b0fe10fc28cf316763b80173aa76f"
+          },
+          {
+            "path": "README.md",
+            "bytes": 9821,
+            "sha256": "8412c290834cddafd639d4ce3ffd48888c9b645ecd75729aff9e32d7ec42038d"
+          },
+          {
+            "path": "examples/dx12_active_output.rs",
+            "bytes": 2681,
+            "sha256": "06e529e59ff732f56797bfd91682fd0170a4c1e25bf667113628b9015a42ae24"
+          },
+          {
+            "path": "examples/dx12_queries.rs",
+            "bytes": 1621,
+            "sha256": "6a3e61a609c556f5da81972255f13fc318a1ccceedea819a7e221cc852a65c95"
+          },
+          {
+            "path": "examples/dx12_reactive_mask.rs",
+            "bytes": 6346,
+            "sha256": "a120adf0bb3d353b6bf7ef0f4f63572d470c07e51a0b678ef668c5837a270383"
+          },
+          {
+            "path": "examples/dx12_recovery.rs",
+            "bytes": 4025,
+            "sha256": "7976db18a6601f30cc975846cf80a617ae84e42fa3d835680575495b7f8f21fa"
+          },
+          {
+            "path": "examples/dx12_upscale.rs",
+            "bytes": 8288,
+            "sha256": "7e97d07adb21103d1e0d0d759eed73db195f59c1862c53e121ceda14c27c12cb"
+          },
+          {
+            "path": "examples/movable_upscale.rs",
+            "bytes": 5724,
+            "sha256": "2af6600606f08e9a2d3abf515bd4b3ea55fa653450dcc35b0cefdaf160abbacf"
+          },
+          {
+            "path": "examples/provider_choice.rs",
+            "bytes": 1941,
+            "sha256": "2d165f0ba2facb3707333021824ef9836dd5111435fb1dc89dc8c6ccc77906e4"
+          },
+          {
+            "path": "examples/upscaler_workflows.rs",
+            "bytes": 10634,
+            "sha256": "35b4d664dfe23b438d30b917556527a27a792b4c2eec58abbf905bac43bf1c0a"
+          },
+          {
+            "path": "src/context/movable.rs",
+            "bytes": 15627,
+            "sha256": "268e4ab982f086fe1843afe656b388c4dd19a2535ffd778c1792c56bba583494"
+          },
+          {
+            "path": "src/context/test_runtime.rs",
+            "bytes": 2914,
+            "sha256": "ffd45c81333cb2e6221f91b58fb646b9e11470bfb4c9ed30b7bb9eaad7d446df"
+          },
+          {
+            "path": "src/context/tests.rs",
+            "bytes": 24442,
+            "sha256": "15018188c01b98256a8958d06a087365d2b39dea6a2d4bcf08065732b48c1ba1"
+          },
+          {
+            "path": "src/context/transfer.rs",
+            "bytes": 13931,
+            "sha256": "ed9ea06a5c2f1ef03451609315eb0d1dafe2c2c391fe0392089009bc2fa2d2c8"
+          },
+          {
+            "path": "src/context.rs",
+            "bytes": 10122,
+            "sha256": "3e2744be6664a1e164be799da5456ef33a30716f20b7eff80f2a1b734671990c"
+          },
+          {
+            "path": "src/context_policy.rs",
+            "bytes": 2533,
+            "sha256": "b5b21c053ddd4f47baf66306339a67a9d1559777367701b0fbe49c8dbaf5f8d2"
+          },
+          {
+            "path": "src/error/allocation.rs",
+            "bytes": 1671,
+            "sha256": "fc0959fdaa823f72e0e0f0efcda4f038fb6d093a7400b77878a1c4c64fb515b0"
+          },
+          {
+            "path": "src/error/backend.rs",
+            "bytes": 2286,
+            "sha256": "5be0046518c757e0d0c26e7910e44e1a651444b091744b117f58aa982d626dee"
+          },
+          {
+            "path": "src/error/input.rs",
+            "bytes": 2728,
+            "sha256": "688f947556ce817666d09fae2c8b2329cfdc7cc1f794d639a355c2615f407ef1"
+          },
+          {
+            "path": "src/error/native.rs",
+            "bytes": 2015,
+            "sha256": "9123d0f5a68c37ea1d56d34a106433404c24ec855212753a76e96125d77cfdb9"
+          },
+          {
+            "path": "src/error/tests.rs",
+            "bytes": 6514,
+            "sha256": "39a742c9a6dc197cdaa6b0b48312a642143790683f609edb4de3823a8a257ff7"
+          },
+          {
+            "path": "src/error.rs",
+            "bytes": 12548,
+            "sha256": "b7a79b9a1fb835b069acc86ad8f6f59d3cd9b3a0e35ac6cfc57955e5d25f8584"
+          },
+          {
+            "path": "src/lib.rs",
+            "bytes": 15608,
+            "sha256": "bb0a6660c752ae353d9ba516438f02fa96d003318bcd8b9f4904dcef496de2b7"
+          },
+          {
+            "path": "src/query/native/utilities.rs",
+            "bytes": 5763,
+            "sha256": "f1e0360bc4e579d9f26203905cb5c4344c148c0a69d990aca3c5715800052f95"
+          },
+          {
+            "path": "src/query/native.rs",
+            "bytes": 8875,
+            "sha256": "568943caed91af4a24e896a1ac08f3ce4bd18ff78637fe6ee18e5f41fe25a231"
+          },
+          {
+            "path": "src/query/provider_selection_tests.rs",
+            "bytes": 4612,
+            "sha256": "71d43c5e8a9d6d4d4c1f183d8f9d078592bca79bd234cc9cefd8772dc4a3e77f"
+          },
+          {
+            "path": "src/query/tests.rs",
+            "bytes": 24358,
+            "sha256": "5f711af7064b36577577dd9f171dadadcd0d64aee6e0c21f85e1d7937e330f01"
+          },
+          {
+            "path": "src/query/utility_tests.rs",
+            "bytes": 13915,
+            "sha256": "c2a25fd85eee1590395c7c08038fac830a47b073edbd8d1274098c8dbf225a54"
+          },
+          {
+            "path": "src/query.rs",
+            "bytes": 9040,
+            "sha256": "9cf7430e844e06a36f903412f06d01154a5d1ced8b7b816fd3a2f8957b13c4b3"
+          },
+          {
+            "path": "src/runtime/movable.rs",
+            "bytes": 3547,
+            "sha256": "8c05a3ec77fc66be3728a64d430582e61632d60e29262ba4cc61ef8479fca74c"
+          },
+          {
+            "path": "src/runtime/queries.rs",
+            "bytes": 8802,
+            "sha256": "c47907067cf050eb0aec34b9a6d17ac65b24cbca41468bb2a06381fdead55d12"
+          },
+          {
+            "path": "src/runtime/state.rs",
+            "bytes": 5501,
+            "sha256": "d0f4c45629260dd5a94ed40175509dad4f8cfef80d943a7e90698c077870ab05"
+          },
+          {
+            "path": "src/runtime.rs",
+            "bytes": 8059,
+            "sha256": "8560343a746e328c771a3f547764bdadbe7cd3b622680efc7367433253d48768"
+          },
+          {
+            "path": "src/upscaler/common/camera.rs",
+            "bytes": 3817,
+            "sha256": "27f2377fae15f7d4af52c4a44937429c8f8fdb31b67d174df365334db3ff6820"
+          },
+          {
+            "path": "src/upscaler/common/diagnostics.rs",
+            "bytes": 837,
+            "sha256": "d2ee6b2a82ed9f553c748e853557fb6a871b0b2f67b2cda83cf8537de3a06173"
+          },
+          {
+            "path": "src/upscaler/common/dimensions.rs",
+            "bytes": 1533,
+            "sha256": "15722e5039091884863770b379245eb61d0b7ac7d98cbccb2c4dd2f9486d68d0"
+          },
+          {
+            "path": "src/upscaler/common/frame.rs",
+            "bytes": 10039,
+            "sha256": "eda13107b74e9a6f4044c03317f54a627d6832e7dfd2691c9ed91dc7127da5a5"
+          },
+          {
+            "path": "src/upscaler/common/options.rs",
+            "bytes": 12857,
+            "sha256": "fc20e52eef470b399dc853e1c06b2f1ebdb9526e15f169712c2dcaa2349a8573"
+          },
+          {
+            "path": "src/upscaler/common/profile.rs",
+            "bytes": 3893,
+            "sha256": "753e659f35a49b37ef2ed5fde1c07ffd5ea4a227cdcffb273b301ba05e7f478d"
+          },
+          {
+            "path": "src/upscaler/common/reactive_mask.rs",
+            "bytes": 3269,
+            "sha256": "849694299f8b62cb5276fafad54a9db9ad5b8f43ef8317dd87f20b085f9e2063"
+          },
+          {
+            "path": "src/upscaler/common/scalars.rs",
+            "bytes": 7134,
+            "sha256": "8df7c52faafa254a66e672245dfcdc6c3a89d1e39ab3bf58b6cb10e45f2ce99a"
+          },
+          {
+            "path": "src/upscaler/common/sharpening.rs",
+            "bytes": 2816,
+            "sha256": "11a769f702bc40da54a8a00b283cfaa1d6f5d6d4e538e12ecd1de9d9e039df03"
+          },
+          {
+            "path": "src/upscaler/common/tests.rs",
+            "bytes": 6617,
+            "sha256": "67961eed8b731b701d745cf0dc342b06a885afb717fb41e91cf5da0e4d258689"
+          },
+          {
+            "path": "src/upscaler/common/tuning.rs",
+            "bytes": 3911,
+            "sha256": "d647d6b14aeb08f83891a6005323764e1d5bafc4e324052915e253b1139020da"
+          },
+          {
+            "path": "src/upscaler/common/usability.rs",
+            "bytes": 721,
+            "sha256": "9c9de717475367145588112e4318741537d0e09f95c43d8c08337ff2eb3429af"
+          },
+          {
+            "path": "src/upscaler/common.rs",
+            "bytes": 1751,
+            "sha256": "81cc88fc217b698bf6887118c7d3ffdb57f1ae5902c3e1b0fcfd363ac72d64ed"
+          },
+          {
+            "path": "src/upscaler/dx12/diagnostics.rs",
+            "bytes": 2032,
+            "sha256": "e88acfacf798ea4251ee1fa933607c1369f876daa4c993646711df93c67dfbe1"
+          },
+          {
+            "path": "src/upscaler/dx12/dispatch/descriptor.rs",
+            "bytes": 3829,
+            "sha256": "64c730d43143cd4f5303b7625e743deecc5a791d3e5e80e81b1711802c4c8997"
+          },
+          {
+            "path": "src/upscaler/dx12/dispatch/frame.rs",
+            "bytes": 13378,
+            "sha256": "d756df3904eca32eade5261b9ecb260c413fdd2b42ef17738ea222d9a2ea6d4a"
+          },
+          {
+            "path": "src/upscaler/dx12/dispatch/reactive_mask.rs",
+            "bytes": 15438,
+            "sha256": "d318dab9de0751a5fde28fe7e235e2d8e540bf020c13036a16ec6a68dc818f2b"
+          },
+          {
+            "path": "src/upscaler/dx12/dispatch/resources/conversion.rs",
+            "bytes": 9543,
+            "sha256": "809036fab4501c095523b94380ec7864fe588496916e37202e3ad49a8c2be6db"
+          },
+          {
+            "path": "src/upscaler/dx12/dispatch/resources/formats.rs",
+            "bytes": 7569,
+            "sha256": "0c509c629979efae242b8f5e5794f8f88f9a78a33871f80192662a04572f7c76"
+          },
+          {
+            "path": "src/upscaler/dx12/dispatch/resources/inspection.rs",
+            "bytes": 13278,
+            "sha256": "11242f6d4cf6e90b9e6ff48cb099ebac8c75df31cdfc5e79a44a79c316c8afb0"
+          },
+          {
+            "path": "src/upscaler/dx12/dispatch/resources.rs",
+            "bytes": 10717,
+            "sha256": "2d1dda7f93ad3bc5437eb7f86f93bf7a30d3b4ccf01af70d21f849aa6a3c0b28"
+          },
+          {
+            "path": "src/upscaler/dx12/dispatch/tests.rs",
+            "bytes": 7932,
+            "sha256": "7fc15e01d0ba4ee2e2f1f819590056a0f5190cb6cee05866a106cc4dc9bca257"
+          },
+          {
+            "path": "src/upscaler/dx12/dispatch.rs",
+            "bytes": 14514,
+            "sha256": "fc86d693efd44b6029023d684b3feeae63d782288f9653e746ea323a551e4784"
+          },
+          {
+            "path": "src/upscaler/dx12/interop.rs",
+            "bytes": 9796,
+            "sha256": "00c13196ea90dfebc7719c9551fbf50f02b0f6b1cdded720c8d65325319a470b"
+          },
+          {
+            "path": "src/upscaler/dx12/movable.rs",
+            "bytes": 19445,
+            "sha256": "b89f90c06ef036134a459b9fb7b81ad976745647acbd729f467b221d3d998bd2"
+          },
+          {
+            "path": "src/upscaler/dx12/setup.rs",
+            "bytes": 19896,
+            "sha256": "de2cdd5eac1617a0bdc7b01dc2f33ae1dc0762948ba6de1e02107c7e1e265c7a"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/active_render.rs",
+            "bytes": 15310,
+            "sha256": "1cca7f62311b58c395f3ce391eeafa12bb84f5c9fc374dd8e1a450fe386b35ad"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/automatic_exposure.rs",
+            "bytes": 9570,
+            "sha256": "69a9169a5aa6b38dd5f26344afdc0f47607a6a1835b20fd8a36831b75cab5e58"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/bgra_srgb.rs",
+            "bytes": 26050,
+            "sha256": "fb41d4ebd284652120102e19e3a2f31da03d98540f6f23601d12117444d68e3f"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/callbacks.rs",
+            "bytes": 13254,
+            "sha256": "cccbcbb21f8cdfa327336e51ff0a2ab0983bb16b73dee558653ff62a52f813fa"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/color_encoding.rs",
+            "bytes": 16448,
+            "sha256": "d46624b86b23b7064cf6044247ebdb6ff32f5f1b34b8ed4b9bcb9f324e743c57"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/com.rs",
+            "bytes": 18044,
+            "sha256": "d8c6fe4c3a65de287dbce841d5f2e482322fba19cbc1b35726d9383e791e375b"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/composition.rs",
+            "bytes": 10308,
+            "sha256": "461beb9f751eb2562a643a834957d7c77889fc7fda8e03a142c667056c0a6cea"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/construction.rs",
+            "bytes": 7969,
+            "sha256": "4d8c9c89bdebfed242f317715ddb0f679b576166bfc7d9a95a269070a845584c"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/cpu_comparison.rs",
+            "bytes": 198,
+            "sha256": "798d269208bc032d9a52ff1bf6f218d2bb8938943734c39acd65d012c769e905"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/depth_formats.rs",
+            "bytes": 15327,
+            "sha256": "a60a1cdd59e7df56298ad984ead205fc5b87c191c4e88e8c547edc3352511949"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/depth_motion.rs",
+            "bytes": 8059,
+            "sha256": "445c2b2648137a6f6624ad0aa1767dfc68c28a46ed45370f653fe66dcf1d1762"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/diagnostics.rs",
+            "bytes": 6821,
+            "sha256": "49440399b987ffd472ae2d979e28f893c6f56b02a072c7e3ccd419b7ff0e68d0"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/dispatch.rs",
+            "bytes": 5907,
+            "sha256": "9671387b3eeb3ee60bbb7fb21edaf799e9d54d05c7f16834e9731abbd13db60b"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/gpu_timing.rs",
+            "bytes": 191,
+            "sha256": "73651817d140a76423db73f2e93967f159f6fc7dbd41ca2a230076cbacc48eab"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/hdr.rs",
+            "bytes": 7290,
+            "sha256": "a4b441cc463365b87aa359d78191bdc873668f97861986b482ad1a318f8fbfce"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/inputs.rs",
+            "bytes": 3556,
+            "sha256": "fa85c8ba3b1e7be647232e7d9e1851ac199ce213441c519b34339caf3b80e953"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/inspection.rs",
+            "bytes": 10028,
+            "sha256": "6efce3f776d79f2988e51bf5fe839cbac4f163404f2732f5a6681903987b7133"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/lifecycle.rs",
+            "bytes": 4405,
+            "sha256": "fe89faf10799e0749f2301d89bb9b214759482fd974e42c50d5ab626eef61a02"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/masks.rs",
+            "bytes": 16651,
+            "sha256": "69162557dd2ee87a12bbae1f1b0e23e5bccb8c43fa90796af33833fe56c99a9b"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/mod.rs",
+            "bytes": 1253,
+            "sha256": "56bde5dc0266e1a643daf20f31877e10bb100e7e848e6e9715138ace5b72e19f"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/movable.rs",
+            "bytes": 5479,
+            "sha256": "07aa1a8509a8db1562a5f9ea43ac8e2e53a77ae9ddcd9d2489bd2cddbc867700"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/native_motion.rs",
+            "bytes": 17210,
+            "sha256": "bea118d1bbe1f5f69e76d113b3989e60141ada21acaa605c23e6a38e3c1c4901"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/performance.rs",
+            "bytes": 17995,
+            "sha256": "08cf4a6a45cc3c54e4ddc17297b704c8ee0ca827d52306d547e6b7315e22639c"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/performance_comparison.rs",
+            "bytes": 25788,
+            "sha256": "aebe2f209dc4f32e1d9b5caf8881f72d211113caeab59eeb9f1908548fd75a2c"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/pre_exposure.rs",
+            "bytes": 3153,
+            "sha256": "26a758f75266457d216542ea9eb0f0507d9e081dfc6f4dc31a2a57fdcc30c49a"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/preflight.rs",
+            "bytes": 5160,
+            "sha256": "b913629691a6ff5acb21386611e23f986a1041bbc3fbf6cc3dc1c74435ec6acb"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/provider_selection.rs",
+            "bytes": 17711,
+            "sha256": "843ae459377a2c88e5f7cd20782be7829bfe70b9541bfd1958de81d5074a704b"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/provider_setup.rs",
+            "bytes": 3787,
+            "sha256": "613faf14a98f07f9ef32592a7eaca05622f3c70b871d36648b7ddc3dd050b13a"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/queries.rs",
+            "bytes": 13573,
+            "sha256": "31bc525aefc7c3c3d89f6b7f0eb185a78464fc91df9dc7aa65d5f16c5da48ae8"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/reactive_mask.rs",
+            "bytes": 26828,
+            "sha256": "fcbb9f947e7c27315e8c99a8a744820ce52fb922311db45ea3c9c946e03424eb"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/scalar_views.rs",
+            "bytes": 13016,
+            "sha256": "eeeb2eda6a20a9b21f4c1ddaf2b67085c289ba75918b201667020a341126fa39"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/sharpening.rs",
+            "bytes": 11046,
+            "sha256": "3b67df0e018dc1e4072ac9d6773c6dff73080e45772d2e472eff16c301bb191b"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/support.rs",
+            "bytes": 5160,
+            "sha256": "235c887898ae1f203a27611cef1783049d70aefc321d94a35a13c4ad9012f5e2"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/traits.rs",
+            "bytes": 1075,
+            "sha256": "8aecc476821f68417a7ea1ccdd24d7d6b65c7425447b86c2839cadd684206c7d"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/tuning.rs",
+            "bytes": 13036,
+            "sha256": "ba81be8d1a2cf37ecd2d6f69498169e65a338d6c92bc4d078234e88c22c998e0"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/typed_formats.rs",
+            "bytes": 28981,
+            "sha256": "76bc24fbd1e564bb0e656ad0817113f035b7eb8c0b22f4b54e873b9cf0968d45"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/usability.rs",
+            "bytes": 8226,
+            "sha256": "6195628b864ca532ae771670251d0d53e3ade26bccb29e567ce575cb82d79458"
+          },
+          {
+            "path": "src/upscaler/dx12/tests/utility_queries.rs",
+            "bytes": 13473,
+            "sha256": "3e13b1b468b496f2609090bca3ff7cbfd8ea55f49d4dc2cb7e4cccff0f193e7d"
+          },
+          {
+            "path": "src/upscaler/dx12.rs",
+            "bytes": 25818,
+            "sha256": "f6377d79d1827a7c3ae01f0dda834f7736186e96379b98283f7dbb775c3233ca"
+          },
+          {
+            "path": "src/upscaler/reactive_mask/tests.rs",
+            "bytes": 6181,
+            "sha256": "86b844e7d59f82162d79b0a05862da8f6388a981b1e9d23b4db62a48d60f7c7a"
+          },
+          {
+            "path": "src/upscaler/reactive_mask.rs",
+            "bytes": 2155,
+            "sha256": "61d741195fc6b7f1ec63448a01daeaa70ca8093bef7eac1ea05f171ee07877d3"
+          },
+          {
+            "path": "src/upscaler/tuning/tests.rs",
+            "bytes": 7110,
+            "sha256": "6e8eed7d064b08e09f6d18f7a1ac14b04c749be3954f4e1c9deddfb1cb977d0a"
+          },
+          {
+            "path": "src/upscaler/tuning.rs",
+            "bytes": 2281,
+            "sha256": "e705565c4dc8728fa8c8b36b42619e28263c19acb1f3253863de5d797750e399"
+          },
+          {
+            "path": "src/upscaler.rs",
+            "bytes": 5169,
+            "sha256": "d562e79c893826b3a94ff11909797cc42b19a0390d6ccd1f85a5be2a96d2b636"
+          },
+          {
+            "path": "src/utils/provider.rs",
+            "bytes": 7678,
+            "sha256": "330fd67eba9049c15b9f7b9e9897e3c9114a3a4540c2ac069d25e54f2e3b4d9c"
+          },
+          {
+            "path": "src/utils.rs",
+            "bytes": 377,
+            "sha256": "cf4700c0480db0d9c450f62ce6f8dd9dc780e5fa4d3d49c2a0f68a791021cef4"
+          },
+          {
+            "path": "tests/dimensions.rs",
+            "bytes": 13305,
+            "sha256": "59c18aa34493fdf29e6c93455b801b317b80c45775a0f6a512d9723e7dcd4e48"
+          },
+          {
+            "path": "tests/dispatch_inputs.rs",
+            "bytes": 3668,
+            "sha256": "bd73b9b5c3e2dcb7ce11d80a7e62468930bfa5a3b7b28ed9bd66e504f73e53f9"
+          },
+          {
+            "path": "tests/fixtures/child.rs",
+            "bytes": 1518,
+            "sha256": "2739df78c1e16f79893321a9296a76181e664e60fde6f2b59f9f99c534dae86e"
+          },
+          {
+            "path": "tests/fixtures/directory.rs",
+            "bytes": 1882,
+            "sha256": "9531a6d7533de516040b3824bee17547e6fc571d571cd66f92f3b97e775e2c98"
+          },
+          {
+            "path": "tests/fixtures/errors.rs",
+            "bytes": 2726,
+            "sha256": "6136b992a20dd00219eded41a1d927e08f09cb1ac19212a8509e7b7a890232c4"
+          },
+          {
+            "path": "tests/fixtures/lifecycle.rs",
+            "bytes": 4735,
+            "sha256": "51ecf31a162fe14c1c4f11c18024479c3f1cfcdb3aebfdfc1ec789e75fd688f1"
+          },
+          {
+            "path": "tests/fixtures/upscaler.rs",
+            "bytes": 10715,
+            "sha256": "cf994a6c219e17932d6c0343eb0f6037e5291472db8ab00ea92bf1ee6c52d230"
+          },
+          {
+            "path": "tests/frame_parameters.rs",
+            "bytes": 4758,
+            "sha256": "f160c767fa9a0fdeafe8a385da507757461f5f5771ef519e8b7cba65917c6117"
+          },
+          {
+            "path": "tests/movable.rs",
+            "bytes": 9413,
+            "sha256": "00706251d7bf9f92a456faad99b00ce878e319cc4c0db1bff2d3adae99e178b0"
+          },
+          {
+            "path": "tests/native/active_render.h",
+            "bytes": 5930,
+            "sha256": "5fca881b441a6575dbcc76aba7d4ea27faa7612bb6a128d414dbdb749a0a7d4b"
+          },
+          {
+            "path": "tests/native/callbacks.rs",
+            "bytes": 11614,
+            "sha256": "810528c2217aee8b3258691b3ea09be1a6239fd99729a09bb3ffd44752b22055"
+          },
+          {
+            "path": "tests/native/color_signal.h",
+            "bytes": 2120,
+            "sha256": "3953ec73f4841572e8bf403de4c7a9a6d291b4fb1988ae0d5df7e01a0bf7b4ea"
+          },
+          {
+            "path": "tests/native/color_signal.rs",
+            "bytes": 10701,
+            "sha256": "6e2f55a8fe85cfedb43cf3f4cc7795d62cf7abfce16bedac17833b6f35a18e13"
+          },
+          {
+            "path": "tests/native/colour_signal.h",
+            "bytes": 151,
+            "sha256": "c356aeb20afa2b4422e76882abd570bc8e74dbe7c0f13271dba431f5a2d99387"
+          },
+          {
+            "path": "tests/native/colour_signal.rs",
+            "bytes": 168,
+            "sha256": "896e25820753f6a0ba6b2a9261a917c44560086814a33b82c99570461e007da9"
+          },
+          {
+            "path": "tests/native/configure.rs",
+            "bytes": 9406,
+            "sha256": "c4c7ecd14b05137d3b83674ccd31943433038e6ee3f81ee4172416d11cd26342"
+          },
+          {
+            "path": "tests/native/cpu_equipment.h",
+            "bytes": 1782,
+            "sha256": "ef13703ee91e7e1d74c32dd7bf8037aa7d655886c2866592b85173ce1cfeaaf7"
+          },
+          {
+            "path": "tests/native/cpu_reference.cpp",
+            "bytes": 107,
+            "sha256": "d78bf3f15eccf03a7bb261c69a492db284d95750d173c836ec8092054ddf7414"
+          },
+          {
+            "path": "tests/native/depth_formats.h",
+            "bytes": 7848,
+            "sha256": "8a0fa74b15391a51b865f104eb73d2e40f9087c327c103d65f52a8a9e7272c02"
+          },
+          {
+            "path": "tests/native/dispatch_readback.rs",
+            "bytes": 6418,
+            "sha256": "988f90fb5a622e190b307a4b99a8819f3a43e9ac45c9e206d5252fc3fab704a3"
+          },
+          {
+            "path": "tests/native/followup.rs",
+            "bytes": 5615,
+            "sha256": "489fd4cde296e250aa139600e38c14a5ef8b66243f434e80e44135263470caf4"
+          },
+          {
+            "path": "tests/native/gpu.cpp",
+            "bytes": 31124,
+            "sha256": "a04fe6a8f4fd81cc2551a44f921d0e695db746a63fa1dc079899789d21e893c9"
+          },
+          {
+            "path": "tests/native/gpu_reference.cpp",
+            "bytes": 129,
+            "sha256": "cb56b3ce8ef0322d0c525d0291a9b4e15e724d30eb01f46a802d41daacdfa4ed"
+          },
+          {
+            "path": "tests/native/gpu_timing.h",
+            "bytes": 12554,
+            "sha256": "21e09f018a6763000192894e33f95635c0cb4f676e713b5f57d7ca7e7e8ae862"
+          },
+          {
+            "path": "tests/native/images.h",
+            "bytes": 6481,
+            "sha256": "2c1cdd790c8512e249d86a9d896cb6bc3a79020508bc072c26deb809efee8705"
+          },
+          {
+            "path": "tests/native/motion_scale.h",
+            "bytes": 2715,
+            "sha256": "f71ca225a4d8a882d44b793cb21be40e7898d3029defbebf804246e3cefeebbb"
+          },
+          {
+            "path": "tests/native/motion_scale.rs",
+            "bytes": 11713,
+            "sha256": "8f58a7bf132a832cb8b25328aefd3e98e8a0e70cfa0f0523cec6bfd154867d97"
+          },
+          {
+            "path": "tests/native/movable_public.rs",
+            "bytes": 12227,
+            "sha256": "0c7537883be3daa738061f3d34abe865846b088a36074fdd9ceb3fa9e735110c"
+          },
+          {
+            "path": "tests/native/performance.h",
+            "bytes": 3200,
+            "sha256": "25bd7b805385cdb0037d2eb77bc9baa088ca86ee32104c55c46b89aa0cfbdd29"
+          },
+          {
+            "path": "tests/native/performance_reference.h",
+            "bytes": 18057,
+            "sha256": "e888876876c84836776610de582f9fdca666912d19a83e4c9c70c941a59fb908"
+          },
+          {
+            "path": "tests/native/public_motion.h",
+            "bytes": 3516,
+            "sha256": "a1ab2e1402f53449bb5acd98c55cea79fdd013d2127e3cc9c646cd2ad4c6cf85"
+          },
+          {
+            "path": "tests/native/public_motion.rs",
+            "bytes": 13989,
+            "sha256": "0d4c81c2bfb903a5bf93ddfdba3463806f6f92377621f0f8ad22d00b44f11ff6"
+          },
+          {
+            "path": "tests/native/reactive_mask.h",
+            "bytes": 7377,
+            "sha256": "792f147c956aaf431e6a1850f1b78eb5ee0ff8f62d1a8236187a4f3d56034c7d"
+          },
+          {
+            "path": "tests/native/reactive_mask.rs",
+            "bytes": 12634,
+            "sha256": "fe54d217b292c811eccfd5e34482929d2a0ccb8f837a4719e1de27331d92633d"
+          },
+          {
+            "path": "tests/native/reactive_mask_abi.cpp",
+            "bytes": 1144,
+            "sha256": "4da6efd0e5c4f5d567256ea528cc53516761424ce86ab2cfecfa6f2f88865dab"
+          },
+          {
+            "path": "tests/native/reactive_mask_descriptor.rs",
+            "bytes": 823,
+            "sha256": "10f4aa58dda4bc3dd5372f98d8744f6b49d4d016c69c3972f3e04489e3ac068d"
+          },
+          {
+            "path": "tests/native/recording_ahead.rs",
+            "bytes": 9075,
+            "sha256": "ab9adab0de173fd8ff0c725ece40d7fcbdffae2e2126abbafc8060fd9665e0cd"
+          },
+          {
+            "path": "tests/native/semantics.rs",
+            "bytes": 10248,
+            "sha256": "c813cbfe560541d085a04756049d84b1dddc3b3f6885c259561634a31f5f6dba"
+          },
+          {
+            "path": "tests/native/sharpening.h",
+            "bytes": 2550,
+            "sha256": "aab021356fb3fe57af10d4c7a5a54deaae7e39d5684e3ef6cf79de21f3fdeabc"
+          },
+          {
+            "path": "tests/native/sharpening.rs",
+            "bytes": 13963,
+            "sha256": "9f00e55f388bad4a5f87d73209351dfe7ae5d70599ec9c5a9cb6a6f16d185ed6"
+          },
+          {
+            "path": "tests/native/sharpening_integration.rs",
+            "bytes": 12093,
+            "sha256": "7241b890e165aca9acdbcd3666e5e545aefd99f729034a957c1ed6386e525ed5"
+          },
+          {
+            "path": "tests/native/single_frame.rs",
+            "bytes": 11710,
+            "sha256": "98c0b153aa14cd2e5f7b6cbad981dad03988205acacd5070e17e28c9c401fe87"
+          },
+          {
+            "path": "tests/native/supplied_masks.h",
+            "bytes": 5962,
+            "sha256": "d2b59e4425debfdf72bbe09d2b0984c6e57e7487b662aabda6aebc6836a12c45"
+          },
+          {
+            "path": "tests/native/support.rs",
+            "bytes": 2980,
+            "sha256": "e420b99f835dfe076adbd74963ea19dc365895e8d14ce3ac2c7087ef4732db46"
+          },
+          {
+            "path": "tests/native/temporal_calibration.h",
+            "bytes": 7757,
+            "sha256": "15ec4089ea9ef576701a1d73580707bdeee142c57c8f08cb1e50b274518e9c20"
+          },
+          {
+            "path": "tests/native/temporal_calibration.rs",
+            "bytes": 13631,
+            "sha256": "700b5d47dd421949390705a3cd5c1b2260aa2704a16b25b1618e576d6a5b72c3"
+          },
+          {
+            "path": "tests/native/temporal_diagnosis.h",
+            "bytes": 4719,
+            "sha256": "37e6396380ba99cd7b9ada2f2bdc441274c15be11178334c7135437ef9ed6f54"
+          },
+          {
+            "path": "tests/native/temporal_diagnosis.rs",
+            "bytes": 14201,
+            "sha256": "0fa71bfb8fe4d93f2b34a38a7716dfc333cd46d40a63c37af14dffda0f1d0799"
+          },
+          {
+            "path": "tests/native/temporal_smoke.rs",
+            "bytes": 19584,
+            "sha256": "f8b98fe60dc7339af6b3090d556cd89aa369519bad956eb7bf05a5d5c8a73e0d"
+          },
+          {
+            "path": "tests/native/thread_transfer_baseline.rs",
+            "bytes": 16567,
+            "sha256": "8b985e5c5174a18949b41753c6176021521e601e61d761241443fb0f22d51e09"
+          },
+          {
+            "path": "tests/native/thread_transfers.rs",
+            "bytes": 28191,
+            "sha256": "eb3cfbdf9577d8046b749114a5ca4143c235b9261ebefb9e5e0e87fb89e375e0"
+          },
+          {
+            "path": "tests/native/typed_formats.h",
+            "bytes": 10832,
+            "sha256": "90bffa177f1debf787ff7e3f7f1404897ce0d343fa0a9a261c7cca4dc7eeea03"
+          },
+          {
+            "path": "tests/native/typed_formats.rs",
+            "bytes": 18255,
+            "sha256": "3350284691334931870ea9e7f652a26c1f0203ab4832d62642fd00f4cdc90c50"
+          },
+          {
+            "path": "tests/native/typed_reference.cpp",
+            "bytes": 5474,
+            "sha256": "3cdc714161225852df21b14fe6f63d9981eea9b5ea02f8fc5ee1295b00154a88"
+          },
+          {
+            "path": "tests/native/variable_output.h",
+            "bytes": 11828,
+            "sha256": "36def3c520cd91ac62a1b66ee384b538f2836c8815e4bc133b0693c88c5854a3"
+          },
+          {
+            "path": "tests/native/variable_output.rs",
+            "bytes": 19958,
+            "sha256": "5af32c9a3e3237c2eaffb6d9128bf743c5c7e623d9173e5229850f5787ca922b"
+          },
+          {
+            "path": "tests/provider_metadata.rs",
+            "bytes": 2099,
+            "sha256": "80fe930626eccfb5405ce4d339a2bdbf6bc075f599753ef71d2a7c0e49b649b1"
+          },
+          {
+            "path": "tests/query_values.rs",
+            "bytes": 774,
+            "sha256": "5a670ebef5366b8966978e6661bb7ca632e0193defaf5f41b0c722486bff8068"
+          },
+          {
+            "path": "tests/reactive_mask_options.rs",
+            "bytes": 2764,
+            "sha256": "059b0499db83502ab10254162d7133fc01c08c4b7da11d7eddefdae94804b972"
+          },
+          {
+            "path": "tests/reactive_mask_probe.rs",
+            "bytes": 1295,
+            "sha256": "e99ddd94364d30470b6b7ec49e838cdf217e4c78aae82fc7157c5f4b2a64e649"
+          },
+          {
+            "path": "tests/tuning_requests.rs",
+            "bytes": 3153,
+            "sha256": "5176e26bf6311ca2f0cc5157529eea0211974c1e465fb1efb036ef54c08b7ebc"
+          }
+        ],
+        "ordinary_source_members_match": 168
+      },
+      {
+        "name": "fsr-sdk-sys",
+        "version": "0.1.2",
+        "file": "fsr-sdk-sys-0.1.2.crate",
+        "bytes": 43576,
+        "sha256": "2137546b831d71b1b5e779273f8389ad51bcb28f16a92141746db7c5e57ce042",
+        "expected_bytes": 43576,
+        "expected_sha256": "2137546b831d71b1b5e779273f8389ad51bcb28f16a92141746db7c5e57ce042",
+        "builtin_verification_passed": true,
+        "matches_frozen_archive": true,
+        "vcs_info": {
+          "git": {
+            "sha1": "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa"
+          },
+          "path_in_vcs": "crates/fsr-sdk-sys"
+        },
+        "members": [
+          {
+            "path": ".cargo_vcs_info.json",
+            "bytes": 112,
+            "sha256": "fe3079a0e8f78a60c1e2fd1408823f9b35bfe72be696df3e5a0894f7ddccddae"
+          },
+          {
+            "path": "Cargo.lock",
+            "bytes": 816,
+            "sha256": "80ae8d3e727d1d27afd5db94f7ed702c0aa870fdfa205fb13693ccc19babb87a"
+          },
+          {
+            "path": "Cargo.toml",
+            "bytes": 1953,
+            "sha256": "6a9717b07bd9d9a89db1c7899e9bfc45066d07c96d760cc7c8b2751fde884110"
+          },
+          {
+            "path": "Cargo.toml.orig",
+            "bytes": 854,
+            "sha256": "767cdd7b40a67bfa73ad5012127fd17a604a3eee01c0fe51c96337145abc8801"
+          },
+          {
+            "path": "LICENSE",
+            "bytes": 16726,
+            "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04"
+          },
+          {
+            "path": "LICENSE-AMD",
+            "bytes": 1174,
+            "sha256": "53f952b9d392d281f3208be9bd4cd126f20b0fe10fc28cf316763b80173aa76f"
+          },
+          {
+            "path": "README.md",
+            "bytes": 4945,
+            "sha256": "cd3a2daf6d4fd8948aca4105d35e3b7fbf8e04b57a312b3710fe08628fa9dcf1"
+          },
+          {
+            "path": "src/api.rs",
+            "bytes": 10878,
+            "sha256": "5984e723c7ec13e821296de1518e35add27488a41226ae90f7a3c432f16acafb"
+          },
+          {
+            "path": "src/dx12.rs",
+            "bytes": 3613,
+            "sha256": "349ba9de1fe890bcfc510c22d7846a641bbf530590cb3f9f29fbc2185d2180b7"
+          },
+          {
+            "path": "src/lib.rs",
+            "bytes": 3477,
+            "sha256": "7f001c5777b320b937f303ea33b536101f4f11a7e7ccdbb856554ed1b28d350f"
+          },
+          {
+            "path": "src/loader/mod.rs",
+            "bytes": 406,
+            "sha256": "408948dce8952859f4a1dbbe212e9512f141b65f998b527961151e0cbce8f2d8"
+          },
+          {
+            "path": "src/loader/windows.rs",
+            "bytes": 10888,
+            "sha256": "9ac41b93178d6d4d3db25e9c6503798e5c361490ad69e531d8e985e9d87bf4f4"
+          },
+          {
+            "path": "src/upscale.rs",
+            "bytes": 8909,
+            "sha256": "4a684176b722196a5a0e4db2937b4d4312bb69a3d9340b6876036627ab777434"
+          },
+          {
+            "path": "tests/abi.rs",
+            "bytes": 6346,
+            "sha256": "49be46d02d41274b9e368304451a49c17af00971c5ce8350a9fd3970c0b4cf10"
+          },
+          {
+            "path": "tests/callback_abi.rs",
+            "bytes": 10525,
+            "sha256": "69a835f07ddb3f455d87a83f524b268e3ef440d063d7bfd57fa47878455d88f2"
+          },
+          {
+            "path": "tests/callbacks_native_abi.cpp",
+            "bytes": 5614,
+            "sha256": "c77965385cd2cdbbda0999da6ecbe82230abcdece819dff00097865e0577469e"
+          },
+          {
+            "path": "tests/context_dimensions.rs",
+            "bytes": 6526,
+            "sha256": "b0b5d367f8ccab23ed69bb73f0d01d16c14f44320870b5b5e1a1580253108a8a"
+          },
+          {
+            "path": "tests/context_lifecycle/abi.rs",
+            "bytes": 2609,
+            "sha256": "035573f849b094a62a370df63cdf63e20341004376c54060cc008d096563d59e"
+          },
+          {
+            "path": "tests/context_lifecycle/allocator.rs",
+            "bytes": 4308,
+            "sha256": "9dda7aa65334e7d69afe8d9a400c1014acf91bd861f83468fab8ddd210e95fc8"
+          },
+          {
+            "path": "tests/context_lifecycle/device.cpp",
+            "bytes": 5227,
+            "sha256": "8131993e8f234e56beb8cb87f02f9a34506f2eba5b7b643e8041c19f23547d55"
+          },
+          {
+            "path": "tests/context_lifecycle/input_lifetime.rs",
+            "bytes": 3606,
+            "sha256": "25e077f2f0113f886e62d1f7f081cd9ffaf522061ad208f71f9843a81965c913"
+          },
+          {
+            "path": "tests/context_lifecycle/native_abi.cpp",
+            "bytes": 2248,
+            "sha256": "a5c76989e9f91d6f5ab81e0dc601670b208d55c104fa8823ac639388085adf68"
+          },
+          {
+            "path": "tests/context_lifecycle.rs",
+            "bytes": 10803,
+            "sha256": "b6f0b09ab2f10c4b43138302eb7bc4f835c1bdf49d63efb13215fccf2a029853"
+          },
+          {
+            "path": "tests/dispatch_abi.rs",
+            "bytes": 8926,
+            "sha256": "9deaa885482986940a76295001b19e2fe004bc485636f3d35e30db84c9c26396"
+          },
+          {
+            "path": "tests/dispatch_native_abi.cpp",
+            "bytes": 7751,
+            "sha256": "0adc896a9084e24144ba1211d384799102b55d094e49ec95edac81a46cd376c2"
+          },
+          {
+            "path": "tests/fixtures/loader.rs",
+            "bytes": 1645,
+            "sha256": "3c6df36202c459e4488cf4158480196168836fdf7f760f0e0542746206af1e21"
+          },
+          {
+            "path": "tests/loader.rs",
+            "bytes": 7339,
+            "sha256": "3b71fb1c60ae0381f899c322474d2c3ffb62631580bfec2dd60018651596f4ad"
+          },
+          {
+            "path": "tests/native_abi.cpp",
+            "bytes": 5108,
+            "sha256": "db30b63877ad7dd777c0198f7bce6c1005d4accd58d9d337e818fc069e41401b"
+          },
+          {
+            "path": "tests/provider_resolution/modules.rs",
+            "bytes": 1500,
+            "sha256": "48a62c05996e40ba6b02898622915746672c52197ca2d63e89ba012f96cb601e"
+          },
+          {
+            "path": "tests/query.rs",
+            "bytes": 2053,
+            "sha256": "2ab38a056af878881c6f87194d22c4cafe1ffe4c2ac819388b6e0380bea11606"
+          },
+          {
+            "path": "tests/query_abi.rs",
+            "bytes": 7558,
+            "sha256": "b98e264bbd7d7f3f0d0625f9ecf457b39fc199afb54416f7bdd7836a84704b62"
+          },
+          {
+            "path": "tests/query_native_abi.cpp",
+            "bytes": 5806,
+            "sha256": "530b98c48870560b09fc93e043401188b4718d238e0dcfe559fb6463bce4f8b3"
+          },
+          {
+            "path": "tests/shared_runtime.rs",
+            "bytes": 11035,
+            "sha256": "b69737490532d1e9f64c36acf0b2d321e9b20e4dc809d6595880dfd17a354805"
+          }
+        ],
+        "ordinary_source_members_match": 30
+      }
+    ],
+    "published": false,
+    "publication_simulation_run": false,
+    "packaging_environment": {
+      "CARGO_PROFILE_DEV_DEBUG": "0",
+      "CARGO_PROFILE_TEST_DEBUG": "0",
+      "CARGO_INCREMENTAL": "0"
+    },
+    "temporary_files": "<attempt>/temp (workspace-local)",
+    "script_sha256": "123944a6279ab271fa8adb9b91f33037dbf6eeece4fc7f61da43227aa09c960c",
+    "main_checkout_clean_at_start": true,
+    "main_checkout_revision": "055a2d8b1147214fc795c6c5de39e78915eaabc7",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\nrelease: 1.99.0\ncommit-hash: 5f94df4789f005f9a352888e8355ffc645b7ed0e\ncommit-date: 2026-08-27\nhost: x86_64-pc-windows-msvc\nlibgit2: 1.9.6 (sys:0.21.0 vendored)\nlibcurl: 8.21.0-DEV (sys:0.4.90+curl-8.21.0 vendored ssl:Schannel)\nos: Windows 10.0.26300 (Windows 11 Professional) [64-bit]\n",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "reproduction_checkout_clean_before": true,
+    "reproduction_checkout_clean_after": true,
+    "main_checkout_and_frozen_inputs_unchanged": true,
+    "all_packages_byte_identical": true,
+    "finished_utc": "2026-10-29T22:25:03.166113+00:00",
+    "original_local_run_sha256": "508c201b8fcc733d5dcc1603398216cb33f5d230296b538a23450cd354692cc8",
+    "attempt_path": "target/rc1-reproduction/20261029T222443Z-rc1-package-b58048b66ea3"
+  },
+  "unsuccessful_attempts": [
+    {
+      "schema_version": 1,
+      "candidate": "0.3.0-rc1",
+      "scope": "Reproduce frozen package bytes with Cargo builtin verification; no publish invocation.",
+      "started_utc": "2026-10-29T22:24:30.490574+00:00",
+      "status": "failed",
+      "attempt": "20261029T222430Z-rc1-package-5334e094c173",
+      "manifest_sha256": "f2d6a51756c3d76b07a5a3e181ea83d5f9cb41637fa98cb6063f5cfb0f897901",
+      "source_revision": "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa",
+      "commands": [
+        {
+          "args": [
+            "git",
+            "status",
+            "--porcelain"
+          ],
+          "cwd": "<repo>",
+          "started_utc": "2026-10-29T22:24:32.271549+00:00",
+          "finished_utc": "2026-10-29T22:24:32.386972+00:00",
+          "elapsed_seconds": 0.115,
+          "exit_code": 0,
+          "stdout": "00-stdout.txt",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr": "00-stderr.txt",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_text_sanitized": "",
+          "stderr_text_sanitized": ""
+        },
+        {
+          "args": [
+            "git",
+            "rev-parse",
+            "HEAD"
+          ],
+          "cwd": "<repo>",
+          "started_utc": "2026-10-29T22:24:32.389683+00:00",
+          "finished_utc": "2026-10-29T22:24:32.450689+00:00",
+          "elapsed_seconds": 0.061,
+          "exit_code": 0,
+          "stdout": "01-stdout.txt",
+          "stdout_sha256": "81d2d5e0a0d1fb82c9b3a62fc233d7e69877ac77a3f4efb52ab29c96b3cb1e00",
+          "stderr": "01-stderr.txt",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_text_sanitized": "055a2d8b1147214fc795c6c5de39e78915eaabc7\n",
+          "stderr_text_sanitized": ""
+        },
+        {
+          "args": [
+            "cargo",
+            "-vV"
+          ],
+          "cwd": "<repo>",
+          "started_utc": "2026-10-29T22:24:32.458322+00:00",
+          "finished_utc": "2026-10-29T22:24:32.541715+00:00",
+          "elapsed_seconds": 0.083,
+          "exit_code": 0,
+          "stdout": "02-stdout.txt",
+          "stdout_sha256": "ee139a5b7be0ef730dbafe80147d873715dbc532a4637a5965df0592867e9b0e",
+          "stderr": "02-stderr.txt",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_text_sanitized": "cargo 1.99.0 (5f94df478 2026-08-27)\nrelease: 1.99.0\ncommit-hash: 5f94df4789f005f9a352888e8355ffc645b7ed0e\ncommit-date: 2026-08-27\nhost: x86_64-pc-windows-msvc\nlibgit2: 1.9.6 (sys:0.21.0 vendored)\nlibcurl: 8.21.0-DEV (sys:0.4.90+curl-8.21.0 vendored ssl:Schannel)\nos: Windows 10.0.26300 (Windows 11 Professional) [64-bit]\n",
+          "stderr_text_sanitized": ""
+        },
+        {
+          "args": [
+            "rustc",
+            "-vV"
+          ],
+          "cwd": "<repo>",
+          "started_utc": "2026-10-29T22:24:32.550101+00:00",
+          "finished_utc": "2026-10-29T22:24:32.741809+00:00",
+          "elapsed_seconds": 0.192,
+          "exit_code": 0,
+          "stdout": "03-stdout.txt",
+          "stdout_sha256": "5477f9bad65b15c4c5b31fc050fc72feba651ea1b330bc75cf356a4d6b0fbc80",
+          "stderr": "03-stderr.txt",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_text_sanitized": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+          "stderr_text_sanitized": ""
+        },
+        {
+          "args": [
+            "git",
+            "clone",
+            "--shared",
+            "--no-checkout",
+            "--config",
+            "core.autocrlf=false",
+            "--config",
+            "core.eol=lf",
+            "--config",
+            "gc.auto=0",
+            "<repo>",
+            "<run>\\source"
+          ],
+          "cwd": "<repo>",
+          "started_utc": "2026-10-29T22:24:32.750720+00:00",
+          "finished_utc": "2026-10-29T22:24:33.058875+00:00",
+          "elapsed_seconds": 0.308,
+          "exit_code": 128,
+          "stdout": "04-stdout.txt",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr": "04-stderr.txt",
+          "stderr_sha256": "45487f25a6164fac997c998500e54d8c903b780e2038874c12eb33083d5aaed8",
+          "stdout_text_sanitized": "",
+          "stderr_text_sanitized": "Cloning into '<run>\\source'...\n      0 [main] sh (<process>) C:\\Program Files\\Git\\usr\\bin\\sh.exe: *** fatal error - NtCreateDirectoryObject(<msys-session-object>): 0xC0000022\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n"
+        }
+      ],
+      "packages": [],
+      "published": false,
+      "publication_simulation_run": false,
+      "packaging_environment": {
+        "CARGO_PROFILE_DEV_DEBUG": "0",
+        "CARGO_PROFILE_TEST_DEBUG": "0",
+        "CARGO_INCREMENTAL": "0"
+      },
+      "temporary_files": "<attempt>/temp (workspace-local)",
+      "script_sha256": "123944a6279ab271fa8adb9b91f33037dbf6eeece4fc7f61da43227aa09c960c",
+      "main_checkout_clean_at_start": true,
+      "main_checkout_revision": "055a2d8b1147214fc795c6c5de39e78915eaabc7",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\nrelease: 1.99.0\ncommit-hash: 5f94df4789f005f9a352888e8355ffc645b7ed0e\ncommit-date: 2026-08-27\nhost: x86_64-pc-windows-msvc\nlibgit2: 1.9.6 (sys:0.21.0 vendored)\nlibcurl: 8.21.0-DEV (sys:0.4.90+curl-8.21.0 vendored ssl:Schannel)\nos: Windows 10.0.26300 (Windows 11 Professional) [64-bit]\n",
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "reason": "Command 4 failed with exit 128",
+      "finished_utc": "2026-10-29T22:24:33.067988+00:00",
+      "original_local_run_sha256": "b97f3b21bbd3a27a6dec073e4a0dd19d304e64cf446864b0e98b5807e2021136",
+      "attempt_path": "target/rc1-reproduction/20261029T222430Z-rc1-package-5334e094c173"
+    }
+  ],
+  "publication_simulation": {
+    "schema_version": 1,
+    "candidate": "0.3.0-rc1",
+    "scope": "Cargo workspace publication dry-run only; no upload authorised or requested.",
+    "started_utc": "2026-10-29T22:53:18.466601+00:00",
+    "status": "passed",
+    "attempt": "20261029T225318Z-dry-run-ec5a96384948",
+    "source_revision": "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa",
+    "reused_clean_checkout": "target/rc1-reproduction/20261029T222443Z-rc1-package-b58048b66ea3/source",
+    "manifest_sha256": "f2d6a51756c3d76b07a5a3e181ea83d5f9cb41637fa98cb6063f5cfb0f897901",
+    "commands": [
+      {
+        "args": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:53:18.580319+00:00",
+        "finished_utc": "2026-10-29T22:53:18.649799+00:00",
+        "elapsed_seconds": 0.069,
+        "exit_code": 0,
+        "stdout": "00-stdout.txt",
+        "stdout_sha256": "9479da668fab1afab0828116fb60bb293912950a6d24838777e64697530423e0",
+        "stderr": "00-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": " M docs/release/0.3.0-preparation.md\n M docs/release/2026-10-29-candidate-verification.md\n?? docs/release/2026-10-29-rc1-publication-verification.json\n",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source",
+        "started_utc": "2026-10-29T22:53:18.657596+00:00",
+        "finished_utc": "2026-10-29T22:53:18.705455+00:00",
+        "elapsed_seconds": 0.048,
+        "exit_code": 0,
+        "stdout": "01-stdout.txt",
+        "stdout_sha256": "5436deb5eeab49c11ec07debd7f7b70e1b63352eadc8511639524ff4c76d919c",
+        "stderr": "01-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa\n",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source",
+        "started_utc": "2026-10-29T22:53:18.707433+00:00",
+        "finished_utc": "2026-10-29T22:53:18.776811+00:00",
+        "elapsed_seconds": 0.069,
+        "exit_code": 0,
+        "stdout": "02-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "02-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "cargo",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:53:18.777943+00:00",
+        "finished_utc": "2026-10-29T22:53:18.843173+00:00",
+        "elapsed_seconds": 0.065,
+        "exit_code": 0,
+        "stdout": "03-stdout.txt",
+        "stdout_sha256": "ee139a5b7be0ef730dbafe80147d873715dbc532a4637a5965df0592867e9b0e",
+        "stderr": "03-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "cargo 1.99.0 (5f94df478 2026-08-27)\nrelease: 1.99.0\ncommit-hash: 5f94df4789f005f9a352888e8355ffc645b7ed0e\ncommit-date: 2026-08-27\nhost: x86_64-pc-windows-msvc\nlibgit2: 1.9.6 (sys:0.21.0 vendored)\nlibcurl: 8.21.0-DEV (sys:0.4.90+curl-8.21.0 vendored ssl:Schannel)\nos: Windows 10.0.26300 (Windows 11 Professional) [64-bit]\n",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "rustc",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:53:18.845805+00:00",
+        "finished_utc": "2026-10-29T22:53:18.958070+00:00",
+        "elapsed_seconds": 0.112,
+        "exit_code": 0,
+        "stdout": "04-stdout.txt",
+        "stdout_sha256": "5477f9bad65b15c4c5b31fc050fc72feba651ea1b330bc75cf356a4d6b0fbc80",
+        "stderr": "04-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "cargo",
+          "publish",
+          "--workspace",
+          "--dry-run",
+          "--locked",
+          "--target-dir",
+          "<run>\\build"
+        ],
+        "cwd": "<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source",
+        "started_utc": "2026-10-29T22:53:18.961734+00:00",
+        "finished_utc": "2026-10-29T22:53:38.706889+00:00",
+        "elapsed_seconds": 19.745,
+        "exit_code": 0,
+        "stdout": "05-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "05-stderr.txt",
+        "stderr_sha256": "5acc71716c28ba2890cd541b7d191a6e095d7b8444f1719dce04bf64f0026df2",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": "    Updating crates.io index\n   Packaging fsr-sdk-sys v0.1.2 (<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source\\crates\\fsr-sdk-sys)\n    Updating crates.io index\n    Packaged 33 files, 177.0KiB (42.6KiB compressed)\n   Packaging fsr-sdk v0.3.0 (<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source\\crates\\fsr-sdk)\n    Updating crates.io index\n    Packaged 171 files, 1.4MiB (311.5KiB compressed)\n   Verifying fsr-sdk-sys v0.1.2 (<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source\\crates\\fsr-sdk-sys)\n   Compiling fsr-sdk-sys v0.1.2 (<run>\\build\\package\\fsr-sdk-sys-0.1.2)\n    Finished `dev` profile [unoptimized] target(s) in 9.44s\n   Verifying fsr-sdk v0.3.0 (<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source\\crates\\fsr-sdk)\n    Updating crates.io index\n   Unpacking fsr-sdk-sys v0.1.2 (registry `<run>\\build\\package\\tmp-registry`)\n   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.26\n   Compiling quote v1.0.47\n   Compiling windows-link v0.2.1\n   Compiling windows-strings v0.5.1\n   Compiling windows-result v0.4.1\n   Compiling windows-threading v0.2.1\n   Compiling libloading v0.9.0\n   Compiling fsr-sdk-sys v0.1.2\n   Compiling syn v2.0.119\n   Compiling windows-interface v0.59.3\n   Compiling windows-implement v0.60.2\n   Compiling windows-core v0.62.2\n   Compiling windows-collections v0.3.2\n   Compiling windows-numerics v0.3.1\n   Compiling windows-future v0.3.2\n   Compiling windows v0.62.2\n   Compiling fsr-sdk v0.3.0 (<run>\\build\\package\\fsr-sdk-0.3.0)\n    Finished `dev` profile [unoptimized] target(s) in 19.63s\n   Uploading fsr-sdk-sys v0.1.2 (<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source\\crates\\fsr-sdk-sys)\nwarning: aborting upload due to dry run\n   Uploading fsr-sdk v0.3.0 (<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source\\crates\\fsr-sdk)\nwarning: aborting upload due to dry run\n"
+      },
+      {
+        "args": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "<repo>\\target\\rc1-reproduction\\20261029T222443Z-rc1-package-b58048b66ea3\\source",
+        "started_utc": "2026-10-29T22:53:38.748406+00:00",
+        "finished_utc": "2026-10-29T22:53:38.838883+00:00",
+        "elapsed_seconds": 0.09,
+        "exit_code": 0,
+        "stdout": "06-stdout.txt",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "06-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": "",
+        "stderr_text_sanitized": ""
+      },
+      {
+        "args": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-29T22:53:38.840506+00:00",
+        "finished_utc": "2026-10-29T22:53:38.963603+00:00",
+        "elapsed_seconds": 0.123,
+        "exit_code": 0,
+        "stdout": "07-stdout.txt",
+        "stdout_sha256": "9479da668fab1afab0828116fb60bb293912950a6d24838777e64697530423e0",
+        "stderr": "07-stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_text_sanitized": " M docs/release/0.3.0-preparation.md\n M docs/release/2026-10-29-candidate-verification.md\n?? docs/release/2026-10-29-rc1-publication-verification.json\n",
+        "stderr_text_sanitized": ""
+      }
+    ],
+    "packages": [
+      {
+        "name": "fsr-sdk",
+        "version": "0.3.0",
+        "file": "fsr-sdk-0.3.0.crate",
+        "generated_path": "build/package/tmp-crate/fsr-sdk-0.3.0.crate",
+        "bytes": 318967,
+        "sha256": "e198d6f87938bfe3f321fdd61355ba0ec8cb4b133633f72ad83e3713fbfed766",
+        "expected_bytes": 318967,
+        "expected_sha256": "e198d6f87938bfe3f321fdd61355ba0ec8cb4b133633f72ad83e3713fbfed766",
+        "builtin_verification_passed": true,
+        "published": false,
+        "matches_frozen_archive": true,
+        "vcs_info": {
+          "git": {
+            "sha1": "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa"
+          },
+          "path_in_vcs": "crates/fsr-sdk"
+        }
+      },
+      {
+        "name": "fsr-sdk-sys",
+        "version": "0.1.2",
+        "file": "fsr-sdk-sys-0.1.2.crate",
+        "generated_path": "build/package/tmp-crate/fsr-sdk-sys-0.1.2.crate",
+        "bytes": 43576,
+        "sha256": "2137546b831d71b1b5e779273f8389ad51bcb28f16a92141746db7c5e57ce042",
+        "expected_bytes": 43576,
+        "expected_sha256": "2137546b831d71b1b5e779273f8389ad51bcb28f16a92141746db7c5e57ce042",
+        "builtin_verification_passed": true,
+        "published": false,
+        "matches_frozen_archive": true,
+        "vcs_info": {
+          "git": {
+            "sha1": "6e1c93ed2ba85561faafa7f18f5d175d2caf0ffa"
+          },
+          "path_in_vcs": "crates/fsr-sdk-sys"
+        }
+      }
+    ],
+    "published": false,
+    "packaging_environment": {
+      "CARGO_PROFILE_DEV_DEBUG": "0",
+      "CARGO_PROFILE_TEST_DEBUG": "0",
+      "CARGO_INCREMENTAL": "0"
+    },
+    "registry_access": "Online index reads permitted; Cargo --dry-run forbids uploading.",
+    "temporary_files": "<attempt>/temp (workspace-local)",
+    "script_sha256": "0a92fe75c72fe4b007be47069d1535539f5564c754739e3704cfacf6c581eafc",
+    "source_clean_before": true,
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\nrelease: 1.99.0\ncommit-hash: 5f94df4789f005f9a352888e8355ffc645b7ed0e\ncommit-date: 2026-08-27\nhost: x86_64-pc-windows-msvc\nlibgit2: 1.9.6 (sys:0.21.0 vendored)\nlibcurl: 8.21.0-DEV (sys:0.4.90+curl-8.21.0 vendored ssl:Schannel)\nos: Windows 10.0.26300 (Windows 11 Professional) [64-bit]\n",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "upload_abort_marker_count": 2,
+    "source_clean_after": true,
+    "main_checkout_and_frozen_inputs_unchanged": true,
+    "all_dry_run_archives_match": true,
+    "finished_utc": "2026-10-29T22:53:39.077421+00:00",
+    "original_local_run_sha256": "e421932133275253a11df35b2d9794c4f15f67c1aae479c4069be49a685ceb40",
+    "attempt_path": "target/rc1-publication/20261029T225318Z-dry-run-ec5a96384948"
+  },
+  "sanitization": "Command/log paths use <repo>, <run> and <user-home>; transient MSYS session object/process identifiers are omitted. Original log/run SHA-256 values identify the producer bytes, not the sanitized text.",
+  "limits": "Default Windows/DX12 package builds only. No new native/GPU execution or broad test matrix, no SDK/dependency change, no commit/push/upload.",
+  "publication_authorized": false
+}

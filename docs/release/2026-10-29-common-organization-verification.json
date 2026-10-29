@@ -1,0 +1,293 @@
+{
+  "started_utc": "2026-10-29T13:23:31.299153+00:00",
+  "commands": [
+    {
+      "args": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "clippy",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "movable,utils",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b9806ba012e86eea5942dcad0162de48ff7ec6032df0c576179de88bab1038fa",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "clippy",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--no-default-features",
+        "--features",
+        "utils",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bdbdd9479670234f158e94aa6406e7d8da8f8d19dca5bcebbc96063679741dea",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "movable,utils"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "23959448c847d4f278d3fa38c421a20531d3c312f9201405e7be07b03896c980",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--no-default-features",
+        "--features",
+        "utils"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c557c01b16431dcdcb2553cdbe0f0df2d91dcb6a29be6fd58783e9899b9a5aac",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "test",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--no-default-features",
+        "--features",
+        "utils",
+        "--lib",
+        "upscaler::common"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "d1357cacf013ceaf78e17b6ad03c4f7aa98a0fdd0665df0c534be01ca10d8fd2",
+      "stderr_sha256": "1c102a10bb92092c749b26d65723e7a9c25b0969441cbb8744981d378ceeb6e6",
+      "test_summaries": [
+        "test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 58 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "args": [
+        "cargo",
+        "test",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--no-default-features",
+        "--features",
+        "utils",
+        "--test",
+        "dimensions",
+        "--test",
+        "frame_parameters",
+        "--test",
+        "tuning_requests"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e7acef6514a70af0413bdf129cd1cb3e47e42d4f3e96e2b869a20789133ea233",
+      "stderr_sha256": "dd02025306c2baea485f6182d7b769b78544d9034d73af07db9d7671419cc275",
+      "test_summaries": [
+        "test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+        "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--no-default-features",
+        "--features",
+        "utils",
+        "--lib",
+        "upscaler::common"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c56783603ac00dc441bc206d7ab5d90b95d6680040609899d249eb5a1c27b41d",
+      "stderr_sha256": "a9ec0d16f73581b169c9225f926eff3c6e66ef683ea6075751d6bc6698b8f319",
+      "test_summaries": [
+        "test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 58 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "args": [
+        "cargo",
+        "test",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--no-default-features",
+        "--features",
+        "utils",
+        "--lib",
+        "context::tests::consumed_owner_and_private_handle_are_compile_errors"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "5a1dcc58f5a98e9dcc35beef2f813b69b9c7bba2e82d22753cbf6bcbbc3ffc8f",
+      "stderr_sha256": "6b4ff7339012b7c04dbd98ccd29d74d8b4b2dbbfdc201ba8f83ed5710a22f2f8",
+      "test_summaries": [
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 65 filtered out; finished in 1.33s"
+      ]
+    },
+    {
+      "args": [
+        "cargo",
+        "doc",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--no-default-features",
+        "--features",
+        "utils",
+        "--no-deps"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "900b2d883b111e40cba16de28fe0a9d24055f52a40577646c9577d617dba8d60",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "package",
+        "-p",
+        "fsr-sdk",
+        "--list",
+        "--allow-dirty",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "fcf8335b1368a47af8a17efe5fbf2ca58a683ba6992fbbb734daf3c465961c7a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_summaries": []
+    }
+  ],
+  "status": "passed",
+  "finished_utc": "2026-10-29T13:23:55.079073+00:00",
+  "source_comparison": {
+    "equal_token_blocks": {
+      "fn": 65,
+      "impl": 12,
+      "struct": 8,
+      "enum": 9
+    },
+    "scope": "Function signatures/bodies, complete impl blocks and struct/enum declarations; comments, imports and module placement excluded.",
+    "before_sha256": "bab32148df0df709e0a185891d4abd82cb1c6debc2ec7169b71dbbcee95b7025",
+    "after": [
+      {
+        "path": "crates/fsr-sdk/src/upscaler/common.rs",
+        "sha256": "81cc88fc217b698bf6887118c7d3ffdb57f1ae5902c3e1b0fcfd363ac72d64ed",
+        "lines": 67
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/common/camera.rs",
+        "sha256": "27f2377fae15f7d4af52c4a44937429c8f8fdb31b67d174df365334db3ff6820",
+        "lines": 108
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/common/diagnostics.rs",
+        "sha256": "d2ee6b2a82ed9f553c748e853557fb6a871b0b2f67b2cda83cf8537de3a06173",
+        "lines": 30
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/common/dimensions.rs",
+        "sha256": "15722e5039091884863770b379245eb61d0b7ac7d98cbccb2c4dd2f9486d68d0",
+        "lines": 50
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/common/options.rs",
+        "sha256": "39a065a44ab87bed32b073a28404dcb58bf702290edb9c57a81f26d9b2e04f1a",
+        "lines": 315
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/common/profile.rs",
+        "sha256": "753e659f35a49b37ef2ed5fde1c07ffd5ea4a227cdcffb273b301ba05e7f478d",
+        "lines": 107
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/common/scalars.rs",
+        "sha256": "8df7c52faafa254a66e672245dfcdc6c3a89d1e39ab3bf58b6cb10e45f2ce99a",
+        "lines": 198
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/common/tuning.rs",
+        "sha256": "d647d6b14aeb08f83891a6005323764e1d5bafc4e324052915e253b1139020da",
+        "lines": 91
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/common/tests.rs",
+        "sha256": "67961eed8b731b701d745cf0dc342b06a885afb717fb41e91cf5da0e4d258689",
+        "lines": 170
+      }
+    ]
+  },
+  "scope": "Targeted U14 source/compile/portable contract checks; full release qualification deferred.",
+  "toolchains": [
+    "rustc 1.99.0 (b940084d7 2026-09-28)",
+    "1.88.0"
+  ],
+  "environment": {
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_TARGET_DIR": "<repo>/target/verification-build/current",
+    "RUSTDOCFLAGS": "-D warnings"
+  },
+  "all_moved_modules_in_package_list": true
+}

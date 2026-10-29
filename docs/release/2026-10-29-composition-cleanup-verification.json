@@ -1,0 +1,451 @@
+{
+  "started_utc": "2026-10-29T13:38:15.927855+00:00",
+  "commands": [
+    {
+      "args": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "clippy",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "movable,utils",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c86490b992cf8de8726bdcdde39fe1246113c3ce13a05b920c9710d55a18718b",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--all-targets",
+        "--features",
+        "movable,utils"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2053b2d6991e8cbbfdcd7d05160d5cfe074a55c4e5641777141599fb6f002751",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "test",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--features",
+        "movable,utils",
+        "--lib"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1919580a0b68f815bc7031b98ebf5e21df46d8783d1654cecb2f3fb4a8b25444",
+      "stderr_sha256": "e7043dd8a914488b0f7607e37cec95eab28f03cdc869e83176abd0893662dc88",
+      "test_summaries": [
+        "test result: ok. 137 passed; 0 failed; 58 ignored; 0 measured; 0 filtered out; finished in 10.64s"
+      ]
+    },
+    {
+      "args": [
+        "cargo",
+        "test",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--no-default-features",
+        "--features",
+        "utils",
+        "--test",
+        "frame_parameters",
+        "--test",
+        "dimensions"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "99dfc98af375d7c6eec4b13d69829434e06e3aff7091a4fcfbd003f315a0bc69",
+      "stderr_sha256": "564287e93bf70c9f8c9bc4365c8ebf79f24b5b3fc509fa5e1bd40f495ff936fa",
+      "test_summaries": [
+        "test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+        "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "args": [
+        "cargo",
+        "doc",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--features",
+        "movable,utils",
+        "--no-deps"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c7803c4932fcc1e9a6dc184959d86d746efe87eaa3094889160a4652fed6fa14",
+      "test_summaries": []
+    },
+    {
+      "args": [
+        "cargo",
+        "doc",
+        "-p",
+        "fsr-sdk",
+        "--locked",
+        "--offline",
+        "--no-default-features",
+        "--features",
+        "utils",
+        "--no-deps"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bc45fa97343faf391bedb13073427155fc4cbbb98149e216f1476c3a4274f188",
+      "test_summaries": []
+    }
+  ],
+  "status": "passed",
+  "finished_utc": "2026-10-29T13:38:47.761561+00:00",
+  "test_migration": {
+    "workload_literals_test_counts_ignore_attributes_and_raw_calls_preserved": true,
+    "changed_files": [
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/active_render.rs",
+        "before_sha256": "2a2e1566b6b50402887b0337842aa06ab872217ddb5dc3f8749ebbf4907618ad",
+        "after_sha256": "1cca7f62311b58c395f3ce391eeafa12bb84f5c9fc374dd8e1a450fe386b35ad"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/automatic_exposure.rs",
+        "before_sha256": "427d882d888951f0b2cae4a06ef709cb5f635c2dfb84b5cbc151a107842233b4",
+        "after_sha256": "69a9169a5aa6b38dd5f26344afdc0f47607a6a1835b20fd8a36831b75cab5e58"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/bgra_srgb.rs",
+        "before_sha256": "e1a40833a00d95516b6a80b905037b0f211c39c82892e961a29a67fc5c8f0747",
+        "after_sha256": "fb41d4ebd284652120102e19e3a2f31da03d98540f6f23601d12117444d68e3f"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/color_encoding.rs",
+        "before_sha256": "dcacaf17b64b8d1fc1564a32a66b4deaeff29f4cf0b179e0ae295600eaad3419",
+        "after_sha256": "d46624b86b23b7064cf6044247ebdb6ff32f5f1b34b8ed4b9bcb9f324e743c57"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/com.rs",
+        "before_sha256": "126ba607fdc194fc1a3982fc30a30abb726b4dbf5c1fa9ea1edd0987e6f32778",
+        "after_sha256": "d8c6fe4c3a65de287dbce841d5f2e482322fba19cbc1b35726d9383e791e375b"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/depth_formats.rs",
+        "before_sha256": "3ec5e20d4bbebcc02c7717001c722e6ae0de622baf5e03435eebb463e7458f33",
+        "after_sha256": "a60a1cdd59e7df56298ad984ead205fc5b87c191c4e88e8c547edc3352511949"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/depth_motion.rs",
+        "before_sha256": "76e0a4d02b716965c8800a7ef2a57935b3656ee834ab6e323df0c0d118e9c866",
+        "after_sha256": "445c2b2648137a6f6624ad0aa1767dfc68c28a46ed45370f653fe66dcf1d1762"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/hdr.rs",
+        "before_sha256": "66fafb8b961b7bd65312955921418fe8274e32cb366fec9b2f514dd47cdce0b9",
+        "after_sha256": "a4b441cc463365b87aa359d78191bdc873668f97861986b482ad1a318f8fbfce"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/inputs.rs",
+        "before_sha256": "e3c1741d6c30610eb02547222a26500fb574dd145abbd527cb4bdd5268e5a9ae",
+        "after_sha256": "fa85c8ba3b1e7be647232e7d9e1851ac199ce213441c519b34339caf3b80e953"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/inspection.rs",
+        "before_sha256": "e79f2a899066c2196f1b440ea65c93f7115ba8fd1101739f876e5c7967c1e25d",
+        "after_sha256": "6efce3f776d79f2988e51bf5fe839cbac4f163404f2732f5a6681903987b7133"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/masks.rs",
+        "before_sha256": "44ab69aea0d35b59ec03ad0741b47b50f49df88a1116811f9f0d5b0da258477a",
+        "after_sha256": "69162557dd2ee87a12bbae1f1b0e23e5bccb8c43fa90796af33833fe56c99a9b"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/movable.rs",
+        "before_sha256": "6a7b57894d09b419cfdd441e6fe920ea342ed673cd39bf33ff575d41de328b93",
+        "after_sha256": "07aa1a8509a8db1562a5f9ea43ac8e2e53a77ae9ddcd9d2489bd2cddbc867700"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/native_motion.rs",
+        "before_sha256": "1829e7f5a79c905a4d9a69ba707eb4e3a27e3c48939d09541f9d3d6573ab7498",
+        "after_sha256": "bea118d1bbe1f5f69e76d113b3989e60141ada21acaa605c23e6a38e3c1c4901"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/performance.rs",
+        "before_sha256": "3240bbc5c59e93762a4f87a32532f69d33397cdf6c71318e8f98b90c169de809",
+        "after_sha256": "08cf4a6a45cc3c54e4ddc17297b704c8ee0ca827d52306d547e6b7315e22639c"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/performance_comparison.rs",
+        "before_sha256": "1636300ce2e4b666fedd3ea1b537faf08a6b566e3df3c1bdd36a95d5a438ec3f",
+        "after_sha256": "aebe2f209dc4f32e1d9b5caf8881f72d211113caeab59eeb9f1908548fd75a2c"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/preflight.rs",
+        "before_sha256": "5291221a10b91aa20b5e609f98edd5f447c2596ba064058e6dfdb986ae64606d",
+        "after_sha256": "b913629691a6ff5acb21386611e23f986a1041bbc3fbf6cc3dc1c74435ec6acb"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/pre_exposure.rs",
+        "before_sha256": "f15678bd91becd261fa57e0dc2f76183349a588db4fba8d1d3bc5533c665ffe8",
+        "after_sha256": "26a758f75266457d216542ea9eb0f0507d9e081dfc6f4dc31a2a57fdcc30c49a"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/reactive_mask.rs",
+        "before_sha256": "0a2743c22b51fbd2b86a210e1a1b4b625cd9c145d49b4a5dffe94e5a1e7aeb67",
+        "after_sha256": "fcbb9f947e7c27315e8c99a8a744820ce52fb922311db45ea3c9c946e03424eb"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/scalar_views.rs",
+        "before_sha256": "5e211f9aa31c9089b62a1aac834384652b6d86cf3532df34189e7c44af344c6f",
+        "after_sha256": "eeeb2eda6a20a9b21f4c1ddaf2b67085c289ba75918b201667020a341126fa39"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/sharpening.rs",
+        "before_sha256": "daf1634b79723a505496a2386154472987750e12d0047050cc0e79a538fec781",
+        "after_sha256": "3b67df0e018dc1e4072ac9d6773c6dff73080e45772d2e472eff16c301bb191b"
+      },
+      {
+        "path": "crates/fsr-sdk/src/upscaler/dx12/tests/typed_formats.rs",
+        "before_sha256": "190327b91d36add62e840453c40a4f4b29ec18400ea45347909120bb434e5538",
+        "after_sha256": "76bc24fbd1e564bb0e656ad0817113f035b7eb8c0b22f4b54e873b9cf0968d45"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/callbacks.rs",
+        "before_sha256": "3ad4f4624f0007ec888afb4454ebcf2c34d7235db0c5aa6fccb50d42395dd4e0",
+        "after_sha256": "810528c2217aee8b3258691b3ea09be1a6239fd99729a09bb3ffd44752b22055"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/color_signal.rs",
+        "before_sha256": "a57d0ba099461ece80d2813a9dc2a3b4a722a42a40cc4ea6a5b9c1c5a0813b4c",
+        "after_sha256": "6e2f55a8fe85cfedb43cf3f4cc7795d62cf7abfce16bedac17833b6f35a18e13"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/configure.rs",
+        "before_sha256": "86071dc88f2d94ff2bcf108d73bd2aa0c65202c941fee2190373632f19d88a34",
+        "after_sha256": "c4c7ecd14b05137d3b83674ccd31943433038e6ee3f81ee4172416d11cd26342"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/followup.rs",
+        "before_sha256": "0eebd3ec3ffe17e4e440cfb6dc801040161e73371c158e2697b2a0faaf2adf40",
+        "after_sha256": "489fd4cde296e250aa139600e38c14a5ef8b66243f434e80e44135263470caf4"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/movable_public.rs",
+        "before_sha256": "6c290657ffa50b00971bfda29358188f9613ad1ff466cb810493b759efb96c08",
+        "after_sha256": "0c7537883be3daa738061f3d34abe865846b088a36074fdd9ceb3fa9e735110c"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/public_motion.rs",
+        "before_sha256": "c60953076c627ca93872f42a92633e401593e62915156af712423a3b972e2de2",
+        "after_sha256": "0d4c81c2bfb903a5bf93ddfdba3463806f6f92377621f0f8ad22d00b44f11ff6"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/reactive_mask.rs",
+        "before_sha256": "0faf7b9c14c6745b679f8b8b5568881be11743143b1572a5f095800537197df5",
+        "after_sha256": "fe54d217b292c811eccfd5e34482929d2a0ccb8f837a4719e1de27331d92633d"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/recording_ahead.rs",
+        "before_sha256": "3edf5e6a768e1790c9f21064a7351528794fab8016808861ff448e3977d57968",
+        "after_sha256": "ab9adab0de173fd8ff0c725ece40d7fcbdffae2e2126abbafc8060fd9665e0cd"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/semantics.rs",
+        "before_sha256": "bceea28b51c42c279f65b594f0400a09457ffcff0ec5c683503e2cd4bdfd5afa",
+        "after_sha256": "c813cbfe560541d085a04756049d84b1dddc3b3f6885c259561634a31f5f6dba"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/sharpening.rs",
+        "before_sha256": "77a9c05911da42225a33fa991b2a7c7b030ff8a1fc859c78cb706e089620b651",
+        "after_sha256": "9f00e55f388bad4a5f87d73209351dfe7ae5d70599ec9c5a9cb6a6f16d185ed6"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/sharpening_integration.rs",
+        "before_sha256": "3bec015737c044073a3d8df8a613ca9dbee3b7f31b6a77bce04eff7c27f68143",
+        "after_sha256": "7241b890e165aca9acdbcd3666e5e545aefd99f729034a957c1ed6386e525ed5"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/temporal_calibration.rs",
+        "before_sha256": "bf098b4562c0c82e4246e70c95d2985d16303e231daa00be2c3098ea255ac03f",
+        "after_sha256": "700b5d47dd421949390705a3cd5c1b2260aa2704a16b25b1618e576d6a5b72c3"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/temporal_diagnosis.rs",
+        "before_sha256": "c88aeb83d821dfaec8b522fa7de28a4157645f360fc7b73435bbb63defc1f03b",
+        "after_sha256": "0fa71bfb8fe4d93f2b34a38a7716dfc333cd46d40a63c37af14dffda0f1d0799"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/temporal_smoke.rs",
+        "before_sha256": "255ea597b5075cb65bf31a2af35ba599e0647eb9a07a68c950f629b03773ca1c",
+        "after_sha256": "f8b98fe60dc7339af6b3090d556cd89aa369519bad956eb7bf05a5d5c8a73e0d"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/thread_transfers.rs",
+        "before_sha256": "e15297349105babe8df8f56d4e8c29da9073a13a9cde58621110bce6235d6e08",
+        "after_sha256": "eb3cfbdf9577d8046b749114a5ca4143c235b9261ebefb9e5e0e87fb89e375e0"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/thread_transfer_baseline.rs",
+        "before_sha256": "64f545e46e06f3c2c0b267bafcbd4a21f02446d246477a36a392a0ff2241f536",
+        "after_sha256": "8b985e5c5174a18949b41753c6176021521e601e61d761241443fb0f22d51e09"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/typed_formats.rs",
+        "before_sha256": "14a06c21cd9bdbe42fb4e77e2bbb139f66ae4d0df84a1696df9c5fb4cc8f85e1",
+        "after_sha256": "3350284691334931870ea9e7f652a26c1f0203ab4832d62642fd00f4cdc90c50"
+      },
+      {
+        "path": "crates/fsr-sdk/tests/native/variable_output.rs",
+        "before_sha256": "a15caf86976907384625da33fc46965862fcf3e731835cf801b01d66d20f7213",
+        "after_sha256": "5af32c9a3e3237c2eaffb6d9128bf743c5c7e623d9173e5229850f5787ca922b"
+      }
+    ],
+    "upscale_tests": {
+      "calls": {
+        "validate_dispatch_inputs": 49,
+        "dispatch": 80,
+        "resource_builder": 10,
+        "validate_generate_reactive_mask": 17,
+        "generate_reactive_mask": 14
+      },
+      "receivers": {
+        "context": 138,
+        "masks_context": 1,
+        "upscaler": 15,
+        "wrapper": 4,
+        "$context": 2
+      },
+      "changed_files": [
+        "crates/fsr-sdk/src/upscaler/dx12/tests/active_render.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/automatic_exposure.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/bgra_srgb.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/color_encoding.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/com.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/depth_formats.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/depth_motion.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/hdr.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/inspection.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/masks.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/movable.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/native_motion.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/performance.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/performance_comparison.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/preflight.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/pre_exposure.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/reactive_mask.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/scalar_views.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/sharpening.rs",
+        "crates/fsr-sdk/src/upscaler/dx12/tests/typed_formats.rs"
+      ],
+      "semantics": "Each original input expression is evaluated exactly once; factories, parameter values, expected results, native selectors and raw dispatch calls are retained."
+    },
+    "native_tests": {
+      "calls": {
+        "dispatch": 18,
+        "resource_builder": 19,
+        "validate_dispatch_inputs": 5,
+        "validate_generate_reactive_mask": 1,
+        "generate_reactive_mask": 1
+      },
+      "receivers": {
+        "a": 3,
+        "b": 1,
+        "omitted": 1,
+        "upscaler": 2,
+        "context": 11,
+        "selected": 2,
+        "contexts[context]": 1,
+        "c": 4
+      },
+      "changed_files": [
+        "crates/fsr-sdk/tests/native/callbacks.rs",
+        "crates/fsr-sdk/tests/native/color_signal.rs",
+        "crates/fsr-sdk/tests/native/configure.rs",
+        "crates/fsr-sdk/tests/native/followup.rs",
+        "crates/fsr-sdk/tests/native/movable_public.rs",
+        "crates/fsr-sdk/tests/native/public_motion.rs",
+        "crates/fsr-sdk/tests/native/reactive_mask.rs",
+        "crates/fsr-sdk/tests/native/recording_ahead.rs",
+        "crates/fsr-sdk/tests/native/semantics.rs",
+        "crates/fsr-sdk/tests/native/sharpening.rs",
+        "crates/fsr-sdk/tests/native/sharpening_integration.rs",
+        "crates/fsr-sdk/tests/native/temporal_calibration.rs",
+        "crates/fsr-sdk/tests/native/temporal_diagnosis.rs",
+        "crates/fsr-sdk/tests/native/temporal_smoke.rs",
+        "crates/fsr-sdk/tests/native/thread_transfers.rs",
+        "crates/fsr-sdk/tests/native/thread_transfer_baseline.rs",
+        "crates/fsr-sdk/tests/native/typed_formats.rs",
+        "crates/fsr-sdk/tests/native/variable_output.rs"
+      ],
+      "semantics": "Each original input expression is evaluated exactly once; factories, parameter values, expected results, native selectors and raw dispatch calls are retained."
+    }
+  },
+  "environment": {
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_TARGET_DIR": "<repo>/target/verification-build/current",
+    "RUSTDOCFLAGS": "-D warnings"
+  },
+  "scope": "Targeted source/compiler/controlled-FFI/doc checks. AMD GPU, timing, full release and final archives not executed.",
+  "production_sources": [
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/descriptor.rs",
+      "before_sha256": "2114386c9f1c676a97163e9458785b6462d354a9f49491dc0f76169d5813e20a",
+      "after_sha256": "64c730d43143cd4f5303b7625e743deecc5a791d3e5e80e81b1711802c4c8997"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/resources.rs",
+      "before_sha256": "83775b19d72674f9467babd430880357d70f090bc5c6a37675871d3b5f07ccce",
+      "after_sha256": "2d1dda7f93ad3bc5437eb7f86f93bf7a30d3b4ccf01af70d21f849aa6a3c0b28",
+      "preflight_and_guard_orchestration_tokens_unchanged": true
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch.rs",
+      "before_sha256": "49fad46b98c270c2c3fbd6d1f392e2592275dcadfc41190573612dadcd53ce84",
+      "after_sha256": "fc86d693efd44b6029023d684b3feeae63d782288f9653e746ea323a551e4784"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/common/options.rs",
+      "before_sha256": "39a065a44ab87bed32b073a28404dcb58bf702290edb9c57a81f26d9b2e04f1a",
+      "after_sha256": "fc20e52eef470b399dc853e1c06b2f1ebdb9526e15f169712c2dcaa2349a8573",
+      "documentation_only": true
+    }
+  ],
+  "performance_impact_review": {
+    "source_assessment": "The same checked frame fields and mapping branches are read inside the descriptor builder instead of staged scalar/tuple arguments. No additional allocation, clone, COM/SDK operation, synchronization, caching or workload policy is introduced. P08 record remains a direct public record() call; its resource-builder expansion stays outside the timed interval.",
+    "limits": "Source reasoning and controlled descriptor assertions do not prove identical optimized code or timing. Final source/archive reconciliation against P08 remains pending under D043; repeat affected measurements if warranted. No timing experiment selected or run by U15."
+  }
+}

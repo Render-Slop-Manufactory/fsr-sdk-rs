@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "checkpoint": "Steam Machine current-package bounded Proton release recheck",
+  "run_id": "20261029T024624Z-proton-0eecfa17b853",
+  "run": {
+    "schema_version": 1,
+    "profile": "proton",
+    "started_utc": "2026-10-29T02:46:25.611324+00:00",
+    "status": "passed",
+    "input_identity": "e170f6335a13c4206e860ce73840a905b8fce206a3f7e1bbeaad6a988c16f9b7",
+    "required": [
+      "equipment.toolchain",
+      "proton.equipment",
+      "release.package",
+      "release.registry",
+      "artifact.bind",
+      "proton.sdk",
+      "proton.helper",
+      "proton.build",
+      "proton.launch",
+      "proton.queries",
+      "proton.dispatch",
+      "release.integrity"
+    ],
+    "cases": {
+      "equipment.toolchain": "passed",
+      "proton.equipment": "passed",
+      "release.package": "passed",
+      "release.registry": "passed",
+      "artifact.bind": "passed",
+      "proton.sdk": "passed",
+      "proton.helper": "passed",
+      "proton.build": "passed",
+      "proton.launch": "passed",
+      "proton.queries": "passed",
+      "proton.dispatch": "passed",
+      "release.integrity": "passed"
+    },
+    "finished_utc": "2026-10-29T02:46:56.167661+00:00",
+    "inputs_unchanged": true,
+    "completed": 12
+  },
+  "run_json_sha256": "67ab921ee80de9fce0ba1b40653b30544e47b6131b8a0bff4daa2dcbe7fa908e",
+  "verify_run_exit": 0,
+  "export_exit": 0,
+  "archives": [
+    {
+      "file": "fsr-sdk-0.3.0.crate",
+      "sha256": "56ca4a23e897063e7a0c975d6233919fa39f1db6e498c9c2b6977a709eefbdb5"
+    },
+    {
+      "file": "fsr-sdk-sys-0.1.2.crate",
+      "sha256": "af98d189914fbab70360056a40cdb1b044bae52b5757695d7b9fb8fade1f22d5"
+    }
+  ],
+  "archive_boundary": "Generated from the clean local checkout; byte equality with independently running Windows/Deck release checks is not established. Final selected-pair qualification remains separate.",
+  "host": {
+    "os": "SteamOS 3.9.5, build 20261023.100",
+    "kernel": "7.2.7-valve2-2-neptune-72-g31504582a073",
+    "gpu": "AMD Steam Machine (RADV NAVI33)",
+    "vendor_id": "0x1002",
+    "device_id": "0x7481",
+    "adapter_index": 0,
+    "vulkan_api": "1.4.350",
+    "driver_version": "26.1.99",
+    "driver_info": "Mesa 26.2.0-devel (git-5c65d4fc31)"
+  },
+  "tools": {
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+    "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [GCC 15.3.0]",
+    "host": "Linux-7.2.7-valve2-2-neptune-72-g31504582a073-x86_64-with-glibc2.42",
+    "resume": "disabled"
+  },
+  "cross_tools": {
+    "cargo_xwin": {
+      "version": "cargo-xwin 0.23.1\n",
+      "sha256": "c360d5e87df2bf66337d330a5a76647c36a1552b0782f9c06ea73908f3c1a338"
+    },
+    "clang": {
+      "version": "clang version 21.1.8\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: /nix/store/0skhb15j2szcq05929gs9m1dbpiydhb7-clang-21.1.8/bin\n",
+      "sha256": "f53f4d9b4eefe3f3f19e8eac7db8208428d8501fb8a9761552ef3e8bff4e7251"
+    },
+    "linker": {
+      "version": "LLD 21.1.8\n",
+      "sha256": "c5a5ea250dec3818a88e8d1f6bc246263864cc791711c9c1ce4c2a5e1da7dc9a"
+    }
+  },
+  "proton_version": "1791559474 proton-11.0-2e-x86_64",
+  "umu_version": "1.4.4",
+  "runtime": {
+    "distribution": "steamrt4",
+    "version": "4.0.20260928.262390",
+    "pressure_vessel": "0.20260925.0",
+    "updates_disabled": true,
+    "offline_enforced": false
+  },
+  "vkd3d": {
+    "application_version": "3.0.0",
+    "build": "212991fc2c266bc"
+  },
+  "dxvk": "v2.7.1-498-ga6764047e587178",
+  "translator_sha256": {
+    "d3d12.dll": "2b4a4cb22a3615f8234a9f555a07244a06354185db568a09c0f82056732f66f3",
+    "d3d12core.dll": "aa0895bae41eb365f24f38038022b932f0dd1e92d33fec053a46bd710704aea5",
+    "dxgi.dll": "45051464bb0f50bb14d4773b81c8743712624eb2273fae627fea4c14f535ff4b"
+  },
+  "sdk": {
+    "version": "v2.3.0",
+    "dll_sha256": {
+      "amd_fidelityfx_loader_dx12.dll": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa",
+      "amd_fidelityfx_upscaler_dx12.dll": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+    },
+    "loaded_paths_verified": true,
+    "trust_input": "D017 pinned bytes; Windows Authenticode policy unavailable. Both osslsigncode observations exit 1 because the local issuer certificate is unavailable."
+  },
+  "helper_sha256": "4a7ff708cdee6fa830f14f56c954ee4de7a910cc425ed56c03f8e2b8e67c5c7d",
+  "executable_sha256": "df071e005cb8c6fcb09d5263a0c7550287ae7006bc92c2f00dda107a9836dd54",
+  "gpu_cases": {
+    "proton.queries": {
+      "status": "passed",
+      "metrics": [
+        "Local queries: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+        "Movable queries: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+        "Public queries: PASSED",
+        "Adapter: AMD Steam Machine (RADV NAVI33); vendor=0x1002 device=0x7481; feature_level=12_0; index=0; luid=0x00000000000003f2"
+      ],
+      "vulkan_validation": {
+        "active": true,
+        "synchronization": true,
+        "instances": 3,
+        "errors": 0,
+        "warnings": 0
+      },
+      "process_containment": [
+        {
+          "distinct_pid_namespace": true,
+          "parent_death_policy": "--die-with-parent"
+        }
+      ]
+    },
+    "proton.dispatch": {
+      "status": "passed",
+      "metrics": [
+        "Gate A debug layer: HRESULT=0x887a002d",
+        "Proton validation: DirectX debug HRESULT=0x887a002d; D3D12 GBV not enabled; Vulkan diagnostics recorded by launcher",
+        "Gate A device creation: HRESULT=0x00000000",
+        "Gate A queries: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }",
+        "Gate A public construction: OK native_code=0x00000000",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10058594, max_red: 0.84765625, left_red: 0.193594, right_red: 0.7556911, debug_errors: 18446744073709551615, device_removed: 0 }",
+        "Proton validation: DirectX info queue unavailable; error count unavailable",
+        "Gate A explicit destroy: OK native_code=0x00000000",
+        "Gate A after explicit destroy and resource cleanup:",
+        "Proton single-frame: PASSED",
+        "Adapter: AMD Steam Machine (RADV NAVI33); vendor=0x1002 device=0x7481; feature_level=12_0; index=0; luid=0x00000000000003f2",
+        "Selected-device AMD check: vendor=0x1002 device=0x7481 hardware_amd=true",
+        "Proton device checkpoint: device_removed=0x00000000"
+      ],
+      "vulkan_validation": {
+        "active": true,
+        "synchronization": true,
+        "instances": 3,
+        "errors": 0,
+        "warnings": 0
+      },
+      "process_containment": [
+        {
+          "distinct_pid_namespace": true,
+          "parent_death_policy": "--die-with-parent"
+        }
+      ]
+    }
+  },
+  "archive_integrity": {
+    "selected_archives_unchanged": true,
+    "extracted_bytes_unchanged": true
+  },
+  "performance_impact": {
+    "baseline": "2026-10-29-performance-review-closure.json",
+    "compared_crate_files": 187,
+    "new_measurement_selected": false,
+    "byte_identical_crate_files": 170,
+    "line_ending_only_differences": [
+      "crates/fsr-sdk/LICENSE",
+      "crates/fsr-sdk/LICENSE-AMD",
+      "crates/fsr-sdk/tests/native/images.h",
+      "crates/fsr-sdk-sys/LICENSE",
+      "crates/fsr-sdk-sys/LICENSE-AMD",
+      "crates/fsr-sdk-sys/src/loader/mod.rs",
+      "crates/fsr-sdk-sys/src/loader/windows.rs",
+      "crates/fsr-sdk-sys/tests/abi.rs",
+      "crates/fsr-sdk-sys/tests/context_dimensions.rs",
+      "crates/fsr-sdk-sys/tests/context_lifecycle/abi.rs",
+      "crates/fsr-sdk-sys/tests/context_lifecycle/allocator.rs",
+      "crates/fsr-sdk-sys/tests/context_lifecycle/input_lifetime.rs",
+      "crates/fsr-sdk-sys/tests/fixtures/loader.rs",
+      "crates/fsr-sdk-sys/tests/native_abi.cpp",
+      "crates/fsr-sdk-sys/tests/provider_resolution/modules.rs",
+      "crates/fsr-sdk-sys/tests/query.rs",
+      "crates/fsr-sdk-sys/tests/shared_runtime.rs"
+    ],
+    "other_content_differences": []
+  },
+  "limits": [
+    "No Windows debug-layer/info-queue or GPU-based validation result.",
+    "No native Linux/Vulkan support claim, full temporal/image-quality suite, offline-runtime/forced-timeout requalification, or publication.",
+    "Windows/Deck runs and final archive reconciliation are outside this host check."
+  ],
+  "nonfatal_launcher_diagnostics": [
+    "Missing 32-bit MangoHud dependency libxkbcommon.so.0.",
+    "Nix ldconfig cache unavailable; dconf module symbol mismatch.",
+    "Fresh-prefix amdxcffx64.dll copy and parent-game-drive warnings; all child exits and required markers pass."
+  ]
+}

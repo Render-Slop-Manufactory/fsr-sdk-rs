@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "scope": "Exact-package verification infrastructure; no final release or publication claim",
+  "archives": {
+    "fsr-sdk": {
+      "sha256": "f55b3a2b46b96406fdbfeb82ef6ff179b3a4469b90c1198b318119b83adb204f",
+      "source_files_checked": 157,
+      "version": "0.3.0"
+    },
+    "fsr-sdk-sys": {
+      "sha256": "0bb92f048d27b67d74a3876bc78b5016ac33452640ffa17cffdab77179230bb0",
+      "source_files_checked": 30,
+      "version": "0.1.2"
+    }
+  },
+  "performance_impact": {
+    "matching_previously_measured_crate_files": 187,
+    "production_changes": false,
+    "assessment": "Only verification tooling/tests and repository documentation changed; measured archives reused unchanged. No new performance measurement selected."
+  },
+  "windows_package_coverage": {
+    "local_attempt": "target/package-coverage/20261029T014454Z-release-coverage-def336992f7d",
+    "summary_sha256": "8a459b43b9c306dd015cd3ae04dced441764cb91faeb0a5f4ec205090e441c18",
+    "input_identity": "c328ce727241147fd9f3686e3a4c565fcd1fcebd1735e492763100f8a9b02c6a",
+    "started_utc": "2026-10-29T01:44:55.067215+00:00",
+    "finished_utc": "2026-10-29T01:46:39.610450+00:00",
+    "status": "passed",
+    "completed": 70,
+    "inputs_unchanged": true,
+    "cases": {
+      "equipment.toolchain": "passed",
+      "windows.environment": "passed",
+      "abi.headers": "passed",
+      "abi.common": "passed",
+      "abi.creation": "passed",
+      "abi.dispatch": "passed",
+      "abi.query": "passed",
+      "native.sdk": "passed",
+      "native.helper": "passed",
+      "release.package": "passed",
+      "release.registry": "passed",
+      "release.consumer.setup": "passed",
+      "release.consumer.metadata": "passed",
+      "release.consumer.examples.prepare": "passed",
+      "release.consumer.examples.dx12": "passed",
+      "release.consumer.examples.dx12-movable": "passed",
+      "release.consumer.examples.dx12-utils": "passed",
+      "release.consumer.examples.dx12-movable-utils": "passed",
+      "release.consumer.walkthrough.local.simple": "passed",
+      "release.consumer.walkthrough.local.provider": "passed",
+      "release.consumer.walkthrough.local.abort": "passed",
+      "release.consumer.walkthrough.local.utility": "passed",
+      "release.consumer.walkthrough.movable.simple": "passed",
+      "release.consumer.walkthrough.movable.provider": "passed",
+      "release.consumer.walkthrough.movable.abort": "passed",
+      "release.consumer.walkthrough.movable.utility": "passed",
+      "release.consumer-msrv.setup": "passed",
+      "release.consumer-msrv.metadata": "passed",
+      "release.consumer-msrv.examples.prepare": "passed",
+      "release.consumer-msrv.examples.dx12": "passed",
+      "release.consumer-msrv.examples.dx12-movable": "passed",
+      "release.consumer-msrv.examples.dx12-utils": "passed",
+      "release.consumer-msrv.examples.dx12-movable-utils": "passed",
+      "release.consumer-msrv.walkthrough.local.simple": "passed",
+      "release.consumer-msrv.walkthrough.local.provider": "passed",
+      "release.consumer-msrv.walkthrough.local.abort": "passed",
+      "release.consumer-msrv.walkthrough.local.utility": "passed",
+      "release.consumer-msrv.walkthrough.movable.simple": "passed",
+      "release.consumer-msrv.walkthrough.movable.provider": "passed",
+      "release.consumer-msrv.walkthrough.movable.abort": "passed",
+      "release.consumer-msrv.walkthrough.movable.utility": "passed",
+      "artifact.build.fsr_sdk": "passed",
+      "artifact.queries.public": "passed",
+      "artifact.queries.utilities": "passed",
+      "artifact.lifecycle.explicit": "passed",
+      "artifact.lifecycle.drop": "passed",
+      "artifact.dispatch.single": "passed",
+      "artifact.dispatch.pre-exposure": "passed",
+      "artifact.dispatch.depth-motion": "passed",
+      "artifact.dispatch.automatic-exposure": "passed",
+      "artifact.dispatch.linear-hdr": "passed",
+      "artifact.dispatch.supplied-masks": "passed",
+      "artifact.dispatch.active-render": "passed",
+      "artifact.dispatch.configure": "passed",
+      "artifact.dispatch.selected-provider": "passed",
+      "artifact.dispatch.temporal": "passed",
+      "artifact.dispatch.semantics": "passed",
+      "artifact.movable.disabled": "passed",
+      "artifact.movable.sharpening": "passed",
+      "artifact.sharpening.integration.r1": "passed",
+      "artifact.sharpening.integration.r2": "passed",
+      "artifact.sharpening.integration.r3": "passed",
+      "artifact.sharpening.audit": "passed",
+      "artifact-callbacks.abi-build": "passed",
+      "artifact-callbacks.abi-current": "passed",
+      "artifact-callbacks.abi-msrv": "passed",
+      "artifact-callbacks.equipment": "passed",
+      "artifact-callbacks.build.fsr_sdk": "passed",
+      "artifact-callbacks.native": "passed",
+      "release.integrity": "passed"
+    },
+    "toolchain": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.14.1 (tags/v3.14.1:57e0d17, Dec  2 2025, 14:05:07) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    },
+    "adapter_driver": [
+      "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011567",
+      "Driver query: HRESULT=0x00000000; version=32.0.32015.7029"
+    ],
+    "runtime": {
+      "artifacts": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      ],
+      "signatures": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.9"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.9"
+        }
+      ],
+      "adapter_index": 0
+    },
+    "rust_build": {
+      "executable_sha256": "ad0884267dec247ec238b6a8f0476464731a824d05e69ce0c953e678c5675599",
+      "manifest": "<run>\\isolation\\packages\\fsr-sdk-0.3.0\\Cargo.toml",
+      "registry_artifact": true,
+      "archive_hashes": {
+        "fsr-sdk": "f55b3a2b46b96406fdbfeb82ef6ff179b3a4469b90c1198b318119b83adb204f",
+        "fsr-sdk-sys": "0bb92f048d27b67d74a3876bc78b5016ac33452640ffa17cffdab77179230bb0"
+      }
+    },
+    "callback_build": {
+      "executable_sha256": "ad0884267dec247ec238b6a8f0476464731a824d05e69ce0c953e678c5675599",
+      "manifest": "<run>\\isolation\\packages\\fsr-sdk-0.3.0\\Cargo.toml",
+      "registry_artifact": true,
+      "archive_hashes": {
+        "fsr-sdk": "f55b3a2b46b96406fdbfeb82ef6ff179b3a4469b90c1198b318119b83adb204f",
+        "fsr-sdk-sys": "0bb92f048d27b67d74a3876bc78b5016ac33452640ffa17cffdab77179230bb0"
+      }
+    },
+    "callback_abi_build": {
+      "raw_api": "<run>\\isolation\\packages\\fsr-sdk-sys-0.1.2\\src\\api.rs",
+      "raw_api_sha256": "5984e723c7ec13e821296de1518e35add27488a41226ae90f7a3c432f16acafb",
+      "fixture_sha256": "46486eced6d5333e3bc37e347061b39263924452ad48fe6aeffc3f772813dfa8",
+      "registry_artifact": true,
+      "archive_hashes": {
+        "fsr-sdk": "f55b3a2b46b96406fdbfeb82ef6ff179b3a4469b90c1198b318119b83adb204f",
+        "fsr-sdk-sys": "0bb92f048d27b67d74a3876bc78b5016ac33452640ffa17cffdab77179230bb0"
+      }
+    },
+    "callback_abi_current": {
+      "aggregate": {
+        "size": 56,
+        "alignment": 8,
+        "handle_offset": 48,
+        "exchanges_each_direction": 4,
+        "negative_controls": 4
+      },
+      "toolchain": "current"
+    },
+    "callback_abi_msrv": {
+      "aggregate": {
+        "size": 56,
+        "alignment": 8,
+        "handle_offset": 48,
+        "exchanges_each_direction": 4,
+        "negative_controls": 4
+      },
+      "toolchain": "msrv"
+    },
+    "callback_execution": {
+      "contexts": [
+        "PUBLIC_CONTEXTS family=local provider=3.1.5 created=3 destroyed=3",
+        "PUBLIC_CONTEXTS family=local provider=4.1.1 created=3 destroyed=3",
+        "PUBLIC_CONTEXTS family=movable provider=3.1.5 created=3 destroyed=3",
+        "PUBLIC_CONTEXTS family=movable provider=4.1.1 created=3 destroyed=3"
+      ],
+      "balance": {
+        "host_live": 0,
+        "resource_live": 0,
+        "heap_live": 0,
+        "cb_backing": 368
+      },
+      "native_callback_counts": {
+        "host_alloc": 24,
+        "resource_alloc": 240,
+        "message": 16,
+        "cb_alloc": 368,
+        "resource_free": 240,
+        "host_free": 24
+      },
+      "heap_native_invoked": false,
+      "cross_set_frees": 80
+    },
+    "callback_execution_frames": 20,
+    "consumer_provenance": {
+      "release.consumer": {
+        "registry_only": true,
+        "packages": [
+          {
+            "name": "fsr-sdk",
+            "version": "0.3.0",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "manifest_path": "<run>\\isolation\\cargo-home\\registry\\src\\-10aee331739c9b5b\\fsr-sdk-0.3.0\\Cargo.toml"
+          },
+          {
+            "name": "fsr-sdk-sys",
+            "version": "0.1.2",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "manifest_path": "<run>\\isolation\\cargo-home\\registry\\src\\-10aee331739c9b5b\\fsr-sdk-sys-0.1.2\\Cargo.toml"
+          }
+        ]
+      },
+      "release.consumer-msrv": {
+        "registry_only": true,
+        "packages": [
+          {
+            "name": "fsr-sdk",
+            "version": "0.3.0",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "manifest_path": "<run>\\isolation\\cargo-home\\registry\\src\\-10aee331739c9b5b\\fsr-sdk-0.3.0\\Cargo.toml"
+          },
+          {
+            "name": "fsr-sdk-sys",
+            "version": "0.1.2",
+            "source": "registry+https://github.com/rust-lang/crates.io-index",
+            "manifest_path": "<run>\\isolation\\cargo-home\\registry\\src\\-10aee331739c9b5b\\fsr-sdk-sys-0.1.2\\Cargo.toml"
+          }
+        ]
+      }
+    },
+    "final_integrity": {
+      "selected_archives_unchanged": true,
+      "extracted_bytes_unchanged": true
+    },
+    "subsequently_changed_captured_inputs": [
+      "tools/verification/profiles.py",
+      "tools/verification/README.md",
+      "tools/verification/tests/test_package_coverage.py"
+    ],
+    "retained_inventory_verified": true
+  },
+  "proton": {
+    "binding_unit_tested": true,
+    "linux_cross_build_run": false,
+    "proton_gpu_run": false,
+    "reason": "Current verification host is Windows; selected-pair Linux/GPU recheck remains pending."
+  },
+  "limits": [
+    "These are the measured development archives, not future frozen release bytes.",
+    "Focused coverage does not execute the entire release source/consumer/feature matrix.",
+    "GPU checks verify mapping, writes, ownership and cleanup, not image quality or new performance bounds.",
+    "Native heap callback invocation remains unobserved; controlled forwarding is checked.",
+    "No general callback quiescence, threading, native failure-recovery or broader platform guarantee follows.",
+    "Historical Proton results and provider-specific generator no-write limitations remain unchanged.",
+    "Nothing was published or uploaded."
+  ],
+  "windows_variable_output": {
+    "local_attempt": "target/package-coverage/20261029T014829Z-native-variable-output-b1f24c009ff5",
+    "summary_sha256": "9f2e117da36eed0a763048c5578b70bcc62cd6bee55e4389ab97831a04b01123",
+    "input_identity": "df72d371284bd4b00d069bdc4e109855faface5588a52bcf17d6836468ea35ea",
+    "started_utc": "2026-10-29T01:48:30.032756+00:00",
+    "finished_utc": "2026-10-29T01:51:15.456970+00:00",
+    "status": "passed",
+    "completed": 66,
+    "inputs_unchanged": true,
+    "cases": {
+      "equipment.toolchain": "passed",
+      "windows.environment": "passed",
+      "release.package": "passed",
+      "release.registry": "passed",
+      "artifact.bind": "passed",
+      "abi.headers": "passed",
+      "abi.common": "passed",
+      "abi.creation": "passed",
+      "abi.dispatch": "passed",
+      "abi.query": "passed",
+      "native.sdk": "passed",
+      "native.helper": "passed",
+      "public-variable-output.build.fsr_sdk": "passed",
+      "public-variable-output.fsr4.local.control": "passed",
+      "public-variable-output.fsr4.local.stable-max": "passed",
+      "public-variable-output.fsr4.local.aligned-max": "passed",
+      "public-variable-output.fsr4.local.width-only": "passed",
+      "public-variable-output.fsr4.local.height-only": "passed",
+      "public-variable-output.fsr4.local.rounded-motion-0": "passed",
+      "public-variable-output.fsr4.local.rounded-motion-0-sharp": "passed",
+      "public-variable-output.fsr4.local.rounded-motion-1": "passed",
+      "public-variable-output.fsr4.local.rounded-motion-1-sharp": "passed",
+      "public-variable-output.fsr4.local.rounded-motion-2": "passed",
+      "public-variable-output.fsr4.local.rounded-motion-2-sharp": "passed",
+      "public-variable-output.fsr4.local.rounded-motion-3": "passed",
+      "public-variable-output.fsr4.local.rounded-motion-3-sharp": "passed",
+      "public-variable-output.fsr4.movable.control": "passed",
+      "public-variable-output.fsr4.movable.stable-max": "passed",
+      "public-variable-output.fsr4.movable.aligned-max": "passed",
+      "public-variable-output.fsr4.movable.width-only": "passed",
+      "public-variable-output.fsr4.movable.height-only": "passed",
+      "public-variable-output.fsr4.movable.rounded-motion-0": "passed",
+      "public-variable-output.fsr4.movable.rounded-motion-0-sharp": "passed",
+      "public-variable-output.fsr4.movable.rounded-motion-1": "passed",
+      "public-variable-output.fsr4.movable.rounded-motion-1-sharp": "passed",
+      "public-variable-output.fsr4.movable.rounded-motion-2": "passed",
+      "public-variable-output.fsr4.movable.rounded-motion-2-sharp": "passed",
+      "public-variable-output.fsr4.movable.rounded-motion-3": "passed",
+      "public-variable-output.fsr4.movable.rounded-motion-3-sharp": "passed",
+      "public-variable-output.fsr3.local.control": "passed",
+      "public-variable-output.fsr3.local.stable-max": "passed",
+      "public-variable-output.fsr3.local.aligned-max": "passed",
+      "public-variable-output.fsr3.local.width-only": "passed",
+      "public-variable-output.fsr3.local.height-only": "passed",
+      "public-variable-output.fsr3.local.rounded-motion-0": "passed",
+      "public-variable-output.fsr3.local.rounded-motion-0-sharp": "passed",
+      "public-variable-output.fsr3.local.rounded-motion-1": "passed",
+      "public-variable-output.fsr3.local.rounded-motion-1-sharp": "passed",
+      "public-variable-output.fsr3.local.rounded-motion-2": "passed",
+      "public-variable-output.fsr3.local.rounded-motion-2-sharp": "passed",
+      "public-variable-output.fsr3.local.rounded-motion-3": "passed",
+      "public-variable-output.fsr3.local.rounded-motion-3-sharp": "passed",
+      "public-variable-output.fsr3.movable.control": "passed",
+      "public-variable-output.fsr3.movable.stable-max": "passed",
+      "public-variable-output.fsr3.movable.aligned-max": "passed",
+      "public-variable-output.fsr3.movable.width-only": "passed",
+      "public-variable-output.fsr3.movable.height-only": "passed",
+      "public-variable-output.fsr3.movable.rounded-motion-0": "passed",
+      "public-variable-output.fsr3.movable.rounded-motion-0-sharp": "passed",
+      "public-variable-output.fsr3.movable.rounded-motion-1": "passed",
+      "public-variable-output.fsr3.movable.rounded-motion-1-sharp": "passed",
+      "public-variable-output.fsr3.movable.rounded-motion-2": "passed",
+      "public-variable-output.fsr3.movable.rounded-motion-2-sharp": "passed",
+      "public-variable-output.fsr3.movable.rounded-motion-3": "passed",
+      "public-variable-output.fsr3.movable.rounded-motion-3-sharp": "passed",
+      "release.integrity": "passed"
+    },
+    "rust_build": {
+      "executable_sha256": "c10ed67aeee5c1e7fbed157e02bc47d6c1f2f42d58950ecc0f2d78dd7ea30263",
+      "manifest": "<run>\\isolation\\packages\\fsr-sdk-0.3.0\\Cargo.toml",
+      "registry_artifact": true,
+      "archive_hashes": {
+        "fsr-sdk": "f55b3a2b46b96406fdbfeb82ef6ff179b3a4469b90c1198b318119b83adb204f",
+        "fsr-sdk-sys": "0bb92f048d27b67d74a3876bc78b5016ac33452640ffa17cffdab77179230bb0"
+      }
+    },
+    "final_integrity": {
+      "selected_archives_unchanged": true,
+      "extracted_bytes_unchanged": true
+    },
+    "subsequently_changed_captured_inputs": [
+      "tools/verification/profiles.py",
+      "tools/verification/README.md"
+    ],
+    "retained_inventory_verified": true
+  },
+  "unit_tests": {
+    "working_directory": "tools/verification/tests",
+    "command": "python -m unittest test_package_coverage test_infrastructure test_proton test_proton_runtime test_proton_timeout",
+    "total": 68,
+    "passed": 65,
+    "skipped": 3,
+    "skip_reasons": [
+      "Linux prefix ownership inventory",
+      "Real Linux pidfd descendant oracle",
+      "Linux mode/symlink identity; no Windows symlink privilege required"
+    ]
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "scope": "Initial P08 CPU evidence and planning only; no new native measurements",
+  "source_identity": "590b73027f16ffb12f573268832f3e77c4639cfba38b73bc3729e827e3c4b474",
+  "planning_control": "20261027T213639Z-release-performance-6e3adfcf6698",
+  "planning_analysis_sha256": "9a0ecbca6818d87721999d48795042315e6659aaa196df329387ae52911e0b58",
+  "planning_run_input_identity": "0a227d2d350bc033c40138ca936c5bb36f36e3808e3a03e73eaffa8fecbf0eb7",
+  "protocol_sha256": "95d60e47c920c5d3572042b8ee9396b3d167668f58273bc49d692cecee19d1f7",
+  "base_protocol_sha256": "cd56823cc8477c8608cab3bf6e5a479f0aba97a7cf447392c79f6dea846ba29a",
+  "archives": {
+    "fsr-sdk": {
+      "sha256": "326e163efa02292cf2390767a2f8019818b958064cbac331cb51192c0c0febf9",
+      "source_files_checked": 157,
+      "version": "0.3.0"
+    },
+    "fsr-sdk-sys": {
+      "sha256": "05fba7838b4c947b5ee9950e97ac1b2aa0091150057959e2072b29a682e549a5",
+      "source_files_checked": 30,
+      "version": "0.1.2"
+    }
+  },
+  "started_utc": "2026-10-27T21:36:39.629117+00:00",
+  "finished_utc": "2026-10-27T22:10:12.858428+00:00",
+  "stages": [
+    {
+      "profile": "setup-1",
+      "run": "20261027T213640Z-experiment-provider-setup-e478c1221a98",
+      "status": "passed",
+      "passed": 11,
+      "required": 11,
+      "inputs_unchanged": true
+    },
+    {
+      "profile": "setup-2",
+      "run": "20261027T213649Z-experiment-provider-setup-778171565804",
+      "status": "passed",
+      "passed": 11,
+      "required": 11,
+      "inputs_unchanged": true
+    },
+    {
+      "profile": "setup-3",
+      "run": "20261027T213657Z-experiment-provider-setup-20b41b771fd4",
+      "status": "passed",
+      "passed": 11,
+      "required": 11,
+      "inputs_unchanged": true
+    },
+    {
+      "profile": "experiment-performance-pilot",
+      "run": "20261027T213706Z-experiment-performance-pilot-1637a2bc2f22",
+      "status": "passed",
+      "passed": 122,
+      "required": 122,
+      "inputs_unchanged": true
+    },
+    {
+      "profile": "experiment-performance-confirm",
+      "run": "20261027T214449Z-experiment-performance-confirm-c6b494a1e0b0",
+      "status": "passed",
+      "passed": 360,
+      "required": 360,
+      "inputs_unchanged": true
+    }
+  ],
+  "equipment": {
+    "provider": {
+      "id": 17700776142811697154,
+      "name": "4.1.2 *"
+    },
+    "adapter_driver": {
+      "adapter": "AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011567",
+      "driver": "HRESULT=0x00000000; version=32.0.32015.7029"
+    },
+    "frequency_hz": 10000000,
+    "gpu_frequency_hz": 100000000,
+    "query": {
+      "render": [
+        1280,
+        720
+      ],
+      "phase": 18
+    },
+    "smaller": {
+      "render": [
+        960,
+        540
+      ],
+      "phase": 32
+    }
+  },
+  "overall_cpu_verdict": "inconclusive",
+  "cpu": {
+    "max": {
+      "blocks": 26,
+      "mean_difference_ns": 4510.817307692308,
+      "block_sd_ns": 2025.0765284091024,
+      "lower_one_sided_95_ns": 3832.4288932905047,
+      "upper_one_sided_95_ns": 5189.205722094111,
+      "two_sided_95_ns": [
+        3692.871196402447,
+        5328.763418982168
+      ],
+      "budget_ns": 5000,
+      "verdict": "inconclusive",
+      "block_differences_ns": [
+        4104.6875,
+        3303.125,
+        3653.90625,
+        2656.25,
+        4361.71875,
+        5889.84375,
+        10208.59375,
+        6502.34375,
+        7192.96875,
+        3610.15625,
+        5442.96875,
+        2695.3125,
+        4478.90625,
+        2502.34375,
+        4769.53125,
+        4600.78125,
+        7612.5,
+        3437.5,
+        2035.15625,
+        3560.9375,
+        1383.59375,
+        4674.21875,
+        2659.375,
+        7287.5,
+        5608.59375,
+        3048.4375
+      ]
+    },
+    "small": {
+      "blocks": 26,
+      "mean_difference_ns": 3554.777644230769,
+      "block_sd_ns": 4562.510628877405,
+      "lower_one_sided_95_ns": 2026.3641211887207,
+      "upper_one_sided_95_ns": 5083.191167272817,
+      "two_sided_95_ns": [
+        1711.9397197101102,
+        5397.615568751427
+      ],
+      "budget_ns": 5000,
+      "verdict": "inconclusive",
+      "block_differences_ns": [
+        -17251.5625,
+        3119.53125,
+        7078.90625,
+        4428.90625,
+        6425.78125,
+        4270.3125,
+        2612.5,
+        8389.84375,
+        5911.71875,
+        3396.09375,
+        2146.875,
+        4064.84375,
+        5406.25,
+        3287.5,
+        3671.09375,
+        6905.46875,
+        2822.65625,
+        4444.53125,
+        2019.53125,
+        2350.78125,
+        6565.625,
+        4422.65625,
+        3557.03125,
+        4389.84375,
+        2871.875,
+        5115.625
+      ]
+    },
+    "transition": {
+      "blocks": 26,
+      "mean_difference_ns": 3835.2764423076924,
+      "block_sd_ns": 3136.5462685478733,
+      "lower_one_sided_95_ns": 2784.552373380935,
+      "upper_one_sided_95_ns": 4886.00051123445,
+      "two_sided_95_ns": [
+        2568.397987469775,
+        5102.1548971456095
+      ],
+      "budget_ns": 5000,
+      "verdict": "within-budget",
+      "block_differences_ns": [
+        4122.65625,
+        -7115.625,
+        3917.1875,
+        5945.3125,
+        6659.375,
+        413.28125,
+        4055.46875,
+        3557.8125,
+        6805.46875,
+        1884.375,
+        4696.09375,
+        9845.3125,
+        4096.875,
+        1927.34375,
+        4931.25,
+        1172.65625,
+        2603.90625,
+        1059.375,
+        1403.90625,
+        4784.375,
+        4278.125,
+        6937.5,
+        5178.125,
+        4750.78125,
+        4650.78125,
+        7155.46875
+      ]
+    },
+    "masks": {
+      "blocks": 26,
+      "mean_difference_ns": 4432.151442307692,
+      "block_sd_ns": 4040.1129659880444,
+      "lower_one_sided_95_ns": 3078.7379833339037,
+      "upper_one_sided_95_ns": 5785.564901281481,
+      "two_sided_95_ns": [
+        2800.314500176052,
+        6063.988384439333
+      ],
+      "budget_ns": 5000,
+      "verdict": "inconclusive",
+      "block_differences_ns": [
+        4756.25,
+        5895.3125,
+        9996.875,
+        15046.875,
+        7516.40625,
+        3416.40625,
+        7358.59375,
+        3242.96875,
+        2139.84375,
+        5163.28125,
+        2662.5,
+        4371.875,
+        1907.03125,
+        4957.8125,
+        4193.75,
+        6074.21875,
+        2953.125,
+        4648.4375,
+        -8326.5625,
+        2690.625,
+        6391.40625,
+        5655.46875,
+        3918.75,
+        5823.4375,
+        -2432.8125,
+        5214.0625
+      ]
+    },
+    "hdr": {
+      "blocks": 26,
+      "mean_difference_ns": 3092.8485576923076,
+      "block_sd_ns": 3449.860948088754,
+      "lower_one_sided_95_ns": 1937.1659621712367,
+      "upper_one_sided_95_ns": 4248.531153213378,
+      "two_sided_95_ns": [
+        1699.419565062211,
+        4486.277550322404
+      ],
+      "budget_ns": 5000,
+      "verdict": "within-budget",
+      "block_differences_ns": [
+        6834.375,
+        2671.09375,
+        3711.71875,
+        1798.4375,
+        2140.625,
+        1952.34375,
+        481.25,
+        2054.6875,
+        -1005.46875,
+        1800.78125,
+        4318.75,
+        -2000.0,
+        3150.78125,
+        3334.375,
+        5573.4375,
+        3668.75,
+        15290.625,
+        7448.4375,
+        1228.125,
+        1564.0625,
+        -401.5625,
+        2939.84375,
+        5192.1875,
+        -1785.9375,
+        3186.71875,
+        5265.625
+      ]
+    }
+  },
+  "primary_measurement_seconds": 1123.4226605999866,
+  "new_confirmation_plan": {
+    "blocks_per_workload": 256,
+    "minimum_even_blocks_for_500_ns_margin": 228,
+    "planned_worst_margin_ns": 470.75160351368805,
+    "predicted_primary_seconds_at_observed_pace": 11061.392350522945,
+    "conservative_primary_seconds_1_5_multiplier": 16592.088525784417,
+    "primary_allowance_seconds": 18000,
+    "prior_samples_in_new_estimate": 0
+  }
+}

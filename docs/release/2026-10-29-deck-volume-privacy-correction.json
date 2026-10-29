@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "scope": "Four historical Steam Deck JSON derivatives; replace local volume UUID mount roots only.",
+  "replacement": "<external-volume>",
+  "total_replacements": 8,
+  "files": [
+    {
+      "file": "docs/research/records/2026-10-13-exp-proton-temporal-regression/jitter-results.json",
+      "original_bytes": 57860,
+      "original_sha256": "e07ed21902d91c131fbe8fed86ac579fe023ee1db3113c318bd53f5bbb761555",
+      "sanitized_bytes": 57758,
+      "sanitized_sha256": "0aa619dda924ebcc177d2ebd79f7355bbc93bfdea6c274eecfcdeb798e807d4a",
+      "replacements": {
+        "external_volume_mount_paths": 2
+      },
+      "changed_string_fields": [
+        "$.cases[10].observations.wine_drives.d:",
+        "$.cases[11].observations.wine_drives.d:"
+      ],
+      "original_crlf_newlines": 32,
+      "sanitized_newlines": "LF",
+      "json_structure_and_all_other_values_unchanged": true
+    },
+    {
+      "file": "docs/research/records/2026-10-13-exp-proton-temporal-regression/long-results.json",
+      "original_bytes": 60831,
+      "original_sha256": "c4235d4697bb80618d9b1fa7e1cf343070ce280d7ab21db77232f50c479a739a",
+      "sanitized_bytes": 60733,
+      "sanitized_sha256": "868b826d148bfb9a0c2c429e052f7d4dfcca07ffb43db4508204854324da2360",
+      "replacements": {
+        "external_volume_mount_paths": 2
+      },
+      "changed_string_fields": [
+        "$.cases[8].observations.wine_drives.d:",
+        "$.cases[9].observations.wine_drives.d:"
+      ],
+      "original_crlf_newlines": 28,
+      "sanitized_newlines": "LF",
+      "json_structure_and_all_other_values_unchanged": true
+    },
+    {
+      "file": "docs/research/records/2026-10-13-exp-proton-temporal-regression/quality-results.json",
+      "original_bytes": 61087,
+      "original_sha256": "5e03004478791c59b7d584e869ea29e6d288dd2f05d42ff37da8a71f65160911",
+      "sanitized_bytes": 60989,
+      "sanitized_sha256": "0eb74f80a7716ca35546b0c7b9a797db9b7c58ae4452a0b0bc710d1f6d522a5d",
+      "replacements": {
+        "external_volume_mount_paths": 2
+      },
+      "changed_string_fields": [
+        "$.cases[8].observations.wine_drives.d:",
+        "$.cases[9].observations.wine_drives.d:"
+      ],
+      "original_crlf_newlines": 28,
+      "sanitized_newlines": "LF",
+      "json_structure_and_all_other_values_unchanged": true
+    },
+    {
+      "file": "docs/research/records/2026-10-13-exp-proton-temporal-regression/reset-results.json",
+      "original_bytes": 64451,
+      "original_sha256": "2b0adaf9a31620dc72a1dd9b628dd060870f060619cd5a27496c3d50f382f3d6",
+      "sanitized_bytes": 64351,
+      "sanitized_sha256": "4b6ea1444aeed308996ddd2759c1098dba42e4106a400a40fae6e40d189f0fbf",
+      "replacements": {
+        "external_volume_mount_paths": 2
+      },
+      "changed_string_fields": [
+        "$.cases[10].observations.wine_drives.d:",
+        "$.cases[11].observations.wine_drives.d:"
+      ],
+      "original_crlf_newlines": 30,
+      "sanitized_newlines": "LF",
+      "json_structure_and_all_other_values_unchanged": true
+    }
+  ],
+  "original_inventory_and_source_hashes_preserved": true,
+  "history_rewritten": false,
+  "native_execution_repeated": false,
+  "original_bytes_retained_under_ignored_target": true,
+  "current_tree_volume_path_screen": {
+    "command": [
+      "rg",
+      "-l",
+      "--hidden",
+      "-g",
+      "!.git/**",
+      "-g",
+      "!target/**",
+      "-g",
+      "!external/**",
+      "--",
+      "/run/media/[^/<>[:space:]]+/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
+      "."
+    ],
+    "tool": "ripgrep 15.1.0 (rev af60c2de9d)",
+    "exit_code": 1,
+    "matched_files": [],
+    "scope": "Current non-ignored repository text; no Git object/history or binary scan."
+  }
+}
