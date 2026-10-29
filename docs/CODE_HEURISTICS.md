@@ -29,6 +29,10 @@ Readability and correct domain contracts matter more than mechanical rules.
 
 ## Native Boundaries
 
+- Vulkan is a required future support target. Encapsulate Windows/DX12 code,
+  types, loaders and dependencies behind their platform/backend gates. Common
+  APIs and future Vulkan consumers must not require those dependencies; see
+  [D031](adr/D031.md). Do not infer backend selection from the operating system.
 - Keep `fsr-sdk-sys` faithful to the pinned AMD API: preserve names, layouts,
   integer widths, calling conventions, and pointer contracts. Rust API design
   preferences must not change the ABI.
@@ -37,6 +41,11 @@ Readability and correct domain contracts matter more than mechanical rules.
 - Make an operation safe only when the wrapper can uphold its safety contract.
   Document caller obligations for unsafe APIs and justify unsafe blocks with
   the invariants that make them valid.
+- Follow [D041](adr/D041.md) for public contracts: keep complete safety duties
+  and explicitly labelled uncertain native assumptions in `Safety`. Explain
+  rendering/SDK correctness in prose or descriptive sections; no universal
+  `Requirements` heading is prescribed. A documentation move does not relax an
+  accepted precondition or justify removing `unsafe`.
 - Make runtime, context, descriptor, and resource lifetimes explicit. Keep the
   library loaded while its functions or objects are in use, and use RAII for
   owned native objects.
@@ -45,8 +54,25 @@ Readability and correct domain contracts matter more than mechanical rules.
   exposing safe dispatch or implementing `Send` and `Sync`.
 - Check ABI assumptions against pinned headers; a successful Rust build alone
   does not verify native compatibility.
+- Derive rejection rules from documented preconditions or established wrapper
+  invariants. A query reporting requirements or consumption is not automatically
+  an exhaustive list of inputs that may be supplied. Keep input validity,
+  required presence, reported consumption and native verification distinct;
+  [D025's mask amendment](adr/D025.md#amendment-rationale-and-implementation-status)
+  records the concrete failure and correction.
+- Attribute failures to the layer that produced them. A wrapper preflight error
+  before native entry is not an SDK rejection or evidence of a hardware limit.
 
 ## Direct Provider Controls and SDK-Level Policies
+
+[D033](adr/D033.md) owns the core/utility/integration boundary. Keep native
+operations, checked representations, necessary mappings and preflight in core.
+Project-authored algorithms are candidates for explicit, optional utilities;
+renderer ownership belongs in integrations. D036's provider resolver is the
+selected off-by-default `utils` implementation; D042 separately governs the
+setup/frame API transition. Prefer utilities returning existing checked core
+inputs; preserve creation/frame/query/Configure/GPU-operation boundaries and
+require a concrete consumer gap before adding policy-specific core hooks.
 
 [D016](adr/D016.md) is the authoritative architecture decision for preserving
 direct provider controls alongside explicit SDK quality policies. Consult it
@@ -70,7 +96,7 @@ release gate and preserves the existing support and safety contracts.
 Consequential zero-cost, performance, or allocation claims require generated
 code, profiling, or benchmark evidence as appropriate.
 
-## Judgment
+## Judgement
 
 Small functions, purity, strong types, and abstraction are tools, not goals.
 Keep an abstraction only when it improves the contract, testability, or caller
