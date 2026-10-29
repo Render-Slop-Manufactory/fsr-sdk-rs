@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "question": "Does explicit provider 4.1.1 versus the current default 4.1.2 alter GPU/context costs on one unchanged driver?",
+  "arms": {
+    "explicit-4.1.1": 17700776140664213505,
+    "default": 17700776142811697154
+  },
+  "blocks": 8,
+  "seed": 6102901,
+  "workload": "max",
+  "output": [
+    1920,
+    1080
+  ],
+  "frames": 160,
+  "warmup": 32,
+  "warm_context_pairs_per_child": 8,
+  "measurement_limit_seconds": 600,
+  "child_timeout_seconds": 120,
+  "base_reference_sha256": "e888876876c84836776610de582f9fdca666912d19a83e4c9c70c941a59fb908",
+  "analysis": "Equal-weight paired process means, default minus explicit 4.1.1. Two-sided 95% Student t intervals are descriptive; no speed gate or adaptive sample selection.",
+  "stopping": "Exactly eight balanced pairs, no pilot, trimming, early success or optional extension. Check the primary allowance before each child; incomplete evidence cannot pass. Build/debug controls and bounded child completion are outside that allowance.",
+  "limits": "C++ only, maximum render SDR at 1080p, same current driver. Initial provider identity verified per process; warm creations reuse the same immutable override chain. No driver rollback, Rust overhead requalification, image-quality, throughput or universal parity claim. Provider outputs need not be byte-identical across arms."
+}

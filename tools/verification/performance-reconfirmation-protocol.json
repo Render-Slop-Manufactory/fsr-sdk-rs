@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "question": "Independent fixed-length P08 confirmation; previous completed measurement supplies planning data only",
+  "workloads": [
+    "max",
+    "small",
+    "transition",
+    "masks",
+    "hdr"
+  ],
+  "minimum_confirmation_blocks": 256,
+  "maximum_confirmation_blocks": 256,
+  "confirmation_measurement_limit_seconds": 18000,
+  "runtime_planning_multiplier": 1.5,
+  "cpu_budget_ns": 5000,
+  "aspirational_cpu_ns": 2000,
+  "planning_half_width_ns": 500,
+  "confidence": 0.95,
+  "confirmation_seed": 6102802,
+  "frames": 160,
+  "warmup": 32,
+  "analysis": "Equal-weight average of paired process-mean differences; Student t bounds across process blocks, with approximate coverage conditional on independent reasonably regular block differences. No frame-level independence assumption, trimming or post-hoc exclusions. Pointwise bounds; the overall within-budget verdict requires every workload to pass.",
+  "selection": "Exactly 256 fresh paired blocks per workload, fixed before execution. The prior 26-block confirmation is planning data only; no pooling, new adaptive pilot, early stop or optional extension. Planning target is 500 ns one-sided margin using the prior worst workload standard deviation.",
+  "boundaries": "Complete public Rust dispatch versus prepared native C++ call; caller-side input construction, uploads, submission/fences, readbacks, logs and queries excluded. Existing serial fencing/checkpoints retained symmetrically, with their clock/thermal limitations explicit. GPU command intervals are descriptive, without acceptance margin.",
+  "supplemental": "Three independent blocks of preparation and prepared-raw Rust diagnostics on all workloads; three allocation processes per workload; eight lifecycle blocks per SDR/HDR context type, eight unused-context warm create/destroy pairs within each process. Supplemental dispatch timing is excluded from the primary estimate.",
+  "lifecycle": "Loader acquisition/symbol resolution; separate first pre-create provider/render query; first context creation after that query; first dispatch; used-context destruction after fencing; subsequent unused-context creation/destruction. Fresh-process is not cache-cold. Rust test trace lookup suppressed; residual test-only TLS branch and allocator hook remain. No lifecycle speed gate.",
+  "stopping": "Exactly 256 blocks, no early success or optional extension. A wall-clock watchdog stops before starting another primary child after 18000 seconds; incomplete confirmation cannot pass. Invalid execution fails evidence acceptance independently of the statistical verdict.",
+  "exclusions": "No pooling of prior measurements, automatic release approval, FPS/throughput, every-frame latency, universal GPU equivalence or image-quality claim. The 5-hour cap is for primary confirmation, not whole-batch elapsed time."
+}

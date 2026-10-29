@@ -1,0 +1,577 @@
+{
+  "schema_version": 1,
+  "archived_on": "2026-10-10",
+  "provenance": "Exact working-tree bytes captured immediately before this archive-only relocation. This is an intake snapshot, not reconstruction of every historical run.",
+  "groups": {
+    "milestone-wrappers": {
+      "purpose": "Retired M4/M5/M6 aliases; lifecycle/dispatch remain available through the active shared native runner.",
+      "requirements": [
+        "Original crate-relative layout; PowerShell; Cargo and cached declared dependencies. Native mode additionally needs the native-regressions requirements."
+      ],
+      "repository_inputs": [
+        "crates/fsr-sdk/tests/native/run.ps1"
+      ],
+      "outcomes": "Wrappers delegate to lifecycle or dispatch; they are not independent verification cases."
+    },
+    "native-diagnostics": {
+      "purpose": "Frozen recording-ahead, GBV, dimension, allocation/input-lifetime, provider-deployment and shared-runtime experiments. Their Rust/C++ equipment remains in the repository for future migration.",
+      "requirements": [
+        "Windows x64/MSVC developer shell; trusted local SDK v2.3.0 headers and signed loader/provider deployment; applicable hardware/debug-layer requirements.",
+        "Original script paths and a compatible source state. Each script owns its staging, watchdog and environment rules; fixed stages can overwrite earlier attempts."
+      ],
+      "repository_inputs": [
+        "Cargo.toml",
+        "Cargo.lock",
+        "crates/fsr-sdk/Cargo.toml",
+        "crates/fsr-sdk-sys/Cargo.toml",
+        "crates/fsr-sdk/tests/native",
+        "crates/fsr-sdk/src",
+        "crates/fsr-sdk-sys/src",
+        "crates/fsr-sdk-sys/tests/context_lifecycle",
+        "crates/fsr-sdk-sys/tests/context_dimensions.rs",
+        "crates/fsr-sdk-sys/tests/context_lifecycle.rs",
+        "crates/fsr-sdk-sys/tests/query.rs",
+        "crates/fsr-sdk-sys/tests/provider_resolution/modules.rs",
+        "crates/fsr-sdk-sys/tests/shared_runtime.rs"
+      ],
+      "outcomes": "Recording-ahead aggregates selected failures; GBV gates its control but records dispatch timeout; dimensions/shared-runtime record child statuses; provider deployment includes expected negative layouts; allocation/input-lifetime controls and raw aborts retain their original meanings. Parent exit 0 is not a universal child-pass claim."
+    },
+    "m9-release": {
+      "purpose": "Historical projected candidate that excluded the public movable family; superseded for publication by the complete 0.2.0 record, not rewritten to match it.",
+      "requirements": [
+        "Python standard library; recorded Cargo/stable/MSRV tools and cached registry archives; the pre-projection source expected by prepare-candidate.py.",
+        "Generated target/m9-release-20261010-final source, archives, isolated registry, check logs and native stage/readback inputs. Collectors write beside their original scripts."
+      ],
+      "repository_inputs": [
+        "Cargo.toml",
+        "Cargo.lock",
+        "LICENSE",
+        "crates",
+        "docs/release/2026-10-10-m9-verification.md"
+      ],
+      "outcomes": "Projected candidate/archive/consumer acceptance is separate from image diagnostics and publication. The preparation script expects pre-0.2.0 source and is not a current release recipe.",
+      "intake_repository_inputs": [
+        "Cargo.toml",
+        "Cargo.lock",
+        "LICENSE",
+        "crates",
+        "docs/release/2026-10-10-m9-verification.md",
+        "docs/release/2026-10-09-m9-native-sharpening-protocol.md"
+      ]
+    },
+    "complete-release": {
+      "purpose": "Historical complete 0.2.0/0.1.1 verification, including movable, archive/registry isolation, content audit and evidence collection.",
+      "requirements": [
+        "Python standard library; recorded Cargo/stable/MSRV tools and cached registry archives; exact candidate/package inputs.",
+        "Generated target/release-020-20261010 archives, registry, check/dry-run logs, API controls, source/artifact movable stages and M9 artifact readbacks.",
+        "collect-release.py imports the frozen M9 collector at its original path. Collectors/audits write into their original historical evidence directories; use a disposable reconstruction only."
+      ],
+      "repository_inputs": [
+        "Cargo.toml",
+        "Cargo.lock",
+        "LICENSE",
+        "README.md",
+        "crates",
+        "docs/ROADMAP_HISTORY.md",
+        "docs/release/2026-10-10-m9-verification.md",
+        "docs/research/records/2026-09-30-exp-d014-native-sharpening.md",
+        "crates/fsr-sdk/tests/native/sharpening.rs"
+      ],
+      "outcomes": "Expected compiler errors are passing negative controls. Resume reuse is label/exit based, not input-checked. Package verification, native integration, content audit and publication observation remain distinct.",
+      "intake_repository_inputs": [
+        "Cargo.toml",
+        "Cargo.lock",
+        "LICENSE",
+        "README.md",
+        "crates",
+        "docs/release/2026-10-10-0.2.0-release-verification.md",
+        "docs/release/2026-10-09-m9-native-sharpening-protocol.md",
+        "docs/research/records/2026-09-30-exp-d014-native-sharpening.md",
+        "crates/fsr-sdk/tests/native/sharpening.rs"
+      ]
+    },
+    "dated-audits": {
+      "purpose": "Original independent sharpening decoder and D013 cleanup matrix collector/ordinary checks.",
+      "requirements": [
+        "PowerShell 7/.NET for the half decoder; Cargo/stable/MSRV tools for ordinary checks.",
+        "Recorded target-stage logs, source identities and raw readbacks; D013 collector uses the repository as its working directory and writes beside its original script."
+      ],
+      "repository_inputs": [
+        "docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup.md",
+        "docs/research/records/2026-09-30-exp-d014-native-sharpening.md",
+        "crates/fsr-sdk/tests/native/thread_transfers.rs",
+        "crates/fsr-sdk/tests/native/sharpening.rs",
+        "Cargo.toml",
+        "Cargo.lock"
+      ],
+      "outcomes": "Preserve failed sharpening criteria and the D013 collector's bounded cleanup/payload comparisons. These are not general native safety or image-quality gates."
+    },
+    "native-regressions": {
+      "purpose": "Archive-time context snapshots; original files remain active and are not retired by this change.",
+      "requirements": [
+        "PowerShell 7; Cargo; Windows x64/MSVC/local SDK and recorded hardware for native execution. CI ABI mode may fetch hash-pinned headers."
+      ],
+      "repository_inputs": [
+        "Cargo.toml",
+        "Cargo.lock",
+        "crates",
+        ".github/workflows/ci.yml",
+        "docs/DEVELOPMENT.md"
+      ],
+      "outcomes": "Active shared runner/ABI/API checks retain their behavior. Frozen copies explain dependencies of retired scripts, not the exact equipment used by every earlier run."
+    }
+  },
+  "entries": [
+    {
+      "original": "crates/fsr-sdk/tests/run-m4.ps1",
+      "archived": "files/crates/fsr-sdk/tests/run-m4.ps1.txt",
+      "disposition": "retired",
+      "group": "milestone-wrappers",
+      "purpose": "M4 lifecycle alias",
+      "bytes": 308,
+      "sha256": "9582fe92709aa072f8c36a083535f939b0b67ee4ae8c0ab28dbd26a4f99a044d",
+      "depends_on": [
+        "crates/fsr-sdk/tests/native/run.ps1"
+      ],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-22-exp-m4-windows-verification.md"
+      ],
+      "intake_referenced_by": [
+        "docs/MILESTONE_4.md",
+        "docs/release/2026-09-30-development-history.md",
+        "docs/research/records/2026-09-22-exp-m4-windows-verification.md"
+      ]
+    },
+    {
+      "original": "crates/fsr-sdk/tests/run-m5.ps1",
+      "archived": "files/crates/fsr-sdk/tests/run-m5.ps1.txt",
+      "disposition": "retired",
+      "group": "milestone-wrappers",
+      "purpose": "M5 lifecycle alias",
+      "bytes": 308,
+      "sha256": "0a1127e75ebf4112dd9b092e23c8cf463e4baea569e7a052196f462e10b51e7f",
+      "depends_on": [
+        "crates/fsr-sdk/tests/native/run.ps1"
+      ],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-24-exp-m5-windows-native-verification.md",
+        "docs/research/records/2026-09-30-exp-dispatch-semantics.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-09-30-development-history.md",
+        "docs/release/2026-09-30-review-verification.md",
+        "docs/research/records/2026-09-24-exp-m5-windows-native-verification.md",
+        "docs/research/records/2026-09-30-exp-dispatch-semantics.md"
+      ]
+    },
+    {
+      "original": "crates/fsr-sdk/tests/run-m6.ps1",
+      "archived": "files/crates/fsr-sdk/tests/run-m6.ps1.txt",
+      "disposition": "retired",
+      "group": "milestone-wrappers",
+      "purpose": "M6 dispatch alias",
+      "bytes": 298,
+      "sha256": "d232239a1327137cde25f37448f29ccdc4ab14d372528e586076a838a1e3a5cf",
+      "depends_on": [
+        "crates/fsr-sdk/tests/native/run.ps1"
+      ],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-24-exp-m6a-native-dispatch-proof.md",
+        "docs/research/records/2026-09-25-m6b-public-dispatch-verification.md",
+        "docs/research/records/2026-09-28-exp-final-windows-release-verification.md",
+        "docs/research/records/2026-09-30-exp-d013-native-thread-transfer.md",
+        "docs/research/records/2026-09-30-exp-dispatch-semantics.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-09-30-development-history.md",
+        "docs/release/2026-09-30-review-verification.md",
+        "docs/research/records/2026-09-24-exp-m6a-native-dispatch-proof.md",
+        "docs/research/records/2026-09-25-m6b-public-dispatch-verification.md",
+        "docs/research/records/2026-09-28-exp-final-windows-release-verification.md",
+        "docs/research/records/2026-09-30-exp-d013-native-thread-transfer.md",
+        "docs/research/records/2026-09-30-exp-dispatch-semantics.md"
+      ]
+    },
+    {
+      "original": "crates/fsr-sdk/tests/run-m6-recording-spike.ps1",
+      "archived": "files/crates/fsr-sdk/tests/run-m6-recording-spike.ps1.txt",
+      "disposition": "retired",
+      "group": "native-diagnostics",
+      "purpose": "Recording-ahead control and bounded same/sibling matrix",
+      "bytes": 3089,
+      "sha256": "bca57a82d0609b94148a714adfdbee243c6a36e3d4b0524057f33f752e1eeecd",
+      "depends_on": [
+        "crates/fsr-sdk/tests/run-m6.ps1"
+      ],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-24-exp-m6-recording-ahead.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-10-09-windows-native-recheck.md",
+        "docs/research/records/2026-09-24-exp-m6-recording-ahead.md"
+      ]
+    },
+    {
+      "original": "crates/fsr-sdk/tests/run-m6-gbv-spike.ps1",
+      "archived": "files/crates/fsr-sdk/tests/run-m6-gbv-spike.ps1.txt",
+      "disposition": "retired",
+      "group": "native-diagnostics",
+      "purpose": "GBV control/dispatch diagnostic",
+      "bytes": 3042,
+      "sha256": "b68b94cb364345285072b0c15748a75e1040da7e79e73da318d1200d2243ce87",
+      "depends_on": [
+        "crates/fsr-sdk/tests/run-m6.ps1"
+      ],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-09-30-development-history.md",
+        "docs/release/2026-10-09-windows-native-recheck.md",
+        "docs/research/records/2026-09-24-exp-m6-gbv-dispatch-stall.md"
+      ]
+    },
+    {
+      "original": "crates/fsr-sdk-sys/tests/context_dimensions/run.ps1",
+      "archived": "files/crates/fsr-sdk-sys/tests/context_dimensions/run.ps1.txt",
+      "disposition": "retired",
+      "group": "native-diagnostics",
+      "purpose": "Dimension cases and raw create outcomes",
+      "bytes": 3842,
+      "sha256": "8a93871cebac6c2407e60ff5ba33c94f061198daed399f07f02f2ff1610175ac",
+      "depends_on": [],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-22-exp-m5-upscaler-construction-inputs.md",
+        "docs/research/records/2026-09-23-exp-m5-dx12-dimension-boundary.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-10-09-windows-native-recheck.md",
+        "docs/research/records/2026-09-22-exp-m5-upscaler-construction-inputs.md",
+        "docs/research/records/2026-09-23-exp-m5-dx12-dimension-boundary.md"
+      ]
+    },
+    {
+      "original": "crates/fsr-sdk-sys/tests/context_lifecycle/run.ps1",
+      "archived": "files/crates/fsr-sdk-sys/tests/context_lifecycle/run.ps1.txt",
+      "disposition": "retired",
+      "group": "native-diagnostics",
+      "purpose": "Allocation failure and returned-error lifetime probes; ordinary lifecycle alias",
+      "bytes": 8165,
+      "sha256": "97385c6b9148beae163bfa7a07067bba6623703e208ec7d29ec1db402fb4e1d6",
+      "depends_on": [
+        "crates/fsr-sdk/tests/run-m4.ps1"
+      ],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-20-exp-context-lifecycle.md",
+        "docs/research/records/2026-09-20-exp-create-allocation-failure.md",
+        "docs/research/records/2026-09-22-exp-create-error-input-lifetime.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-09-30-development-history.md",
+        "docs/release/2026-10-09-windows-native-recheck.md",
+        "docs/research/records/2026-09-20-exp-context-lifecycle.md",
+        "docs/research/records/2026-09-20-exp-create-allocation-failure.md",
+        "docs/research/records/2026-09-22-exp-create-error-input-lifetime.md"
+      ]
+    },
+    {
+      "original": "crates/fsr-sdk-sys/tests/provider_resolution/run.ps1",
+      "archived": "files/crates/fsr-sdk-sys/tests/provider_resolution/run.ps1.txt",
+      "disposition": "retired",
+      "group": "native-diagnostics",
+      "purpose": "Four executable-adjacent/provider deployment layouts",
+      "bytes": 5303,
+      "sha256": "282d0fe997ba986c852b91acff4b0c6075da90197ed99524bb9ed4dea2d03373",
+      "depends_on": [],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-22-exp-dx12-provider-dll-resolution.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-10-09-windows-native-recheck.md",
+        "docs/research/records/2026-09-22-exp-dx12-provider-dll-resolution.md"
+      ]
+    },
+    {
+      "original": "crates/fsr-sdk-sys/tests/shared_runtime/run.ps1",
+      "archived": "files/crates/fsr-sdk-sys/tests/shared_runtime/run.ps1.txt",
+      "disposition": "retired",
+      "group": "native-diagnostics",
+      "purpose": "Sequential shared runtime lifetime probe",
+      "bytes": 4375,
+      "sha256": "eb9795025babdd4c7f5ba747a1f50f6456c70d016dd691bdd074b65206957b2e",
+      "depends_on": [],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-22-exp-m5-shared-runtime-provider-lifetime.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-10-09-windows-native-recheck.md",
+        "docs/research/records/2026-09-22-exp-m5-shared-runtime-provider-lifetime.md"
+      ]
+    },
+    {
+      "original": "docs/release/2026-10-10-m9-verification/prepare-candidate.py",
+      "archived": "files/docs/release/2026-10-10-m9-verification/prepare-candidate.py.txt",
+      "disposition": "retired",
+      "group": "m9-release",
+      "purpose": "Prepare the historical movable-excluding projection",
+      "bytes": 6092,
+      "sha256": "bbb1322622dccc75ed834ca1fa88a0b2b54f1da572fb731d4d01ca968496be5d",
+      "depends_on": [],
+      "referenced_by": [
+        "docs/release/2026-10-10-m9-verification.md"
+      ]
+    },
+    {
+      "original": "docs/release/2026-10-10-m9-verification/verify-candidate.py",
+      "archived": "files/docs/release/2026-10-10-m9-verification/verify-candidate.py.txt",
+      "disposition": "retired",
+      "group": "m9-release",
+      "purpose": "Verify projected candidate, archives and isolated consumers",
+      "bytes": 15830,
+      "sha256": "8ef99369dd547e61ad85fb3deee3d9e2c775950f966ba2239d282878e1fd6a01",
+      "depends_on": [
+        "docs/release/2026-10-10-m9-verification/prepare-candidate.py"
+      ],
+      "referenced_by": [
+        "docs/release/2026-10-10-m9-verification.md"
+      ]
+    },
+    {
+      "original": "docs/release/2026-10-10-m9-verification/collect-evidence.py",
+      "archived": "files/docs/release/2026-10-10-m9-verification/collect-evidence.py.txt",
+      "disposition": "retired",
+      "group": "m9-release",
+      "purpose": "Independent half decoding and native evidence collection",
+      "bytes": 6064,
+      "sha256": "2b0128250b68b79856ec34f2b671ae3006ca10336da12b2e1cf4e61d51c3e293",
+      "depends_on": [
+        "crates/fsr-sdk/tests/native/run.ps1"
+      ],
+      "referenced_by": [
+        "docs/release/2026-10-10-m9-verification.md"
+      ]
+    },
+    {
+      "original": "docs/release/2026-10-10-m9-verification/save-artifact-evidence.py",
+      "archived": "files/docs/release/2026-10-10-m9-verification/save-artifact-evidence.py.txt",
+      "disposition": "retired",
+      "group": "m9-release",
+      "purpose": "Export projected artifact evidence into the historical directory",
+      "bytes": 3350,
+      "sha256": "37116f70aed01a9e9fc8bfe9bc0d50b16960ae75e663f30af2c081d0e61963ce",
+      "depends_on": [
+        "docs/release/2026-10-10-m9-verification/verify-candidate.py"
+      ],
+      "referenced_by": [
+        "docs/release/2026-10-10-m9-verification.md"
+      ]
+    },
+    {
+      "original": "docs/release/2026-10-10-0.2.0-release-verification/verify-release.py",
+      "archived": "files/docs/release/2026-10-10-0.2.0-release-verification/verify-release.py.txt",
+      "disposition": "retired",
+      "group": "complete-release",
+      "purpose": "Verify complete release packages and registry consumers",
+      "bytes": 20947,
+      "sha256": "d041b99e7418b761d07203fc0c3d0d1f282843f8aca1821e34634544a4501341",
+      "depends_on": [],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-10-10-0.2.0-release-verification.md"
+      ]
+    },
+    {
+      "original": "docs/release/2026-10-10-0.2.0-release-verification/collect-release.py",
+      "archived": "files/docs/release/2026-10-10-0.2.0-release-verification/collect-release.py.txt",
+      "disposition": "retired",
+      "group": "complete-release",
+      "purpose": "Export complete release evidence and invoke M9 audit",
+      "bytes": 9386,
+      "sha256": "682ac819c9b83921e8d37f4306e7e263a90895e275c282b2cd52ec1959a16174",
+      "depends_on": [
+        "docs/release/2026-10-10-0.2.0-release-verification/verify-release.py",
+        "docs/release/2026-10-10-m9-verification/collect-evidence.py",
+        "crates/fsr-sdk/tests/native/run.ps1",
+        "tools/check-movable-api.ps1"
+      ],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-10-10-0.2.0-release-verification.md"
+      ]
+    },
+    {
+      "original": "docs/release/2026-10-10-0.2.0-release-verification/audit-release.py",
+      "archived": "files/docs/release/2026-10-10-0.2.0-release-verification/audit-release.py.txt",
+      "disposition": "retired",
+      "group": "complete-release",
+      "purpose": "Content/navigation/provenance audit with historical output",
+      "bytes": 7274,
+      "sha256": "ad60b2bdf4429f6c9eb0d401cedaf06598729aa7645c1287a65b42fc766c50c6",
+      "depends_on": [
+        "docs/release/2026-10-10-0.2.0-release-verification/verify-release.py"
+      ],
+      "referenced_by": [
+        "docs/ROADMAP_HISTORY.md"
+      ],
+      "intake_referenced_by": [
+        "docs/release/2026-10-10-0.2.0-release-verification.md"
+      ]
+    },
+    {
+      "original": "docs/research/records/2026-09-30-exp-d014-native-sharpening/audit-readback.ps1",
+      "archived": "files/docs/research/records/2026-09-30-exp-d014-native-sharpening/audit-readback.ps1.txt",
+      "disposition": "retired",
+      "group": "dated-audits",
+      "purpose": "Independent sharpening half decoder and original metrics",
+      "bytes": 3408,
+      "sha256": "2fb94a96090556aeea7a6ca07e0be2dd8d7e67bb581b1b14259967c757777551",
+      "depends_on": [
+        "crates/fsr-sdk/tests/native/run.ps1"
+      ],
+      "referenced_by": [
+        "docs/research/records/2026-09-30-exp-d014-native-sharpening.md"
+      ]
+    },
+    {
+      "original": "docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup/audit-results.ps1",
+      "archived": "files/docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup/audit-results.ps1.txt",
+      "disposition": "retired",
+      "group": "dated-audits",
+      "purpose": "D013 cleanup matrix/payload audit and evidence export",
+      "bytes": 6499,
+      "sha256": "a91b9482e27179f14dfdd4c50dede8106da101d83fb818d72a6d7ec6a44f93cc",
+      "depends_on": [
+        "crates/fsr-sdk/tests/native/run.ps1"
+      ],
+      "referenced_by": [
+        "docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup.md"
+      ]
+    },
+    {
+      "original": "docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup/run-ordinary-checks.ps1",
+      "archived": "files/docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup/run-ordinary-checks.ps1.txt",
+      "disposition": "retired",
+      "group": "dated-audits",
+      "purpose": "Dated supplementary Cargo check sequence",
+      "bytes": 1680,
+      "sha256": "99a79472885f77a8a0ce5c160fb634076deb312cc1e8f59fbbdbf8acfea7ca12",
+      "depends_on": [],
+      "referenced_by": [
+        "docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup.md"
+      ]
+    },
+    {
+      "original": "crates/fsr-sdk/tests/native/run.ps1",
+      "archived": "files/crates/fsr-sdk/tests/native/run.ps1.txt",
+      "disposition": "context-snapshot",
+      "group": "native-regressions",
+      "purpose": "Shared native runner; active original retained",
+      "bytes": 23646,
+      "sha256": "e0f6363a3ac9bb5e73ac4083ca15c3bf42b10d6e5687e6a5cb4107f29e2c5f42",
+      "depends_on": [
+        "tools/check-native-abi.ps1"
+      ],
+      "referenced_by": [
+        "docs/DEVELOPMENT.md",
+        "docs/ROADMAP_HISTORY.md",
+        "docs/release/2026-10-10-m9-verification.md",
+        "docs/research/records/2026-09-30-exp-d013-native-thread-transfer.md",
+        "docs/research/records/2026-09-30-exp-d014-native-sharpening.md",
+        "docs/research/records/2026-09-30-exp-dispatch-semantics.md",
+        "docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup.md"
+      ],
+      "intake_referenced_by": [
+        "docs/DEVELOPMENT.md",
+        "docs/release/2026-10-09-common-dx12-verification.md",
+        "docs/release/2026-10-09-d013-public-api-verification.md",
+        "docs/release/2026-10-09-portable-common-verification.md",
+        "docs/release/2026-10-09-windows-native-recheck.md",
+        "docs/release/2026-10-10-0.2.0-release-verification.md",
+        "docs/release/2026-10-10-m9-verification.md",
+        "docs/research/records/2026-09-30-exp-d013-native-thread-transfer.md",
+        "docs/research/records/2026-09-30-exp-d014-native-sharpening.md",
+        "docs/research/records/2026-09-30-exp-dispatch-semantics.md",
+        "docs/research/records/2026-10-08-exp-d013-native-transfer-cleanup.md"
+      ]
+    },
+    {
+      "original": "tools/check-native-abi.ps1",
+      "archived": "files/tools/check-native-abi.ps1.txt",
+      "disposition": "context-snapshot",
+      "group": "native-regressions",
+      "purpose": "Independent pinned-header C++ ABI runner; active original retained",
+      "bytes": 2712,
+      "sha256": "50a7a201eff17a78654c0f1b1e82f7379b549c8c267476d26e097762d0b6c880",
+      "depends_on": [
+        "tools/native-headers.json"
+      ],
+      "referenced_by": [
+        "docs/DEVELOPMENT.md",
+        "docs/ROADMAP_HISTORY.md",
+        "docs/research/records/2026-09-30-exp-d013-native-thread-transfer.md"
+      ],
+      "intake_referenced_by": [
+        "docs/DEVELOPMENT.md",
+        "docs/release/2026-09-30-review-verification.md",
+        "docs/release/2026-10-09-common-dx12-verification.md",
+        "docs/release/2026-10-09-loader-refactor-audit.md",
+        "docs/release/2026-10-09-m8-implementation-verification.md",
+        "docs/release/2026-10-09-portable-common-verification.md",
+        "docs/research/records/2026-09-30-exp-d013-native-thread-transfer.md"
+      ]
+    },
+    {
+      "original": "tools/check-movable-api.ps1",
+      "archived": "files/tools/check-movable-api.ps1.txt",
+      "disposition": "context-snapshot",
+      "group": "native-regressions",
+      "purpose": "Consumer boundaries; active original retained",
+      "bytes": 11348,
+      "sha256": "91bdf64ab22bc46e86abcc54932e99d365c04508e681bf327734b2a19e6e11b6",
+      "depends_on": [],
+      "referenced_by": [
+        "docs/DEVELOPMENT.md",
+        "docs/ROADMAP_HISTORY.md",
+        "docs/release/2026-10-10-m9-verification.md"
+      ],
+      "intake_referenced_by": [
+        "docs/DEVELOPMENT.md",
+        "docs/release/2026-10-09-common-dx12-verification.md",
+        "docs/release/2026-10-09-d013-public-api-verification.md",
+        "docs/release/2026-10-09-loader-platform-verification.md",
+        "docs/release/2026-10-09-loader-refactor-audit.md",
+        "docs/release/2026-10-09-m8-implementation-verification.md",
+        "docs/release/2026-10-09-portable-common-verification.md",
+        "docs/release/2026-10-09-windows-native-recheck.md",
+        "docs/release/2026-10-10-0.2.0-release-verification.md",
+        "docs/release/2026-10-10-m9-verification.md"
+      ]
+    },
+    {
+      "original": "tools/native-headers.json",
+      "archived": "files/tools/native-headers.json.txt",
+      "disposition": "context-snapshot",
+      "group": "native-regressions",
+      "purpose": "Pinned header identity manifest; active original retained",
+      "bytes": 644,
+      "sha256": "ceaf9b7d9987749ad9b77ce8e8a05e321b095d471c9af9d73d8a99160c663ff6",
+      "depends_on": [],
+      "referenced_by": []
+    }
+  ],
+  "navigation_updated_on": "2026-10-29",
+  "navigation_scope": "Current retained summaries replace retired operational documentation links. Intake references and all original payload identities are preserved separately."
+}

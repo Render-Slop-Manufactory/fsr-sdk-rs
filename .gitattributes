@@ -1,0 +1,5 @@
+# Use LF for repository text on every host. Binary files remain unconverted.
+* text=auto eol=lf
+
+# Frozen release candidates must survive every host's Git settings byte-for-byte.
+release-candidates/**/*.crate -text -diff -merge

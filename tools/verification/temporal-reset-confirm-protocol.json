@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "confirmation": true,
+  "repeats": 3,
+  "order_seeds": [
+    419,
+    827,
+    1237
+  ],
+  "frames": 128,
+  "cut_frame": 64,
+  "render": [
+    320,
+    180
+  ],
+  "display": [
+    640,
+    360
+  ],
+  "input_only_frames": [
+    0,
+    1,
+    31,
+    32,
+    63,
+    64,
+    65,
+    95,
+    96,
+    127
+  ],
+  "scenes": [
+    {
+      "name": "cut",
+      "scene": 2,
+      "velocity": [
+        0.375,
+        0.25
+      ],
+      "controls": [
+        "reset",
+        "no-reset",
+        "fresh"
+      ]
+    }
+  ],
+  "windows": [
+    [
+      0,
+      7
+    ],
+    [
+      8,
+      31
+    ],
+    [
+      32,
+      63
+    ]
+  ],
+  "geometry": "Same analytic sinusoidal scene and camera/depth/colour as temporal diagnosis. At frame 64 camera translates (192/focal,96/focal), focal=90/tan(pi/6): FG displacement (-96,+48), BG (-24,+12) render pixels. World textures stay fixed; foreground keeps its local texture. All geometry remains in the measured viewport through frame 127.",
+  "motion": "Unjittered previousUV-currentUV: ordinary FG (-.375/320,-.25/180), BG zero. Cut FG ((96-.375)/320,(-48-.25)/180), BG (24/320,-12/180). Colour/depth/motion/exposure/jitter/timing identical across post-cut arms, including fresh frame 64. Jitter uses absolute phase; does not restart.",
+  "histories": "reset and no-reset build frames 0..63 in one context, then continue through 127. reset requests reset at 0 and 64; no-reset at 0 only. fresh starts one new context at absolute frame 64, resets once there, and continues through 127. All resources retained until fences and context destruction; no lifetime-policy changes.",
+  "evaluation": "Full byte input audit and finite/sentinel/fence/device/debug checks precede analysis. Point reference for interiors, exact area for edge, known true-flow foreground temporal residual from 65 onwards. Ghost region is pre-cut foreground interior intersected with current background interior; it measures the old screen footprint, not a universal physical disocclusion age. Per-frame metrics and paired RGBA maximum/reset-fresh/no-reset-fresh differences retained. Synthetic old-history contamination at 0/25/50/100% must discriminate and increase with severity before GPU dispatch.",
+  "selection_rule": "Exploration establishes no native quality acceptance. Select five fresh-context limits as 1.25 times the maximum window MAE plus .000001. Reset/fresh RGBA difference must remain <=.000001 on all 64 post-cut frames. No-reset/fresh interior MAE averaged over first eight frames must exceed reset/fresh by >=.0001, demonstrating retained-history sensitivity without requiring no-reset to lose every analytic metric. Selection fails if these fixed predictions are unsupported. Freeze selected limits before three independent confirmations.",
+  "limits": "128 frames per history arm plus 64 fresh frames = 320 GPU frames per block; 25 input-only frames. Native child watchdog 360s. Correlated frames, one GPU/provider/driver; reset equality alone is not improved perceptual quality. No universal quality, lifetime or hardware support claim. Ordinary/release gates remain unchanged."
+}

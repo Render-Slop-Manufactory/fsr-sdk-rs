@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "decision": "D043; explicit P08 adaptation selected 2026-10-27",
+  "base_protocol": "performance-characterization-protocol.json",
+  "base_protocol_sha256": "cd56823cc8477c8608cab3bf6e5a479f0aba97a7cf447392c79f6dea846ba29a",
+  "dispatch_profile": "P06 fresh pilot, frozen selection and confirmation",
+  "workloads": [
+    "max",
+    "small",
+    "transition",
+    "masks",
+    "hdr"
+  ],
+  "cpu_budget_ns": 5000,
+  "cpu_acceptance": "All five pointwise one-sided 95% upper bounds of the paired mean Rust-minus-C++ CPU cost must be strictly below 5000 ns. The release still requires documented review; execution success alone is not a speed pass.",
+  "setup_profile": "experiment-provider-setup",
+  "setup_processes": 3,
+  "setup_blocks_per_process": 32,
+  "setup_warmup_per_arm": 4,
+  "other_metrics": "GPU, preparation, calling-thread Rust allocations, lifecycle and default/explicit setup costs retain descriptive results and require regression review. No new percentage threshold, GPU-equivalence claim or throughput/quality claim.",
+  "candidate_binding": "Create or select both Cargo archives, compare all packaged source bytes with current Cargo package lists and the checkout, and record hashes. Native measurement builds use the matching checkout, not an extracted-package build. Exact archive qualification remains separate.",
+  "history": "Previous P06/P07 numbers remain historical references, without pooling old samples or attributing driver/provider changes to wrapper changes.",
+  "duration": "Prior P06 batch about 93 minutes; setup measurements and packaging add time. Confirmation primary measurement is capped at 7200 seconds; this is not a two-hour limit for the whole batch."
+}

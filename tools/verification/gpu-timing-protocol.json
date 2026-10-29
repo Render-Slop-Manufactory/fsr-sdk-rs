@@ -1,0 +1,21 @@
+{
+  "question": "Bounded matched Rust/C++ 1080p FSR command GPU interval, independently of CPU recording",
+  "output": [1920, 1080],
+  "render": "Pre-create SDK Quality query, checked against live context; allocation follows reported dimensions",
+  "frames": 160,
+  "warmup": 32,
+  "debug_frames": 4,
+  "scene": "Analytic ramp translating one render pixel right each frame; projection-jittered samples; UV current-to-previous motion excludes jitter; standard finite depth 0.5; explicit exposure 1",
+  "history": "One context per process, reset only first frame; all frame jitters queried in advance from live provider",
+  "process_orders": [
+    ["cpp-minimal", "rust-wrapper"],
+    ["rust-wrapper", "cpp-minimal"],
+    ["cpp-minimal", "rust-wrapper"],
+    ["rust-wrapper", "cpp-minimal"]
+  ],
+  "cpu": "QPC around dispatch only; no query recording, upload, submission, wait, readback or logging",
+  "gpu": "Same direct queue EndQuery timestamps around FSR recording; provider barriers included; fixture uploads/transitions, empty bracket, ResolveQueryData and final readback outside",
+  "synchronization": "One frame in flight; completed monotonically increasing fence before query, allocator, list or upload reuse",
+  "controls": "Untouched sentinel, restored final sentinel, finite and fully written output, exact matched descriptors/jitters/provider/adapter/driver/output per history cohort, separate debug-layer children, per-frame empty GPU brackets and stable queried queue frequency",
+  "interpretation": "Descriptive process distributions and nearby median differences; no speed threshold, clock locking, FPS, throughput, image-quality or universal parity claim"
+}

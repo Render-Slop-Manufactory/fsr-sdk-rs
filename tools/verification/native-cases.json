@@ -1,0 +1,181 @@
+[
+  {
+    "legacy_name": "selected-provider-dispatch",
+    "selector": "upscaler::dx12::native_dispatch::native_selected_provider_dispatch",
+    "marker": "Selected provider dispatch: PASSED frames_per_family=2 families=2",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "public-queries",
+    "selector": "upscaler::dx12::tests::queries::native_public_queries",
+    "marker": "Public queries: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "utility-queries",
+    "selector": "upscaler::dx12::tests::utility_queries::native_utility_queries",
+    "marker": "Upscaler utility queries: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "gate-a",
+    "selector": "upscaler::dx12::native_dispatch::native_dispatch_readback",
+    "marker": "Gate A: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "pre-exposure",
+    "selector": "upscaler::dx12::native_dispatch::native_pre_exposure_dispatch",
+    "marker": "Pre-exposure dispatch: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "depth-motion",
+    "selector": "upscaler::dx12::native_dispatch::native_depth_motion_dispatch",
+    "marker": "Depth/motion dispatch: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "automatic-exposure",
+    "selector": "upscaler::dx12::native_dispatch::native_automatic_exposure_dispatch",
+    "marker": "Automatic exposure dispatch: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "linear-hdr",
+    "selector": "upscaler::dx12::native_dispatch::native_hdr_dispatch",
+    "marker": "Linear HDR dispatch: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "supplied-masks",
+    "selector": "upscaler::dx12::native_dispatch::native_supplied_masks_dispatch",
+    "marker": "Supplied masks dispatch: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "active-render",
+    "selector": "upscaler::dx12::native_dispatch::native_active_render_dispatch",
+    "marker": "Active render dispatch: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "d013-control-abc",
+    "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::same_thread_load_create_dispatch_and_cleanup",
+    "marker": "Transfer baseline scenario=1 transfer=false: PASSED",
+    "trace": false,
+    "groups": [
+      "transfer",
+      "transfer-cleanup"
+    ]
+  },
+  {
+    "legacy_name": "d013-transfer-three-frames",
+    "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::three_moving_frames_on_successive_threads",
+    "marker": "Transfer baseline scenario=2 transfer=true: PASSED",
+    "trace": false,
+    "groups": [
+      "transfer",
+      "transfer-cleanup"
+    ]
+  },
+  {
+    "legacy_name": "gate-b",
+    "selector": "upscaler::dx12::native_dispatch::native_temporal_smoke",
+    "marker": "Gate B: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "d013-transfer-abc",
+    "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::load_create_then_dispatch_and_cleanup_on_other_threads",
+    "marker": "Transfer baseline scenario=1 transfer=true: PASSED",
+    "trace": false,
+    "groups": [
+      "transfer",
+      "transfer-cleanup"
+    ]
+  },
+  {
+    "legacy_name": "d013-control-siblings",
+    "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::same_thread_siblings_survive_runtime_release",
+    "marker": "Transfer baseline scenario=3 transfer=false: PASSED",
+    "trace": false,
+    "groups": [
+      "transfer",
+      "transfer-cleanup"
+    ]
+  },
+  {
+    "legacy_name": "public-movable-sharpening",
+    "selector": "upscaler::dx12::native_dispatch::movable_public::public_native_sharpening_after_thread_handoffs",
+    "marker": "Public movable: PASSED mode=Native",
+    "trace": true,
+    "groups": []
+  },
+  {
+    "legacy_name": "native-explicit",
+    "selector": "upscaler::dx12::tests::native_lifecycle",
+    "marker": "Production owner: destroy A/B OK",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "gate-c",
+    "selector": "upscaler::dx12::native_dispatch::native_semantic_comparisons",
+    "marker": "Gate C: PASSED",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "d013-transfer-siblings",
+    "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::siblings_survive_runtime_release_and_thread_transfers",
+    "marker": "Transfer baseline scenario=3 transfer=true: PASSED",
+    "trace": false,
+    "groups": [
+      "transfer",
+      "transfer-cleanup"
+    ]
+  },
+  {
+    "legacy_name": "public-movable",
+    "selector": "upscaler::dx12::native_dispatch::movable_public::public_siblings_dispatch_and_cleanup_after_thread_handoffs",
+    "marker": "Public movable: PASSED",
+    "trace": true,
+    "groups": []
+  },
+  {
+    "legacy_name": "native-drop",
+    "selector": "upscaler::dx12::tests::native_lifecycle_drop",
+    "marker": "Production owner: destroy A/B OK",
+    "trace": false,
+    "groups": []
+  },
+  {
+    "legacy_name": "d013-control-three-frames",
+    "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::same_thread_three_moving_frames",
+    "marker": "Transfer baseline scenario=2 transfer=false: PASSED",
+    "trace": false,
+    "groups": [
+      "transfer",
+      "transfer-cleanup"
+    ]
+  },
+  {
+    "legacy_name": "configure-dispatch",
+    "selector": "upscaler::dx12::native_dispatch::native_configure_dispatch",
+    "marker": "Configure native integration: PASSED parameters=5 phases=2 families=2",
+    "trace": false,
+    "groups": []
+  }
+]

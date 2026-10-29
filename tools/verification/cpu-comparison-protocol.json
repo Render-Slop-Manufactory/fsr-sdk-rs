@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "scope": "P03 CPU recording only, one local context per process, SDK v2.3.0 DX12",
+  "render": [320, 180],
+  "output": [640, 360],
+  "warmup_frames": 32,
+  "measured_frames": 128,
+  "empty_clock_pairs": 256,
+  "diagnostic_frames": 4,
+  "process_orders": [
+    ["cpp-minimal", "rust-raw", "rust-wrapper"],
+    ["rust-wrapper", "rust-raw", "cpp-minimal"],
+    ["rust-raw", "cpp-minimal", "rust-wrapper"],
+    ["rust-wrapper", "cpp-minimal", "rust-raw"],
+    ["rust-raw", "rust-wrapper", "cpp-minimal"],
+    ["cpp-minimal", "rust-wrapper", "rust-raw"]
+  ],
+  "warm_state_orders": [
+    [["rust-wrapper", false], ["rust-raw", false], ["rust-wrapper", true], ["rust-raw", true]],
+    [["rust-raw", true], ["rust-wrapper", true], ["rust-raw", false], ["rust-wrapper", false]],
+    [["rust-raw", false], ["rust-wrapper", true], ["rust-wrapper", false], ["rust-raw", true]]
+  ],
+  "input": "Existing shared static texture generator; zero jitter/motion, explicit exposure, preExposure 1, standard finite depth, UV motion scale 320/180, frame time 16.667 ms, camera 0.1/100/pi-over-3/1. Reset only frame zero. No masks, HDR, sharpening or dynamic sizing.",
+  "timing": "Both consumers call the same helper QPC exports. One timer bracket around dispatch; setup, frame construction, submission, fence, sentinel restore, readback, output copy and logging excluded. Full wrapper includes validation; minimal C++ and prepared Rust raw do not. No empty timer subtraction.",
+  "validity": "Pinned SDK/signatures/ABI; matching provider and canonical descriptors; untouched-sentinel control; each final output independently overwrites sentinel; exact RGBA16F output hashes agree within each frame-count cohort; separate debug controls and zero device removal. Invalid comparisons reject rather than receive speed scores.",
+  "statistics": "Retain warmup and measured samples. Compare nearby process medians within each block, not individual frames across processes. Descriptive distributions and signed differences, no speed gate or equivalence claim. Warm-state controls assess sensitivity but cannot isolate scheduling/clock changes."
+}

@@ -1,0 +1,12 @@
+{
+  "question": "Matched Rust/C++ CPU/GPU comparison for supplied masks and linear HDR, retaining fixed/active-render controls",
+  "base_protocol": "active-timing-protocol.json",
+  "workloads": ["max", "small", "transition", "masks", "hdr"],
+  "features": {
+    "masks": "Maximum active region; both R8_UNORM masks supplied together, static render-aligned rectangles created once before timing: reactive=128 where .25<u<.5, transparency/composition=255 where .5<v<.75, otherwise zero. Full mask GPU readbacks match uploads and an independently generated complete FNV-1a hash.",
+    "hdr": "Maximum active region; native HDR creation bit, linear RGBA16F ramp RGB multiplied by 8, alpha 1; exposure/pre-exposure fixed at 1, no encoding hint. Independent GPU input sample oracle uses the same declared scale; each checkpoint output maximum red must be finite, greater than 1 and less than 64."
+  },
+  "matching": "Reuse P05's allocation sizes, scene trajectory, timing boundaries, history/reset, jitter, checkpoints and process orders extended to five workloads. Exact Rust/C++ canonical descriptors include both mask resources or HDR creation flag. Compare within identical workload/history-length cohorts; masked base inputs match the same-index SDR maximum control. HDR colour differs deliberately, depth/motion/exposure settings remain unchanged.",
+  "success": "62 required cases: shared setup, ten debug children, forty timed children in four balanced blocks and one combined analysis; 50 native processes/6440 submitted-fenced frames. Complete matched valid execution, exact full mask hashes, audited colour/depth/motion samples, output/synchronization/cleanup and timing records are required.",
+  "interpretation": "Report signed Rust-minus-C++ CPU/GPU distributions for each workload and feature-minus-SDR differences per consumer/block. No equivalence/non-inferiority margin or speed gate is selected. Mask consumption/benefit, non-linear colour semantics, general HDR pipeline, quality, FPS, throughput and broader hardware support remain outside scope."
+}

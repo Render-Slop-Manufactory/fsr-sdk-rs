@@ -1,0 +1,1107 @@
+[
+  {
+    "id": "depth-resource-diagnostics-portable",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::error::{Error,BackendError,InspectionObject,InspectionOperation,ResourceRole,ResourceProperty}; fn inspect(error:Error){match error {Error::Backend(BackendError::Dx12Inspection(e))=>{let _:i32=e.hresult();let _:InspectionObject=e.object();let _:InspectionOperation=e.operation();let _=std::error::Error::source(&e);},_=>{}}} fn main(){let _=ResourceProperty::DepthStencil;let _=ResourceRole::Output;}"
+  },
+  {
+    "id": "provider-utils-portable",
+    "features": "utils",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::{query::{ProviderInfo, ProviderSelection}, utils::provider::{FsrChoice, SelectionError, select_provider}}; fn resolve(p: &[ProviderInfo], choice: FsrChoice) -> Result<ProviderSelection, Box<dyn std::error::Error>> { Ok(select_provider(p, choice)?) } fn traits<T: std::error::Error + Send + Sync + 'static>() {} fn main() { traits::<SelectionError>(); assert_eq!(resolve(&[], FsrChoice::Auto).unwrap(), ProviderSelection::Default); let error=select_provider(&[], FsrChoice::Fsr4).unwrap_err(); match error { SelectionError::NoRecognizedMatch { requested } => assert_eq!(requested,FsrChoice::Fsr4), SelectionError::Ambiguous { matches,.. } => assert!(matches>1), _=>{} } }"
+  },
+  {
+    "id": "provider-utils-disabled",
+    "features": "",
+    "diagnostic": "E0433",
+    "platform": "any",
+    "source": "use fsr_sdk::utils::provider::select_provider; fn main() {}"
+  },
+  {
+    "id": "provider-utils-disabled-with-native-features",
+    "features": "dx12,movable",
+    "diagnostic": "E0433",
+    "platform": "any",
+    "source": "use fsr_sdk::utils::provider::FsrChoice; fn main() {}"
+  },
+  {
+    "id": "typed-resource-diagnostics-portable",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::error::{Error,BackendError,InspectionObject,InspectionOperation,ResourceRole,ResourceProperty}; fn inspect(error:Error){match error {Error::Backend(BackendError::Dx12Inspection(e))=>{let _:i32=e.hresult();let _:InspectionObject=e.object();let _:InspectionOperation=e.operation();let _=std::error::Error::source(&e);},_=>{}}} fn main(){let _=ResourceProperty::DepthStencil;let _=ResourceRole::Output;}"
+  },
+  {
+    "id": "native-motion-scale-portable",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::{NativeMotionVectorScale, MotionVectorScale, common}; fn eq<T: PartialEq>() {} fn main() { eq::<MotionVectorScale>(); let scale: common::NativeMotionVectorScale = NativeMotionVectorScale::new(-0.0, 4.0).unwrap(); assert_eq!(scale.x().to_bits(), (-0.0f32).to_bits()); assert_eq!(scale.y(), 4.0); assert!(NativeMotionVectorScale::new(f32::NAN, 1.0).is_err()); }"
+  },
+  {
+    "id": "native-motion-scale-private",
+    "features": "",
+    "diagnostic": "E0451",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::NativeMotionVectorScale; fn main() { let _ = NativeMotionVectorScale { x: 0.0, y: 1.0 }; }"
+  },
+  {
+    "id": "native-motion-scale-no-default",
+    "features": "",
+    "diagnostic": "E0599",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::NativeMotionVectorScale; fn main() { let _ = NativeMotionVectorScale::default(); }"
+  },
+  {
+    "id": "native-motion-frame",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::upscaler::{NativeMotionVectorScale, MotionVectorScale, FrameParameters, UpscaleResources, ID3D12GraphicsCommandList, Upscaler, MovableUpscaler}; fn configure(a:&Upscaler,b:&MovableUpscaler,l:&ID3D12GraphicsCommandList,r:&UpscaleResources<'_>,f:&mut FrameParameters){f.set_motion_vector_scale(MotionVectorScale::Native(NativeMotionVectorScale::new(-2.0,4.0).unwrap()));if let MotionVectorScale::Native(v)=f.motion_vector_scale(){let _=v.x();}let _=a.validate_upscale_inputs(l,r,f);let _=b.validate_upscale_inputs(l,r,f);f.set_motion_vector_scale(MotionVectorScale::Pixels);} fn main(){}"
+  },
+  {
+    "id": "common-positive",
+    "features": "",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{Dimensions, PreExposure, common}; use fsr_sdk_sys::{api::ffxApiHeader, upscale::ffxDispatchDescUpscale}; fn main() { let _: PreExposure = common::PreExposure::default(); let _: Dimensions = common::Dimensions::new(320, 180).unwrap(); let _: Option<ffxApiHeader> = None; let _: Option<ffxDispatchDescUpscale> = None; }",
+    "platform": "any"
+  },
+  {
+    "id": "common-movable-positive",
+    "features": "movable",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{CameraParameters, FrameTimeMillis, JitterOffsetPixels, PreExposure, UpscalerOptions, common}; fn main() { let _: PreExposure = common::PreExposure::new(4.0).unwrap(); let d = common::Dimensions::new(320, 180).unwrap(); let _: UpscalerOptions = common::UpscalerOptions::new(d, d); let _: CameraParameters = common::CameraParameters::new(0.1, 100.0, 1.0, 1.0).unwrap(); let _: FrameTimeMillis = common::FrameTimeMillis::new(16.0).unwrap(); let _: JitterOffsetPixels = common::JitterOffsetPixels::new(0.0, 0.0).unwrap(); }",
+    "platform": "any"
+  },
+  {
+    "id": "depth-motion-profiles",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::{CameraParameters, DepthConvention, MotionVectorScale, MotionVectorResolution, MotionVectorJitter, Dimensions, UpscalerOptions, common}; fn main() { let d = Dimensions::new(320, 180).unwrap(); let mut options = UpscalerOptions::new(d, d); for depth in [DepthConvention::StandardFinite, DepthConvention::ReversedFinite, DepthConvention::StandardInfinite, DepthConvention::ReversedInfinite] { options.set_depth_convention(depth); let _: common::DepthConvention = options.depth_convention(); let _ = depth.is_infinite(); } options.set_motion_vector_resolution(MotionVectorResolution::Display); let _: common::MotionVectorResolution = options.motion_vector_resolution(); options.set_motion_vector_jitter(MotionVectorJitter::Included); let _: common::MotionVectorJitter = options.motion_vector_jitter(); let _: common::MotionVectorScale = MotionVectorScale::Pixels; let camera = CameraParameters::new_infinite(0.1, 1.0, 1.0).unwrap(); assert!(camera.has_infinite_far_plane()); match options.depth_convention() { DepthConvention::StandardFinite | DepthConvention::ReversedFinite | DepthConvention::StandardInfinite | DepthConvention::ReversedInfinite => {}, _ => {} } }"
+  },
+  {
+    "id": "hdr-options",
+    "features": "",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{Dimensions, UpscalerOptions, common}; fn main() { let d = Dimensions::new(320, 180).unwrap(); let mut options = common::UpscalerOptions::new(d, d); assert!(!options.high_dynamic_range()); options.set_high_dynamic_range(true); let copy: UpscalerOptions = options.clone(); assert!(copy.high_dynamic_range()); options.set_high_dynamic_range(false); assert!(!options.high_dynamic_range()); }",
+    "platform": "any"
+  },
+  {
+    "id": "pre-exposure-construction-private",
+    "features": "",
+    "diagnostic": "E0423",
+    "source": "use fsr_sdk::upscaler::PreExposure; fn main() { let _ = PreExposure(0.0); }",
+    "platform": "any"
+  },
+  {
+    "id": "dispatch-inputs-positive",
+    "features": "",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{CameraParameters,FrameTimeMillis,JitterOffsetPixels,FrameParameters,HistoryAction,NativeSharpness,MotionVectorScale,PreExposure,Sharpening}; fn main(){let mut f=FrameParameters::new(JitterOffsetPixels::new(0.0,0.0).unwrap(),FrameTimeMillis::new(16.0).unwrap(),CameraParameters::new(0.1,100.0,1.0,1.0).unwrap(),HistoryAction::Reset);f.set_motion_vector_scale(MotionVectorScale::Pixels);f.set_pre_exposure(PreExposure::new(0.25).unwrap());f.set_sharpening(Sharpening::Native(NativeSharpness::new(0.35).unwrap()));let _=f.clone();f.set_history_action(HistoryAction::Continue);}",
+    "platform": "any"
+  },
+  {
+    "id": "dispatch-literal-private",
+    "features": "dx12",
+    "diagnostic": "E0451",
+    "source": "use fsr_sdk::upscaler::FrameParameters; fn wrong(f: FrameParameters) { let _ = FrameParameters { ..f }; } fn main() {}",
+    "platform": "windows"
+  },
+  {
+    "id": "dispatch-field-private",
+    "features": "dx12",
+    "diagnostic": "E0616",
+    "source": "use fsr_sdk::upscaler::FrameParameters; fn wrong(f: FrameParameters) { let _ = f.history_action; } fn main() {}",
+    "platform": "windows"
+  },
+  {
+    "id": "resources-literal-private",
+    "features": "dx12",
+    "diagnostic": "E0451",
+    "source": "use fsr_sdk::upscaler::UpscaleResources; fn wrong(r: UpscaleResources) { let _ = UpscaleResources { ..r }; } fn main() {}",
+    "platform": "windows"
+  },
+  {
+    "id": "sharpness-construction-private",
+    "features": "dx12",
+    "diagnostic": "E0423",
+    "source": "use fsr_sdk::upscaler::NativeSharpness; fn main() { let _ = NativeSharpness(0.35); }",
+    "platform": "windows"
+  },
+  {
+    "id": "raw-loader-positive",
+    "features": "dx12",
+    "diagnostic": null,
+    "source": "use fsr_sdk_sys::loader::{FfxLibrary, LoadError}; fn main() { let _: Option<FfxLibrary> = None; let _: Option<LoadError> = None; }",
+    "platform": "windows"
+  },
+  {
+    "id": "local-positive",
+    "features": "dx12",
+    "diagnostic": null,
+    "source": "use fsr_sdk::runtime::Runtime; fn main() { let _: Option<Runtime> = None; }",
+    "platform": "windows"
+  },
+  {
+    "id": "movable-positive",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "source": "use fsr_sdk::{runtime::MovableRuntime, upscaler::MovableUpscaler}; fn send<T: Send>() {} fn main() { send::<MovableRuntime>(); send::<MovableUpscaler>(); }",
+    "platform": "windows"
+  },
+  {
+    "id": "feature-disabled",
+    "features": "dx12",
+    "diagnostic": "E0432",
+    "source": "use fsr_sdk::runtime::MovableRuntime; fn main() { let _: Option<MovableRuntime> = None; }",
+    "platform": "windows"
+  },
+  {
+    "id": "dx12-disabled",
+    "features": "movable",
+    "diagnostic": "E0432",
+    "source": "use fsr_sdk::runtime::MovableRuntime; fn main() { let _: Option<MovableRuntime> = None; }",
+    "platform": "windows"
+  },
+  {
+    "id": "local-to-movable-construction",
+    "features": "dx12,movable",
+    "diagnostic": "E0308",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{MovableUpscaler,UpscalerOptions,ID3D12Device},error::Error}; fn wrong(r:&mut Runtime,d:&ID3D12Device,o:&UpscalerOptions)->Result<MovableUpscaler,Error>{unsafe{r.upscaler_dx12(d)}.create(o)} fn main(){}",
+    "platform": "windows"
+  },
+  {
+    "id": "movable-to-local-construction",
+    "features": "dx12,movable",
+    "diagnostic": "E0308",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{Upscaler,UpscalerOptions,ID3D12Device},error::Error}; fn wrong(r:&mut MovableRuntime,d:&ID3D12Device,o:&UpscalerOptions)->Result<Upscaler,Error>{unsafe{r.upscaler_dx12(d)}.create(o)} fn main(){}",
+    "platform": "windows"
+  },
+  {
+    "id": "no-local-to-movable-conversion",
+    "features": "dx12,movable",
+    "diagnostic": "E0277",
+    "source": "use fsr_sdk::runtime::{Runtime, MovableRuntime}; fn wrong(r: Runtime) -> MovableRuntime { r.into() } fn main() {}",
+    "platform": "windows"
+  },
+  {
+    "id": "no-movable-to-local-conversion",
+    "features": "dx12,movable",
+    "diagnostic": "E0277",
+    "source": "use fsr_sdk::runtime::{Runtime, MovableRuntime}; fn wrong(r: MovableRuntime) -> Runtime { r.into() } fn main() {}",
+    "platform": "windows"
+  },
+  {
+    "id": "query-results-portable",
+    "features": "",
+    "diagnostic": null,
+    "source": "use fsr_sdk::query::{ProviderInfo, ProviderId, GpuMemoryUsage, ResourceFlags, ResourceRequirements}; fn observe(p: &ProviderInfo, m: GpuMemoryUsage, r: ResourceRequirements) { let _: ProviderId = p.id(); let _: &str = p.name(); let _: u64 = m.total_bytes(); let _: u64 = m.aliasable_bytes(); let _: u64 = r.required().bits(); let _: u64 = r.optional().unknown_bits(); let _: bool = r.required().contains(ResourceFlags::COLOR); } fn main() {}",
+    "platform": "any"
+  },
+  {
+    "id": "query-results-movable",
+    "features": "movable",
+    "diagnostic": null,
+    "source": "use fsr_sdk::query::{ProviderInfo, ProviderId, GpuMemoryUsage, ResourceFlags, ResourceRequirements}; fn observe(p: &ProviderInfo, m: GpuMemoryUsage, r: ResourceRequirements) { let _: ProviderId = p.id(); let _: &str = p.name(); let _: u64 = m.total_bytes(); let _: u64 = m.aliasable_bytes(); let _: u64 = r.required().bits(); let _: u64 = r.optional().unknown_bits(); let _: bool = r.required().contains(ResourceFlags::COLOR); } fn main() {}",
+    "platform": "any"
+  },
+  {
+    "id": "provider-id-private",
+    "features": "",
+    "diagnostic": "E0423",
+    "source": "use fsr_sdk::query::ProviderId; fn main() { let _ = ProviderId(1); }",
+    "platform": "any"
+  },
+  {
+    "id": "query-provider-field-private",
+    "features": "",
+    "diagnostic": "E0616",
+    "source": "use fsr_sdk::query::ProviderInfo; fn wrong(r: ProviderInfo) { let _ = r.name; } fn main() {}",
+    "platform": "any"
+  },
+  {
+    "id": "query-memory-field-private",
+    "features": "",
+    "diagnostic": "E0616",
+    "source": "use fsr_sdk::query::GpuMemoryUsage; fn wrong(r: GpuMemoryUsage) { let _ = r.total_bytes; } fn main() {}",
+    "platform": "any"
+  },
+  {
+    "id": "query-requirements-field-private",
+    "features": "",
+    "diagnostic": "E0616",
+    "source": "use fsr_sdk::query::ResourceRequirements; fn wrong(r: ResourceRequirements) { let _ = r.required; } fn main() {}",
+    "platform": "any"
+  },
+  {
+    "id": "queries-local",
+    "features": "dx12",
+    "diagnostic": null,
+    "source": "use fsr_sdk::{runtime::Runtime, upscaler::{Upscaler, ID3D12Device, UpscalerOptions}, query::{ProviderInfo, GpuMemoryUsage, ResourceRequirements, QualityMode, JitterPhaseCount}, error::Error}; unsafe fn inspect(r: &mut Runtime, u: &mut Upscaler, d: &ID3D12Device, o: &UpscalerOptions) -> Result<(), Error> { let _: Vec<ProviderInfo> = unsafe { r.upscaler_dx12(d) }.providers()?; let _: GpuMemoryUsage = unsafe { r.upscaler_dx12(d) }.estimate_memory(o)?; let _: ProviderInfo = u.provider()?; let _: ResourceRequirements = u.resource_requirements()?; let _: GpuMemoryUsage = u.gpu_memory_usage()?; let display=o.max_upscale_size(); let render=o.max_render_size(); let _: f32=unsafe { r.upscaler_dx12(d) }.ratio(QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=unsafe { r.upscaler_dx12(d) }.render_size_for_quality(display, QualityMode::Balanced)?; let phase: JitterPhaseCount=unsafe { r.upscaler_dx12(d) }.jitter_phase_count(render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=unsafe { r.upscaler_dx12(d) }.jitter_offset(0, phase)?; let _: f32=u.upscale_ratio(QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=u.render_size_for_quality(display, QualityMode::Balanced)?; let phase: JitterPhaseCount=u.jitter_phase_count(render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=u.jitter_offset(0, phase)?; Ok(()) } fn main() {}",
+    "platform": "windows"
+  },
+  {
+    "id": "query-exclusive-local",
+    "features": "dx12",
+    "diagnostic": "E0596",
+    "source": "use fsr_sdk::upscaler::Upscaler; fn wrong(u: &Upscaler) { let _ = u.provider(); } fn main() {}",
+    "platform": "windows"
+  },
+  {
+    "id": "queries-movable",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "source": "use fsr_sdk::{runtime::MovableRuntime, upscaler::{MovableUpscaler, ID3D12Device, UpscalerOptions}, query::{ProviderInfo, GpuMemoryUsage, ResourceRequirements, QualityMode, JitterPhaseCount}, error::Error}; unsafe fn inspect(r: &mut MovableRuntime, u: &mut MovableUpscaler, d: &ID3D12Device, o: &UpscalerOptions) -> Result<(), Error> { let _: Vec<ProviderInfo> = unsafe { r.upscaler_dx12(d) }.providers()?; let _: GpuMemoryUsage = unsafe { r.upscaler_dx12(d) }.estimate_memory(o)?; let _: ProviderInfo = u.provider()?; let _: ResourceRequirements = u.resource_requirements()?; let _: GpuMemoryUsage = u.gpu_memory_usage()?; let display=o.max_upscale_size(); let render=o.max_render_size(); let _: f32=unsafe { r.upscaler_dx12(d) }.ratio(QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=unsafe { r.upscaler_dx12(d) }.render_size_for_quality(display, QualityMode::Balanced)?; let phase: JitterPhaseCount=unsafe { r.upscaler_dx12(d) }.jitter_phase_count(render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=unsafe { r.upscaler_dx12(d) }.jitter_offset(0, phase)?; let _: f32=u.upscale_ratio(QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=u.render_size_for_quality(display, QualityMode::Balanced)?; let phase: JitterPhaseCount=u.jitter_phase_count(render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=u.jitter_offset(0, phase)?; Ok(()) } fn main() {}",
+    "platform": "windows"
+  },
+  {
+    "id": "query-exclusive-movable",
+    "features": "dx12,movable",
+    "diagnostic": "E0596",
+    "source": "use fsr_sdk::upscaler::MovableUpscaler; fn wrong(u: &MovableUpscaler) { let _ = u.provider(); } fn main() {}",
+    "platform": "windows"
+  },
+  {
+    "id": "query-utility-inputs-portable",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::{query::{QualityMode, JitterPhaseCount}, error::Error}; fn main() -> Result<(), Error> { let phase=JitterPhaseCount::new(20)?; let _: i32=phase.count(); let mode=QualityMode::Balanced; match mode { QualityMode::NativeAa | QualityMode::Quality | QualityMode::Balanced | QualityMode::Performance | QualityMode::UltraPerformance => {}, _ => {} } Ok(()) }"
+  },
+  {
+    "id": "jitter-phase-construction-private",
+    "features": "",
+    "diagnostic": "E0423",
+    "platform": "any",
+    "source": "use fsr_sdk::query::JitterPhaseCount; fn main() { let _=JitterPhaseCount(std::num::NonZeroI32::new(0).unwrap()); }"
+  },
+  {
+    "id": "exposure-options-portable",
+    "features": "",
+    "platform": "any",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{Dimensions,UpscalerOptions,ExposureMode,common}; fn main() { let d=Dimensions::new(320,180).unwrap(); let mut o=UpscalerOptions::new(d,d); o.set_exposure_mode(ExposureMode::Automatic); let _: common::ExposureMode=o.exposure_mode(); match o.exposure_mode() { ExposureMode::Explicit | ExposureMode::Automatic => {}, _ => {} } }"
+  },
+  {
+    "id": "automatic-exposure-resources",
+    "features": "dx12",
+    "platform": "windows",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{ID3D12Resource,UpscaleResources,ExposureInput};fn resources(r:[&ID3D12Resource;4])->UpscaleResources<'_>{let b=UpscaleResources::builder().color(r[0]).depth(r[1]).motion_vectors(r[2]).exposure(ExposureInput::Automatic).output(r[3]).build().unwrap();assert!(matches!(b.exposure(),ExposureInput::Automatic));b.clone()}fn main(){}"
+  },
+  {
+    "id": "dynamic-resolution-options-portable",
+    "features": "",
+    "platform": "any",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{Dimensions,UpscalerOptions}; fn main() { let d=Dimensions::new(320,180).unwrap(); let mut o=UpscalerOptions::new(d,d); assert!(!o.dynamic_resolution()); o.set_dynamic_resolution(true); assert!(o.dynamic_resolution()); }"
+  },
+  {
+    "id": "active-render-frame",
+    "features": "dx12",
+    "platform": "windows",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{Dimensions,FrameParameters}; fn frame(f: &mut FrameParameters) { f.set_active_render_size(Some(Dimensions::new(256,144).unwrap())); let _: Option<Dimensions>=f.active_render_size(); f.set_active_render_size(None); f.set_active_output_size(Some(Dimensions::new(511,287).unwrap())); let _: Option<Dimensions>=f.active_output_size(); f.set_active_output_size(None); } fn main() {}"
+  },
+  {
+    "id": "colour-encoding-options-portable",
+    "features": "",
+    "platform": "any",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{ColorEncodingHint, InputColorSpace, Dimensions, UpscalerOptions, common}; fn main() { let d=Dimensions::new(320,180).unwrap(); let mut o=UpscalerOptions::new(d,d); assert_eq!(o.input_color_space(), InputColorSpace::Linear); o.set_input_color_space(InputColorSpace::NonLinear); let _: common::InputColorSpace=o.input_color_space(); let _: common::ColorEncodingHint=ColorEncodingHint::default(); for hint in [ColorEncodingHint::Unspecified, ColorEncodingHint::Srgb, ColorEncodingHint::Pq] { match hint { ColorEncodingHint::Unspecified | ColorEncodingHint::Srgb | ColorEncodingHint::Pq => {}, _ => {} } } }"
+  },
+  {
+    "id": "colour-encoding-frame",
+    "features": "",
+    "platform": "any",
+    "diagnostic": null,
+    "source": "use fsr_sdk::upscaler::{ColorEncodingHint,ColorEncodingRequest,FrameParameters}; fn configure(f:&mut FrameParameters){f.set_color_encoding(ColorEncodingRequest::allow_context_mismatch(ColorEncodingHint::Pq));assert!(f.color_encoding().allows_context_mismatch());f.set_color_encoding(ColorEncodingRequest::checked(ColorEncodingHint::Srgb));assert!(!f.color_encoding().allows_context_mismatch());} fn main(){}"
+  },
+  {
+    "id": "tuning-values-portable",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::{TuningParameter as P,TuningValue as V,TuningRequest as R,common}; fn traits<T: std::fmt::Debug+Clone+Copy+PartialEq+Send+Sync>() {} fn key<T: Eq+std::hash::Hash>() {} fn main() { traits::<P>(); traits::<V>(); traits::<R>(); let r: common::TuningRequest=R::new(P::VelocityFactor,V::Value(-0.0)).unwrap(); let _=(r.parameter(),r.value()); key::<P>(); let _: common::TuningParameter=P::VelocityFactor; let _: common::TuningValue=V::ProviderDefault; let _=[P::ReactivenessScale,P::ShadingChangeScale,P::AccumulationAddedPerFrame,P::MinDisocclusionAccumulation]; let _=V::Value(-0.0); }"
+  },
+  {
+    "id": "tuning-parameter-non-exhaustive",
+    "features": "",
+    "diagnostic": "E0004",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::TuningParameter as P; fn wrong(p:P) { match p { P::VelocityFactor|P::ReactivenessScale|P::ShadingChangeScale|P::AccumulationAddedPerFrame|P::MinDisocclusionAccumulation=>{} } } fn main() {}"
+  },
+  {
+    "id": "tuning-value-non-exhaustive",
+    "features": "",
+    "diagnostic": "E0004",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::TuningValue as V; fn wrong(v:V) { match v { V::ProviderDefault|V::Value(_)=>{} } } fn main() {}"
+  },
+  {
+    "id": "tuning-error-contract",
+    "features": "movable",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::error::{Error,InputError,Operation,NativeError,TerminalCause}; fn traits<T:std::error::Error+Send+Sync+'static>(){} fn small<T:Copy+Eq>(){} fn inspect(e:Error){match e{Error::Native(n)=>{let _:Operation=n.operation();let _:u32=n.code();},Error::ContextUnusable(TerminalCause::Native(n))=>{let _=n.code();},_=>{}}} fn main(){traits::<Error>();small::<NativeError>();small::<TerminalCause>(); let _=Error::Input(InputError::InvalidTuningValue{parameter:fsr_sdk::upscaler::TuningParameter::VelocityFactor});}"
+  },
+  {
+    "id": "tuning-local-positive",
+    "features": "dx12",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::{error::Error,upscaler::{Upscaler,TuningParameter as P,TuningValue as V,TuningRequest as R}}; fn change(c:&mut Upscaler, desired:&[(P,V)])->Result<(),Error> { let requests=desired.iter().map(|&(p,v)|R::new(p,v)).collect::<Result<Vec<_>,_>>()?; for request in requests { c.request_tuning(request)?; } c.request_tuning(R::new(P::VelocityFactor,V::ProviderDefault)?) } fn main() {}"
+  },
+  {
+    "id": "tuning-movable-positive",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::{error::Error,upscaler::{MovableUpscaler,TuningParameter as P,TuningValue as V,TuningRequest as R}}; fn change(c:&mut MovableUpscaler, desired:&[(P,V)])->Result<(),Error> { let requests=desired.iter().map(|&(p,v)|R::new(p,v)).collect::<Result<Vec<_>,_>>()?; for request in requests { c.request_tuning(request)?; } c.request_tuning(R::new(P::VelocityFactor,V::ProviderDefault)?) } fn main() {}"
+  },
+  {
+    "id": "tuning-no-checked-constructor",
+    "features": "",
+    "diagnostic": "E0599",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::{TuningParameter, TuningValue}; fn main() { let _ = TuningValue::checked_for(TuningParameter::VelocityFactor, 0.5); }"
+  },
+  {
+    "id": "dispatch-preflight",
+    "features": "dx12",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::{error::Error,upscaler::{Upscaler,ID3D12GraphicsCommandList,UpscaleResources,FrameParameters}};fn validate(c:&Upscaler,l:&ID3D12GraphicsCommandList,r:&UpscaleResources,f:&FrameParameters)->Result<(),Error>{c.validate_upscale_inputs(l,r,f)} fn main(){}"
+  },
+  {
+    "id": "movable-dispatch-preflight",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::{error::Error,upscaler::{MovableUpscaler,ID3D12GraphicsCommandList,UpscaleResources,FrameParameters}};fn validate(c:&MovableUpscaler,l:&ID3D12GraphicsCommandList,r:&UpscaleResources,f:&FrameParameters)->Result<(),Error>{c.validate_upscale_inputs(l,r,f)} fn main(){}"
+  },
+  {
+    "id": "portable-debug-options",
+    "platform": "any",
+    "features": "",
+    "source": "use fsr_sdk::upscaler::{Dimensions,UpscalerOptions,DebugLevel}; fn main(){let mut o=UpscalerOptions::new(Dimensions::new(1,1).unwrap(),Dimensions::new(2,2).unwrap()); o.set_debug_checking(true);o.set_debug_visualization(true);assert!(o.debug_checking() && o.debug_visualization());let _=DebugLevel::Verbose;}",
+    "diagnostic": null
+  },
+  {
+    "id": "callbacks-not-send",
+    "platform": "windows",
+    "features": "dx12,movable",
+    "diagnostic": "E0277",
+    "source": "use fsr_sdk::upscaler::dx12::interop::CreationCallbacks; fn check<T:Send>(){} fn main(){check::<CreationCallbacks>();}"
+  },
+  {
+    "id": "callbacks-not-sync",
+    "platform": "windows",
+    "features": "dx12,movable",
+    "diagnostic": "E0277",
+    "source": "use fsr_sdk::upscaler::dx12::interop::CreationCallbacks; fn check<T:Sync>(){} fn main(){check::<CreationCallbacks>();}"
+  },
+  {
+    "id": "callbacks-not-clone",
+    "platform": "windows",
+    "features": "dx12,movable",
+    "diagnostic": "E0277",
+    "source": "use fsr_sdk::upscaler::dx12::interop::CreationCallbacks; fn check<T:Clone>(){} fn main(){check::<CreationCallbacks>();}"
+  },
+  {
+    "id": "callbacks-not-copy",
+    "platform": "windows",
+    "features": "dx12,movable",
+    "diagnostic": "E0277",
+    "source": "use fsr_sdk::upscaler::dx12::interop::CreationCallbacks; fn check<T:Copy>(){} fn main(){check::<CreationCallbacks>();}"
+  },
+  {
+    "id": "callback-public-signatures",
+    "platform": "windows",
+    "features": "dx12,movable",
+    "source": "use fsr_sdk::{upscaler::{dx12::{interop::*,UpscalerSetup,MovableUpscalerSetup,Upscaler,MovableUpscaler},UpscalerOptions,DebugLevel},error::Error}; unsafe fn local(s:&mut UpscalerSetup<'_,'_>,o:&UpscalerOptions,c:CreationCallbacks)->Result<Upscaler,Error>{ unsafe {s.configure_debug(DebugLevel::default(),None)?;s.create_with_callbacks(o,c)} } unsafe fn movable(s:&mut MovableUpscalerSetup<'_,'_>,o:&UpscalerOptions,c:CreationCallbacks)->Result<MovableUpscaler,Error>{ unsafe {s.configure_global_debug_legacy(DebugLevel::default(),None)?;s.create_with_callbacks(o,c)} } fn main(){let metadata=abi::FfxApiResourceDescription{r#type:abi::FFX_API_RESOURCE_TYPE_BUFFER,format:abi::FFX_API_SURFACE_FORMAT_UNKNOWN,width:abi::FfxApiResourceWidth{size:256},height:abi::FfxApiResourceHeight{stride:1},depth:abi::FfxApiResourceDepth{alignment:0},mipCount:0,flags:abi::FFX_API_RESOURCE_FLAGS_NONE,usage:abi::FFX_API_RESOURCE_USAGE_UAV}; let _=abi::FfxApiConstantBufferAllocation{resource:abi::FfxApiResource{resource:std::ptr::null_mut(),description:metadata,state:abi::FFX_API_RESOURCE_STATE_GENERIC_READ},handle:0};let _=(abi::FFX_API_MESSAGE_TYPE_ERROR,abi::FFX_API_MESSAGE_TYPE_WARNING,abi::FFX_API_MESSAGE_TYPE_COUNT);}",
+    "diagnostic": null
+  },
+  {
+    "id": "setup-selection-portable",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::query::ProviderSelection; fn main(){assert_eq!(ProviderSelection::default(),ProviderSelection::Default);}"
+  },
+  {
+    "id": "setup-selection-nonexhaustive",
+    "features": "",
+    "diagnostic": "E0004",
+    "platform": "any",
+    "source": "use fsr_sdk::query::ProviderSelection; fn f(s:ProviderSelection){match s{ProviderSelection::Default=>(),ProviderSelection::Explicit(_)=>()}} fn main(){}"
+  },
+  {
+    "id": "setup-local-workflow",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; unsafe fn create(r:&mut Runtime,d:&ID3D12Device,o:&UpscalerOptions)->Result<(Upscaler,Upscaler),Error>{let mut s=unsafe{r.upscaler_dx12(d)};let request=s.providers()?.first().map(|p|ProviderSelection::Explicit(p.id())).unwrap_or_default();s=s.with_provider(request);let _=s.ratio(QualityMode::Quality)?;let _=s.estimate_memory(o)?;let a=s.create(o)?;let b=s.create(o)?;Ok((a,b))} fn main(){}"
+  },
+  {
+    "id": "setup-local-unsafe-load",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(p:&std::path::Path){let _=Runtime::load(p);} fn main(){}"
+  },
+  {
+    "id": "setup-local-unsafe-acquisition",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(r:&mut Runtime,d:&ID3D12Device){let _=r.upscaler_dx12(d);} fn main(){}"
+  },
+  {
+    "id": "setup-local-overlap",
+    "features": "dx12,movable",
+    "diagnostic": "E0499",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(r:&mut Runtime,d:&ID3D12Device){let mut a=unsafe{r.upscaler_dx12(d)};let _b=unsafe{r.upscaler_dx12(d)};let _=a.providers();} fn main(){}"
+  },
+  {
+    "id": "setup-local-escape-runtime",
+    "features": "dx12,movable",
+    "diagnostic": "E0515",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f<'d>(p:&std::path::Path,d:&'d ID3D12Device)->UpscalerSetup<'static,'d>{let mut r=unsafe{Runtime::load(p)}.unwrap();unsafe{r.upscaler_dx12(d)}} fn main(){}"
+  },
+  {
+    "id": "setup-local-escape-device",
+    "features": "dx12,movable",
+    "diagnostic": "E0515",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f<'r>(r:&'r mut Runtime,d:ID3D12Device)->UpscalerSetup<'r,'static>{unsafe{r.upscaler_dx12(&d)}} fn main(){}"
+  },
+  {
+    "id": "setup-local-private-choice",
+    "features": "dx12,movable",
+    "diagnostic": "E0616",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(s:&mut UpscalerSetup<'_,'_>){s.selection=ProviderSelection::Default;} fn main(){}"
+  },
+  {
+    "id": "setup-local-old-constructor",
+    "features": "dx12,movable",
+    "diagnostic": "E0599",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(r:&Runtime,d:&ID3D12Device,o:UpscalerOptions){let _=Upscaler::new(r,d,o);} fn main(){}"
+  },
+  {
+    "id": "setup-local-old-query",
+    "features": "dx12,movable",
+    "diagnostic": "E0599",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(r:&mut Runtime,d:&ID3D12Device){let _=r.upscaler_providers_dx12(d);} fn main(){}"
+  },
+  {
+    "id": "setup-local-unsafe-callbacks",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(s:&mut UpscalerSetup<'_,'_>,o:&UpscalerOptions){let _=s.create_with_callbacks(o,Default::default());} fn main(){}"
+  },
+  {
+    "id": "setup-local-unsafe-configure_debug",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(s:&mut UpscalerSetup<'_,'_>){let _=s.configure_debug(Default::default(),None);} fn main(){}"
+  },
+  {
+    "id": "setup-local-unsafe-configure_global_debug_legacy",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(s:&mut UpscalerSetup<'_,'_>){let _=s.configure_global_debug_legacy(Default::default(),None);} fn main(){}"
+  },
+  {
+    "id": "setup-local-not-sync",
+    "features": "dx12,movable",
+    "diagnostic": "E0277",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::Runtime,upscaler::{dx12::UpscalerSetup,Upscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn check<T:Sync>(){} fn main(){check::<UpscalerSetup<'static,'static>>();}"
+  },
+  {
+    "id": "setup-movable-workflow",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; unsafe fn create(r:&mut MovableRuntime,d:&ID3D12Device,o:&UpscalerOptions)->Result<(MovableUpscaler,MovableUpscaler),Error>{let mut s=unsafe{r.upscaler_dx12(d)};let request=s.providers()?.first().map(|p|ProviderSelection::Explicit(p.id())).unwrap_or_default();s=s.with_provider(request);let _=s.ratio(QualityMode::Quality)?;let _=s.estimate_memory(o)?;let a=s.create(o)?;let b=s.create(o)?;Ok((a,b))} fn main(){}"
+  },
+  {
+    "id": "setup-movable-unsafe-load",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(p:&std::path::Path){let _=MovableRuntime::load(p);} fn main(){}"
+  },
+  {
+    "id": "setup-movable-unsafe-acquisition",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(r:&mut MovableRuntime,d:&ID3D12Device){let _=r.upscaler_dx12(d);} fn main(){}"
+  },
+  {
+    "id": "setup-movable-overlap",
+    "features": "dx12,movable",
+    "diagnostic": "E0499",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(r:&mut MovableRuntime,d:&ID3D12Device){let mut a=unsafe{r.upscaler_dx12(d)};let _b=unsafe{r.upscaler_dx12(d)};let _=a.providers();} fn main(){}"
+  },
+  {
+    "id": "setup-movable-escape-runtime",
+    "features": "dx12,movable",
+    "diagnostic": "E0515",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f<'d>(p:&std::path::Path,d:&'d ID3D12Device)->MovableUpscalerSetup<'static,'d>{let mut r=unsafe{MovableRuntime::load(p)}.unwrap();unsafe{r.upscaler_dx12(d)}} fn main(){}"
+  },
+  {
+    "id": "setup-movable-escape-device",
+    "features": "dx12,movable",
+    "diagnostic": "E0515",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f<'r>(r:&'r mut MovableRuntime,d:ID3D12Device)->MovableUpscalerSetup<'r,'static>{unsafe{r.upscaler_dx12(&d)}} fn main(){}"
+  },
+  {
+    "id": "setup-movable-private-choice",
+    "features": "dx12,movable",
+    "diagnostic": "E0616",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(s:&mut MovableUpscalerSetup<'_,'_>){s.selection=ProviderSelection::Default;} fn main(){}"
+  },
+  {
+    "id": "setup-movable-old-constructor",
+    "features": "dx12,movable",
+    "diagnostic": "E0599",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(r:&MovableRuntime,d:&ID3D12Device,o:UpscalerOptions){let _=MovableUpscaler::new(r,d,o);} fn main(){}"
+  },
+  {
+    "id": "setup-movable-old-query",
+    "features": "dx12,movable",
+    "diagnostic": "E0599",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(r:&mut MovableRuntime,d:&ID3D12Device){let _=r.upscaler_providers_dx12(d);} fn main(){}"
+  },
+  {
+    "id": "setup-movable-unsafe-callbacks",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(s:&mut MovableUpscalerSetup<'_,'_>,o:&UpscalerOptions){let _=s.create_with_callbacks(o,Default::default());} fn main(){}"
+  },
+  {
+    "id": "setup-movable-unsafe-configure_debug",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(s:&mut MovableUpscalerSetup<'_,'_>){let _=s.configure_debug(Default::default(),None);} fn main(){}"
+  },
+  {
+    "id": "setup-movable-unsafe-configure_global_debug_legacy",
+    "features": "dx12,movable",
+    "diagnostic": "E0133",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn f(s:&mut MovableUpscalerSetup<'_,'_>){let _=s.configure_global_debug_legacy(Default::default(),None);} fn main(){}"
+  },
+  {
+    "id": "setup-movable-not-sync",
+    "features": "dx12,movable",
+    "diagnostic": "E0277",
+    "platform": "windows",
+    "source": "use fsr_sdk::{runtime::MovableRuntime,upscaler::{dx12::MovableUpscalerSetup,MovableUpscaler,UpscalerOptions,ID3D12Device},query::{ProviderSelection,QualityMode},error::Error}; fn check<T:Sync>(){} fn main(){check::<MovableUpscalerSetup<'static,'static>>();}"
+  },
+  {
+    "id": "setup-local-not-send",
+    "features": "dx12,movable",
+    "diagnostic": "E0277",
+    "platform": "windows",
+    "source": "use fsr_sdk::upscaler::dx12::UpscalerSetup; fn check<T:Send>(){} fn main(){check::<UpscalerSetup<'static,'static>>();}"
+  },
+  {
+    "id": "setup-movable-send",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::upscaler::dx12::MovableUpscalerSetup; fn check<T:Send>(){} fn main(){check::<MovableUpscalerSetup<'static,'static>>();}"
+  },
+  {
+    "id": "setup-old-options-provider",
+    "features": "",
+    "diagnostic": "E0599",
+    "platform": "any",
+    "source": "use fsr_sdk::{upscaler::UpscalerOptions,query::ProviderSelection}; fn f(o:&mut UpscalerOptions){o.set_provider(None);} fn main(){}"
+  },
+  {
+    "id": "setup-old-load-runtime",
+    "features": "dx12,movable",
+    "diagnostic": "E0599",
+    "platform": "windows",
+    "source": "use fsr_sdk::runtime::Runtime; fn f(p:&std::path::Path){let _=unsafe{Runtime::load_unchecked(p)};} fn main(){}"
+  },
+  {
+    "id": "setup-old-load-movableruntime",
+    "features": "dx12,movable",
+    "diagnostic": "E0599",
+    "platform": "windows",
+    "source": "use fsr_sdk::runtime::MovableRuntime; fn f(p:&std::path::Path){let _=unsafe{MovableRuntime::load_unchecked(p)};} fn main(){}"
+  },
+  {
+    "id": "setup-movable-disabled",
+    "features": "dx12",
+    "diagnostic": "E0432",
+    "platform": "windows",
+    "source": "use fsr_sdk::upscaler::dx12::MovableUpscalerSetup; fn main(){}"
+  },
+  {
+    "id": "composition-portable",
+    "source": "use fsr_sdk::upscaler::*; fn traits<T:Send+Sync+Clone+std::fmt::Debug>(){} fn main(){traits::<FrameParameters>();traits::<ReactiveMaskParameters>();traits::<Sharpening>();let mut p=FrameParameters::new(JitterOffsetPixels::new(-0.0,0.0).unwrap(),FrameTimeMillis::new(16.0).unwrap(),CameraParameters::new(0.1,100.0,1.0,1.0).unwrap(),HistoryAction::Reset);p.set_jitter(JitterOffsetPixels::new(0.25,-0.25).unwrap());p.set_frame_time(FrameTimeMillis::new(17.0).unwrap());p.set_camera(CameraParameters::new_infinite(0.1,1.0,1.0).unwrap());p.set_history_action(HistoryAction::Continue);p.set_motion_vector_scale(MotionVectorScale::Native(NativeMotionVectorScale::new(-0.0,4.0).unwrap()));let d=Dimensions::new(320,180).unwrap();let mut g=ReactiveMaskParameters::new(d,ReactiveMaskOptions::new(1.0,0.2,0.9).unwrap());g.set_render_size(d);g.set_options(g.options().clone());}",
+    "diagnostic": null,
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-FrameParameters-no-Copy",
+    "source": "use fsr_sdk::upscaler::*; fn check<T:Copy>(){}fn main(){check::<FrameParameters>();}",
+    "diagnostic": "E0277",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-FrameParameters-no-PartialEq",
+    "source": "use fsr_sdk::upscaler::*; fn check<T:PartialEq>(){}fn main(){check::<FrameParameters>();}",
+    "diagnostic": "E0277",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-ReactiveMaskParameters-no-Copy",
+    "source": "use fsr_sdk::upscaler::*; fn check<T:Copy>(){}fn main(){check::<ReactiveMaskParameters>();}",
+    "diagnostic": "E0277",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-no-default",
+    "source": "use fsr_sdk::upscaler::*; fn main(){let _=FrameParameters::default();}",
+    "diagnostic": "E0599",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-request-private",
+    "source": "use fsr_sdk::upscaler::*; fn wrong(r:ColorEncodingRequest){let _=r.hint;}fn main(){}",
+    "diagnostic": "E0616",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-old-motion-type",
+    "source": "use fsr_sdk::upscaler::MotionVectorUnits; fn main(){}",
+    "diagnostic": "E0432",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-old-motion_vector_units",
+    "source": "use fsr_sdk::upscaler::*; fn wrong(p:&mut FrameParameters){let _=p.motion_vector_units();}fn main(){}",
+    "diagnostic": "E0599",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-old-motion_vector_scale_override",
+    "source": "use fsr_sdk::upscaler::*; fn wrong(p:&mut FrameParameters){let _=p.motion_vector_scale_override();}fn main(){}",
+    "diagnostic": "E0599",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-old-set_color_encoding_hint",
+    "source": "use fsr_sdk::upscaler::*; fn wrong(p:&mut FrameParameters){let _=p.set_color_encoding_hint();}fn main(){}",
+    "diagnostic": "E0599",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-local-record",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; unsafe fn run(c:&mut Upscaler,list:&ID3D12GraphicsCommandList,r:[&ID3D12Resource;5],p:&FrameParameters)->Result<(),Error>{let resources=UpscaleResources::builder().color(r[0]).depth(r[1]).motion_vectors(r[2]).exposure(ExposureInput::Texture(r[3])).output(r[4]).build()?;c.validate_upscale_inputs(list,&resources,p)?;unsafe{c.record(list,&resources,p)}}fn main(){}",
+    "diagnostic": null,
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-local-generator",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; unsafe fn run(c:&mut Upscaler,list:&ID3D12GraphicsCommandList,r:[&ID3D12Resource;3],p:&ReactiveMaskParameters)->Result<(),Error>{let resources=ReactiveMaskResources::builder().color_opaque_only(r[0]).color_pre_upscale(r[1]).output(r[2]).build()?;c.validate_reactive_mask_inputs(list,&resources,p)?;unsafe{c.record_reactive_mask(list,&resources,p)}}fn main(){}",
+    "diagnostic": null,
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-local-unsafe-record",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; fn wrong(c:&mut Upscaler,l:&ID3D12GraphicsCommandList,r:&UpscaleResources,p:&FrameParameters){let _=c.record(l,r,p);}fn main(){}",
+    "diagnostic": "E0133",
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-local-unsafe-record_reactive_mask",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; fn wrong(c:&mut Upscaler,l:&ID3D12GraphicsCommandList,r:&ReactiveMaskResources,p:&ReactiveMaskParameters){let _=c.record_reactive_mask(l,r,p);}fn main(){}",
+    "diagnostic": "E0133",
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-local-old-dispatch",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; fn wrong(c:&mut Upscaler){let _=c.dispatch(());}fn main(){}",
+    "diagnostic": "E0599",
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-movable-record",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; unsafe fn run(c:&mut MovableUpscaler,list:&ID3D12GraphicsCommandList,r:[&ID3D12Resource;5],p:&FrameParameters)->Result<(),Error>{let resources=UpscaleResources::builder().color(r[0]).depth(r[1]).motion_vectors(r[2]).exposure(ExposureInput::Texture(r[3])).output(r[4]).build()?;c.validate_upscale_inputs(list,&resources,p)?;unsafe{c.record(list,&resources,p)}}fn main(){}",
+    "diagnostic": null,
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-movable-generator",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; unsafe fn run(c:&mut MovableUpscaler,list:&ID3D12GraphicsCommandList,r:[&ID3D12Resource;3],p:&ReactiveMaskParameters)->Result<(),Error>{let resources=ReactiveMaskResources::builder().color_opaque_only(r[0]).color_pre_upscale(r[1]).output(r[2]).build()?;c.validate_reactive_mask_inputs(list,&resources,p)?;unsafe{c.record_reactive_mask(list,&resources,p)}}fn main(){}",
+    "diagnostic": null,
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-movable-unsafe-record",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; fn wrong(c:&mut MovableUpscaler,l:&ID3D12GraphicsCommandList,r:&UpscaleResources,p:&FrameParameters){let _=c.record(l,r,p);}fn main(){}",
+    "diagnostic": "E0133",
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-movable-unsafe-record_reactive_mask",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; fn wrong(c:&mut MovableUpscaler,l:&ID3D12GraphicsCommandList,r:&ReactiveMaskResources,p:&ReactiveMaskParameters){let _=c.record_reactive_mask(l,r,p);}fn main(){}",
+    "diagnostic": "E0133",
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-movable-old-dispatch",
+    "source": "use fsr_sdk::upscaler::*; use fsr_sdk::error::Error; fn wrong(c:&mut MovableUpscaler){let _=c.dispatch(());}fn main(){}",
+    "diagnostic": "E0599",
+    "features": "dx12,movable",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-old-UpscaleDispatch",
+    "source": "use fsr_sdk::upscaler::UpscaleDispatch; fn main(){}",
+    "diagnostic": "E0432",
+    "features": "dx12",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-old-GenerateReactiveMaskDispatch",
+    "source": "use fsr_sdk::upscaler::GenerateReactiveMaskDispatch; fn main(){}",
+    "diagnostic": "E0432",
+    "features": "dx12",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-old-positional-resources",
+    "source": "use fsr_sdk::upscaler::*; fn wrong(){let _=UpscaleResources::new;}fn main(){}",
+    "diagnostic": "E0599",
+    "features": "dx12",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-exposure-explicit",
+    "source": "use fsr_sdk::upscaler::*; fn main(){let e=UpscaleResources::builder().build().unwrap_err();assert!(matches!(e,fsr_sdk::error::Error::Input(fsr_sdk::error::InputError::MissingBinding{..})));let _:ExposureInput=ExposureInput::Automatic;}",
+    "diagnostic": null,
+    "features": "dx12",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-resources-borrowed",
+    "source": "use fsr_sdk::upscaler::*; fn wrong(r:ID3D12Resource)->UpscaleResources<'static>{UpscaleResources::builder().color(&r).depth(&r).motion_vectors(&r).exposure(ExposureInput::Automatic).output(&r).build().unwrap()}fn main(){}",
+    "diagnostic": "E0515",
+    "features": "dx12",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-generator-borrowed",
+    "source": "use fsr_sdk::upscaler::*; fn wrong(r:ID3D12Resource)->ReactiveMaskResources<'static>{ReactiveMaskResources::builder().color_opaque_only(&r).color_pre_upscale(&r).output(&r).build().unwrap()}fn main(){}",
+    "diagnostic": "E0515",
+    "features": "dx12",
+    "platform": "windows"
+  },
+  {
+    "id": "composition-nonexhaustive-HistoryAction",
+    "source": "use fsr_sdk::upscaler::HistoryAction;fn wrong(v:HistoryAction){match v{HistoryAction::Continue=>(),HistoryAction::Reset=>()}}fn main(){}",
+    "diagnostic": "E0004",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "composition-nonexhaustive-MotionVectorScale",
+    "source": "use fsr_sdk::upscaler::MotionVectorScale;fn wrong(v:MotionVectorScale){match v{MotionVectorScale::Uv=>(),MotionVectorScale::Pixels=>(),MotionVectorScale::Native(_)=>()}}fn main(){}",
+    "diagnostic": "E0004",
+    "features": "",
+    "platform": "any"
+  },
+  {
+    "id": "tuning-request-private-parameter",
+    "features": "",
+    "diagnostic": "E0616",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::TuningRequest; fn f(r:TuningRequest){ let _=r.parameter; } fn main(){}"
+  },
+  {
+    "id": "tuning-request-private-value",
+    "features": "",
+    "diagnostic": "E0616",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::TuningRequest; fn f(r:TuningRequest){ let _=r.value; } fn main(){}"
+  },
+  {
+    "id": "tuning-request-private-construction",
+    "features": "",
+    "diagnostic": "E0451",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::{TuningRequest,TuningParameter,TuningValue}; fn main(){let _=TuningRequest { parameter:TuningParameter::VelocityFactor,value:TuningValue::Value(f32::NAN) };}"
+  },
+  {
+    "id": "tuning-request-no-default",
+    "features": "",
+    "diagnostic": "E0599",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::TuningRequest; fn main(){let _=TuningRequest::default();}"
+  },
+  {
+    "id": "tuning-local-removed-raw-pair",
+    "features": "dx12",
+    "diagnostic": "E0061",
+    "platform": "windows",
+    "source": "use fsr_sdk::upscaler::{Upscaler,TuningParameter as P,TuningValue as V}; fn f(c:&mut Upscaler){let _=c.request_tuning(P::VelocityFactor,V::Value(0.5));} fn main(){}"
+  },
+  {
+    "id": "tuning-local-reject-unchecked-value",
+    "features": "dx12",
+    "diagnostic": "E0308",
+    "platform": "windows",
+    "source": "use fsr_sdk::upscaler::{Upscaler,TuningValue as V}; fn f(c:&mut Upscaler){let _=c.request_tuning(V::Value(0.5));} fn main(){}"
+  },
+  {
+    "id": "tuning-movable-removed-raw-pair",
+    "features": "dx12,movable",
+    "diagnostic": "E0061",
+    "platform": "windows",
+    "source": "use fsr_sdk::upscaler::{MovableUpscaler,TuningParameter as P,TuningValue as V}; fn f(c:&mut MovableUpscaler){let _=c.request_tuning(P::VelocityFactor,V::Value(0.5));} fn main(){}"
+  },
+  {
+    "id": "tuning-movable-reject-unchecked-value",
+    "features": "dx12,movable",
+    "diagnostic": "E0308",
+    "platform": "windows",
+    "source": "use fsr_sdk::upscaler::{MovableUpscaler,TuningValue as V}; fn f(c:&mut MovableUpscaler){let _=c.request_tuning(V::Value(0.5));} fn main(){}"
+  },
+  {
+    "id": "provider-metadata-public-construction",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::query::*;fn main(){for v in [0,u64::MAX]{let id=ProviderId::from_u64(v);assert_eq!(u64::from(id),v);assert_eq!(ProviderId::from(v).as_u64(),v);let p=ProviderInfo::new(id,\"4.1.1\");assert_eq!(p.id(),id);assert_ne!(ProviderSelection::Explicit(id),ProviderSelection::Default);}let mut f=ResourceFlags::empty();f|=ResourceFlags::from_bits_retain(1<<63)|ResourceFlags::COLOR;f&=ResourceFlags::from_bits_retain(u64::MAX);assert_eq!(f.unknown_bits(),1<<63);}"
+  },
+  {
+    "id": "provider-metadata-pure-policy",
+    "features": "utils",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::{query::*,utils::provider::*};fn main(){let p=[ProviderInfo::new(ProviderId::from_u64(42),\"4.1.1\")];assert_eq!(select_provider(&p,FsrChoice::Fsr4).unwrap(),ProviderSelection::Explicit(p[0].id()));}"
+  },
+  {
+    "id": "error-categories-portable",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::error::*;fn inspect(e:Error){match e{Error::Input(i)=>{let _: &dyn std::error::Error=&i;},Error::Native(n)=>{let _=(n.operation(),n.code());},Error::Backend(b)=>{let _=std::error::Error::source(&b);},Error::Invariant{operation,reason}=>{let _=(operation,reason);},Error::ContextUnusable(c)=>{let _=std::error::Error::source(&c);},Error::QueryAllocation(a)=>{let _:u64=a.count();let _:QueryAllocationReason=a.reason();},_=>{}}}fn main(){}"
+  },
+  {
+    "id": "error-no-Clone",
+    "features": "",
+    "diagnostic": "E0277",
+    "platform": "any",
+    "source": "use fsr_sdk::error::Error;fn requires<T:Clone>(){}fn main(){requires::<Error>();}"
+  },
+  {
+    "id": "error-no-Copy",
+    "features": "",
+    "diagnostic": "E0277",
+    "platform": "any",
+    "source": "use fsr_sdk::error::Error;fn requires<T:Copy>(){}fn main(){requires::<Error>();}"
+  },
+  {
+    "id": "error-no-PartialEq",
+    "features": "",
+    "diagnostic": "E0277",
+    "platform": "any",
+    "source": "use fsr_sdk::error::Error;fn requires<T:PartialEq>(){}fn main(){requires::<Error>();}"
+  },
+  {
+    "id": "error-no-Eq",
+    "features": "",
+    "diagnostic": "E0277",
+    "platform": "any",
+    "source": "use fsr_sdk::error::Error;fn requires<T:Eq>(){}fn main(){requires::<Error>();}"
+  },
+  {
+    "id": "removed-resource-rejection",
+    "features": "",
+    "diagnostic": "E0599",
+    "platform": "any",
+    "source": "use fsr_sdk::error::{DispatchValidation,ResourceRole};fn main(){let _=DispatchValidation::UnsupportedResource(ResourceRole::ReactiveMask);}"
+  },
+  {
+    "id": "removed-error-DispatchPoisoned",
+    "features": "",
+    "diagnostic": "E0599",
+    "platform": "any",
+    "source": "use fsr_sdk::error::Error;fn main(){let _=Error::DispatchPoisoned;}"
+  },
+  {
+    "id": "removed-error-ConfigurePoisoned",
+    "features": "",
+    "diagnostic": "E0599",
+    "platform": "any",
+    "source": "use fsr_sdk::error::Error;fn main(){let _=Error::ConfigurePoisoned;}"
+  },
+  {
+    "id": "native-error-fields-private",
+    "features": "",
+    "diagnostic": "E0616",
+    "platform": "any",
+    "source": "use fsr_sdk::error::NativeError;fn f(e:NativeError){let _=e.code;}fn main(){}"
+  },
+  {
+    "id": "terminal-cause-nonexhaustive",
+    "features": "",
+    "diagnostic": "E0004",
+    "platform": "any",
+    "source": "use fsr_sdk::error::TerminalCause;fn f(e:TerminalCause){match e{TerminalCause::Native(_)=>{}}}fn main(){}"
+  },
+  {
+    "id": "backend-error-source-windows",
+    "features": "dx12",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::error::{Error,BackendError}; fn inspect(e:Error){if let Error::Backend(BackendError::Dx12Inspection(e))=e{let _=std::error::Error::source(&e).unwrap().downcast_ref::<std::io::Error>();}}fn main(){}"
+  },
+  {
+    "id": "context-usability-portable",
+    "features": "",
+    "diagnostic": null,
+    "platform": "any",
+    "source": "use fsr_sdk::{upscaler::{ContextUsability,common},error::TerminalCause}; fn traits<T: std::fmt::Debug+Copy+Clone+Eq+Send+Sync+'static>(){} fn classify(v:ContextUsability)->bool{match v{ContextUsability::Usable=>true,ContextUsability::Unusable(TerminalCause::RecordingAbandoned)=>false,_=>false}} fn main(){traits::<ContextUsability>();let v:common::ContextUsability=ContextUsability::Unusable(TerminalCause::RecordingAbandoned);assert!(!classify(v));assert!(std::error::Error::source(&TerminalCause::RecordingAbandoned).is_none());}"
+  },
+  {
+    "id": "context-usability-nonexhaustive",
+    "features": "",
+    "diagnostic": "E0004",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::ContextUsability; fn classify(v:ContextUsability){match v{ContextUsability::Usable=>(),ContextUsability::Unusable(_)=>()}} fn main(){}"
+  },
+  {
+    "id": "context-usability-no-default",
+    "features": "",
+    "diagnostic": "E0599",
+    "platform": "any",
+    "source": "fn main(){let _=fsr_sdk::upscaler::ContextUsability::default();}"
+  },
+  {
+    "id": "context-usability-upscaler",
+    "features": "dx12",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::{upscaler::{Upscaler,ContextUsability},error::{Error,TerminalCause}}; fn abort(context:&mut Upscaler){let before=context.usability();context.mark_recording_abandoned();context.mark_recording_abandoned();let after=context.usability();if matches!(before,ContextUsability::Usable){assert_eq!(after,ContextUsability::Unusable(TerminalCause::RecordingAbandoned));}assert!(matches!(context.provider(),Err(Error::ContextUnusable(_))));} fn terminal(context:Upscaler)->Result<(),Error>{let _=context.usability();context.destroy()} fn main(){}"
+  },
+  {
+    "id": "context-usability-movableupscaler",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "use fsr_sdk::{upscaler::{MovableUpscaler,ContextUsability},error::{Error,TerminalCause}}; fn abort(context:&mut MovableUpscaler){let before=context.usability();context.mark_recording_abandoned();context.mark_recording_abandoned();let after=context.usability();if matches!(before,ContextUsability::Usable){assert_eq!(after,ContextUsability::Unusable(TerminalCause::RecordingAbandoned));}assert!(matches!(context.provider(),Err(Error::ContextUnusable(_))));} fn terminal(context:MovableUpscaler)->Result<(),Error>{let _=context.usability();context.destroy()} fn main(){}"
+  },
+  {
+    "id": "composition-must-use-upscale-builder",
+    "features": "dx12",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "#![deny(unused_must_use)]\nuse fsr_sdk::upscaler::dx12::{UpscaleResources,ID3D12Resource}; fn discard(r:&ID3D12Resource){UpscaleResources::builder().color(r);} fn main(){}",
+    "lint": "unused_must_use"
+  },
+  {
+    "id": "composition-must-use-generator-builder",
+    "features": "dx12",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "#![deny(unused_must_use)]\nuse fsr_sdk::upscaler::dx12::{ReactiveMaskResources,ID3D12Resource}; fn discard(r:&ID3D12Resource){ReactiveMaskResources::builder().color_opaque_only(r);} fn main(){}",
+    "lint": "unused_must_use"
+  },
+  {
+    "id": "composition-must-use-local-selection",
+    "features": "dx12",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "#![deny(unused_must_use)]\nuse fsr_sdk::{query::ProviderSelection,upscaler::dx12::UpscalerSetup};fn discard(setup:UpscalerSetup<'_,'_>){setup.with_provider(ProviderSelection::Default);}fn main(){}",
+    "lint": "unused_must_use"
+  },
+  {
+    "id": "composition-must-use-local-usability",
+    "features": "dx12",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "#![deny(unused_must_use)]\nfn discard(context:&fsr_sdk::upscaler::dx12::Upscaler){context.usability();}fn main(){}",
+    "lint": "unused_must_use"
+  },
+  {
+    "id": "composition-must-use-movable-selection",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "#![deny(unused_must_use)]\nuse fsr_sdk::{query::ProviderSelection,upscaler::dx12::MovableUpscalerSetup};fn discard(setup:MovableUpscalerSetup<'_,'_>){setup.with_provider(ProviderSelection::Default);}fn main(){}",
+    "lint": "unused_must_use"
+  },
+  {
+    "id": "composition-must-use-movable-usability",
+    "features": "dx12,movable",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "#![deny(unused_must_use)]\nfn discard(context:&fsr_sdk::upscaler::dx12::MovableUpscaler){context.usability();}fn main(){}",
+    "lint": "unused_must_use"
+  },
+  {
+    "id": "composition-explicit-discard",
+    "features": "dx12",
+    "diagnostic": null,
+    "platform": "windows",
+    "source": "#![deny(unused_must_use)]\nuse fsr_sdk::{query::ProviderSelection,upscaler::dx12::{UpscalerSetup,Upscaler,UpscaleResources,ReactiveMaskResources,ID3D12Resource}};fn discard(setup:UpscalerSetup<'_,'_>,context:&Upscaler,r:&ID3D12Resource){let _=setup.with_provider(ProviderSelection::Default);let _=context.usability();let _=UpscaleResources::builder().color(r);let _=ReactiveMaskResources::builder().color_opaque_only(r);}fn main(){}"
+  },
+  {
+    "id": "composition-debug-level-nonexhaustive",
+    "features": "",
+    "diagnostic": "E0004",
+    "platform": "any",
+    "source": "use fsr_sdk::upscaler::DebugLevel; fn classify(level:DebugLevel){match level {DebugLevel::Silent=>(),DebugLevel::Errors=>(),DebugLevel::Warnings=>(),DebugLevel::Verbose=>()}} fn main(){}"
+  }
+]

@@ -1,139 +1,66 @@
 # SPDX-License-Identifier: MPL-2.0
-
 name: CI
-
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
   workflow_dispatch:
-
 permissions:
   contents: read
-
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
-
 env:
   CARGO_INCREMENTAL: "0"
-  CARGO_TERM_COLOR: always
+  CARGO_TERM_COLOR: never
   RUST_BACKTRACE: "1"
-
 jobs:
-  msrv:
-    name: Rust 1.88 (${{ matrix.os }})
+  verification:
+    name: ${{ matrix.toolchain }} (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 30
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, windows-2025]
+        include:
+          - os: ubuntu-24.04
+            toolchain: stable
+            profile: ci
+          - os: windows-2025
+            toolchain: stable
+            profile: ci
+          - os: ubuntu-24.04
+            toolchain: 1.88.0
+            profile: msrv
+          - os: windows-2025
+            toolchain: 1.88.0
+            profile: msrv
     steps:
       - name: Check out repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
-      - name: Set up minimum Rust version
-        uses: ./.github/actions/setup-rust
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
-          toolchain: 1.88.0
-      - name: Check all targets
-        run: cargo check --workspace --all-targets --locked
-      - name: Run tests
-        run: cargo test --workspace --features fsr-sdk/movable --locked
-      - name: Run tests without default features
-        run: cargo test --workspace --no-default-features --locked
-
-      - name: Check movable without DX12
-        run: cargo check --workspace --all-targets --no-default-features --features fsr-sdk/movable --locked
-
-  rust-quality:
-    name: Rust quality (Ubuntu)
-    runs-on: ubuntu-24.04
-    timeout-minutes: 45
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
-
+          python-version: "3.11"
       - name: Set up Rust
         uses: ./.github/actions/setup-rust
         with:
+          toolchain: ${{ matrix.toolchain }}
           components: rustfmt,clippy
-
-      - name: Check formatting
-        run: cargo fmt --all -- --check
-
-      - name: Run Clippy
-        run: cargo clippy --workspace --all-targets --features fsr-sdk/movable --locked -- -D warnings
-
-      - name: Run tests
-        run: cargo test --workspace --locked
-
-      - name: Run movable tests
-        run: cargo test --workspace --features fsr-sdk/movable --locked
-
-      - name: Run tests without default features
-        run: cargo test --workspace --no-default-features --locked
-
-      - name: Check downstream common and native API boundaries
-        shell: pwsh
-        run: ./tools/check-movable-api.ps1
-
-      - name: Build documentation without default features
-        env:
-          RUSTDOCFLAGS: -D warnings
-        run: cargo doc --workspace --no-default-features --no-deps --locked
-
-      - name: Build documentation
-        env:
-          RUSTDOCFLAGS: -D warnings
-        run: cargo doc --workspace --features fsr-sdk/movable --no-deps --locked
-
-  windows-dx12:
-    name: Windows DX12 (x64 MSVC)
-    runs-on: windows-2025
-    timeout-minutes: 45
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Check repository size and generated data placement
+        run: python tools/verification/repository_size.py
+      - name: Run required verification profile
+        run: python tools/verification/run.py run ${{ matrix.profile }} --online --require-passed
+      - name: Export finalized evidence including failed cases
+        if: always()
+        run: python tools/verification/run.py export-ci --output target/verification-evidence
+      - name: Retain sanitized verification evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          persist-credentials: false
-
-      - name: Set up Rust
-        uses: ./.github/actions/setup-rust
-        with:
-          components: clippy
-
-      - name: Check pinned native headers and ABI
-        shell: pwsh
-        run: ./tools/check-native-abi.ps1
-
-      - name: Run Clippy
-        run: cargo clippy --workspace --all-targets --features fsr-sdk/movable --locked -- -D warnings
-
-      - name: Run tests
-        run: cargo test --workspace --locked
-
-      - name: Run movable tests
-        run: cargo test --workspace --features fsr-sdk/movable --locked
-
-      - name: Check downstream common, native and movable API boundaries
-        shell: pwsh
-        run: ./tools/check-movable-api.ps1
-
-      - name: Run tests without default features
-        run: cargo test --workspace --no-default-features --locked
-
-      - name: Build documentation without default features
-        env:
-          RUSTDOCFLAGS: -D warnings
-        run: cargo doc --workspace --no-default-features --no-deps --locked
-
-      - name: Build documentation
-        env:
-          RUSTDOCFLAGS: -D warnings
-        run: cargo doc --workspace --features fsr-sdk/movable --no-deps --locked
+          name: verification-${{ matrix.os }}-${{ matrix.toolchain }}
+          path: target/verification-evidence
+          if-no-files-found: warn
+          retention-days: 14

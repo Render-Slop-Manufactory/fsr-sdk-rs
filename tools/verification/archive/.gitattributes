@@ -1,0 +1,2 @@
+# Preserve archived intake bytes, including original line endings.
+**/files/** -text

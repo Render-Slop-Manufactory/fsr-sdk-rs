@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "zero_motion_encoding": "Canonical positive zero in both native generator and independent byte oracle; physical zero motion unchanged.",
+  "confirmation": false,
+  "repeats": 1,
+  "order_seeds": [
+    419
+  ],
+  "frames": 128,
+  "render": [
+    320,
+    180
+  ],
+  "display": [
+    640,
+    360
+  ],
+  "input_only_frames": [
+    0,
+    1,
+    7,
+    8,
+    15,
+    16,
+    23,
+    24,
+    31,
+    32,
+    39,
+    40,
+    47,
+    48,
+    55,
+    56,
+    63,
+    64,
+    71,
+    72,
+    79,
+    80,
+    87,
+    88,
+    95,
+    96,
+    103,
+    104,
+    111,
+    112,
+    119,
+    120,
+    127
+  ],
+  "windows": [
+    [
+      32,
+      63
+    ],
+    [
+      64,
+      95
+    ],
+    [
+      96,
+      127
+    ]
+  ],
+  "scenes": [
+    {
+      "name": "stationary",
+      "scene": 2,
+      "velocity": [
+        0,
+        0
+      ],
+      "jitter_phases": [
+        0,
+        8,
+        16,
+        24
+      ],
+      "controls": [
+        "correct",
+        "negated-x",
+        "negated-y",
+        "negated-jitter",
+        "lagged-jitter",
+        "zero-jitter"
+      ]
+    },
+    {
+      "name": "moving",
+      "scene": 2,
+      "velocity": [
+        0.375,
+        0.25
+      ],
+      "jitter_phases": [
+        0
+      ],
+      "controls": [
+        "correct",
+        "negated-x",
+        "negated-y",
+        "negated-jitter",
+        "lagged-jitter",
+        "zero-jitter"
+      ]
+    }
+  ],
+  "geometry": "Unchanged analytic sinusoidal diagnosis scene, camera, depths, sizes and half conversion. Samples pixel_center-image_jitter. Motion unjittered previousUV-currentUV. One context per arm, reset only at frame 0; resources retained until fence/context destruction. No cut, sharpening, mask, exposure or public API changes.",
+  "jitter": "Frozen binary32 Halton(2,3), indices 1..32, period 32. Image phase=(absolute frame+start phase)%32. Correct dispatch uses the same phase. X-only/Y-only/both negation and zero change dispatch only. Lagged dispatch uses (image phase-1)%32 including wrap. Starting phase shifts both image and correct dispatch together; the temporal cycle never resets.",
+  "position": "Independent sinusoid fits per RGB channel: DC + sine + cosine. Red determines X, green Y, blue checks their consistency. DC and amplitude recorded separately. Every fourth output pixel, viewport margin 8 render pixels and silhouette exclusion 8 render pixels. Phase range +/-1 render pixel per axis, amplitude ratio .25..2; empty/nonfinite/rank-deficient/unidentifiable regions fail. Bias and positive contrast changes must not become translations. Known shifts +/- .125/.25/.5/1 pixels, isolated X/Y and unequal-axis shifts in both regions, half conversion and out-of-range/constant/NaN controls validate the estimator before GPU dispatch.",
+  "selection_rule": "For each stationary/moving group, pool each 32-frame window separately. Correct alignment X/Y/radial RMS limits = 1.25 * largest correct window across group phases + .000001; refuse any limit >= .125 render pixel (predeclared known shift defect). Correct foreground/background/edge/temporal MAE and texture NRMSE get the same selection formula and must still reject the analytic known defects. Each wrong control must exceed paired correct alignment RMS by >=10% plus .001 pixel in every window: X for negated-X, Y for negated-Y, radial for both/lagged/zero. Exploration is selection data only. Freeze limits before three fresh ordered confirmations; do not require every wrong input to lose every quality metric.",
+  "limits": "30 arms *128 =3840 frames per native block, 990 input-only frames. Native watchdog 360s; offline audit 1800s. One equipment/provider/driver, correlated frames; no population confidence interval, universal image quality, perceptual guarantee, new release gate or public jitter policy."
+}

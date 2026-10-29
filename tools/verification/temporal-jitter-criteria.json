@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "exploration_input_identity": "019c51050bdd24ff3bff126ba5e5f45db25d02964eb0b83d343ef0cbc7957bf6",
+  "exploration_summary_sha256": "7a7102836d5e3e2ef83bd4208547bf6a9b09304e7269fc04fae571e27e152808",
+  "groups": {
+    "stationary": {
+      "alignment": {
+        "x_rms": 0.03695666738069242,
+        "y_rms": 0.0449495115731733,
+        "radial_rms": 0.05818954539337639
+      },
+      "quality": {
+        "foreground": 0.005996259035880685,
+        "background": 0.003113151321602011,
+        "edge": 0.02703997070691967,
+        "temporal": 0.0008887513107163793,
+        "texture": 0.04350681925815189
+      }
+    },
+    "moving": {
+      "alignment": {
+        "x_rms": 0.02110184389327805,
+        "y_rms": 0.03549823404632907,
+        "radial_rms": 0.04129626895357813
+      },
+      "quality": {
+        "foreground": 0.007077018898189037,
+        "background": 0.0031381946893623515,
+        "edge": 0.03611560876898075,
+        "temporal": 0.0008381816967066234,
+        "texture": 0.0555991992717108
+      }
+    }
+  },
+  "rule": "For each stationary/moving group, pool each 32-frame window separately. Correct alignment X/Y/radial RMS limits = 1.25 * largest correct window across group phases + .000001; refuse any limit >= .125 render pixel (predeclared known shift defect). Correct foreground/background/edge/temporal MAE and texture NRMSE get the same selection formula and must still reject the analytic known defects. Each wrong control must exceed paired correct alignment RMS by >=10% plus .001 pixel in every window: X for negated-X, Y for negated-Y, radial for both/lagged/zero. Exploration is selection data only. Freeze limits before three fresh ordered confirmations; do not require every wrong input to lose every quality metric.",
+  "scope": "Bounded spatial-phase and local quality/sensitivity confirmation; no universal quality or jitter policy",
+  "known_defect_validation": {
+    "passed": true,
+    "checks": {
+      "stationary.x_rms": true,
+      "stationary.y_rms": true,
+      "stationary.radial_rms": true,
+      "stationary.foreground": true,
+      "stationary.background": true,
+      "stationary.edge": true,
+      "stationary.temporal": true,
+      "stationary.texture": true,
+      "moving.x_rms": true,
+      "moving.y_rms": true,
+      "moving.radial_rms": true,
+      "moving.foreground": true,
+      "moving.background": true,
+      "moving.edge": true,
+      "moving.temporal": true,
+      "moving.texture": true
+    }
+  }
+}

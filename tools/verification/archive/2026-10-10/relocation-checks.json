@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-10",
+  "retired_scripts": 19,
+  "context_snapshots": 4,
+  "navigation_only_historical_documents": 24,
+  "other_historical_evidence_files_byte_unchanged": 438,
+  "new_document_links_checked": 42,
+  "historical_command_blocks_unchanged": true,
+  "test_logic_and_test_selectors_unchanged": true,
+  "active_runner_and_ci_inputs_unchanged": true,
+  "native_execution_performed": false,
+  "environment": {
+    "rust": "1.99.0",
+    "python": "3.14.1",
+    "powershell": "7.6.6",
+    "host": "Windows",
+    "native_execution": false
+  },
+  "checks": [
+    {
+      "command": "python tools/verification/archive/check.py",
+      "outcome": "passed",
+      "observations": "23 exact payloads; complete dependency inventory and archive navigation; 7 Python and 15 PowerShell sources parsed without execution"
+    },
+    {
+      "command": "cargo fmt --all -- --check",
+      "outcome": "passed"
+    },
+    {
+      "command": "cargo test --workspace --features fsr-sdk/movable --locked --offline --no-run",
+      "outcome": "passed",
+      "observations": "Windows test compilation only; no tests or GPU cases executed"
+    },
+    {
+      "command": "cargo package --list -p fsr-sdk --locked --offline --allow-dirty",
+      "outcome": "passed",
+      "observations": "Archive payloads excluded; crate source/tests and notices remain present"
+    },
+    {
+      "command": "cargo package --list -p fsr-sdk-sys --locked --offline",
+      "outcome": "passed",
+      "observations": "Archive payloads excluded; crate source/tests and notices remain present"
+    },
+    {
+      "command": "git diff --check",
+      "outcome": "passed"
+    },
+    {
+      "command": "git check-attr text -- tools/verification/archive/2026-10-10/files/crates/fsr-sdk/tests/run-m4.ps1.txt",
+      "outcome": "passed",
+      "observations": "text attribute unset; scoped archive rule preserves original line-ending bytes"
+    }
+  ],
+  "setup_observation": "The initial wrapper package listing rejected the three uncommitted test-message annotations; the read-only listing passed with --allow-dirty. No package upload or archive workflow was run.",
+  "limits": "Intake script/configuration snapshot and relocation checks only; no reconstruction of earlier source states, raw readback retention improvement, native execution or new orchestration. Context snapshots need not match future active implementations."
+}

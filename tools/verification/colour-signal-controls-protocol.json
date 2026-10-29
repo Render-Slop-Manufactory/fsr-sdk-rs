@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "selected_after": "Initial colour-signal run: changing pre-exposure violates same-code hypotheses in both PQ packings and one sRGB frame; retain those failures",
+  "purpose": "Distinguish steady inputs from pre-exposure transitions, and test whether per-frame reset removes the observed discrepancy",
+  "base_protocol": "colour-signal-protocol.json",
+  "unchanged": ["scene", "transfer functions", "PQ test normalization", "native safety requirements", "signal budgets", "three process repetitions"],
+  "fixed_controls": "Linear and both non-linear packings at pre=0.5 and pre=2, each held constant for all three frames",
+  "reset_controls": "sRGB/PQ in each packing with the original 0.5,1,2 pre-exposure sequence, resetting all three frames",
+  "exposure": 1,
+  "interpretation": "Compare reset/static controls with the initial continuous transitions. Even causal reset dependence does not identify internal decode/pre-exposure ordering or prove a wrapper bug."
+}
