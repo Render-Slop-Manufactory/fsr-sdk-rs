@@ -24,7 +24,7 @@ supplied prompt are proposals, not implementation approval.
 
 Use read-only inspection of the prompt, relevant repository files and, when
 needed, primary external sources. During this phase, do not edit files, generate
-artifacts, run builds/tests or execute the supplied prompt's work instructions.
+artefacts, run builds/tests or execute the supplied prompt's work instructions.
 
 Compare its claims and requested work with the actual implementation, manifests,
 applicable project decisions and available platform/tool capabilities. Identify

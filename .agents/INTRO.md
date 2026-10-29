@@ -3,14 +3,17 @@
 This is the provider-neutral entry point shared by AGENTS.md and CLAUDE.md.
 Keep communication concise. Ask when missing information materially affects the
 result; otherwise proceed within the user's request.
+Follow the [language policy](../docs/language_policy.md) for repository language conventions.
 
 ## Context and authority
 
 Read [SCOPE.md](../SCOPE.md) for project purpose and boundaries.
 [ROADMAP.md](../ROADMAP.md) owns current status and sequencing;
 [README.md](../README.md) is the human-facing entry point. Source code and
-Cargo manifests establish implemented behavior. Goals and plans are not evidence
+Cargo manifests establish implemented behaviour. Goals and plans are not evidence
 of completed functionality.
+Before editing the root README, read and follow the
+[README maintenance rules](../CONTRIBUTING.md#readme-maintenance).
 
 This project wraps AMD's official FSR SDK in two layers: faithful native bindings
 in `fsr-sdk-sys`, and engine-independent Rust abstractions in `fsr-sdk`.
@@ -44,13 +47,19 @@ Read only the routes relevant to the task, and reconsider them if scope changes.
   [README.md](../README.md) for user-facing documentation or usage claims.
 - Tests, build commands, or support claims outside code work: read
   [development guidance](../docs/DEVELOPMENT.md).
+- Changes to test infrastructure, verification profiles or scripts, CI, or
+  platform helpers: follow the
+  [verification contribution guidance](../CONTRIBUTING.md#verification-infrastructure).
+- Writing or changing Python tests in `tools/verification/tests/`, or the Python
+  verification code they exercise: read the focused
+  [test-authoring guide](../tools/verification/tests/README.md).
 - SDK, dependencies, packaging, or licensing: read relevant
   [decisions](../docs/DECISIONS.md); inspect affected manifests,
   relevant lockfile entries, [LICENSE](../LICENSE), and pinned upstream evidence.
   Distinguish the project's licence from AMD's terms.
-- Research: use the matching skill below for a prompt, experiment, or synthesis.
-  For a direct source investigation, read the
-  [shared research guidance](skills/RESEARCH.md).
+- Research: use the matching skill below for commissioning, investigating,
+  experimenting, recording, or integrating findings. Read the
+  [shared research guidance](skills/RESEARCH.md) for the workflow boundaries.
 
 ## Research skills
 
@@ -60,10 +69,15 @@ particular agent provider or automatically delegate work.
 | Task | Skill |
 |---|---|
 | Prepare a prompt for an external source investigation | [research-prompt](skills/research-prompt/SKILL.md) |
-| Run a bounded spike or native experiment and record evidence | [research-experiment](skills/research-experiment/SKILL.md) |
+| Conduct a code, documentation, web, or architecture investigation | [research-investigation](skills/research-investigation/SKILL.md) |
+| Run a bounded spike or native experiment and capture evidence | [research-experiment](skills/research-experiment/SKILL.md) |
+| Write a source or experiment record from gathered evidence | [research-record](skills/research-record/SKILL.md) |
 | Import and integrate completed research | [research-synthesis](skills/research-synthesis/SKILL.md) |
 
-An ordinary implementation or test run does not need a research record.
+Investigations and experiments finish through `research-record`; integration is
+separate and runs only when requested. Read-only or response-only requests keep
+the report in the response without writing files. An ordinary implementation,
+code review, lookup, or test run does not automatically need a research record.
 
 ## Execution and authorization
 

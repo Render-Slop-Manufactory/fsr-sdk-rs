@@ -12,6 +12,10 @@ records without reprocessing all historical material.
 Review incoming content and artefacts for secrets or personal information.
 Normalize new records to the shared naming convention, preserving substantive
 content and provenance. Do not rename established records for cosmetic reasons.
+This intake handles already completed records; final report assembly from raw
+findings belongs to [research-record](../research-record/SKILL.md). Disclose
+missing evidence rather than reconstructing an investigation or inventing its
+results. Writing a record alone does not authorize integration.
 
 Read the affected synthesis and prior evidence needed to assess differences.
 Compare versions and scope before declaring agreement or contradiction. Integrate

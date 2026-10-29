@@ -10,7 +10,7 @@ these instructions. Create a synthesis only when actual evidence is available.
 ## Current findings
 
 Summarize conclusions with evidence links and appropriate evidence labels.
-Keep vendor statements distinct from reproduced behavior.
+Keep vendor statements distinct from reproduced behaviour.
 
 ## Disagreements and limitations
 

@@ -1,6 +1,6 @@
 ---
 name: research-experiment
-description: Run a bounded code experiment, spike, or native SDK proof and preserve reproducible evidence. Use for requested investigations, not ordinary implementation or routine tests.
+description: Run a requested bounded code experiment, spike, or native SDK proof and capture reproducible execution evidence. Do not use for source-only investigations, ordinary implementation, routine tests, record-only requests, or synthesis.
 ---
 
 # Research Experiment
@@ -16,10 +16,14 @@ Check what the available platform can establish. If native execution needs an
 unavailable Windows runtime or GPU, complete useful independent work and report
 the missing verification rather than treating compilation or mocks as proof.
 
-Record the actual setup, commands, inputs, results, and limitations using the
-shared evidence convention. Preserve unsuccessful results and clearly identify
-probe code versus production changes. Keep only useful sanitized artefacts.
+Capture the actual setup, tested source state and relevant local changes,
+environment, commands, inputs, observations, exit statuses, and limitations as
+the experiment runs. Preserve unsuccessful attempts and clearly identify probe
+code versus production changes. Keep useful artefacts and the provenance needed
+for reproduction; follow the shared sanitization rules when retaining evidence.
 
-Write the experiment record when recording is within the request. Integrate it
-into a topic synthesis only when the task also includes integration; otherwise
-report the record and remaining question. Do not accept architecture implicitly.
+Finish through [research-record](../research-record/SKILL.md) with this captured
+evidence. It owns final report assembly and preservation, including failed or
+blocked outcomes, under the user's output constraints. Report probe-code changes
+and checks performed alongside the record and remaining question. Integration
+and design acceptance remain separate.

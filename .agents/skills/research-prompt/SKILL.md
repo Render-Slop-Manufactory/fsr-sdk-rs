@@ -18,9 +18,11 @@ Separate questions answerable from sources from those needing Windows, an AMD
 runtime, licensed materials, or GPU experiments. Include only relevant licensing,
 ABI, ownership, loading, or distribution concerns.
 
-Embed the applicable evidence and source-record requirements from the shared
-guidance. Request one self-contained Markdown record, including differences from
-the baseline and unresolved questions. Do not imply research accepts a design.
+Embed the applicable evidence and source-record requirements from the
+[research process](../../../docs/research/PROCESS.md). The external researcher
+cannot rely on local skill links. Request one self-contained Markdown record,
+including differences from the baseline and unresolved questions, for later
+intake. Do not imply research accepts a design.
 
 Return the finished prompt. Do not conduct the investigation, edit repository
 files, or dispatch it to another agent unless the user also requests that work.

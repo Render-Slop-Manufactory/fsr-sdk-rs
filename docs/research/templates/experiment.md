@@ -20,7 +20,7 @@ Provide exact commands, prerequisites, and necessary artefact links.
 ## Observations
 
 Record outcomes, exit statuses, and failures or inconclusive results. Distinguish
-observed behavior from explanations. Identify which path actually ran: host
+observed behaviour from explanations. Identify which path actually ran: host
 build, native loading, query, or GPU dispatch.
 
 ## Baseline delta and limits
