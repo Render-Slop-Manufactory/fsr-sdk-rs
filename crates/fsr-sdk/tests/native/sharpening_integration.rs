@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! M9 public-API integration, under the selected 2026-10-09 protocol.
+//! Public sharpening integration, under the selected 2026-10-09 protocol.
 //! Image comparisons are diagnostics; the historical effect test stays separate.
 use super::*;
 use crate::upscaler::{NativeSharpness, Sharpening};
@@ -43,9 +43,10 @@ struct Equipment {
 
 impl Equipment {
     fn acquire() -> Self {
-        let helper = std::env::var_os("FSR_SDK_TEST_M6_DLL").unwrap();
+        let helper = std::env::var_os("FSR_SDK_TEST_GPU_DLL").unwrap();
         let loader = std::env::var_os("FSR_SDK_TEST_DLL").unwrap();
-        let output = PathBuf::from(std::env::var_os("FSR_SDK_TEST_M9_OUTPUT").unwrap());
+        let output =
+            PathBuf::from(std::env::var_os("FSR_SDK_TEST_SHARPENING_INTEGRATION_OUTPUT").unwrap());
         assert!(
             output.is_dir(),
             "runner must supply a fresh output directory"
@@ -55,7 +56,7 @@ impl Equipment {
         // DLLs. These signatures match its C exports; all use stays on this thread.
         unsafe {
             let library = libloading::Library::new(helper).unwrap();
-            let debug = *library.get::<EnableDebug>(b"m6_enable_debug\0").unwrap();
+            let debug = *library.get::<EnableDebug>(b"gpu_enable_debug\0").unwrap();
             assert_eq!(debug(), 0);
             let create = *library
                 .get::<CreateDevice>(b"probe_create_device\0")
@@ -64,20 +65,20 @@ impl Equipment {
             assert_eq!(create(&mut raw), 0);
             assert!(!raw.is_null());
             let device = ID3D12Device::from_raw(raw);
-            let amd = *library.get::<DeviceCheck>(b"m6_require_amd\0").unwrap();
+            let amd = *library.get::<DeviceCheck>(b"gpu_require_amd\0").unwrap();
             assert_eq!(amd(device.as_raw()), 0);
             Self {
-                create: *library.get::<CreateHarness>(b"m6_create\0").unwrap(),
+                create: *library.get::<CreateHarness>(b"gpu_create\0").unwrap(),
                 set_frame: *library.get::<SetFrame>(b"sharpening_set_frame\0").unwrap(),
-                finish: *library.get::<Finish>(b"m6_finish\0").unwrap(),
-                fence_value: *library.get::<FenceValue>(b"d013_fence_value\0").unwrap(),
+                finish: *library.get::<Finish>(b"gpu_finish\0").unwrap(),
+                fence_value: *library.get::<FenceValue>(b"gpu_fence_value\0").unwrap(),
                 copy_bits: *library
                     .get::<CopyBits>(b"sharpening_copy_red_bits\0")
                     .unwrap(),
                 copy_red: *library.get::<CopyRed>(b"semantic_copy_red\0").unwrap(),
-                destroy: *library.get::<Destroy>(b"m6_destroy\0").unwrap(),
-                check: *library.get::<DeviceCheck>(b"m6_check_device\0").unwrap(),
-                runtime: Runtime::load_unchecked(loader).unwrap(),
+                destroy: *library.get::<Destroy>(b"gpu_destroy\0").unwrap(),
+                check: *library.get::<DeviceCheck>(b"gpu_check_device\0").unwrap(),
+                runtime: Runtime::load(loader).unwrap(),
                 device,
                 output,
                 _library: library,
@@ -85,16 +86,13 @@ impl Equipment {
         }
     }
 
-    fn sequence(&self, scene: u32, arm: &str, switching: bool) -> Vec<Image> {
-        let mut context = Upscaler::new(
-            &self.runtime,
-            &self.device,
-            UpscalerOptions::new(
+    fn sequence(&mut self, scene: u32, arm: &str, switching: bool) -> Vec<Image> {
+        let mut context = unsafe { self.runtime.upscaler_dx12(&self.device) }
+            .create(&UpscalerOptions::new(
                 Dimensions::new(320, 180).unwrap(),
                 Dimensions::new(640, 360).unwrap(),
-            ),
-        )
-        .unwrap();
+            ))
+            .unwrap();
         log_provider(&mut context);
         let mut completed_frames = Vec::new();
         let mut images = Vec::new();
@@ -123,19 +121,20 @@ impl Equipment {
                 .into_iter()
                 .map(|raw| {
                     assert!(!raw.is_null());
-                    // SAFETY: This is an owned reference transferred by m6_create.
+                    // SAFETY: This is an owned reference transferred by gpu_create.
                     unsafe { ID3D12Resource::from_raw(raw) }
                 })
                 .collect();
-            let mut dispatch = UpscaleDispatch::new(
+            let mut dispatch = UpscaleTestInputs::new(
                 &list,
-                UpscaleResources::new(
-                    &resources[0],
-                    &resources[1],
-                    &resources[2],
-                    &resources[3],
-                    &resources[4],
-                ),
+                UpscaleResources::builder()
+                    .color(&resources[0])
+                    .depth(&resources[1])
+                    .motion_vectors(&resources[2])
+                    .exposure(crate::upscaler::dx12::ExposureInput::Texture(&resources[3]))
+                    .output(&resources[4])
+                    .build()
+                    .unwrap(),
                 JitterOffsetPixels::new(jx, jy).unwrap(),
                 FrameTimeMillis::new(16.667).unwrap(),
                 CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
@@ -158,19 +157,27 @@ impl Equipment {
             // SAFETY: Fresh DIRECT list and five distinct textures use the fixed
             // signed profile and required states. Each prior frame is fenced;
             // context, list/allocator and resources survive completion/teardown.
-            let recorded = unsafe { context.dispatch(dispatch) };
+            let recorded = unsafe {
+                context.record(
+                    dispatch.command_list,
+                    &dispatch.resources,
+                    &dispatch.parameters,
+                )
+            };
             if let Err(error) = recorded {
-                eprintln!("M9_RECORD scene={scene} arm={arm} frame={frame} error={error:?}");
+                eprintln!(
+                    "SHARPENING_RECORD scene={scene} arm={arm} frame={frame} error={error:?}"
+                );
                 // Invalidate the never-submitted list before terminal teardown.
                 drop(list);
                 // SAFETY: This failed recording was never submitted, and all
                 // previous frames completed their fences. Resources remain live.
                 unsafe { (self.destroy)(handle) };
-                eprintln!("M9_FAILED_CLEANUP result={:?}", context.destroy());
+                eprintln!("SHARPENING_FAILED_CLEANUP result={:?}", context.destroy());
                 std::process::exit(1);
             }
             eprintln!(
-                "M9_RECORD scene={scene} arm={arm} frame={frame} code=0x00000000 enabled={} sharpness_bits={:#010x} reset={}",
+                "SHARPENING_RECORD scene={scene} arm={arm} frame={frame} code=0x00000000 enabled={} sharpness_bits={:#010x} reset={}",
                 strength.is_some(),
                 strength.unwrap_or(0.0).to_bits(),
                 frame == 0
@@ -180,13 +187,15 @@ impl Equipment {
             // waits for its fence and copies the resulting output.
             let hr = unsafe { (self.finish)(handle, &mut metrics) };
             if hr < 0 {
-                eprintln!("M9_GPU_FAILURE scene={scene} arm={arm} frame={frame} hr={hr:#x}");
+                eprintln!(
+                    "SHARPENING_GPU_FAILURE scene={scene} arm={arm} frame={frame} hr={hr:#x}"
+                );
                 std::process::exit(1); // Preserve possibly in-flight dependencies.
             }
             // SAFETY: The helper is retained, and this frame has completed.
             let fence = unsafe { (self.fence_value)(handle) };
             eprintln!(
-                "M9_FRAME scene={scene} arm={arm} frame={frame} finish_hr={hr:#x} fence={fence} width={} height={} finite={} written={} debug_errors={} device_removed={:#x}",
+                "SHARPENING_FRAME scene={scene} arm={arm} frame={frame} finish_hr={hr:#x} fence={fence} width={} height={} finite={} written={} debug_errors={} device_removed={:#x}",
                 metrics.width,
                 metrics.height,
                 metrics.finite_pixels,
@@ -228,7 +237,7 @@ impl Equipment {
             completed_frames.push((handle, list, resources));
         }
         let destroyed = context.destroy();
-        eprintln!("M9_DESTROY scene={scene} arm={arm} result={destroyed:?}");
+        eprintln!("SHARPENING_DESTROY scene={scene} arm={arm} result={destroyed:?}");
         destroyed.unwrap();
         for (handle, list, resources) in completed_frames {
             drop(resources);
@@ -238,7 +247,7 @@ impl Equipment {
         }
         // SAFETY: Inspect the still-live device after all dependent teardown.
         let checked = unsafe { (self.check)(self.device.as_raw()) };
-        eprintln!("M9_CLEANUP scene={scene} arm={arm} frames=8 device_check={checked:#x}");
+        eprintln!("SHARPENING_CLEANUP scene={scene} arm={arm} frames=8 device_check={checked:#x}");
         assert_eq!(checked, 0);
         images
     }
@@ -256,13 +265,13 @@ fn compare(scene: u32, frame: usize, label: &str, a: &Image, b: &Image) {
     }
     let mean = sum / (296.0 * 576.0);
     eprintln!(
-        "M9_COMPARE scene={scene} frame={frame} pair={label} roi_bit_equal={} roi_bit_mismatches={mismatches} roi_mae_f64={mean:.17} diagnostic_only=true",
+        "SHARPENING_COMPARE scene={scene} frame={frame} pair={label} roi_bit_equal={} roi_bit_mismatches={mismatches} roi_mae_f64={mean:.17} diagnostic_only=true",
         mismatches == 0
     );
 }
 
 pub(super) fn run() {
-    let equipment = Equipment::acquire();
+    let mut equipment = Equipment::acquire();
     for scene in 0..2 {
         let a = equipment.sequence(scene, "switch-a", true);
         let b = equipment.sequence(scene, "switch-b", true);
@@ -274,5 +283,5 @@ pub(super) fn run() {
             }
         }
     }
-    eprintln!("M9 integration: PASSED outputs=48");
+    eprintln!("Sharpening integration: PASSED outputs=48");
 }

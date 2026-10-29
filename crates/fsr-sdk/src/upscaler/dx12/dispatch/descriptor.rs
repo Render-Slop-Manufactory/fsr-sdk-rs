@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
 
 //! Translation of inspected frame inputs into the pinned native descriptor.
-use super::{
-    CameraParameters, FrameTimeMillis, JitterOffsetPixels, Sharpening, resources::Converted,
-};
+use super::{Sharpening, resources::ConvertedResources};
+use crate::upscaler::{Dimensions, FrameParameters, HistoryAction, MotionVectorScale};
 use fsr_sdk_sys::{
     api::*,
     upscale::{FFX_API_DISPATCH_DESC_TYPE_UPSCALE, ffxDispatchDescUpscale},
@@ -27,15 +26,39 @@ fn null_resource() -> FfxApiResource {
     }
 }
 
+/// Validated image regions, distinct from native resource allocation metadata.
+pub(super) struct DispatchGeometry {
+    pub(super) render: Dimensions,
+    pub(super) output: Dimensions,
+    pub(super) motion: Dimensions,
+}
+
 pub(super) fn build_descriptor(
     command_list: *mut c_void,
-    resources: [Converted; 5],
-    frame: (JitterOffsetPixels, FrameTimeMillis, CameraParameters, bool),
-    sharpening: &Sharpening,
+    resources: ConvertedResources,
+    frame: &FrameParameters,
+    geometry: DispatchGeometry,
 ) -> ffxDispatchDescUpscale {
-    let [color, depth, motion, exposure, output] = resources;
-    let (jitter, frame_time, camera, reset) = frame;
-    let (enable_sharpening, sharpness) = match sharpening {
+    let ConvertedResources {
+        color,
+        depth,
+        motion,
+        exposure,
+        reactive,
+        composition,
+        output,
+    } = resources;
+    let jitter = frame.jitter();
+    let camera = frame.camera();
+    let (motion_x, motion_y) = match frame.motion_vector_scale() {
+        MotionVectorScale::Native(scale) => (scale.x(), scale.y()),
+        MotionVectorScale::Uv => (
+            geometry.motion.width() as f32,
+            geometry.motion.height() as f32,
+        ),
+        MotionVectorScale::Pixels => (1.0, 1.0),
+    };
+    let (enable_sharpening, sharpness) = match frame.sharpening() {
         Sharpening::Disabled => (false, 0.0),
         Sharpening::Native(value) => (true, value.value()),
     };
@@ -48,35 +71,43 @@ pub(super) fn build_descriptor(
         color: color.native,
         depth: depth.native,
         motionVectors: motion.native,
-        exposure: exposure.native,
-        reactive: null_resource(),
-        transparencyAndComposition: null_resource(),
+        exposure: exposure.map_or_else(null_resource, |resource| resource.native),
+        reactive: reactive.map_or_else(null_resource, |r| r.native),
+        transparencyAndComposition: composition.map_or_else(null_resource, |r| r.native),
         output: output.native,
         jitterOffset: FfxApiFloatCoords2D {
             x: jitter.x(),
             y: jitter.y(),
         },
         motionVectorScale: FfxApiFloatCoords2D {
-            x: color.size.0 as f32,
-            y: color.size.1 as f32,
+            x: motion_x,
+            y: motion_y,
         },
         renderSize: FfxApiDimensions2D {
-            width: color.size.0,
-            height: color.size.1,
+            width: geometry.render.width(),
+            height: geometry.render.height(),
         },
         upscaleSize: FfxApiDimensions2D {
-            width: output.size.0,
-            height: output.size.1,
+            width: geometry.output.width(),
+            height: geometry.output.height(),
         },
         enableSharpening: enable_sharpening,
         sharpness,
-        frameTimeDelta: frame_time.milliseconds(),
-        preExposure: 1.0,
-        reset,
+        frameTimeDelta: frame.frame_time().milliseconds(),
+        preExposure: frame.pre_exposure().value(),
+        reset: match frame.history_action() {
+            HistoryAction::Reset => true,
+            HistoryAction::Continue => false,
+        },
         cameraNear: camera.near(),
         cameraFar: camera.far(),
         cameraFovAngleVertical: camera.vertical_fov_radians(),
         viewSpaceToMetersFactor: camera.view_space_to_meters(),
-        flags: 0,
+        flags: frame.color_encoding().hint().native_flags()
+            | if frame.draw_debug_view() {
+                fsr_sdk_sys::upscale::FFX_UPSCALE_FLAG_DRAW_DEBUG_VIEW
+            } else {
+                0
+            },
     }
 }

@@ -10,8 +10,20 @@ pub enum Operation {
     Create,
     /// The context's single terminal native destruction attempt.
     Destroy,
-    /// Native upscaler command recording; not queue submission or completion.
-    Dispatch,
+    /// Native upscaling recording, without queue submission or completion.
+    Upscale,
+    /// Native reactive-mask generation recording.
+    GenerateReactiveMask,
+    /// Provider metadata, resource/memory or quality/size/jitter query.
+    Query,
+    /// Context tuning; success acknowledges the request only.
+    Tuning,
+    /// Setup modern diagnostic configuration with a null context.
+    ConfigureDebug,
+    /// Setup legacy diagnostic configuration with a null context.
+    ConfigureGlobalDebugLegacy,
+    /// Live-context legacy diagnostics, potentially affecting global state.
+    ConfigureContextDebugLegacy,
 }
 
 /// A scalar supplied for an upscaler dispatch.
@@ -22,6 +34,10 @@ pub enum DispatchScalar {
     JitterX,
     /// Vertical applied projection jitter in pixels; must be finite.
     JitterY,
+    /// Finite native horizontal motion multiplier; forwarded without normalization.
+    MotionVectorScaleX,
+    /// Finite native vertical motion multiplier; forwarded without normalization.
+    MotionVectorScaleY,
     /// Positive finite elapsed frame time in milliseconds.
     FrameTimeMillis,
     /// Positive finite near distance in view-space units.
@@ -34,22 +50,38 @@ pub enum DispatchScalar {
     ViewSpaceToMeters,
     /// Finite native sharpening parameter in inclusive `[0, 1]`.
     NativeSharpness,
+    /// Positive finite factor already applied to scene colour.
+    PreExposure,
+    /// Finite native reactive-mask output scale, forwarded unchanged.
+    ReactiveScale,
+    /// Finite native reactive-mask threshold, forwarded unchanged.
+    ReactiveCutoffThreshold,
+    /// Finite native reactive-mask binary value, forwarded unchanged.
+    ReactiveBinaryValue,
 }
 
 /// A resource supplied for an upscaler dispatch.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[non_exhaustive]
 pub enum ResourceRole {
-    /// Linear, non-HDR scene color before tonemapping.
+    /// Scene colour matching the selected HDR, encoding and exposure profile.
     Color,
-    /// Ordinary finite device depth.
+    /// Opaque-only colour input for reactive-mask generation.
+    OpaqueOnlyColor,
+    /// Generated reactive-mask destination, shader-readable and UAV-capable.
+    ReactiveMaskOutput,
+    /// Device depth matching the context's projection convention.
     Depth,
-    /// Jitter-free current-to-previous displacement.
+    /// Current-to-previous displacement matching the selected motion profile.
     MotionVectors,
     /// Explicit exposure multiplier supplied in a 1×1 texture.
     Exposure,
-    /// Upscaled color destination.
+    /// Upscaled colour destination.
     Output,
+    /// Renderer-supplied reactive mask.
+    ReactiveMask,
+    /// Renderer-supplied transparency/composition mask.
+    TransparencyAndCompositionMask,
 }
 
 /// The inspectable property that rejected a resource.
@@ -61,14 +93,18 @@ pub enum ResourceProperty {
     DistinctIdentity,
     /// Resource is not a single-sample, single-mip, single-slice Texture2D.
     TextureShape,
-    /// Format is outside the role's fixed supported profile.
+    /// Format is outside the role's reviewed supported profile.
     Format,
+    /// Device format bits do not satisfy the role's typed view/access profile.
+    FormatSupport,
     /// Extent differs from the context maximum, or exposure is not 1×1.
     Extent,
-    /// An input denies shader-resource access.
+    /// A role requiring an SRV denies shader-resource access.
     ShaderReadable,
-    /// Output lacks unordered-access capability.
+    /// Output lacks unordered-access capability, or an incompatible format enables it.
     UnorderedAccess,
+    /// Depth/stencil capability disagrees with the allocation's fixed view.
+    DepthStencil,
     /// Resource does not belong to the context's device.
     Device,
 }
@@ -77,6 +113,18 @@ pub enum ResourceProperty {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[non_exhaustive]
 pub enum DispatchValidation {
+    /// Active render size exceeds the maximum or differs on a fixed context.
+    ActiveRenderSize,
+    /// Active output size exceeds the maximum or differs on a fixed context.
+    ActiveOutputSize,
+    /// Exposure presence does not match explicit/automatic context configuration.
+    ExposureMode,
+    /// sRGB/PQ hint requires a NonLinear context unless explicitly overridden for this frame.
+    ColorEncodingContext,
+    /// A mask reported as required by the provider was omitted.
+    MissingRequiredResource(ResourceRole),
+    /// Camera finite/infinite far-plane mode differs from the context's depth convention.
+    CameraDepthConvention,
     /// A checked scalar constructor rejected its input.
     Scalar(DispatchScalar),
     /// Command list is not DIRECT.
@@ -98,6 +146,8 @@ pub enum DispatchValidation {
 pub enum InspectionObject {
     /// Device retained by the upscaler context.
     ContextDevice,
+    /// Context device inspected on behalf of this supplied resource role.
+    ContextDeviceForResource(ResourceRole),
     /// Caller-supplied recording command list.
     CommandList,
     /// Caller-supplied input/output texture.
@@ -112,121 +162,164 @@ pub enum InspectionOperation {
     GetDevice,
     /// Obtaining canonical `IUnknown` identity failed.
     QueryIdentity,
+    /// Querying typed format support on the context's DX12 device failed.
+    CheckFormatSupport,
+    /// Querying support for casting a fully typed allocation failed.
+    CheckFormatCasting,
 }
 
-/// A native result that violated the wrapper's ownership assumptions.
+/// A successful native result outside the wrapper's owned or checked output contract.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[non_exhaustive]
 pub enum InvariantViolation {
+    /// Explicit creation returned a different effective provider.
+    ProviderSelectionMismatch {
+        /// Requested opaque provider ID.
+        requested: crate::query::ProviderId,
+        /// Effective live provider ID.
+        actual: crate::query::ProviderId,
+    },
+    /// A successful quality query returned a non-positive or non-finite ratio.
+    InvalidUpscaleRatioOnSuccess,
+    /// A successful render-size query returned zero or a size larger than display.
+    InvalidRenderSizeOnSuccess,
+    /// A successful jitter-length query returned a non-positive count.
+    InvalidJitterPhaseCountOnSuccess,
+    /// A successful jitter-offset query returned a non-finite component.
+    InvalidJitterOffsetOnSuccess,
     /// Creation returned success without a usable context handle.
     NullContextOnSuccess,
+    /// A successful query returned a null provider name.
+    NullProviderNameOnSuccess,
+    /// A successful live-provider query returned the explicitly invalid ID zero.
+    ZeroProviderIdOnSuccess,
+    /// A successful enumeration reported more elements than its supplied capacity.
+    QueryCountExceedsCapacity,
 }
 
-/// Owned construction, dispatch and teardown failures.
-///
-/// Validation and COM inspection failures occur before native dispatch and do
-/// not poison a usable context. A native dispatch failure preserves its code
-/// and makes later dispatch terminal; the failed list must not be submitted.
-/// Creation/destruction failures have their respective ownership contracts.
-/// This error type does not convert arbitrary native crashes or GPU faults into
-/// recoverable Rust errors. Runtime loading uses the separate `runtime::LoadError`.
+/// An input rejected before a quality/size/jitter query enters native code.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[non_exhaustive]
+pub enum QueryValidation {
+    /// A utility dimension exceeds `i32::MAX`, the wrapper's signed SDK domain.
+    DimensionsOutOfRange,
+    /// Jitter width ratio is outside inclusive `[1, 16383]`.
+    JitterScale,
+    /// Jitter sequence length must be positive and representable as `i32`.
+    JitterPhaseCount,
+    /// Sequence index must be non-negative and less than the phase count.
+    JitterIndex,
+}
+
+#[path = "error/allocation.rs"]
+mod allocation;
+#[path = "error/backend.rs"]
+mod backend;
+#[path = "error/input.rs"]
+mod input;
+#[path = "error/native.rs"]
+mod native;
+pub use allocation::{QueryAllocationError, QueryAllocationReason};
+pub use backend::{BackendError, Dx12InspectionError};
+pub use input::InputError;
+pub use native::{NativeError, TerminalCause};
+
+/// Owned input, native, backend, invariant and terminal failures.
+///
+/// Input/inspection failures do not poison a usable context. A mutating native
+/// context failure retains its first operation/code; explicit recording abandonment
+/// instead records a local cause unless an earlier terminal cause exists. Later live operations reject
+/// before inspection or FFI. Ordinary query errors do not change eligibility.
+/// Terminal destruction and exceptional dependency retention keep their existing
+/// contracts. This error neither catches native crashes nor establishes GPU idle.
+/// Loading uses the separate `runtime::LoadError` boundary.
+#[derive(Debug)]
+#[non_exhaustive]
 pub enum Error {
-    /// A dimension constructor received zero width or height.
-    InvalidDimensions {
-        /// Supplied width in pixels.
-        width: u32,
-        /// Supplied height in pixels.
-        height: u32,
-    },
-    /// Scalar validation or dispatch preflight rejected an input before FFI.
-    InvalidDispatch {
-        /// The concrete rejection category.
-        reason: DispatchValidation,
-    },
-    /// A DX12/COM inspection failed before native dispatch.
-    Dx12Inspection {
-        /// Object whose inspection failed.
-        object: InspectionObject,
-        /// Inspection operation that failed.
-        operation: InspectionOperation,
-        /// Exact HRESULT bits, stored as the native signed 32-bit value.
-        hresult: i32,
-    },
-    /// A previous native dispatch failed; this attempt made no native call.
-    /// Teardown remains available after the caller completes earlier GPU work
-    /// and invalidates failed or abandoned recordings.
-    DispatchPoisoned,
-    /// A native FidelityFX operation returned a non-OK code.
-    Native {
-        /// Native operation that failed.
+    /// Supplied inputs were rejected; inspection/enumeration may have occurred.
+    Input(InputError),
+    /// A native SDK call returned its exact nonzero failure code.
+    Native(NativeError),
+    /// Backend inspection failed, retaining its owned original cause.
+    Backend(BackendError),
+    /// Native success returned inconsistent output.
+    Invariant {
+        /// Operation whose result violated the wrapper contract.
         operation: Operation,
-        /// Unmodified native `u32`, including values unknown to this SDK version.
-        code: u32,
+        /// Observed inconsistency.
+        reason: InvariantViolation,
     },
-    /// Native success could not establish a valid owned context.
-    NativeInvariantViolation(InvariantViolation),
+    /// A previous mutating native failure or explicit abandonment prevents live use.
+    ContextUnusable(TerminalCause),
+    /// A fallible query-buffer conversion or reservation failed.
+    QueryAllocation(QueryAllocationError),
+}
+
+#[allow(dead_code)] // Also included by standalone ownership compile controls.
+impl Error {
+    pub(crate) fn native(operation: Operation, code: u32) -> Self {
+        Self::Native(NativeError::new(operation, code))
+    }
+    pub(crate) fn invariant(operation: Operation, reason: InvariantViolation) -> Self {
+        Self::Invariant { operation, reason }
+    }
 }
 
 impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            Self::InvalidDimensions { width, height } => {
-                write!(f, "FSR dimensions must be nonzero (got {width}x{height})")
-            }
-            Self::InvalidDispatch { reason } => write!(f, "invalid FSR dispatch: {reason:?}"),
-            Self::Dx12Inspection {
-                object,
-                operation,
-                hresult,
-            } => write!(
+            Self::Input(error) => error.fmt(f),
+            Self::Native(error) => error.fmt(f),
+            Self::Backend(error) => error.fmt(f),
+            Self::Invariant { operation, reason } => write!(
                 f,
-                "DX12 {operation:?} of {object:?} failed with HRESULT {:#010x}",
-                *hresult as u32
+                "FSR {operation:?} returned inconsistent success output: {reason}"
             ),
-            Self::DispatchPoisoned => {
-                f.write_str("FSR dispatch is unavailable after a native dispatch failure")
-            }
-            Self::Native { operation, code } => {
-                write!(f, "FSR {operation:?} failed with native code {code}")
-            }
-            Self::NativeInvariantViolation(InvariantViolation::NullContextOnSuccess) => {
-                f.write_str("FSR creation returned success with a null context")
-            }
+            Self::ContextUnusable(cause) => write!(f, "FSR context is unusable after {cause}"),
+            Self::QueryAllocation(error) => error.fmt(f),
         }
     }
 }
-
-impl std::error::Error for Error {}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn preserves_unknown_codes_and_operation() {
-        let error = Error::Native {
-            operation: Operation::Destroy,
-            code: u32::MAX,
-        };
-        assert_eq!(
-            error.to_string(),
-            "FSR Destroy failed with native code 4294967295"
-        );
-        assert!(std::error::Error::source(&error).is_none());
-    }
-
-    #[test]
-    fn preserves_hresult_bits_separately_from_native_codes() {
-        let error = Error::Dx12Inspection {
-            object: InspectionObject::Resource(ResourceRole::Output),
-            operation: InspectionOperation::GetDevice,
-            hresult: 0x8000_4005u32 as i32,
-        };
-        assert_eq!(
-            error.to_string(),
-            "DX12 GetDevice of Resource(Output) failed with HRESULT 0x80004005"
-        );
+impl std::error::Error for Error {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        Some(match self {
+            Self::Input(error) => error,
+            Self::Native(error) => error,
+            Self::Backend(error) => error,
+            Self::Invariant { reason, .. } => reason,
+            Self::ContextUnusable(cause) => cause,
+            Self::QueryAllocation(error) => error,
+        })
     }
 }
+impl fmt::Display for InvariantViolation {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::ProviderSelectionMismatch { requested, actual } => {
+                write!(f, "requested provider {requested:?}, selected {actual:?}")
+            }
+            reason => write!(f, "{reason:?}"),
+        }
+    }
+}
+impl std::error::Error for InvariantViolation {}
+
+#[cfg(test)]
+pub(crate) fn test_inspection(
+    object: InspectionObject,
+    operation: InspectionOperation,
+    hresult: i32,
+) -> Error {
+    // Fixture expectations compare metadata; original-source preservation has
+    // separate tests through real controlled DX12 inspection calls.
+    Error::Backend(BackendError::Dx12Inspection(Dx12InspectionError::new(
+        object,
+        operation,
+        hresult,
+        Box::new(std::io::Error::from_raw_os_error(hresult)),
+    )))
+}
+
+#[cfg(test)]
+#[path = "error/tests.rs"]
+mod tests;

@@ -3,103 +3,58 @@
 use super::{LoadError, RuntimeState};
 use std::{cell::Cell, marker::PhantomData, path::Path, sync::Arc};
 
-/// Optional movable Windows/DX12 runtime: `Send`, but never `Sync` or `Clone`.
+/// Loaded library with Send + !Sync ownership, without safe effect operations.
 ///
-/// Each derived context independently retains this runtime. Dropping the public
-/// runtime does not end its unsafe acquisition obligations or unload the loader
-/// while contexts retain it. The final release may run on any destination thread.
-/// There is no internal lock or concurrency guarantee: callers must coordinate
-/// all potentially shared native state, including implicit cleanup and unwinding.
-/// See [`Self::load_unchecked`] for the complete lasting contract.
+/// Not Clone and not a synchronization service. Unsafe loading establishes
+/// arbitrary-destination loader/release compatibility; unsafe effect setup adds
+/// its lasting native-operation duties. Derived owners retain the library after
+/// this public value is dropped, including exceptional retention paths.
 pub struct MovableRuntime {
     pub(crate) state: Arc<RuntimeState>,
     _not_sync: PhantomData<Cell<()>>,
 }
-
 impl MovableRuntime {
-    /// Load an explicit trusted v2.3.0 FidelityFX loader for movable ownership.
+    /// Load the explicit trusted Windows/DX12 runtime and resolve five exports.
     ///
-    /// Path canonicalization, five-export resolution, deployment and error
-    /// behavior match [`super::Runtime::load_unchecked`]. The `movable` feature
-    /// does not authenticate native inputs or establish AMD thread compatibility.
-    /// Safe construction and destruction rely on the lasting requirements below.
-    /// Native initialization faults need not become a Rust error.
+    /// The path is canonicalized; no download, automatic discovery, device
+    /// binding or upscaler query/create is performed. Native initialization may
+    /// run while loading. Acquire `upscaler_dx12` before using effect operations.
     ///
     /// # Errors
-    ///
-    /// Returns [`LoadError`] for path resolution, loading or a missing export.
-    /// Partial-load cleanup finishes inside this call, on its calling thread;
-    /// no partially constructed movable runtime is published or transferred.
+    /// Returns an owned LoadError for path, library or symbol failure, preserving
+    /// its source. Native initialization faults need not become Rust errors.
     ///
     /// # Safety
+    /// The DLL and all resolved dependencies must be trusted code with the pinned
+    /// v2.3.0 ABI/calling conventions and valid initialization, required exports,
+    /// partial-load cleanup and termination. Symbol lookup does not authenticate
+    /// code or verify native behaviour. Keep compatible process/provider state
+    /// and native dependencies alive for this runtime and every derived/retained
+    /// owner, including exceptional failure retention after public owners drop.
     ///
-    /// The caller must guarantee all of the following:
+    /// Serialize the entire common native domain without reentry: loading,
+    /// native calls, error cleanup, explicit/implicit Drop, unwinding and final
+    /// library release. Coordinate siblings, independent acquisitions, local and
+    /// movable users, external integrations and hidden native activity. Different
+    /// paths/devices do not prove isolation. Prior callback installers maintain
+    /// their independent lasting target/allocator/coordination duties.
     ///
-    /// 1. The loader and every resolved dependency/provider, including driver
-    ///    providers, are trusted, ABI-compatible with the selected v2.3.0 DX12
-    ///    profile, and safe to initialize, operate and release, including partial
-    ///    acquisition, returned-error and terminal cleanup. Preserve compatible
-    ///    process/provider configuration and never prematurely release native
-    ///    dependencies needed by the runtime or any derived context. The bounded
-    ///    construction trust of [`super::Runtime::load_unchecked`] still applies.
-    /// 2. The actual loader, providers, contexts, driver and native dependencies
-    ///    permit movement and every subsequent operation on **any thread** where
-    ///    these general `Send` owners may be used or dropped. This includes context
-    ///    creation, dispatch, affected queries/configuration, explicit destruction,
-    ///    implicit `Drop` during normal execution or Rust unwinding, error cleanup,
-    ///    COM/device-reference release and final wrapper-owned DLL release/unload.
-    ///    Destruction must not require the creating thread; library release must
-    ///    not require the acquiring thread. Compatibility restricted to a selected
-    ///    handoff or subset of threads is insufficient. Serialization is not proof
-    ///    of absence of native thread affinity.
-    /// 3. All caller-controlled native operations potentially touching shared
-    ///    FidelityFX runtime/provider/global state are serialized and non-reentrant:
-    ///    acquisition, creation, dispatch, queries, configuration, explicit/implicit
-    ///    destruction, error cleanup and final library release. Coordinate sibling
-    ///    contexts, separately acquired runtimes, local and movable families and
-    ///    external native users. Different paths/devices or per-context locks do
-    ///    not prove isolation; separate coordination domains require established
-    ///    isolation. This contract adds no public Query/Configure API.
-    /// 4. Synchronization establishes happens-before from prior CPU operations to
-    ///    the next thread's use or cleanup. Transfer exclusive ownership only after
-    ///    prior CPU operations finish. Correct channels, joins or locks can establish
-    ///    ordering; elapsed time, `Send`, `!Sync`, `&mut self` and `Arc` alone cannot
-    ///    order operations on independently held contexts or external users.
-    /// 5. Ownership and coordination preserve these invariants for every safe call
-    ///    and every explicit or automatic destruction, including during unwinding
-    ///    and unsuccessful ownership handoffs. Where a guard provides coordination,
-    ///    cleanup must finish before it is released; poisoned-lock recovery must
-    ///    preserve that invariant. The requirements persist for every derived
-    ///    context after this public runtime is dropped. Exceptional native outcomes
-    ///    may retain the entire critical dependency bundle indefinitely: retained
-    ///    dependencies or disappearing public owners do not establish native
-    ///    quiescence or authorize other users to disregard shared-state restrictions.
-    ///    Passing an owner to other safe code does not discharge this obligation.
-    /// 6. The native implementation safely handles its own hidden workers,
-    ///    callbacks and termination under serialized application operations. An
-    ///    application lock does not govern internal activity. Any native termination
-    ///    is safe on its actual executing thread. Final wrapper-owned loader release
-    ///    is distinct from provider/dependency termination; provider unload and its
-    ///    time or thread are not promised.
-    /// 7. Independently uphold the full D3D12 contract of
-    ///    [`MovableUpscaler::dispatch`](crate::upscaler::MovableUpscaler::dispatch):
-    ///    valid recording list/allocator, truthful resource states, non-overlapping
-    ///    active backing storage, residency, no conflicting access, object lifetimes
-    ///    through GPU completion, ordered submission/temporal execution and no
-    ///    premature reuse. Complete all submitted work and invalidate unsubmitted
-    ///    recordings before context destruction, including during unwinding. CPU
-    ///    synchronization does not imply GPU completion. Satisfy any additional
-    ///    native preconditions for transfer with outstanding GPU work; historical
-    ///    experiments establish only fenced transfers.
+    /// Before this Send runtime is made available to safe code, establish
+    /// loader/dependency use and final release compatibility on every possible
+    /// destination thread, including Drop/unwinding/error paths. Compatibility
+    /// with only one handoff is insufficient; serialization does not remove
+    /// native affinity. A later effect setup cannot establish this retroactively.
+    /// The movable runtime is Send but never Sync or Clone.
     ///
-    /// These are caller-established assumptions, **not verified AMD guarantees**,
-    /// including for previously tested binaries. If the selected native configuration
-    /// and every subsequent use cannot satisfy them, do not call this API.
-    /// The accepted [D013](https://github.com/Render-Slop-Manufactory/fsr-sdk-rs/blob/main/docs/adr/D013.md)
-    /// explains the design and evidence limits; acquisition does not make dispatch safe.
-    pub unsafe fn load_unchecked(path: impl AsRef<Path>) -> Result<Self, LoadError> {
-        // SAFETY: The caller establishes initialization, failure cleanup and all
-        // lasting arbitrary-thread compatibility/coordination requirements above.
+    /// Effect-specific query, construction, Configure and recording trust is
+    /// established by unsafe setup acquisition, not this load. These common
+    /// duties persist after the public runtime drops while dependent or retained
+    /// objects remain; no wrapper lock or GPU wait establishes them for you.
+    /// ABI/lifetime/threading assumptions are caller-established native trust,
+    /// not a universal AMD initialization, worker-shutdown or unload guarantee.
+    pub unsafe fn load(path: impl AsRef<Path>) -> Result<Self, LoadError> {
+        // SAFETY: Caller establishes initialization/failure/final-release trust
+        // and arbitrary-destination compatibility before this Send value exists.
         let state = unsafe { RuntimeState::load_unchecked(path) }?;
         Ok(Self {
             state: Arc::new(state),

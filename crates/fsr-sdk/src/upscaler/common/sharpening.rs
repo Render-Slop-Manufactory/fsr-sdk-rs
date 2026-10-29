@@ -18,7 +18,7 @@ pub struct NativeSharpness(f32);
 impl NativeSharpness {
     /// Accepts finite values in inclusive `[0, 1]`, including negative zero.
     ///
-    /// NaN, infinities and out-of-range values return [`Error::InvalidDispatch`]
+    /// NaN, infinities and out-of-range values return [`Error::Input`]
     /// with [`DispatchScalar::NativeSharpness`]. No clamping or native call occurs.
     pub fn new(value: f32) -> Result<Self, Error> {
         if !value.is_finite() || !(0.0..=1.0).contains(&value) {
@@ -35,7 +35,7 @@ impl NativeSharpness {
 
 /// Per-frame control of the selected FSR provider's native sharpening pass.
 ///
-/// A new [`UpscaleDispatch`](super::UpscaleDispatch) starts with [`Self::Disabled`].
+/// New [`FrameParameters`](super::FrameParameters) starts with [`Self::Disabled`].
 /// Native control adds no wrapper filter, quality profile, output clamping or
 /// perceptual remapping. It promises no sharpening gain, brightness preservation,
 /// monotonic response or particular image quality. Native recording may fail

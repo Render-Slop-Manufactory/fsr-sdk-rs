@@ -31,13 +31,13 @@ struct Equipment {
 
 impl Equipment {
     fn acquire() -> Self {
-        let helper_path = std::env::var_os("FSR_SDK_TEST_M6_DLL").unwrap();
+        let helper_path = std::env::var_os("FSR_SDK_TEST_GPU_DLL").unwrap();
         let loader = std::env::var_os("FSR_SDK_TEST_DLL").unwrap();
         // SAFETY: The opt-in runner compiles the trusted helper and stages the
         // pinned signed runtime. Every signature is paired with its C export.
         unsafe {
             let library = libloading::Library::new(helper_path).unwrap();
-            let debug = *library.get::<EnableDebug>(b"m6_enable_debug\0").unwrap();
+            let debug = *library.get::<EnableDebug>(b"gpu_enable_debug\0").unwrap();
             assert_eq!(debug(), 0, "debug layer unavailable");
             let create = *library
                 .get::<CreateDevice>(b"probe_create_device\0")
@@ -46,16 +46,16 @@ impl Equipment {
             assert_eq!(create(&mut raw), 0);
             assert!(!raw.is_null());
             let device = ID3D12Device::from_raw(raw);
-            let amd = *library.get::<DeviceCheck>(b"m6_require_amd\0").unwrap();
+            let amd = *library.get::<DeviceCheck>(b"gpu_require_amd\0").unwrap();
             assert_eq!(amd(device.as_raw()), 0, "requires AMD hardware");
             Self {
-                create: *library.get::<CreateHarness>(b"m6_create\0").unwrap(),
+                create: *library.get::<CreateHarness>(b"gpu_create\0").unwrap(),
                 set_frame: *library.get::<SetFrame>(b"semantic_set_frame\0").unwrap(),
-                finish: *library.get::<Finish>(b"m6_finish\0").unwrap(),
+                finish: *library.get::<Finish>(b"gpu_finish\0").unwrap(),
                 copy: *library.get::<CopyRed>(b"semantic_copy_red\0").unwrap(),
-                destroy: *library.get::<Destroy>(b"m6_destroy\0").unwrap(),
-                check: *library.get::<DeviceCheck>(b"m6_check_device\0").unwrap(),
-                runtime: Runtime::load_unchecked(loader).unwrap(),
+                destroy: *library.get::<Destroy>(b"gpu_destroy\0").unwrap(),
+                check: *library.get::<DeviceCheck>(b"gpu_check_device\0").unwrap(),
+                runtime: Runtime::load(loader).unwrap(),
                 device,
                 _library: library,
             }
@@ -63,22 +63,19 @@ impl Equipment {
     }
 
     fn sequence(
-        &self,
+        &mut self,
         name: &str,
         reverse_motion: bool,
         wrong_jitter: bool,
         reset_last: bool,
         fresh_last: bool,
     ) -> Vec<f32> {
-        let mut context = Upscaler::new(
-            &self.runtime,
-            &self.device,
-            UpscalerOptions::new(
+        let mut context = unsafe { self.runtime.upscaler_dx12(&self.device) }
+            .create(&UpscalerOptions::new(
                 Dimensions::new(320, 180).unwrap(),
                 Dimensions::new(640, 360).unwrap(),
-            ),
-        )
-        .unwrap();
+            ))
+            .unwrap();
         log_provider(&mut context);
         let mut frames = Vec::new();
         let mut result = vec![0.0; PIXELS];
@@ -122,15 +119,16 @@ impl Equipment {
             // SAFETY: Upload copies and transitions are already recorded;
             // this context and every external dependency survive the fence.
             let dispatch = unsafe {
-                context.dispatch(UpscaleDispatch::new(
+                let recording = UpscaleTestInputs::new(
                     &list,
-                    UpscaleResources::new(
-                        &resources[0],
-                        &resources[1],
-                        &resources[2],
-                        &resources[3],
-                        &resources[4],
-                    ),
+                    UpscaleResources::builder()
+                        .color(&resources[0])
+                        .depth(&resources[1])
+                        .motion_vectors(&resources[2])
+                        .exposure(crate::upscaler::dx12::ExposureInput::Texture(&resources[3]))
+                        .output(&resources[4])
+                        .build()
+                        .unwrap(),
                     JitterOffsetPixels::new(
                         if wrong_jitter { -jx } else { jx },
                         if wrong_jitter { -jy } else { jy },
@@ -139,7 +137,12 @@ impl Equipment {
                     FrameTimeMillis::new(16.667).unwrap(),
                     CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
                     reset,
-                ))
+                );
+                context.record(
+                    recording.command_list,
+                    &recording.resources,
+                    &recording.parameters,
+                )
             };
             if let Err(error) = dispatch {
                 abort_dispatch(error, frame as u32);
@@ -206,7 +209,7 @@ fn reference_error(image: &[f32]) -> f32 {
 }
 
 pub(super) fn compare() {
-    let equipment = Equipment::acquire();
+    let mut equipment = Equipment::acquire();
     let correct = equipment.sequence("correct", false, false, false, false);
     let reversed = equipment.sequence("reversed motion", true, false, false, false);
     let wrong_jitter = equipment.sequence("reversed jitter", false, true, false, false);

@@ -1,11 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! Explicit local ownership and optional movable ownership of a FidelityFX loader.
-//!
-//! Runtime ownership retains the library and common entry points, with no GPU
-//! resources. The current loader and native acquisition contracts require
-//! Windows/DX12, so this module retains that platform/feature gate.
-
+//! Explicit trusted library loading; effect operations require unsafe setup acquisition.
 use fsr_sdk_sys::loader::LoadError as SysLoadError;
 use std::{
     error::Error as StdError,
@@ -108,15 +103,13 @@ impl StdError for LoadError {
 
 mod state;
 pub(crate) use state::RuntimeState;
+pub(crate) mod queries;
 
-/// A loaded Windows/DX12 FidelityFX runtime.
+/// Loaded library with local ownership, without safe effect operations.
 ///
-/// Contexts created from this runtime each retain it independently. Dropping
-/// this value does not unload the library while a context is alive. This type
-/// is neither `Send` nor `Sync`; all wrapper operations stay on its acquiring
-/// thread. The wrapper neither downloads the SDK nor exposes loader discovery or
-/// provider-selection APIs; native dependency/provider resolution still applies.
-/// It does not expose native functions or context handles.
+/// Neither Send, Sync nor Clone. Effect setup acquisition establishes its own
+/// lasting contract. Derived contexts retain the library independently; dropping
+/// this public value does not unload it while retained owners remain.
 pub struct Runtime {
     pub(crate) state: Rc<RuntimeState>,
 }
@@ -127,38 +120,43 @@ mod movable;
 pub use movable::MovableRuntime;
 
 impl Runtime {
-    /// Load an explicit FidelityFX loader DLL path.
+    /// Load the explicit trusted Windows/DX12 runtime and resolve five exports.
     ///
-    /// For the supported signed v2.3.0 DX12 upscaler deployment, place
-    /// `amd_fidelityfx_upscaler_dx12.dll` beside the executable. Dependencies
-    /// and providers may also be resolved through Windows or the driver.
-    /// The wrapper canonicalizes the path and resolves its five required exports.
-    /// It neither creates a context nor verifies general GPU/provider support.
-    ///
-    /// `_unchecked` refers to the caller-established runtime trust and native
-    /// integration obligations below. Path canonicalization and required export
-    /// resolution still occur. The name reserves `load` for a possible future
-    /// safe acquisition API; such an API is not provided.
+    /// The path is canonicalized; no download, automatic discovery, device
+    /// binding or upscaler query/create is performed. Native initialization may
+    /// run while loading. Acquire `upscaler_dx12` before using effect operations.
     ///
     /// # Errors
-    ///
-    /// Returns [`LoadError`] for path resolution, loading or a missing export.
-    /// Native initialization faults need not become a Rust error.
+    /// Returns an owned LoadError for path, library or symbol failure, preserving
+    /// its source. Native initialization faults need not become Rust errors.
     ///
     /// # Safety
+    /// The DLL and all resolved dependencies must be trusted code with the pinned
+    /// v2.3.0 ABI/calling conventions and valid initialization, required exports,
+    /// partial-load cleanup and termination. Symbol lookup does not authenticate
+    /// code or verify native behaviour. Keep compatible process/provider state
+    /// and native dependencies alive for this runtime and every derived/retained
+    /// owner, including exceptional failure retention after public owners drop.
     ///
-    /// The loader and every resolved dependency/provider must be trusted,
-    /// compatible with the v2.3.0 ABI, and safe to initialize and terminate,
-    /// including after partial load failure. Native initialization, teardown
-    /// and threading preconditions must hold. For this runtime and all its
-    /// dependent contexts, keep external/native FidelityFX use touching shared
-    /// state serialized and non-reentrant, preserve compatible process/provider
-    /// configuration, and do not prematurely release native dependencies. A
-    /// different path or device does not prove isolation. These obligations
-    /// persist after this value is dropped while contexts remain, and an
-    /// exceptional native failure can retain dependencies indefinitely.
-    pub unsafe fn load_unchecked(path: impl AsRef<Path>) -> Result<Self, LoadError> {
-        // SAFETY: The caller establishes the native acquisition obligations.
+    /// Serialize the entire common native domain without reentry: loading,
+    /// native calls, error cleanup, explicit/implicit Drop, unwinding and final
+    /// library release. Coordinate siblings, independent acquisitions, local and
+    /// movable users, external integrations and hidden native activity. Different
+    /// paths/devices do not prove isolation. Prior callback installers maintain
+    /// their independent lasting target/allocator/coordination duties.
+    ///
+    /// All wrapper native use and release remain on this acquiring thread.
+    /// The local runtime and its contexts are neither Send nor Sync.
+    ///
+    /// Effect-specific query, construction, Configure and recording trust is
+    /// established by unsafe setup acquisition, not this load. These common
+    /// duties persist after the public runtime drops while dependent or retained
+    /// objects remain; no wrapper lock or GPU wait establishes them for you.
+    /// ABI/lifetime/threading assumptions are caller-established native trust,
+    /// not a universal AMD initialization, worker-shutdown or unload guarantee.
+    pub unsafe fn load(path: impl AsRef<Path>) -> Result<Self, LoadError> {
+        // SAFETY: Caller establishes trusted initialization/failure/release and
+        // this family's lasting native lifetime and coordination obligations.
         let state = unsafe { RuntimeState::load_unchecked(path) }?;
         Ok(Self {
             state: Rc::new(state),
@@ -171,9 +169,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn public_load_unchecked_maps_path_error_and_retains_io_source() {
+    fn public_load_maps_path_error_and_retains_io_source() {
         // SAFETY: An empty path fails canonicalization before any DLL is loaded.
-        let error = unsafe { Runtime::load_unchecked("") }
+        let error = unsafe { Runtime::load("") }
             .err()
             .expect("empty path must fail");
         assert!(matches!(&error, LoadError::Path { path, .. } if path.as_os_str().is_empty()));

@@ -30,7 +30,7 @@ fn public_frame_accessors_and_clone_only_borrow_inputs() {
         scene.resources[2].as_raw()
     );
     assert_eq!(
-        resources.exposure().unwrap().as_raw(),
+        resources.exposure().texture().unwrap().as_raw(),
         scene.resources[3].as_raw()
     );
     assert_eq!(resources.output().as_raw(), scene.resources[4].as_raw());
@@ -42,7 +42,7 @@ fn public_frame_accessors_and_clone_only_borrow_inputs() {
     );
     assert!(frame.reset());
     assert!(matches!(frame.sharpening(), Sharpening::Disabled));
-    let replacement = UpscaleDispatch::new(
+    let replacement = UpscaleTestInputs::new(
         frame.command_list(),
         resources,
         frame.jitter(),
@@ -56,9 +56,11 @@ fn public_frame_accessors_and_clone_only_borrow_inputs() {
 
 #[test]
 fn public_dispatch_maps_modes_exactly_on_one_context_and_preserves_failures() {
-    let (runtime, observer) = fixture_runtime();
+    let (mut runtime, observer) = fixture_runtime();
     let scene = Scene::new();
-    let mut upscaler = Upscaler::new(&runtime, &scene.device, sizes()).unwrap();
+    let mut upscaler = unsafe { runtime.upscaler_dx12(&scene.device) }
+        .create(&sizes())
+        .unwrap();
     // SAFETY: Exact callback ABI of the controlled fixture. Only this test's
     // complete public dispatch descriptors are observed; no GPU work is recorded.
     let set_code = unsafe {
@@ -84,11 +86,11 @@ fn public_dispatch_maps_modes_exactly_on_one_context_and_preserves_failures() {
         }
     };
     for value in [f32::NAN, f32::INFINITY, f32::NEG_INFINITY, -0.1, 1.1] {
-        assert_eq!(
+        assert_result!(
             NativeSharpness::new(value),
-            Err(Error::InvalidDispatch {
-                reason: DispatchValidation::Scalar(DispatchScalar::NativeSharpness),
-            })
+            Err(Error::Input(crate::error::InputError::Dispatch(
+                DispatchValidation::Scalar(DispatchScalar::NativeSharpness)
+            )))
         );
     }
     assert_eq!(calls(), 0);
@@ -98,7 +100,7 @@ fn public_dispatch_maps_modes_exactly_on_one_context_and_preserves_failures() {
         .enumerate()
     {
         let base = scene.input();
-        let mut frame = UpscaleDispatch::new(
+        let mut frame = UpscaleTestInputs::new(
             base.command_list(),
             base.resources().clone(),
             base.jitter(),
@@ -118,7 +120,10 @@ fn public_dispatch_maps_modes_exactly_on_one_context_and_preserves_failures() {
         assert_eq!(calls(), index as u32);
         let counts = scene.reference_counts();
         // SAFETY: Controlled COM/runtime fixtures record no GPU commands.
-        assert_eq!(unsafe { upscaler.dispatch(frame) }, Ok(()));
+        assert_result!(
+            unsafe { upscaler.record(frame.command_list, &frame.resources, &frame.parameters) },
+            Ok(())
+        );
         assert_eq!(scene.reference_counts(), counts);
         let descriptor = CAPTURED.with(|captured| captured.borrow_mut().take().unwrap());
         assert_eq!(descriptor.enableSharpening, setting.is_some());
@@ -148,12 +153,9 @@ fn public_dispatch_maps_modes_exactly_on_one_context_and_preserves_failures() {
     let mut frame = scene.input();
     frame.set_sharpening(Sharpening::Native(NativeSharpness::new(0.35).unwrap()));
     // SAFETY: The controlled fixture records no GPU work, including on error.
-    assert_eq!(
-        unsafe { upscaler.dispatch(frame) },
-        Err(Error::Native {
-            operation: Operation::Dispatch,
-            code: u32::MAX,
-        })
+    assert_result!(
+        unsafe { upscaler.record(frame.command_list, &frame.resources, &frame.parameters) },
+        Err(Error::native(Operation::Upscale, u32::MAX))
     );
     assert_eq!(calls(), 7);
     scene
@@ -161,9 +163,19 @@ fn public_dispatch_maps_modes_exactly_on_one_context_and_preserves_failures() {
         .get_device_failure
         .set(Some(super::com::GET_DEVICE_FAILURE));
     // SAFETY: Poison-first rejection prevents COM inspection and native dispatch.
-    assert_eq!(
-        unsafe { upscaler.dispatch(scene.input()) },
-        Err(Error::DispatchPoisoned)
+    assert_result!(
+        unsafe {
+            let recording = scene.input();
+            upscaler.record(
+                recording.command_list,
+                &recording.resources,
+                &recording.parameters,
+            )
+        },
+        Err(crate::test_errors::terminal(Error::native(
+            crate::error::Operation::Upscale,
+            u32::MAX
+        )))
     );
     assert_eq!(calls(), 7);
     upscaler.destroy().unwrap();
@@ -173,14 +185,16 @@ fn public_dispatch_maps_modes_exactly_on_one_context_and_preserves_failures() {
 #[test]
 fn resource_role_swaps_reject_before_ffi_and_preserve_compatible_pointer_mapping() {
     use windows::Win32::Graphics::Direct3D12::D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS;
-    let (runtime, observer) = fixture_runtime();
+    let (mut runtime, observer) = fixture_runtime();
     let scene = Scene::new();
     // Both RGBA16F roles allow UAV access so the unequal-size swap reaches
     // the extent check rather than failing earlier on output capabilities.
     let mut color = scene.resource_object(0).desc.get();
     color.Flags = D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS;
     scene.resource_object(0).desc.set(color);
-    let mut upscaler = Upscaler::new(&runtime, &scene.device, sizes()).unwrap();
+    let mut upscaler = unsafe { runtime.upscaler_dx12(&scene.device) }
+        .create(&sizes())
+        .unwrap();
     for (roles, role, property) in [
         (
             [2, 1, 0, 3, 4],
@@ -199,14 +213,17 @@ fn resource_role_swaps_reject_before_ffi_and_preserve_compatible_pointer_mapping
         ),
     ] {
         let base = scene.input();
-        let resources = UpscaleResources::new(
-            &scene.resources[roles[0]],
-            &scene.resources[roles[1]],
-            &scene.resources[roles[2]],
-            &scene.resources[roles[3]],
-            &scene.resources[roles[4]],
-        );
-        let frame = UpscaleDispatch::new(
+        let resources = UpscaleResources::builder()
+            .color(&scene.resources[roles[0]])
+            .depth(&scene.resources[roles[1]])
+            .motion_vectors(&scene.resources[roles[2]])
+            .exposure(crate::upscaler::dx12::ExposureInput::Texture(
+                &scene.resources[roles[3]],
+            ))
+            .output(&scene.resources[roles[4]])
+            .build()
+            .unwrap();
+        let frame = UpscaleTestInputs::new(
             base.command_list(),
             resources,
             base.jitter(),
@@ -215,11 +232,11 @@ fn resource_role_swaps_reject_before_ffi_and_preserve_compatible_pointer_mapping
             false,
         );
         // SAFETY: Controlled COM/runtime fixtures; rejected calls record no GPU work.
-        assert_eq!(
-            unsafe { upscaler.dispatch(frame) },
-            Err(Error::InvalidDispatch {
-                reason: DispatchValidation::Resource { role, property },
-            })
+        assert_result!(
+            unsafe { upscaler.record(frame.command_list, &frame.resources, &frame.parameters) },
+            Err(Error::Input(crate::error::InputError::Dispatch(
+                DispatchValidation::Resource { role, property }
+            )))
         );
     }
     // SAFETY: Exact controlled-fixture export; it only counts calls.
@@ -230,7 +247,17 @@ fn resource_role_swaps_reject_before_ffi_and_preserve_compatible_pointer_mapping
     };
     assert_eq!(observe().calls, 0);
     // SAFETY: Rejections leave this fixture context usable; no GPU work occurs.
-    assert_eq!(unsafe { upscaler.dispatch(scene.input()) }, Ok(()));
+    assert_result!(
+        unsafe {
+            let recording = scene.input();
+            upscaler.record(
+                recording.command_list,
+                &recording.resources,
+                &recording.parameters,
+            )
+        },
+        Ok(())
+    );
     assert_eq!(observe().calls, 1);
     upscaler.destroy().unwrap();
 
@@ -243,14 +270,17 @@ fn resource_role_swaps_reject_before_ffi_and_preserve_compatible_pointer_mapping
         Dimensions::new(1280, 720).unwrap(),
     );
     let base = scene.input();
-    let swapped = UpscaleResources::new(
-        &scene.resources[4],
-        &scene.resources[1],
-        &scene.resources[2],
-        &scene.resources[3],
-        &scene.resources[0],
-    );
-    let frame = UpscaleDispatch::new(
+    let swapped = UpscaleResources::builder()
+        .color(&scene.resources[4])
+        .depth(&scene.resources[1])
+        .motion_vectors(&scene.resources[2])
+        .exposure(crate::upscaler::dx12::ExposureInput::Texture(
+            &scene.resources[3],
+        ))
+        .output(&scene.resources[0])
+        .build()
+        .unwrap();
+    let frame = UpscaleTestInputs::new(
         base.command_list(),
         swapped,
         base.jitter(),

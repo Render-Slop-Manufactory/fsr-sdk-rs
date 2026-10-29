@@ -38,8 +38,9 @@ float unhalf(uint16_t value) {
     return result;
 }
 
-void fill_row(Role role, uint32_t y, uint8_t* row, float red_shift = 0.0f) {
-    const auto desc = texture_desc(role);
+void fill_row(Role role, uint32_t y, uint8_t* row, float red_shift = 0.0f,
+              bool display_motion = false) {
+    const auto desc = texture_desc(role, display_motion);
     for (uint32_t x = 0; x < desc.Width; ++x) {
         if (role == Color) {
             // CPU-generated image sampled at the same known subpixel jitter
@@ -66,15 +67,15 @@ void fill_row(Role role, uint32_t y, uint8_t* row, float red_shift = 0.0f) {
 // Projection jitter affects the analytic image; UV motion excludes jitter.
 HRESULT set_temporal_frame(Harness& h, uint32_t frame, float jitter_x, float jitter_y) {
     for (Role role : {Color, Motion}) {
-        const auto desc = texture_desc(role);
+        const auto desc = h.textures[role]->GetDesc();
         D3D12_PLACED_SUBRESOURCE_FOOTPRINT footprint{};
         h.device->GetCopyableFootprints(&desc, 0, 1, 0, &footprint, nullptr, nullptr, nullptr);
         uint8_t* mapped = nullptr;
         HRESULT hr = h.uploads[role]->Map(0, nullptr, reinterpret_cast<void**>(&mapped));
         if (FAILED(hr)) return hr;
-        for (uint32_t y = 0; y < render_height; ++y) {
+        for (uint32_t y = 0; y < desc.Height; ++y) {
             uint8_t* row = mapped + footprint.Offset + y * footprint.Footprint.RowPitch;
-            for (uint32_t x = 0; x < render_width; ++x) {
+            for (uint32_t x = 0; x < desc.Width; ++x) {
                 if (role == Color) {
                     // A positive projection jitter shifts the projected image
                     // positively; a fixed pixel therefore samples scene(x-j).

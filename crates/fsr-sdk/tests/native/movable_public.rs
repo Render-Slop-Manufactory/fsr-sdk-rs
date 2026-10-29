@@ -22,15 +22,21 @@ impl Coordinated {
         sharpening: Sharpening,
     ) {
         let _guard = self.gate.lock().unwrap_or_else(|p| p.into_inner());
-        let mut frame = UpscaleDispatch::new(
+        let context = self.context.as_mut().unwrap();
+        // Query and dispatch the same transferred context under the shared gate.
+        let _ = context.provider().unwrap();
+        let _ = context.resource_requirements().unwrap();
+        let _ = context.gpu_memory_usage().unwrap();
+        let mut frame = UpscaleTestInputs::new(
             list,
-            UpscaleResources::new(
-                &resources[0],
-                &resources[1],
-                &resources[2],
-                &resources[3],
-                &resources[4],
-            ),
+            UpscaleResources::builder()
+                .color(&resources[0])
+                .depth(&resources[1])
+                .motion_vectors(&resources[2])
+                .exposure(crate::upscaler::dx12::ExposureInput::Texture(&resources[3]))
+                .output(&resources[4])
+                .build()
+                .unwrap(),
             JitterOffsetPixels::new(0.0, 0.0).unwrap(),
             FrameTimeMillis::new(16.667).unwrap(),
             CameraParameters::new(0.1, 100.0, std::f32::consts::PI / 3.0, 1.0).unwrap(),
@@ -38,9 +44,11 @@ impl Coordinated {
         );
         frame.set_sharpening(sharpening);
         // SAFETY: Existing harness supplies the supported fixed profile and states.
-        // Main retains equipment/inputs/context through m6_finish's GPU fence;
+        // Main retains equipment/inputs/context through gpu_finish's GPU fence;
         // all potentially shared calls and native cleanup use this common gate.
-        if let Err(error) = unsafe { self.context.as_mut().unwrap().dispatch(frame) } {
+        if let Err(error) =
+            unsafe { context.record(frame.command_list, &frame.resources, &frame.parameters) }
+        {
             // Never submit a failed recording or unwind into unfinished native work.
             abort_dispatch(error, 0);
         }
@@ -60,13 +68,13 @@ impl Drop for Coordinated {
 }
 
 #[test]
-#[ignore = "requires trusted SDK/GPU; native/run.ps1 -Mode movable -Native"]
+#[ignore = "requires trusted SDK/GPU; tools/verification/run.py run native-upscaler --native"]
 fn public_siblings_dispatch_and_cleanup_after_thread_handoffs() {
     verify_public_handoffs(Sharpening::Disabled);
 }
 
 #[test]
-#[ignore = "requires trusted SDK/GPU; native/run.ps1 -Mode movable -Native"]
+#[ignore = "requires trusted SDK/GPU; tools/verification/run.py run native-upscaler --native"]
 fn public_native_sharpening_after_thread_handoffs() {
     verify_public_handoffs(Sharpening::Native(NativeSharpness::new(0.35).unwrap()));
 }
@@ -74,32 +82,32 @@ fn public_native_sharpening_after_thread_handoffs() {
 fn verify_public_handoffs(sharpening: Sharpening) {
     assert!(std::env::var_os("FSR_SDK_TEST_GBV").is_none());
     let loader = PathBuf::from(std::env::var_os("FSR_SDK_TEST_DLL").unwrap());
-    let helper_path = PathBuf::from(std::env::var_os("FSR_SDK_TEST_M6_DLL").unwrap());
+    let helper_path = PathBuf::from(std::env::var_os("FSR_SDK_TEST_GPU_DLL").unwrap());
     let gate = Arc::new(Mutex::new(()));
     // SAFETY: Opt-in runner compiled this helper and authenticated the staged SDK.
     let helper = unsafe { libloading::Library::new(helper_path) }.unwrap();
     // SAFETY: Exact existing helper C signatures from gpu.cpp/device.cpp.
     let (device, create, finish, destroy, check) = unsafe {
         let _guard = gate.lock().unwrap();
-        let debug = *helper.get::<EnableDebug>(c"m6_enable_debug").unwrap();
+        let debug = *helper.get::<EnableDebug>(c"gpu_enable_debug").unwrap();
         assert_eq!(debug(), 0);
         let acquire = *helper.get::<CreateDevice>(c"probe_create_device").unwrap();
         let mut raw = null_mut();
         assert_eq!(acquire(&mut raw), 0);
         assert!(!raw.is_null());
         let device = ID3D12Device::from_raw(raw);
-        let amd = *helper.get::<DeviceCheck>(c"m6_require_amd").unwrap();
+        let amd = *helper.get::<DeviceCheck>(c"gpu_require_amd").unwrap();
         assert_eq!(amd(device.as_raw()), 0);
         (
             device,
-            *helper.get::<CreateHarness>(c"m6_create").unwrap(),
-            *helper.get::<Finish>(c"m6_finish").unwrap(),
-            *helper.get::<Destroy>(c"m6_destroy").unwrap(),
-            *helper.get::<DeviceCheck>(c"m6_check_device").unwrap(),
+            *helper.get::<CreateHarness>(c"gpu_create").unwrap(),
+            *helper.get::<Finish>(c"gpu_finish").unwrap(),
+            *helper.get::<Destroy>(c"gpu_destroy").unwrap(),
+            *helper.get::<DeviceCheck>(c"gpu_check_device").unwrap(),
         )
     };
     let load_gate = gate.clone();
-    let runtime = thread::spawn(move || {
+    let mut runtime = thread::spawn(move || {
         let _guard = load_gate.lock().unwrap();
         eprintln!(
             "Public movable acquisition: thread={:?}",
@@ -108,7 +116,7 @@ fn verify_public_handoffs(sharpening: Sharpening) {
         // SAFETY: Caller assumes arbitrary-thread native compatibility for this
         // bounded signed deployment. One common gate governs every application
         // operation and cleanup; evidence does not prove the native assumption.
-        unsafe { MovableRuntime::load_unchecked(loader) }.unwrap()
+        unsafe { MovableRuntime::load(loader) }.unwrap()
     })
     .join()
     .unwrap();
@@ -128,8 +136,12 @@ fn verify_public_handoffs(sharpening: Sharpening) {
             Dimensions::new(320, 180).unwrap(),
             Dimensions::new(640, 360).unwrap(),
         );
-        let mut first = MovableUpscaler::new(&runtime, &create_device, options.clone()).unwrap();
-        let mut second = MovableUpscaler::new(&runtime, &create_device, options).unwrap();
+        let mut first = unsafe { runtime.upscaler_dx12(&create_device) }
+            .create(&options)
+            .unwrap();
+        let mut second = unsafe { runtime.upscaler_dx12(&create_device) }
+            .create(&options)
+            .unwrap();
         // Test-only provider observation, not an additional production operation.
         log_provider_owner(&mut first.core.owner);
         log_provider_owner(&mut second.core.owner);

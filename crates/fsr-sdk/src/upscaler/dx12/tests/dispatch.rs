@@ -4,9 +4,11 @@ use super::{super::*, support::*};
 
 #[test]
 fn private_dispatch_forwards_once_and_preserves_unknown_native_code() {
-    let (runtime, observer) = fixture_runtime();
+    let (mut runtime, observer) = fixture_runtime();
     let (device, _) = fake_device();
-    let mut upscaler = Upscaler::new(&runtime, &device, sizes()).unwrap();
+    let mut upscaler = unsafe { runtime.upscaler_dx12(&device) }
+        .create(&sizes())
+        .unwrap();
     // SAFETY: These exports are provided by the local fixture, which only
     // snapshots the descriptor header and records no GPU commands.
     unsafe {
@@ -32,9 +34,11 @@ fn private_dispatch_forwards_once_and_preserves_unknown_native_code() {
 #[test]
 fn public_dispatch_core_preserves_preflight_errors_and_poison_policy() {
     use crate::error::{DispatchValidation, InspectionObject, InspectionOperation, Operation};
-    let (runtime, observer) = fixture_runtime();
+    let (mut runtime, observer) = fixture_runtime();
     let (device, fake) = fake_device();
-    let mut upscaler = Upscaler::new(&runtime, &device, sizes()).unwrap();
+    let mut upscaler = unsafe { runtime.upscaler_dx12(&device) }
+        .create(&sizes())
+        .unwrap();
     // The local fixture records no GPU commands. A descriptor header is enough
     // to exercise the terminal policy after the separated inspection phase.
     let descriptor = || {
@@ -60,26 +64,33 @@ fn public_dispatch_core_preserves_preflight_errors_and_poison_policy() {
                 .unwrap()(code)
         }
     };
-    let invalid = Error::InvalidDispatch {
-        reason: DispatchValidation::CommandListType,
+    let invalid = || {
+        Error::Input(crate::error::InputError::Dispatch(
+            DispatchValidation::CommandListType,
+        ))
     };
     // SAFETY: No native call occurs for the injected preflight error.
-    assert_eq!(
-        unsafe { upscaler.dispatch_core(|_| Err(invalid)) },
-        Err(invalid)
+    assert_result!(
+        unsafe { upscaler.dispatch_core(|_| Err(invalid())) },
+        Err(invalid())
     );
     assert_eq!(observation().calls, 0);
-    let com = Error::Dx12Inspection {
-        object: InspectionObject::CommandList,
-        operation: InspectionOperation::GetDevice,
-        hresult: 0x8000_4005u32 as i32,
+    let com = || {
+        crate::error::test_inspection(
+            InspectionObject::CommandList,
+            InspectionOperation::GetDevice,
+            0x8000_4005u32 as i32,
+        )
     };
     // SAFETY: No native call occurs for the injected COM inspection error.
-    assert_eq!(unsafe { upscaler.dispatch_core(|_| Err(com)) }, Err(com));
+    assert_result!(
+        unsafe { upscaler.dispatch_core(|_| Err(com())) },
+        Err(com())
+    );
     assert_eq!(observation().calls, 0);
     set_code(0);
     // SAFETY: This fixture records no GPU commands and reads only the header.
-    assert_eq!(
+    assert_result!(
         unsafe { upscaler.dispatch_core(|_| Ok(descriptor())) },
         Ok(())
     );
@@ -87,18 +98,18 @@ fn public_dispatch_core_preserves_preflight_errors_and_poison_policy() {
     assert_eq!(observation().tag, FFX_API_DISPATCH_DESC_TYPE_UPSCALE);
     set_code(u32::MAX);
     // SAFETY: This fixture records no GPU commands and reads only the header.
-    assert_eq!(
+    assert_result!(
         unsafe { upscaler.dispatch_core(|_| Ok(descriptor())) },
-        Err(Error::Native {
-            operation: Operation::Dispatch,
-            code: u32::MAX
-        })
+        Err(Error::native(Operation::Upscale, u32::MAX))
     );
     assert_eq!(observation().calls, 2);
     // SAFETY: Poison stops inspection and native dispatch before any GPU work.
-    assert_eq!(
+    assert_result!(
         unsafe { upscaler.dispatch_core(|_| panic!("inspected poisoned context")) },
-        Err(Error::DispatchPoisoned)
+        Err(crate::test_errors::terminal(Error::native(
+            crate::error::Operation::Upscale,
+            u32::MAX
+        )))
     );
     assert_eq!(observation().calls, 2);
     upscaler.destroy().unwrap();
@@ -109,10 +120,12 @@ fn public_dispatch_core_preserves_preflight_errors_and_poison_policy() {
 #[test]
 fn poisoned_dispatch_still_uses_terminal_destroy_retention() {
     use crate::error::Operation;
-    let (runtime, observer) = fixture_runtime();
+    let (mut runtime, observer) = fixture_runtime();
     let (device, fake) = fake_device();
     let weak = std::rc::Rc::downgrade(&runtime.state);
-    let mut upscaler = Upscaler::new(&runtime, &device, sizes()).unwrap();
+    let mut upscaler = unsafe { runtime.upscaler_dx12(&device) }
+        .create(&sizes())
+        .unwrap();
     fixture_set(&observer, 0, u32::MAX, 0);
     // SAFETY: Exact signature from the local fixture.
     unsafe {
@@ -129,17 +142,14 @@ fn poisoned_dispatch_still_uses_terminal_destroy_retention() {
                 Ok(desc)
             })
         },
-        Err(Error::Native {
-            operation: Operation::Dispatch,
+        Err(Error::Native(crate::error::NativeError {
+            operation: Operation::Upscale,
             code: u32::MAX
-        })
+        }))
     ));
-    assert_eq!(
+    assert_result!(
         upscaler.destroy(),
-        Err(Error::Native {
-            operation: Operation::Destroy,
-            code: u32::MAX
-        })
+        Err(Error::native(Operation::Destroy, u32::MAX))
     );
     assert_eq!(fixture_snapshot(&observer).destroys, 1);
     drop(device);

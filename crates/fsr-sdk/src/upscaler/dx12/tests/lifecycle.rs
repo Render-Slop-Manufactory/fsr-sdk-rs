@@ -1,29 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 use super::{super::*, support::sizes};
-use std::{
-    ffi::{CStr, c_char},
-    path::PathBuf,
-    ptr::null,
-};
-
-// Query declaration solely for test instrumentation. Derived from AMD SDK v2.3.0
-// api/include/ffx_api.h. AMD notice is retained in this crate's LICENSE-AMD.
-#[repr(C)]
-struct ProviderQuery {
-    header: ffxQueryDescHeader,
-    id: u64,
-    name: *const c_char,
-}
-
-#[cfg(all(target_arch = "x86_64", target_env = "msvc"))]
-const _: () = {
-    assert!(std::mem::size_of::<ProviderQuery>() == 32);
-    assert!(std::mem::align_of::<ProviderQuery>() == 8);
-    assert!(std::mem::offset_of!(ProviderQuery, header) == 0);
-    assert!(std::mem::offset_of!(ProviderQuery, id) == 16);
-    assert!(std::mem::offset_of!(ProviderQuery, name) == 24);
-};
+use std::{ffi::CStr, path::PathBuf, ptr::null};
 
 pub(super) fn native_lifecycle_case(drop_b: bool) {
     let loader = PathBuf::from(std::env::var_os("FSR_SDK_TEST_DLL").expect("FSR_SDK_TEST_DLL"));
@@ -45,13 +23,15 @@ pub(super) fn native_lifecycle_case(drop_b: bool) {
     // from_raw adopts it without AddRef; public construction clones it.
     let device = unsafe { ID3D12Device::from_raw(raw.cast()) };
     // SAFETY: Trusted compatible SDK runtime, staged with its provider DLL.
-    let runtime = unsafe { Runtime::load_unchecked(&loader) }.unwrap();
+    let mut runtime = unsafe { Runtime::load(&loader) }.unwrap();
     assert!(Dimensions::new(0, 720).is_err());
     assert!(Dimensions::new(1280, 0).is_err());
     eprintln!("Dimensions: render=1280x720 upscale=1920x1080; zero rejected in Rust");
-    let context_a = Upscaler::new(&runtime, &device, sizes())
+    let context_a = unsafe { runtime.upscaler_dx12(&device) }
+        .create(&sizes())
         .unwrap_or_else(|error| stop_after_native_error("create A", error));
-    let context_b = Upscaler::new(&runtime, &device, sizes())
+    let context_b = unsafe { runtime.upscaler_dx12(&device) }
+        .create(&sizes())
         .unwrap_or_else(|error| stop_after_native_error("create B", error));
     eprintln!("Production owner: create A/B OK");
     let runtime_state = std::rc::Rc::downgrade(&runtime.state);
@@ -71,23 +51,23 @@ pub(super) fn native_lifecycle_case(drop_b: bool) {
         libloading::os::windows::Library::open_already_loaded(&loader).is_ok()
     );
     let mut context_b = Box::new(context_b); // exercise outer owner movement
-    let mut query = ProviderQuery {
+    let mut query = ffxQueryGetProviderVersion {
         header: ffxApiHeader {
-            r#type: 6,
+            r#type: FFX_API_QUERY_DESC_TYPE_GET_PROVIDER_VERSION,
             pNext: null_mut(),
         },
-        id: 0,
-        name: null(),
+        versionId: 0,
+        versionName: null(),
     };
-    // SAFETY: Correct test-only ABI, live owner and writable query storage.
-    let result = unsafe { context_b.core.owner.query_for_test(&raw mut query.header) };
-    let valid = result == FFX_API_RETURN_OK && query.id != 0 && !query.name.is_null();
+    // SAFETY: Correct canonical ABI, live owner and writable query storage.
+    let result = unsafe { context_b.core.owner.query(&raw mut query.header) };
+    let valid = result == FFX_API_RETURN_OK && query.versionId != 0 && !query.versionName.is_null();
     if valid {
         // SAFETY: Read the returned name while native context/runtime remain live.
-        let name = unsafe { CStr::from_ptr(query.name) };
+        let name = unsafe { CStr::from_ptr(query.versionName) };
         eprintln!(
             "Provider: id={:#018x}; name={}",
-            query.id,
+            query.versionId,
             name.to_string_lossy()
         );
     }

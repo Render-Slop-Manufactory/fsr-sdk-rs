@@ -77,7 +77,7 @@ fn public_trait_matrix() {
 #[test]
 fn invalid_acquisition_returns_existing_path_error_without_loading() {
     // SAFETY: The empty path is rejected before loading any native code.
-    let error = unsafe { MovableRuntime::load_unchecked("") }
+    let error = unsafe { MovableRuntime::load("") }
         .err()
         .expect("empty path must fail before acquisition");
     assert!(
@@ -232,10 +232,14 @@ fn runtime_can_move_before_creation_and_survive_independent_sibling_cleanup() {
     let path = fixture();
     let (device, references) = device();
     // SAFETY: Trusted fixture; joined workers serialize all native ownership calls.
-    let runtime = unsafe { MovableRuntime::load_unchecked(&path) }.unwrap();
+    let mut runtime = unsafe { MovableRuntime::load(&path) }.unwrap();
     let (first, second) = thread::spawn(move || {
-        let first = MovableUpscaler::new(&runtime, &device, sizes()).unwrap();
-        let second = MovableUpscaler::new(&runtime, &device, sizes()).unwrap();
+        let first = unsafe { runtime.upscaler_dx12(&device) }
+            .create(&sizes())
+            .unwrap();
+        let second = unsafe { runtime.upscaler_dx12(&device) }
+            .create(&sizes())
+            .unwrap();
         drop(runtime);
         drop(device);
         (first, second)

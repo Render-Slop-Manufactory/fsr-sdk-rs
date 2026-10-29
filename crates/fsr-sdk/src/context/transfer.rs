@@ -26,12 +26,17 @@ impl MovableOwnerProbe {
         inspect: impl FnOnce(&Self) -> Result<fixture::Dispatch, Error>,
     ) -> Result<(), Error> {
         let mut poisoned = self.1;
-        let result =
-            crate::dispatch_policy::dispatch(&mut poisoned, self, inspect, |this, desc| {
+        let result = crate::context_policy::dispatch(
+            crate::error::Operation::Upscale,
+            &mut poisoned,
+            self,
+            inspect,
+            |this, desc| {
                 // SAFETY: This concrete test bundle owns its stable fixture handle;
                 // the fixture reads only this stack-local protocol, with no GPU work.
                 unsafe { this.0.dispatch(std::ptr::from_ref(desc).cast()) }
-            });
+            },
+        );
         self.1 = poisoned;
         result
     }
@@ -57,11 +62,14 @@ impl MovableOwnerProbe {
         })
     }
 
-    fn reject_poison(&mut self) {
+    fn reject_poison(&mut self, code: u32) {
         // Inspection must not run. A failure here is a Rust-only assertion.
-        assert_eq!(
+        assert_result!(
             self.dispatch(|_| panic!("poison inspected")),
-            Err(Error::DispatchPoisoned)
+            Err(crate::test_errors::terminal(Error::native(
+                crate::error::Operation::Upscale,
+                code
+            )))
         );
     }
 }
@@ -85,7 +93,7 @@ fn create(threaded: bool, destroy_code: u32) -> Setup {
         (owner, weak, ledger, pointer, thread::current().id())
     };
     if threaded {
-        on_thread("d013-A", action)
+        on_thread("ownership-worker-1", action)
     } else {
         action()
     }
@@ -104,7 +112,7 @@ fn act<T: Send + 'static>(
 }
 
 fn native_error(operation: Operation, code: u32) -> Result<(), Error> {
-    Err(Error::Native { operation, code })
+    Err(Error::native(operation, code))
 }
 
 fn expect(ledger: &Ledger, expected: &[(u32, u32, ThreadId)]) {
@@ -142,18 +150,21 @@ fn expect(ledger: &Ledger, expected: &[(u32, u32, ThreadId)]) {
 fn poison(threaded: bool, code: u32, destroy_failure: bool, explicit: bool) {
     let destroy_code = if destroy_failure { u32::MAX } else { 0 };
     let (mut owner, weak, ledger, pointer, a) = create(threaded, destroy_code);
-    let (owner, b) = act(threaded, "d013-B", move || {
+    let (owner, b) = act(threaded, "ownership-worker-2", move || {
         owner.assert_pointers(pointer);
-        assert_eq!(owner.attempt(code), native_error(Operation::Dispatch, code));
-        assert!(owner.1);
+        assert_result!(owner.attempt(code), native_error(Operation::Upscale, code));
+        assert_eq!(
+            owner.1,
+            crate::context_policy::failed(crate::error::Operation::Upscale, code)
+        );
         (owner, thread::current().id())
     });
-    let c = act(threaded, "d013-C", move || {
+    let c = act(threaded, "ownership-worker-3", move || {
         let mut owner = owner;
         owner.assert_pointers(pointer);
-        owner.reject_poison();
+        owner.reject_poison(code);
         if explicit {
-            assert_eq!(
+            assert_result!(
                 owner.destroy(),
                 if destroy_failure {
                     native_error(Operation::Destroy, u32::MAX)
@@ -186,35 +197,42 @@ fn poison(threaded: bool, code: u32, destroy_failure: bool, explicit: bool) {
 fn preflight(threaded: bool) {
     let (mut owner, weak, ledger, pointer, a) = create(threaded, 0);
     let b_ledger = ledger.clone();
-    let (owner, b) = act(threaded, "d013-B", move || {
-        for error in [
-            Error::InvalidDispatch {
-                reason: DispatchValidation::CommandListType,
+    let (owner, b) = act(threaded, "ownership-worker-2", move || {
+        for make_error in [
+            || {
+                Error::Input(crate::error::InputError::Dispatch(
+                    DispatchValidation::CommandListType,
+                ))
             },
-            Error::Dx12Inspection {
-                object: InspectionObject::CommandList,
-                operation: InspectionOperation::GetDevice,
-                hresult: 0x8000_4005u32 as i32,
+            || {
+                crate::error::test_inspection(
+                    InspectionObject::CommandList,
+                    InspectionOperation::GetDevice,
+                    0x8000_4005u32 as i32,
+                )
             },
         ] {
-            assert_eq!(
+            assert_result!(
                 owner.dispatch(|_| {
                     b_ledger.record(1, 6);
-                    Err(error)
+                    Err(make_error())
                 }),
-                Err(error)
+                Err(make_error())
             );
-            assert!(!owner.1);
+            assert_eq!(owner.1, crate::context_policy::Eligibility::Usable);
             assert!(!b_ledger.snapshot().iter().any(|e| e.kind == 5));
-            println!("preflight={error:?} dispatch_calls=0 poisoned=false");
+            println!(
+                "preflight={:?} dispatch_calls=0 poisoned=false",
+                make_error()
+            );
         }
         (owner, thread::current().id())
     });
-    let c = act(threaded, "d013-C", move || {
+    let c = act(threaded, "ownership-worker-3", move || {
         let mut owner = owner;
         owner.assert_pointers(pointer);
-        assert_eq!(owner.attempt(0), Ok(()));
-        assert!(!owner.1);
+        assert_result!(owner.attempt(0), Ok(()));
+        assert_eq!(owner.1, crate::context_policy::Eligibility::Usable);
         owner.destroy().unwrap();
         thread::current().id()
     });
@@ -246,7 +264,7 @@ fn unwind(threaded: bool, poisoned: bool) {
         drop(runtime);
         (first, sibling, weak, ledger, thread::current().id())
     };
-    let (first, mut sibling, weak, ledger, a) = act(threaded, "d013-A", action);
+    let (first, mut sibling, weak, ledger, a) = act(threaded, "ownership-worker-1", action);
     let first_pointer = first.handle_address();
     let sibling_pointer = sibling.handle_address();
     // The guard is declared before the context local: reverse local destruction
@@ -259,7 +277,7 @@ fn unwind(threaded: bool, poisoned: bool) {
     let survivor_gate = gate.clone();
     let survivor_ledger = ledger.clone();
     let survivor = thread::Builder::new()
-        .name("d013-sibling-C".into())
+        .name("sibling-cleanup-worker".into())
         .spawn(move || {
             start_tx.send(()).unwrap();
             resume_rx.recv().unwrap();
@@ -267,7 +285,7 @@ fn unwind(threaded: bool, poisoned: bool) {
             assert!(survivor_gate.is_poisoned());
             assert!(survivor_ledger.library_live());
             sibling.assert_pointers(sibling_pointer);
-            assert_eq!(sibling.attempt(0), Ok(()));
+            assert_result!(sibling.attempt(0), Ok(()));
             sibling.destroy().unwrap();
             drop(guard);
             thread::current().id()
@@ -279,30 +297,30 @@ fn unwind(threaded: bool, poisoned: bool) {
         let mut owner = first;
         owner.assert_pointers(first_pointer);
         if poisoned {
-            assert_eq!(
+            assert_result!(
                 owner.attempt(FFX_API_RETURN_ERROR),
-                native_error(Operation::Dispatch, FFX_API_RETURN_ERROR)
+                native_error(Operation::Upscale, FFX_API_RETURN_ERROR)
             );
         }
-        panic!("D013 declared destination unwind");
+        panic!("Transferred context declared destination unwind");
     };
     let b = if threaded {
         let worker = thread::Builder::new()
-            .name("d013-unwind-B".into())
+            .name("context-unwind-worker-B".into())
             .spawn(destination)
             .unwrap();
         let actor = worker.thread().id();
         let panic = worker.join().expect_err("declared panic must occur");
         assert_eq!(
             panic.downcast_ref::<&str>(),
-            Some(&"D013 declared destination unwind")
+            Some(&"Transferred context declared destination unwind")
         );
         actor
     } else {
         let panic = std::panic::catch_unwind(destination).expect_err("declared panic must occur");
         assert_eq!(
             panic.downcast_ref::<&str>(),
-            Some(&"D013 declared destination unwind")
+            Some(&"Transferred context declared destination unwind")
         );
         thread::current().id()
     };
@@ -340,7 +358,7 @@ fn unwind(threaded: bool, poisoned: bool) {
 
 #[test]
 fn isolated_case() {
-    let Ok(case) = std::env::var("FSR_D013_FAILURE_CASE") else {
+    let Ok(case) = std::env::var("FSR_TRANSFER_FAILURE_CASE") else {
         return;
     };
     let threaded = case.starts_with("transfer-");
@@ -373,9 +391,9 @@ fn transfer_failure_cleanup_matrix() {
             "unwind-poisoned",
         ] {
             child::run(
-                &crate::test_directory::directory("fsr-sdk-d013-child"),
-                "context::d013_movable::transfer::isolated_case",
-                "FSR_D013_FAILURE_CASE",
+                &crate::test_directory::directory("fsr-sdk-transfer-child"),
+                "context::movable::transfer::isolated_case",
+                "FSR_TRANSFER_FAILURE_CASE",
                 &format!("{family}-{scenario}"),
             );
         }

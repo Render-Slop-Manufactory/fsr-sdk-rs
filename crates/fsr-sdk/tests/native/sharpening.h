@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 // Test-only D014 stationary fixtures. Included by gpu.cpp after its equipment.
-// Rewrite only the color upload before submission; the harness already supplies
+// Rewrite only the colour upload before submission; the harness already supplies
 // depth 0.5, exposure 1, zero motion and an output sentinel. No AMD calls here.
 extern "C" __declspec(dllexport) int32_t __cdecl sharpening_set_frame(
     void* handle, uint32_t scene, float jitter_x, float jitter_y) {

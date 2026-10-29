@@ -53,14 +53,26 @@ fn narrow_conversion_and_descriptor() {
     let output = make(5, DXGI_FORMAT_R16G16B16A16_FLOAT, 640, 360, true);
     let result = build_descriptor(
         6usize as *mut c_void,
-        [color, depth, motion, exposure, output],
-        (
+        super::resources::ConvertedResources {
+            color,
+            depth,
+            motion,
+            output,
+            exposure: Some(exposure),
+            reactive: None,
+            composition: None,
+        },
+        &FrameParameters::new(
             JitterOffsetPixels::new(0.25, -0.25).unwrap(),
             FrameTimeMillis::new(16.667).unwrap(),
             CameraParameters::new(0.1, 100.0, 1.0, 1.0).unwrap(),
-            true,
+            crate::upscaler::HistoryAction::Reset,
         ),
-        &Sharpening::Disabled,
+        super::descriptor::DispatchGeometry {
+            render: crate::upscaler::Dimensions::new(320, 180).unwrap(),
+            output: crate::upscaler::Dimensions::new(640, 360).unwrap(),
+            motion: crate::upscaler::Dimensions::new(320, 180).unwrap(),
+        },
     );
     assert_eq!(result.header.r#type, FFX_API_DISPATCH_DESC_TYPE_UPSCALE);
     assert!(result.header.pNext.is_null());
@@ -130,49 +142,49 @@ fn rejects_invalid_resources_and_frame_before_native_call() {
         .err()
         .unwrap()
     };
-    assert_eq!(
+    assert_error!(
         check(no_uav),
         invalid_resource(ResourceRole::Output, ResourceProperty::UnorderedAccess)
     );
     let mut multisampled = valid;
     multisampled.SampleDesc.Count = 2;
-    assert_eq!(
+    assert_error!(
         check(multisampled),
         invalid_resource(ResourceRole::Output, ResourceProperty::TextureShape)
     );
     let mut array = valid;
     array.DepthOrArraySize = 2;
-    assert_eq!(
+    assert_error!(
         check(array),
         invalid_resource(ResourceRole::Output, ResourceProperty::TextureShape)
     );
     let mut mips = valid;
     mips.MipLevels = 2;
-    assert_eq!(
+    assert_error!(
         check(mips),
         invalid_resource(ResourceRole::Output, ResourceProperty::TextureShape)
     );
     let mut wrong_format = valid;
     wrong_format.Format = DXGI_FORMAT_R32_FLOAT;
-    assert_eq!(
+    assert_error!(
         check(wrong_format),
         invalid_resource(ResourceRole::Output, ResourceProperty::Format)
     );
     let mut oversized = valid;
     oversized.Width = u64::from(u32::MAX) + 1;
-    assert_eq!(
+    assert_error!(
         check(oversized),
         invalid_resource(ResourceRole::Output, ResourceProperty::Extent)
     );
     let mut zero = valid;
     zero.Height = 0;
-    assert_eq!(
+    assert_error!(
         check(zero),
         invalid_resource(ResourceRole::Output, ResourceProperty::Extent)
     );
     let mut denied = desc(DXGI_FORMAT_R32_FLOAT, 320, 180, false);
     denied.Flags = D3D12_RESOURCE_FLAG_DENY_SHADER_RESOURCE;
-    assert_eq!(
+    assert_error!(
         convert_desc(
             null_mut(),
             denied,
@@ -196,13 +208,18 @@ fn exact_extents_and_canonical_identity_reject_before_native_call() {
         ResourceRole::Output,
     ];
     let valid = [(320, 180), (320, 180), (320, 180), (1, 1), (640, 360)];
-    let inputs = |sizes: [(u32, u32); 5]| std::array::from_fn(|index| (roles[index], sizes[index]));
-    assert_eq!(check_extents(inputs(valid), (320, 180), (640, 360)), Ok(()));
+    let inputs = |sizes: [(u32, u32); 5]| -> [(ResourceRole, (u32, u32)); 5] {
+        std::array::from_fn(|index| (roles[index], sizes[index]))
+    };
+    assert_result!(
+        check_extents(inputs(valid), (320, 180), (640, 360), (320, 180)),
+        Ok(())
+    );
     for index in 0..5 {
         let mut sizes = valid;
         sizes[index].0 -= 1;
-        assert_eq!(
-            check_extents(inputs(sizes), (320, 180), (640, 360)),
+        assert_result!(
+            check_extents(inputs(sizes), (320, 180), (640, 360), (320, 180)),
             Err(invalid_resource(roles[index], ResourceProperty::Extent))
         );
     }
@@ -212,11 +229,11 @@ fn exact_extents_and_canonical_identity_reject_before_native_call() {
         (&raw mut first).cast::<c_void>(),
         (&raw mut second).cast::<c_void>(),
     ];
-    assert_eq!(
+    assert_result!(
         check_identity(ResourceRole::Depth, pointers[1], &pointers[..1]),
         Ok(())
     );
-    assert_eq!(
+    assert_result!(
         check_identity(ResourceRole::Output, pointers[0], &pointers),
         Err(invalid_resource(
             ResourceRole::Output,

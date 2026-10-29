@@ -4,7 +4,7 @@ use super::{super::*, support::*};
 
 #[test]
 fn public_constructor_forwards_checked_chain_and_owns_device() {
-    let (runtime, observer) = fixture_runtime();
+    let (mut runtime, observer) = fixture_runtime();
     let (device, fake) = fake_device();
     let weak = std::rc::Rc::downgrade(&runtime.state);
     let samples = [
@@ -19,7 +19,9 @@ fn public_constructor_forwards_checked_chain_and_owns_device() {
         ),
     ];
     for (index, options) in samples.into_iter().enumerate() {
-        let context = Upscaler::new(&runtime, &device, options.clone()).unwrap();
+        let context = unsafe { runtime.upscaler_dx12(&device) }
+            .create(&options)
+            .unwrap();
         assert_eq!(fake.references.get(), 2);
         let snapshot = fixture_snapshot(&observer);
         assert_eq!(snapshot.creates, (index + 1) as u32);
@@ -44,8 +46,12 @@ fn public_constructor_forwards_checked_chain_and_owns_device() {
         assert_eq!(fake.references.get(), 1);
         assert_eq!(fixture_snapshot(&observer).destroys, (index + 1) as u32);
     }
-    let a = Upscaler::new(&runtime, &device, sizes()).unwrap();
-    let b = Upscaler::new(&runtime, &device, sizes()).unwrap();
+    let a = unsafe { runtime.upscaler_dx12(&device) }
+        .create(&sizes())
+        .unwrap();
+    let b = unsafe { runtime.upscaler_dx12(&device) }
+        .create(&sizes())
+        .unwrap();
     drop(runtime);
     drop(device);
     assert_eq!(fake.references.get(), 2);
@@ -71,32 +77,35 @@ fn zero_is_rejected_without_entering_native_create() {
 fn public_failure_paths_preserve_com_and_runtime_policy() {
     for (create_code, destroy_code, null_create) in [(u32::MAX, 0, 0), (0, 0, 1), (0, u32::MAX, 0)]
     {
-        let (runtime, observer) = fixture_runtime();
+        let (mut runtime, observer) = fixture_runtime();
         let (device, fake) = fake_device();
         let weak = std::rc::Rc::downgrade(&runtime.state);
         fixture_set(&observer, create_code, destroy_code, null_create);
-        let result = Upscaler::new(&runtime, &device, sizes());
+        let result = unsafe { runtime.upscaler_dx12(&device) }.create(&sizes());
         if create_code != 0 {
             assert!(matches!(
                 result,
-                Err(Error::Native {
+                Err(Error::Native(crate::error::NativeError {
                     operation: crate::error::Operation::Create,
                     code: u32::MAX
-                })
+                }))
             ));
             assert_eq!(fake.references.get(), 1);
             assert_eq!(fixture_snapshot(&observer).destroys, 0);
         } else if null_create != 0 {
-            assert!(matches!(result, Err(Error::NativeInvariantViolation(_))));
+            assert!(matches!(
+                result,
+                Err(Error::Invariant {
+                    operation: _,
+                    reason: _
+                })
+            ));
             assert_eq!(fake.references.get(), 2);
             assert_eq!(fixture_snapshot(&observer).destroys, 0);
         } else {
-            assert_eq!(
+            assert_result!(
                 result.unwrap().destroy(),
-                Err(Error::Native {
-                    operation: crate::error::Operation::Destroy,
-                    code: u32::MAX
-                })
+                Err(Error::native(crate::error::Operation::Destroy, u32::MAX))
             );
             assert_eq!(fake.references.get(), 2);
             assert_eq!(fixture_snapshot(&observer).destroys, 1);
@@ -110,30 +119,31 @@ fn public_failure_paths_preserve_com_and_runtime_policy() {
 
 #[test]
 fn public_siblings_survive_failed_create_and_destroy() {
-    let (runtime, observer) = fixture_runtime();
+    let (mut runtime, observer) = fixture_runtime();
     let (device, fake) = fake_device();
     let weak = std::rc::Rc::downgrade(&runtime.state);
-    let a = Upscaler::new(&runtime, &device, sizes()).unwrap();
+    let a = unsafe { runtime.upscaler_dx12(&device) }
+        .create(&sizes())
+        .unwrap();
     fixture_set(&observer, u32::MAX, 0, 0);
     assert!(matches!(
-        Upscaler::new(&runtime, &device, sizes()),
-        Err(Error::Native {
+        unsafe { runtime.upscaler_dx12(&device) }.create(&sizes()),
+        Err(Error::Native(crate::error::NativeError {
             operation: crate::error::Operation::Create,
             code: u32::MAX
-        })
+        }))
     ));
     assert_eq!(fake.references.get(), 2); // caller + A; failed sibling released
     fixture_set(&observer, 0, u32::MAX, 0);
-    let b = Upscaler::new(&runtime, &device, sizes()).unwrap();
+    let b = unsafe { runtime.upscaler_dx12(&device) }
+        .create(&sizes())
+        .unwrap();
     drop(runtime);
     drop(device);
     assert_eq!(fake.references.get(), 2); // A + B
-    assert_eq!(
+    assert_result!(
         a.destroy(),
-        Err(Error::Native {
-            operation: crate::error::Operation::Destroy,
-            code: u32::MAX
-        })
+        Err(Error::native(crate::error::Operation::Destroy, u32::MAX))
     );
     fixture_set(&observer, 0, 0, 0);
     b.destroy().unwrap();
@@ -146,7 +156,7 @@ fn public_siblings_survive_failed_create_and_destroy() {
 fn descriptor_links_survive_moves_of_outer_storage() {
     // Address sentinel only; no native call and no device dereference.
     let device = std::ptr::dangling_mut::<fsr_sdk_sys::dx12::ID3D12Device>();
-    let (state, root) = UpscaleCreateState::new(device, &sizes());
+    let (state, root) = UpscaleCreateState::new(device, &sizes(), Default::default(), None);
     let addresses = (
         &raw const state.root,
         &raw const state.version,
@@ -197,9 +207,12 @@ fn descriptor_links_survive_moves_of_outer_storage() {
 #[test]
 fn dimensions_reject_every_zero_component() {
     for (width, height) in [(0, 0), (0, 720), (1280, 0)] {
-        assert_eq!(
+        assert_result!(
             Dimensions::new(width, height),
-            Err(Error::InvalidDimensions { width, height })
+            Err(Error::Input(crate::error::InputError::InvalidDimensions {
+                width,
+                height
+            }))
         );
     }
     // Both option fields use the same checked type.

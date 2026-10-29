@@ -10,7 +10,10 @@ pub mod renderer_integration {
     use fsr_sdk::{
         error::Error,
         runtime::MovableRuntime,
-        upscaler::{ID3D12Device, MovableUpscaler, UpscaleDispatch, UpscalerOptions},
+        upscaler::{
+            FrameParameters, ID3D12Device, ID3D12GraphicsCommandList, MovableUpscaler,
+            TuningRequest, UpscaleResources, UpscalerOptions,
+        },
     };
     use std::{
         path::Path,
@@ -38,13 +41,32 @@ pub mod renderer_integration {
         /// Record inside the domain; the caller manages submission and completion.
         ///
         /// # Safety
-        /// Uphold every requirement of MovableUpscaler::dispatch, including GPU
-        /// completion before this wrapper is dropped normally or during unwinding.
-        pub unsafe fn dispatch(&mut self, frame: UpscaleDispatch<'_>) -> Result<(), Error> {
+        /// Uphold every requirement of MovableUpscaler::record, including GPU
+        /// completion before this wrapper is dropped normally or during unwinding,
+        /// and completion/no pending executable recording before later Configure.
+        pub unsafe fn record(
+            &mut self,
+            list: &ID3D12GraphicsCommandList,
+            resources: &UpscaleResources<'_>,
+            frame: &FrameParameters,
+        ) -> Result<(), Error> {
             let _guard = enter(&self.gate);
             // SAFETY: Caller establishes renderer/native preconditions; this
             // wrapper provides shared application-call coordination only.
-            unsafe { self.context.as_mut().unwrap().dispatch(frame) }
+            unsafe {
+                self.context
+                    .as_mut()
+                    .unwrap()
+                    .record(list, resources, frame)
+            }
+        }
+
+        /// Configure inside the common native domain after the earlier unsafe
+        /// dispatch's completion obligations have been met by the renderer.
+        /// The lock serializes CPU calls; it does not wait for GPU completion.
+        pub fn request_tuning(&mut self, request: TuningRequest) -> Result<(), Error> {
+            let _guard = enter(&self.gate);
+            self.context.as_mut().unwrap().request_tuning(request)
         }
 
         /// Explicitly destroy inside the domain after finishing all GPU work.
@@ -69,7 +91,8 @@ pub mod renderer_integration {
     /// Create independent siblings and release the public runtime before returning.
     ///
     /// # Safety
-    /// Establish the complete MovableRuntime::load_unchecked contract. The supplied
+    /// Establish MovableRuntime::load and MovableRuntime::upscaler_dx12
+    /// contracts, including lasting effect/provider trust. The supplied
     /// gate must be the common domain for all potentially shared native users,
     /// including other acquisitions/local families and external integrations.
     /// Native arbitrary-thread compatibility remains a caller assumption.
@@ -85,9 +108,11 @@ pub mod renderer_integration {
             let _guard = enter(&gate);
             // SAFETY: Caller establishes native trust, compatibility and all
             // external coordination; this example preserves its own cleanup order.
-            let runtime = unsafe { MovableRuntime::load_unchecked(path)? };
-            let first = MovableUpscaler::new(&runtime, device, options.clone())?;
-            let second = MovableUpscaler::new(&runtime, device, options)?;
+            let mut runtime = unsafe { MovableRuntime::load(path)? };
+            // SAFETY: Caller establishes the separate lasting effect contract.
+            let mut setup = unsafe { runtime.upscaler_dx12(device) };
+            let first = setup.create(&options)?;
+            let second = setup.create(&options)?;
             drop(runtime); // Contexts retain the actual loader independently.
             (first, second)
         };

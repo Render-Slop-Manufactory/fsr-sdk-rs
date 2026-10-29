@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! Opt-in M6 recording-ahead experiment.
+//! Opt-in recording-ahead experiment.
 use super::{
-    CameraParameters, Dimensions, FrameTimeMillis, JitterOffsetPixels, UpscaleDispatch,
-    UpscaleResources, Upscaler, UpscalerOptions,
+    CameraParameters, Dimensions, FrameTimeMillis, JitterOffsetPixels, UpscaleResources,
+    UpscaleTestInputs, UpscalerOptions,
 };
 use crate::runtime::Runtime;
 use std::{ffi::c_void, path::PathBuf, ptr::null_mut};
@@ -42,7 +42,7 @@ struct Recording {
 }
 
 #[test]
-#[ignore = "requires staged v2.3.0 DLLs, MSVC-built m6_gpu.dll and a hardware DX12 GPU; use tests/run-m6-recording-spike.ps1"]
+#[ignore = "isolated recording-ahead experiment; tools/verification/run.py run experiment-recording --native"]
 fn native_recording_ahead_spike() {
     let count: usize = std::env::var("FSR_SDK_TEST_RECORD_COUNT")
         .expect("FSR_SDK_TEST_RECORD_COUNT")
@@ -55,28 +55,28 @@ fn native_recording_ahead_spike() {
 
     let loader = PathBuf::from(std::env::var_os("FSR_SDK_TEST_DLL").expect("FSR_SDK_TEST_DLL"));
     let helper_path =
-        PathBuf::from(std::env::var_os("FSR_SDK_TEST_M6_DLL").expect("FSR_SDK_TEST_M6_DLL"));
+        PathBuf::from(std::env::var_os("FSR_SDK_TEST_GPU_DLL").expect("FSR_SDK_TEST_GPU_DLL"));
     // SAFETY: The opt-in runner builds the local helper and stages matching SDK DLLs.
     let helper = unsafe { libloading::Library::new(helper_path) }.unwrap();
-    // SAFETY: Exact C export names and signatures are paired with m6_gpu.cpp.
-    let enable_debug = unsafe { *helper.get::<EnableDebug>(b"m6_enable_debug\0").unwrap() };
+    // SAFETY: Exact C export names and signatures are paired with gpu.cpp.
+    let enable_debug = unsafe { *helper.get::<EnableDebug>(b"gpu_enable_debug\0").unwrap() };
     let create_device = unsafe {
         *helper
             .get::<CreateDevice>(b"probe_create_device\0")
             .unwrap()
     };
-    let create_harness = unsafe { *helper.get::<CreateHarness>(b"m6_create\0").unwrap() };
+    let create_harness = unsafe { *helper.get::<CreateHarness>(b"gpu_create\0").unwrap() };
     let set_color_shift = unsafe {
         *helper
-            .get::<SetColorShift>(b"m6_set_color_shift\0")
+            .get::<SetColorShift>(b"gpu_set_color_shift\0")
             .unwrap()
     };
     let finish_batch = unsafe {
         *helper
-            .get::<FinishBatch>(b"m6_finish_recorded_batch\0")
+            .get::<FinishBatch>(b"gpu_finish_recorded_batch\0")
             .unwrap()
     };
-    let destroy = unsafe { *helper.get::<Destroy>(b"m6_destroy\0").unwrap() };
+    let destroy = unsafe { *helper.get::<Destroy>(b"gpu_destroy\0").unwrap() };
 
     // SAFETY: Enable the debug layer before creating the device.
     let hr = unsafe { enable_debug() };
@@ -88,19 +88,16 @@ fn native_recording_ahead_spike() {
     // SAFETY: The helper returned an owned ID3D12Device reference.
     let device = unsafe { ID3D12Device::from_raw(raw_device) };
     // SAFETY: The explicit trusted loader and provider match the pinned ABI.
-    let runtime = unsafe { Runtime::load_unchecked(&loader) }.unwrap();
+    let mut runtime = unsafe { Runtime::load(&loader) }.unwrap();
     let context_count = if mode == "sibling" { count } else { 1 };
     let mut contexts = Vec::with_capacity(context_count);
     for index in 0..context_count {
-        let upscaler = Upscaler::new(
-            &runtime,
-            &device,
-            UpscalerOptions::new(
+        let upscaler = unsafe { runtime.upscaler_dx12(&device) }
+            .create(&UpscalerOptions::new(
                 Dimensions::new(320, 180).unwrap(),
                 Dimensions::new(640, 360).unwrap(),
-            ),
-        )
-        .unwrap();
+            ))
+            .unwrap();
         eprintln!("created context {index}");
         contexts.push(upscaler);
     }
@@ -124,10 +121,10 @@ fn native_recording_ahead_spike() {
             hr >= 0 && !harness.is_null() && !raw_list.is_null(),
             "harness {index}: {hr:#x}"
         );
-        // SAFETY: The color upload belongs to this unsubmitted harness. The
+        // SAFETY: The colour upload belongs to this unsubmitted harness. The
         // shifted synthetic red channel stays below 1.0 for all eight cases.
         let hr = unsafe { set_color_shift(harness, index as f32 * 0.015) };
-        assert!(hr >= 0, "color shift {index}: {hr:#x}");
+        assert!(hr >= 0, "colour shift {index}: {hr:#x}");
         // SAFETY: Each non-null pointer carries a transferred COM reference.
         let list = unsafe { ID3D12GraphicsCommandList::from_raw(raw_list) };
         let resources: Vec<ID3D12Resource> = raw_resources
@@ -142,20 +139,26 @@ fn native_recording_ahead_spike() {
         // SAFETY: The helper has recorded input transitions on this fresh list;
         // all contexts, resources and allocators remain live until the fence.
         let dispatch = unsafe {
-            contexts[context].dispatch(UpscaleDispatch::new(
+            let recording = UpscaleTestInputs::new(
                 &list,
-                UpscaleResources::new(
-                    &resources[0],
-                    &resources[1],
-                    &resources[2],
-                    &resources[3],
-                    &resources[4],
-                ),
+                UpscaleResources::builder()
+                    .color(&resources[0])
+                    .depth(&resources[1])
+                    .motion_vectors(&resources[2])
+                    .exposure(crate::upscaler::dx12::ExposureInput::Texture(&resources[3]))
+                    .output(&resources[4])
+                    .build()
+                    .unwrap(),
                 JitterOffsetPixels::new(0.25, -0.25).unwrap(),
                 FrameTimeMillis::new(16.667).unwrap(),
                 CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
                 mode == "sibling" || index == 0,
-            ))
+            );
+            contexts[context].record(
+                recording.command_list,
+                &recording.resources,
+                &recording.parameters,
+            )
         };
         if let Err(error) = dispatch {
             eprintln!("dispatch {index} failed: {error:?}");

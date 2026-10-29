@@ -39,13 +39,13 @@ struct Equipment {
 
 impl Equipment {
     fn acquire() -> Self {
-        let helper = std::env::var_os("FSR_SDK_TEST_M6_DLL").unwrap();
+        let helper = std::env::var_os("FSR_SDK_TEST_GPU_DLL").unwrap();
         let loader = std::env::var_os("FSR_SDK_TEST_DLL").unwrap();
         // SAFETY: Opt-in runner builds this helper, verifies/stages trusted AMD
         // binaries and excludes GBV. Signatures match the paired C exports.
         unsafe {
             let library = libloading::Library::new(helper).unwrap();
-            let debug = *library.get::<EnableDebug>(b"m6_enable_debug\0").unwrap();
+            let debug = *library.get::<EnableDebug>(b"gpu_enable_debug\0").unwrap();
             assert_eq!(debug(), 0);
             let create = *library
                 .get::<CreateDevice>(b"probe_create_device\0")
@@ -54,35 +54,32 @@ impl Equipment {
             assert_eq!(create(&mut raw), 0);
             assert!(!raw.is_null());
             let device = ID3D12Device::from_raw(raw);
-            let amd = *library.get::<DeviceCheck>(b"m6_require_amd\0").unwrap();
+            let amd = *library.get::<DeviceCheck>(b"gpu_require_amd\0").unwrap();
             assert_eq!(amd(device.as_raw()), 0);
             Self {
-                create: *library.get::<CreateHarness>(b"m6_create\0").unwrap(),
+                create: *library.get::<CreateHarness>(b"gpu_create\0").unwrap(),
                 set_frame: *library.get::<SetFrame>(b"sharpening_set_frame\0").unwrap(),
-                finish: *library.get::<Finish>(b"m6_finish\0").unwrap(),
+                finish: *library.get::<Finish>(b"gpu_finish\0").unwrap(),
                 copy_bits: *library
                     .get::<CopyBits>(b"sharpening_copy_red_bits\0")
                     .unwrap(),
                 copy_red: *library.get::<CopyRed>(b"semantic_copy_red\0").unwrap(),
-                destroy: *library.get::<Destroy>(b"m6_destroy\0").unwrap(),
-                check: *library.get::<DeviceCheck>(b"m6_check_device\0").unwrap(),
-                runtime: Runtime::load_unchecked(loader).unwrap(),
+                destroy: *library.get::<Destroy>(b"gpu_destroy\0").unwrap(),
+                check: *library.get::<DeviceCheck>(b"gpu_check_device\0").unwrap(),
+                runtime: Runtime::load(loader).unwrap(),
                 device,
                 _library: library,
             }
         }
     }
 
-    fn sequence(&self, scene: u32, name: &str, sharpness: Option<f32>) -> Image {
-        let mut context = Upscaler::new(
-            &self.runtime,
-            &self.device,
-            UpscalerOptions::new(
+    fn sequence(&mut self, scene: u32, name: &str, sharpness: Option<f32>) -> Image {
+        let mut context = unsafe { self.runtime.upscaler_dx12(&self.device) }
+            .create(&UpscalerOptions::new(
                 Dimensions::new(320, 180).unwrap(),
                 Dimensions::new(640, 360).unwrap(),
-            ),
-        )
-        .unwrap();
+            ))
+            .unwrap();
         log_provider(&mut context);
         let mut frames = Vec::new();
         let mut image = Image {
@@ -114,19 +111,20 @@ impl Equipment {
                 .into_iter()
                 .map(|raw| {
                     assert!(!raw.is_null());
-                    // SAFETY: This is one owned reference from m6_create.
+                    // SAFETY: This is one owned reference from gpu_create.
                     unsafe { ID3D12Resource::from_raw(raw) }
                 })
                 .collect();
-            let dispatch = UpscaleDispatch::new(
+            let dispatch = UpscaleTestInputs::new(
                 &list,
-                UpscaleResources::new(
-                    &resources[0],
-                    &resources[1],
-                    &resources[2],
-                    &resources[3],
-                    &resources[4],
-                ),
+                UpscaleResources::builder()
+                    .color(&resources[0])
+                    .depth(&resources[1])
+                    .motion_vectors(&resources[2])
+                    .exposure(crate::upscaler::dx12::ExposureInput::Texture(&resources[3]))
+                    .output(&resources[4])
+                    .build()
+                    .unwrap(),
                 JitterOffsetPixels::new(jx, jy).unwrap(),
                 FrameTimeMillis::new(16.667).unwrap(),
                 CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
@@ -246,8 +244,8 @@ fn metrics(scene: u32, name: &str, image: &Image, off: &Image, g_off: f64) -> bo
     passed
 }
 
-// Pixel centers use output coordinates. Bilinear sampling along the analytic
-// edge normal averages 64 profiles with centers Y=80..280, X=256+0.37Y.
+// Pixel centres use output coordinates. Bilinear sampling along the analytic
+// edge normal averages 64 profiles with centres Y=80..280, X=256+0.37Y.
 fn sample(image: &Image, x: f64, y: f64) -> f64 {
     let x = x - 0.5;
     let y = y - 0.5;
@@ -304,7 +302,7 @@ fn edge_diagnostics(name: &str, image: &Image) {
 }
 
 pub(super) fn compare() {
-    let equipment = Equipment::acquire();
+    let mut equipment = Equipment::acquire();
     let mut effect_passed = true;
     for scene in 0..2 {
         let off = equipment.sequence(scene, "off_a", None);

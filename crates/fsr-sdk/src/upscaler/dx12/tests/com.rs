@@ -13,7 +13,11 @@ use windows::core::{GUID, HRESULT};
 use windows::{
     Win32::Graphics::{
         Direct3D12::{
-            D3D12_COMMAND_LIST_TYPE, D3D12_COMMAND_LIST_TYPE_DIRECT, D3D12_RESOURCE_DESC,
+            D3D12_COMMAND_LIST_TYPE, D3D12_COMMAND_LIST_TYPE_DIRECT, D3D12_FEATURE,
+            D3D12_FEATURE_DATA_FORMAT_SUPPORT, D3D12_FEATURE_FORMAT_SUPPORT, D3D12_FORMAT_SUPPORT1,
+            D3D12_FORMAT_SUPPORT1_SHADER_LOAD, D3D12_FORMAT_SUPPORT1_SHADER_SAMPLE,
+            D3D12_FORMAT_SUPPORT1_TEXTURE2D, D3D12_FORMAT_SUPPORT1_TYPED_UNORDERED_ACCESS_VIEW,
+            D3D12_FORMAT_SUPPORT2, D3D12_FORMAT_SUPPORT2_UAV_TYPED_STORE, D3D12_RESOURCE_DESC,
             D3D12_RESOURCE_DIMENSION_TEXTURE2D, D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS,
             D3D12_RESOURCE_FLAG_NONE, ID3D12CommandList_Vtbl, ID3D12Device_Vtbl,
             ID3D12DeviceChild_Vtbl, ID3D12GraphicsCommandList, ID3D12GraphicsCommandList_Vtbl,
@@ -49,6 +53,17 @@ pub(super) struct ComObject {
     pub(super) list_type: Cell<D3D12_COMMAND_LIST_TYPE>,
     pub(super) query_failure: Cell<Option<HRESULT>>,
     pub(super) get_device_failure: Cell<Option<HRESULT>>,
+    pub(super) format_support: Cell<D3D12_FORMAT_SUPPORT1>,
+    pub(super) format_support2: Cell<D3D12_FORMAT_SUPPORT2>,
+    pub(super) format_support_overrides:
+        std::cell::RefCell<Vec<(DXGI_FORMAT, D3D12_FORMAT_SUPPORT1, D3D12_FORMAT_SUPPORT2)>>,
+    pub(super) format_queries: std::cell::RefCell<Vec<DXGI_FORMAT>>,
+    pub(super) format_query_failure: Cell<Option<HRESULT>>,
+    pub(super) format_query_calls: Cell<u32>,
+    pub(super) typed_casting: Cell<bool>,
+    pub(super) casting_query_calls: Cell<u32>,
+    pub(super) casting_query_failure: Cell<Option<HRESULT>>,
+    pub(super) format_fail_at: Cell<Option<DXGI_FORMAT>>,
 }
 
 impl ComObject {
@@ -89,6 +104,16 @@ unsafe extern "system" fn query_interface(
     iid: *const GUID,
     out: *mut *mut c_void,
 ) -> HRESULT {
+    super::performance::com_call(0);
+    // SAFETY: The COM entry point supplies the implementation's live arguments.
+    unsafe { query_interface_impl(this, iid, out) }
+}
+
+unsafe fn query_interface_impl(
+    this: *mut c_void,
+    iid: *const GUID,
+    out: *mut *mut c_void,
+) -> HRESULT {
     // SAFETY: The typed COM vtables pass live fixture pointers and valid outputs.
     unsafe {
         *out = null_mut();
@@ -99,13 +124,13 @@ unsafe extern "system" fn query_interface(
                 return error;
             }
             let canonical = object.canonical.get();
-            add_ref(canonical.cast());
+            add_ref_impl(canonical.cast());
             *out = canonical.cast();
         } else if (object.kind == Kind::Device && requested == &ID3D12Device::IID)
             || (object.kind == Kind::List && requested == &ID3D12GraphicsCommandList::IID)
             || (object.kind == Kind::Resource && requested == &ID3D12Resource::IID)
         {
-            add_ref(this);
+            add_ref_impl(this);
             *out = this;
         } else {
             return E_NOINTERFACE;
@@ -115,6 +140,12 @@ unsafe extern "system" fn query_interface(
 }
 
 unsafe extern "system" fn add_ref(this: *mut c_void) -> u32 {
+    super::performance::com_call(1);
+    // SAFETY: COM supplied a live object.
+    unsafe { add_ref_impl(this) }
+}
+
+unsafe fn add_ref_impl(this: *mut c_void) -> u32 {
     // SAFETY: This pointer carries an outstanding COM reference.
     let object = unsafe { &*this.cast::<ComObject>() };
     let next = object.references.get() + 1;
@@ -123,6 +154,7 @@ unsafe extern "system" fn add_ref(this: *mut c_void) -> u32 {
 }
 
 unsafe extern "system" fn release(this: *mut c_void) -> u32 {
+    super::performance::com_call(2);
     // SAFETY: Every release balances an adopted or added COM reference.
     let object = unsafe { &*this.cast::<ComObject>() };
     let next = object
@@ -158,6 +190,7 @@ unsafe extern "system" fn get_device(
     iid: *const GUID,
     out: *mut *mut c_void,
 ) -> HRESULT {
+    super::performance::com_call(3);
     // SAFETY: GetDevice receives a live list/resource and writable output.
     unsafe {
         *out = null_mut();
@@ -165,18 +198,77 @@ unsafe extern "system" fn get_device(
         if let Some(error) = object.get_device_failure.get() {
             return error;
         }
-        query_interface(object.device.get().cast(), iid, out)
+        query_interface_impl(object.device.get().cast(), iid, out)
     }
 }
 
 unsafe extern "system" fn get_type(this: *mut c_void) -> D3D12_COMMAND_LIST_TYPE {
+    super::performance::com_call(4);
     // SAFETY: GetType is installed only on list objects.
     unsafe { (&*this.cast::<ComObject>()).list_type.get() }
 }
 
 unsafe extern "system" fn get_desc(this: *mut c_void, out: *mut D3D12_RESOURCE_DESC) {
+    super::performance::com_call(5);
     // SAFETY: GetDesc is installed only on resources and receives writable storage.
     unsafe { *out = (&*this.cast::<ComObject>()).desc.get() };
+}
+
+unsafe extern "system" fn check_feature_support(
+    this: *mut c_void,
+    feature: D3D12_FEATURE,
+    data: *mut c_void,
+    size: u32,
+) -> HRESULT {
+    // SAFETY: This device slot receives live fixture storage and the initialized
+    // feature structure from the production inspection path.
+    let object = unsafe { &*this.cast::<ComObject>() };
+    if feature == windows::Win32::Graphics::Direct3D12::D3D12_FEATURE_D3D12_OPTIONS3 {
+        use windows::Win32::Graphics::Direct3D12::D3D12_FEATURE_DATA_D3D12_OPTIONS3;
+        assert_eq!(
+            size as usize,
+            size_of::<D3D12_FEATURE_DATA_D3D12_OPTIONS3>()
+        );
+        object
+            .casting_query_calls
+            .set(object.casting_query_calls.get() + 1);
+        if let Some(error) = object.casting_query_failure.get() {
+            return error;
+        }
+        let data = unsafe { &mut *data.cast::<D3D12_FEATURE_DATA_D3D12_OPTIONS3>() };
+        data.CastingFullyTypedFormatSupported = object.typed_casting.get().into();
+        return HRESULT(0);
+    }
+    object
+        .format_query_calls
+        .set(object.format_query_calls.get() + 1);
+    assert_eq!(feature, D3D12_FEATURE_FORMAT_SUPPORT);
+    assert_eq!(
+        size as usize,
+        size_of::<D3D12_FEATURE_DATA_FORMAT_SUPPORT>()
+    );
+    let data = unsafe { &mut *data.cast::<D3D12_FEATURE_DATA_FORMAT_SUPPORT>() };
+    object.format_queries.borrow_mut().push(data.Format);
+    if let Some(error) = object.format_query_failure.get().filter(|_| {
+        object
+            .format_fail_at
+            .get()
+            .is_none_or(|format| format == data.Format)
+    }) {
+        return error;
+    }
+    data.Support1 = object.format_support.get();
+    data.Support2 = object.format_support2.get();
+    if let Some((_, support1, support2)) = object
+        .format_support_overrides
+        .borrow()
+        .iter()
+        .find(|(format, _, _)| *format == data.Format)
+    {
+        data.Support1 = *support1;
+        data.Support2 = *support2;
+    }
+    HRESULT(0)
 }
 
 fn vtable(kind: Kind) -> *const usize {
@@ -219,7 +311,10 @@ fn vtable(kind: Kind) -> *const usize {
                 slots[offset_of!(ID3D12Resource_Vtbl, GetDesc) / size_of::<usize>()] =
                     get_desc as *const () as usize
             }
-            Kind::Device => {}
+            Kind::Device => {
+                slots[offset_of!(ID3D12Device_Vtbl, CheckFeatureSupport) / size_of::<usize>()] =
+                    check_feature_support as *const () as usize;
+            }
         }
         slots.into_boxed_slice()
     })
@@ -237,6 +332,21 @@ fn object(kind: Kind, device: *mut ComObject, desc: D3D12_RESOURCE_DESC) -> *mut
         list_type: Cell::new(D3D12_COMMAND_LIST_TYPE_DIRECT),
         query_failure: Cell::new(None),
         get_device_failure: Cell::new(None),
+        format_support: Cell::new(
+            D3D12_FORMAT_SUPPORT1_TEXTURE2D
+                | D3D12_FORMAT_SUPPORT1_SHADER_LOAD
+                | D3D12_FORMAT_SUPPORT1_SHADER_SAMPLE
+                | D3D12_FORMAT_SUPPORT1_TYPED_UNORDERED_ACCESS_VIEW,
+        ),
+        format_query_failure: Cell::new(None),
+        format_support2: Cell::new(D3D12_FORMAT_SUPPORT2_UAV_TYPED_STORE),
+        format_support_overrides: Default::default(),
+        format_queries: Default::default(),
+        format_query_calls: Cell::new(0),
+        typed_casting: Cell::new(true),
+        casting_query_calls: Cell::new(0),
+        casting_query_failure: Cell::new(None),
+        format_fail_at: Cell::new(None),
     }));
     // SAFETY: This Box has one initial COM reference, and a child retains its device.
     unsafe {
@@ -317,16 +427,34 @@ impl Scene {
         }
     }
 
-    pub(super) fn input(&self) -> UpscaleDispatch<'_> {
-        UpscaleDispatch::new(
-            &self.list,
-            UpscaleResources::new(
-                &self.resources[0],
-                &self.resources[1],
-                &self.resources[2],
-                &self.resources[3],
-                &self.resources[4],
+    pub(super) fn mask(&self) -> ID3D12Resource {
+        let pointer = object(
+            Kind::Resource,
+            self.device.as_raw().cast(),
+            resource_desc(
+                windows::Win32::Graphics::Dxgi::Common::DXGI_FORMAT_R8_UNORM,
+                1280,
+                720,
+                false,
             ),
+        );
+        // SAFETY: The new resource transfers its initial COM reference.
+        unsafe { adopt(pointer) }
+    }
+
+    pub(super) fn input(&self) -> UpscaleTestInputs<'_> {
+        UpscaleTestInputs::new(
+            &self.list,
+            UpscaleResources::builder()
+                .color(&self.resources[0])
+                .depth(&self.resources[1])
+                .motion_vectors(&self.resources[2])
+                .exposure(crate::upscaler::dx12::ExposureInput::Texture(
+                    &self.resources[3],
+                ))
+                .output(&self.resources[4])
+                .build()
+                .unwrap(),
             JitterOffsetPixels::new(0.0, 0.0).unwrap(),
             FrameTimeMillis::new(16.0).unwrap(),
             CameraParameters::new(0.1, 1000.0, 1.0, 1.0).unwrap(),
@@ -358,7 +486,7 @@ impl Scene {
     }
 }
 
-fn object_from<T: Interface>(value: &T) -> &ComObject {
+pub(super) fn object_from<T: Interface>(value: &T) -> &ComObject {
     // SAFETY: Every interface in Scene owns a live reference to its ComObject.
     unsafe { &*value.as_raw().cast::<ComObject>() }
 }

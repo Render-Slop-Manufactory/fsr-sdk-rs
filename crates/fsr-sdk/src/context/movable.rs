@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! D013 compile/host experiment on the real private owner. No AMD calls, COM
+//! Movable ownership fixtures on the real private owner. No AMD calls, COM
 //! objects, GPU work or public movable API. The only Send override is below.
 
 use super::{NativeContextOwner, RuntimeRetention, tests::fixture};
@@ -130,7 +130,7 @@ struct MovableRuntimeProbe {
     _not_sync: PhantomData<Cell<()>>,
 }
 
-struct MovableOwnerProbe(ArcOwner, bool);
+struct MovableOwnerProbe(ArcOwner, crate::context_policy::Eligibility);
 
 impl MovableOwnerProbe {
     fn destroy(self) -> Result<(), Error> {
@@ -147,7 +147,7 @@ impl MovableOwnerProbe {
 // points into its own retained Box, whose address is stable across moves. The
 // reused fixture has no thread-local state, COM or GPU obligations. Joins order
 // every call and cleanup. This does NOT assert that an AMD context is movable.
-// The additional bool is dispatch eligibility, owned and transferred with the
+// The additional enum is context eligibility, owned and transferred with the
 // context. Dispatch uses only stack-local fixture descriptors, not COM objects.
 unsafe impl Send for MovableOwnerProbe {}
 
@@ -196,7 +196,7 @@ impl MovableRuntimeProbe {
             destroy_code,
             null,
         )
-        .map(|owner| MovableOwnerProbe(owner, false))
+        .map(|owner| MovableOwnerProbe(owner, crate::context_policy::Eligibility::Usable))
     }
 }
 
@@ -332,20 +332,21 @@ fn runtime_and_siblings_cross_threads_with_stable_handles() {
     let runtime = MovableRuntimeProbe::new();
     let weak = Arc::downgrade(&runtime.state);
     let ledger = runtime.ledger.clone();
-    let (runtime, first, second, create_thread, address) = on_thread("d013-create", move || {
-        let first = runtime.create(1, 0, 0, false).unwrap();
-        let second = runtime.create(2, 0, 0, false).unwrap();
-        let address = first.handle_address();
-        (runtime, first, second, thread::current().id(), address)
-    });
-    let (second, destroy_thread) = on_thread("d013-explicit-destroy", move || {
+    let (runtime, first, second, create_thread, address) =
+        on_thread("context-create-worker", move || {
+            let first = runtime.create(1, 0, 0, false).unwrap();
+            let second = runtime.create(2, 0, 0, false).unwrap();
+            let address = first.handle_address();
+            (runtime, first, second, thread::current().id(), address)
+        });
+    let (second, destroy_thread) = on_thread("context-explicit-destroy-worker", move || {
         assert_eq!(first.handle_address(), address);
         drop(runtime);
         first.destroy().unwrap();
         (second, thread::current().id())
     });
     assert!(weak.upgrade().is_some());
-    let drop_thread = on_thread("d013-final-drop", move || {
+    let drop_thread = on_thread("context-final-drop-worker", move || {
         drop(second);
         thread::current().id()
     });
@@ -383,16 +384,16 @@ fn returned_create_error_releases_inputs_without_destroy_on_either_thread() {
             let result = runtime.create(1, u32::MAX, 0, false);
             assert!(matches!(
                 result,
-                Err(Error::Native {
+                Err(Error::Native(crate::error::NativeError {
                     operation: Operation::Create,
                     code: u32::MAX
-                })
+                }))
             ));
             drop(runtime);
             thread::current().id()
         };
         let actor = if threaded {
-            on_thread("d013-create-error", action)
+            on_thread("context-create-error-worker", action)
         } else {
             action()
         };
@@ -412,14 +413,15 @@ fn null_success_retains_dependencies_on_either_thread() {
         let action = move || {
             assert!(matches!(
                 runtime.create(1, 0, 0, true),
-                Err(Error::NativeInvariantViolation(
-                    InvariantViolation::NullContextOnSuccess
-                ))
+                Err(Error::Invariant {
+                    operation: crate::error::Operation::Create,
+                    reason: InvariantViolation::NullContextOnSuccess
+                })
             ));
             drop(runtime);
         };
         if threaded {
-            on_thread("d013-null-success", action)
+            on_thread("context-null-success-worker", action)
         } else {
             action()
         }
@@ -441,15 +443,15 @@ fn destroy_error_is_terminal_and_retains_dependencies_on_either_thread() {
         let action = move || {
             assert!(matches!(
                 owner.destroy(),
-                Err(Error::Native {
+                Err(Error::Native(crate::error::NativeError {
                     operation: Operation::Destroy,
                     code: u32::MAX
-                })
+                }))
             ));
             thread::current().id()
         };
         let actor = if threaded {
-            on_thread("d013-destroy-error", action)
+            on_thread("context-destroy-error-worker", action)
         } else {
             action()
         };
@@ -470,11 +472,11 @@ fn unwinding_cleans_up_on_either_thread() {
         drop(runtime);
         let action = move || {
             let _owner = owner;
-            panic!("D013 intentional fixture unwind");
+            panic!("Movable context intentional fixture unwind");
         };
         let actor = if threaded {
             let worker = thread::Builder::new()
-                .name("d013-unwind".into())
+                .name("context-unwind-worker".into())
                 .spawn(action)
                 .unwrap();
             let actor = worker.thread().id();
@@ -498,7 +500,7 @@ fn runtime_without_context_can_release_on_another_thread() {
         let ledger = runtime.ledger.clone();
         let weak = Arc::downgrade(&runtime.state);
         if threaded {
-            on_thread("d013-runtime-drop", move || drop(runtime));
+            on_thread("runtime-drop-worker", move || drop(runtime));
         } else {
             drop(runtime);
         }
@@ -508,5 +510,5 @@ fn runtime_without_context_can_release_on_another_thread() {
     }
 }
 
-#[path = "d013_transfer.rs"]
+#[path = "transfer.rs"]
 mod transfer;

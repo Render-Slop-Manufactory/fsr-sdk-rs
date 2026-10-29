@@ -14,18 +14,56 @@
 #include <memory>
 #include <vector>
 #include "ffx_api_dx12.h"
+#ifdef FSR_FORMAT_PROBE
+#include <d3dcompiler.h>
+#endif
 
 using Microsoft::WRL::ComPtr;
 
 namespace {
+#ifdef FSR_GPU_TIMING
+// Dedicated timing-helper build: configured once, before creating its harness.
+uint32_t render_width = 320;
+uint32_t render_height = 180;
+constexpr uint32_t output_width = 1920;
+constexpr uint32_t output_height = 1080;
+#else
 constexpr uint32_t render_width = 320;
 constexpr uint32_t render_height = 180;
 constexpr uint32_t output_width = 640;
 constexpr uint32_t output_height = 360;
+#endif
 constexpr uint16_t sentinel_half = 0x7bff; // 65504, unlike expected output
 enum Role { Color, Depth, Motion, Exposure, Output, Count };
 
 struct Harness {
+#ifdef FSR_REACTIVE_PROBE
+    ComPtr<ID3D12Resource> probe_opaque, probe_opaque_upload;
+    ComPtr<ID3D12Resource> probe_reactive, probe_seed, probe_readback;
+    D3D12_PLACED_SUBRESOURCE_FOOTPRINT probe_footprint{};
+    UINT64 probe_bytes = 0;
+    uint32_t probe_width = 0, probe_height = 0;
+#endif
+#ifdef FSR_GPU_TIMING
+    ComPtr<ID3D12QueryHeap> timestamps;
+    ComPtr<ID3D12Resource> timestamp_readback;
+    UINT64 timestamp_frequency = 0;
+    uint32_t timing_frame = 0, timing_width = 0, timing_height = 0;
+    uint32_t timing_feature = 0;
+    float timing_max_red = 0;
+#endif
+    UINT64 performance_fence = 0;
+    bool display_motion = false;
+    bool dynamic_render = false;
+    bool hdr = false;
+    ComPtr<ID3D12Resource> masks[2];
+    ComPtr<ID3D12Resource> mask_uploads[2];
+    ComPtr<ID3D12Resource> mask_readbacks[2];
+    D3D12_PLACED_SUBRESOURCE_FOOTPRINT mask_footprints[2]{};
+    UINT64 mask_bytes[2]{};
+    ComPtr<ID3D12Resource> input_readbacks[4];
+    D3D12_PLACED_SUBRESOURCE_FOOTPRINT input_footprints[4]{};
+    UINT64 input_bytes[4]{};
     ComPtr<ID3D12Device> device;
     ComPtr<ID3D12CommandQueue> queue;
     ComPtr<ID3D12CommandAllocator> allocator;
@@ -33,6 +71,9 @@ struct Harness {
     ComPtr<ID3D12Resource> textures[Count];
     ComPtr<ID3D12Resource> uploads[Count];
     ComPtr<ID3D12Resource> readback;
+    ComPtr<ID3D12Resource> calibration_inputs[4];
+    D3D12_PLACED_SUBRESOURCE_FOOTPRINT calibration_footprints[4]{};
+    UINT64 calibration_bytes[4]{};
     ComPtr<ID3D12Fence> fence;
     D3D12_PLACED_SUBRESOURCE_FOOTPRINT output_footprint{};
     UINT64 output_bytes = 0;
@@ -74,11 +115,12 @@ D3D12_RESOURCE_DESC buffer_desc(UINT64 size) {
     return desc;
 }
 
-D3D12_RESOURCE_DESC texture_desc(Role role) {
+D3D12_RESOURCE_DESC texture_desc(Role role, bool display_motion = false) {
     D3D12_RESOURCE_DESC desc{};
     desc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
-    desc.Width = role == Output ? output_width : role == Exposure ? 1 : render_width;
-    desc.Height = role == Output ? output_height : role == Exposure ? 1 : render_height;
+    const bool display = role == Output || (role == Motion && display_motion);
+    desc.Width = display ? output_width : role == Exposure ? 1 : render_width;
+    desc.Height = display ? output_height : role == Exposure ? 1 : render_height;
     desc.DepthOrArraySize = 1;
     desc.MipLevels = 1;
     desc.Format = role == Color || role == Output
@@ -105,7 +147,7 @@ void transition(ID3D12GraphicsCommandList* list, ID3D12Resource* resource,
 }
 
 HRESULT prepare_texture(Harness& h, Role role) {
-    const auto desc = texture_desc(role);
+    const auto desc = texture_desc(role, h.display_motion);
     const auto default_heap = heap_properties(D3D12_HEAP_TYPE_DEFAULT);
     HRESULT hr = h.device->CreateCommittedResource(
         &default_heap, D3D12_HEAP_FLAG_NONE, &desc, D3D12_RESOURCE_STATE_COPY_DEST,
@@ -125,7 +167,8 @@ HRESULT prepare_texture(Harness& h, Role role) {
     if (FAILED(hr)) return hr;
     std::memset(mapped, 0, static_cast<size_t>(bytes));
     for (uint32_t y = 0; y < desc.Height; ++y) {
-        fill_row(role, y, mapped + footprint.Offset + y * footprint.Footprint.RowPitch);
+        fill_row(role, y, mapped + footprint.Offset + y * footprint.Footprint.RowPitch,
+                 0.0f, h.display_motion);
     }
     h.uploads[role]->Unmap(0, nullptr);
     D3D12_TEXTURE_COPY_LOCATION target{};
@@ -241,7 +284,7 @@ HRESULT read_metrics(Harness& h, Metrics* metrics) {
 }
 } // namespace
 
-extern "C" __declspec(dllexport) int32_t __cdecl m6_enable_debug() {
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_enable_debug() {
     ComPtr<ID3D12Debug> debug;
     HRESULT hr = D3D12GetDebugInterface(IID_PPV_ARGS(&debug));
     if (FAILED(hr)) return hr;
@@ -260,7 +303,7 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_enable_debug() {
     return S_OK;
 }
 
-extern "C" __declspec(dllexport) int32_t __cdecl m6_require_amd(ID3D12Device* device) {
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_require_amd(ID3D12Device* device) {
     if (!device) return E_INVALIDARG;
     ComPtr<IDXGIFactory4> factory;
     HRESULT hr = CreateDXGIFactory1(IID_PPV_ARGS(&factory));
@@ -278,7 +321,18 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_require_amd(ID3D12Device* de
 }
 
 // Call after context teardown while the caller's device remains alive.
-extern "C" __declspec(dllexport) int32_t __cdecl m6_check_device(ID3D12Device* device) {
+// The explicit Proton case checks device removal independently of unavailable
+// Windows diagnostics. gpu_check_device retains the Windows debug requirement.
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_check_device_removed(ID3D12Device* device) {
+    if (!device) return E_INVALIDARG;
+    const HRESULT removed = device->GetDeviceRemovedReason();
+    std::fprintf(stderr, "Proton device checkpoint: device_removed=0x%08lx\n",
+                 static_cast<unsigned long>(removed));
+    return removed;
+}
+
+// Call after context teardown while the caller's device remains alive.
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_check_device(ID3D12Device* device) {
     if (!device) return E_INVALIDARG;
     const uint64_t errors = debug_error_count(device);
     const HRESULT removed = device->GetDeviceRemovedReason();
@@ -287,21 +341,22 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_check_device(ID3D12Device* d
     return removed != S_OK ? removed : errors == 0 ? S_OK : E_FAIL;
 }
 
-extern "C" __declspec(dllexport) int32_t __cdecl m6_set_temporal_frame(
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_set_temporal_frame(
     void* handle, uint32_t frame, float jitter_x, float jitter_y) {
     if (!handle || frame > 2 || !std::isfinite(jitter_x) || !std::isfinite(jitter_y))
         return E_INVALIDARG;
     return set_temporal_frame(*static_cast<Harness*>(handle), frame, jitter_x, jitter_y);
 }
 
-extern "C" __declspec(dllexport) int32_t __cdecl m6_create(
-    ID3D12Device* device, void** out_harness,
+static int32_t create_harness(
+    ID3D12Device* device, bool display_motion, void** out_harness,
     ID3D12GraphicsCommandList** out_list, ID3D12Resource** out_resources) {
     if (!device || !out_harness || !out_list || !out_resources) return E_INVALIDARG;
     *out_harness = nullptr;
     *out_list = nullptr;
     for (int i = 0; i < Count; ++i) out_resources[i] = nullptr;
     auto h = std::make_unique<Harness>();
+    h->display_motion = display_motion;
     h->device = device; // independent COM reference
     D3D12_COMMAND_QUEUE_DESC queue_desc{};
     queue_desc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
@@ -328,10 +383,28 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_create(
     return S_OK;
 }
 
-extern "C" __declspec(dllexport) int32_t __cdecl m6_compare_resource(
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_create(
+    ID3D12Device* device, void** out_harness,
+    ID3D12GraphicsCommandList** out_list, ID3D12Resource** out_resources) {
+    return create_harness(device, false, out_harness, out_list, out_resources);
+}
+
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_create_motion_resolution(
+    ID3D12Device* device, uint32_t display_motion, void** out_harness,
+    ID3D12GraphicsCommandList** out_list, ID3D12Resource** out_resources) {
+    if (display_motion > 1) return E_INVALIDARG;
+    return create_harness(device, display_motion != 0, out_harness, out_list, out_resources);
+}
+
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_compare_resource(
     ID3D12Resource* resource, const FfxApiResource* actual, uint32_t state) {
     if (!resource || !actual) return 0;
-    const FfxApiResource expected = ffxApiGetResourceDX12(resource, state);
+    FfxApiResource expected = ffxApiGetResourceDX12(resource, state);
+    // The public helper omits the RGB32F cases although the native enum and
+    // backend support the fixed FLOAT view. This is an explicit, tested gap.
+    if(resource->GetDesc().Format==DXGI_FORMAT_R32G32B32_FLOAT ||
+       resource->GetDesc().Format==DXGI_FORMAT_R32G32B32_TYPELESS)
+        expected.description.format=FFX_API_SURFACE_FORMAT_R32G32B32_FLOAT;
     const auto& a = actual->description;
     const auto& e = expected.description;
     return actual->resource == expected.resource && actual->state == expected.state
@@ -342,7 +415,7 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_compare_resource(
 
 // Change only this harness's not-yet-submitted upload. Each batch output then
 // has a distinct expected red level, exposing stale or aliased descriptors.
-extern "C" __declspec(dllexport) int32_t __cdecl m6_set_color_shift(
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_set_color_shift(
     void* handle, float red_shift) {
     if (!handle || !std::isfinite(red_shift) || red_shift < 0.0f || red_shift > 0.12f)
         return E_INVALIDARG;
@@ -361,11 +434,133 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_set_color_shift(
     return S_OK;
 }
 
-extern "C" __declspec(dllexport) int32_t __cdecl m6_finish(void* handle, Metrics* metrics) {
+// Bounded pre-exposure integration input: scale RGB in the pending colour
+// upload, leaving alpha, exposure, depth and motion unchanged. Called once per
+// fresh harness before submission; no quality comparison is performed.
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_set_pre_exposure(
+    void* handle, float factor) {
+    if (!handle || !std::isfinite(factor) || factor < 0.25f || factor > 4.0f)
+        return E_INVALIDARG;
+    auto& h = *static_cast<Harness*>(handle);
+    const auto desc = texture_desc(Color);
+    D3D12_PLACED_SUBRESOURCE_FOOTPRINT footprint{};
+    h.device->GetCopyableFootprints(&desc, 0, 1, 0, &footprint, nullptr, nullptr, nullptr);
+    uint8_t* mapped = nullptr;
+    HRESULT hr = h.uploads[Color]->Map(0, nullptr, reinterpret_cast<void**>(&mapped));
+    if (FAILED(hr)) return hr;
+    for (uint32_t y = 0; y < render_height; ++y) {
+        uint8_t* row = mapped + footprint.Offset + y * footprint.Footprint.RowPitch;
+        for (uint32_t x = 0; x < render_width; ++x) {
+            uint16_t pixel[4];
+            std::memcpy(pixel, row + x * sizeof(pixel), sizeof(pixel));
+            for (int channel = 0; channel < 3; ++channel)
+                pixel[channel] = half(unhalf(pixel[channel]) * factor);
+            std::memcpy(row + x * sizeof(pixel), pixel, sizeof(pixel));
+        }
+    }
+    h.uploads[Color]->Unmap(0, nullptr);
+    return S_OK;
+}
+
+// Pending device depth and motion for the bounded profile case. Motion uses
+// current-to-previous displacement in the selected texture's UV/pixel units.
+// Jitter-containing vectors include the actual projection displacement;
+// no comparison of native cancellation quality or provider internals is made.
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_set_depth_motion_profile(
+    void* handle, uint32_t reversed, uint32_t pixels, uint32_t included_jitter,
+    uint32_t frame, float jitter_x, float jitter_y, float previous_x, float previous_y) {
+    if (!handle || reversed > 1 || pixels > 1 || included_jitter > 1 || frame > 2
+        || !std::isfinite(jitter_x) || !std::isfinite(jitter_y)
+        || !std::isfinite(previous_x) || !std::isfinite(previous_y)) return E_INVALIDARG;
+    auto& h = *static_cast<Harness*>(handle);
+    for (Role role : {Depth, Motion}) {
+        const auto desc = h.textures[role]->GetDesc();
+        D3D12_PLACED_SUBRESOURCE_FOOTPRINT footprint{};
+        h.device->GetCopyableFootprints(&desc, 0, 1, 0, &footprint, nullptr, nullptr, nullptr);
+        uint8_t* mapped = nullptr;
+        HRESULT hr = h.uploads[role]->Map(0, nullptr, reinterpret_cast<void**>(&mapped));
+        if (FAILED(hr)) return hr;
+        for (uint32_t y = 0; y < desc.Height; ++y) {
+            uint8_t* row = mapped + footprint.Offset + y * footprint.Footprint.RowPitch;
+            for (uint32_t x = 0; x < desc.Width; ++x) {
+                if (role == Depth) {
+                    const float depth = reversed ? 0.75f : 0.25f;
+                    std::memcpy(row + x * sizeof(depth), &depth, sizeof(depth));
+                } else {
+                    float dx = frame == 0 ? 0.0f : -1.0f / render_width;
+                    float dy = 0.0f;
+                    if (included_jitter) {
+                        dx += (previous_x - jitter_x) / render_width;
+                        dy += (previous_y - jitter_y) / render_height;
+                    }
+                    if (pixels) {
+                        dx *= static_cast<float>(desc.Width);
+                        dy *= static_cast<float>(desc.Height);
+                    }
+                    uint16_t motion[2] = {half(dx), half(dy)};
+                    std::memcpy(row + x * sizeof(motion), motion, sizeof(motion));
+                }
+            }
+        }
+        h.uploads[role]->Unmap(0, nullptr);
+    }
+    return S_OK;
+}
+
+#include "active_render.h"
+#include "supplied_masks.h"
+#include "color_signal.h"
+#ifdef FSR_REACTIVE_PROBE
+#include "reactive_mask.h"
+#endif
+
+// Constant linear scene RGB (8,4,2), packed after matching pre-exposure.
+// Pending uploads are rewritten before submission; alpha/exposure remain 1.
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_set_hdr_frame(
+    void* handle, float pre_exposure) {
+    if (!handle || !std::isfinite(pre_exposure)
+        || pre_exposure < 0.25f || pre_exposure > 4.0f) return E_INVALIDARG;
+    auto& h = *static_cast<Harness*>(handle);
+    for (Role role : {Color, Depth, Motion, Exposure}) {
+        const auto desc = h.textures[role]->GetDesc();
+        D3D12_PLACED_SUBRESOURCE_FOOTPRINT footprint{};
+        h.device->GetCopyableFootprints(&desc, 0, 1, 0, &footprint, nullptr, nullptr, nullptr);
+        uint8_t* mapped = nullptr;
+        const HRESULT hr = h.uploads[role]->Map(0, nullptr, reinterpret_cast<void**>(&mapped));
+        if (FAILED(hr)) return hr;
+        for (uint32_t y = 0; y < desc.Height; ++y) {
+            auto* row = mapped + footprint.Offset + y * footprint.Footprint.RowPitch;
+            for (uint32_t x = 0; x < desc.Width; ++x) {
+                if (role == Color) {
+                    const uint16_t pixel[4] = {half(8.0f * pre_exposure),
+                        half(4.0f * pre_exposure), half(2.0f * pre_exposure), half(1.0f)};
+                    std::memcpy(row + x * sizeof(pixel), pixel, sizeof(pixel));
+                } else if (role == Motion) {
+                    const uint16_t motion[2] = {0, 0};
+                    std::memcpy(row + x * sizeof(motion), motion, sizeof(motion));
+                } else {
+                    const float value = role == Depth ? 0.25f : 1.0f;
+                    std::memcpy(row + x * sizeof(value), &value, sizeof(value));
+                }
+            }
+        }
+        h.uploads[role]->Unmap(0, nullptr);
+    }
+    h.hdr = true;
+    return S_OK;
+}
+
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_finish(void* handle, Metrics* metrics) {
     if (!handle || !metrics) return E_INVALIDARG;
     auto& h = *static_cast<Harness*>(handle);
     HRESULT hr = record_readback(h);
     std::fprintf(stderr, "DX12 readback recording: HRESULT=0x%08lx\n", static_cast<unsigned long>(hr));
+    if (FAILED(hr)) return hr;
+    if (h.dynamic_render || h.hdr) {
+        hr = record_input_readbacks(h);
+        if (FAILED(hr)) return hr;
+    }
+    hr = record_mask_inputs(h);
     if (FAILED(hr)) return hr;
     hr = h.list->Close();
     std::fprintf(stderr, "DX12 list close: HRESULT=0x%08lx\n", static_cast<unsigned long>(hr));
@@ -381,12 +576,15 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_finish(void* handle, Metrics
     if (FAILED(hr)) return hr;
     hr = read_metrics(h, metrics);
     std::fprintf(stderr, "DX12 mapped readback: HRESULT=0x%08lx\n", static_cast<unsigned long>(hr));
-    return hr;
+    if (FAILED(hr)) return hr;
+    hr = check_mask_inputs(h);
+    if (FAILED(hr)) return hr;
+    return h.dynamic_render || h.hdr ? check_input_readbacks(h) : S_OK;
 }
 
 // Record every readback before submission, then submit all lists in order on
-// one queue. Each list has its own allocator and resource set from m6_create.
-extern "C" __declspec(dllexport) int32_t __cdecl m6_finish_recorded_batch(
+// one queue. Each list has its own allocator and resource set from gpu_create.
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_finish_recorded_batch(
     void* const* handles, uint32_t count, Metrics* metrics) {
     if (!handles || !metrics || count == 0 || count > 8 || !handles[0]) return E_INVALIDARG;
     auto& first = *static_cast<Harness*>(handles[0]);
@@ -415,18 +613,24 @@ extern "C" __declspec(dllexport) int32_t __cdecl m6_finish_recorded_batch(
     return S_OK;
 }
 
-extern "C" __declspec(dllexport) void __cdecl m6_destroy(void* handle) {
+extern "C" __declspec(dllexport) void __cdecl gpu_destroy(void* handle) {
     delete static_cast<Harness*>(handle);
 }
 
-// Test-only D013 observations. Call after successful submission/fence, while
+// Only for a fresh, never-submitted harness. Release its executable list while
+// retaining resources/allocator through terminal FSR-context destruction.
+extern "C" __declspec(dllexport) void __cdecl gpu_discard_recording(void* handle) {
+    if (handle) static_cast<Harness*>(handle)->list.Reset();
+}
+
+// Test-only transfer observations. Call after successful submission/fence, while
 // the harness and helper are retained. UINT64_MAX means device removal.
-extern "C" __declspec(dllexport) uint64_t __cdecl d013_fence_value(void* handle) {
+extern "C" __declspec(dllexport) uint64_t __cdecl gpu_fence_value(void* handle) {
     return handle ? static_cast<Harness*>(handle)->fence->GetCompletedValue() : UINT64_MAX;
 }
 
 // Exact RGBA16F payload, excluding row padding; no conversion or channel loss.
-extern "C" __declspec(dllexport) int32_t __cdecl d013_copy_payload(
+extern "C" __declspec(dllexport) int32_t __cdecl gpu_copy_payload(
     void* handle, uint8_t* output, uint32_t bytes) {
     const uint32_t row_bytes = output_width * 8;
     if (!handle || !output || bytes != row_bytes * output_height) return E_INVALIDARG;
@@ -454,7 +658,7 @@ extern "C" __declspec(dllexport) int32_t __cdecl semantic_set_frame(
     return set_semantic_frame(*static_cast<Harness*>(handle), frame, jitter_x, jitter_y, reverse_motion);
 }
 
-// Call only after m6_finish has fenced completion. Copy into caller-owned storage.
+// Call only after gpu_finish has fenced completion. Copy into caller-owned storage.
 extern "C" __declspec(dllexport) int32_t __cdecl semantic_copy_red(
     void* handle, float* output, uint32_t count) {
     if (!handle || !output || count != output_width * output_height) return E_INVALIDARG;
@@ -475,3 +679,23 @@ extern "C" __declspec(dllexport) int32_t __cdecl semantic_copy_red(
 }
 
 #include "sharpening.h"
+#include "temporal_calibration.h"
+#include "temporal_diagnosis.h"
+
+#include "performance.h"
+
+#ifdef FSR_FORMAT_PROBE
+#include "typed_formats.h"
+#endif
+
+#ifdef FSR_OUTPUT_PROBE
+#include "variable_output.h"
+#ifdef FSR_MOTION_PROBE
+#include "motion_scale.h"
+#include "public_motion.h"
+#endif
+#endif
+
+#ifdef FSR_GPU_TIMING
+#include "gpu_timing.h"
+#endif

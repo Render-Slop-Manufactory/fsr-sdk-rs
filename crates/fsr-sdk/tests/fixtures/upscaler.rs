@@ -2,7 +2,7 @@
 
 //! Standalone Windows fixture for the public constructor, not an AMD provider.
 //! Descriptor layouts mirror SDK v2.3.0; AMD notice is in this crate's LICENSE-AMD.
-use std::{ffi::c_void, sync::{Mutex, atomic::{AtomicU32, AtomicUsize, Ordering}}};
+use std::{ffi::c_void, sync::{Mutex, atomic::{AtomicU32, AtomicU64, AtomicUsize, Ordering}}};
 
 #[repr(C)]
 pub struct Header {
@@ -55,6 +55,25 @@ pub struct Snapshot {
     pub chain_valid: u32,
 }
 
+#[repr(C)]
+struct OverrideVersion { header: Header, id: u64 }
+static DESTROYED_PROVIDER: AtomicU64 = AtomicU64::new(0);
+
+// SAFETY: Only this fixture's complete retained backend chain reaches here.
+unsafe fn selected_provider(backend: &Backend) -> Option<u64> {
+    let mut next = backend.header.next;
+    if !next.is_null() && unsafe { (*next).tag } == 3 {
+        next = unsafe { (*next).next };
+    }
+    if next.is_null() { return Some(0); }
+    // SAFETY: Caller supplies a complete optional override node.
+    let node = unsafe { &*next.cast::<OverrideVersion>() };
+    (node.header.tag == 5 && node.header.next.is_null()).then_some(node.id)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn fixture_destroyed_provider() -> u64 { DESTROYED_PROVIDER.load(Ordering::SeqCst) }
+
 static CREATES: AtomicU32 = AtomicU32::new(0);
 static DESTROYS: AtomicU32 = AtomicU32::new(0);
 static CREATE_CODE: AtomicU32 = AtomicU32::new(0);
@@ -75,6 +94,36 @@ static DISPATCH_CODE: AtomicU32 = AtomicU32::new(0);
 static DISPATCH_CALLS: AtomicU32 = AtomicU32::new(0);
 static DISPATCH_TAG: AtomicUsize = AtomicUsize::new(0);
 static DISPATCH_OBSERVER: Mutex<Option<unsafe extern "C" fn(*const Header)>> = Mutex::new(None);
+static QUERY_CALLS: AtomicU32 = AtomicU32::new(0);
+static CONFIGURE_CALLS: AtomicU32 = AtomicU32::new(0);
+static CREATE_OBSERVER: Mutex<Option<unsafe extern "C" fn(*const Header,*const c_void,bool)>> = Mutex::new(None);
+#[unsafe(no_mangle)]
+pub extern "C" fn fixture_set_create_observer(observer: Option<unsafe extern "C" fn(*const Header,*const c_void,bool)>) {
+    *CREATE_OBSERVER.lock().unwrap() = observer;
+}
+static CONFIGURE_OBSERVER: Mutex<Option<unsafe extern "C" fn(*mut *mut c_void, *const c_void) -> u32>> = Mutex::new(None);
+
+#[unsafe(no_mangle)]
+pub extern "C" fn fixture_set_configure_observer(observer: Option<unsafe extern "C" fn(*mut *mut c_void, *const c_void) -> u32>) {
+    *CONFIGURE_OBSERVER.lock().unwrap() = observer;
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn fixture_configure_calls() -> u32 { CONFIGURE_CALLS.load(Ordering::SeqCst) }
+static QUERY_OBSERVER: Mutex<Option<unsafe extern "C" fn(*mut *mut c_void, *mut c_void) -> u32>> =
+    Mutex::new(None);
+
+#[unsafe(no_mangle)]
+pub extern "C" fn fixture_set_query_observer(
+    observer: Option<unsafe extern "C" fn(*mut *mut c_void, *mut c_void) -> u32>,
+) {
+    *QUERY_OBSERVER.lock().unwrap() = observer;
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn fixture_query_calls() -> u32 {
+    QUERY_CALLS.load(Ordering::SeqCst)
+}
 
 /// Opt-in typed inspection for calls supplying a complete dispatch descriptor.
 #[unsafe(no_mangle)]
@@ -151,12 +200,15 @@ pub unsafe extern "C" fn ffxCreateContext(
         UPSCALE_WIDTH.store(root.upscale.width, Ordering::SeqCst);
         UPSCALE_HEIGHT.store(root.upscale.height, Ordering::SeqCst);
         DEVICE.store(backend.device as usize, Ordering::SeqCst);
+        let has_observer=CREATE_OBSERVER.lock().unwrap().is_some();
         CHAIN_VALID.store(
-            u32::from(allocator.is_null() && (*out).is_null() &&
-                root.message.is_null() && backend.header.next.is_null() &&
+            u32::from((allocator.is_null() || has_observer) && (*out).is_null() &&
+                (root.message.is_null() || has_observer) && selected_provider(backend).is_some() &&
                 !backend.device.is_null()),
             Ordering::SeqCst,
         );
+        let observer = *CREATE_OBSERVER.lock().unwrap();
+        if let Some(observer) = observer { observer(desc,allocator,false); }
         *out = if NULL_CREATE.load(Ordering::SeqCst) != 0 {
             std::ptr::null_mut()
         } else {
@@ -170,7 +222,7 @@ pub unsafe extern "C" fn ffxCreateContext(
 pub unsafe extern "C" fn ffxDestroyContext(out: *mut *mut c_void, allocator: *const c_void) -> u32 {
     // SAFETY: Only a successful fixture handle reaches this function.
     unsafe {
-        if out.is_null() || (*out).is_null() || !allocator.is_null() {
+        if out.is_null() || (*out).is_null() || (!allocator.is_null() && CREATE_OBSERVER.lock().unwrap().is_none()) {
             return 0xf0000001;
         }
         DESTROYS.fetch_add(1, Ordering::SeqCst);
@@ -182,18 +234,37 @@ pub unsafe extern "C" fn ffxDestroyContext(out: *mut *mut c_void, allocator: *co
             || version.header.tag != VERSION_TAG.load(Ordering::SeqCst) as u64
             || backend.header.tag != BACKEND_TAG.load(Ordering::SeqCst) as u64
             || backend.device.is_null()
-            || !backend.header.next.is_null()
+            || selected_provider(backend).is_none()
         {
             return 0xf0000003;
         }
+        let observer = *CREATE_OBSERVER.lock().unwrap();
+        if let Some(observer) = observer { observer((*out).cast(),allocator,true); }
+        DESTROYED_PROVIDER.store(selected_provider(backend).unwrap(), Ordering::SeqCst);
         DESTROY_CODE.load(Ordering::SeqCst)
     }
 }
 
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn ffxQuery(_: *mut *mut c_void, _: *mut c_void) -> u32 { 0 }
+pub unsafe extern "C" fn ffxQuery(context: *mut *mut c_void, desc: *mut c_void) -> u32 {
+    QUERY_CALLS.fetch_add(1, Ordering::SeqCst);
+    let observer = *QUERY_OBSERVER.lock().unwrap();
+    if let Some(observer) = observer {
+        // SAFETY: The registering test supplies the matching synchronous callback.
+        unsafe { observer(context, desc) }
+    } else {
+        0
+    }
+}
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn ffxConfigure(_: *mut *mut c_void, _: *const c_void) -> u32 { 0 }
+pub unsafe extern "C" fn ffxConfigure(context: *mut *mut c_void, desc: *const c_void) -> u32 {
+    CONFIGURE_CALLS.fetch_add(1, Ordering::SeqCst);
+    let observer = *CONFIGURE_OBSERVER.lock().unwrap();
+    if let Some(observer) = observer {
+        // SAFETY: Registered observer matches the wrapper's synchronous descriptor.
+        unsafe { observer(context, desc) }
+    } else { 0 }
+}
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn ffxDispatch(context: *mut *mut c_void, desc: *const Header) -> u32 {
     // SAFETY: The wrapper's private test call supplies a live context and a

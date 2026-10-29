@@ -2,12 +2,12 @@
 
 [package]
 name = "fsr-sdk-sys"
-version = "0.1.1"
+version = "0.1.2"
 description = "Selected raw bindings and explicit Windows/DX12 runtime loading for AMD FSR SDK v2.3.0"
+documentation = "https://docs.rs/fsr-sdk-sys/0.1.2/fsr_sdk_sys/"
+readme = "README.md"
 keywords = ["fsr", "fidelityfx", "dx12", "graphics", "gamedev"]
 categories = ["external-ffi-bindings", "rendering", "game-development"]
-# These runners require the complete repository checkout.
-exclude = ["tests/**/*.ps1"]
 edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
@@ -21,8 +21,7 @@ features = ["dx12"]
 [features]
 default = []
 dx12 = ["dep:libloading"]
-# Reserved unsupported backend marker.
-# Enabling this intentionally produces a compile error.
+# Reserved backend; intentionally fails to compile until Vulkan is implemented.
 vulkan = []
 
 [target.'cfg(windows)'.dependencies]

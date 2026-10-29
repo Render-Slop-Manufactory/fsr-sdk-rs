@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! Bounded, opt-in D013 AMD experiment. This is not a public movable API.
+//! Bounded, opt-in Transfer baseline AMD experiment. This is not a public movable API.
 use super::super::UpscaleCreateState;
 use super::*;
 use crate::{context::NativeContextOwner, runtime::RuntimeState};
@@ -83,7 +83,7 @@ fn loaded(path: &std::path::Path) -> bool {
 
 fn phase(label: &str) {
     eprintln!(
-        "D013 phase={label} thread={:?} name={:?}",
+        "Transfer baseline phase={label} thread={:?} name={:?}",
         thread::current().id(),
         thread::current().name()
     );
@@ -96,11 +96,11 @@ impl SerialFamily {
             std::env::var_os("FSR_SDK_TEST_GBV").is_none(),
             "GBV excluded"
         );
-        assert!(std::env::var_os("FSR_SDK_TEST_M6_CONTROL").is_none());
+        assert!(std::env::var_os("FSR_SDK_TEST_GPU_CONTROL").is_none());
         let loader_path = PathBuf::from(std::env::var_os("FSR_SDK_TEST_DLL").unwrap());
         let provider_path = loader_path.with_file_name("amd_fidelityfx_upscaler_dx12.dll");
         assert!(!loaded(&loader_path), "loader already loaded in child");
-        let helper_path = PathBuf::from(std::env::var_os("FSR_SDK_TEST_M6_DLL").unwrap());
+        let helper_path = PathBuf::from(std::env::var_os("FSR_SDK_TEST_GPU_DLL").unwrap());
         // SAFETY: Trusted, locally compiled helper; signatures match gpu.cpp.
         let helper = unsafe { libloading::Library::new(helper_path) }.unwrap();
         // SAFETY: Exact paired C exports, library retained in this bundle.
@@ -115,18 +115,18 @@ impl SerialFamily {
             destroy_harness,
         ) = unsafe {
             (
-                *helper.get::<EnableDebug>(b"m6_enable_debug\0").unwrap(),
+                *helper.get::<EnableDebug>(b"gpu_enable_debug\0").unwrap(),
                 *helper
                     .get::<CreateDevice>(b"probe_create_device\0")
                     .unwrap(),
-                *helper.get::<DeviceCheck>(b"m6_require_amd\0").unwrap(),
-                *helper.get::<DeviceCheck>(b"m6_check_device\0").unwrap(),
-                *helper.get::<CreateHarness>(b"m6_create\0").unwrap(),
+                *helper.get::<DeviceCheck>(b"gpu_require_amd\0").unwrap(),
+                *helper.get::<DeviceCheck>(b"gpu_check_device\0").unwrap(),
+                *helper.get::<CreateHarness>(b"gpu_create\0").unwrap(),
                 *helper
-                    .get::<SetTemporalFrame>(b"m6_set_temporal_frame\0")
+                    .get::<SetTemporalFrame>(b"gpu_set_temporal_frame\0")
                     .unwrap(),
-                *helper.get::<Finish>(b"m6_finish\0").unwrap(),
-                *helper.get::<Destroy>(b"m6_destroy\0").unwrap(),
+                *helper.get::<Finish>(b"gpu_finish\0").unwrap(),
+                *helper.get::<Destroy>(b"gpu_destroy\0").unwrap(),
             )
         };
         // SAFETY: Enable ordinary debugging before device creation; GBV off.
@@ -151,12 +151,19 @@ impl SerialFamily {
         let mut contexts = Vec::new();
         for context in 0..if siblings { 2 } else { 1 } {
             let owned_device = device.clone();
-            let (state, root) = UpscaleCreateState::new(owned_device.as_raw().cast(), &options);
+            let (state, root) = UpscaleCreateState::new(
+                owned_device.as_raw().cast(),
+                &options,
+                Default::default(),
+                None,
+            );
             // SAFETY: Reuse the actual pinned creation chain and private owner;
             // retain device and Arc runtime, zero flags, no callbacks, no work.
             let mut owner =
                 unsafe { ArcOwner::create(state, owned_device, runtime.clone(), root) }.unwrap();
-            eprintln!("D013 create context={context}: native_code={FFX_API_RETURN_OK:#010x}");
+            eprintln!(
+                "Transfer baseline create context={context}: native_code={FFX_API_RETURN_OK:#010x}"
+            );
             log_provider_owner(&mut owner);
             contexts.push(Some(owner));
         }
@@ -198,7 +205,7 @@ impl SerialFamily {
         self.retained();
         let (jx, jy) = [(0.25, -0.25), (-0.25, 0.25), (0.125, -0.125)][frame as usize];
         eprintln!(
-            "D013 context={context} frame={frame} translation={frame}px jitter=({jx},{jy}) reset={}",
+            "Transfer baseline context={context} frame={frame} translation={frame}px jitter=({jx},{jy}) reset={}",
             frame == 0
         );
         let mut harness = null_mut();
@@ -233,15 +240,16 @@ impl SerialFamily {
         let desc = super::super::dispatch::inspect_dispatch(
             owner.device(),
             &self.options,
-            UpscaleDispatch::new(
+            UpscaleTestInputs::new(
                 &list,
-                UpscaleResources::new(
-                    &resources[0],
-                    &resources[1],
-                    &resources[2],
-                    &resources[3],
-                    &resources[4],
-                ),
+                UpscaleResources::builder()
+                    .color(&resources[0])
+                    .depth(&resources[1])
+                    .motion_vectors(&resources[2])
+                    .exposure(crate::upscaler::dx12::ExposureInput::Texture(&resources[3]))
+                    .output(&resources[4])
+                    .build()
+                    .unwrap(),
                 JitterOffsetPixels::new(jx, jy).unwrap(),
                 FrameTimeMillis::new(16.667).unwrap(),
                 CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0).unwrap(),
@@ -253,15 +261,21 @@ impl SerialFamily {
         // All pointers, COM refs, context/library and allocator survive fence.
         let code = unsafe { owner.dispatch(&desc.header) };
         if code != FFX_API_RETURN_OK {
-            eprintln!("D013 dispatch failed: code={code:#010x}; no submission/cleanup");
+            eprintln!(
+                "Transfer baseline dispatch failed: code={code:#010x}; no submission/cleanup"
+            );
             std::process::exit(1);
         }
-        eprintln!("D013 dispatch context={context} frame={frame}: native_code={code:#010x}");
+        eprintln!(
+            "Transfer baseline dispatch context={context} frame={frame}: native_code={code:#010x}"
+        );
         let mut metrics = Metrics::default();
         // SAFETY: Finish closes/submits once, fences fully (60s bound), maps output.
         let hr = unsafe { (self.finish)(harness, &mut metrics) };
         if hr != 0 {
-            eprintln!("D013 finish failed: HRESULT={hr:#010x}; completion uncertain; no cleanup");
+            eprintln!(
+                "Transfer baseline finish failed: HRESULT={hr:#010x}; completion uncertain; no cleanup"
+            );
             std::process::exit(1);
         }
         // Establish RAII only once GPU completion is certain; keep every frame
@@ -272,7 +286,7 @@ impl SerialFamily {
             _resources: resources,
             destroy: self.destroy_harness,
         });
-        eprintln!("D013 fenced readback context={context} frame={frame}: {metrics:?}");
+        eprintln!("Transfer baseline fenced readback context={context} frame={frame}: {metrics:?}");
         assert_eq!((metrics.width, metrics.height), (640, 360));
         assert_eq!(metrics.finite_pixels, 230_400);
         assert!(metrics.changed_pixels > 115_200);
@@ -289,7 +303,9 @@ impl SerialFamily {
     fn destroy_first(&mut self) {
         phase("explicit destroy first sibling");
         self.contexts[0].take().unwrap().destroy().unwrap();
-        eprintln!("D013 explicit destroy context=0: native_code={FFX_API_RETURN_OK:#010x}");
+        eprintln!(
+            "Transfer baseline explicit destroy context=0: native_code={FFX_API_RETURN_OK:#010x}"
+        );
         self.retained();
         self.check();
     }
@@ -298,17 +314,19 @@ impl SerialFamily {
         phase("final context cleanup/runtime release");
         if implicit {
             drop(self.contexts[1].take().unwrap());
-            eprintln!("D013 final sibling Drop completed (native result not exposed)");
+            eprintln!("Transfer baseline final sibling Drop completed (native result not exposed)");
         } else {
             self.contexts[0].take().unwrap().destroy().unwrap();
-            eprintln!("D013 explicit destroy context=0: native_code={FFX_API_RETURN_OK:#010x}");
+            eprintln!(
+                "Transfer baseline explicit destroy context=0: native_code={FFX_API_RETURN_OK:#010x}"
+            );
             drop(self.runtime.take().unwrap());
         }
         assert!(self.weak.upgrade().is_none(), "final Arc still retained");
         let loader_live = loaded(&self.loader_path);
         let provider_live = loaded(&self.provider_path);
         eprintln!(
-            "D013 after final release: weak_live=false loader_loaded={loader_live} provider_loaded={provider_live}"
+            "Transfer baseline after final release: weak_live=false loader_loaded={loader_live} provider_loaded={provider_live}"
         );
         assert!(
             !loader_live,
@@ -334,9 +352,11 @@ fn worker<T: Send + 'static>(name: &str, action: impl FnOnce() -> T + Send + 'st
 }
 
 fn run(scenario: u32, transfer: bool) {
-    eprintln!("D013 scenario={scenario} transfer={transfer}; ordinary debug enabled, GBV off");
+    eprintln!(
+        "Transfer baseline scenario={scenario} transfer={transfer}; ordinary debug enabled, GBV off"
+    );
     if !transfer {
-        worker("d013-control", move || {
+        worker("transfer-control-worker", move || {
             let mut family = SerialFamily::create(scenario == 3);
             if scenario == 3 {
                 family.drop_runtime();
@@ -353,7 +373,7 @@ fn run(scenario: u32, transfer: bool) {
             family.cleanup(scenario == 3);
         });
     } else {
-        let family = worker("d013-A", move || {
+        let family = worker("ownership-worker-1", move || {
             let mut family = SerialFamily::create(scenario == 3);
             if scenario == 3 {
                 family.drop_runtime();
@@ -363,7 +383,7 @@ fn run(scenario: u32, transfer: bool) {
             }
             family
         });
-        let family = worker("d013-B", move || {
+        let family = worker("ownership-worker-2", move || {
             let mut family = family;
             family.frame(0, if scenario == 2 { 1 } else { 0 });
             if scenario == 3 {
@@ -371,7 +391,7 @@ fn run(scenario: u32, transfer: bool) {
             }
             family
         });
-        worker("d013-C", move || {
+        worker("ownership-worker-3", move || {
             let mut family = family;
             if scenario == 2 {
                 family.frame(0, 2);
@@ -382,13 +402,13 @@ fn run(scenario: u32, transfer: bool) {
             family.cleanup(scenario == 3);
         });
     }
-    eprintln!("D013 scenario={scenario} transfer={transfer}: PASSED");
+    eprintln!("Transfer baseline scenario={scenario} transfer={transfer}: PASSED");
 }
 
 macro_rules! scenario {
     ($name:ident, $number:literal, $transfer:literal) => {
         #[test]
-        #[ignore = "requires trusted SDK DLLs and hardware DX12; use native/run.ps1 -Mode d013 -Native"]
+        #[ignore = "requires trusted SDK DLLs and hardware DX12; use tools/verification/run.py run experiment-transfer --native"]
         fn $name() { run($number, $transfer); }
     };
 }

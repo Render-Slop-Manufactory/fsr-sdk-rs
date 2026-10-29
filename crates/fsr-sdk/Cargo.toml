@@ -2,12 +2,12 @@
 
 [package]
 name = "fsr-sdk"
-version = "0.2.0"
+version = "0.3.0"
 description = "Engine-independent Windows/DX12 upscaling wrapper for AMD FSR SDK v2.3.0"
+documentation = "https://docs.rs/fsr-sdk/0.3.0/fsr_sdk/"
+readme = "README.md"
 keywords = ["fsr", "fidelityfx", "dx12", "graphics", "gamedev"]
 categories = ["rendering", "game-development"]
-# These runners require the complete repository checkout.
-exclude = ["tests/**/*.ps1"]
 
 edition.workspace = true
 rust-version.workspace = true
@@ -17,24 +17,25 @@ repository.workspace = true
 [package.metadata.docs.rs]
 default-target = "x86_64-pc-windows-msvc"
 targets = []
-features = ["movable"]
+features = ["movable", "utils"]
 
 [features]
 default = ["dx12"]
 dx12 = ["fsr-sdk-sys/dx12", "dep:windows"]
+# Reserved backend; intentionally fails to compile until Vulkan is implemented.
+vulkan = ["fsr-sdk-sys/vulkan"]
 # Opt-in caller-established cross-thread native compatibility and coordination.
 movable = []
-# Reserved unsupported backend marker.
-# Enabling this intentionally produces a compile error.
-vulkan = ["fsr-sdk-sys/vulkan"]
+# Opt-in project-defined, portable utilities; does not enable a native backend.
+utils = []
 
 [dependencies.fsr-sdk-sys]
 path = "../fsr-sdk-sys"
-version = "0.1.1"
+version = "0.1.2"
 default-features = false
 
 [target.'cfg(windows)'.dependencies]
-windows = { version = "0.62.2", optional = true, default-features = false, features = ["Win32_Graphics_Direct3D12", "Win32_Graphics_Dxgi_Common"] }
+windows = { version = "0.62.2", optional = true, default-features = false, features = ["std", "Win32_Graphics_Direct3D12", "Win32_Graphics_Dxgi_Common"] }
 
 [dev-dependencies]
 libloading = "0.9.0"

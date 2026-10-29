@@ -27,19 +27,28 @@ fn calls(observer: &libloading::Library) -> u32 {
 
 #[test]
 fn movable_public_dispatch_recovers_preflight_then_preserves_unknown_poison() {
-    let (runtime, observer) = fixture_movable_runtime();
+    let (mut runtime, observer) = fixture_movable_runtime();
     let scene = Scene::new(); // Thread-confined COM inspection fixture stays here.
-    let mut upscaler = MovableUpscaler::new(&runtime, &scene.device, sizes()).unwrap();
+    let mut upscaler = unsafe { runtime.upscaler_dx12(&scene.device) }
+        .create(&sizes())
+        .unwrap();
     scene
         .list_object()
         .list_type
         .set(D3D12_COMMAND_LIST_TYPE_COMPUTE);
     // SAFETY: Controlled runtime and COM fixture, no GPU work; calls are serial.
-    assert_eq!(
-        unsafe { upscaler.dispatch(scene.input()) },
-        Err(Error::InvalidDispatch {
-            reason: DispatchValidation::CommandListType
-        })
+    assert_result!(
+        unsafe {
+            let recording = scene.input();
+            upscaler.record(
+                recording.command_list,
+                &recording.resources,
+                &recording.parameters,
+            )
+        },
+        Err(Error::Input(crate::error::InputError::Dispatch(
+            DispatchValidation::CommandListType
+        )))
     );
     assert_eq!(calls(&observer), 0);
     scene
@@ -47,24 +56,48 @@ fn movable_public_dispatch_recovers_preflight_then_preserves_unknown_poison() {
         .list_type
         .set(D3D12_COMMAND_LIST_TYPE_DIRECT);
     // SAFETY: The fixture consumes metadata only and records no GPU work.
-    assert_eq!(unsafe { upscaler.dispatch(scene.input()) }, Ok(()));
+    assert_result!(
+        unsafe {
+            let recording = scene.input();
+            upscaler.record(
+                recording.command_list,
+                &recording.resources,
+                &recording.parameters,
+            )
+        },
+        Ok(())
+    );
     set_dispatch(&observer, u32::MAX);
     // SAFETY: Fixture returned-error cleanup has no submitted or recorded GPU work.
-    assert_eq!(
-        unsafe { upscaler.dispatch(scene.input()) },
-        Err(Error::Native {
-            operation: Operation::Dispatch,
-            code: u32::MAX
-        })
+    assert_result!(
+        unsafe {
+            let recording = scene.input();
+            upscaler.record(
+                recording.command_list,
+                &recording.resources,
+                &recording.parameters,
+            )
+        },
+        Err(Error::native(Operation::Upscale, u32::MAX))
     );
     scene
         .list_object()
         .list_type
         .set(D3D12_COMMAND_LIST_TYPE_COMPUTE);
     // SAFETY: Poison rejects before metadata inspection, not merely before FFI.
-    assert_eq!(
-        unsafe { upscaler.dispatch(scene.input()) },
-        Err(Error::DispatchPoisoned)
+    assert_result!(
+        unsafe {
+            let recording = scene.input();
+            upscaler.record(
+                recording.command_list,
+                &recording.resources,
+                &recording.parameters,
+            )
+        },
+        Err(crate::test_errors::terminal(Error::native(
+            crate::error::Operation::Upscale,
+            u32::MAX
+        )))
     );
     assert_eq!(calls(&observer), 2);
     upscaler.destroy().unwrap();
@@ -74,24 +107,25 @@ fn movable_public_dispatch_recovers_preflight_then_preserves_unknown_poison() {
 #[test]
 fn movable_create_errors_release_inputs_and_ok_null_retains_bundle() {
     for code in [1, u32::MAX] {
-        let (runtime, observer) = fixture_movable_runtime();
+        let (mut runtime, observer) = fixture_movable_runtime();
         let (device, fake) = fake_device();
         fixture_set(&observer, code, 0, 0);
         assert!(
-            matches!(MovableUpscaler::new(&runtime, &device, sizes()), Err(Error::Native { operation: Operation::Create, code: actual }) if actual == code)
+            matches!(unsafe { runtime.upscaler_dx12(&device) }.create(&sizes()), Err(Error::Native(crate::error::NativeError { operation: Operation::Create, code: actual })) if actual == code)
         );
         assert_eq!(fake.references.get(), 1);
         assert_eq!(fixture_snapshot(&observer).destroys, 0);
     }
-    let (runtime, observer) = fixture_movable_runtime();
+    let (mut runtime, observer) = fixture_movable_runtime();
     let weak = Arc::downgrade(&runtime.state);
     let (device, fake) = fake_device();
     fixture_set(&observer, 0, 0, 1);
     assert!(matches!(
-        MovableUpscaler::new(&runtime, &device, sizes()),
-        Err(Error::NativeInvariantViolation(
-            InvariantViolation::NullContextOnSuccess
-        ))
+        unsafe { runtime.upscaler_dx12(&device) }.create(&sizes()),
+        Err(Error::Invariant {
+            operation: crate::error::Operation::Create,
+            reason: InvariantViolation::NullContextOnSuccess
+        })
     ));
     drop(runtime);
     drop(device);
@@ -103,20 +137,19 @@ fn movable_create_errors_release_inputs_and_ok_null_retains_bundle() {
 #[test]
 fn movable_explicit_and_implicit_destroy_failure_retain_every_dependency_without_retry() {
     for implicit in [false, true] {
-        let (runtime, observer) = fixture_movable_runtime();
+        let (mut runtime, observer) = fixture_movable_runtime();
         let weak = Arc::downgrade(&runtime.state);
         let (device, fake) = fake_device();
-        let context = MovableUpscaler::new(&runtime, &device, sizes()).unwrap();
+        let context = unsafe { runtime.upscaler_dx12(&device) }
+            .create(&sizes())
+            .unwrap();
         fixture_set(&observer, 0, u32::MAX, 0);
         if implicit {
             drop(context);
         } else {
-            assert_eq!(
+            assert_result!(
                 context.destroy(),
-                Err(Error::Native {
-                    operation: Operation::Destroy,
-                    code: u32::MAX
-                })
+                Err(Error::native(Operation::Destroy, u32::MAX))
             );
         }
         drop(runtime);

@@ -16,6 +16,7 @@ pub(crate) struct FfxLibrary {
     create: PfnFfxCreateContext,
     destroy: PfnFfxDestroyContext,
     dispatch: PfnFfxDispatch,
+    configure: PfnFfxConfigure,
     _library: libloading::Library,
     release_probe: Option<Arc<AtomicBool>>,
 }
@@ -44,10 +45,12 @@ impl FfxLibrary {
             let create = *library.get(c"ffxCreateContext")?;
             let destroy = *library.get(c"ffxDestroyContext")?;
             let dispatch = *library.get(c"ffxDispatch")?;
+            let configure = *library.get(c"ffxConfigure")?;
             Ok(Self {
                 create,
                 destroy,
                 dispatch,
+                configure,
                 _library: library,
                 release_probe: None,
             })
@@ -69,6 +72,15 @@ impl FfxLibrary {
     ) -> u32 {
         // SAFETY: Caller supplies a live fixture context, exactly once.
         unsafe { (self.destroy.unwrap())(context, allocator) }
+    }
+
+    pub(crate) unsafe fn ffxConfigure(
+        &self,
+        context: *mut ffxContext,
+        desc: *const ffxConfigureDescHeader,
+    ) -> u32 {
+        // SAFETY: Caller supplies the matched synchronous fixture protocol.
+        unsafe { self.configure.unwrap()(context, desc) }
     }
 
     pub(crate) unsafe fn ffxDispatch(

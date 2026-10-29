@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! Preregistered D013 spike 2; exact test equipment, never a public movable API.
+//! Preregistered transfer cleanup protocol; test equipment, not a public API.
 use super::super::UpscaleCreateState;
 use super::*;
 use crate::{context::NativeContextOwner, runtime::RuntimeState};
@@ -18,7 +18,7 @@ type SetFrame = unsafe extern "C" fn(*mut c_void, u32, f32, f32, u32) -> i32;
 type CopyPayload = unsafe extern "C" fn(*mut c_void, *mut u8, u32) -> i32;
 type FenceValue = unsafe extern "C" fn(*mut c_void) -> u64;
 const PAYLOAD_BYTES: usize = 640 * 360 * 8;
-const PANIC: &str = "D013 spike 2 declared Rust unwind";
+const PANIC: &str = "Transfer cleanup declared Rust unwind";
 const JITTER: [(f32, f32); 8] = [
     (0.25, -0.25),
     (-0.25, 0.25),
@@ -46,7 +46,7 @@ fn phase(message: &str) {
     use std::io::Write as _;
     let _ = writeln!(
         std::io::stderr().lock(),
-        "D013-2 {message} thread={:?} name={:?}",
+        "Transfer cleanup {message} thread={:?} name={:?}",
         thread::current().id(),
         thread::current().name()
     );
@@ -147,15 +147,15 @@ struct Equipment {
 impl Equipment {
     fn acquire() -> Arc<Self> {
         assert!(std::env::var_os("FSR_SDK_TEST_GBV").is_none());
-        assert!(std::env::var_os("FSR_SDK_TEST_M6_CONTROL").is_none());
+        assert!(std::env::var_os("FSR_SDK_TEST_GPU_CONTROL").is_none());
         assert!(!loaded("amd_fidelityfx_loader_dx12.dll"));
         let domain = Arc::new(Domain::default());
         let _guard = domain.enter();
-        let helper = std::env::var_os("FSR_SDK_TEST_M6_DLL").unwrap();
+        let helper = std::env::var_os("FSR_SDK_TEST_GPU_DLL").unwrap();
         // SAFETY: Runner-compiled trusted helper; all symbols match gpu.cpp.
         unsafe {
             let library = libloading::Library::new(helper).unwrap();
-            let debug = *library.get::<EnableDebug>(b"m6_enable_debug\0").unwrap();
+            let debug = *library.get::<EnableDebug>(b"gpu_enable_debug\0").unwrap();
             assert_eq!(debug(), 0);
             let device_create = *library
                 .get::<CreateDevice>(b"probe_create_device\0")
@@ -164,7 +164,7 @@ impl Equipment {
             assert_eq!(device_create(&mut raw), 0);
             assert!(!raw.is_null());
             let device = ID3D12Device::from_raw(raw);
-            let amd = *library.get::<DeviceCheck>(b"m6_require_amd\0").unwrap();
+            let amd = *library.get::<DeviceCheck>(b"gpu_require_amd\0").unwrap();
             assert_eq!(amd(device.as_raw()), 0);
             Arc::new(Self {
                 frames: Mutex::new(Vec::new()),
@@ -176,14 +176,16 @@ impl Equipment {
                     Dimensions::new(640, 360).unwrap(),
                 ),
                 loader: std::env::var_os("FSR_SDK_TEST_DLL").unwrap().into(),
-                output: std::env::var_os("FSR_SDK_TEST_D013_OUTPUT").unwrap().into(),
-                create: *library.get::<CreateHarness>(b"m6_create\0").unwrap(),
+                output: std::env::var_os("FSR_SDK_TEST_TRANSFER_OUTPUT")
+                    .unwrap()
+                    .into(),
+                create: *library.get::<CreateHarness>(b"gpu_create\0").unwrap(),
                 set: *library.get::<SetFrame>(b"semantic_set_frame\0").unwrap(),
-                finish: *library.get::<Finish>(b"m6_finish\0").unwrap(),
-                copy: *library.get::<CopyPayload>(b"d013_copy_payload\0").unwrap(),
-                fence: *library.get::<FenceValue>(b"d013_fence_value\0").unwrap(),
-                destroy: *library.get::<Destroy>(b"m6_destroy\0").unwrap(),
-                check: *library.get::<DeviceCheck>(b"m6_check_device\0").unwrap(),
+                finish: *library.get::<Finish>(b"gpu_finish\0").unwrap(),
+                copy: *library.get::<CopyPayload>(b"gpu_copy_payload\0").unwrap(),
+                fence: *library.get::<FenceValue>(b"gpu_fence_value\0").unwrap(),
+                destroy: *library.get::<Destroy>(b"gpu_destroy\0").unwrap(),
+                check: *library.get::<DeviceCheck>(b"gpu_check_device\0").unwrap(),
                 _helper: library,
             })
         }
@@ -214,7 +216,7 @@ fn snapshot(checkpoint: &str, strong: Option<usize>) {
         "residency checkpoint={checkpoint} runtime_strong={strong:?} loader={} provider={} helper={}",
         loaded("amd_fidelityfx_loader_dx12.dll"),
         loaded("amd_fidelityfx_upscaler_dx12.dll"),
-        loaded("m6_gpu.dll")
+        loaded("gpu_helper.dll")
     ));
 }
 
@@ -261,7 +263,7 @@ struct Bundle {
     owner: Option<Owner>,
     equipment: Arc<Equipment>,
     id: usize,
-    poisoned: bool,
+    eligibility: crate::context_policy::Eligibility,
     previous: ThreadId,
     last_frame: Option<u32>,
 }
@@ -300,14 +302,19 @@ impl Bundle {
         let _guard = equipment.domain.enter();
         phase(&format!("create context={id} domain_held=true"));
         let device = equipment.device.clone();
-        let (state, root) = UpscaleCreateState::new(device.as_raw().cast(), &equipment.options);
+        let (state, root) = UpscaleCreateState::new(
+            device.as_raw().cast(),
+            &equipment.options,
+            Default::default(),
+            None,
+        );
         // SAFETY: Exact pinned owned descriptors/device/runtime, zero flags and
         // callbacks; the common gate is held and no submitted work exists.
         let result = unsafe { Owner::create(state, device, runtime, root) };
         let mut owner = match result {
             Ok(owner) => owner,
             Err(error) => {
-                eprintln!("D013-2 create failure {error:?}");
+                eprintln!("Transfer cleanup create failure {error:?}");
                 std::process::exit(1);
             }
         };
@@ -319,7 +326,7 @@ impl Bundle {
             owner: Some(owner),
             equipment: equipment.clone(),
             id,
-            poisoned: false,
+            eligibility: crate::context_policy::Eligibility::Usable,
             previous: thread::current().id(),
             last_frame: None,
         }
@@ -372,22 +379,24 @@ impl Bundle {
             })
             .collect();
         let owner = self.owner.as_mut().unwrap();
-        let result = crate::dispatch_policy::dispatch(
-            &mut self.poisoned,
+        let result = crate::context_policy::dispatch(
+            crate::error::Operation::Upscale,
+            &mut self.eligibility,
             owner,
             |owner| {
                 super::super::dispatch::inspect_dispatch(
                     owner.device(),
                     &equipment.options,
-                    UpscaleDispatch::new(
+                    UpscaleTestInputs::new(
                         &list,
-                        UpscaleResources::new(
-                            &resources[0],
-                            &resources[1],
-                            &resources[2],
-                            &resources[3],
-                            &resources[4],
-                        ),
+                        UpscaleResources::builder()
+                            .color(&resources[0])
+                            .depth(&resources[1])
+                            .motion_vectors(&resources[2])
+                            .exposure(crate::upscaler::dx12::ExposureInput::Texture(&resources[3]))
+                            .output(&resources[4])
+                            .build()
+                            .unwrap(),
                         JitterOffsetPixels::new(jx, jy).unwrap(),
                         FrameTimeMillis::new(16.667).unwrap(),
                         CameraParameters::new(0.1, 100.0, std::f32::consts::FRAC_PI_3, 1.0)
@@ -413,13 +422,17 @@ impl Bundle {
         // SAFETY: Close/submit once, wait bounded fence, map output; retained refs.
         let hr = unsafe { (equipment.finish)(harness, &mut metrics) };
         if hr != 0 {
-            eprintln!("D013-2 uncertain finish HRESULT={hr:#010x}; containment, no unwind");
+            eprintln!(
+                "Transfer cleanup uncertain finish HRESULT={hr:#010x}; containment, no unwind"
+            );
             std::process::exit(1);
         }
         // SAFETY: Still-live harness/fence/helper, paired C export.
         let completed = unsafe { (equipment.fence)(harness) };
         if completed == u64::MAX || completed < 1 {
-            eprintln!("D013-2 uncertain completed fence={completed}; containment, no unwind");
+            eprintln!(
+                "Transfer cleanup uncertain completed fence={completed}; containment, no unwind"
+            );
             std::process::exit(1);
         }
         phase(&format!(
@@ -461,7 +474,7 @@ impl Bundle {
             self.id
         ));
         if let Err(error) = self.owner.take().unwrap().destroy() {
-            eprintln!("D013-2 terminal destroy failure {error:?}");
+            eprintln!("Transfer cleanup terminal destroy failure {error:?}");
             std::process::exit(1);
         }
     }
@@ -591,10 +604,15 @@ fn run(case: u32, moving: bool) {
         "case={case} transfer={moving} preregistered protocol 2026-10-08"
     ));
     let equipment = Equipment::acquire();
-    let actors: Vec<_> = ["d013-2-A", "d013-2-B", "d013-2-C", "d013-2-D"]
-        .into_iter()
-        .map(Actor::spawn)
-        .collect();
+    let actors: Vec<_> = [
+        "transfer-worker-1",
+        "transfer-worker-2",
+        "transfer-worker-3",
+        "transfer-worker-4",
+    ]
+    .into_iter()
+    .map(Actor::spawn)
+    .collect();
     let on = |index| if moving { index } else { 0 };
     match case {
         1 => {
@@ -697,7 +715,7 @@ fn run(case: u32, moving: bool) {
         drop(equipment); // frames empty, last caller device then helper.
     }
     snapshot("5-all-application-equipment-device-helper-gone", Some(0));
-    assert!(!loaded("m6_gpu.dll"));
+    assert!(!loaded("gpu_helper.dll"));
     for Actor { sender, join } in actors {
         drop(sender);
         join.join().unwrap();
@@ -709,7 +727,7 @@ fn run(case: u32, moving: bool) {
 macro_rules! scenario {
     ($name:ident, $case:literal, $moving:literal) => {
         #[test]
-        #[ignore = "requires trusted SDK/GPU; native/run.ps1 -Mode d013-cleanup -Native"]
+        #[ignore = "requires trusted SDK/GPU; tools/verification/run.py run experiment-transfer-cleanup --native"]
         fn $name() {
             run($case, $moving);
         }

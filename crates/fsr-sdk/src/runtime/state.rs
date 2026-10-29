@@ -8,7 +8,7 @@
 use super::FfxLibrary;
 #[cfg(all(windows, feature = "dx12"))]
 use super::LoadError;
-#[cfg(all(test, windows, feature = "dx12"))]
+#[cfg(all(windows, feature = "dx12"))]
 use fsr_sdk_sys::api::ffxQueryDescHeader;
 use fsr_sdk_sys::api::{
     ffxAllocationCallbacks, ffxContext, ffxCreateContextDescHeader, ffxDispatchDescHeader,
@@ -94,17 +94,32 @@ impl RuntimeState {
     }
 
     /// # Safety
+    /// Supply a complete const descriptor and its matching live/null context.
+    /// Establish actual-provider pointer lifetime, synchronization, handle
+    /// validity and continuation; callbacks must not unwind across FFI.
+    #[cfg(any(test, all(windows, feature = "dx12")))]
+    pub(crate) unsafe fn configure(
+        &self,
+        context: *mut ffxContext,
+        desc: *const fsr_sdk_sys::api::ffxConfigureDescHeader,
+    ) -> u32 {
+        // SAFETY: Caller establishes the operation-specific native contract; the
+        // library remains owned for the call and its return code is unchanged.
+        unsafe { self.library.ffxConfigure(context, desc) }
+    }
+
+    /// # Safety
     /// Supply a live context from this runtime (or null for a supported global
     /// query) and a valid writable descriptor chain and output storage. Uphold
     /// query-specific lifetimes and native synchronization/threading requirements.
     /// Callbacks must not unwind over FFI.
-    #[cfg(all(test, windows, feature = "dx12"))]
-    pub(crate) unsafe fn query_for_test(
+    #[cfg(all(windows, feature = "dx12"))]
+    pub(crate) unsafe fn query(
         &self,
         context: *mut ffxContext,
         desc: *mut ffxQueryDescHeader,
     ) -> ffxReturnCode_t {
-        // SAFETY: The test caller establishes the native query contract; this
+        // SAFETY: The caller establishes the native query contract; this
         // state retains the library during invocation.
         unsafe { self.library.ffxQuery(context, desc) }
     }

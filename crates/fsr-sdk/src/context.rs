@@ -8,8 +8,16 @@ use crate::{
 };
 #[cfg(any(test, all(windows, feature = "dx12")))]
 use fsr_sdk_sys::api::ffxDispatchDescHeader;
-use fsr_sdk_sys::api::{FFX_API_RETURN_OK, ffxContext, ffxCreateContextDescHeader};
+use fsr_sdk_sys::api::{
+    FFX_API_RETURN_OK, ffxAllocationCallbacks, ffxContext, ffxCreateContextDescHeader,
+};
 use std::{marker::PhantomData, mem, ptr::null_mut, rc::Rc, sync::Arc};
+
+#[cfg(test)]
+thread_local! {
+    // Measurement equipment can suppress the test-only environment lookup.
+    pub(crate) static SUPPRESS_DESTROY_TRACE: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
+}
 
 mod sealed {
     use super::*;
@@ -48,6 +56,7 @@ struct Dependencies<S, D, R> {
 
 struct LiveContext<S, D, R> {
     handle: ffxContext,
+    allocator: *const ffxAllocationCallbacks,
     dependencies: Dependencies<S, D, R>,
 }
 
@@ -75,6 +84,31 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
         runtime: R,
         root: *mut ffxCreateContextDescHeader,
     ) -> Result<Self, Error> {
+        // SAFETY: Ordinary creation preserves the default allocator/D005 profile.
+        unsafe {
+            Self::create_with_allocator(state, device, runtime, root, std::ptr::null(), false)
+        }
+    }
+
+    /// # Safety
+    /// The chain must match the retained runtime and owned device. Wrapper-owned
+    /// dependencies must remain valid when forgotten and have non-panicking
+    /// destructors; moves of S/D/R must not invalidate native addresses. Uphold
+    /// native threading and common-domain coordination through every operation.
+    /// Retain a stable descriptor chain and optional host table in state. Their
+    /// addresses remain valid through successful teardown or exceptional retention.
+    /// External callback targets obey the installer's lasting lifetime, allocator,
+    /// no-unwind and threading contract, including after errors and destruction.
+    /// A successful destroy ends native access to wrapper-owned storage, not
+    /// necessarily calls to copied global function pointers. All GPU work is idle.
+    pub(crate) unsafe fn create_with_allocator(
+        state: S,
+        device: D,
+        runtime: R,
+        root: *mut ffxCreateContextDescHeader,
+        allocator: *const ffxAllocationCallbacks,
+        retain_create_error: bool,
+    ) -> Result<Self, Error> {
         let dependencies = Dependencies {
             state,
             device,
@@ -87,21 +121,23 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
             dependencies
                 .runtime
                 .runtime_state()
-                .create_context(&mut handle, root, std::ptr::null())
+                .create_context(&mut handle, root, allocator)
         };
         if code != FFX_API_RETURN_OK {
             // No output-handle operation, including destroy, even if non-null.
-            // Ordered RAII uses D005; it asserts no provider-internal rollback.
-            return Err(Error::Native {
-                operation: Operation::Create,
-                code,
-            });
+            // Ordinary RAII uses D005. New callbacks instead retain the bundle:
+            // an error does not prove release of newly registered dependencies.
+            if retain_create_error {
+                mem::forget(dependencies);
+            }
+            return Err(Error::native(Operation::Create, code));
         }
         if handle.is_null() {
             // Native success could have retained dependencies without returning
             // a usable handle. Retain state, device AND runtime; never destroy.
             mem::forget(dependencies);
-            return Err(Error::NativeInvariantViolation(
+            return Err(Error::invariant(
+                crate::error::Operation::Create,
                 InvariantViolation::NullContextOnSuccess,
             ));
         }
@@ -109,6 +145,7 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
         Ok(Self {
             live: Some(LiveContext {
                 handle,
+                allocator,
                 dependencies,
             }),
             _not_send_sync: PhantomData,
@@ -131,23 +168,22 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
             live.dependencies
                 .runtime
                 .runtime_state()
-                .destroy_context(&mut live.handle, std::ptr::null())
+                .destroy_context(&mut live.handle, live.allocator)
         };
         #[cfg(test)]
-        if std::env::var_os("FSR_SDK_TEST_D013_TRACE").is_some() {
+        if !SUPPRESS_DESTROY_TRACE.with(|flag| flag.get())
+            && std::env::var_os("FSR_SDK_TEST_CONTEXT_TRACE").is_some()
+        {
             use std::io::Write as _;
             let _ = writeln!(
                 std::io::stderr().lock(),
-                "D013 native destroy: thread={:?} code={code:#010x}",
+                "Context native destroy: thread={:?} code={code:#010x}",
                 std::thread::current().id()
             );
         }
         if code != FFX_API_RETURN_OK {
             mem::forget(live.dependencies);
-            return Err(Error::Native {
-                operation: Operation::Destroy,
-                code,
-            });
+            return Err(Error::native(Operation::Destroy, code));
         }
         // Drop in the documented order, regardless of post-destroy handle bits.
         let Dependencies {
@@ -183,19 +219,37 @@ impl<S, D, R: RuntimeRetention> NativeContextOwner<S, D, R> {
         }
     }
 
-    // Native provider instrumentation is test-only; no production handle accessor.
-    #[cfg(all(test, windows, feature = "dx12"))]
-    pub(crate) unsafe fn query_for_test(
+    /// # Safety
+    /// Establish the actual provider's Configure pointer lifetime, GPU/CPU
+    /// synchronization, continuation and handle validity. This is raw forwarding.
+    #[cfg(any(test, all(windows, feature = "dx12")))]
+    pub(crate) unsafe fn configure(
         &mut self,
-        desc: *mut fsr_sdk_sys::api::ffxQueryDescHeader,
+        desc: *const fsr_sdk_sys::api::ffxConfigureDescHeader,
     ) -> u32 {
         let live = self.live.as_mut().expect("live owner");
-        // SAFETY: Test caller supplies a valid descriptor; ownership stays live.
+        // SAFETY: Caller supplies operation-specific native obligations; this
+        // owner retains the complete dependency bundle and matched live handle.
         unsafe {
             live.dependencies
                 .runtime
                 .runtime_state()
-                .query_for_test(&mut live.handle, desc)
+                .configure(&mut live.handle, desc)
+        }
+    }
+
+    /// # Safety
+    /// Supply a correctly tagged query with initialized outputs under the
+    /// acquisition's query lifetime, synchronization and non-retention contract.
+    #[cfg(all(windows, feature = "dx12"))]
+    pub(crate) unsafe fn query(&mut self, desc: *mut fsr_sdk_sys::api::ffxQueryDescHeader) -> u32 {
+        let live = self.live.as_mut().expect("live owner");
+        // SAFETY: Caller supplies a valid descriptor; ownership stays live.
+        unsafe {
+            live.dependencies
+                .runtime
+                .runtime_state()
+                .query(&mut live.handle, desc)
         }
     }
 }
@@ -211,5 +265,5 @@ impl<S, D, R: RuntimeRetention> Drop for NativeContextOwner<S, D, R> {
 mod tests;
 
 #[cfg(test)]
-#[path = "context/d013_movable.rs"]
-mod d013_movable;
+#[path = "context/movable.rs"]
+mod movable;
