@@ -29,7 +29,7 @@ The supplied project brief establishes the following repository baseline, treate
 - M5 established the bounded construction/lifecycle path; M6a added the minimum private resource/dispatch ABI and recorded one successful native dispatch/readback on the repository's tested configuration.
 - The open DX12 backend has finite transient storage and defines `FFX_MAX_QUEUED_FRAMES` as `4`.
 - A repository recording-ahead experiment reportedly recorded 2, 5, and 8 dispatches on one upscaler context before submission, and 2 and 5 sibling contexts before submission, followed by ordered submissions and fence completion with distinct finite outputs and no observed D3D12 debug error/device removal in those runs.
-- Those observations are explicitly bounded: they do not establish a universal supported count, allocator ownership, signed-provider implementation details, arbitrary GPU overlap/cross-queue behavior, destruction safety, or temporal/image correctness.
+- Those observations are explicitly bounded: they do not establish a universal supported count, allocator ownership, signed-provider implementation details, arbitrary GPU overlap/cross-queue behaviour, destruction safety, or temporal/image correctness.
 
 **Repository inspection limitation.** The investigation request refers to a repository ZIP and specifically asks that D011, the M6 synthesis, the recording-ahead experiment, and research-process instructions be inspected first. In this execution environment, no repository ZIP or repository tree was supplied; the only local file available was the investigation brief itself. Therefore those local files and repository-specific source-research formatting conventions could not be independently inspected. This record preserves the supplied baseline verbatim in substance and follows the mandatory structure and evidence discipline requested in the brief, but it does not claim local repository verification.
 
@@ -51,7 +51,7 @@ Excluded: editing/accepting D011; proposing the final Rust API; production/test 
 Evidence labels used below:
 
 - **Verified** — directly supported by inspected primary AMD source at the stated revision. This verifies a source fact, not a runtime result.
-- **Upstream claim** — AMD states the behavior/requirement in public documentation or API comments; it was not independently reproduced here.
+- **Upstream claim** — AMD states the behaviour/requirement in public documentation or API comments; it was not independently reproduced here.
 - **Inference** — a reasoned conclusion from identified source facts, not an explicit AMD contract.
 - **Unresolved** — inspected public evidence does not answer the question.
 
@@ -65,7 +65,7 @@ https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8
 **S2 — internal FidelityFX limits.** Exact commit. Defines `FFX_MAX_QUEUED_FRAMES`, descriptor-ring and constant-buffer-ring sizing, resource/pass/job maxima.  
 https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/api/internal/ffx_internal_types.h#L97-L133
 
-**S3 — open DX12 backend implementation.** Exact commit. Establishes backend-context fields, scratch sizing, descriptor/constant/staging rings, GPU-job scratch, creation/destruction, and wrap behavior.  
+**S3 — open DX12 backend implementation.** Exact commit. Establishes backend-context fields, scratch sizing, descriptor/constant/staging rings, GPU-job scratch, creation/destruction, and wrap behaviour.\
 https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/backend/dx12/ffx_dx12.cpp
 
 **S4 — modern DX12 backend construction helper.** Exact commit. Allocates one scratch buffer and initializes one `FfxInterface` for a requested context count.  
@@ -235,7 +235,7 @@ It would be an unsupported generalization to import the open FSR3 provider's one
 | **GPU completion** | No ordinary per-dispatch/fixed-count completion gate found. Context destruction has explicit FSR3 guidance that the GPU should no longer access FSR3 resources, with GPU idle recommended (S8). |
 | **Application resource lifetime** | Separate from backend allocator reuse. Inputs are referenced by recorded GPU work; this investigation found no additional AMD queue-depth number governing caller resources. |
 | **Effect/context lifetime** | FSR3 header explicitly requires safe GPU lifetime before destruction (S8); open backend destroy does not wait itself (S3). |
-| **Backend transient allocator reuse** | Open descriptor/upload rings advance and wrap by allocation offsets with no explicit fence check (S3). Signed-provider behavior is unresolved. |
+| **Backend transient allocator reuse** | Open descriptor/upload rings advance and wrap by allocation offsets with no explicit fence check (S3). Signed-provider behaviour is unresolved. |
 
 ### 10. Comparison with the repository recording-ahead evidence
 
@@ -270,7 +270,7 @@ The investigation changes or sharpens the supplied baseline as follows without c
 - No claim is made that the repository's native observations were reproduced.
 - The signed FSR4.1.1 provider implementation is not exposed by the inspected public source path. Its allocator topology and reuse synchronization remain **Unresolved**.
 - Absence of a completion rule from the inspected public corpus is a negative finding, not proof that no contractual or implementation constraint exists in proprietary/licensed material.
-- Open-source implementation behavior is not itself a public ABI/safety promise unless AMD documents it as such.
+- Open-source implementation behaviour is not itself a public ABI/safety promise unless AMD documents it as such.
 
 ### Evidence that would resolve remaining questions
 
@@ -292,7 +292,7 @@ Those would be new evidence-gathering activities, not consequences that can be i
    **Verified for open source:** backend-wide transient ring state is per open DX12 backend-interface/scratch instance, not per `EffectContext`; persistent resource/bindless ranges have per-effect substate. **Verified for the open modern FSR3 provider:** each modern FSR3 context creates its own backend interface with `contexts = 1`, yielding independent fallback backend rings between sibling modern FSR3 contexts. **Unresolved for signed FSR4.1.1.**
 
 3. **What does `FFX_MAX_QUEUED_FRAMES` establish, and what does it explicitly not establish?**  
-   **Verified:** it is `4` in the pinned internal header and multiplies descriptor-ring and constant-buffer-ring capacity formulas, which are described for a single effect context before the open backend additionally scales capacity by `maxEffectContexts`. It does **not** establish a public supported number of recorded dispatches, submitted/incomplete dispatches, simultaneously executing dispatches, a fence cadence, a “wait every four” rule, or signed-provider behavior.
+   **Verified:** it is `4` in the pinned internal header and multiplies descriptor-ring and constant-buffer-ring capacity formulas, which are described for a single effect context before the open backend additionally scales capacity by `maxEffectContexts`. It does **not** establish a public supported number of recorded dispatches, submitted/incomplete dispatches, simultaneously executing dispatches, a fence cadence, a “wait every four” rule, or signed-provider behaviour.
 
 4. **Does AMD publicly specify any GPU-completion gate that `fsr-sdk-rs` must expose?**  
    No ordinary dispatch-count gate was found in the inspected public AMD sources. AMD does explicitly state for FSR3 context destruction that the GPU must no longer be accessing FSR3-created/used resources and recommends GPU idle before destruction. That is a destruction/lifetime condition, not a per-dispatch or four-dispatch rule.

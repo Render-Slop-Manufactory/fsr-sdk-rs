@@ -1,0 +1,128 @@
+[
+  {
+    "provider": "fsr4",
+    "comparison": "display UV versus pixels",
+    "per_frame_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "fsr4",
+    "comparison": "dynamic flag true versus false",
+    "per_frame_equal": [
+      true,
+      false,
+      false
+    ]
+  },
+  {
+    "provider": "fsr4",
+    "comparison": "maximum rectangle: stable maximum versus requested small in large allocation",
+    "phase": 0,
+    "equal": false,
+    "maximum_sha256": "948a98c19890ac8b6d276da81f606467803edcb5a70a32e211de2cc9b7f73ec0",
+    "crop_sha256": "d0114c120bb4a5fa2f3e3a3c4a796887f84ef5a8bd059e1d4dbf8952fcc7db74"
+  },
+  {
+    "provider": "fsr4",
+    "comparison": "maximum rectangle: stable maximum versus requested small in large allocation",
+    "phase": 1,
+    "equal": false,
+    "maximum_sha256": "3c47f0287a79a3832d2ce37b39e682ae7c679304b342b5a002ef1f4913c9d458",
+    "crop_sha256": "7f955394d62f4b652c5ca705ba077cda55dc29bedc32df1e2fba2d75a9636f85"
+  },
+  {
+    "provider": "fsr4",
+    "comparison": "maximum rectangle: stable maximum versus requested small in large allocation",
+    "phase": 2,
+    "equal": false,
+    "maximum_sha256": "d385b1c3ef573a46a5d62b1fec77166c5325899dd793a58bfe0c92d346cb882d",
+    "crop_sha256": "7813c9112fad95a269969807b383786fad3c1adbb846c429446f3337cf524ee1"
+  },
+  {
+    "provider": "fsr3",
+    "comparison": "display UV versus pixels",
+    "per_frame_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "fsr3",
+    "comparison": "dynamic flag true versus false",
+    "per_frame_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "fsr3",
+    "comparison": "maximum rectangle: stable maximum versus requested small in large allocation",
+    "phase": 0,
+    "equal": false,
+    "maximum_sha256": "d71ac535325b39f82207e53d76ae6f7a254b0578bccb6b34171a45b68ae594e1",
+    "crop_sha256": "f7740d2f1219cea68efb35df6c0949e550b36a8246ce1e04d340e1c7cf7c0d60"
+  },
+  {
+    "provider": "fsr3",
+    "comparison": "maximum rectangle: stable maximum versus requested small in large allocation",
+    "phase": 1,
+    "equal": false,
+    "maximum_sha256": "a531b0005e1295b6c0724e6f1af3fac109efeaae473ba2ae63d8481113882abb",
+    "crop_sha256": "5f059c171db91074d4249b17cf3ca4c9f868f665cc8f49b589d4c271063d91db"
+  },
+  {
+    "provider": "fsr3",
+    "comparison": "maximum rectangle: stable maximum versus requested small in large allocation",
+    "phase": 2,
+    "equal": false,
+    "maximum_sha256": "044547f47e0fe53da081bc5aeb5ee134092fe732752a0f5373133cdc385f8097",
+    "crop_sha256": "1d463cb019487ef19533a1c8dbf50cf808553c7015bef443fd1738a94cd6b90c"
+  },
+  {
+    "provider": "fsr2",
+    "comparison": "display UV versus pixels",
+    "per_frame_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "fsr2",
+    "comparison": "dynamic flag true versus false",
+    "per_frame_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "fsr2",
+    "comparison": "maximum rectangle: stable maximum versus requested small in large allocation",
+    "phase": 0,
+    "equal": true,
+    "maximum_sha256": "7e504459f389028fa5654f455b7c213a554cfbf0c9ebbe73392f45f8aca2a554",
+    "crop_sha256": "7e504459f389028fa5654f455b7c213a554cfbf0c9ebbe73392f45f8aca2a554"
+  },
+  {
+    "provider": "fsr2",
+    "comparison": "maximum rectangle: stable maximum versus requested small in large allocation",
+    "phase": 1,
+    "equal": true,
+    "maximum_sha256": "7ac20a73e9e99688c1ec61d0c3ee88d88a2adec11aafcf0f3ac23e9d3f8c3fff",
+    "crop_sha256": "7ac20a73e9e99688c1ec61d0c3ee88d88a2adec11aafcf0f3ac23e9d3f8c3fff"
+  },
+  {
+    "provider": "fsr2",
+    "comparison": "maximum rectangle: stable maximum versus requested small in large allocation",
+    "phase": 2,
+    "equal": true,
+    "maximum_sha256": "3cbec9826eab78f3f6711e92e0d46ebe1718b3d42b29aea984405cfc947655a0",
+    "crop_sha256": "3cbec9826eab78f3f6711e92e0d46ebe1718b3d42b29aea984405cfc947655a0"
+  }
+]

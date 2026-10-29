@@ -1,0 +1,5474 @@
+[
+  {
+    "attempt": "blocked-coordinator",
+    "case": "motion-scale.control",
+    "evaluation": "observed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": true,
+          "control": true
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 0,
+          "outside": 0,
+          "right": 0,
+          "bottom": 0,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "171c7f7d394738b461214425393f86718a72cf07e296a84e06b95726d0e79b8a",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": true
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 0,
+          "outside": 0,
+          "right": 0,
+          "bottom": 0,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "171c7f7d394738b461214425393f86718a72cf07e296a84e06b95726d0e79b8a",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": true
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 0,
+          "outside": 0,
+          "right": 0,
+          "bottom": 0,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "171c7f7d394738b461214425393f86718a72cf07e296a84e06b95726d0e79b8a",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": true
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 0,
+          "outside": 0,
+          "right": 0,
+          "bottom": 0,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "171c7f7d394738b461214425393f86718a72cf07e296a84e06b95726d0e79b8a",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": true,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "0-half",
+      "axis": 0,
+      "arm": "half",
+      "format": 0,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.control",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": true,
+          "control": true
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 0,
+          "outside": 0,
+          "right": 0,
+          "bottom": 0,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "171c7f7d394738b461214425393f86718a72cf07e296a84e06b95726d0e79b8a",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": true
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 0,
+          "outside": 0,
+          "right": 0,
+          "bottom": 0,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "171c7f7d394738b461214425393f86718a72cf07e296a84e06b95726d0e79b8a",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": true
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 0,
+          "outside": 0,
+          "right": 0,
+          "bottom": 0,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "171c7f7d394738b461214425393f86718a72cf07e296a84e06b95726d0e79b8a",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": true
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 0,
+          "outside": 0,
+          "right": 0,
+          "bottom": 0,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "171c7f7d394738b461214425393f86718a72cf07e296a84e06b95726d0e79b8a",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": true,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "0-half",
+      "axis": 0,
+      "arm": "half",
+      "format": 0,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.0-half",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "d60be6e3ad642a47d044a468820be82c793f083d56b652c17c67a3736a7168c2",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11582a014ba273b73dc314bc35724a3c6287d30e43c20ff396f50ae946426893",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "059344047da8f9664c387f573f0abcb1168cb4dda8d9d9d84f6f83b6739e6b0b",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "0-half",
+      "axis": 0,
+      "arm": "half",
+      "format": 0,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.0-float",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "d60be6e3ad642a47d044a468820be82c793f083d56b652c17c67a3736a7168c2",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "283e9a66cde4f9f970e0bcd50d729a50834eda7f24638791b10e54c811f1e0d4",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11582a014ba273b73dc314bc35724a3c6287d30e43c20ff396f50ae946426893",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "283e9a66cde4f9f970e0bcd50d729a50834eda7f24638791b10e54c811f1e0d4",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "059344047da8f9664c387f573f0abcb1168cb4dda8d9d9d84f6f83b6739e6b0b",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "283e9a66cde4f9f970e0bcd50d729a50834eda7f24638791b10e54c811f1e0d4",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "0-float",
+      "axis": 0,
+      "arm": "float",
+      "format": 1,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.0-asymmetric",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            0
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "d60be6e3ad642a47d044a468820be82c793f083d56b652c17c67a3736a7168c2",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5d9e662b2b7c36c964425c5837fe74c04f8c3a0d30bf099ce5ddb18bae8a7e0d",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11582a014ba273b73dc314bc35724a3c6287d30e43c20ff396f50ae946426893",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5d9e662b2b7c36c964425c5837fe74c04f8c3a0d30bf099ce5ddb18bae8a7e0d",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "059344047da8f9664c387f573f0abcb1168cb4dda8d9d9d84f6f83b6739e6b0b",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5d9e662b2b7c36c964425c5837fe74c04f8c3a0d30bf099ce5ddb18bae8a7e0d",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "0-asymmetric",
+      "axis": 0,
+      "arm": "asymmetric",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        -2.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.0-signed",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "d60be6e3ad642a47d044a468820be82c793f083d56b652c17c67a3736a7168c2",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11582a014ba273b73dc314bc35724a3c6287d30e43c20ff396f50ae946426893",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "059344047da8f9664c387f573f0abcb1168cb4dda8d9d9d84f6f83b6739e6b0b",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "0-signed",
+      "axis": 0,
+      "arm": "signed",
+      "format": 1,
+      "scale": [
+        -2.0,
+        -4.0
+      ],
+      "stored": [
+        2.0,
+        -0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.0-wrong",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "89d53b56116ac53094c68e5cce1cb5834f5a6af8908b3e077bebfdbe3557fa5b",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "f7541210bff36a14276048ed83fe06a1544912668f1d61ceb570adee9f6060b9",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "f7af32346a09539f2947c106b8b2ad3a44e1bd8db78497970a3f61b5a8e8bd75",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "0-wrong",
+      "axis": 0,
+      "arm": "wrong",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        2.0,
+        -0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.1-half",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "80b47c2c7bb88f3545d04a4cc906a2dfdc64e73e6cbecb948795d37e2955211e",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "d872cd2cb1c69ce4dd36f9f6b913cbc349d9d7cdce005145b052270d92f3e3b9",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "16216c3c211ac91a7bd4135d728fbaf7dc00783d00c018973e77531cdc5ec5fa",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "d872cd2cb1c69ce4dd36f9f6b913cbc349d9d7cdce005145b052270d92f3e3b9",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "b48c888712db3902ccc45244aba4c7879cd015423be9b53f3dfa76881a5529e3",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "d872cd2cb1c69ce4dd36f9f6b913cbc349d9d7cdce005145b052270d92f3e3b9",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "1-half",
+      "axis": 1,
+      "arm": "half",
+      "format": 0,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        0.0,
+        -2.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.1-float",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "80b47c2c7bb88f3545d04a4cc906a2dfdc64e73e6cbecb948795d37e2955211e",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "4816b6efc28174a3b5369e6cd9024e817cc53e90d2d05fd7a3ce6560958c282e",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "16216c3c211ac91a7bd4135d728fbaf7dc00783d00c018973e77531cdc5ec5fa",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "4816b6efc28174a3b5369e6cd9024e817cc53e90d2d05fd7a3ce6560958c282e",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "b48c888712db3902ccc45244aba4c7879cd015423be9b53f3dfa76881a5529e3",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "4816b6efc28174a3b5369e6cd9024e817cc53e90d2d05fd7a3ce6560958c282e",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "1-float",
+      "axis": 1,
+      "arm": "float",
+      "format": 1,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        0.0,
+        -2.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.1-asymmetric",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            0,
+            3204448256
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            0,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "80b47c2c7bb88f3545d04a4cc906a2dfdc64e73e6cbecb948795d37e2955211e",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cb1dfb9e4b3382d49a45b2ce028164a6600af49f6438eb3f620896ae14a7c857",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            0,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "16216c3c211ac91a7bd4135d728fbaf7dc00783d00c018973e77531cdc5ec5fa",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cb1dfb9e4b3382d49a45b2ce028164a6600af49f6438eb3f620896ae14a7c857",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            0,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "b48c888712db3902ccc45244aba4c7879cd015423be9b53f3dfa76881a5529e3",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cb1dfb9e4b3382d49a45b2ce028164a6600af49f6438eb3f620896ae14a7c857",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "1-asymmetric",
+      "axis": 1,
+      "arm": "asymmetric",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        0.0,
+        -0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.1-signed",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "80b47c2c7bb88f3545d04a4cc906a2dfdc64e73e6cbecb948795d37e2955211e",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "16216c3c211ac91a7bd4135d728fbaf7dc00783d00c018973e77531cdc5ec5fa",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "b48c888712db3902ccc45244aba4c7879cd015423be9b53f3dfa76881a5529e3",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "1-signed",
+      "axis": 1,
+      "arm": "signed",
+      "format": 1,
+      "scale": [
+        -2.0,
+        -4.0
+      ],
+      "stored": [
+        -0.0,
+        0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.1-wrong",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "463091ded97785d960d7e7345cb6d7f291fcee7c4d0d8d315fefa9d7b30fb93f",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "d4576688439b653e07cebdecc3ec264a9d84d72e4d82bc67921ef3cf1ba11425",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "dce71c7d6043ded25e09cad8649e53365c73ec97761a9412e26ea2fa4e3d2f7e",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "1-wrong",
+      "axis": 1,
+      "arm": "wrong",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        -0.0,
+        0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.2-half",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "becc2bac6f05d5aa73e6b97306b75e2f01c9937fe576b8c45713f4f0230906ba",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cbbeafe05147c1f9559aa821751dc52b7b57640fc3751cc0c1feb52fb6f44910",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "ddd15fa76fa94ef522702a4c7b2ca7e7a0abffbc85acba72784cac7fed39287f",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cbbeafe05147c1f9559aa821751dc52b7b57640fc3751cc0c1feb52fb6f44910",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "53c0e992462bc4b21d45fcda7b8161e2fb1d461f15fd695bbf6f7e366e2d5bfc",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cbbeafe05147c1f9559aa821751dc52b7b57640fc3751cc0c1feb52fb6f44910",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "2-half",
+      "axis": 2,
+      "arm": "half",
+      "format": 0,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        -2.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.2-float",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "becc2bac6f05d5aa73e6b97306b75e2f01c9937fe576b8c45713f4f0230906ba",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "963fa029d918e422073bba125c013555bef7d602f87eb0ffa203f4f945db5207",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "ddd15fa76fa94ef522702a4c7b2ca7e7a0abffbc85acba72784cac7fed39287f",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "963fa029d918e422073bba125c013555bef7d602f87eb0ffa203f4f945db5207",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "53c0e992462bc4b21d45fcda7b8161e2fb1d461f15fd695bbf6f7e366e2d5bfc",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "963fa029d918e422073bba125c013555bef7d602f87eb0ffa203f4f945db5207",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "2-float",
+      "axis": 2,
+      "arm": "float",
+      "format": 1,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        -2.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.2-asymmetric",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            3204448256
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "becc2bac6f05d5aa73e6b97306b75e2f01c9937fe576b8c45713f4f0230906ba",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "89763caffbd581a4b621e25b505f4a2b4cb5969260b608ab445b456f29f6c265",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "ddd15fa76fa94ef522702a4c7b2ca7e7a0abffbc85acba72784cac7fed39287f",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "89763caffbd581a4b621e25b505f4a2b4cb5969260b608ab445b456f29f6c265",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "53c0e992462bc4b21d45fcda7b8161e2fb1d461f15fd695bbf6f7e366e2d5bfc",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "89763caffbd581a4b621e25b505f4a2b4cb5969260b608ab445b456f29f6c265",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "2-asymmetric",
+      "axis": 2,
+      "arm": "asymmetric",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        -2.0,
+        -0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.2-signed",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "becc2bac6f05d5aa73e6b97306b75e2f01c9937fe576b8c45713f4f0230906ba",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "ddd15fa76fa94ef522702a4c7b2ca7e7a0abffbc85acba72784cac7fed39287f",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "53c0e992462bc4b21d45fcda7b8161e2fb1d461f15fd695bbf6f7e366e2d5bfc",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "2-signed",
+      "axis": 2,
+      "arm": "signed",
+      "format": 1,
+      "scale": [
+        -2.0,
+        -4.0
+      ],
+      "stored": [
+        2.0,
+        0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr4.2-wrong",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "11655aa255ff11423502344bf52cfa95f9e94fe9d6dcf2824840bbf4e98413d1",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "6e9e012c95011b93f801670634990fca54816875233fdbff38e4b9a720a2d16b",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "8efb0a6a4bb748b7cc446e50de57e04f6ef754f18c1ed9043bd9c4fe154278fa",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "4.1.1",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "9e64f169c345a3280dbff858282cfeccbfb7df081ad7485faf39329aa0c37544",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "4.1.1",
+    "selection": {
+      "name": "2-wrong",
+      "axis": 2,
+      "arm": "wrong",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        2.0,
+        0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.0-half",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "6f45f4306af11af467fbccc6c341f12622d6f33b16c862e12e6c148475024ece",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "8213950d45cba2eec1cd78f6f0a36eed421407ab5349abdcaec12320f47fe606",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "15aec4d8ebbc61fdedf72f2d84ed9c460c4b1c59f41f66af7627cc5c946c6695",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "f95b01689d566c745e71c0ef64172716e82d17325b7748259f062134065f765f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "0-half",
+      "axis": 0,
+      "arm": "half",
+      "format": 0,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.0-float",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "6f45f4306af11af467fbccc6c341f12622d6f33b16c862e12e6c148475024ece",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "283e9a66cde4f9f970e0bcd50d729a50834eda7f24638791b10e54c811f1e0d4",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "8213950d45cba2eec1cd78f6f0a36eed421407ab5349abdcaec12320f47fe606",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "283e9a66cde4f9f970e0bcd50d729a50834eda7f24638791b10e54c811f1e0d4",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "15aec4d8ebbc61fdedf72f2d84ed9c460c4b1c59f41f66af7627cc5c946c6695",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "283e9a66cde4f9f970e0bcd50d729a50834eda7f24638791b10e54c811f1e0d4",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "0-float",
+      "axis": 0,
+      "arm": "float",
+      "format": 1,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.0-asymmetric",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            0
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "6f45f4306af11af467fbccc6c341f12622d6f33b16c862e12e6c148475024ece",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5d9e662b2b7c36c964425c5837fe74c04f8c3a0d30bf099ce5ddb18bae8a7e0d",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "8213950d45cba2eec1cd78f6f0a36eed421407ab5349abdcaec12320f47fe606",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5d9e662b2b7c36c964425c5837fe74c04f8c3a0d30bf099ce5ddb18bae8a7e0d",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            0
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "15aec4d8ebbc61fdedf72f2d84ed9c460c4b1c59f41f66af7627cc5c946c6695",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5d9e662b2b7c36c964425c5837fe74c04f8c3a0d30bf099ce5ddb18bae8a7e0d",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "0-asymmetric",
+      "axis": 0,
+      "arm": "asymmetric",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        -2.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.0-signed",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "6f45f4306af11af467fbccc6c341f12622d6f33b16c862e12e6c148475024ece",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "8213950d45cba2eec1cd78f6f0a36eed421407ab5349abdcaec12320f47fe606",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "15aec4d8ebbc61fdedf72f2d84ed9c460c4b1c59f41f66af7627cc5c946c6695",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "0-signed",
+      "axis": 0,
+      "arm": "signed",
+      "format": 1,
+      "scale": [
+        -2.0,
+        -4.0
+      ],
+      "stored": [
+        2.0,
+        -0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.0-wrong",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "0d4f50d0757aea828cfd41af2f84483cfde2e8b47ac800109346319b7c247a94",
+        "input_sha256": [
+          "2c06138f040d0a17d5861c68d8a7a640a2373cc8b2aa30285fe1b83a5b72321b",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "d72d3e3ddef7c02b7605081a66ba517a53e69f78bf4bb138d15d83eefa28a8c5",
+        "input_sha256": [
+          "e7a63f76b77eaf3151202345a5c9635caef61446dd67488b39098d99df7760eb",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 0,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            2147483648
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "1fb32f53af39f98e1c3be24282f11d585806321afe0b0eb9763eb7f247570166",
+        "input_sha256": [
+          "d971326db53f120af3ed9115610f79a51ed400c9d2c974ecf68287d491a3c9e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "98226fec71df9ec09ae783eff9381782f955391b699d922039cfb80a6de90a58",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "0-wrong",
+      "axis": 0,
+      "arm": "wrong",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        2.0,
+        -0.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.1-half",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "e94a7bfbb39562c5c3d7690e1b8f957774259b49ffd96b31f47e3bce26f14e6f",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "d872cd2cb1c69ce4dd36f9f6b913cbc349d9d7cdce005145b052270d92f3e3b9",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "ca5e304f4db7d1279ced10198fdec330d3e440af70b55bf5c4c2b57b5e7dc7e2",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "d872cd2cb1c69ce4dd36f9f6b913cbc349d9d7cdce005145b052270d92f3e3b9",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "8d5ade47f49e2a75737855a4b4c8e13a97826078ec5945b498b847d212dcbb30",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "d872cd2cb1c69ce4dd36f9f6b913cbc349d9d7cdce005145b052270d92f3e3b9",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "1-half",
+      "axis": 1,
+      "arm": "half",
+      "format": 0,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        0.0,
+        -2.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.1-float",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "e94a7bfbb39562c5c3d7690e1b8f957774259b49ffd96b31f47e3bce26f14e6f",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "4816b6efc28174a3b5369e6cd9024e817cc53e90d2d05fd7a3ce6560958c282e",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "ca5e304f4db7d1279ced10198fdec330d3e440af70b55bf5c4c2b57b5e7dc7e2",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "4816b6efc28174a3b5369e6cd9024e817cc53e90d2d05fd7a3ce6560958c282e",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            0,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "8d5ade47f49e2a75737855a4b4c8e13a97826078ec5945b498b847d212dcbb30",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "4816b6efc28174a3b5369e6cd9024e817cc53e90d2d05fd7a3ce6560958c282e",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "1-float",
+      "axis": 1,
+      "arm": "float",
+      "format": 1,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        0.0,
+        -2.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.1-asymmetric",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            0,
+            3204448256
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            0,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "e94a7bfbb39562c5c3d7690e1b8f957774259b49ffd96b31f47e3bce26f14e6f",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cb1dfb9e4b3382d49a45b2ce028164a6600af49f6438eb3f620896ae14a7c857",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            0,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "ca5e304f4db7d1279ced10198fdec330d3e440af70b55bf5c4c2b57b5e7dc7e2",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cb1dfb9e4b3382d49a45b2ce028164a6600af49f6438eb3f620896ae14a7c857",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            0,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "8d5ade47f49e2a75737855a4b4c8e13a97826078ec5945b498b847d212dcbb30",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cb1dfb9e4b3382d49a45b2ce028164a6600af49f6438eb3f620896ae14a7c857",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "1-asymmetric",
+      "axis": 1,
+      "arm": "asymmetric",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        0.0,
+        -0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.1-signed",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "e94a7bfbb39562c5c3d7690e1b8f957774259b49ffd96b31f47e3bce26f14e6f",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "ca5e304f4db7d1279ced10198fdec330d3e440af70b55bf5c4c2b57b5e7dc7e2",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "8d5ade47f49e2a75737855a4b4c8e13a97826078ec5945b498b847d212dcbb30",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "1-signed",
+      "axis": 1,
+      "arm": "signed",
+      "format": 1,
+      "scale": [
+        -2.0,
+        -4.0
+      ],
+      "stored": [
+        -0.0,
+        0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.1-wrong",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "148df1259bb900ea534eae4c096f2dd3f9ea436b66a97b2246789f6c5ffb5218",
+        "input_sha256": [
+          "edf24bedcb8433c9090f5b33cd4eea5da8f733bc624d9df498c4c881307aacfc",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "73cbf68d7bac33253ac9504227bba4867cda8869ba1cf7347a15e84f228c20e8",
+        "input_sha256": [
+          "0a2344a412dae87bc9fabbd79cde04eb79c87b4064eecd3acf2bae08c744da74",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 1,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            2147483648,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "6143ff315fd67b601d9eab7ba456dbfa408537947751286ab0bc4f472dbc6602",
+        "input_sha256": [
+          "d67280ee540bff9352b327b22302152e325eaa1c133e34ad66a3b3e3c73d496e",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "5a364e94950dcc2489ebc0ec93b1fc21984886f2114d0521165be1bb70180c6f",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "1-wrong",
+      "axis": 1,
+      "arm": "wrong",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        -0.0,
+        0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.2-half",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "c7a1722489d288de8b065a1696bee2f6afb94ff529a9646144c9ded219e312e2",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cbbeafe05147c1f9559aa821751dc52b7b57640fc3751cc0c1feb52fb6f44910",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "2b7dc30e0e6bf2d40ec4fb359b4ee7d2a3083aa86dfc0f70cace0ffab742dd41",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cbbeafe05147c1f9559aa821751dc52b7b57640fc3751cc0c1feb52fb6f44910",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 0,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "2e1a9e4df3025e13a0640626152900f14eeb31236d6cc17318e8c82482707818",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "cbbeafe05147c1f9559aa821751dc52b7b57640fc3751cc0c1feb52fb6f44910",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "2-half",
+      "axis": 2,
+      "arm": "half",
+      "format": 0,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        -2.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.2-float",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "c7a1722489d288de8b065a1696bee2f6afb94ff529a9646144c9ded219e312e2",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "963fa029d918e422073bba125c013555bef7d602f87eb0ffa203f4f945db5207",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "2b7dc30e0e6bf2d40ec4fb359b4ee7d2a3083aa86dfc0f70cace0ffab742dd41",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "963fa029d918e422073bba125c013555bef7d602f87eb0ffa203f4f945db5207",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1065353216,
+            1065353216
+          ],
+          "stored_bits": [
+            3229614080,
+            3221225472
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "2e1a9e4df3025e13a0640626152900f14eeb31236d6cc17318e8c82482707818",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "963fa029d918e422073bba125c013555bef7d602f87eb0ffa203f4f945db5207",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "2-float",
+      "axis": 2,
+      "arm": "float",
+      "format": 1,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "stored": [
+        -4.0,
+        -2.0
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.2-asymmetric",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            3204448256
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "c7a1722489d288de8b065a1696bee2f6afb94ff529a9646144c9ded219e312e2",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "89763caffbd581a4b621e25b505f4a2b4cb5969260b608ab445b456f29f6c265",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "2b7dc30e0e6bf2d40ec4fb359b4ee7d2a3083aa86dfc0f70cace0ffab742dd41",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "89763caffbd581a4b621e25b505f4a2b4cb5969260b608ab445b456f29f6c265",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            3221225472,
+            3204448256
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "2e1a9e4df3025e13a0640626152900f14eeb31236d6cc17318e8c82482707818",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "89763caffbd581a4b621e25b505f4a2b4cb5969260b608ab445b456f29f6c265",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "2-asymmetric",
+      "axis": 2,
+      "arm": "asymmetric",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        -2.0,
+        -0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.2-signed",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "c7a1722489d288de8b065a1696bee2f6afb94ff529a9646144c9ded219e312e2",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "2b7dc30e0e6bf2d40ec4fb359b4ee7d2a3083aa86dfc0f70cace0ffab742dd41",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            3221225472,
+            3229614080
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "2e1a9e4df3025e13a0640626152900f14eeb31236d6cc17318e8c82482707818",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "2-signed",
+      "axis": 2,
+      "arm": "signed",
+      "format": 1,
+      "scale": [
+        -2.0,
+        -4.0
+      ],
+      "stored": [
+        2.0,
+        0.5
+      ]
+    }
+  },
+  {
+    "attempt": "completed-spike",
+    "case": "motion-scale.fsr3.2-wrong",
+    "evaluation": "passed",
+    "frames": [
+      {
+        "descriptor": {
+          "phase": 0,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": true,
+          "control": false
+        },
+        "metrics": {
+          "phase": 0,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "815652c422b37fb270b5a6d33642912c4898aed8ca38bbf3fc3351373823e928",
+        "input_sha256": [
+          "9d0f079ab1a9aff5e9dc9b783be7abe5e836d057aa846816a9fd0fbec1f5fce8",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "91d2d62a5700cbf9404e3c575c3b6fc19e1e31c24c6fcfc0a2cf70d41314b447",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 1,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 1,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "63f8c07e89b3a600ee5008f29fb2b53c467af0ee9259e40138ff9314a0630462",
+        "input_sha256": [
+          "9507460e2e1b7490843017e4dff893e1719b8c8b54167500c9ad33cef2b49a0c",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 2,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 2,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "bd588362b02ad3aeba6a736488237d711e591bfc38cf187baa4551a89cb8751c",
+        "input_sha256": [
+          "d7ef4d839609461e7b873a5db38b92bdb8ac251ed68c42d48b40370b8f6a684a",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      },
+      {
+        "descriptor": {
+          "phase": 3,
+          "provider": "3.1.5",
+          "axis": 2,
+          "format": 1,
+          "scale_bits": [
+            1073741824,
+            1082130432
+          ],
+          "stored_bits": [
+            1073741824,
+            1056964608
+          ],
+          "reset": false,
+          "control": false
+        },
+        "metrics": {
+          "phase": 3,
+          "finite": 230400,
+          "written": 230400,
+          "outside": 0,
+          "right": 640,
+          "bottom": 360,
+          "input_mismatches": 0,
+          "debug_errors": 0,
+          "removed": 0,
+          "completed": 1
+        },
+        "output_sha256": "419bbe789974b1be63cd5677d1b61f438bba149c3ff52cc8c400f6b891a16f1b",
+        "input_sha256": [
+          "8bbeca307347b83f5605e6f1fd8d05a8369408c9263704bb5a34e8ccc23444e9",
+          "5878d4b7e26ab4197c886308f03eadc934d8bfacdef96abf8304010c0cb5656b",
+          "854fba9c5f44fac0a5e7bf9d63c06d00c0fe4194b6c7853af61212848527e3f1",
+          "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+        ]
+      }
+    ],
+    "control": false,
+    "provider_name": "3.1.5",
+    "selection": {
+      "name": "2-wrong",
+      "axis": 2,
+      "arm": "wrong",
+      "format": 1,
+      "scale": [
+        2.0,
+        4.0
+      ],
+      "stored": [
+        2.0,
+        0.5
+      ]
+    }
+  }
+]

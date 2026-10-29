@@ -2,8 +2,8 @@
 
 - **Investigation date:** 2026-09-20
 - **Topic and scope:** Native `ffxContext` creation, ownership, destruction, allocation, provider selection, and concurrency contract for the FidelityFX SDK v2.3.0 Windows/DX12 upscaler API. Dispatch/resource synchronization is excluded except where context creation or destruction directly depends on it.
-- **Baseline and evidence cut-off:** AMD FidelityFX SDK tag `v2.3.0`, release commit `60f4ea8`, corresponding to FSR SDK v2.3.0 and AMD FSR Upscaling 4.1.1. No current-`main` behavior is used as v2.3.0 evidence.
-- **Method and exclusions:** Public v2.3.0 headers were treated as the ABI/contract baseline; tagged implementation was used to determine what AMD's open providers actually do; tagged documentation and release notes were used where behavior is not encoded in headers. No Windows/DX12 runtime experiment was performed as part of this investigation. Therefore source-level implementation observations below do not establish that the distributed signed DLLs behave identically. “Verified” means directly established by tagged primary source; “Upstream claim” means AMD documents behavior not independently reproduced here; “Inference” is derived from source but not an explicit contract; “Unresolved” indicates insufficient or conflicting evidence.
+- **Baseline and evidence cut-off:** AMD FidelityFX SDK tag `v2.3.0`, release commit `60f4ea8`, corresponding to FSR SDK v2.3.0 and AMD FSR Upscaling 4.1.1. No current-`main` behaviour is used as v2.3.0 evidence.
+- **Method and exclusions:** Public v2.3.0 headers were treated as the ABI/contract baseline; tagged implementation was used to determine what AMD's open providers actually do; tagged documentation and release notes were used where behaviour is not encoded in headers. No Windows/DX12 runtime experiment was performed as part of this investigation. Therefore source-level implementation observations below do not establish that the distributed signed DLLs behave identically. “Verified” means directly established by tagged primary source; “Upstream claim” means AMD documents behaviour not independently reproduced here; “Inference” is derived from source but not an explicit contract; “Unresolved” indicates insufficient or conflicting evidence.
 
 ## Inputs
 
@@ -121,7 +121,7 @@ This has several concrete consequences, but the scope of that sentence has one a
 | DX12 backend allocation callback function pointers | Stored in an optional create-chain descriptor and potentially needed to manage persistent backend allocations. | **Verified descriptor contract; exact FSR4 retention unresolved.** |
 | `pNext` values and the storage containing chained descriptors | `pNext` is itself a pointer field, so a strict reading of the C-header lifetime sentence includes its target; however AMD's version-override example says that override descriptor storage need only survive through `CreateContext`. | **Unresolved due to ambiguous/conflicting primary evidence.** |
 | Scalar values in the upscaler descriptor | Open FSR2/FSR3 providers copy required scalar dimensions/flags into provider initialization data. | **Verified for open providers; not a global provider guarantee.** |
-| `ffxOverrideVersion::versionId` | Core code scans the chain synchronously during provider selection before provider `CreateContext`. | **Verified source behavior.** |
+| `ffxOverrideVersion::versionId` | Core code scans the chain synchronously during provider selection before provider `CreateContext`. | **Verified source behaviour.** |
 | Host `ffxAllocationCallbacks* memCb` | Separate argument, not a member of the descriptor chain. AMD explicitly documents that its `pUserData` is passed through, not dereferenced or stored by the API. | **Verified exception to descriptor-lifetime discussion.** |
 
 The open FSR3 provider's internal context contains, among other state, an `FfxInterface`, effect context/resources, and `ffxApiMessage fpMessage`; creation copies dimensions/flags and stores `fpMessage`. The FSR2 provider follows the same relevant pattern. Neither implementation retains the original root descriptor address.
@@ -141,7 +141,7 @@ The sources therefore do not establish a clean general rule that all extension-n
 
 **Upstream claim — value before create.** AMD's generic documentation says the context variable should be initialized to `NULL` before calling `ffxCreateContext`.
 
-**Verified source behavior — valid non-null arguments are overwritten.** `ffxCreateContext` first rejects `desc == nullptr`, then rejects `context == nullptr`; after both checks it executes `*context = nullptr` before provider selection. Thus, for a valid descriptor pointer and output-pointer address, the prior handle value is not consulted. If `desc` itself is null, however, the function returns before touching the output value.
+**Verified source behaviour — valid non-null arguments are overwritten.** `ffxCreateContext` first rejects `desc == nullptr`, then rejects `context == nullptr`; after both checks it executes `*context = nullptr` before provider selection. Thus, for a valid descriptor pointer and output-pointer address, the prior handle value is not consulted. If `desc` itself is null, however, the function returns before touching the output value.
 
 **Verified — successful creation.** The open FSR2/FSR3 providers assign their allocated internal context to `*context` only at the end of successful creation and then return `FFX_API_RETURN_OK`. Their internal context begins with `InternalContextHeader`, allowing the top-level API to associate the opaque handle with its provider.
 
@@ -156,9 +156,9 @@ The sources therefore do not establish a clean general rule that all extension-n
 **Upstream claim contradicted by tagged source — state after successful destroy.** The generic v2.3.0 documentation says the context will be `NULL` after `ffxDestroyContext`.
 The tagged top-level implementation does not clear `*context`. The open FSR3 upscaler provider destroys/deallocates its internal context and returns success without clearing the caller's handle; FSR2 does the same. The C++ `DestroyContext` helper merely forwards to the C API and also performs no nulling. Therefore, for these tagged open providers, a successful destroy leaves the caller's raw `ffxContext` value containing a dangling pointer.
 
-That contradiction is source-level evidence; whether the shipped v2.3.0 `amd_fidelityfx_upscaler_dx12.dll` path selected on a particular machine exhibits the same behavior still requires runtime verification.
+That contradiction is source-level evidence; whether the shipped v2.3.0 `amd_fidelityfx_upscaler_dx12.dll` path selected on a particular machine exhibits the same behaviour still requires runtime verification.
 
-**Verified source behavior — null-handle destruction is not an idempotent no-op.** The top-level `ffxDestroyContext` checks whether the pointer-to-handle argument is null, but does not check whether `*context` is null. It immediately passes `*context` to `GetAssociatedProvider`; that helper casts the handle to `InternalContextHeader*` and dereferences it. Consequently:
+**Verified source behaviour — null-handle destruction is not an idempotent no-op.** The top-level `ffxDestroyContext` checks whether the pointer-to-handle argument is null, but does not check whether `*context` is null. It immediately passes `*context` to `GetAssociatedProvider`; that helper casts the handle to `InternalContextHeader*` and dereferences it. Consequently:
 
 - `ffxDestroyContext(NULL, ...)` has a defined top-level `FFX_API_RETURN_ERROR_PARAMETER` path.
 - `ffxContext c = NULL; ffxDestroyContext(&c, ...)` reaches a null dereference in the tagged implementation rather than a documented harmless no-op.
@@ -172,7 +172,7 @@ No v2.3.0 source inspected specifies double-destroy as valid.
 
 ### 4. Allocator contract across create and destroy
 
-**Verified — host allocator callbacks are optional.** `ffxCreateContext` accepts an optional `ffxAllocationCallbacks*`. With `NULL`, AMD specifies standard `malloc`/`free` behavior. Custom callbacks consist of `alloc`, `dealloc`, and `pUserData`.
+**Verified — host allocator callbacks are optional.** `ffxCreateContext` accepts an optional `ffxAllocationCallbacks*`. With `NULL`, AMD specifies standard `malloc`/`free` behaviour. Custom callbacks consist of `alloc`, `dealloc`, and `pUserData`.
 
 **Verified — destruction requires compatible callbacks, not the same struct object.** `ffxDestroyContext` documents that its allocator must be compatible with the callbacks used for creation. The generic API documentation further defines compatibility operationally: every pointer allocated using the creation callbacks/userdata must be deallocatable using the callbacks/userdata supplied at destruction.
 
@@ -188,7 +188,7 @@ No v2.3.0 source inspected specifies double-destroy as valid.
 
 **Upstream claim — DLL roles.** AMD documents `amd_fidelityfx_loader_dx12.dll` as the small application-facing loader containing no effect implementation; it manages loading effect-specific DLLs. `amd_fidelityfx_upscaler_dx12.dll` supplies upscaling providers, including the current FSR Upscaling implementation and legacy FSR3/FSR2 providers. Applications are directed to load the loader rather than the older monolithic library arrangement.
 
-**Verified source behavior — provider selection is not necessarily fixed to one bundled implementation.** The tagged provider infrastructure can consider both internal providers and an external/driver-side provider associated with the DX12 device. Without an explicit override, it can compare provider version identifiers and select the newer supported provider; with an override it seeks the specified provider/version.
+**Verified source behaviour — provider selection is not necessarily fixed to one bundled implementation.** The tagged provider infrastructure can consider both internal providers and an external/driver-side provider associated with the DX12 device. Without an explicit override, it can compare provider version identifiers and select the newer supported provider; with an override it seeks the specified provider/version.
 
 This materially limits what can be inferred from the open FSR2/FSR3 provider sources: a machine may execute a different provider path.
 
@@ -250,17 +250,17 @@ For **destruction**, the only generic top-level error explicitly introduced befo
 
 ### 8. Other constraints material to an ownership-safe wrapper
 
-**Verified — descriptor type correctness is a safety precondition.** AMD's generic API documentation states that the `type` field must correctly identify the actual descriptor and warns that violating this is undefined behavior and likely to crash. A higher-level ownership layer therefore cannot treat arbitrary tag/payload mismatches as merely recoverable native errors.
+**Verified — descriptor type correctness is a safety precondition.** AMD's generic API documentation states that the `type` field must correctly identify the actual descriptor and warns that violating this is undefined behaviour and likely to crash. A higher-level ownership layer therefore cannot treat arbitrary tag/payload mismatches as merely recoverable native errors.
 
 **Verified — successful native destroy cannot be assumed to poison/null the raw handle.** The tagged open upscaler providers contradict the generic documentation on this point. Any ownership reasoning that uses “native handle became null” as proof of destruction would be unsound for those source implementations.
 
 **Verified — null and double destroy are not specified safe operations and are source-level hazardous.** `GetAssociatedProvider` assumes a live internal-context header. This constrains any ownership scheme to enforce exactly-once destruction independently of the native value left behind.
 
-**Unresolved — create-failure ownership is provider-sensitive.** The top-level initializes a valid output slot to null but does not enforce null on provider failure. The open legacy providers behave favorably by publishing the handle only on final success; opaque/provider-specific implementations are not contractually required by the inspected material to do the same.
+**Unresolved — create-failure ownership is provider-sensitive.** The top-level initializes a valid output slot to null but does not enforce null on provider failure. The open legacy providers behave favourably by publishing the handle only on final success; opaque/provider-specific implementations are not contractually required by the inspected material to do the same.
 
 **Unresolved — descriptor-node lifetime needs clarification before treating a temporary `pNext` chain as universally safe.** Known implementation paths consume descriptor nodes during creation, but the public lifetime sentence can be read more strictly, and AMD's own version-override sample supplies conflicting call-lifetime guidance for one extension node.
 
-**Unresolved — opaque/provider-selected behavior matters.** Source inspection of FSR2/FSR3 establishes useful lower-level behavior but cannot prove FSR4 or external-driver provider behavior. Provider selection itself can vary with the device and available provider versions.
+**Unresolved — opaque/provider-selected behaviour matters.** Source inspection of FSR2/FSR3 establishes useful lower-level behaviour but cannot prove FSR4 or external-driver provider behaviour. Provider selection itself can vary with the device and available provider versions.
 
 **Verified — destruction is a fallible native operation.** `ffxDestroyContext` returns `ffxReturnCode_t`; neither its signature nor its implementation makes destruction infallible. Moreover, no generic postcondition is given for an error. This is a native-contract constraint independently of how a future language binding chooses to expose it.
 
@@ -271,7 +271,7 @@ For **destruction**, the only generic top-level error explicitly introduced befo
 - The project's use of `amd_fidelityfx_loader_dx12.dll` as the application-facing DX12 API module matches AMD's v2.3.0 documentation.
 - `amd_fidelityfx_upscaler_dx12.dll` is the relevant effect-provider library for upscaling.
 - Retaining loaded code while native calls remain possible is consistent with the source-level provider/context relationship, although AMD does not state an explicit DLL-unload ownership rule.
-- The already successful context-free version query proves that the tested loader/provider installation can enumerate providers; it does not establish any context-lifecycle behavior.
+- The already successful context-free version query proves that the tested loader/provider installation can enumerate providers; it does not establish any context-lifecycle behaviour.
 
 **Refined.**
 
@@ -283,7 +283,7 @@ For **destruction**, the only generic top-level error explicitly introduced befo
 - Generic documentation's claim that destroy nulls the handle is contradicted by tagged open implementation.
 - A null handle and a double destroy are not source-supported harmless operations.
 - Failed creation does not have a provider-independent, explicitly documented handle postcondition once execution enters the provider.
-- Provider selection may involve an external/driver-side provider, so behavior cannot be modeled solely from the bundled open legacy-provider implementation.
+- Provider selection may involve an external/driver-side provider, so behaviour cannot be modelled solely from the bundled open legacy-provider implementation.
 
 **Contradicted.**
 
@@ -307,14 +307,14 @@ For **destruction**, the only generic top-level error explicitly introduced befo
 The following questions require native Windows/DX12/runtime experiments; source inspection alone cannot settle them:
 
 1. Create an actual v2.3.0 DX12 upscaler context with the three-node root/version/backend chain and record the selected provider/version using the applicable provider query.
-2. Record raw handle values immediately before and after successful destruction against the distributed signed DLLs; this determines whether the observed runtime reproduces the tagged open providers' non-nulling behavior.
-3. Exercise controlled create failures—missing version descriptor, missing backend, null/invalid device where safely testable, injected host-allocation failure—and record both return code and output-handle value. Undefined-behavior cases such as deliberately mismatched descriptor tags should only be characterized in an isolated process, if at all.
+2. Record raw handle values immediately before and after successful destruction against the distributed signed DLLs; this determines whether the observed runtime reproduces the tagged open providers' non-nulling behaviour.
+3. Exercise controlled create failures—missing version descriptor, missing backend, null/invalid device where safely testable, injected host-allocation failure—and record both return code and output-handle value. Undefined-behaviour cases such as deliberately mismatched descriptor tags should only be characterized in an isolated process, if at all.
 4. Instrument custom `ffxAllocationCallbacks` to determine allocation/deallocation pairing over successful creation, destruction, and injected failures, including whether a merely compatible replacement callback set behaves as documented.
 5. Instrument `ffxCreateBackendDX12AllocationCallbacksDesc` to identify which callbacks are retained or invoked during destruction by the actual FSR4 provider.
-6. Characterize device ownership separately if necessary; source evidence does not establish `ID3D12Device::AddRef` behavior. Any experiment should distinguish “SDK retained a COM reference” from the weaker public requirement that the device remain alive.
-7. Force provider-level creation failures after partial allocation, where practical, to determine actual cleanup and output-handle behavior. An allocation-failure injector is preferable to intentionally invalid pointer inputs.
+6. Characterize device ownership separately if necessary; source evidence does not establish `ID3D12Device::AddRef` behaviour. Any experiment should distinguish “SDK retained a COM reference” from the weaker public requirement that the device remain alive.
+7. Force provider-level creation failures after partial allocation, where practical, to determine actual cleanup and output-handle behaviour. An allocation-failure injector is preferable to intentionally invalid pointer inputs.
 8. Compare context creation with and without `ffxOverrideVersion` and record whether an external/driver provider is selected on test systems. Provider identity must accompany lifecycle observations because the implementation can change with provider selection.
 9. Treat thread safety as unspecified unless AMD supplies a stronger v2.3.0 statement. Concurrency stress testing may reveal defects but cannot turn absence of a source contract into a positive thread-safety guarantee.
 10. Do not use deliberate use-after-free of descriptor/device/callback state as evidence that shorter lifetimes are supported: surviving such a test would only show that one provider happened not to dereference the object in that run, while the public lifetime contract remains stricter.
 
-The remaining ambiguities—especially `pNext` storage lifetime, provider-failure handle state, device COM ownership, and opaque FSR4/external-provider behavior—are relevant to ownership soundness. This record establishes evidence and native constraints only; it does not constitute acceptance of a Rust ownership architecture.
+The remaining ambiguities—especially `pNext` storage lifetime, provider-failure handle state, device COM ownership, and opaque FSR4/external-provider behaviour—are relevant to ownership soundness. This record establishes evidence and native constraints only; it does not constitute acceptance of a Rust ownership architecture.

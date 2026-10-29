@@ -42,7 +42,7 @@ Existing project research was reviewed before re-investigating upstream material
 
 Upstream investigation used the pinned modern headers, generic loader/provider implementation, DX12 helper header, FSR3/FSR4 documentation, DX12 sample, and open FSR3 implementation. The main authoritative ABI sources are `ffx_api.h`, `ffx_api_types.h`, `ffx_api_dx12.h`, and `ffx_upscale.h`. [ffx_api.h at pinned commit](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/api/include/ffx_api.h) [ffx_api_types.h at pinned commit](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/api/include/ffx_api_types.h) [DX12 API header at pinned commit](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/api/include/dx12/ffx_api_dx12.h) [Upscaler API header at pinned commit](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/upscalers/include/ffx_upscale.h)
 
-FSR3 and FSR4 technique documentation were treated as upstream behavioral claims, not stronger ABI contracts. In particular, open FSR3 implementation details are not treated as proof of signed FSR4 behavior. [Pinned FSR3 upscaling documentation](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/docs/techniques/super-resolution-upscaler.md) [Pinned FSR4 documentation](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/docs/techniques/super-resolution-ml.md)
+FSR3 and FSR4 technique documentation were treated as upstream behavioural claims, not stronger ABI contracts. In particular, open FSR3 implementation details are not treated as proof of signed FSR4 behaviour. [Pinned FSR3 upscaling documentation](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/docs/techniques/super-resolution-upscaler.md) [Pinned FSR4 documentation](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/docs/techniques/super-resolution-ml.md)
 
 ## 3. Review-state classification
 
@@ -52,7 +52,7 @@ The distinction below is important because several absent v0.1.0 features were i
 |---|---|
 | **Already decided** | D008 fixes safe construction around non-zero checked maxima, the required upscaler/version/DX12 descriptor chain, initially zero creation flags, and provider/runtime handling of undocumented numerical limits. D011 fixes the immediate-return `unsafe dispatch(&mut self, ...)`, renderer ownership of submission/states/synchronization/GPU lifetimes, the first five-resource profile, public dispatch fields, explicit exposure, current MV convention, fixed active extents, poison-on-native-dispatch-error, and no builder. D012 fixes private `UpscalerOptions` fields plus constructor/getters and deliberately leaves room for later optional creation settings. |
 | **Intentionally deferred** | Quality presets and size helpers, jitter utilities, memory queries, Configure tuning, provider override, callbacks/global debug, additional creation flags, auto exposure, HDR, dynamic resolution, sharpening, masks, broader formats, variable output, broader provider support and temporal/IQ validation were explicitly outside the accepted initial contracts. |
-| **Not yet researched / not publicly established** | Signed-provider behavior for every shared flag and combination; general accepted DXGI formats; signed-provider variable-output temporal behavior; complete Configure semantics across providers; callback lifetime/threading for signed providers; COMPUTE-list support; alpha behavior; nontrivial aliasing; general post-state behavior; broad hardware/provider matrices; and actual temporal correctness. The repository already marks several of these as open. |
+| **Not yet researched / not publicly established** | Signed-provider behaviour for every shared flag and combination; general accepted DXGI formats; signed-provider variable-output temporal behaviour; complete Configure semantics across providers; callback lifetime/threading for signed providers; COMPUTE-list support; alpha behaviour; nontrivial aliasing; general post-state behaviour; broad hardware/provider matrices; and actual temporal correctness. The repository already marks several of these as open. |
 | **New design decision required** | How to extend the public-field `UpscaleDispatch` once a per-frame feature is actually accepted; which creation flags become supported typed options; what provider-selection abstraction is public; whether Query/Configure become stable high-level APIs; and what broader resource-format support policy the crate promises. These are not reversals of D008/D011/D012; they arise only when deferred capabilities are promoted into supported API. |
 
 No contradiction was found that invalidates the supplied baseline. The significant upstream surface beyond v0.1.0 was already broadly recognized by the repository; this investigation primarily maps that surface onto future API design.
@@ -123,7 +123,7 @@ The DX12 header additionally supplies inline conversion helpers including `ffxAp
 
 **Verified source fact.** The pinned SDK also contains the older direct FSR3 API in `ffx_fsr3upscaler.h`, with effect-specific functions such as `ffxFsr3UpscalerContextCreate`, `ffxFsr3UpscalerContextDispatch`, direct GPU-memory and jitter/quality helpers, and effect-specific context/configuration structures. For example, `ffxFsr3UpscalerContextDispatch` takes `FfxFsr3UpscalerDispatchDescription`, and `ffxFsr3UpscalerGetJitterOffset` is a direct function rather than a modern Query descriptor.
 
-**Inference.** These legacy functions are useful implementation evidence for the open FSR3 provider but should not become the public Rust abstraction for the modern provider-routed API. In particular, a legacy FSR3 behavior cannot establish signed FSR4 behavior.
+**Inference.** These legacy functions are useful implementation evidence for the open FSR3 provider but should not become the public Rust abstraction for the modern provider-routed API. In particular, a legacy FSR3 behaviour cannot establish signed FSR4 behaviour.
 
 ## 5. Complete modern upscaler descriptor surface
 
@@ -133,7 +133,7 @@ The pinned `FfxApiCreateContextUpscaleFlags` contains all of the following creat
 
 | Flag | Native value | Meaning | Rust-relevant classification |
 |---|---:|---|---|
-| `FFX_UPSCALE_ENABLE_HIGH_DYNAMIC_RANGE` | `1 << 0` | Input color is HDR | Deferred capability; typed creation setting required |
+| `FFX_UPSCALE_ENABLE_HIGH_DYNAMIC_RANGE` | `1 << 0` | Input colour is HDR | Deferred capability; typed creation setting required |
 | `FFX_UPSCALE_ENABLE_DISPLAY_RESOLUTION_MOTION_VECTORS` | `1 << 1` | MV texture uses presentation resolution | Deferred capability; changes resource validation and scale |
 | `FFX_UPSCALE_ENABLE_MOTION_VECTORS_JITTER_CANCELLATION` | `1 << 2` | Supplied MVs contain jitter pattern | Deferred capability; changes semantic contract |
 | `FFX_UPSCALE_ENABLE_DEPTH_INVERTED` | `1 << 3` | Input depth is reversed/inverted | Deferred capability; typed depth convention |
@@ -141,7 +141,7 @@ The pinned `FfxApiCreateContextUpscaleFlags` contains all of the following creat
 | `FFX_UPSCALE_ENABLE_AUTO_EXPOSURE` | `1 << 5` | Provider computes exposure | Deferred capability; changes dispatch resource requirements |
 | `FFX_UPSCALE_ENABLE_DYNAMIC_RESOLUTION` | `1 << 6` | Application uses dynamic render resolution | Deferred capability |
 | `FFX_UPSCALE_ENABLE_DEBUG_CHECKING` | `1 << 7` | Enable runtime API checking/messages | Deferred diagnostics; callback lifetime needs separate contract |
-| `FFX_UPSCALE_ENABLE_NON_LINEAR_COLORSPACE` | `1 << 8` | Color input is perceptual/non-linear | FSR4-oriented capability; provider-sensitive |
+| `FFX_UPSCALE_ENABLE_NON_LINEAR_COLORSPACE` | `1 << 8` | Colour input is perceptual/non-linear | FSR4-oriented capability; provider-sensitive |
 | `FFX_UPSCALE_ENABLE_DEBUG_VISUALIZATION` | `1 << 9` | Permit debug visualization, potentially increasing memory | Provider-sensitive diagnostic capability |
 
 These are exactly the shared-header bits at the pinned commit. Zero is explicitly a valid combination, preserving D008's current contract.
@@ -153,7 +153,7 @@ These are exactly the shared-header bits at the pinned commit. Zero is explicitl
 | Field | Exact native type | Timing | Notes |
 |---|---|---|---|
 | `commandList` | `void *` | frame | DX12 command list |
-| `color` | `FfxApiResource` | frame | render-resolution color |
+| `color` | `FfxApiResource` | frame | render-resolution colour |
 | `depth` | `FfxApiResource` | frame | 32-bit depth |
 | `motionVectors` | `FfxApiResource` | frame | render or presentation resolution depending on create flag |
 | `exposure` | `FfxApiResource` | frame | optional 1×1 exposure |
@@ -228,7 +228,7 @@ The complete upscaler-relevant modern Query surface consists of two generic desc
 
 The shared header defines quality modes NativeAA/Quality/Balanced/Performance/Ultra Performance as nominal ratios `1.0/1.5/1.7/2.0/3.0`.
 
-The resource-requirement bits represent Color, Depth, MV, Exposure, Reactive Mask and T&C Mask. The Exposure bit can be satisfied by the explicit exposure resource or the auto-exposure creation mode according to its header description.
+The resource-requirement bits represent Colour, Depth, MV, Exposure, Reactive Mask and T&C Mask. The Exposure bit can be satisfied by the explicit exposure resource or the auto-exposure creation mode according to its header description.
 
 **Verified source fact.** For null-context utility queries other than `GetVersions`, the generic implementation routes through a provider using the descriptor type, optional `ffxOverrideVersion`, and a device obtainable from the chained DX12 backend descriptor. `GetVersions` is special because it embeds its own `device`.
 
@@ -278,7 +278,7 @@ The current keys consume float values via `ptr`; `u64` remains part of the gener
 
 **Verified source fact.** The generic loader intercepts the two global-debug descriptors before provider dispatch. In the pinned implementation the newer descriptor's `effectId` is present in the ABI but is not consumed by the shown top-level callback-setting path. Context-specific upscaler Configure routes to the selected provider.
 
-**Unresolved.** Open FSR3 shows synchronous float consumption and persistent context tuning behavior, but this does not establish pointer lifetime, reset semantics or support for all five keys in arbitrary signed providers. Stable high-level exposure should therefore not assume more than the selected provider actually documents/tests.
+**Unresolved.** Open FSR3 shows synchronous float consumption and persistent context tuning behaviour, but this does not establish pointer lifetime, reset semantics or support for all five keys in arbitrary signed providers. Stable high-level exposure should therefore not assume more than the selected provider actually documents/tests.
 
 ## 6. Provider discovery and selection
 
@@ -297,11 +297,11 @@ Enumeration also contains lifetime subtleties: external provider names are copie
 | Capability | Native mechanism | Native timing/domain | Rust-validation boundary | Renderer/runtime obligation | Evidence status |
 |---|---|---|---|---|---|
 | Sharpening | `enableSharpening: bool`, `sharpness: float` | per frame; sharpness `[0,1]` | finite `[0,1]`; represent disabled/enabled without raw contradictory state | evaluate desired IQ; provider executes pass | **Verified source fact** for fields/domain; runtime IQ unresolved |
-| Pre-exposure | `preExposure: float` | per frame; header says `>0` | finite positive value type is straightforward | color contents must actually use matching pre-exposure | **Verified source fact**; semantic meaning documented |
+| Pre-exposure | `preExposure: float` | per frame; header says `>0` | finite positive value type is straightforward | colour contents must actually use matching pre-exposure | **Verified source fact**; semantic meaning documented |
 | Explicit exposure | `exposure: FfxApiResource` | per frame, normally 1×1 `R32_FLOAT` | dimensions/format/state can be checked; GPU value cannot | supply positive exposure matching later tonemap | **Upstream claim** for intended semantics |
 | Auto exposure | create flag `FFX_UPSCALE_ENABLE_AUTO_EXPOSURE`; exposure resource may be absent | creation choice affecting per-frame resources | wrapper can make explicit-vs-auto modes structurally exclusive | provider computes exposure; correctness is runtime/IQ | **Verified source fact** for flag/resource optionality |
 | HDR | `FFX_UPSCALE_ENABLE_HIGH_DYNAMIC_RANGE` | creation | typed boolean/mode; cannot validate pixel luminance domain | provide content matching advertised HDR mode | **Verified source fact** flag; **upstream claim** integration guidance |
-| Non-linear color | create `NON_LINEAR_COLORSPACE`; per-frame sRGB/PQ flags | create capability + per-frame encoding; sRGB/PQ mutually exclusive | encode as enum, prohibit simultaneous flags | resource's actual transfer function must match | **Verified source fact** fields; FSR4-specific behavior is **upstream claim** |
+| Non-linear colour | create `NON_LINEAR_COLORSPACE`; per-frame sRGB/PQ flags | create capability + per-frame encoding; sRGB/PQ mutually exclusive | encode as enum, prohibit simultaneous flags | resource's actual transfer function must match | **Verified source fact** fields; FSR4-specific behaviour is **upstream claim** |
 | Depth convention | create `DEPTH_INVERTED`, `DEPTH_INFINITE` | context lifetime | type can represent standard/reversed × finite/infinite | actual projection/depth contents must match | **Verified source fact** |
 | MV resolution | create `DISPLAY_RESOLUTION_MOTION_VECTORS` | context lifetime | validate texture active dimensions against selected mode | renderer generates matching buffer | **Verified source fact** |
 | MV jitter convention | create `MOTION_VECTORS_JITTER_CANCELLATION` | context lifetime | typed convention possible | pixel values must include/exclude jitter consistently | **Verified source fact** |
@@ -311,21 +311,21 @@ Enumeration also contains lifetime subtleties: external provider names are copie
 | Reactive mask | `reactive: FfxApiResource` | per frame, optional depending provider | format/extent/state where support policy exists | generate semantically correct `[0,1]` values | **Verified source fact** slot; provider requirement queried |
 | T&C mask | `transparencyAndComposition` | per frame, optional depending provider | same | generate semantically appropriate values | **Verified source fact** slot |
 | Auto-reactive generation | `ffxDispatchDescUpscaleGenerateReactiveMask` | separate dispatch | scalar/resource validation possible | command-list state/sync/lifetime | **Verified source fact** |
-| Variable render size | `renderSize`; create `DYNAMIC_RESOLUTION` flag | per frame inside creation max | wrapper can require nonzero and `<= maxRenderSize`; exact flag policy requires decision | allocated resources must cover active region | Shared surface **verified**; signed-provider quality behavior unresolved |
-| Variable output size | `upscaleSize` | per frame; omitted/zero form defaults to max | wrapper can expose explicit active extent and avoid native zero sentinel | output allocation must cover active output | Shared field **verified**; broad signed-provider temporal behavior unresolved |
+| Variable render size | `renderSize`; create `DYNAMIC_RESOLUTION` flag | per frame inside creation max | wrapper can require nonzero and `<= maxRenderSize`; exact flag policy requires decision | allocated resources must cover active region | Shared surface **verified**; signed-provider quality behaviour unresolved |
+| Variable output size | `upscaleSize` | per frame; omitted/zero form defaults to max | wrapper can expose explicit active extent and avoid native zero sentinel | output allocation must cover active output | Shared field **verified**; broad signed-provider temporal behaviour unresolved |
 | Debug checker | create `DEBUG_CHECKING`, `fpMessage` | context creation | flags easy; safe callback API is not | callback lifetime/threading/reentrancy | **Unresolved** for robust signed-provider callback contract |
-| Debug view | create `DEBUG_VISUALIZATION`; dispatch `DRAW_DEBUG_VIEW` | creation + frame | structural dependency can be enforced | output deliberately becomes diagnostic image | **Upstream claim** for FSR4 behavior |
+| Debug view | create `DEBUG_VISUALIZATION`; dispatch `DRAW_DEBUG_VIEW` | creation + frame | structural dependency can be enforced | output deliberately becomes diagnostic image | **Upstream claim** for FSR4 behaviour |
 | Quality presets | Query descriptors | utility, not context mode | enum and checked dimensions | caller chooses policy | **Verified source fact** |
 | Memory usage | live and precreate Query descriptors | query | copy scalar result | estimate remains provider/device-specific | **Verified source fact** |
 | Resource requirements | Query descriptor | query | map bitset into owned capability value | provider-specific resources still need valid content | **Verified source fact** |
 | Provider selection | `GetVersions` + `ffxOverrideVersion` | discovery + create/query chain | opaque IDs and owned names | selected provider may vary by device/driver | **Verified source fact** |
-| Tuning constants | `ffxConfigureDescUpscaleKeyValue` | persistent context Configure | ranges can be represented if provider support known | IQ effects/provider support runtime-dependent | shared ABI **verified**, universal behavior **unresolved** |
+| Tuning constants | `ffxConfigureDescUpscaleKeyValue` | persistent context Configure | ranges can be represented if provider support known | IQ effects/provider support runtime-dependent | shared ABI **verified**, universal behaviour **unresolved** |
 
 ## 8. Resource formats, extents, states, ownership and lifetimes
 
 ### 8.1 Input formats
 
-**Upstream claim.** Pinned FSR3 documentation describes color as application-specified, depth as a one-component floating-point texture, motion vectors as a two-component floating-point texture, masks as render-resolution `R8_UNORM`, and exposure as 1×1 `R32_FLOAT`. Motion vectors use render resolution unless the display-resolution-MV creation flag is set.
+**Upstream claim.** Pinned FSR3 documentation describes colour as application-specified, depth as a one-component floating-point texture, motion vectors as a two-component floating-point texture, masks as render-resolution `R8_UNORM`, and exposure as 1×1 `R32_FLOAT`. Motion vectors use render resolution unless the display-resolution-MV creation flag is set.
 
 The documentation specifies current-to-previous motion in screen space and says `motionVectorScale` adapts application units to the expected `[-width,+width] × [-height,+height]` range. Render-resolution inputs are jittered except motion vectors unless the jitter-cancellation flag says otherwise.
 
@@ -358,7 +358,7 @@ The current project correctly treats state transitions as renderer obligations. 
 
 Nothing in the extended surface justifies transferring renderer resource ownership to the wrapper. Query output buffers and copied metadata can be Rust-owned; frame textures and command lists remain renderer-owned.
 
-The generic create header has unusually conservative pointer-lifetime wording, while repository research has established that lifetime behavior differs by node and that signed-provider retention of concrete chain/device dependencies is not fully documented. Conservative owned/address-stable descriptor storage therefore remains a defensible internal wrapper policy.
+The generic create header has unusually conservative pointer-lifetime wording, while repository research has established that lifetime behaviour differs by node and that signed-provider retention of concrete chain/device dependencies is not fully documented. Conservative owned/address-stable descriptor storage therefore remains a defensible internal wrapper policy.
 
 ## 9. Individual feature findings
 
@@ -380,11 +380,11 @@ Explicit versus automatic exposure is a creation-level choice because `FFX_UPSCA
 
 **Inference.** A future safe API should represent `ExposureMode::{Explicit, Automatic}` at creation and validate each frame against that mode. It should not silently accept both modes as equivalent.
 
-### 9.3 HDR and color encoding
+### 9.3 HDR and colour encoding
 
 HDR is a creation flag. Non-linear input is separately represented by another creation flag, while sRGB/PQ are per-frame dispatch hints. No source inspected establishes HDR and PQ as inherently incompatible; the wrapper should not invent such a restriction.
 
-FSR4 documentation says linear color remains preferred and identifies the two non-linear per-frame flags as mutually exclusive.
+FSR4 documentation says linear colour remains preferred and identifies the two non-linear per-frame flags as mutually exclusive.
 
 **Provider-specific limitation.** The open FSR3 modern adapter does not establish support for newer FSR4-oriented bits. Absence from that open path is provider-specific evidence, not proof that the shared ABI fields are invalid. Conversely, their presence in the shared header is not proof that every provider implements them.
 
@@ -435,7 +435,7 @@ The native dispatch always contains active `renderSize` and `upscaleSize`; the c
 
 It would be reasonable for a high-level wrapper to validate nonzero active extents, configured maxima, and backing resource dimensions before native dispatch. Those are wrapper validation proposals, not newly discovered AMD universal limits.
 
-**Unresolved.** Source existence of `upscaleSize` does not establish temporal reconstruction quality, history behavior, all allowed size transitions, or signed-provider behavior when output size changes from frame to frame.
+**Unresolved.** Source existence of `upscaleSize` does not establish temporal reconstruction quality, history behaviour, all allowed size transitions, or signed-provider behaviour when output size changes from frame to frame.
 
 ### 9.9 Other API-design-relevant features
 
@@ -464,10 +464,10 @@ A future safe layer can validate substantial structural information before cross
 | explicit exposure texture 1×1 and supported format | exposure value stored on GPU |
 | selected mask formats/extents | mask quality/content |
 | motion-vector texture dimensions according to chosen resolution mode | direction, magnitude and jitter semantics of vector contents |
-| sRGB/PQ mutual exclusion | actual transfer function of color data |
+| sRGB/PQ mutual exclusion | actual transfer function of colour data |
 | output has wrapper-required UAV capability | real GPU state and barriers |
 | known resource descriptor shapes | heap aliasing not visible from resource identity alone |
-| provider IDs originate from enumeration if wrapper controls both steps | future driver/provider behavior |
+| provider IDs originate from enumeration if wrapper controls both steps | future driver/provider behaviour |
 | copied provider names | lifetime of native borrowed name pointers |
 | active sizes fit supplied texture descriptions | temporal quality across size changes |
 
@@ -533,7 +533,7 @@ pub struct UpscaleDispatch<'a> {
 
 D011 explicitly accepted that consequence.
 
-Therefore adding `pre_exposure`, `sharpening`, `reactive_mask`, `active_render_size`, `active_output_size`, or dispatch color flags directly to this public struct is a source-breaking change.
+Therefore adding `pre_exposure`, `sharpening`, `reactive_mask`, `active_render_size`, `active_output_size`, or dispatch colour flags directly to this public struct is a source-breaking change.
 
 A compatibility-preserving expansion consequently needs some second channel for genuinely new per-frame inputs. One example is an advanced frame type while retaining the existing method unchanged:
 
@@ -673,7 +673,7 @@ Before accepting the **first per-frame extension**, however, make a dedicated di
 1. preserve v0.1.0 source compatibility and introduce one private/extensible advanced frame input while keeping the D011 method indefinitely; or
 2. deliberately make one early breaking release that replaces public `UpscaleDispatch` fields with an extensible private representation and retains a single dispatch path.
 
-If the intended supported profile is expected to include several of sharpening, variable active extents, automatic exposure, masks, pre-exposure and non-linear color, the second option produces the cleaner long-term API because those are all genuine per-frame dimensions of the same native operation. That is an API-maintenance argument, not evidence that D011 was wrong when it deliberately selected a narrow first-release profile.
+If the intended supported profile is expected to include several of sharpening, variable active extents, automatic exposure, masks, pre-exposure and non-linear colour, the second option produces the cleaner long-term API because those are all genuine per-frame dimensions of the same native operation. That is an API-maintenance argument, not evidence that D011 was wrong when it deliberately selected a narrow first-release profile.
 
 Conversely, if source compatibility with v0.1.0 callers is the dominant constraint, the additive advanced-frame route is technically sound and does not require reopening the existing method.
 
@@ -693,7 +693,7 @@ These are proposed sequencing boundaries, not authorization to implement them.
 
 Add/verify ABI declarations and layout tests for the complete shared upscaler descriptor/flag/query/configuration surface required by planned work. Keep modern C exports distinct from inline C++ helpers and legacy FSR3 functions.
 
-No high-level behavior needs to change at this stage.
+No high-level behaviour needs to change at this stage.
 
 ### M2 — provider and read-only Query surface
 
@@ -737,7 +737,7 @@ Add auto-exposure context mode and optional mask resources only with resource-re
 
 ### M8 — HDR/non-linear/debug/provider-specific features
 
-Expand HDR and non-linear color after comparative provider testing. Debug callbacks and visualization should remain separate from ordinary production configuration because their lifetime and provider behavior are less well established.
+Expand HDR and non-linear colour after comparative provider testing. Debug callbacks and visualization should remain separate from ordinary production configuration because their lifetime and provider behaviour are less well established.
 
 ### M9 — Configure tuning
 
@@ -763,15 +763,15 @@ The following experiments would discriminate semantic correctness:
 | MV jitter | paired jitter-included and jitter-free vectors with matching/mismatching creation flag | correct pair minimizes stationary-edge instability and ghosting |
 | Jitter sequence | stationary diagonal/high-frequency geometry across a full phase | temporal stability and convergence versus wrong-sign/no-jitter controls |
 | Reset | accumulate stable history, perform hard camera cut, compare reset false/true | first post-cut frame discards stale history and subsequent frames reconverge |
-| Reactive/T&C masks | translucent particles/reflections without reliable MV | measurable reduction in trails/lock artifacts with semantically appropriate mask |
+| Reactive/T&C masks | translucent particles/reflections without reliable MV | measurable reduction in trails/lock artefacts with semantically appropriate mask |
 | Auto-reactive generation | same scene with hand-authored and generated masks | generated mask content/effect correlates with intended translucent regions |
 | Variable render size | alternate several active extents within one allocation; put sentinels outside active regions | correct active-region interpretation and stable temporal transitions |
 | Variable output size | alternate active output extents below max | correct write extent, no unintended region writes, appropriate history transition |
 | HDR | equivalent normalized SDR/HDR scenes | transfer-normalized reconstruction without unexpected clipping or exposure drift |
 | sRGB/PQ input | equivalent scene encoded linear/sRGB/PQ; pair correct and deliberately wrong flags | correct-flag outputs agree after transfer normalization; wrong flags serve as control |
 | Resource requirements | enumerate/select every available provider and query before/live context | returned requirements agree with actual accepted resource omission |
-| Configure constants | ghosting/disocclusion fixtures at default and controlled extremes | visible/measurable effect, persistence across frames and documented reset behavior |
-| Provider override | enumerate each provider ID and explicitly create it | actual provider query reports selected ID/name and feature behavior is tested separately |
+| Configure constants | ghosting/disocclusion fixtures at default and controlled extremes | visible/measurable effect, persistence across frames and documented reset behaviour |
+| Provider override | enumerate each provider ID and explicitly create it | actual provider query reports selected ID/name and feature behaviour is tested separately |
 
 Useful measurements include high-resolution-reference PSNR/SSIM or simple linear error, temporal residuals on stationary regions, trail energy behind moving objects, edge overshoot, frame-to-frame variance, and sentinel checks outside active regions. The point is not to standardize one metric as “FSR quality” but to ensure that each capability has an observable consequence consistent with its intended semantics.
 
@@ -810,13 +810,13 @@ Source inspection cannot establish:
 - auto-exposure response and stability;
 - actual MV/jitter/reset/mask correctness;
 - interaction quality among HDR, exposure and non-linear inputs;
-- exact signed-provider Configure support/persistence/reset behavior;
-- general signed-provider resource-state restoration behavior;
+- exact signed-provider Configure support/persistence/reset behaviour;
+- general signed-provider resource-state restoration behaviour;
 - callback threading/reentrancy/lifetime rules;
 - COMPUTE-list support;
 - broad multi-context/concurrency limits;
-- signed-provider internal allocation/sharing behavior;
-- behavior on hardware/provider combinations not actually tested.
+- signed-provider internal allocation/sharing behaviour;
+- behaviour on hardware/provider combinations not actually tested.
 
 A fixed SDK source release does not remove these runtime/provider uncertainties because provider selection can involve driver/external implementations not represented by the open FSR3 source.
 
@@ -824,7 +824,7 @@ A fixed SDK source release does not remove these runtime/provider uncertainties 
 
 The supplied baseline is accurate. The investigation adds the following information rather than overturning it:
 
-1. The complete shared creation flag domain is ten bits, covering HDR, MV resolution/jitter convention, depth inversion/infinite plane, auto exposure, dynamic resolution, debug checking, non-linear color and debug visualization. The current zero-flag profile is one intentionally narrow point in this space.
+1. The complete shared creation flag domain is ten bits, covering HDR, MV resolution/jitter convention, depth inversion/infinite plane, auto exposure, dynamic resolution, debug checking, non-linear colour and debug visualization. The current zero-flag profile is one intentionally narrow point in this space.
 2. The dispatch descriptor already contains active render and output extents, sharpening, pre-exposure, optional masks and dispatch flags in addition to fields exposed by v0.1.0.
 3. Variable output size is structurally separate from dynamic render resolution: `upscaleSize` is inherently per-frame and has no corresponding creation bit.
 4. Resource requirements provide a provider-neutral mechanism for deciding whether masks are required/optional; this matters particularly because pinned FSR4 documentation differs from FSR3 guidance.
@@ -838,15 +838,15 @@ The supplied baseline is accurate. The investigation adds the following informat
 ## 18. Unresolved questions before broader stable support
 
 1. Which of the ten shared creation flags are intended to be stable cross-provider guarantees versus provider-version capabilities discoverable only through successful enumeration/testing?
-2. What exact color/depth/MV/output DXGI format set should `fsr-sdk` promise safely, as opposed to formats merely convertible by `ffxApiGetResourceDX12`?
+2. What exact colour/depth/MV/output DXGI format set should `fsr-sdk` promise safely, as opposed to formats merely convertible by `ffxApiGetResourceDX12`?
 3. Does every targeted signed provider support temporally correct frame-to-frame changes of `upscaleSize`, and are there undocumented transition constraints?
 4. What exact policy should relate `FFX_UPSCALE_ENABLE_DYNAMIC_RESOLUTION` to changing `renderSize`; specifically, should the Rust safe API reject varying render extents unless that creation mode was selected?
 5. Should the wrapper continue to own one fixed MV semantic convention and derive `motionVectorScale`, or deliberately expose multiple semantic conventions?
 6. What lifecycle and thread contract is safe for non-null context/global message callbacks with signed providers?
 7. Which Configure keys are accepted by each target provider, are values consumed synchronously, how are defaults restored, and should these controls be considered stable production API at all?
 8. What provider-selection guarantees should a public `ProviderId` make across driver updates or repeated enumeration? The evidence supports opacity, not persistence.
-9. Does signed FSR4 restore all registered external resources to declared states on every successful/error path, or is the current observed restoration behavior narrower?
-10. What exact semantics should a future safe frame type use for explicit versus automatic exposure when resource-requirement queries and provider behavior disagree or evolve?
+9. Does signed FSR4 restore all registered external resources to declared states on every successful/error path, or is the current observed restoration behaviour narrower?
+10. What exact semantics should a future safe frame type use for explicit versus automatic exposure when resource-requirement queries and provider behaviour disagree or evolve?
 11. If the first new per-frame capability is accepted, should compatibility with v0.1.0's public struct literals take priority over a single coherent long-term dispatch representation? This is the principal new API decision; source research cannot answer it.
 
 ## 19. Overall finding

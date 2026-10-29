@@ -15,7 +15,7 @@ Base revision: `450dd962194cadad68b199f30e60c3d58d580472`, initially clean workt
 Changes are limited to the existing experiment's
 [Rust probe](../../../crates/fsr-sdk-sys/tests/context_lifecycle.rs), new
 [host allocator](../../../crates/fsr-sdk-sys/tests/context_lifecycle/allocator.rs),
-[runner](../../../crates/fsr-sdk-sys/tests/context_lifecycle/run.ps1), and documentation.
+[runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk-sys/tests/context_lifecycle/run.ps1.txt), and documentation.
 No production source, manifest, dependency, public ABI or accepted decision changed.
 
 The prior [successful lifecycle spike](2026-09-20-exp-context-lifecycle.md)
@@ -78,7 +78,7 @@ source evidence, not proof that the signed runtime follows that path or that
 every provider cleans up all partial state. No destroy-after-failed-create
 contract was established.
 
-## Observed runtime behavior
+## Observed runtime behaviour
 
 Every case began with a null context handle. The three callback sizes in the
 successful controls were 1,099,864, 1,634,664 and 16 bytes, in that order.
@@ -157,7 +157,7 @@ partial-state cleanup before the crash at indices 2 and 3. These observations
 do not support a wrapper policy of attempting destroy after failed creation.
 
 **Unresolved:** exact fault location and cause (no debugger/stack captured),
-whether loader, bundled provider or driver implementation faults, behavior of
+whether loader, bundled provider or driver implementation faults, behaviour of
 other providers/builds, and cleanup/handle postconditions when create actually
 returns an error. The successful control identifies a provider version, not
 which binary supplied its implementation. Callback accounting excludes GPU
@@ -166,3 +166,10 @@ cannot establish general leak freedom or total resource cleanup.
 
 This adds isolated failure evidence beyond the successful lifecycle spike.
 It establishes neither a general API contract nor an accepted ownership design.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

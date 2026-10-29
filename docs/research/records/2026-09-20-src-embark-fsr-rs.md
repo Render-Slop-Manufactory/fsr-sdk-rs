@@ -6,7 +6,7 @@
 - **Method and exclusions:** Inspected Rust wrapper source, `fsr-sys` generated bindings/build integration, and the bundled FSR2 native implementation where necessary to understand retained pointers, backend lifetime, device ownership, and destruction. Targeted history/issues searches were used only for design rationale; no useful lifecycle/thread-safety rationale was found. No compilation, execution, GPU experiment, sanitizer run, or modification of any repository was performed.
 - **Repository revision/commit inspected:** `2ec24b8abae1d6013d444cd472fa9712c584a21b`.
 - **Access date:** 2026-09-20.
-- **Evidence terminology:** **Verified** means directly visible in the inspected source at that revision; it does **not** mean that runtime behavior was experimentally verified. **Upstream claim** denotes a comment/documentation contract. **Inference** denotes a conclusion from code structure. **Unresolved** denotes insufficient evidence.
+- **Evidence terminology:** **Verified** means directly visible in the inspected source at that revision; it does **not** mean that runtime behaviour was experimentally verified. **Upstream claim** denotes a comment/documentation contract. **Inference** denotes a conclusion from code structure. **Unresolved** denotes insufficient evidence.
 
 ## Scope and repository revision
 
@@ -166,7 +166,7 @@ These are observations for later synthesis with SDK v2.3.0 evidence, not an arch
 
 **Inference —** Omitting `Drop` while the type owns resources whose correct cleanup requires native destruction makes forgotten teardown possible and causes Rust field destruction to proceed independently of the native lifecycle.
 
-**Inference —** Conversely, the old native behavior should not be used to conclude that adding an unconditional destructor would itself be correct for v2.3.0: the user's baseline already identifies uncertainty around failed creation, failed destruction, and post-destroy state. Those questions must first be resolved against the newer SDK.
+**Inference —** Conversely, the old native behaviour should not be used to conclude that adding an unconditional destructor would itself be correct for v2.3.0: the user's baseline already identifies uncertainty around failed creation, failed destruction, and post-destroy state. Those questions must first be resolved against the newer SDK.
 
 **Inference —** Public exposure of a copyable raw `Interface` containing a scratch pointer weakens the lifetime protection obtained by embedding the scratch owner beside it.
 
@@ -183,11 +183,11 @@ These are observations for later synthesis with SDK v2.3.0 evidence, not an arch
 | Current v2.3.0 concern | What `fsr-rs` / old FSR2 shows | Evidence |
 |---|---|---|
 | Context must be destroyed exactly once | High-level `Context` is non-copyable, but `destroy(&mut self)` neither consumes nor invalidates it; repeated destruction remains possible. No `Drop` guarantees one teardown. | **Verified —** wrapper API shape. ([github.com](https://github.com/EmbarkStudios/fsr-rs/blob/2ec24b8abae1d6013d444cd472fa9712c584a21b/fsr/src/lib.rs)) |
-| Native handle state after destroy may not be trustworthy | Old native teardown mutates selected internal state but does not comprehensively invalidate/zero the opaque object; Rust retains the same `Context` afterward. | **Verified —** old FSR2 source behavior; **Inference —** the Rust object cannot encode whether further operations are valid. |
+| Native handle state after destroy may not be trustworthy | Old native teardown mutates selected internal state but does not comprehensively invalidate/zero the opaque object; Rust retains the same `Context` afterward. | **Verified —** old FSR2 source behaviour; **Inference —** the Rust object cannot encode whether further operations are valid. |
 | Failed creation may leave unclear output state | `fsr-rs` returns immediately on create failure with no wrapper cleanup. Old native creation has error-return points after backend initialization has begun. | **Verified —** control flow; **Unresolved —** actual resource state for each failure path requires runtime/native-path verification. ([github.com](https://github.com/EmbarkStudios/fsr-rs/blob/2ec24b8abae1d6013d444cd472fa9712c584a21b/fsr/src/lib.rs)) |
 | Create-time pointer lifetimes may extend until destroy | The old interface's scratch pointer is persistent state; `fsr-rs` deliberately owns that storage through the `Context`. Vulkan interface creation also places persistent backend data in scratch. | **Verified —** old FSR2 source and wrapper ownership. ([github.com](https://github.com/EmbarkStudios/fsr-rs/blob/2ec24b8abae1d6013d444cd472fa9712c584a21b/fsr/src/interface.rs)) |
 | Device ownership/AddRef may be unclear | For the bundled old D3D12 backend, source resolves this: backend creation `AddRef`s and backend destruction `Release`s. Vulkan instead stores an unowned handle. | **Verified —** old FSR2 only. ([raw.githubusercontent.com](https://raw.githubusercontent.com/EmbarkStudios/fsr-rs/2ec24b8abae1d6013d444cd472fa9712c584a21b/fsr-sys/FidelityFX-FSR2/src/ffx-fsr2-api/dx12/ffx_fsr2_dx12.cpp)) |
-| Thread-safety is not assumed | `fsr-rs` nevertheless marks backend storage `Send + Sync`, making `Context` inherit these auto traits. No inspected rationale establishes the native guarantee. | **Verified —** Rust trait behavior; **Unresolved —** native safety of cross-thread movement/use. ([github.com](https://github.com/EmbarkStudios/fsr-rs/blob/2ec24b8abae1d6013d444cd472fa9712c584a21b/fsr/src/interface.rs)) |
+| Thread-safety is not assumed | `fsr-rs` nevertheless marks backend storage `Send + Sync`, making `Context` inherit these auto traits. No inspected rationale establishes the native guarantee. | **Verified —** Rust trait behaviour; **Unresolved —** native safety of cross-thread movement/use. ([github.com](https://github.com/EmbarkStudios/fsr-rs/blob/2ec24b8abae1d6013d444cd472fa9712c584a21b/fsr/src/interface.rs)) |
 
 ## Baseline delta
 
@@ -215,7 +215,7 @@ These are observations for later synthesis with SDK v2.3.0 evidence, not an arch
 
 ### Leaves unresolved
 
-**Unresolved —** Nothing in this investigation establishes FidelityFX SDK v2.3.0's creation-failure postconditions, destruction-failure semantics, device reference behavior, pointer-retention rules, or thread-safety guarantees.
+**Unresolved —** Nothing in this investigation establishes FidelityFX SDK v2.3.0's creation-failure postconditions, destruction-failure semantics, device reference behaviour, pointer-retention rules, or thread-safety guarantees.
 
 **Unresolved —** Source inspection alone does not establish whether every partially initialized old FSR2 creation failure leaks, whether a second destruction actually faults on a given backend, or what GPU-visible consequences result from dropping `fsr::Context` without first calling native destruction.
 
@@ -229,11 +229,11 @@ These are observations for later synthesis with SDK v2.3.0 evidence, not an arch
 
 **Unresolved —** For each old FSR2 native creation error after backend creation starts, what resources have actually been acquired and which are rolled back before return? Static control-flow inspection shows the risk but not all runtime side effects.
 
-**Unresolved —** The meaning of successful or failed repeated `ContextDestroy` calls is not specified by the Rust wrapper. Behavior observed in the old source should not be elevated into a stable API contract.
+**Unresolved —** The meaning of successful or failed repeated `ContextDestroy` calls is not specified by the Rust wrapper. Behaviour observed in the old source should not be elevated into a stable API contract.
 
 ## Limits and follow-up
 
-**Unresolved —** This record is a static source investigation. It does not prove runtime behavior, GPU synchronization behavior, allocator-failure behavior, COM reference counts in a running process, Vulkan object validity, or the effects of invoking APIs after destruction.
+**Unresolved —** This record is a static source investigation. It does not prove runtime behaviour, GPU synchronization behaviour, allocator-failure behaviour, COM reference counts in a running process, Vulkan object validity, or the effects of invoking APIs after destruction.
 
 **Unresolved —** To determine old-FSR2 runtime consequences of the identified lifecycle gaps, useful experiments would include instrumented create-failure injection at each native initialization stage; D3D12 COM reference-count tracing around successful create, failed create, explicit destroy, and Rust-only drop; Vulkan validation-layer runs for premature device/instance destruction; repeated-destroy and dispatch-after-destroy tests; and ASan/Valgrind-equivalent host-memory checking around scratch-buffer lifetime.
 

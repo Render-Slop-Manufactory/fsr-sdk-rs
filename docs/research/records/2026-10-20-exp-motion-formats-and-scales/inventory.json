@@ -1,0 +1,27 @@
+[
+  {
+    "path": ".gitattributes",
+    "bytes": 73,
+    "sha256": "705dbecea31f3a4a8653065a7121ed247e574e60f0744ce199df4bab7b5caf31"
+  },
+  {
+    "path": "checks.json",
+    "bytes": 378225,
+    "sha256": "7858d5af7252062152a28789ac7f04c1fdec04c27b06383f61f4519d8526feab"
+  },
+  {
+    "path": "comparisons.json",
+    "bytes": 33037,
+    "sha256": "2425b404591b1b41514575f5932e61d909653a64495d16ea9844353fc0d69706"
+  },
+  {
+    "path": "equipment-regression.py",
+    "bytes": 1534,
+    "sha256": "af145d4e76d3446789dcd9489551d24ac881173b5451c1a983f505f4bc70cd80"
+  },
+  {
+    "path": "measurements.json",
+    "bytes": 154265,
+    "sha256": "8fa54a14e03257fa150354611c4dbad54f09c01f84f89e7d1b10672487de4c07"
+  }
+]

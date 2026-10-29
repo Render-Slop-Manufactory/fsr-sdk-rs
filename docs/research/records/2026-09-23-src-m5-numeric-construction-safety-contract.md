@@ -33,13 +33,13 @@ or mechanism. Conversely, `1×1 -> 2×2`, `1279×719 -> 1919×1079`, equal-size
 and queried provider 4.1.1 on that configuration. These observations are not
 generalized beyond the tested provider/device/runtime.
 
-The source question therefore cannot be answered merely by excluding zero: the supplied runtime result already demonstrates successful signed-FSR4 creation at `1×1`, while the open FSR2/FSR3 implementations inspected below have materially different derived-resource behavior at that size.
+The source question therefore cannot be answered merely by excluding zero: the supplied runtime result already demonstrates successful signed-FSR4 creation at `1×1`, while the open FSR2/FSR3 implementations inspected below have materially different derived-resource behaviour at that size.
 
 ## Method and exclusions
 
-The investigation inspected the pinned public upscaler ABI, generic API entry points, FSR3 and FSR2 provider adapters and implementations, the DX12 backend, AMD FSR4 documentation, and Microsoft primary D3D12 documentation. Current or later material was not used to project behavior backward onto v2.3.0.
+The investigation inspected the pinned public upscaler ABI, generic API entry points, FSR3 and FSR2 provider adapters and implementations, the DX12 backend, AMD FSR4 documentation, and Microsoft primary D3D12 documentation. Current or later material was not used to project behaviour backward onto v2.3.0.
 
-No DLL was executed, no signed binary was reverse engineered, and no behavior of the closed FSR4 provider is inferred from the open FSR2/FSR3 implementations. Rust API shape, ownership, threading, Dispatch resource/synchronization design, frame generation, Vulkan, custom allocators, callbacks, and arbitrary flags remain excluded. These exclusions match the supplied source-only boundary.
+No DLL was executed, no signed binary was reverse engineered, and no behaviour of the closed FSR4 provider is inferred from the open FSR2/FSR3 implementations. Rust API shape, ownership, threading, Dispatch resource/synchronization design, frame generation, Vulkan, custom allocators, callbacks, and arbitrary flags remain excluded. These exclusions match the supplied source-only boundary.
 
 ## Pinned inputs
 
@@ -126,7 +126,7 @@ D3D12 also distinguishes descriptor validity from memory availability: a descrip
 
 The pinned FidelityFX DX12 backend's error handling is important to the safety-contract question. Its `TIF` helper throws on a failed HRESULT, and `CreatePlacedResource`/`CreateCommittedResource` are invoked through that helper. The generic modern `ffxCreateContext` source inspected here does not surround `provider->CreateContext` with a catch that would convert such a throw into an `ffxReturnCode_t`. Consequently, the open source path does **not** establish that every invalid or resource-exhausting extent is converted into an ordinary FidelityFX return code.
 
-This is evidence about the pinned open backend path, not proof of the exception behavior of the signed FSR4 provider.
+This is evidence about the pinned open backend path, not proof of the exception behaviour of the signed FSR4 provider.
 
 ## FSR4 public evidence
 
@@ -142,7 +142,7 @@ No pinned FSR4 public material located in this investigation establishes a stron
 - permitted aspect ratios;
 - render/output ordering;
 - arithmetic-overflow avoidance;
-- ordinary returned-error behavior for arbitrary unsupported sizes.
+- ordinary returned-error behaviour for arbitrary unsupported sizes.
 
 The documented debug checker concerns application inputs in the operational/dispatch integration path rather than a complete pre-creation validation of proposed maxima.
 
@@ -249,7 +249,7 @@ The observable distinction should be recorded as:
 - an ordinary returned `ffxReturnCode_t`;
 - or failure to return normally, including a foreign exception/process termination.
 
-The specific hypothesis is whether the signed provider handles the first dimension just beyond the delegated D3D12 Texture2D limit through an ordinary ABI-safe rejection path and whether `16384` itself is usable on that configuration. Even a clean result would establish only behavior around this boundary on that tested signed provider/device/runtime; it would not prove all lower numerical values safe.
+The specific hypothesis is whether the signed provider handles the first dimension just beyond the delegated D3D12 Texture2D limit through an ordinary ABI-safe rejection path and whether `16384` itself is usable on that configuration. Even a clean result would establish only behaviour around this boundary on that tested signed provider/device/runtime; it would not prove all lower numerical values safe.
 
 No further generic dimension sweep, random-resolution test, or broad “large values” spike is justified by the source. The `1`/`2` transition in open FSR2/FSR3 does not warrant another generic probe because the supplied signed-runtime evidence has already shown successful FSR4 creation at `1×1`, demonstrating implementation divergence.
 
@@ -261,7 +261,7 @@ No further generic dimension sweep, random-resolution test, or broad “large va
 | generic public ABI states no single min/max/alignment/aspect/render≤upscale rule | **confirmed** | no stronger generic rule found |
 | NativeAA makes equal render/output dimensions intended | **confirmed** | public scaling-mode documentation agrees |
 | FSR3 uses creation maxima for internal resources and later dispatch bounds | **confirmed** | source trace reproduces this |
-| FSR2/FSR3 cannot prove signed FSR4 behavior | **confirmed and strengthened** | signed `1×1` success conflicts with an open-provider-derived `>=2` resource envelope |
+| FSR2/FSR3 cannot prove signed FSR4 behaviour | **confirmed and strengthened** | signed `1×1` success conflicts with an open-provider-derived `>=2` resource envelope |
 | signed/external FSR4 implementation is unavailable | **confirmed** | public docs require signed implementation but do not expose its internals |
 | provider enumeration is not a complete arbitrary-input validator | **confirmed** | enumeration does not consume proposed maxima |
 | pre-create GPU-memory query has no relevance to validation | **refined** | it can detect some invalid resource descriptions in open providers, but is not documented as a complete construction validator |
@@ -276,7 +276,7 @@ This source investigation can close the research question without closing the ar
 
 The open FSR2/FSR3 implementations are useful because they demonstrate concrete kinds of hidden numerical assumptions—half-resolution derivations, signed conversions, and provider-specific resource layouts—but their exact bounds cannot be transferred to FSR4. D3D12 supplies a hard resource-coordinate bound, but not a proof about the transformations a closed provider performs before reaching D3D12.
 
-The missing evidence could be resolved only by a stronger AMD contract, auditable FSR4 provider source, or a later explicit architectural decision to trust a precisely scoped behavior of the signed provider. Targeted runtime evidence can falsify particular assumptions or characterize a specific boundary, but cannot exhaustively derive the closed provider's safe numerical domain.
+The missing evidence could be resolved only by a stronger AMD contract, auditable FSR4 provider source, or a later explicit architectural decision to trust a precisely scoped behaviour of the signed provider. Targeted runtime evidence can falsify particular assumptions or characterize a specific boundary, but cannot exhaustively derive the closed provider's safe numerical domain.
 
 This record therefore neither accepts the remaining signed-provider assumption
 nor accepts [proposed D008](../../../docs/adr/D008.md), authorizes M5

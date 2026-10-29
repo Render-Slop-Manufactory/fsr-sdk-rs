@@ -1,7 +1,7 @@
 # Experiment: signed v2.3.0 upscaler construction dimensions
 
 - Investigation date: 2026-09-22.
-- Topic: Windows/DX12 `ffxCreateContext` behavior for a bounded set of
+- Topic: Windows/DX12 `ffxCreateContext` behaviour for a bounded set of
   structurally valid, numerically unusual upscaler dimensions.
 - Hypothesis: each case returns a native code or creates a destroyable context.
 - Observable success: the call returns; record its exact code and handle state;
@@ -16,7 +16,7 @@
 Repository revision at experiment start: `a4566a5105e2a0a1647d085a34227fc884e3dd66`,
 clean worktree before the probe was added. At execution, only the new
 [test-local probe](../../../crates/fsr-sdk-sys/tests/context_dimensions.rs) and
-[runner](../../../crates/fsr-sdk-sys/tests/context_dimensions/run.ps1) were
+[runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk-sys/tests/context_dimensions/run.ps1.txt) were
 uncommitted experiment changes. An unrelated, untracked source repair record
 (now [dated here](2026-09-22-src-m5-construction-query-provenance-repair.md))
 appeared after execution; it was not used or modified for this experiment. No
@@ -92,7 +92,7 @@ orchestrator; individual child failures remain visible.
 `OK` means exact `ffxReturnCode_t = 0`. Each successful creation returned a
 non-null handle, identified provider `id=0xf5a5ca1e01001001`, name `4.1.1`
 (`ffxQuery` code `0`), and made exactly one destroy call returning `0`. Those
-handles are labeled `non-null-1` within each process; no raw addresses are
+handles are labelled `non-null-1` within each process; no raw addresses are
 retained. The four aborted cases had no returned code or output-handle
 observation and no destroy attempt.
 
@@ -148,7 +148,14 @@ larger than upscale maxima characterizes construction and destruction only. It
 does not establish that dispatch works, that downscaling is supported, that
 nonzero dimensions are generally sufficient, or that other dimensions return
 normally. One GPU, driver, OS and signed DLL pair were tested once per case.
-External/driver provider provenance and the behavior of other providers, GPUs,
+External/driver provider provenance and the behaviour of other providers, GPUs,
 drivers or SDK releases remain unresolved. The local M5 source-intake record
 itself notes unverified citations for some implementation claims; those claims
-were not used to infer the observed signed-runtime behavior.
+were not used to infer the observed signed-runtime behaviour.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

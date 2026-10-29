@@ -39,7 +39,7 @@ The tested implementation is self-contained in these repository inputs:
 - [context.rs](../../../crates/fsr-sdk/src/context.rs): actual private terminal
   owner, sealed `RuntimeRetention` with Rc/Arc choices; production defaults to
   `Rc<RuntimeState>` and retains the `PhantomData<Rc<()>>` local trait marker.
-- [d013_movable.rs](../../../crates/fsr-sdk/src/context/d013_movable.rs): eight
+- [d013_movable.rs](../../../crates/fsr-sdk/src/context/movable.rs): eight
   test-only probes and a narrowly audited `unsafe impl Send` for the concrete
   fixture owner; no public movable API.
 - [tests.rs](../../../crates/fsr-sdk/src/context/tests.rs): fixture builder and
@@ -76,7 +76,7 @@ and the temporary Rust fixture DLLs successfully. `cl` was not on PATH and
 no C++ compiler command was required. Installed MSVC/SDK versions are setup
 inventory, not a captured verbose linker-command trace. GPU/driver data are
 irrelevant to this fixture-only scope and were not collected. The project SDK
-profile remains v2.3.0; SDK artifacts were not inputs to this experiment.
+profile remains v2.3.0; SDK artefacts were not inputs to this experiment.
 
 SHA-256 fingerprints of tested working-tree bytes (Windows CRLF checkout):
 
@@ -160,7 +160,7 @@ fixture path; its temporary observation handle is immediately released.
 Event assertions also require the DLL to remain loaded during callbacks and
 state/device cleanup. This adds actual Windows loaded-module evidence to the
 baseline's macOS ownership observer, without proving AMD DLL termination or
-arbitrary OS memory-unmapping behavior. Null-success and destroy-failure cases
+arbitrary OS memory-unmapping behaviour. Null-success and destroy-failure cases
 intentionally leak their retained fixture bundles under D005, rather than
 inventing a cleanup retry.
 

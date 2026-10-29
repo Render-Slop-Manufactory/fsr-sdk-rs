@@ -1,0 +1,62 @@
+{
+  "initial": {
+    "attempt": "20261015T200414Z-experiment-colour-signal-6ed8c2a1f85c",
+    "status": "passed",
+    "completed": 60,
+    "counts": {
+      "passed": 60
+    },
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "controls": {
+    "attempt": "20261015T200916Z-experiment-colour-signal-controls-8aa750861da7",
+    "status": "passed",
+    "completed": 54,
+    "counts": {
+      "passed": 54
+    },
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "ci-initial": {
+    "attempt": "20261015T200444Z-ci-ebbfceb3403b",
+    "status": "passed",
+    "completed": 115,
+    "counts": {
+      "passed": 115
+    },
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "msrv-initial": {
+    "attempt": "20261015T200443Z-msrv-d815bd19509e",
+    "status": "passed",
+    "completed": 98,
+    "counts": {
+      "passed": 98
+    },
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "ci": {
+    "attempt": "20261015T200920Z-ci-4438b8d0ba01",
+    "status": "passed",
+    "completed": 115,
+    "counts": {
+      "passed": 115
+    },
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "msrv": {
+    "attempt": "20261015T200919Z-msrv-82867a017b29",
+    "status": "passed",
+    "completed": 98,
+    "counts": {
+      "passed": 98
+    },
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  }
+}

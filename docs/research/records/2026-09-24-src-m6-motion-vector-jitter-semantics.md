@@ -5,14 +5,14 @@
 - **Topic:** FidelityFX SDK v2.3.0 / FSR Upscaling 4.1.1 motion-vector and dispatch-jitter semantics
 - **Investigation type:** bounded public-source investigation; no implementation changes and no runtime/GPU experiment
 - **Pinned upstream revision:** `60f4ea81909200d8542eca14dccb2628b763a9a3`
-- **Evidence cutoff:** the pinned FidelityFX SDK revision above, inspected on 2026-09-24. No later upstream behavior is used to silently reinterpret that revision.
+- **Evidence cutoff:** the pinned FidelityFX SDK revision above, inspected on 2026-09-24. No later upstream behaviour is used to silently reinterpret that revision.
 
 ## Scope
 
 This record investigates only the coordinate, direction, scale, resolution and jitter conventions needed to reason about the first public `fsr-sdk-rs` dispatch contract. It distinguishes three evidence classes that must not be conflated:
 
 1. the **FSR4 public contract material** at the pinned SDK revision (`ffx_upscale.h` and the ML Super Resolution integration guide);
-2. the **official AMD DX12/Cauldron sample behavior** at the same revision; and
+2. the **official AMD DX12/Cauldron sample behaviour** at the same revision; and
 3. the **open FSR3 implementation** shipped at the same revision, used only as supporting implementation evidence where the signed FSR4 provider's internals are not public.
 
 The project baseline for this investigation is a Windows x64/MSVC, DirectX 12 wrapper around FidelityFX SDK 2.3.0 using the modern `ffxCreateContext` / `ffxDestroyContext` / `ffxConfigure` / `ffxQuery` / `ffxDispatch` API. The repository baseline reports one M6a native dispatch proof at render size `320x180` and output size `640x360`, with zero motion vectors, a nonzero matching jitter, `reset = true`, and plausible fenced readback. That existing proof establishes a real dispatch path but does **not** establish temporal motion-vector direction, scale, Y orientation, or multi-frame jitter semantics because the motion texture was zero and only one reset frame was exercised.
@@ -136,9 +136,9 @@ All sources below were accessed on **2026-09-24** and are pinned to commit `60f4
 
 **Verified — FSR4 public contract.** The FSR4 integration guide states that the 2D vector encodes motion **from a pixel in the current frame to the position of that same pixel in the previous frame** [S2]. This is unambiguous current -> previous semantics.
 
-**Verified — official sample behavior.** The Cauldron GBuffer shader computes projected displacement as `previousPosition / previousW - currentPosition / currentW`, then performs jitter cancellation and NDC-to-UV conversion [S4]. The ordering agrees with current -> previous.
+**Verified — official sample behaviour.** The Cauldron GBuffer shader computes projected displacement as `previousPosition / previousW - currentPosition / currentW`, then performs jitter cancellation and NDC-to-UV conversion [S4]. The ordering agrees with current -> previous.
 
-**Verified — supporting open FSR3 behavior, not FSR4 internals.** The same-tag FSR3 reprojection code computes the history UV as `currentUv + motionVector` [S10]. That sign only reprojects to the prior location when the vector maps current -> previous. This corroborates, but is not needed to establish, the public FSR4 direction.
+**Verified — supporting open FSR3 behaviour, not FSR4 internals.** The same-tag FSR3 reprojection code computes the history UV as `currentUv + motionVector` [S10]. That sign only reprojects to the prior location when the vector maps current -> previous. This corroborates, but is not needed to establish, the public FSR4 direction.
 
 **Inference — directional sanity check.** If an object moves right between frame N-1 and frame N, its current X position is larger than its previous X position. A current -> previous displacement therefore has negative X at the current sample: it points left, back to the object's prior location. This follows from the direction definition; it is not quoted upstream text.
 
@@ -280,7 +280,7 @@ P(q) = ( 2*qx/W, -2*qy/H ).
 
 [S2].
 
-**Verified — sample projection behavior.** The DX12 sample's jitter callback instead passes
+**Verified — sample projection behaviour.** The DX12 sample's jitter callback instead passes
 
 ```text
 (-2*qx/W, +2*qy/H) = P(-q)
@@ -288,7 +288,7 @@ P(q) = ( 2*qx/W, -2*qy/H ).
 
 into the Cauldron camera [S3]. The camera component installs those callback values into its jitter translation matrix used for the jittered projection [S5]. Thus the sample actually renders with the pixel-space jitter `-q` under the documentation's own conversion convention.
 
-**Verified — sample dispatch behavior.** The sample dispatches
+**Verified — sample dispatch behaviour.** The sample dispatches
 
 ```text
 jitterOffset = (-qx, -qy)
@@ -325,7 +325,7 @@ motionVectorJitterCancellation =
 
 **Inference for a UV profile.** If an application stores top-down normalized UV displacement at display resolution and uses the same scale-to-pixel convention as the sample, the corresponding scale is `(displayWidth, displayHeight)`, not `(renderWidth, renderHeight)`. For render-resolution top-down UV, it is `(renderWidth, renderHeight)`.
 
-**Caveat.** This investigation does not expose the signed FSR4 provider internals. The public FSR4 source establishes the resource-resolution switch and unchanged direction semantics; the exact internal normalization behavior is corroborated by open FSR3, not directly inspected in FSR4.
+**Caveat.** This investigation does not expose the signed FSR4 provider internals. The public FSR4 source establishes the resource-resolution switch and unchanged direction semantics; the exact internal normalization behaviour is corroborated by open FSR3, not directly inspected in FSR4.
 
 The current first-profile choice to expose only render-resolution vectors is therefore narrower than AMD's capability, not evidence that AMD itself requires render-resolution MVs in all modes.
 
@@ -348,7 +348,7 @@ A separate source conflict must travel with any maintainer review: S2's illustra
 
 Relative to the supplied repository baseline, this investigation adds or sharpens the following evidence without changing policy:
 
-- The proposed **current -> previous** direction is no longer merely inferred from sample behavior; it is explicitly stated in the pinned FSR4 integration guide [S2].
+- The proposed **current -> previous** direction is no longer merely inferred from sample behaviour; it is explicitly stated in the pinned FSR4 integration guide [S2].
 - The official sample's stored representation is pinned precisely: previous-minus-current projected displacement, manual jitter cancellation, then `(0.5,-0.5)` into **top-down UV** [S4].
 - The documentation/sample discrepancy is localized: the FSR4 guide's NDC example omits the conversion needed before an `(W,H)` scale can mean pixels. The example is numerically inconsistent as written; the sample is internally coherent.
 - `motionVectorScale` is better separated into (a) the FSR4 public role of mapping application MV range to the expected displacement range, (b) the official sample convention of UV multiplied by target dimensions, and (c) the open-FSR3 internal normalization by the selected MV target dimensions [S2,S3,S8,S9].
@@ -356,14 +356,14 @@ Relative to the supplied repository baseline, this investigation adds or sharpen
 - The jitter-cancellation flag's public meaning is separated from the sample's manual cancellation. The sample supplies already de-jittered MVs; the same-tag open FSR3 implementation shows how a flagged path uses previous-minus-current jitter internally [S1,S2,S4,S8,S9].
 - Display-resolution MVs are explicitly an upstream-supported mode, while a render-resolution-only first wrapper profile remains a narrower project choice [S1,S2].
 
-The existing M6a one-frame proof remains unchanged in evidentiary scope: zero MVs plus reset cannot validate temporal direction, scale, Y orientation or cancellation behavior.
+The existing M6a one-frame proof remains unchanged in evidentiary scope: zero MVs plus reset cannot validate temporal direction, scale, Y orientation or cancellation behaviour.
 
 ## Limits and follow-up
 
 1. **No current repository ZIP was available.** The local D011 text, M6/M6a research records, native proof source, and any additional repository research-process instructions could not be independently inspected. The supplied baseline was preserved in this record, but repository-local cross-checking remains outstanding.
 2. **No AMD GPU / no signed-provider experiment was performed.** Nothing here newly runtime-validates current -> previous, `(W,H)` UV scaling, Y orientation, jitter signs, the cancellation flag, or display-resolution MVs against FSR4 4.1.1.
 3. **The signed FSR4 implementation is not public.** Open FSR3 sources [S8-S11] are used only as supporting implementation evidence and must not be described as the FSR4 binary implementation.
-4. **The NDC documentation discrepancy is source-settled but provider behavior is not.** The raw-NDC + `(W,H)` example is mathematically inconsistent with the sample and standard NDC-to-screen conversion. Public sources do not reveal whether the signed provider has any undocumented accommodation for that literal input; relying on such accommodation would require a targeted runtime experiment.
+4. **The NDC documentation discrepancy is source-settled but provider behaviour is not.** The raw-NDC + `(W,H)` example is mathematically inconsistent with the sample and standard NDC-to-screen conversion. Public sources do not reveal whether the signed provider has any undocumented accommodation for that literal input; relying on such accommodation would require a targeted runtime experiment.
 5. **“Stale from an earlier API” is not established.** No inspected pinned source proves the provenance of the inconsistent NDC example. The best-supported description is an omission/inconsistency in the example, while its historical cause is unresolved.
 6. A future native temporal experiment, if maintainers choose to run one, can separate the remaining runtime questions efficiently: a two-frame known horizontal/vertical translation to catch direction, factor-of-two and Y-sign errors; a stationary scene with changing jitter to compare manual MV de-jittering against the cancellation flag; and, separately, a display-resolution-MV case. Such tests are follow-up suggestions only and were not performed here.
 
@@ -387,7 +387,7 @@ The existing M6a one-frame proof remains unchanged in evidentiary scope: zero MV
 6. **What are the units and semantic meaning of `jitterOffset`?**  
    **Verified:** subpixel **pixel units**, representing the jitter actually applied to the current rendered camera/projection. It is not NDC/projection translation itself [S1,S2].
 
-7. **Does the sample's jitter sign behavior actually contradict the documented contract?**  
+7. **Does the sample's jitter sign behaviour actually contradict the documented contract?**\
    **No at the semantic level.** The sample turns helper output `q` into projection jitter corresponding to `-q` and dispatches `jitterOffset = -q`; projection and dispatch therefore describe the same actual pixel-space jitter [S2,S3,S5].
 
 8. **Are motion vectors normally expected to have projection jitter removed?**  
@@ -400,6 +400,6 @@ The existing M6a one-frame proof remains unchanged in evidentiary scope: zero MV
     The evidence strongly supports carrying forward for review: current -> previous direction; a **deliberately fixed** top-down-UV wrapper profile matching the official sample; `(renderWidth,renderHeight)` for that render-resolution UV profile; jitter-free MVs by default; and pixel-space dispatch jitter that matches the actual rendered projection. The qualifier matters: top-down UV is the official sample convention and a coherent wrapper profile, not the only representation the broader FSR4 documentation claims to permit. Deriving native scale from render size is therefore well-supported **for that fixed profile**, not an upstream requirement for every valid integration.
 
 11. **Which points remain unresolved without a targeted native temporal experiment?**  
-    Runtime behavior of the signed FSR4 4.1.1 provider under nonzero temporal motion has not been newly validated; neither has its response to the documentation's literal raw-NDC + `(W,H)` pair, the jitter-cancellation flag path, or display-resolution MVs. The historical cause of the inconsistent NDC example is also unresolved. Those limits do not erase the public-source contradiction; they limit claims about proprietary-provider runtime behavior.
+    Runtime behaviour of the signed FSR4 4.1.1 provider under nonzero temporal motion has not been newly validated; neither has its response to the documentation's literal raw-NDC + `(W,H)` pair, the jitter-cancellation flag path, or display-resolution MVs. The historical cause of the inconsistent NDC example is also unresolved. Those limits do not erase the public-source contradiction; they limit claims about proprietary-provider runtime behaviour.
 
 Research supplies the evidence above; it does not select or accept the final D011 policy.

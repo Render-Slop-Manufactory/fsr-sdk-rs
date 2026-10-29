@@ -3,7 +3,7 @@
 - Investigation date: 2026-09-20
 - Topic and scope: Source characterization of `ffxDestroyContext` failure paths for FidelityFX SDK v2.3.0, focused on the Windows/DX12 upscaler API. The investigation covers the public API/common provider layer, open FSR2 and FSR3 upscaler providers, the DX12 backend reached by those providers, and the limits of the available source for the signed loader and FSR4/ML provider.
 - Baseline and evidence cut-off: Primary repository `GPUOpen-LibrariesAndSDKs/FidelityFX-SDK`, tag `v2.3.0`, commit `60f4ea81909200d8542eca14dccb2628b763a9a3`. The v2.3.0 release is dated 2026-06-24 and advertises AMD FSR Upscaling 4.1.1. Accessed 2026-09-20.
-- Method and exclusions: Static inspection of exact-v2.3.0 public source, headers, documentation, source inventory/license material, and release metadata. No implementation work, runtime execution, destructive testing, allocator-failure testing, deliberate context corruption, Vulkan analysis, or Rust API design was performed. Statements below distinguish public-source behavior from behavior of the shipped signed 4.1.1 provider.
+- Method and exclusions: Static inspection of exact-v2.3.0 public source, headers, documentation, source inventory/licence material, and release metadata. No implementation work, runtime execution, destructive testing, allocator-failure testing, deliberate context corruption, Vulkan analysis, or Rust API design was performed. Statements below distinguish public-source behaviour from behaviour of the shipped signed 4.1.1 provider.
 
 ## Inputs
 
@@ -24,7 +24,7 @@ Primary version references:
 - Generic API documentation: [Kits/FidelityFX/docs/getting-started/ffx-api.md](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/docs/getting-started/ffx-api.md?utm_source=chatgpt.com)
 - Public/source-binary inventory: [Kits/FidelityFX/docs/license.md](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/docs/license.md?utm_source=chatgpt.com)
 
-The release identifies FSR Upscaling 4.1.1, while the license/source inventory distinguishes public source from signed binaries including `amd_fidelityfx_loader_dx12.dll` and `amd_fidelityfx_upscaler_dx12.dll`. The public `ffx_provider.h` also includes an `amdinternal/api/internal/dx12/ffx_provider_external.h` path that is not present in the public v2.3.0 tree inspected. **Verified** for the source inventory; **Unresolved** for the implementation behind that external provider path.
+The release identifies FSR Upscaling 4.1.1, while the licence/source inventory distinguishes public source from signed binaries including `amd_fidelityfx_loader_dx12.dll` and `amd_fidelityfx_upscaler_dx12.dll`. The public `ffx_provider.h` also includes an `amdinternal/api/internal/dx12/ffx_provider_external.h` path that is not present in the public v2.3.0 tree inspected. **Verified** for the source inventory; **Unresolved** for the implementation behind that external provider path.
 
 ## Findings
 
@@ -56,7 +56,7 @@ The open common layer therefore performs no error-code translation around `provi
 | Input/state | Open common implementation result | Teardown before result | Classification |
 |---|---|---|---|
 | `context == nullptr`, i.e. null pointer-to-handle argument | Controlled `FFX_API_RETURN_ERROR_PARAMETER` (6) | None. Return occurs before provider lookup. | **Verified** |
-| `context != nullptr`, `*context == nullptr` | Common code proceeds to `GetAssociatedProvider(nullptr)` and dereferences through the null context value. No controlled API error is established. | None can be relied upon. | **Verified** source flow; resulting C++ behavior is undefined. |
+| `context != nullptr`, `*context == nullptr` | Common code proceeds to `GetAssociatedProvider(nullptr)` and dereferences through the null context value. No controlled API error is established. | None can be relied upon. | **Verified** source flow; resulting C++ behaviour is undefined. |
 | Valid live open-provider context | Header yields its associated provider and provider destruction begins. | Provider-specific; detailed below. | **Verified.** |
 | Successfully destroyed open-provider context whose caller-visible bits were retained | Backing `Internal*Context` has been freed but caller value was not cleared. A second generic destroy attempts to obtain a provider through freed storage. | Undefined use-after-free; no retry/error contract. | **Verified** source flow / **Inference** about stale-handle classification. |
 | Arbitrary non-null/bogus handle | Cast and dereference as an `InternalContextHeader`, then potentially invocation through an arbitrary provider pointer. | Unspecified/undefined; no useful controlled validation. | **Verified** source flow. |
@@ -128,13 +128,13 @@ Backend-context creation retains the D3D12 device and increments the backend con
 
 `DestroyPipelineDX12` releases the pipeline-related COM objects and returns `FFX_OK`. **Verified.**
 
-Accordingly, the inspected open FSR2/FSR3 core destruction paths provide no public error result corresponding merely to D3D12 COM release, normal backend-context shutdown, or a backend resource/pipeline callback failure encountered through the core safe-release helpers. **Verified** for the callbacks and return flow; this does not establish behavior of the closed 4.1.1 provider.
+Accordingly, the inspected open FSR2/FSR3 core destruction paths provide no public error result corresponding merely to D3D12 COM release, normal backend-context shutdown, or a backend resource/pipeline callback failure encountered through the core safe-release helpers. **Verified** for the callbacks and return flow; this does not establish behaviour of the closed 4.1.1 provider.
 
-### Host allocator behavior during destruction
+### Host allocator behaviour during destruction
 
 The API documentation requires destruction to use allocation callbacks compatible with those used for creation. The implementation's deallocation callback has `void` return type; `Allocator::dealloc` therefore has no failure result that can be converted to an `ffxReturnCode_t`. **Verified.**
 
-An incompatible or otherwise contract-violating allocator can cause invalid memory behavior, but it is not a source-supported `ffxDestroyContext` error path. There is no legitimate "host free failed, context remains live" error result in the inspected interface. **Verified** for the absence of a return channel; consequences of violating the callback contract are outside the supported API.
+An incompatible or otherwise contract-violating allocator can cause invalid memory behaviour, but it is not a source-supported `ffxDestroyContext` error path. There is no legitimate "host free failed, context remains live" error result in the inspected interface. **Verified** for the absence of a return channel; consequences of violating the callback contract are outside the supported API.
 
 ### Complete source-visible non-success classification
 
@@ -143,7 +143,7 @@ For the public/open path inspected at v2.3.0:
 | Failure source | Public result | Valid before call? | Ordinary supported use? | State on return |
 |---|---:|---|---|---|
 | Common `context == nullptr` | `FFX_API_RETURN_ERROR_PARAMETER` (6) | No context supplied | Controlled invalid argument | No teardown; **definitely no context affected**. **Verified.** |
-| `context != nullptr`, `*context == nullptr` through common API | No controlled result established | No live context | No; invalid input enters undefined behavior before provider validation | **Unknown/undefined. Verified source flow.** |
+| `context != nullptr`, `*context == nullptr` through common API | No controlled result established | No live context | No; invalid input enters undefined behaviour before provider validation | **Unknown/undefined. Verified source flow.** |
 | Stale/already-freed handle | No controlled result established | No | No; dereference of freed context header | **Unknown/undefined.** |
 | Arbitrary non-null invalid handle | No controlled result established | No | No | **Unknown/undefined.** |
 | FSR2 provider's own argument checks, if reached directly | API parameter error (6) | No | Internal/direct-call validation, not a safe generic-null-handle mechanism | No provider teardown before check. **Verified.** |
@@ -164,7 +164,7 @@ The generic `ffxDestroyContext` checks the associated provider's reference count
 
 The open FSR2/FSR3 provider instances inspected are static providers whose base `ffxProvider` reference count starts at one; no corresponding refcount transition to zero was found in their destruction path. **Verified** for construction/source layout.
 
-For an external provider, however, this common code means that "provider destroy returned error" does not itself imply that the provider object is retained. The behavior depends on the external provider's refcount policy, whose implementation is unavailable. **Inference** from common code; **Unresolved** for the v2.3.0 external/4.1.1 provider.
+For an external provider, however, this common code means that "provider destroy returned error" does not itself imply that the provider object is retained. The behaviour depends on the external provider's refcount policy, whose implementation is unavailable. **Inference** from common code; **Unresolved** for the v2.3.0 external/4.1.1 provider.
 
 ### Retry semantics
 
@@ -176,7 +176,7 @@ For a returned error, the source does not provide a general retry rule. In parti
 
 Whether retrying after that partial FSR3 failure would happen to succeed for any particular inconsistent backend state is not an API guarantee and was not established. **Unresolved.**
 
-For the signed/external/ML 4.1.1 provider, retry behavior after a non-success return is wholly **Unresolved** from available public source. The common open code's willingness to release a zero-refcount provider even when provider destruction returned an error further prevents deriving a generic "error leaves provider/context alive" rule without the provider implementation.
+For the signed/external/ML 4.1.1 provider, retry behaviour after a non-success return is wholly **Unresolved** from available public source. The common open code's willingness to release a zero-refcount provider even when provider destruction returned an error further prevents deriving a generic "error leaves provider/context alive" rule without the provider implementation.
 
 ### Handle post-state and documentation conflict
 
@@ -191,7 +191,7 @@ The exact-v2.3.0 open implementation contradicts that claim:
 
 This is a direct v2.3.0 documentation/implementation contradiction. **Verified.**
 
-The C header itself is narrower than the generic documentation: it says the function destroys a context, requires compatible allocation callbacks, and treats non-zero as an error, but does not promise that the handle becomes null. It also specifies neither validity after failure nor retry behavior. **Verified.**
+The C header itself is narrower than the generic documentation: it says the function destroys a context, requires compatible allocation callbacks, and treats non-zero as an error, but does not promise that the handle becomes null. It also specifies neither validity after failure nor retry behaviour. **Verified.**
 
 For an open-provider success, the strongest source-level postcondition is therefore: native backing allocation destroyed/freed, caller-visible handle bits unchanged, resulting handle stale. This is consistent with the project's observed successful destruction followed by a non-null/unchanged handle. It does not prove that every signed 4.1.1 provider follows the same internal implementation. **Verified** for open source; **Unresolved** for the closed provider.
 
@@ -203,7 +203,7 @@ For an open-provider success, the strongest source-level postcondition is theref
 
 **Open FSR3.** It introduces a pre-core provider-owned shared-resource cleanup loop whose backend errors are propagated as public runtime error 3. On DX12 the relevant backend error is an out-of-range internal resource index. Source-managed valid state appears to keep those indices in range; therefore no ordinary supported-use trigger was identified. If this failure does occur, teardown may already be partial. **Verified/Inference.**
 
-**FSR4/ML/external provider.** The v2.3.0 release advertises FSR Upscaling 4.1.1, but the provider implementation relevant to the signed binary/external-provider path is not available in the inspected public tree. `ffx_provider.h` references an `amdinternal/.../ffx_provider_external.h` file absent from the public repository, and the source/binary inventory lists the signed upscaler/loader binaries separately. **Verified** absence/inventory; **Unresolved** provider behavior.
+**FSR4/ML/external provider.** The v2.3.0 release advertises FSR Upscaling 4.1.1, but the provider implementation relevant to the signed binary/external-provider path is not available in the inspected public tree. `ffx_provider.h` references an `amdinternal/.../ffx_provider_external.h` file absent from the public repository, and the source/binary inventory lists the signed upscaler/loader binaries separately. **Verified** absence/inventory; **Unresolved** provider behaviour.
 
 Accordingly, none of the open FSR2/FSR3 post-error conclusions may be silently generalized to the provider that reported version 4.1.1 in the project experiment. The release version match identifies relevant packaging, not implementation equivalence. **Inference.**
 
@@ -239,7 +239,7 @@ Left unresolved:
 - If it can, whether such an error means still-live, destroyed, partially destroyed, or some provider-specific state.
 - Retry semantics following a 4.1.1 provider failure.
 - Whether the shipped signed loader adds validation for null/stale handles beyond the open implementation.
-- Source inspection alone does not establish runtime behavior of the signed Windows/DX12 binaries.
+- Source inspection alone does not establish runtime behaviour of the signed Windows/DX12 binaries.
 
 ## Limits and follow-up
 

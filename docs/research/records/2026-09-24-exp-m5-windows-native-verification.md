@@ -17,12 +17,12 @@ The working tree was clean before execution. No production code, test code,
 manifest, or lockfile changed for the native run. The public path under test
 used `Runtime::load` and `Upscaler::new`, with shared loader retention and an
 independent COM reference to the borrowed device. The existing
-[M5 runner](../../../crates/fsr-sdk/tests/run-m5.ps1),
-[native lifecycle tests](../../../crates/fsr-sdk/src/upscaler/tests/lifecycle.rs), and
+[M5 runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk/tests/run-m5.ps1.txt),
+[native lifecycle tests](../../../crates/fsr-sdk/src/upscaler/dx12/tests/lifecycle.rs), and
 [paired C++ ABI check](../../../crates/fsr-sdk-sys/tests/context_lifecycle/native_abi.cpp)
 were the executable evidence. Documentation was updated after the run. This
 record does not archive the tested source tree; a later checkout requires a new
-run to establish its behavior.
+run to establish its behaviour.
 
 Windows 11 Pro build `26200`, Rust `1.98.1` on `x86_64-pc-windows-msvc`, and
 Visual Studio 2022 Build Tools developer prompt `17.14.28` were used. The DX12
@@ -109,3 +109,8 @@ One pass per case does not establish broader hardware compatibility, native
 concurrency, all valid dimension ranges, correct image output, or dispatch
 safety. The next implementation milestone remains DX12 dispatch, whose resource
 states, synchronization, and output need separate evidence.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.

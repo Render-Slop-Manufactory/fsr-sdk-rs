@@ -39,7 +39,7 @@ Local SDK v2.3.0 sources, under `external/FidelityFX-SDK/v2.3.0/Kits/FidelityFX/
   version enumeration is performed before context creation; effects live in
   separate DLLs. The C example omits `header.type` initialization. The test sets
   it explicitly according to the header and implementation instead of copying
-  that omission. Device-free behavior of the signed runtime is established by
+  that omission. Device-free behaviour of the signed runtime is established by
   the observed run below, not by assuming all source matches its binary.
 - `docs/techniques/denoising.md` illustrates placing loader and effect DLLs in
   the executable directory. This motivates the local test deployment; it is not
@@ -93,8 +93,8 @@ SHA-256 of original DLLs copied for the successful run:
 | `amd_fidelityfx_loader_dx12.dll` | `E2D85AA05A9BD9ED8B38935FDF5199372CCA6F74C12015143BB6F945EE1608AA` |
 | `amd_fidelityfx_upscaler_dx12.dll` | `D0DCCCC74A43C44BA435B7A369B456E0970D8A4464E4BD683119B374F2C9FB46` |
 
-These identify local inputs, not authenticated upstream artifacts or a
-redistribution policy. Copies and executable are ignored build artifacts.
+These identify local inputs, not authenticated upstream artefacts or a
+redistribution policy. Copies and executable are ignored build artefacts.
 
 ## Reproduction
 

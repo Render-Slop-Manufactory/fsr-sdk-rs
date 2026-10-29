@@ -91,7 +91,7 @@ not close the source investigation's missing implementation audit.
 
 ## Changes and safety audit
 
-**Production behavior:** unchanged. The only edit in
+**Production behaviour:** unchanged. The only edit in
 [context.rs](../../../crates/fsr-sdk/src/context.rs) adds `cfg(test)`-only optional
 destruction tracing after the real native call returns. Ignored stderr-write
 errors keep this tracing non-panicking. It is compiled out of the production
@@ -106,10 +106,10 @@ library; terminal ownership, exceptional retention and public traits are intact.
 - [gpu.cpp](../../../crates/fsr-sdk/tests/native/gpu.cpp) adds two observations:
   completed fence value and exact packed four-channel RGBA16F payload copying.
   Neither calls AMD, changes existing frame generation or enables sharpening.
-- [run.ps1](../../../crates/fsr-sdk/tests/native/run.ps1) adds `-Mode d013-cleanup`,
+- [run.ps1](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk/tests/native/run.ps1.txt) adds `-Mode d013-cleanup`,
   prerequisite ordering, 30 isolated repetitions, fresh output directories and
   payload hashing/comparison under the existing watchdog. GBV remains excluded.
-- At the user's request, new test names describe behavior. The earlier six
+- At the user's request, new test names describe behaviour. The earlier six
   native tests moved from `d013.rs` to
   [thread_transfer_baseline.rs](../../../crates/fsr-sdk/tests/native/thread_transfer_baseline.rs)
   with functional names and updated selectors. Their scenarios are unchanged;
@@ -263,7 +263,7 @@ and 180,000-ms children. No unsupported --all-features combination was used.
 | Feature-disabled all-targets compilation | Exit 0; [log](2026-10-08-exp-d013-native-transfer-cleanup/additional-feature-disabled-all-targets.txt) |
 | Rust 1.88 all-targets check, full tests, feature-disabled all-targets check | All exit 0; [command statuses](2026-10-08-exp-d013-native-transfer-cleanup/additional-status.txt) |
 | Rustdoc with RUSTDOCFLAGS=-D warnings | Exit 0; [log](2026-10-08-exp-d013-native-transfer-cleanup/additional-rustdoc.txt) |
-| Local package list/archive and license inspection | Exit 0; both LICENSE texts and new functional test files included; [archive log](2026-10-08-exp-d013-native-transfer-cleanup/additional-package-archive.txt). --no-verify does not verify package builds; no publication. |
+| Local package list/archive and licence inspection | Exit 0; both LICENSE texts and new functional test files included; [archive log](2026-10-08-exp-d013-native-transfer-cleanup/additional-package-archive.txt). --no-verify does not verify package builds; no publication. |
 | Executed-source and native-result audit | All 83 raw hashes unchanged, 41 successful native children; [audit](2026-10-08-exp-d013-native-transfer-cleanup/audit-summary.json) |
 
 Stable/MSRV full workspace runs each pass 36 wrapper unit tests, one dimensions
@@ -309,3 +309,10 @@ is unsupported. Common coordination including implicit Drop remains an actual
 premise, not something Send + !Sync or Arc alone enforces. This record supplies
 bounded evidence for that review and **does not accept D013** or verify a public
 movable family. Public Runtime/Upscaler remain !Send + !Sync.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

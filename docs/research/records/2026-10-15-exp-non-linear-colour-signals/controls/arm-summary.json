@@ -1,0 +1,876 @@
+{
+  "fixed-linear-linear-before-encode-0.5": {
+    "specification": {
+      "encoding": "linear",
+      "hint": "linear",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-linear-linear-before-encode-0.5",
+      "pre": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        6.103515625e-05,
+        8.265565081340409e-05,
+        0.00011887201448766704
+      ],
+      [
+        6.103515625e-05,
+        8.265565081340409e-05,
+        0.00011887201448766704
+      ],
+      [
+        6.103515625e-05,
+        8.265565081340409e-05,
+        0.00011887201448766704
+      ]
+    ],
+    "output_triplets": [
+      [
+        "5bbda33248c9feb0c5cc1ef83539c94717a8a4be28da534b9dcad93cb80609db",
+        "b68f24c60eb81fbe37e0183b371c0efcac02f968c79916c0e814e5ac848ca1cf",
+        "48f3b7905acbcf90dae75fa133a7bfb2b3652d43cd6f51355f26087089263e69"
+      ],
+      [
+        "5bbda33248c9feb0c5cc1ef83539c94717a8a4be28da534b9dcad93cb80609db",
+        "b68f24c60eb81fbe37e0183b371c0efcac02f968c79916c0e814e5ac848ca1cf",
+        "48f3b7905acbcf90dae75fa133a7bfb2b3652d43cd6f51355f26087089263e69"
+      ],
+      [
+        "5bbda33248c9feb0c5cc1ef83539c94717a8a4be28da534b9dcad93cb80609db",
+        "b68f24c60eb81fbe37e0183b371c0efcac02f968c79916c0e814e5ac848ca1cf",
+        "48f3b7905acbcf90dae75fa133a7bfb2b3652d43cd6f51355f26087089263e69"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-linear-linear-before-encode-0.5.json"
+  },
+  "fixed-linear-linear-before-encode-2": {
+    "specification": {
+      "encoding": "linear",
+      "hint": "linear",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-linear-linear-before-encode-2",
+      "pre": [
+        2,
+        2,
+        2
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.000244140625,
+        0.00033062260325361637,
+        0.0004754880579506682
+      ],
+      [
+        0.000244140625,
+        0.00033062260325361637,
+        0.0004754880579506682
+      ],
+      [
+        0.000244140625,
+        0.00033062260325361637,
+        0.0004754880579506682
+      ]
+    ],
+    "output_triplets": [
+      [
+        "71b16530ec27c3eea6752f780c07695d2ffbded7c9fe467af0b7eaef6c721141",
+        "8b1889b883094c0ebaf3185ac376a1b4eb9f5ba65b7470dd45c629a4c17cacea",
+        "cec5c78ffbda75e27570d995cb6c3f7b60f6d11def3b288b1765f0a379b2c9bc"
+      ],
+      [
+        "71b16530ec27c3eea6752f780c07695d2ffbded7c9fe467af0b7eaef6c721141",
+        "8b1889b883094c0ebaf3185ac376a1b4eb9f5ba65b7470dd45c629a4c17cacea",
+        "cec5c78ffbda75e27570d995cb6c3f7b60f6d11def3b288b1765f0a379b2c9bc"
+      ],
+      [
+        "71b16530ec27c3eea6752f780c07695d2ffbded7c9fe467af0b7eaef6c721141",
+        "8b1889b883094c0ebaf3185ac376a1b4eb9f5ba65b7470dd45c629a4c17cacea",
+        "cec5c78ffbda75e27570d995cb6c3f7b60f6d11def3b288b1765f0a379b2c9bc"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-linear-linear-before-encode-2.json"
+  },
+  "fixed-pq-encoded-after-encode-0.5": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "encoded-after-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-pq-encoded-after-encode-0.5",
+      "pre": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001220703125,
+        0.0001220703125,
+        0.0001220703125
+      ],
+      [
+        0.0001220703125,
+        0.0001220703125,
+        0.0001220703125
+      ],
+      [
+        0.0001220703125,
+        0.0001220703125,
+        0.0001220703125
+      ]
+    ],
+    "output_triplets": [
+      [
+        "cc4989904953d15cb66bd16229ffeaa65c9534db6b2aacdc2b6ead511f3efa62",
+        "f9541d373f2a9d80bfdd77e7f0f0b415c36f69877541fb3f79dd583b2713168f",
+        "d002843af0a21613a2db551e211de936878453091fe701218f930a543d9b7de2"
+      ],
+      [
+        "cc4989904953d15cb66bd16229ffeaa65c9534db6b2aacdc2b6ead511f3efa62",
+        "f9541d373f2a9d80bfdd77e7f0f0b415c36f69877541fb3f79dd583b2713168f",
+        "d002843af0a21613a2db551e211de936878453091fe701218f930a543d9b7de2"
+      ],
+      [
+        "cc4989904953d15cb66bd16229ffeaa65c9534db6b2aacdc2b6ead511f3efa62",
+        "f9541d373f2a9d80bfdd77e7f0f0b415c36f69877541fb3f79dd583b2713168f",
+        "d002843af0a21613a2db551e211de936878453091fe701218f930a543d9b7de2"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-pq-encoded-after-encode-0.5.json"
+  },
+  "fixed-pq-encoded-after-encode-2": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "encoded-after-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-pq-encoded-after-encode-2",
+      "pre": [
+        2,
+        2,
+        2
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0004734566541222396,
+        0.00048828125,
+        0.00048828125
+      ],
+      [
+        0.0004734566541222396,
+        0.00048828125,
+        0.00048828125
+      ],
+      [
+        0.0004734566541222396,
+        0.00048828125,
+        0.00048828125
+      ]
+    ],
+    "output_triplets": [
+      [
+        "1333946869ef75fa0c761afc95944d2353eab49af52f7f67b9b59d77d62e390f",
+        "96cf406737ef37beeabdd52d31b7d84f356f088f7d1e919cebfbe810943deca9",
+        "134ecd2accc0033851e0259fc28d75adfdff656492fe6e7f4e467b84ed1388b0"
+      ],
+      [
+        "1333946869ef75fa0c761afc95944d2353eab49af52f7f67b9b59d77d62e390f",
+        "96cf406737ef37beeabdd52d31b7d84f356f088f7d1e919cebfbe810943deca9",
+        "134ecd2accc0033851e0259fc28d75adfdff656492fe6e7f4e467b84ed1388b0"
+      ],
+      [
+        "1333946869ef75fa0c761afc95944d2353eab49af52f7f67b9b59d77d62e390f",
+        "96cf406737ef37beeabdd52d31b7d84f356f088f7d1e919cebfbe810943deca9",
+        "134ecd2accc0033851e0259fc28d75adfdff656492fe6e7f4e467b84ed1388b0"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-pq-encoded-after-encode-2.json"
+  },
+  "fixed-pq-linear-before-encode-0.5": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-pq-linear-before-encode-0.5",
+      "pre": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00024206270047322231,
+        0.000244140625,
+        0.000244140625
+      ],
+      [
+        0.00024206270047322231,
+        0.000244140625,
+        0.000244140625
+      ],
+      [
+        0.00024206270047322231,
+        0.000244140625,
+        0.000244140625
+      ]
+    ],
+    "output_triplets": [
+      [
+        "c472588c8be4f7dfd4dffcef4a082428693b0f1af64dbaa6cae8a4fd26ce8d6e",
+        "03413b3254a372b5f329205770937590e6ad7fe6c6bffaf2ab61dfba6c9284ad",
+        "d1d1130d1886bdba4161bc342499be57d235dd624f096b0f46c9c7db8f0b11f7"
+      ],
+      [
+        "c472588c8be4f7dfd4dffcef4a082428693b0f1af64dbaa6cae8a4fd26ce8d6e",
+        "03413b3254a372b5f329205770937590e6ad7fe6c6bffaf2ab61dfba6c9284ad",
+        "d1d1130d1886bdba4161bc342499be57d235dd624f096b0f46c9c7db8f0b11f7"
+      ],
+      [
+        "c472588c8be4f7dfd4dffcef4a082428693b0f1af64dbaa6cae8a4fd26ce8d6e",
+        "03413b3254a372b5f329205770937590e6ad7fe6c6bffaf2ab61dfba6c9284ad",
+        "d1d1130d1886bdba4161bc342499be57d235dd624f096b0f46c9c7db8f0b11f7"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-pq-linear-before-encode-0.5.json"
+  },
+  "fixed-pq-linear-before-encode-2": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-pq-linear-before-encode-2",
+      "pre": [
+        2,
+        2,
+        2
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00024358237661964433,
+        0.000244140625,
+        0.0002443887353912877
+      ],
+      [
+        0.00024358237661964433,
+        0.000244140625,
+        0.0002443887353912877
+      ],
+      [
+        0.00024358237661964433,
+        0.000244140625,
+        0.0002443887353912877
+      ]
+    ],
+    "output_triplets": [
+      [
+        "6d7557f8848c736f9be9199bdaf4fdb49b91701b924fdf266686e5556bc31a1e",
+        "75a2a3f0983024e0aa388c9d86f6a91c8f5965e93c51fedcc778279bb7a78ee1",
+        "4e378d314006f9e9824a5c347330ccfb28a517911a887cd8bd6ed764988798dc"
+      ],
+      [
+        "6d7557f8848c736f9be9199bdaf4fdb49b91701b924fdf266686e5556bc31a1e",
+        "75a2a3f0983024e0aa388c9d86f6a91c8f5965e93c51fedcc778279bb7a78ee1",
+        "4e378d314006f9e9824a5c347330ccfb28a517911a887cd8bd6ed764988798dc"
+      ],
+      [
+        "6d7557f8848c736f9be9199bdaf4fdb49b91701b924fdf266686e5556bc31a1e",
+        "75a2a3f0983024e0aa388c9d86f6a91c8f5965e93c51fedcc778279bb7a78ee1",
+        "4e378d314006f9e9824a5c347330ccfb28a517911a887cd8bd6ed764988798dc"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-pq-linear-before-encode-2.json"
+  },
+  "fixed-srgb-encoded-after-encode-0.5": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "encoded-after-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-srgb-encoded-after-encode-0.5",
+      "pre": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001220703125,
+        0.00013680962043080558,
+        0.00015237854748237356
+      ],
+      [
+        0.0001220703125,
+        0.00013680962043080558,
+        0.00015237854748237356
+      ],
+      [
+        0.0001220703125,
+        0.00013680962043080558,
+        0.00015237854748237356
+      ]
+    ],
+    "output_triplets": [
+      [
+        "3f0167fc1a86154c26693cb90c77985d29aa7c02b9bd76d0e9a7564fe6e21963",
+        "a7c0a17a36bcb5e432047c32ad8dc49422dcde3d7f95d6e3c412c921c844a64c",
+        "9328fa4c00e73d192b31deee52e8940744c9ef2a133c2b77b587b5cdfdcb367f"
+      ],
+      [
+        "3f0167fc1a86154c26693cb90c77985d29aa7c02b9bd76d0e9a7564fe6e21963",
+        "a7c0a17a36bcb5e432047c32ad8dc49422dcde3d7f95d6e3c412c921c844a64c",
+        "9328fa4c00e73d192b31deee52e8940744c9ef2a133c2b77b587b5cdfdcb367f"
+      ],
+      [
+        "3f0167fc1a86154c26693cb90c77985d29aa7c02b9bd76d0e9a7564fe6e21963",
+        "a7c0a17a36bcb5e432047c32ad8dc49422dcde3d7f95d6e3c412c921c844a64c",
+        "9328fa4c00e73d192b31deee52e8940744c9ef2a133c2b77b587b5cdfdcb367f"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-srgb-encoded-after-encode-0.5.json"
+  },
+  "fixed-srgb-encoded-after-encode-2": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "encoded-after-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-srgb-encoded-after-encode-2",
+      "pre": [
+        2,
+        2,
+        2
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00048828125,
+        0.0009485260257876549,
+        0.0012676270027470737
+      ],
+      [
+        0.00048828125,
+        0.0009485260257876549,
+        0.0012676270027470737
+      ],
+      [
+        0.00048828125,
+        0.0009485260257876549,
+        0.0012676270027470737
+      ]
+    ],
+    "output_triplets": [
+      [
+        "bb5490936309291ef938a08d2c20829ff158fa9084d370d082ddf3a64f98bc38",
+        "34ee031ea1890d290499d1c8994e3318e1cf9ecfb5719bc5508ed0d795f0c454",
+        "295f6dbb70da381523bc111d79b92cc9db51cbf8a56d70e239ef78d5af75ae43"
+      ],
+      [
+        "bb5490936309291ef938a08d2c20829ff158fa9084d370d082ddf3a64f98bc38",
+        "34ee031ea1890d290499d1c8994e3318e1cf9ecfb5719bc5508ed0d795f0c454",
+        "295f6dbb70da381523bc111d79b92cc9db51cbf8a56d70e239ef78d5af75ae43"
+      ],
+      [
+        "bb5490936309291ef938a08d2c20829ff158fa9084d370d082ddf3a64f98bc38",
+        "34ee031ea1890d290499d1c8994e3318e1cf9ecfb5719bc5508ed0d795f0c454",
+        "295f6dbb70da381523bc111d79b92cc9db51cbf8a56d70e239ef78d5af75ae43"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-srgb-encoded-after-encode-2.json"
+  },
+  "fixed-srgb-linear-before-encode-0.5": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-srgb-linear-before-encode-0.5",
+      "pre": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.000244140625,
+        0.00026822283985167283,
+        0.0003034235016117215
+      ],
+      [
+        0.000244140625,
+        0.00026822283985167283,
+        0.0003034235016117215
+      ],
+      [
+        0.000244140625,
+        0.00026822283985167283,
+        0.0003034235016117215
+      ]
+    ],
+    "output_triplets": [
+      [
+        "9e19acc14152d87137bd5f9af071833600ad1fb6aa39f912c2487534de853d30",
+        "b9629ed4f1c72a18791f5220da034297bde6423fc1ee69007327fb891d11ade0",
+        "efcb7ebfdf3b472992d924446838553a5a6b1bbbcdef5bf00311ee6a43eb820e"
+      ],
+      [
+        "9e19acc14152d87137bd5f9af071833600ad1fb6aa39f912c2487534de853d30",
+        "b9629ed4f1c72a18791f5220da034297bde6423fc1ee69007327fb891d11ade0",
+        "efcb7ebfdf3b472992d924446838553a5a6b1bbbcdef5bf00311ee6a43eb820e"
+      ],
+      [
+        "9e19acc14152d87137bd5f9af071833600ad1fb6aa39f912c2487534de853d30",
+        "b9629ed4f1c72a18791f5220da034297bde6423fc1ee69007327fb891d11ade0",
+        "efcb7ebfdf3b472992d924446838553a5a6b1bbbcdef5bf00311ee6a43eb820e"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-srgb-linear-before-encode-0.5.json"
+  },
+  "fixed-srgb-linear-before-encode-2": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "fixed-srgb-linear-before-encode-2",
+      "pre": [
+        2,
+        2,
+        2
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00048828125,
+        0.0004885293603912322,
+        0.0005097427988439707
+      ],
+      [
+        0.00048828125,
+        0.0004885293603912322,
+        0.0005097427988439707
+      ],
+      [
+        0.00048828125,
+        0.0004885293603912322,
+        0.0005097427988439707
+      ]
+    ],
+    "output_triplets": [
+      [
+        "bb0034a32dc1562c55db1470ec270d110408ad8d0a87f3e79b194fa74badf5b7",
+        "b7b97c64b46609f28479cf23b6571042eb1f2b714978ad841e6803609d78789f",
+        "cd058fce6ee5d42b52dbb83a039678479d9bf7a5bbcb1fbb1e952d3a74a8a949"
+      ],
+      [
+        "bb0034a32dc1562c55db1470ec270d110408ad8d0a87f3e79b194fa74badf5b7",
+        "b7b97c64b46609f28479cf23b6571042eb1f2b714978ad841e6803609d78789f",
+        "cd058fce6ee5d42b52dbb83a039678479d9bf7a5bbcb1fbb1e952d3a74a8a949"
+      ],
+      [
+        "bb0034a32dc1562c55db1470ec270d110408ad8d0a87f3e79b194fa74badf5b7",
+        "b7b97c64b46609f28479cf23b6571042eb1f2b714978ad841e6803609d78789f",
+        "cd058fce6ee5d42b52dbb83a039678479d9bf7a5bbcb1fbb1e952d3a74a8a949"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/fixed-srgb-linear-before-encode-2.json"
+  },
+  "reset-pq-encoded-after-encode": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "encoded-after-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "reset-pq-encoded-after-encode",
+      "pre": [
+        0.5,
+        1,
+        2
+      ],
+      "reset": [
+        true,
+        true,
+        true
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001220703125,
+        0.0002421867556688384,
+        0.0004768681720019874
+      ],
+      [
+        0.0001220703125,
+        0.0002421867556688384,
+        0.0004768681720019874
+      ],
+      [
+        0.0001220703125,
+        0.0002421867556688384,
+        0.0004768681720019874
+      ]
+    ],
+    "output_triplets": [
+      [
+        "cc4989904953d15cb66bd16229ffeaa65c9534db6b2aacdc2b6ead511f3efa62",
+        "d707db7da80be4f1598aa834d4585fe3fc69984115b2b04f843fb19f63f283a4",
+        "f5c544646a17e34f56a1a16d2745131bb43a6803987b52b64e90c8b78623c41f"
+      ],
+      [
+        "cc4989904953d15cb66bd16229ffeaa65c9534db6b2aacdc2b6ead511f3efa62",
+        "d707db7da80be4f1598aa834d4585fe3fc69984115b2b04f843fb19f63f283a4",
+        "f5c544646a17e34f56a1a16d2745131bb43a6803987b52b64e90c8b78623c41f"
+      ],
+      [
+        "cc4989904953d15cb66bd16229ffeaa65c9534db6b2aacdc2b6ead511f3efa62",
+        "d707db7da80be4f1598aa834d4585fe3fc69984115b2b04f843fb19f63f283a4",
+        "f5c544646a17e34f56a1a16d2745131bb43a6803987b52b64e90c8b78623c41f"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/reset-pq-encoded-after-encode.json"
+  },
+  "reset-pq-linear-before-encode": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "reset-pq-linear-before-encode",
+      "pre": [
+        0.5,
+        1,
+        2
+      ],
+      "reset": [
+        true,
+        true,
+        true
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00024206270047322231,
+        0.0002421867556688384,
+        0.0002425589212557422
+      ],
+      [
+        0.00024206270047322231,
+        0.0002421867556688384,
+        0.0002425589212557422
+      ],
+      [
+        0.00024206270047322231,
+        0.0002421867556688384,
+        0.0002425589212557422
+      ]
+    ],
+    "output_triplets": [
+      [
+        "c472588c8be4f7dfd4dffcef4a082428693b0f1af64dbaa6cae8a4fd26ce8d6e",
+        "d707db7da80be4f1598aa834d4585fe3fc69984115b2b04f843fb19f63f283a4",
+        "26e91faea629fca6d976f2c716d7c3c8641572a46873b9f59c2627b339c5b928"
+      ],
+      [
+        "c472588c8be4f7dfd4dffcef4a082428693b0f1af64dbaa6cae8a4fd26ce8d6e",
+        "d707db7da80be4f1598aa834d4585fe3fc69984115b2b04f843fb19f63f283a4",
+        "26e91faea629fca6d976f2c716d7c3c8641572a46873b9f59c2627b339c5b928"
+      ],
+      [
+        "c472588c8be4f7dfd4dffcef4a082428693b0f1af64dbaa6cae8a4fd26ce8d6e",
+        "d707db7da80be4f1598aa834d4585fe3fc69984115b2b04f843fb19f63f283a4",
+        "26e91faea629fca6d976f2c716d7c3c8641572a46873b9f59c2627b339c5b928"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/reset-pq-linear-before-encode.json"
+  },
+  "reset-srgb-encoded-after-encode": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "encoded-after-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "reset-srgb-encoded-after-encode",
+      "pre": [
+        0.5,
+        1,
+        2
+      ],
+      "reset": [
+        true,
+        true,
+        true
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001220703125,
+        0.000244140625,
+        0.00048828125
+      ],
+      [
+        0.0001220703125,
+        0.000244140625,
+        0.00048828125
+      ],
+      [
+        0.0001220703125,
+        0.000244140625,
+        0.00048828125
+      ]
+    ],
+    "output_triplets": [
+      [
+        "3f0167fc1a86154c26693cb90c77985d29aa7c02b9bd76d0e9a7564fe6e21963",
+        "c3a71145d391d96817bcb537100684f1e71271cb6b9b33505becdef2777f2efa",
+        "f11768226ef4819b7b830ea42164386326e314608c3a9514d4082f0ce9598861"
+      ],
+      [
+        "3f0167fc1a86154c26693cb90c77985d29aa7c02b9bd76d0e9a7564fe6e21963",
+        "c3a71145d391d96817bcb537100684f1e71271cb6b9b33505becdef2777f2efa",
+        "f11768226ef4819b7b830ea42164386326e314608c3a9514d4082f0ce9598861"
+      ],
+      [
+        "3f0167fc1a86154c26693cb90c77985d29aa7c02b9bd76d0e9a7564fe6e21963",
+        "c3a71145d391d96817bcb537100684f1e71271cb6b9b33505becdef2777f2efa",
+        "f11768226ef4819b7b830ea42164386326e314608c3a9514d4082f0ce9598861"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/reset-srgb-encoded-after-encode.json"
+  },
+  "reset-srgb-linear-before-encode": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "phase": "control",
+      "name": "reset-srgb-linear-before-encode",
+      "pre": [
+        0.5,
+        1,
+        2
+      ],
+      "reset": [
+        true,
+        true,
+        true
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.000244140625,
+        0.000244140625,
+        0.00048828125
+      ],
+      [
+        0.000244140625,
+        0.000244140625,
+        0.00048828125
+      ],
+      [
+        0.000244140625,
+        0.000244140625,
+        0.00048828125
+      ]
+    ],
+    "output_triplets": [
+      [
+        "9e19acc14152d87137bd5f9af071833600ad1fb6aa39f912c2487534de853d30",
+        "c3a71145d391d96817bcb537100684f1e71271cb6b9b33505becdef2777f2efa",
+        "46d51fc1d04849ff75f0cc2e4ccc88d1c3d99ac4e4b4f0bb0b48c31ef849a429"
+      ],
+      [
+        "9e19acc14152d87137bd5f9af071833600ad1fb6aa39f912c2487534de853d30",
+        "c3a71145d391d96817bcb537100684f1e71271cb6b9b33505becdef2777f2efa",
+        "46d51fc1d04849ff75f0cc2e4ccc88d1c3d99ac4e4b4f0bb0b48c31ef849a429"
+      ],
+      [
+        "9e19acc14152d87137bd5f9af071833600ad1fb6aa39f912c2487534de853d30",
+        "c3a71145d391d96817bcb537100684f1e71271cb6b9b33505becdef2777f2efa",
+        "46d51fc1d04849ff75f0cc2e4ccc88d1c3d99ac4e4b4f0bb0b48c31ef849a429"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/reset-srgb-linear-before-encode.json"
+  }
+}

@@ -13,7 +13,7 @@
 **Topic:** Public `ffxQuery` / `ffxConfigure` surface relevant to the modern FidelityFX upscaler  
 **Authoritative baseline:** AMD FidelityFX SDK v2.3.0, commit `60f4ea81909200d8542eca14dccb2628b763a9a3`  
 **Platform/backend scope:** Windows x64/MSVC, official DX12 runtime  
-**Evidence cut-off:** The pinned commit is normative for this record. Newer `main` material is not used to establish v2.3.0 behavior.
+**Evidence cut-off:** The pinned commit is normative for this record. Newer `main` material is not used to establish v2.3.0 behaviour.
 
 Evidence labels used below:
 
@@ -24,9 +24,9 @@ Evidence labels used below:
 
 ## Scope and method
 
-This investigation enumerates the generic and upscaler-specific public Query/Configure descriptors that can meaningfully participate in upscaler creation, version/provider selection, resolution/jitter utilities, resource planning, diagnostics, or tuning. Dispatch resource structures, DX12 resource-state handling, frame generation, denoisers except for contrast with generic API behavior, custom allocation, Rust API design, and engine integration are excluded.
+This investigation enumerates the generic and upscaler-specific public Query/Configure descriptors that can meaningfully participate in upscaler creation, version/provider selection, resolution/jitter utilities, resource planning, diagnostics, or tuning. Dispatch resource structures, DX12 resource-state handling, frame generation, denoisers except for contrast with generic API behaviour, custom allocation, Rust API design, and engine integration are excluded.
 
-Headers were used to establish ABI surface and documented fields. Pinned API/technique documentation was used for intended calling modes. Generic API and in-tree FSR3 provider source were inspected where necessary to establish null-context routing, provider selection, output ownership, and implementation-specific behavior. Sample code is treated only as evidence of a supported integration pattern, not as a universal contract.
+Headers were used to establish ABI surface and documented fields. Pinned API/technique documentation was used for intended calling modes. Generic API and in-tree FSR3 provider source were inspected where necessary to establish null-context routing, provider selection, output ownership, and implementation-specific behaviour. Sample code is treated only as evidence of a supported integration pattern, not as a universal contract.
 
 The release page identifies v2.3.0 with commit `60f4ea8`; all source references below are pinned to the full commit.
 
@@ -51,9 +51,9 @@ All sources accessed 2026-09-22.
 
 ### Public surface boundary
 
-**Verified.** The relevant v2.3.0 surface consists of two generic Query descriptors, seven upscaler Query descriptors, two generic global-debug Configure descriptors, and one upscaler key/value Configure descriptor containing five published keys. No dedicated public upscaler “device capabilities” Query descriptor exists in the pinned upscaler header. Hardware/provider support instead participates in provider discovery/routing; `GetProviderVersions` filters providers using the supplied device and provider `IsSupported` behavior.
+**Verified.** The relevant v2.3.0 surface consists of two generic Query descriptors, seven upscaler Query descriptors, two generic global-debug Configure descriptors, and one upscaler key/value Configure descriptor containing five published keys. No dedicated public upscaler “device capabilities” Query descriptor exists in the pinned upscaler header. Hardware/provider support instead participates in provider discovery/routing; `GetProviderVersions` filters providers using the supplied device and provider `IsSupported` behaviour.
 
-Every descriptor's `header.type` must match its actual structure. AMD explicitly states that a mismatch is undefined behavior and is likely to crash. This is a **Safety requirement**, not merely an ergonomic convention.
+Every descriptor's `header.type` must match its actual structure. AMD explicitly states that a mismatch is undefined behaviour and is likely to crash. This is a **Safety requirement**, not merely an ergonomic convention.
 
 The generic return-code domain is `OK`, generic error, unknown descriptor type, underlying runtime/effect error, no provider, allocation failure, invalid parameter, and provider-does-not-support-new-descriptor. Individual descriptors generally do not publish a narrower exhaustive error set.
 
@@ -69,13 +69,13 @@ The generic return-code domain is `OK`, generic error, unknown descriptor type, 
 | `ffxQueryDescUpscaleGetJitterOffset` / `...GETJITTEROFFSET` | Null and live context supported; same external-provider routing rule. | Inputs `index`, `phaseCount`; caller `float *pOutX`, `float *pOutY`. | Scalar results. In-tree provider does not retain output pointers. | FSR3 uses base-2/base-3 Halton components at `(index % phaseCount)+1`, shifted by `-0.5`; `phaseCount <= 0` is rejected by the host and becomes a runtime-error return through `TRY2`. | Optional general utility. AMD explicitly permits an application's own jitter sequence generator; the actual applied jitter must still be supplied to dispatch. |
 | `ffxQueryDescUpscaleGetGPUMemoryUsage` / `FFX_API_QUERY_DESC_TYPE_UPSCALE_GPU_MEMORY_USAGE` | **Verified:** live context required; not on the public null-context list. | Caller supplies writable `FfxApiEffectMemoryUsage *gpuMemoryUsageUpscaler`; output contains `totalUsageInBytes` and `aliasableUsageInBytes`. | Caller owns output structure. | In-tree FSR3 explicitly rejects missing context, null native context, or null output with `ERROR_PARAMETER`, zeroes output and computes usage for the created context. | Diagnostics/introspection; useful after creation, never a creation prerequisite. |
 | `ffxQueryDescUpscaleGetGPUMemoryUsageV2` / `...GPU_MEMORY_USAGE_V2` | **Verified:** intended null-context/pre-create query. It embeds its own device, so no DX12 backend chain is needed solely to provide the device. Optional `ffxOverrideVersion` selects a non-default version. | Application fills `device`, `maxRenderSize`, `maxUpscaleSize`, `flags`, and output pointer. | Caller owns `FfxApiEffectMemoryUsage`. | The in-tree FSR3 provider checks the output pointer and invokes its pre-create memory estimator. Notably, its call into `ffxFsr3UpscalerGetGpuMemoryUsage` does **not** pass the descriptor's `flags`; therefore the header's `flags` field must not be assumed to affect every provider/version identically. | Diagnostics/capacity planning; optional. |
-| `ffxQueryDescUpscaleGetResourceRequirements` / `...GET_RESOURCE_REQUIREMENTS` | **Verified:** either live context, to describe that context's selected version, or null context before creation. For a null query, provider/version is selected through DX12 backend/device plus, where needed, `ffxOverrideVersion`. | No external output buffers: `required_resources` and `optional_resources` are written into the descriptor. Bits represent Color, Depth, Motion Vectors, Exposure, Reactive Mask, and Transparency/Composition Mask. | Results are copied integral bitmasks, with no borrowed result lifetime. | Explicitly provider/version-sensitive. Pinned FSR3 implementation reports Color, Depth, MV and Exposure as required, Reactive and T&C masks optional; the Exposure identifier may instead be satisfied through the auto-exposure creation flag. FSR4 documentation explains this Query was added so applications can distinguish the newer optional-mask requirements. | Optional general utility/introspection. It can remove hard-coded provider-specific assumptions, but is not itself declared a dispatch prerequisite. |
+| `ffxQueryDescUpscaleGetResourceRequirements` / `...GET_RESOURCE_REQUIREMENTS` | **Verified:** either live context, to describe that context's selected version, or null context before creation. For a null query, provider/version is selected through DX12 backend/device plus, where needed, `ffxOverrideVersion`. | No external output buffers: `required_resources` and `optional_resources` are written into the descriptor. Bits represent Colour, Depth, Motion Vectors, Exposure, Reactive Mask, and Transparency/Composition Mask. | Results are copied integral bitmasks, with no borrowed result lifetime. | Explicitly provider/version-sensitive. Pinned FSR3 implementation reports Colour, Depth, MV and Exposure as required, Reactive and T&C masks optional; the Exposure identifier may instead be satisfied through the auto-exposure creation flag. FSR4 documentation explains this Query was added so applications can distinguish the newer optional-mask requirements. | Optional general utility/introspection. It can remove hard-coded provider-specific assumptions, but is not itself declared a dispatch prerequisite. |
 
 ### Device capability/support information
 
 **Verified.** There is no `ffxQueryDescUpscale...Capabilities` or equivalent public upscaler descriptor in the pinned header. `GetVersions` is the nearest device-sensitive discovery operation: its `device` participates in provider enumeration and `IsSupported(device)` filtering. That can establish which provider versions are offered for that supplied device, but it does not return a hardware-capability structure and is not equivalent to a general device-capability query.
 
-### Null-context Query behavior
+### Null-context Query behaviour
 
 **Verified.** AMD explicitly lists the following upscaler-relevant null-context operations: `GetVersions`, quality-to-ratio, quality-to-render-resolution, jitter phase count, jitter offset, GPU-memory V2, and resource requirements. All other Query descriptor types require a valid context.
 
@@ -98,12 +98,12 @@ For null-context queries other than `GetVersions`, the generic implementation se
 | Key | Pinned documented value | State/effect |
 |---|---|---|
 | `FFX_API_CONFIGURE_UPSCALE_KEY_FVELOCITYFACTOR` (`0`) | Float via `ptr`; default `1.0`; clamped `[0,1]`. | Velocity-related internal constant; `0` is documented as potentially improving temporal stability of bright pixels. |
-| `FFX_API_CONFIGURE_UPSCALE_KEY_FREACTIVENESSSCALE` (`1`) | Float; default `1.0`; clamped `[0,+∞)`. | Explicitly described as intended for development/testing of ghosting/reactive-mask behavior. |
+| `FFX_API_CONFIGURE_UPSCALE_KEY_FREACTIVENESSSCALE` (`1`) | Float; default `1.0`; clamped `[0,+∞)`. | Explicitly described as intended for development/testing of ghosting/reactive-mask behaviour. |
 | `FFX_API_CONFIGURE_UPSCALE_KEY_FSHADINGCHANGESCALE` (`2`) | Float; default `1.0`; clamped `[0,+∞)`. | Scales the FSR3.1-computed shading-change value. |
 | `FFX_API_CONFIGURE_UPSCALE_KEY_FACCUMULATIONADDEDPERFRAME` (`3`) | Float; default approximately `0.333`; clamped `[0,1]`. | Accumulation/ghosting/flicker tuning. |
 | `FFX_API_CONFIGURE_UPSCALE_KEY_FMINDISOCCLUSIONACCUMULATION` (`4`) | Float; default approximately `-0.333`; clamped `[-1,1]`. | Disocclusion accumulation / ghosting/flicker tuning. |
 
-**Verified, FSR3 implementation only.** Passing `ptr == nullptr` to one of these keys resets that FSR3 internal constant to its coded default. The Configure call mutates CPU-side persistent context constants immediately and does not recreate the context in the inspected implementation. This null-pointer reset behavior and exact visibility semantics are not documented as a provider-independent API contract.
+**Verified, FSR3 implementation only.** Passing `ptr == nullptr` to one of these keys resets that FSR3 internal constant to its coded default. The Configure call mutates CPU-side persistent context constants immediately and does not recreate the context in the inspected implementation. This null-pointer reset behaviour and exact visibility semantics are not documented as a provider-independent API contract.
 
 **Unresolved:** v2.3.0 public material does not define whether `ffxConfigure` may race with a dispatch on the same context, whether GPU completion is required before changing a key, or the exact frame at which a concurrent/in-flight change becomes observable. No such synchronization guarantee should be inferred from the absence of GPU work in the inspected setter.
 
@@ -131,7 +131,7 @@ For the in-tree FSR3 provider, render-resolution conversion is:
 
 so positive fractional results are truncated and no separate alignment step occurs.
 
-The quality helpers are not strictly provider-independent functions despite their common public descriptor types. Null-context execution is routed to a selected provider/device/version, and a live query is routed to the context's associated provider. Thus the named presets form a common API vocabulary, while exact implementation/error/rounding behavior may remain provider/version-sensitive.
+The quality helpers are not strictly provider-independent functions despite their common public descriptor types. Null-context execution is routed to a selected provider/device/version, and a live query is routed to the context's associated provider. Thus the named presets form a common API vocabulary, while exact implementation/error/rounding behaviour may remain provider/version-sensitive.
 
 The jitter helper has a pinned source/documentation discrepancy for arbitrary custom scale factors: documentation says `ceil(8*n²)`, while FSR3 source performs an integer conversion of `8*n²`. **Unresolved:** which rule is the normative cross-provider v2.3.0 contract.
 
@@ -171,7 +171,7 @@ The following remain **Unresolved** from the public v2.3.0 contract:
 - whether Configure is safe concurrently with dispatch;
 - exact dispatch visibility timing of a Configure change.
 
-The FSR3 constant setter's direct CPU-side assignment establishes implementation behavior, but not a cross-provider synchronization contract.
+The FSR3 constant setter's direct CPU-side assignment establishes implementation behaviour, but not a cross-provider synchronization contract.
 
 ## M5 evidence classification
 
@@ -196,7 +196,7 @@ No enumerated operation falls into the unconditional **Required for construction
 
 | Obligation | Classification | Evidence |
 |---|---|---|
-| `header.type` must exactly match the descriptor structure. | **Safety requirement** | AMD explicitly calls mismatch undefined behavior / likely crash. |
+| `header.type` must exactly match the descriptor structure. | **Safety requirement** | AMD explicitly calls mismatch undefined behaviour / likely crash. |
 | A descriptor documented as live-context-only must receive a valid, still-live context. | **Safety requirement / API validity rule** | Configure default rule and Query null-context whitelist. |
 | Writable Query output pointers/arrays must point to sufficient valid storage while the call writes them. | **Safety requirement** | Query outputs are written through caller pointers; `GetVersions` uses caller-provided capacity. |
 | `GetVersions.outputCount` must carry the intended array capacity when arrays are supplied. | **API validity rule** | Explicit header semantics. |
@@ -209,7 +209,7 @@ No enumerated operation falls into the unconditional **Required for construction
 
 ## Source-versus-runtime boundary
 
-No runtime behavior is claimed here beyond the supplied project baseline. In particular, the in-tree FSR3 implementation is source evidence for the provider shipped in the SDK source; it does not establish undocumented behavior of every signed/external provider that the loader may select.
+No runtime behaviour is claimed here beyond the supplied project baseline. In particular, the in-tree FSR3 implementation is source evidence for the provider shipped in the SDK source; it does not establish undocumented behaviour of every signed/external provider that the loader may select.
 
 The public Query interface is provider-routed. Consequently, helper operations that look arithmetical—quality conversion and jitter generation included—must not automatically be classified as provider-independent pure functions solely from their descriptor shape.
 
@@ -219,7 +219,7 @@ The public Query interface is provider-routed. Consequently, helper operations t
 
 **Verified against source:** the project's existing count-only `ffxQueryDescGetVersions` experiment exercises a genuine first-class public v2.3.0 pattern. The generic core explicitly treats `outputCount != nullptr` with either initial count zero or both result arrays null as a provider-count query, and returns `FFX_API_RETURN_OK` after writing the count.
 
-The supplied observed `OK / count 2` therefore establishes that this raw generic Query path and the staged runtime's provider enumeration worked in that specific process/runtime state. It does not by itself establish device-specific support, live-context Query behavior, external-provider routing with a DX12 device, or any Configure behavior.
+The supplied observed `OK / count 2` therefore establishes that this raw generic Query path and the staged runtime's provider enumeration worked in that specific process/runtime state. It does not by itself establish device-specific support, live-context Query behaviour, external-provider routing with a DX12 device, or any Configure behaviour.
 
 ### Adds
 
@@ -246,7 +246,7 @@ The source does narrow one possible overinterpretation of that evidence: a succe
 ### Leaves unresolved
 
 1. **Jitter phase rounding across providers.** Pinned documentation says custom sequence length is `ceil(8*n²)` while pinned FSR3 code truncates the computed value to `int32_t`.
-2. **Signed/external-provider helper details.** The interface and routing are public, but the closed provider's exact rounding, invalid-input and key/value behavior cannot be derived from the in-tree FSR3 implementation.
+2. **Signed/external-provider helper details.** The interface and routing are public, but the closed provider's exact rounding, invalid-input and key/value behaviour cannot be derived from the in-tree FSR3 implementation.
 3. **Query/Configure concurrency and GPU synchronization.** No public v2.3.0 guarantee was found.
 4. **`ffxQueryGetProviderVersion.versionName` retention lifetime.** It is a borrowed pointer, but an exact invalidation point is not documented.
 5. **`ffxConfigureDescGlobalDebug.effectId` semantics.** The field is public, but the pinned generic implementation installs the callback globally without consuming that field.
@@ -256,9 +256,9 @@ No claim in this record depends on current `main`; no newer-main descriptor delt
 
 ## Limits and follow-up
 
-Where the remaining issue concerns the behavior of the actual signed provider rather than a missing normative synchronization guarantee, a bounded signed-runtime experiment can characterize the concrete v2.3.0 runtime:
+Where the remaining issue concerns the behaviour of the actual signed provider rather than a missing normative synchronization guarantee, a bounded signed-runtime experiment can characterize the concrete v2.3.0 runtime:
 
-- For quality/render/jitter helpers, invoke the null-context form with an actual DX12 device and an explicit version ID obtained from `GetVersions`, then compare with the same queries on a context created with that override. Include non-integral custom scale ratios so the experiment distinguishes truncation from `ceil` behavior.
+- For quality/render/jitter helpers, invoke the null-context form with an actual DX12 device and an explicit version ID obtained from `GetVersions`, then compare with the same queries on a context created with that override. Include non-integral custom scale ratios so the experiment distinguishes truncation from `ceil` behaviour.
 - For resource requirements and GPU-memory V2, issue the query with the same device/version/create parameters used for the subsequent context and compare the returned requirements with the corresponding live-context query where an equivalent live form exists.
 - For upscaler key/value Configure on a signed provider, invoke each documented key on an idle live context using valid in-range float storage and record whether the provider returns `OK`, `UNKNOWN_DESCTYPE`, `PROVIDER_NO_SUPPORT_NEW_DESCTYPE`, or another error. This distinguishes support/acceptance; determining visual or dispatch-time effects belongs outside this source investigation.
 - Pointer-retention experiments can characterize a current signed provider but cannot establish a normative lifetime guarantee. Likewise, absence of a crash under concurrent Query/Configure/Dispatch cannot establish thread safety. Those two questions require an upstream contract if they become safety-critical rather than being inferred from runtime observations.

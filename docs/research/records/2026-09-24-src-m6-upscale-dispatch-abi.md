@@ -20,7 +20,7 @@ Baseline: AMD’s `v2.3.0` tag is commit `60f4ea8`, released June 24, 2026; that
 | **VERIFIED** | `FFX_API_DISPATCH_DESC_TYPE_UPSCALE = 0x00010001` | Required `header.type`. |
 | **VERIFIED** | resource type/usage/state/flags constants | Required to describe imported DX12 resources. |
 | **VERIFIED** | `FfxApiSurfaceFormat` constants | Required by `FfxApiResourceDescription.format`. |
-| **VERIFIED** | `FfxApiDispatchFsrUpscaleFlags` | Dispatch flags; zero is valid for the ordinary linear-color path. |
+| **VERIFIED** | `FfxApiDispatchFsrUpscaleFlags` | Dispatch flags; zero is valid for the ordinary linear-colour path. |
 | **CONVENIENCE ONLY** | `ffxApiGetResourceDX12`, `ffxApiGetSurfaceFormatDX12` | C++ `static inline` helpers, not exported ABI functions. |
 | **SAMPLE ONLY** | `SDKWrapper::ffxGetResourceApi` | Cauldron framework wrapper around the DX12 helper. |
 | **NOT REQUIRED FOR M6** | `ffxQuery`, jitter queries, resource-requirement query | Useful utilities/provider introspection, but no dependency exists in the base dispatch ABI. |
@@ -133,7 +133,7 @@ There are therefore **no pointer-valued optional image fields**: an absent expos
 
 ### Mandatory/optional semantics
 
-**CORROBORATED.** FSR4 documentation identifies color, depth and motion vectors as its core input-resource set. Color is render resolution and normally linear; depth is a single floating-point component; motion vectors are two-component floating point and may be render or presentation resolution depending on the context-creation flag.
+**CORROBORATED.** FSR4 documentation identifies colour, depth and motion vectors as its core input-resource set. Colour is render resolution and normally linear; depth is a single floating-point component; motion vectors are two-component floating point and may be render or presentation resolution depending on the context-creation flag.
 
 **VERIFIED.** Exposure is optional when `FFX_UPSCALE_ENABLE_AUTO_EXPOSURE` was enabled during context creation; AMD recommends that mode.
 
@@ -198,7 +198,7 @@ On Win64, `FfxApiResource.resource/description/state` are expected at `0/8/40`; 
 
 **VERIFIED. ABI resource states:** `COMMON=1`, `UNORDERED_ACCESS=2`, `COMPUTE_READ=4`, `PIXEL_READ=8`, `PIXEL_COMPUTE_READ=12`, `COPY_SRC=16`, `COPY_DEST=32`, `GENERIC_READ=20`, `INDIRECT_ARGUMENT=64`, `PRESENT=128`, `RENDER_TARGET=256`, `DEPTH_ATTACHMENT=512`. These are FidelityFX state bits, not `D3D12_RESOURCE_STATES` values.
 
-**VERIFIED. Dispatch flags:** `DRAW_DEBUG_VIEW=1`, `NON_LINEAR_COLOR_SRGB=2`, `NON_LINEAR_COLOR_PQ=4`; the two nonlinear-color flags are documented as mutually exclusive.
+**VERIFIED. Dispatch flags:** `DRAW_DEBUG_VIEW=1`, `NON_LINEAR_COLOR_SRGB=2`, `NON_LINEAR_COLOR_PQ=4`; the two nonlinear-colour flags are documented as mutually exclusive.
 
 **VERIFIED. Surface-format discriminants**, in declaration order: `UNKNOWN=0`, `R32G32B32A32_TYPELESS=1`, `R32G32B32A32_UINT=2`, `R32G32B32A32_FLOAT=3`, `R16G16B16A16_FLOAT=4`, `R32G32B32_FLOAT=5`, `R32G32_FLOAT=6`, `R8_UINT=7`, `R32_UINT=8`, `R8G8B8A8_TYPELESS=9`, `R8G8B8A8_UNORM=10`, `R8G8B8A8_SNORM=11`, `R8G8B8A8_SRGB=12`, `B8G8R8A8_TYPELESS=13`, `B8G8R8A8_UNORM=14`, `B8G8R8A8_SRGB=15`, `R11G11B10_FLOAT=16`, `R10G10B10A2_UNORM=17`, `R16G16_FLOAT=18`, `R16G16_UINT=19`, `R16G16_SINT=20`, `R16_FLOAT=21`, `R16_UINT=22`, `R16_UNORM=23`, `R16_SNORM=24`, `R8_UNORM=25`, `R8G8_UNORM=26`, `R8G8_UINT=27`, `R32_FLOAT=28`, `R9G9B9E5_SHAREDEXP=29`, `R16G16B16A16_TYPELESS=30`, `R32G32_TYPELESS=31`, `R10G10B10A2_TYPELESS=32`, `R16G16_TYPELESS=33`, `R16_TYPELESS=34`, `R8_TYPELESS=35`, `R8G8_TYPELESS=36`, `R32_TYPELESS=37`, `R32G32_UINT=38`, `R8_SNORM=39`.
 
@@ -216,7 +216,7 @@ Return codes are `uint32_t`; `OK=0`, followed by generic error `1`, unknown desc
 
 **VERIFIED.** `ffxApiGetResourceDX12` is declared after `#if defined(__cplusplus)` and as `static inline`; it is therefore neither C ABI nor a DLL export. A Rust wrapper should replicate its small conversion logic rather than attempt to resolve it dynamically.
 
-Its behavior is:
+Its behaviour is:
 
 1. Zero-initialize `FfxApiResource`; assign `resource = pRes` and the caller-supplied FidelityFX `state`; null resource returns immediately.
 2. Call `ID3D12Resource::GetDesc()`.
@@ -321,7 +321,7 @@ A second native helper-parity fixture should call **AMD's actual inline** `ffxAp
 
 The acceptance test should go past `FFX_API_RETURN_OK`:
 
-- create separate known color/depth/MV/output textures;
+- create separate known colour/depth/MV/output textures;
 - enable the D3D12 debug layer;
 - transition the required inputs correctly;
 - build the descriptor through the Rust conversion path;
@@ -340,8 +340,8 @@ That last point matters: the current creation/destruction tests establish CPU-si
 The smallest v2.3.0 FSR4/DX12 path I would target is:
 
 1. Use the already-created upscale context, with its creation flags and v2.3.0 `ffxCreateContextDescUpscaleVersion` chain already correct. For the simplest M6 fixture, use `FFX_UPSCALE_ENABLE_AUTO_EXPOSURE`.
-2. Supply four distinct native textures: color, depth, motion vectors and output. Distinct color/output matches AMD's sample and avoids relying on unproven aliasing support.
-3. Transition color/depth/MV to `D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE`, and describe them as `FFX_API_RESOURCE_STATE_COMPUTE_READ`.
+2. Supply four distinct native textures: colour, depth, motion vectors and output. Distinct colour/output matches AMD's sample and avoids relying on unproven aliasing support.
+3. Transition colour/depth/MV to `D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE`, and describe them as `FFX_API_RESOURCE_STATE_COMPUTE_READ`.
 4. Convert each `ID3D12Resource*` by faithfully reproducing `ffxApiGetResourceDX12`; describe the output's actual current state, not a fabricated one.
 5. Use null `FfxApiResource`s for exposure, reactive and transparency/composition. Exposure omission is valid under auto-exposure; both masks are optional for FSR4.
 6. Set `renderSize` and explicitly set `upscaleSize` rather than relying on its optional fallback for the first implementation.
@@ -358,7 +358,7 @@ The smallest v2.3.0 FSR4/DX12 path I would target is:
 
 **UNKNOWN — exact `viewSpaceToMetersFactor` requirements for FSR4.** The ABI comment defines its meaning, but the v2.3.0 FSR4 integration material inspected does not provide validation bounds/default semantics. The official sample zero-initializes the descriptor and never overwrites this field, which shows what the sample does but is not enough to generalize a semantic rule.
 
-**UNKNOWN — input/output aliasing.** The ABI does not state whether `color.resource == output.resource` is supported. AMD's DX12 sample explicitly copies its color target to a temporary input before upscaling back into the target, so M6 should use separate resources rather than assume aliasing works.
+**UNKNOWN — input/output aliasing.** The ABI does not state whether `color.resource == output.resource` is supported. AMD's DX12 sample explicitly copies its colour target to a temporary input before upscaling back into the target, so M6 should use separate resources rather than assume aliasing works.
 
 **UNKNOWN — general output pre/post state guarantee.** The sources establish input transitions and show the sample's output state, but I found no v2.3.0 public contract saying exactly what state every output must enter with or what state it is guaranteed to have after dispatch. Treat the supplied state as truthful current-state metadata and test this with the DX12 debug layer.
 

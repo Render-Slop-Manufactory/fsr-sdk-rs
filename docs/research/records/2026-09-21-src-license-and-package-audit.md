@@ -5,9 +5,9 @@
   before this audit. Cargo 1.98.1 on Windows x64/MSVC.
 - Scope: currently identifiable AMD-derived declarations, retained notices,
   Cargo metadata and actual package contents, local SDK binary distribution,
-  and locked Rust dependencies. No publication or license change performed.
+  and locked Rust dependencies. No publication or licence change performed.
 - Method: inspect project sources/manifests, compare all four relevant header
-  notices, inspect pinned upstream license documents, list both Cargo packages,
+  notices, inspect pinned upstream licence documents, list both Cargo packages,
   create and inspect the raw crate archive, attempt wrapper packaging.
 - Limit: technical provenance/compliance review, not a legal opinion about
   copyrightability, title to all contributions, patents or jurisdiction-specific law.
@@ -21,16 +21,16 @@ AMD baseline: SDK v2.3.0, commit
 - [API types](https://raw.githubusercontent.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/api/include/ffx_api_types.h).
 - [DX12 API header](https://raw.githubusercontent.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/api/include/dx12/ffx_api_dx12.h).
 - [Upscaler header](https://raw.githubusercontent.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/upscalers/include/ffx_upscale.h).
-- [SDK license inventory](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/docs/license.md)
-  and [root license inventory](https://raw.githubusercontent.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/60f4ea81909200d8542eca14dccb2628b763a9a3/docs/license.md).
+- [SDK licence inventory](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/docs/license.md)
+  and [root licence inventory](https://raw.githubusercontent.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/60f4ea81909200d8542eca14dccb2628b763a9a3/docs/license.md).
 - [MIT terms](https://opensource.org/license/mit),
   [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/) and
   [Mozilla's FAQ](https://www.mozilla.org/en-US/MPL/2.0/FAQ/).
-- [Cargo license metadata and package inclusion](https://doc.rust-lang.org/cargo/reference/manifest.html#the-license-and-license-file-fields).
+- [Cargo licence metadata and package inclusion](https://doc.rust-lang.org/cargo/reference/manifest.html#the-license-and-license-file-fields).
 
 Pinned upstream pages confirm the notices and inventory entries. No full
 byte-for-byte authentication of all local SDK files or signed DLLs was performed.
-The raw kit-license URL initially returned a web cache miss; the pinned GitHub
+The raw kit-licence URL initially returned a web cache miss; the pinned GitHub
 page and root raw document were readable.
 
 ## Declaration provenance and retained notices
@@ -73,7 +73,7 @@ not mean every mixed Rust file is independently available under MIT.
 | Check | Result |
 |---|---|
 | `cargo package -p fsr-sdk-sys --list --locked --offline` | Success; lists `LICENSE-AMD`, but no MPL `LICENSE` or README |
-| `cargo package -p fsr-sdk --list --locked --offline` | Success; no license-text file or README listed |
+| `cargo package -p fsr-sdk --list --locked --offline` | Success; no licence-text file or README listed |
 | `cargo package -p fsr-sdk-sys --locked --offline --no-verify` | Success; 20 files, about 62 KiB unpacked / 17 KiB compressed |
 | `cargo package -p fsr-sdk --locked --offline --no-verify` | Fails: path dependency `fsr-sdk-sys` lacks a version requirement |
 
@@ -92,10 +92,10 @@ For `fsr-sdk`, only the file list is verified: no wrapper archive was produced.
 No compilation verification was requested by these `--no-verify` commands.
 
 **Packaging gap:** the repository's root LICENSE does not automatically accompany
-each workspace member. Include the MPL text and a clear license reference in
+each workspace member. Include the MPL text and a clear licence reference in
 each distributable crate before release. Absence of a bundled text alone is not
 declared a proven MPL violation here: MPL section 3.1 also concerns informing
-recipients where to obtain the license, and the manifest identifies its SPDX ID.
+recipients where to obtain the licence, and the manifest identifies its SPDX ID.
 The practical gap is an incomplete standalone package licensing presentation.
 
 **Metadata assessment:** both crates inherit `MPL-2.0`; this communicates original
@@ -105,7 +105,7 @@ material, `MPL-2.0 AND MIT` on `fsr-sdk-sys` is a candidate, paired with a scope
 notice. It is not an automatic legal requirement established by this audit.
 `MPL-2.0 OR MIT` would instead advertise a choice for the package and is not
 supported by current project policy. The wrapper need not inherit dependency
-licenses as its own package license. No metadata or license policy was changed.
+licences as its own package licence. No metadata or licence policy was changed.
 
 ## SDK binaries and other dependencies
 
@@ -116,13 +116,13 @@ it does not publish them. Current Cargo packages do not redistribute these DLLs.
 The staging directory is not a prepared redistribution bundle and carries no
 complete third-party notice bundle. Review it separately before sharing it.
 
-**Important refinement:** both local AMD license inventories are byte-identical
+**Important refinement:** both local AMD licence inventories are byte-identical
 (SHA-256 `F0DA09D71AD5C82759A179E774535D4A829E5C96C49294167C1152402B2CB400`).
 They start with restricted binary terms but explicitly list the four headers and
 both `amd_fidelityfx_loader_dx12.dll` and `amd_fidelityfx_upscaler_dx12.dll` in
 the exception list followed by MIT terms. The pinned upstream inventory agrees.
 Therefore a blanket claim that these two named v2.3.0 DLLs necessarily fall under
-the default restricted license is not supported. This observation is specific
+the default restricted licence is not supported. This observation is specific
 to the listed files/version, not all AMD SDKs, driver components or dependencies.
 The inventory calls the list source files even though it includes binaries;
 retain its actual entries rather than silently removing the exceptions.
@@ -132,19 +132,19 @@ current Rust packages do not bundle that SDK/sample tree. This audit does not
 establish the complete embedded-component or patent clearance of a future
 binary bundle, nor does it authorize its distribution.
 
-`cargo metadata --format-version 1 --locked --offline` and cached license files
+`cargo metadata --format-version 1 --locked --offline` and cached licence files
 identify the locked Rust dependencies:
 
-| Dependency | Version | Declared license |
+| Dependency | Version | Declared licence |
 |---|---|---|
 | `libloading` | 0.9.0 | ISC |
 | `cfg-if` | 1.0.4 | MIT OR Apache-2.0 |
 | `windows-link` | 0.2.1 | MIT OR Apache-2.0 |
 
-Their cached packages contain their respective license texts. They are registry
+Their cached packages contain their respective licence texts. They are registry
 dependencies, not source vendored inside our crate archive. Distribution of a
 compiled application/helper is a separate notice assessment from publication
-of this source crate. No incompatible dependency license was identified for the
+of this source crate. No incompatible dependency licence was identified for the
 current arrangement.
 
 ## Result and recommended follow-up
@@ -152,7 +152,7 @@ current arrangement.
 The proposed README distinction between original MPL code and preserved AMD MIT
 notices is supported for the inspected header-derived material. Current facts
 support that wording more strongly than a blanket MIT label on the declarations.
-No license incompatibility was identified, but the project is not release-ready:
+No licence incompatibility was identified, but the project is not release-ready:
 
 1. Include MPL text and clear provenance/licensing information in each crate.
 2. Choose and document the intended aggregate metadata treatment of AMD-derived

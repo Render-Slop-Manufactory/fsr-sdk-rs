@@ -1,0 +1,6 @@
+# Preserve historical evidence bytes and their original inventory hashes.
+2026-10-11-exp-temporal-quality-metric-diagnosis/** -text whitespace=cr-at-eol
+2026-10-11-exp-temporal-quality-validation/** -text whitespace=cr-at-eol
+2026-10-11-exp-temporal-long-sequence/** -text whitespace=cr-at-eol
+2026-10-11-exp-temporal-reset-recovery/** -text whitespace=cr-at-eol
+2026-10-12-exp-temporal-jitter-phase/** -text whitespace=cr-at-eol

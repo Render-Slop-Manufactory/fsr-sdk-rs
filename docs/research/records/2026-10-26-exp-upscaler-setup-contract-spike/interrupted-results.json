@@ -1,0 +1,136 @@
+[
+  {
+    "case": "lockfile",
+    "command": [
+      "cargo",
+      "generate-lockfile",
+      "--offline"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-toolchain",
+    "command": [
+      "rustc",
+      "+stable",
+      "-Vv"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-library-portable",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "fsr-sdk",
+      "--no-default-features",
+      "--offline",
+      "--locked"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-library-dx12",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "fsr-sdk",
+      "--no-default-features",
+      "--offline",
+      "--locked",
+      "--features",
+      "dx12"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-library-dx12-movable",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "fsr-sdk",
+      "--no-default-features",
+      "--offline",
+      "--locked",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-controlled",
+    "command": [
+      "cargo",
+      "+stable",
+      "test",
+      "-p",
+      "fsr-sdk",
+      "--lib",
+      "--features",
+      "movable",
+      "--offline",
+      "--locked",
+      "setup_spike",
+      "--",
+      "--nocapture"
+    ],
+    "exit": 101,
+    "expected_diagnostic": null,
+    "passed": false
+  },
+  {
+    "case": "stable-portable-test",
+    "command": [
+      "cargo",
+      "+stable",
+      "test",
+      "-p",
+      "fsr-sdk",
+      "--lib",
+      "--no-default-features",
+      "--offline",
+      "--locked",
+      "setup_spike"
+    ],
+    "exit": 101,
+    "expected_diagnostic": null,
+    "passed": false
+  },
+  {
+    "case": "stable-clippy",
+    "command": [
+      "cargo",
+      "+stable",
+      "clippy",
+      "-p",
+      "fsr-sdk",
+      "--lib",
+      "--features",
+      "movable",
+      "--offline",
+      "--locked",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 101,
+    "expected_diagnostic": null,
+    "passed": false
+  }
+]

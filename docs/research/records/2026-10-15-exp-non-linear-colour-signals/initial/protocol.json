@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "purpose": "Bounded signal-domain and exposure exploration; no reconstruction-quality or universal provider claim",
+  "render": [
+    320,
+    180
+  ],
+  "output": [
+    640,
+    360
+  ],
+  "levels": [
+    0.0001,
+    0.001,
+    0.003,
+    0.01,
+    0.03,
+    0.06,
+    0.12,
+    0.18
+  ],
+  "pq_reference_unit_nits": 100,
+  "pq_interpretation": "Test convention only: one relative linear unit is 100 cd/m2; not an AMD requirement",
+  "hdr": true,
+  "frames": 3,
+  "repetitions": 3,
+  "patch_interior_margin_output_pixels": 16,
+  "hypothesis_absolute_tolerance": 0.003,
+  "hypothesis_relative_tolerance": 0.03,
+  "hypothesis_tolerance_rationale": "Broad fixed signal-domain discrimination on flat patch interiors, above half quantization; not a reconstruction-quality budget or calibrated acceptance threshold",
+  "pre_exposure_sequence": [
+    0.5,
+    1,
+    2
+  ],
+  "exposure_sequence": [
+    0.25,
+    1,
+    4
+  ],
+  "integration_requirements": [
+    "exact input upload/readback",
+    "native success",
+    "submit and fence",
+    "fully finite written output",
+    "zero debug errors/device removal",
+    "explicit teardown"
+  ],
+  "hypothesis_policy": "All numerical matches and failures are recorded. A completed integration profile does not accept every signal hypothesis or establish the internal operation order.",
+  "ordering_limit": "An output whose internal exposure/transfer operations are reversed can preserve either candidate packing. Output invariance alone cannot identify the internal decode/pre-exposure order."
+}

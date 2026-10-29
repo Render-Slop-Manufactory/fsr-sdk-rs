@@ -1,0 +1,695 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "scope": "Independent DX12 views; no AMD runtime or FSR dispatch",
+  "attempts": [
+    {
+      "attempt": "20261024T140617Z-bgra-srgb-views-074fee44f6e0",
+      "run": {
+        "schema_version": 1,
+        "profile": "bgra-srgb-views",
+        "started_utc": "2026-10-24T14:06:18.857157+00:00",
+        "status": "failed",
+        "input_identity": "8025cf8eb2a7a83cf3588b6ccd5f4d55957040b532603d7c967ba165b928d32a",
+        "required": [
+          "windows.environment",
+          "views.compile",
+          "views.execute",
+          "views.evaluate"
+        ],
+        "cases": {
+          "windows.environment": "passed",
+          "views.compile": "failed",
+          "views.execute": "blocked",
+          "views.evaluate": "blocked"
+        },
+        "finished_utc": "2026-10-24T14:06:24.453498+00:00",
+        "inputs_unchanged": true,
+        "completed": 4
+      },
+      "cases": [
+        {
+          "id": "views.compile",
+          "execution": "completed",
+          "evaluation": "failed",
+          "reason": "command: completed, exit=2; expectation not met",
+          "observations": {
+            "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+            "amd_runtime_loaded": false
+          }
+        },
+        {
+          "id": "views.evaluate",
+          "execution": "blocked",
+          "evaluation": "blocked",
+          "reason": "Unmet prerequisites: views.execute",
+          "observations": {}
+        },
+        {
+          "id": "views.execute",
+          "execution": "blocked",
+          "evaluation": "blocked",
+          "reason": "Unmet prerequisites: views.compile",
+          "observations": {}
+        },
+        {
+          "id": "windows.environment",
+          "execution": "completed",
+          "evaluation": "passed",
+          "observations": {
+            "msvc": "14.44.35207",
+            "windows_sdk": "10.0.22621.0\\",
+            "target_arch": "x64"
+          }
+        }
+      ]
+    },
+    {
+      "attempt": "20261024T140805Z-bgra-srgb-views-24d659b64cc3",
+      "run": {
+        "schema_version": 1,
+        "profile": "bgra-srgb-views",
+        "started_utc": "2026-10-24T14:08:05.751635+00:00",
+        "status": "failed",
+        "input_identity": "e498582d0cccbe178e9b9ce141b577583e9887361a36ff918fa6575df1bac893",
+        "required": [
+          "windows.environment",
+          "views.compile",
+          "views.execute",
+          "views.evaluate"
+        ],
+        "cases": {
+          "windows.environment": "passed",
+          "views.compile": "passed",
+          "views.execute": "passed",
+          "views.evaluate": "failed"
+        },
+        "finished_utc": "2026-10-24T14:08:12.067305+00:00",
+        "inputs_unchanged": true,
+        "completed": 4
+      },
+      "cases": [
+        {
+          "id": "views.compile",
+          "execution": "completed",
+          "evaluation": "passed",
+          "observations": {
+            "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+            "amd_runtime_loaded": false
+          }
+        },
+        {
+          "id": "views.evaluate",
+          "execution": "failed",
+          "evaluation": "failed",
+          "reason": "rgba_srgb.floats: error 0.0006895404596125587 exceeds frozen 2e-05",
+          "observations": {}
+        },
+        {
+          "id": "views.execute",
+          "execution": "completed",
+          "evaluation": "passed",
+          "observations": {}
+        },
+        {
+          "id": "windows.environment",
+          "execution": "completed",
+          "evaluation": "passed",
+          "observations": {
+            "msvc": "14.44.35207",
+            "windows_sdk": "10.0.22621.0\\",
+            "target_arch": "x64"
+          }
+        }
+      ]
+    },
+    {
+      "attempt": "20261024T143052Z-bgra-srgb-views-38c8d4b061ca",
+      "run": {
+        "schema_version": 1,
+        "profile": "bgra-srgb-views",
+        "started_utc": "2026-10-24T14:30:52.825321+00:00",
+        "status": "passed",
+        "input_identity": "f74da09ff74b48cd83dd8d8ac81ab7399111ecbcfb47fc68b501e2988bba1f7e",
+        "required": [
+          "windows.environment",
+          "views.compile",
+          "views.execute",
+          "views.evaluate"
+        ],
+        "cases": {
+          "windows.environment": "passed",
+          "views.compile": "passed",
+          "views.execute": "passed",
+          "views.evaluate": "passed"
+        },
+        "finished_utc": "2026-10-24T14:30:58.905988+00:00",
+        "inputs_unchanged": true,
+        "completed": 4
+      },
+      "cases": [
+        {
+          "id": "views.compile",
+          "execution": "completed",
+          "evaluation": "passed",
+          "observations": {
+            "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+            "amd_runtime_loaded": false
+          }
+        },
+        {
+          "id": "views.evaluate",
+          "execution": "completed",
+          "evaluation": "passed",
+          "observations": {
+            "measurements": [
+              {
+                "case": "rgba",
+                "maximum_absolute_error": 2.9685450542160652e-08,
+                "maximum_srgb_code_error": 0.0,
+                "status": "passed"
+              },
+              {
+                "case": "bgra",
+                "maximum_absolute_error": 2.9685450542160652e-08,
+                "maximum_srgb_code_error": 0.0,
+                "status": "passed"
+              },
+              {
+                "case": "rgba_srgb",
+                "maximum_absolute_error": 0.0006895404596125587,
+                "maximum_srgb_code_error": 0.09171959119959183,
+                "status": "passed"
+              },
+              {
+                "case": "bgra_srgb",
+                "maximum_absolute_error": 0.0006895404596125587,
+                "maximum_srgb_code_error": 0.09171959119959183,
+                "status": "passed"
+              },
+              {
+                "case": "rgba_typeless",
+                "maximum_absolute_error": 2.9685450542160652e-08,
+                "maximum_srgb_code_error": 0.0,
+                "status": "passed"
+              },
+              {
+                "case": "bgra_typeless",
+                "maximum_absolute_error": 2.9685450542160652e-08,
+                "maximum_srgb_code_error": 0.0,
+                "status": "passed"
+              },
+              {
+                "case": "bgra_swapped",
+                "maximum_absolute_error": 2.9685450542160652e-08,
+                "maximum_srgb_code_error": 0.0,
+                "status": "passed"
+              },
+              {
+                "case": "rgba_output",
+                "status": "passed",
+                "maximum_absolute_error": 2.9685450542160652e-08,
+                "maximum_srgb_code_error": 0.0
+              },
+              {
+                "case": "bgra_output",
+                "status": "passed",
+                "maximum_absolute_error": 2.9685450542160652e-08,
+                "maximum_srgb_code_error": 0.0
+              },
+              {
+                "case": "rgba_srgb_output",
+                "status": "passed",
+                "maximum_absolute_error": 0.0006895404596125587,
+                "maximum_srgb_code_error": 0.09171959119959183
+              },
+              {
+                "case": "bgra_srgb_output",
+                "status": "passed",
+                "maximum_absolute_error": 0.0006895404596125587,
+                "maximum_srgb_code_error": 0.09171959119959183
+              },
+              {
+                "case": "rgba_typeless_output",
+                "status": "passed",
+                "maximum_absolute_error": 2.9685450542160652e-08,
+                "maximum_srgb_code_error": 0.0
+              },
+              {
+                "case": "bgra_typeless_output",
+                "status": "passed",
+                "maximum_absolute_error": 2.9685450542160652e-08,
+                "maximum_srgb_code_error": 0.0
+              }
+            ],
+            "rb_swap_negative_control": "rejected_as_expected"
+          }
+        },
+        {
+          "id": "views.execute",
+          "execution": "completed",
+          "evaluation": "passed",
+          "observations": {}
+        },
+        {
+          "id": "windows.environment",
+          "execution": "completed",
+          "evaluation": "passed",
+          "observations": {
+            "msvc": "14.44.35207",
+            "windows_sdk": "10.0.22621.0\\",
+            "target_arch": "x64"
+          }
+        }
+      ]
+    }
+  ],
+  "equipment": {
+    "os": "Windows 11 10.0.26300",
+    "gpu": "AMD Radeon RX 9060 XT",
+    "driver": "32.0.32015.7029",
+    "msvc": "14.44.35207",
+    "windows_sdk": "10.0.22621.0",
+    "python": "3.14.1",
+    "debug_layer": true,
+    "gpu_based_validation": false
+  },
+  "confirmation_observations": [
+    {
+      "kind": "equipment",
+      "adapter_index": 0,
+      "vendor": 4098,
+      "device": 30096,
+      "driver_hr": 0,
+      "driver_high": 2097152,
+      "driver_low": 2098142069
+    },
+    {
+      "kind": "casting",
+      "supported": true
+    },
+    {
+      "kind": "input",
+      "name": "rgba",
+      "swapped": false,
+      "allocation": 28,
+      "srv": 28,
+      "native_format": 10,
+      "native_usage": 0,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 66240
+    },
+    {
+      "kind": "input",
+      "name": "bgra",
+      "swapped": false,
+      "allocation": 87,
+      "srv": 87,
+      "native_format": 14,
+      "native_usage": 0,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 704
+    },
+    {
+      "kind": "input",
+      "name": "rgba_srgb",
+      "swapped": false,
+      "allocation": 29,
+      "srv": 29,
+      "native_format": 12,
+      "native_usage": 0,
+      "row_pitch": 256,
+      "support1": 838652912,
+      "support2": 512
+    },
+    {
+      "kind": "input",
+      "name": "bgra_srgb",
+      "swapped": false,
+      "allocation": 91,
+      "srv": 91,
+      "native_format": 15,
+      "native_usage": 0,
+      "row_pitch": 256,
+      "support1": 838652912,
+      "support2": 512
+    },
+    {
+      "kind": "input",
+      "name": "rgba_typeless",
+      "swapped": false,
+      "allocation": 27,
+      "srv": 28,
+      "native_format": 9,
+      "native_usage": 0,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 66240
+    },
+    {
+      "kind": "input",
+      "name": "bgra_typeless",
+      "swapped": false,
+      "allocation": 90,
+      "srv": 87,
+      "native_format": 13,
+      "native_usage": 0,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 704
+    },
+    {
+      "kind": "input",
+      "name": "bgra",
+      "swapped": true,
+      "allocation": 87,
+      "srv": 87,
+      "native_format": 14,
+      "native_usage": 0,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 704
+    },
+    {
+      "kind": "output",
+      "name": "rgba",
+      "status": "written",
+      "allocation": 28,
+      "srv": 28,
+      "uav": 28,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 66240
+    },
+    {
+      "kind": "output",
+      "name": "bgra",
+      "status": "written",
+      "allocation": 87,
+      "srv": 87,
+      "uav": 87,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 704
+    },
+    {
+      "kind": "output",
+      "name": "rgba_srgb",
+      "status": "written",
+      "allocation": 29,
+      "srv": 29,
+      "uav": 28,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 66240
+    },
+    {
+      "kind": "output",
+      "name": "bgra_srgb",
+      "status": "written",
+      "allocation": 91,
+      "srv": 91,
+      "uav": 87,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 704
+    },
+    {
+      "kind": "output",
+      "name": "rgba_typeless",
+      "status": "written",
+      "allocation": 27,
+      "srv": 28,
+      "uav": 28,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 66240
+    },
+    {
+      "kind": "output",
+      "name": "bgra_typeless",
+      "status": "written",
+      "allocation": 90,
+      "srv": 87,
+      "uav": 87,
+      "row_pitch": 256,
+      "support1": 872207347,
+      "support2": 704
+    },
+    {
+      "kind": "finished",
+      "fenced": true,
+      "unexpected_debug_errors": 0
+    }
+  ],
+  "confirmation_evaluation": {
+    "unorm_absolute_tolerance": 2e-05,
+    "srgb_code_tolerance": 0.5,
+    "measurements": [
+      {
+        "case": "rgba",
+        "maximum_absolute_error": 2.9685450542160652e-08,
+        "maximum_srgb_code_error": 0.0,
+        "status": "passed"
+      },
+      {
+        "case": "bgra",
+        "maximum_absolute_error": 2.9685450542160652e-08,
+        "maximum_srgb_code_error": 0.0,
+        "status": "passed"
+      },
+      {
+        "case": "rgba_srgb",
+        "maximum_absolute_error": 0.0006895404596125587,
+        "maximum_srgb_code_error": 0.09171959119959183,
+        "status": "passed"
+      },
+      {
+        "case": "bgra_srgb",
+        "maximum_absolute_error": 0.0006895404596125587,
+        "maximum_srgb_code_error": 0.09171959119959183,
+        "status": "passed"
+      },
+      {
+        "case": "rgba_typeless",
+        "maximum_absolute_error": 2.9685450542160652e-08,
+        "maximum_srgb_code_error": 0.0,
+        "status": "passed"
+      },
+      {
+        "case": "bgra_typeless",
+        "maximum_absolute_error": 2.9685450542160652e-08,
+        "maximum_srgb_code_error": 0.0,
+        "status": "passed"
+      },
+      {
+        "case": "bgra_swapped",
+        "maximum_absolute_error": 2.9685450542160652e-08,
+        "maximum_srgb_code_error": 0.0,
+        "status": "passed"
+      },
+      {
+        "case": "rgba_output",
+        "status": "passed",
+        "maximum_absolute_error": 2.9685450542160652e-08,
+        "maximum_srgb_code_error": 0.0
+      },
+      {
+        "case": "bgra_output",
+        "status": "passed",
+        "maximum_absolute_error": 2.9685450542160652e-08,
+        "maximum_srgb_code_error": 0.0
+      },
+      {
+        "case": "rgba_srgb_output",
+        "status": "passed",
+        "maximum_absolute_error": 0.0006895404596125587,
+        "maximum_srgb_code_error": 0.09171959119959183
+      },
+      {
+        "case": "bgra_srgb_output",
+        "status": "passed",
+        "maximum_absolute_error": 0.0006895404596125587,
+        "maximum_srgb_code_error": 0.09171959119959183
+      },
+      {
+        "case": "rgba_typeless_output",
+        "status": "passed",
+        "maximum_absolute_error": 2.9685450542160652e-08,
+        "maximum_srgb_code_error": 0.0
+      },
+      {
+        "case": "bgra_typeless_output",
+        "status": "passed",
+        "maximum_absolute_error": 2.9685450542160652e-08,
+        "maximum_srgb_code_error": 0.0
+      }
+    ],
+    "rb_swap_negative_control": "rejected_as_expected"
+  },
+  "confirmation_diagnostics": {
+    "error_or_corruption_count": 0,
+    "warning_count": 13,
+    "warning_ids": [
+      1328
+    ],
+    "warning_description": "Buffer creation requested COPY_DEST; effective initial state is COMMON."
+  },
+  "retained_probe_files": [
+    {
+      "path": "tools/verification/bgra_srgb_probe.cpp",
+      "bytes": 20918,
+      "sha256": "0120bc7859169eea2b3a08e2053a9ddb9f1bc75f9be7d2e40416cc84687510a8"
+    },
+    {
+      "path": "tools/verification/bgra_srgb.py",
+      "bytes": 9131,
+      "sha256": "85ead20abd4a9369a4dbbcdf658b24b59be74bf8b181e259364a449c527befab"
+    },
+    {
+      "path": "tools/verification/tests/test_bgra_srgb.py",
+      "bytes": 2488,
+      "sha256": "4e212981ce1f254bf3bac83ec7c89bcba122e086a415574e7b40fe84faf7ba1f"
+    },
+    {
+      "path": "tools/verification/bgra-srgb-protocol.md",
+      "bytes": 5668,
+      "sha256": "977128d69faec531827d0c24117498603b6b8d8fc1eea9053e4d930777a46c2a"
+    }
+  ],
+  "confirmation_readback_hashes": [
+    {
+      "path": "bgra.floats",
+      "bytes": 2048,
+      "sha256": "282546e5c9006631819ea144fc1c4e0aef20d50b3efdf6574cec7463de105fbb"
+    },
+    {
+      "path": "bgra.stored_floats",
+      "bytes": 2048,
+      "sha256": "99eda1a7fee8757befbb01b8f99baa64e0eb81b3c445515b5a34a4d78918392d"
+    },
+    {
+      "path": "bgra.stores",
+      "bytes": 256,
+      "sha256": "15e2b25c48d2dedcfcf8f415f9a4452934ba0609bfd2441290755437dc4183bb"
+    },
+    {
+      "path": "bgra.upload",
+      "bytes": 1824,
+      "sha256": "d33901dc854632c31b547a8303acac8478928d3be4e8aaa1434f19c909df8744"
+    },
+    {
+      "path": "bgra_srgb.floats",
+      "bytes": 2048,
+      "sha256": "3e24e0ddf18c275e2c5e4577a2d71c3d271f56a158b92f631d1e8e1f9834911d"
+    },
+    {
+      "path": "bgra_srgb.stored_floats",
+      "bytes": 2048,
+      "sha256": "0424f866ba2a32ca88d5459ad18920012dfddfbbf7503fb03ba1ae916acff908"
+    },
+    {
+      "path": "bgra_srgb.stores",
+      "bytes": 256,
+      "sha256": "15e2b25c48d2dedcfcf8f415f9a4452934ba0609bfd2441290755437dc4183bb"
+    },
+    {
+      "path": "bgra_srgb.upload",
+      "bytes": 1824,
+      "sha256": "d33901dc854632c31b547a8303acac8478928d3be4e8aaa1434f19c909df8744"
+    },
+    {
+      "path": "bgra_swapped.floats",
+      "bytes": 2048,
+      "sha256": "8d35102de0cd37cd26c80fddc1b322d2aed429f2e15bdc5d6923e5df1a4fb255"
+    },
+    {
+      "path": "bgra_swapped.upload",
+      "bytes": 1824,
+      "sha256": "0114b8973132974ebca781d635b1195bc3d56c87e87782e281f6a3697e17b73b"
+    },
+    {
+      "path": "bgra_typeless.floats",
+      "bytes": 2048,
+      "sha256": "282546e5c9006631819ea144fc1c4e0aef20d50b3efdf6574cec7463de105fbb"
+    },
+    {
+      "path": "bgra_typeless.stored_floats",
+      "bytes": 2048,
+      "sha256": "99eda1a7fee8757befbb01b8f99baa64e0eb81b3c445515b5a34a4d78918392d"
+    },
+    {
+      "path": "bgra_typeless.stores",
+      "bytes": 256,
+      "sha256": "15e2b25c48d2dedcfcf8f415f9a4452934ba0609bfd2441290755437dc4183bb"
+    },
+    {
+      "path": "bgra_typeless.upload",
+      "bytes": 1824,
+      "sha256": "d33901dc854632c31b547a8303acac8478928d3be4e8aaa1434f19c909df8744"
+    },
+    {
+      "path": "rgba.floats",
+      "bytes": 2048,
+      "sha256": "282546e5c9006631819ea144fc1c4e0aef20d50b3efdf6574cec7463de105fbb"
+    },
+    {
+      "path": "rgba.stored_floats",
+      "bytes": 2048,
+      "sha256": "99eda1a7fee8757befbb01b8f99baa64e0eb81b3c445515b5a34a4d78918392d"
+    },
+    {
+      "path": "rgba.stores",
+      "bytes": 256,
+      "sha256": "ae82da8b3c2917394e42cc321d0f155abf7b61f48a386a5ca76660e9c47fbca5"
+    },
+    {
+      "path": "rgba.upload",
+      "bytes": 1824,
+      "sha256": "0114b8973132974ebca781d635b1195bc3d56c87e87782e281f6a3697e17b73b"
+    },
+    {
+      "path": "rgba_srgb.floats",
+      "bytes": 2048,
+      "sha256": "3e24e0ddf18c275e2c5e4577a2d71c3d271f56a158b92f631d1e8e1f9834911d"
+    },
+    {
+      "path": "rgba_srgb.stored_floats",
+      "bytes": 2048,
+      "sha256": "0424f866ba2a32ca88d5459ad18920012dfddfbbf7503fb03ba1ae916acff908"
+    },
+    {
+      "path": "rgba_srgb.stores",
+      "bytes": 256,
+      "sha256": "ae82da8b3c2917394e42cc321d0f155abf7b61f48a386a5ca76660e9c47fbca5"
+    },
+    {
+      "path": "rgba_srgb.upload",
+      "bytes": 1824,
+      "sha256": "0114b8973132974ebca781d635b1195bc3d56c87e87782e281f6a3697e17b73b"
+    },
+    {
+      "path": "rgba_typeless.floats",
+      "bytes": 2048,
+      "sha256": "282546e5c9006631819ea144fc1c4e0aef20d50b3efdf6574cec7463de105fbb"
+    },
+    {
+      "path": "rgba_typeless.stored_floats",
+      "bytes": 2048,
+      "sha256": "99eda1a7fee8757befbb01b8f99baa64e0eb81b3c445515b5a34a4d78918392d"
+    },
+    {
+      "path": "rgba_typeless.stores",
+      "bytes": 256,
+      "sha256": "ae82da8b3c2917394e42cc321d0f155abf7b61f48a386a5ca76660e9c47fbca5"
+    },
+    {
+      "path": "rgba_typeless.upload",
+      "bytes": 1824,
+      "sha256": "0114b8973132974ebca781d635b1195bc3d56c87e87782e281f6a3697e17b73b"
+    }
+  ],
+  "retention": "Compact normalized metadata only; full raw bytes remain in ignored target/verification, not in this published record."
+}

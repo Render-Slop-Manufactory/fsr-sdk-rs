@@ -57,7 +57,7 @@ the later [dispatch-semantics work](2026-09-30-exp-dispatch-semantics.md).
 `dispatch/resources.rs` extracts the existing inspection body into private
 `inspect_dispatch(device, options, dispatch)`. The existing `Upscaler` method
 forwards its retained device/options to it. Device/COM identity checks, resource
-conversion, extents, descriptor values and error behavior are unchanged; most
+conversion, extents, descriptor values and error behaviour are unchanged; most
 diff lines are indentation. `dispatch.rs` re-exports this function only under
 `cfg(test)` for the probe. No new production retention choice, public function,
 type, feature, trait implementation or dispatch policy is added.
@@ -98,7 +98,7 @@ The runner gains `-Mode d013`, rejects `-GpuValidation` in that mode and uses
 its established one-test-per-child, 180,000 ms watchdog. It captures fingerprints
 for all crate inputs, and its tracked-source patch scope now includes the shared
 private extraction. Test-only provider reporting is factored to accept either
-real owner retention family. The C++ helper and its fence/readback behavior are
+real owner retention family. The C++ helper and its fence/readback behaviour are
 unchanged by this task. Existing lifecycle and dispatch modes remain available.
 
 ## Actual environment and inputs
@@ -219,7 +219,7 @@ All 12 D013 dispatches/readbacks passed. No fence or child timeout occurred.
 Each create, query, dispatch and explicit destroy returned `0x00000000`.
 Output recording, Close, Signal, fence completion and mapping reported `S_OK`.
 
-Profile: render 320×180, output 640×360, linear RGBA16F color/output, R32F depth
+Profile: render 320×180, output 640×360, linear RGBA16F colour/output, R32F depth
 0.5, RG16F motion, explicit 1×1 R32F exposure 1.0, distinct UAV output initially
 filled with half-float sentinel `0x7bff`. Flags zero, sharpening/masks disabled,
 frame time 16.667 ms, near/far 0.1/100, vertical FOV π/3, metres scale and
@@ -320,3 +320,10 @@ termination on the destination thread, safe concurrent use, image quality,
 unfenced transfer, native error/unwind transfer paths, or partial-load cleanup
 across threads. Miri/ThreadSanitizer were not run. D013 remains **proposed**;
 there is no public movable family or accepted threading contract.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

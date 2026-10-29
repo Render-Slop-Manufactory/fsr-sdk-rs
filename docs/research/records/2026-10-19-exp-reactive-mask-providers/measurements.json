@@ -1,0 +1,6050 @@
+[
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.control",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "control",
+      "flags": 0,
+      "alias": false,
+      "control": true,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.identical",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": true,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-00",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-01",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 1,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-02",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 2,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-03",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 3,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-04",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 4,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-05",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 5,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-06",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 6,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-07",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 7,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-08",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 8,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-09",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 9,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-10",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 10,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-11",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 11,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-12",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 12,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-13",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 13,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-14",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 14,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T190616Z-experiment-reactive-mask-dc6d38abae54",
+    "case": "reactive-probe.flags-15",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 15,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.control",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "control",
+      "flags": 0,
+      "alias": false,
+      "control": true,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.identical",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": true,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-00",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-01",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 1,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-02",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 2,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-03",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 3,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-04",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 4,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-05",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 5,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-06",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 6,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-07",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 7,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-08",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 8,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-09",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 9,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-10",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 10,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-11",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 11,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-12",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 12,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-13",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 13,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-14",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 14,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.local.flags-15",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 15,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.control",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "control",
+      "flags": 0,
+      "alias": false,
+      "control": true,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.identical",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": true,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-00",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-01",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 1,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-02",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 2,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-03",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 3,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-04",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 4,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-05",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 5,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-06",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 6,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-07",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 7,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-08",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 8,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-09",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 9,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-10",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 10,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-11",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 11,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-12",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 12,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-13",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 13,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-14",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 14,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191405Z-experiment-public-reactive-mask-10a5c42341f6",
+    "case": "reactive-public.movable.flags-15",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 15,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.control",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "control",
+      "flags": 0,
+      "alias": false,
+      "control": true,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.identical",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": true,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 57600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 32768,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 57600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-00",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 127
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 104
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 127
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-01",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 1,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 58
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 55
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 58
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-02",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 2,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57553,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32718,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57553,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-03",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 3,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 127
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 104
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 127
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-04",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 4,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24578,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-05",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 5,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 53212,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 31727,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 53212,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-06",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 6,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-07",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 7,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24578,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-08",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 8,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 84
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 70
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 84
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-09",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 9,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 38
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 35
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 38
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-10",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 10,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 213
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-11",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 11,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 84
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 70
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 84
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-12",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 12,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 44496,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 27136,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 44496,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-13",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 13,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 57600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 32768,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 57600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-14",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 14,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.local.flags-15",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 15,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 44496,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 27136,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 44496,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.control",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "control",
+      "flags": 0,
+      "alias": false,
+      "control": true,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.identical",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": true,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 57600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 32768,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 57600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-00",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 127
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 104
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 127
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-01",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 1,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 58
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 55
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 58
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-02",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 2,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57553,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32718,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57553,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-03",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 3,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 127
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 104
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 127
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-04",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 4,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24578,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-05",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 5,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 53212,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 31727,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 53212,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-06",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 6,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-07",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 7,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24578,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-08",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 8,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 84
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 70
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 84
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-09",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 9,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 38
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 35
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 38
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-10",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 10,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 213
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 255
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-11",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 11,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 84
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24576,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 70
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 84
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-12",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 12,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 44496,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 27136,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 44496,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-13",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 13,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 57600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 32768,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 57600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-14",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 14,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 24600,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 43200,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr3.movable.flags-15",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 15,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 44496,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 32768,
+        "zeros": 27136,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 57600,
+        "zeros": 44496,
+        "outside_changed": 0,
+        "minimum": 0,
+        "maximum": 229
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.control",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "control",
+      "flags": 0,
+      "alias": false,
+      "control": true,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.identical",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": true,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-00",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-01",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 1,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-02",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 2,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-03",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 3,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-04",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 4,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-05",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 5,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-06",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 6,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-07",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 7,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-08",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 8,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-09",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 9,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-10",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 10,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-11",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 11,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-12",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 12,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-13",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 13,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-14",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 14,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.local.flags-15",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 15,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.control",
+    "evaluation": "passed",
+    "summary": {
+      "outcome": "control",
+      "flags": 0,
+      "alias": false,
+      "control": true,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.identical",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": true,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-00",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 0,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-01",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 1,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-02",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 2,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-03",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 3,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-04",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 4,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-05",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 5,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-06",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 6,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-07",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 7,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-08",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 8,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-09",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 9,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-10",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 10,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-11",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 11,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-12",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 12,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-13",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 13,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-14",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 14,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  },
+  {
+    "attempt": "20261019T191537Z-experiment-selected-reactive-mask-fa3b0033962a",
+    "case": "reactive-selected.fsr2.movable.flags-15",
+    "evaluation": "failed",
+    "summary": {
+      "outcome": "generated",
+      "flags": 15,
+      "alias": false,
+      "control": false,
+      "frames": 3,
+      "native_code": 0,
+      "cleanup_ok": true
+    },
+    "frames": [
+      {
+        "phase": 0,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 1,
+        "width": 256,
+        "height": 128,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      },
+      {
+        "phase": 2,
+        "width": 320,
+        "height": 180,
+        "changed": 0,
+        "zeros": 0,
+        "outside_changed": 0,
+        "minimum": 227,
+        "maximum": 227
+      }
+    ],
+    "diagnostics_clean": true,
+    "upscale_frames": 3
+  }
+]

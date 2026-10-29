@@ -32,14 +32,14 @@ Authoritative local SDK inputs under `external/FidelityFX-SDK/v2.3.0/`:
   **upstream claim** that the API entry DLL is `amd_fidelityfx_loader_dx12.dll`,
   while effect code resides in separate effect DLLs such as the upscaler DLL.
 - `Kits/FidelityFX/signedbin/amd_fidelityfx_loader_dx12.dll`: observed local test
-  artifact. SHA-256:
+  artefact. SHA-256:
   `E2D85AA05A9BD9ED8B38935FDF5199372CCA6F74C12015143BB6F945EE1608AA`.
 
-The local DLL's signature and correspondence to an upstream release artifact
+The local DLL's signature and correspondence to an upstream release artefact
 were not independently authenticated. The hash identifies tested bytes.
 The existing cached `libloading 0.9.0` source (`src/safe.rs` and
 `src/os/windows/mod.rs`) establishes initialization/termination obligations,
-name-only search behavior and rejection of null `GetProcAddress` results.
+name-only search behaviour and rejection of null `GetProcAddress` results.
 
 ## Implementation and ownership findings
 
@@ -54,12 +54,12 @@ On Windows, successful `libloading::get` cannot return a null address. This
 establishes the private `Some` invariant used by the forwarding methods, while
 ABI compatibility remains the unsafe loader caller's responsibility. Symbol
 names alone cannot validate ABI or version. The methods add no descriptor
-validation or lifecycle behavior. Native objects and pending work are not tied
+validation or lifecycle behaviour. Native objects and pending work are not tied
 to Rust lifetimes by this raw loader.
 
 Errors distinguish path resolution (`io::Error`), library loading and missing
 symbols (`libloading::Error`), preserve source errors, and include the path and,
-where applicable, export name. Dependencies follow Windows' loader behavior;
+where applicable, export name. Dependencies follow Windows' loader behaviour;
 there is no process search-path mutation or custom provider discovery.
 
 ## Reproduction and observations
@@ -117,9 +117,9 @@ Rust emitted a sandbox host-path canonicalization warning without failing checks
 
 This advances evidence from header/compilation checks to actual DLL loading and
 symbol resolution. It does not establish effect-provider loading, version
-compatibility beyond these observed bytes, AMD callback behavior, query success,
-context safety or GPU correctness. Fixture calls establish forwarding behavior,
-not FidelityFX runtime behavior. Ownership tests do not make raw native contexts
+compatibility beyond these observed bytes, AMD callback behaviour, query success,
+context safety or GPU correctness. Fixture calls establish forwarding behaviour,
+not FidelityFX runtime behaviour. Ownership tests do not make raw native contexts
 safe; callers must retain the loader while any native state depends on it.
 
 [D004](../../DECISIONS.md#d004--load-an-explicit-dll-with-private-entry-points)

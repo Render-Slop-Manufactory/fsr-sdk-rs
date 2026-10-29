@@ -8,7 +8,7 @@
 - **Topic:** sharing one FidelityFX API runtime across contexts; context/provider lifetime; same-context and cross-context CPU concurrency; global/null-context operations; DX12-relevant shared state.
 - **Project:** `fsr-sdk-rs`
 - **Authoritative native baseline:** AMD FidelityFX SDK v2.3.0, commit `60f4ea81909200d8542eca14dccb2628b763a9a3`.
-- **Evidence cut-off:** pinned v2.3.0 sources are authoritative. Microsoft D3D12 documentation is used only to separate FidelityFX restrictions from underlying D3D12 rules. No newer FidelityFX behavior is used to establish a v2.3.0 guarantee.
+- **Evidence cut-off:** pinned v2.3.0 sources are authoritative. Microsoft D3D12 documentation is used only to separate FidelityFX restrictions from underlying D3D12 rules. No newer FidelityFX behaviour is used to establish a v2.3.0 guarantee.
 - **Target considered:** Windows x64/MSVC, DirectX 12, official signed AMD runtime, modern FidelityFX API.
 
 ## Method and exclusions
@@ -106,7 +106,7 @@ The documented model is simply that the application loads the signed loader DLL 
 
 This is not enough to conclude that all effect DLLs themselves are reference-counted by context. The DX12 external-provider definition is included from `amdinternal/.../ffx_provider_external.h`, whose implementation is not exposed by the inspected public source, and the loader's effect-module ownership is likewise not established here.
 
-The provider version-enumeration code also contains an important DLL-lifetime observation: an external provider's version-name pointer is copied because it points into a DLL “which may not outlive the caller.” The copy is placed in static storage. This demonstrates that at least some provider-discovery data can originate in transient module-owned storage; it does not establish effect-DLL unloading behavior for live contexts.
+The provider version-enumeration code also contains an important DLL-lifetime observation: an external provider's version-name pointer is copied because it points into a DLL “which may not outlive the caller.” The copy is placed in static storage. This demonstrates that at least some provider-discovery data can originate in transient module-owned storage; it does not establish effect-DLL unloading behaviour for live contexts.
 
 ### Destruction of one context versus other contexts
 
@@ -295,11 +295,11 @@ Relative to the supplied baseline, which conservatively treats general native th
 
 5. **Concrete shared/global state now has been identified.** It includes the API-wide message callback/debug level, global/version-query name storage, and module-static DX12 allocation callback pointers.
 
-6. **Not all native threading rules are wholly undocumented.** Frame Generation has an explicit v2.3.0 upstream statement that its underlying contexts are not guaranteed thread-safe and that specified operations require external synchronization. That evidence is effect-specific and does not resolve FSR upscaler behavior.
+6. **Not all native threading rules are wholly undocumented.** Frame Generation has an explicit v2.3.0 upstream statement that its underlying contexts are not guaranteed thread-safe and that specified operations require external synchronization. That evidence is effect-specific and does not resolve FSR upscaler behaviour.
 
 7. **The central M5 question remains unresolved:** no pinned public contract was found permitting simultaneous native API execution on two independent upscaler contexts, whether they use the same provider, different providers, the same DX12 device, or different devices.
 
-8. **Runtime/provider module lifetime remains only partly observable.** Contexts retain provider associations and external-provider objects have visible ownership behavior, but effect-DLL residency/unloading and loader synchronization are not sufficiently exposed to establish a stronger sharing contract.
+8. **Runtime/provider module lifetime remains only partly observable.** Contexts retain provider associations and external-provider objects have visible ownership behaviour, but effect-DLL residency/unloading and loader synchronization are not sufficiently exposed to establish a stronger sharing contract.
 
 These findings neither confirm nor invalidate the project's existing M4 `!Send + !Sync` and exclusive-runtime choices; those remain project-side constraints rather than conclusions of this source investigation.
 
@@ -309,7 +309,7 @@ The main limit is source visibility. The documented signed loader's module-manag
 
 Two bounded native experiments could add implementation evidence without being mistaken for contractual proof:
 
-- **Provider/effect-module lifetime observation:** create two contexts through one loaded API runtime, observe the relevant effect/provider modules, destroy only one context, and determine whether the current signed v2.3.0 runtime unloads or otherwise changes the provider module while the second remains alive. This would distinguish current-binary residency behavior; it would not establish a portable lifetime guarantee.
+- **Provider/effect-module lifetime observation:** create two contexts through one loaded API runtime, observe the relevant effect/provider modules, destroy only one context, and determine whether the current signed v2.3.0 runtime unloads or otherwise changes the provider module while the second remains alive. This would distinguish current-binary residency behaviour; it would not establish a portable lifetime guarantee.
 - **Concurrent independent-context rejection observation:** perform a narrowly selected pair of otherwise-valid calls on two independently created contexts and record whether the signed runtime produces an explicit API error, validation message, or other deterministic rejection attributable to overlap. An explicit rejection would be useful evidence of a current implementation constraint. Successful execution or absence of a crash would **not** establish thread safety.
 
 No generic parallel stress test can promote the unresolved rows in the matrix to a contractual concurrency guarantee.

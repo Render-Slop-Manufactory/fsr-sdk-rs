@@ -10,7 +10,7 @@
 - Reproduction code: [semantic comparisons](../../../crates/fsr-sdk/tests/native/semantics.rs),
   [analytic images](../../../crates/fsr-sdk/tests/native/images.h),
   [GPU equipment](../../../crates/fsr-sdk/tests/native/gpu.cpp), and
-  [shared runner](../../../crates/fsr-sdk/tests/native/run.ps1).
+  [shared runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk/tests/native/run.ps1.txt).
 
 ## Question and conditions
 
@@ -21,12 +21,12 @@ differences for incorrect inputs and accumulated history, lower analytic error f
 the matching inputs, and agreement between the two reset cases. This is a bounded
 regression test, not a general FSR quality benchmark or provider support claim.
 
-The scene uses linear grayscale RGBA16F color, ordinary R32F depth 0.5, RG16F UV
+The scene uses linear grayscale RGBA16F colour, ordinary R32F depth 0.5, RG16F UV
 motion vectors, R32F exposure 1.0 and RGBA16F output. Creation flags remain zero.
 Render dimensions are 320×180; output is 640×360; frame time is 16.667 ms. The
 camera values are near 0.1, far 100, vertical FOV π/3, and unit scale 1.
 
-For render pixel center `(x+0.5,y+0.5)` and frame `n`, the sampled scene is:
+For render pixel centre `(x+0.5,y+0.5)` and frame `n`, the sampled scene is:
 
 ```text
 u = x + 0.5 - jitter_x - 2*n
@@ -40,7 +40,7 @@ The eight jitter pairs, in pixel units, are `(0.25,-0.25)`, `(-0.25,0.25)`,
 `(0.125,-0.375)`, `(-0.375,0.125)`, `(0.375,-0.125)`, `(-0.125,0.375)`,
 `(0.0625,-0.0625)`, `(-0.0625,0.0625)`. Motion excludes jitter. Positive
 projection displacement moves the projected image positively, so a fixed pixel
-samples the scene at its center minus that displacement. This follows the
+samples the scene at its centre minus that displacement. This follows the
 [pinned jitter investigation](2026-09-24-src-m6-motion-vector-jitter-semantics.md#5-jitteroffset-units-and-semantic-meaning)
 and is corroborated by the pinned open FSR3 upsample calculation
 `fSrcUnjitteredPos = inputPosition + 0.5 - Jitter()`; open FSR3 is not the signed
@@ -132,10 +132,17 @@ Drop does not expose a native return code.
 ## Limits
 
 The result supports the tested motion direction, jitter convention, history
-sensitivity and reset behavior for this horizontal, constant-depth scene on one
+sensitivity and reset behaviour for this horizontal, constant-depth scene on one
 provider/GPU/driver configuration. It does not establish arbitrary temporal
 reconstruction quality, vertical-motion direction or scale, dynamic resolution,
 other formats/flags, general queue overlap, AMD thread transfer, performance or
 GPU-based-validation success. Thresholds are regression comparisons for these
 inputs; they are not universal image-quality tolerances. Public dispatch remains
 unsafe with renderer-owned states, submission and GPU lifetimes.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

@@ -1,0 +1,1706 @@
+{
+  "schema_version": 1,
+  "profile": "experiment-colour-signal-controls",
+  "required_cases": [
+    {
+      "id": "equipment.toolchain",
+      "claim": "Actual compiler, Cargo, Python and host identity",
+      "requires": [],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Actual compiler, Cargo, Python and host identity"
+      }
+    },
+    {
+      "id": "windows.environment",
+      "claim": "x64 Windows developer-tool environment",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "x64 Windows developer-tool environment"
+      }
+    },
+    {
+      "id": "abi.headers",
+      "claim": "Four hash-verified pinned SDK headers",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Four hash-verified pinned SDK headers"
+      }
+    },
+    {
+      "id": "abi.common",
+      "claim": "Independent native common ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native common ABI assertions"
+      }
+    },
+    {
+      "id": "abi.creation",
+      "claim": "Independent native creation ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native creation ABI assertions"
+      }
+    },
+    {
+      "id": "abi.dispatch",
+      "claim": "Independent native dispatch ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native dispatch ABI assertions"
+      }
+    },
+    {
+      "id": "abi.query",
+      "claim": "Independent native query ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native query ABI assertions"
+      }
+    },
+    {
+      "id": "native.sdk",
+      "claim": "Pinned, signed local loader/provider deployment",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Pinned, signed local loader/provider deployment"
+      }
+    },
+    {
+      "id": "native.helper",
+      "claim": "DX12 submission, fencing and readback equipment",
+      "requires": [
+        "equipment.toolchain",
+        "native.sdk",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "abi.query"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "DX12 submission, fencing and readback equipment"
+      }
+    },
+    {
+      "id": "colour.cpu-oracle",
+      "claim": "Independent transfer/input and output negative controls",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent transfer/input and output negative controls"
+      }
+    },
+    {
+      "id": "colour.build.fsr_sdk",
+      "claim": "Discover and stage exact fsr_sdk test executable",
+      "requires": [
+        "equipment.toolchain",
+        "native.helper"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Discover and stage exact fsr_sdk test executable"
+      }
+    },
+    {
+      "id": "colour.fixed-linear-linear-before-encode-0.5.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-linear-linear-before-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-linear-linear-before-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-linear-linear-before-encode-0.5.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-linear-linear-before-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-linear-linear-before-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-linear-linear-before-encode-0.5.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-linear-linear-before-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-linear-linear-before-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-linear-linear-before-encode-2.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-linear-linear-before-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-linear-linear-before-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-linear-linear-before-encode-2.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-linear-linear-before-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-linear-linear-before-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-linear-linear-before-encode-2.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-linear-linear-before-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-linear-linear-before-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-linear-before-encode-0.5.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-linear-before-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-linear-before-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-linear-before-encode-0.5.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-linear-before-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-linear-before-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-linear-before-encode-0.5.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-linear-before-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-linear-before-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-linear-before-encode-2.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-linear-before-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-linear-before-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-linear-before-encode-2.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-linear-before-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-linear-before-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-linear-before-encode-2.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-linear-before-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-linear-before-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-srgb-linear-before-encode.r1",
+      "claim": "Declared colour signal and fenced readback: reset-srgb-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-srgb-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-srgb-linear-before-encode.r2",
+      "claim": "Declared colour signal and fenced readback: reset-srgb-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-srgb-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-srgb-linear-before-encode.r3",
+      "claim": "Declared colour signal and fenced readback: reset-srgb-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-srgb-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-encoded-after-encode-0.5.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-encoded-after-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-encoded-after-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-encoded-after-encode-0.5.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-encoded-after-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-encoded-after-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-encoded-after-encode-0.5.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-encoded-after-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-encoded-after-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-encoded-after-encode-2.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-encoded-after-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-encoded-after-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-encoded-after-encode-2.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-encoded-after-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-encoded-after-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-srgb-encoded-after-encode-2.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-srgb-encoded-after-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-srgb-encoded-after-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-srgb-encoded-after-encode.r1",
+      "claim": "Declared colour signal and fenced readback: reset-srgb-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-srgb-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-srgb-encoded-after-encode.r2",
+      "claim": "Declared colour signal and fenced readback: reset-srgb-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-srgb-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-srgb-encoded-after-encode.r3",
+      "claim": "Declared colour signal and fenced readback: reset-srgb-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-srgb-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-linear-before-encode-0.5.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-linear-before-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-linear-before-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-linear-before-encode-0.5.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-linear-before-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-linear-before-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-linear-before-encode-0.5.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-linear-before-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-linear-before-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-linear-before-encode-2.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-linear-before-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-linear-before-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-linear-before-encode-2.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-linear-before-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-linear-before-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-linear-before-encode-2.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-linear-before-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-linear-before-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-pq-linear-before-encode.r1",
+      "claim": "Declared colour signal and fenced readback: reset-pq-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-pq-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-pq-linear-before-encode.r2",
+      "claim": "Declared colour signal and fenced readback: reset-pq-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-pq-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-pq-linear-before-encode.r3",
+      "claim": "Declared colour signal and fenced readback: reset-pq-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-pq-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-encoded-after-encode-0.5.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-encoded-after-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-encoded-after-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-encoded-after-encode-0.5.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-encoded-after-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-encoded-after-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-encoded-after-encode-0.5.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-encoded-after-encode-0.5",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-encoded-after-encode-0.5",
+          "pre": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-encoded-after-encode-2.r1",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-encoded-after-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-encoded-after-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-encoded-after-encode-2.r2",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-encoded-after-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-encoded-after-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.fixed-pq-encoded-after-encode-2.r3",
+      "claim": "Declared colour signal and fenced readback: fixed-pq-encoded-after-encode-2",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "fixed-pq-encoded-after-encode-2",
+          "pre": [
+            2,
+            2,
+            2
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-pq-encoded-after-encode.r1",
+      "claim": "Declared colour signal and fenced readback: reset-pq-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-pq-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-pq-encoded-after-encode.r2",
+      "claim": "Declared colour signal and fenced readback: reset-pq-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-pq-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.reset-pq-encoded-after-encode.r3",
+      "claim": "Declared colour signal and fenced readback: reset-pq-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "phase": "control",
+          "name": "reset-pq-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "reset": [
+            true,
+            true,
+            true
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.analysis",
+      "claim": "Retain independent signal-domain predictions and all failures",
+      "requires": [
+        "equipment.toolchain",
+        "colour.fixed-linear-linear-before-encode-0.5.r1",
+        "colour.fixed-linear-linear-before-encode-0.5.r2",
+        "colour.fixed-linear-linear-before-encode-0.5.r3",
+        "colour.fixed-linear-linear-before-encode-2.r1",
+        "colour.fixed-linear-linear-before-encode-2.r2",
+        "colour.fixed-linear-linear-before-encode-2.r3",
+        "colour.fixed-srgb-linear-before-encode-0.5.r1",
+        "colour.fixed-srgb-linear-before-encode-0.5.r2",
+        "colour.fixed-srgb-linear-before-encode-0.5.r3",
+        "colour.fixed-srgb-linear-before-encode-2.r1",
+        "colour.fixed-srgb-linear-before-encode-2.r2",
+        "colour.fixed-srgb-linear-before-encode-2.r3",
+        "colour.reset-srgb-linear-before-encode.r1",
+        "colour.reset-srgb-linear-before-encode.r2",
+        "colour.reset-srgb-linear-before-encode.r3",
+        "colour.fixed-srgb-encoded-after-encode-0.5.r1",
+        "colour.fixed-srgb-encoded-after-encode-0.5.r2",
+        "colour.fixed-srgb-encoded-after-encode-0.5.r3",
+        "colour.fixed-srgb-encoded-after-encode-2.r1",
+        "colour.fixed-srgb-encoded-after-encode-2.r2",
+        "colour.fixed-srgb-encoded-after-encode-2.r3",
+        "colour.reset-srgb-encoded-after-encode.r1",
+        "colour.reset-srgb-encoded-after-encode.r2",
+        "colour.reset-srgb-encoded-after-encode.r3",
+        "colour.fixed-pq-linear-before-encode-0.5.r1",
+        "colour.fixed-pq-linear-before-encode-0.5.r2",
+        "colour.fixed-pq-linear-before-encode-0.5.r3",
+        "colour.fixed-pq-linear-before-encode-2.r1",
+        "colour.fixed-pq-linear-before-encode-2.r2",
+        "colour.fixed-pq-linear-before-encode-2.r3",
+        "colour.reset-pq-linear-before-encode.r1",
+        "colour.reset-pq-linear-before-encode.r2",
+        "colour.reset-pq-linear-before-encode.r3",
+        "colour.fixed-pq-encoded-after-encode-0.5.r1",
+        "colour.fixed-pq-encoded-after-encode-0.5.r2",
+        "colour.fixed-pq-encoded-after-encode-0.5.r3",
+        "colour.fixed-pq-encoded-after-encode-2.r1",
+        "colour.fixed-pq-encoded-after-encode-2.r2",
+        "colour.fixed-pq-encoded-after-encode-2.r3",
+        "colour.reset-pq-encoded-after-encode.r1",
+        "colour.reset-pq-encoded-after-encode.r2",
+        "colour.reset-pq-encoded-after-encode.r3"
+      ],
+      "selector": "",
+      "scope": "offline-analysis",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Retain independent signal-domain predictions and all failures"
+      }
+    }
+  ],
+  "resume": "disabled"
+}

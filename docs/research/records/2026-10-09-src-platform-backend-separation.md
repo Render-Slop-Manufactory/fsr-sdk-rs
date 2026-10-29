@@ -169,7 +169,7 @@ not a defect in the currently gated Windows implementation.
 
 A Linux port would also need concrete native calling-convention/layout checks,
 callback character representation, native dependency search rules, symbol
-visibility and partial-load/unload behavior. The existing Windows callback's
+visibility and partial-load/unload behaviour. The existing Windows callback's
 `*const u16` must not simply become the Linux callback. Ungated raw Rust
 declarations and a passing Rust build establish none of these contracts.
 
@@ -253,7 +253,7 @@ consumers need a completely dependency-free common surface. No extra common
 crate is needed merely to isolate dynamic loading.
 
 Retain the DX12 default and existing import aliases. Changing defaults would
-alter ordinary consumer behavior; changing the public `windows` crate version
+alter ordinary consumer behaviour; changing the public `windows` crate version
 also changes resource type identity under D008. Neither follows from this
 analysis. The current unsupported Vulkan marker intentionally makes
 `--all-features` fail; add a negative control for its exact diagnostic instead
@@ -278,7 +278,7 @@ Installed Rust targets: `aarch64-apple-darwin` and `x86_64-pc-windows-msvc`.
 The current [CI workflow](../../../.github/workflows/ci.yml) defines Ubuntu and
 Windows portable/default/movable checks, consumer import boundaries and pinned
 Windows ABI probes. This inspection does not establish that remote CI has run
-successfully. Existing [D015 verification](../../release/2026-10-09-portable-common-verification.md)
+successfully. Existing [D015 verification](../../ROADMAP_HISTORY.md#portable-inputs-and-loader-checkpoint)
 supplies earlier bounded Windows native evidence; it was not rerun here.
 
 For the proposed cleanup, acceptance should cover downstream production trees

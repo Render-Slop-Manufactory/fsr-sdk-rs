@@ -15,7 +15,7 @@ Affected production paths are `crates/fsr-sdk/src/upscaler.rs`,
 The native harness is `crates/fsr-sdk/src/upscaler/m6.rs` plus
 `crates/fsr-sdk/tests/m6_gpu.cpp`; fixture policy tests are in
 `crates/fsr-sdk/src/upscaler/tests.rs`. Source and tests are in the repository;
-the `target/m6a` outputs are local run artifacts only.
+the `target/m6a` outputs are local run artefacts only.
 
 ## Inputs and commands
 
@@ -25,7 +25,7 @@ the `target/m6a` outputs are local run artifacts only.
   Loader DLL SHA-256 `E2D85AA05A9BD9ED8B38935FDF5199372CCA6F74C12015143BB6F945EE1608AA`;
   upscaler DLL SHA-256 `D0DCCCC74A43C44BA435B7A369B456E0970D8A4464E4BD683119B374F2C9FB46`.
   Provider query returned ID `0xf5a5ca1e01001001`, name `4.1.1`.
-- Profile: 320×180 linear RGBA16F color, ordinary R32F depth, zero RG16F
+- Profile: 320×180 linear RGBA16F colour, ordinary R32F depth, zero RG16F
   motion vectors, 1×1 R32F exposure at 1.0, and a distinct 640×360 UAV-capable
   RGBA16F output. Jitter `(0.25, -0.25)` pixels, 16.667 ms frame time,
   near/far `0.1/100`, vertical FOV `π/3`, metres factor `1`, reset true.
@@ -70,10 +70,15 @@ to query that metadata completed the native run.
 
 This demonstrates one public-route dispatch, GPU completion and plausible
 spatially varying output on the named configuration. It does not prove image
-quality, nonzero-motion temporal behavior, varying exposure, other formats,
+quality, nonzero-motion temporal behaviour, varying exposure, other formats,
 devices, drivers, SDK/provider releases or arbitrary in-flight capacity.
 The [earlier GBV diagnostic](2026-09-24-exp-m6-gbv-dispatch-stall.md) timed out
 inside native `ffxDispatch`; this run did not resolve that issue. Actual resource
 states, heap aliasing, residency, GPU lifetime and submission order remain
 unsafe caller obligations. The `GetDesc`, `GetDevice` and canonical `IUnknown`
 checks add CPU-side work per dispatch; no performance measurement was made.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.

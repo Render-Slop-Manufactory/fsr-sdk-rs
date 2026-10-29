@@ -115,7 +115,7 @@ the exact supplying module (bundled DLL versus driver) remain unverified.
 
 Changes are limited to the existing
 [Rust probe](../../../crates/fsr-sdk-sys/tests/context_lifecycle.rs),
-[runner](../../../crates/fsr-sdk-sys/tests/context_lifecycle/run.ps1),
+[runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk-sys/tests/context_lifecycle/run.ps1.txt),
 [native helper](../../../crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp),
 new [descriptor storage helper](../../../crates/fsr-sdk-sys/tests/context_lifecycle/input_lifetime.rs),
 this record and its [event log](2026-09-22-exp-create-error-input-lifetime/events.txt).
@@ -240,7 +240,7 @@ The log preserves stdout, stderr and per-child status. Its early generic
 `Create chain` line incorrectly describes the ordinary three-node chain in failure
 children; the following `Candidate` line correctly identifies the actual four-node
 chain. This logging-only issue was corrected after the sweep, without repeating
-native execution. No runtime behavior changed. The discovery log preserves its
+native execution. No runtime behaviour changed. The discovery log preserves its
 earlier retained-dependency exit text. There were no unsuccessful native outcomes
 other than the intended returned errors, and no skipped crashing candidate.
 
@@ -282,3 +282,10 @@ other than the intended returned errors, and no skipped crashing candidate.
 use of caller dependencies on this run, but also with an earlier signed-runtime
 validation path than the inspected open backend. This ambiguity is material.
 The result is evidence for a later D005 review, not a decision about that policy.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-26",
+  "run": "20261026T223646790017Z",
+  "host": "Windows-11-10.0.26300-SP0",
+  "target": "x86_64-pc-windows-msvc",
+  "coordinator_exit": 0,
+  "process_cases": 64,
+  "passed": 64,
+  "consumer_compilations": 50,
+  "expected_consumer_rejections": 40,
+  "candidate_profiles": {
+    "debug": 0,
+    "incremental": false
+  },
+  "production_source_changes": false,
+  "amd_provider_execution": false,
+  "gpu_execution": false,
+  "toolchains": {
+    "stable": {
+      "rustc": [
+        "rustc 1.99.0 (b940084d7 2026-09-28)",
+        "binary: rustc",
+        "commit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4",
+        "commit-date: 2026-09-28",
+        "host: x86_64-pc-windows-msvc",
+        "release: 1.99.0",
+        "LLVM version: 23.1.1"
+      ],
+      "selected_tests": [
+        "test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 178 filtered out; finished in 1.87s"
+      ],
+      "portable_tests": [
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 58 filtered out; finished in 0.00s"
+      ]
+    },
+    "1.88.0": {
+      "rustc": [
+        "rustc 1.88.0 (6b00bc388 2025-06-23)",
+        "binary: rustc",
+        "commit-hash: 6b00bc3880198600130e1cf62b8f8a93494488cc",
+        "commit-date: 2025-06-23",
+        "host: x86_64-pc-windows-msvc",
+        "release: 1.88.0",
+        "LLVM version: 20.1.5"
+      ],
+      "selected_tests": [
+        "test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 178 filtered out; finished in 1.64s"
+      ],
+      "portable_tests": [
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 58 filtered out; finished in 0.00s"
+      ]
+    }
+  }
+}

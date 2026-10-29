@@ -20,7 +20,7 @@
 The baseline was repository commit `76a604167f00679fc81c9247446fa65770ecad37`
 plus the uncommitted, opt-in probe in [the Rust test](../../../crates/fsr-sdk/tests/native/recording_ahead.rs),
 [DX12 helper](../../../crates/fsr-sdk/tests/native/gpu.cpp), and
-[runner](../../../crates/fsr-sdk/tests/run-m6-recording-spike.ps1). The helper's
+[runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk/tests/run-m6-recording-spike.ps1.txt). The helper's
 existing M6a path was factored to share readback logic and rerun as a control.
 No public dispatch method, constructor option, or production native ABI was
 changed. The SDK source is `v2.3.0` at
@@ -51,7 +51,7 @@ stderr files under ignored `target/m6a/`. Ordinary `cargo test` ignores this
 GPU case.
 
 Each dispatch used the tested M6a profile: the public M5 constructor with
-zero flags; 320×180 RGBA16F color, R32F depth, RG16F motion, and explicit 1×1
+zero flags; 320×180 RGBA16F colour, R32F depth, RG16F motion, and explicit 1×1
 R32F exposure; 640×360 RGBA16F UAV output; fixed frame values and jitter.
 Each recording had its own DIRECT list, allocator, five textures, upload
 buffers and output readback. Before submission, the CPU shifted that
@@ -97,7 +97,7 @@ the distinct-input run above is the relevant result.
 **Verified for this configuration:** Recording ahead by 2, 5 and 8 calls on
 one context, and by 2 and 5 sibling contexts, produced distinct plausible
 fenced outputs. The count of eight numerically exceeds the
-[`FFX_MAX_QUEUED_FRAMES=4`](../../../external/FidelityFX-SDK/v2.3.0/Kits/FidelityFX/api/internal/ffx_internal_types.h)
+[`FFX_MAX_QUEUED_FRAMES=4`](https://raw.githubusercontent.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/api/internal/ffx_internal_types.h)
 constant in the pinned open SDK, but this does not locate a ring boundary: its
 allocation formulas also account for passes and effect contexts, and the
 selected signed provider need not use that open backend. The observation rules
@@ -122,3 +122,8 @@ multi-dispatch contract or justify relaxing D011's conservative fence rule.
 That decision still needs a provider-backed lifetime/allocator guarantee or a
 contract that bounds recording and submission independently of this black-box
 observation.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.

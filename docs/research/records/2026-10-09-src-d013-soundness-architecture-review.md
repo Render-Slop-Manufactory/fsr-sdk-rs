@@ -12,7 +12,7 @@
 - Referenced implementation: [runtime](../../../crates/fsr-sdk/src/runtime.rs),
   [context owner](../../../crates/fsr-sdk/src/context.rs),
   [upscaler](../../../crates/fsr-sdk/src/upscaler.rs),
-  [movable fixtures](../../../crates/fsr-sdk/src/context/d013_movable.rs),
+  [movable fixtures](../../../crates/fsr-sdk/src/context/movable.rs),
   [native transfer harness](../../../crates/fsr-sdk/tests/native/thread_transfers.rs)
   and [loader](../../../crates/fsr-sdk-sys/src/loader/windows.rs). The review's abbreviated
   paths and line numbers refer to these files; their original revision is unknown.
@@ -33,7 +33,7 @@ Verdict: Accept with specific revisions. D013 is technically ready for implement
 
 No confirmed Rust soundness defect was found in the proposed architecture. `Send + !Sync` can be implemented with a narrowly audited `unsafe impl Send` for the concrete movable upscaler, while retaining the existing `Rc` family unchanged.
 
-The existing native evidence is sufficient to justify proceeding with this explicitly unsafe API. An affirmative AMD threading guarantee, provider termination observations, and further exploratory native experiments are not prerequisites, provided the caller-side contract explicitly assumes the unverified behavior.
+The existing native evidence is sufficient to justify proceeding with this explicitly unsafe API. An affirmative AMD threading guarantee, provider termination observations, and further exploratory native experiments are not prerequisites, provided the caller-side contract explicitly assumes the unverified behaviour.
 
 Formal ADR acceptance still requires the maintainer decision specified in `docs/adr/D013.md:271–287`.
 
@@ -103,7 +103,7 @@ This is already demonstrated in `context/d013_movable.rs:125–131,264–293` an
 
 ### F5 — Medium: Provider termination must not be conflated with wrapper-owned loader release
 
-Classification: Undocumented native behavior, not a blocker.
+Classification: Undocumented native behaviour, not a blocker.
 
 The October experiment observed successful destruction and release of the Rust-owned runtime, but the provider DLL remained loaded after audited application references and workers were released.
 
@@ -226,11 +226,11 @@ Once the real public types exist, the minimal implementation/release verificatio
 | Feature-disabled and host compilation | Ensure no unintended public API or portability regression                                                              |
 | Shared-core fixtures                  | Verify error/poison policy, pointer stability, final release and exceptional retention through actual movable wrappers |
 | Public-path native transfer test      | Exercise the real `MovableRuntime` and `MovableUpscaler` API across distinct workers, including final Drop             |
-| Existing Windows regressions          | Ensure local construction/dispatch and D005/D011 behavior remain unchanged                                             |
+| Existing Windows regressions          | Ensure local construction/dispatch and D005/D011 behaviour remain unchanged                                             |
 
 The previous native matrix does not need to be redesigned or expanded; selected cases can be reused for public-path verification.
 
-Testing actual AMD returned-error recovery, further provider unload behavior, arbitrary driver configurations, unsynchronized calls, or outstanding-work transfers is not a precondition for this design. Their uncertainty must instead remain explicitly bounded by the unsafe contract and supported configuration.
+Testing actual AMD returned-error recovery, further provider unload behaviour, arbitrary driver configurations, unsynchronized calls, or outstanding-work transfers is not a precondition for this design. Their uncertainty must instead remain explicitly bounded by the unsafe contract and supported configuration.
 
 The recorded Rust and native results were reviewed, not independently re-executed here.
 

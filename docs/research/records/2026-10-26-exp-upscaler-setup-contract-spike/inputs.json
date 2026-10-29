@@ -1,0 +1,892 @@
+[
+  {
+    "path": "crates/fsr-sdk/Cargo.toml",
+    "bytes": 1197,
+    "sha256": "1c0b0d50cf4e9be3abb4fa6aac8c1af25d224f297b1f0b7be0ffb66e1b30ca2f"
+  },
+  {
+    "path": "crates/fsr-sdk/examples/dx12_active_output.rs",
+    "bytes": 2643,
+    "sha256": "a8d9b223a04009f89e032048058ecd57781826164d7a793377ba4d373b1c176c"
+  },
+  {
+    "path": "crates/fsr-sdk/examples/dx12_queries.rs",
+    "bytes": 2784,
+    "sha256": "6aea0ee7660c41471bb26ea0f37718ffe18db14bf698a339e5b69a36db4289c5"
+  },
+  {
+    "path": "crates/fsr-sdk/examples/dx12_reactive_mask.rs",
+    "bytes": 6368,
+    "sha256": "b0216c63269e765e69206854dc3a25c59cdd2c64adb879594d7d863f774e0d48"
+  },
+  {
+    "path": "crates/fsr-sdk/examples/dx12_recovery.rs",
+    "bytes": 3646,
+    "sha256": "e0b07a60375100c2889e8553ed9bf2be9e36fad09a72101ecc3597275224e012"
+  },
+  {
+    "path": "crates/fsr-sdk/examples/dx12_upscale.rs",
+    "bytes": 8712,
+    "sha256": "c9bad0ca0061a2d0d50ebb661de0957b1dfbea8379d5c313c2fd3b79955add18"
+  },
+  {
+    "path": "crates/fsr-sdk/examples/movable_upscale.rs",
+    "bytes": 5452,
+    "sha256": "83a67d6f42b4a23125067b0ee7c3e858b9fcc9ede786ab4a0c40f531c0c64497"
+  },
+  {
+    "path": "crates/fsr-sdk/examples/provider_choice.rs",
+    "bytes": 3472,
+    "sha256": "4777ef6e9701b3e5c085077d6d98457ee0d6fd6d39041a8745eb5dbb41368e02"
+  },
+  {
+    "path": "crates/fsr-sdk/LICENSE",
+    "bytes": 17099,
+    "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3"
+  },
+  {
+    "path": "crates/fsr-sdk/LICENSE-AMD",
+    "bytes": 1195,
+    "sha256": "b29d76c1a6f598479438fa5b5cc8552f3aa3ad6831836dccf270ca5296064f1e"
+  },
+  {
+    "path": "crates/fsr-sdk/README.md",
+    "bytes": 29251,
+    "sha256": "e87fd6c3cdf367bc1a12fc630e297c0635de7565a27de5e75a0727df5563c597"
+  },
+  {
+    "path": "crates/fsr-sdk/src/context/movable.rs",
+    "bytes": 15515,
+    "sha256": "205482f2bf481c954af2cb02ee4f440a42e78bb76af7c1650163b2737936d0b2"
+  },
+  {
+    "path": "crates/fsr-sdk/src/context/test_runtime.rs",
+    "bytes": 2914,
+    "sha256": "ffd45c81333cb2e6221f91b58fb646b9e11470bfb4c9ed30b7bb9eaad7d446df"
+  },
+  {
+    "path": "crates/fsr-sdk/src/context/tests.rs",
+    "bytes": 24137,
+    "sha256": "e2bc381d733b9d56c9dea088c4cff8fec259330ac4f12de3ed50ca611fb607aa"
+  },
+  {
+    "path": "crates/fsr-sdk/src/context/transfer.rs",
+    "bytes": 13449,
+    "sha256": "34b625ba4a06a05361409f34d5ca2f5634888474acd9181caa0ce334f27cc71a"
+  },
+  {
+    "path": "crates/fsr-sdk/src/context.rs",
+    "bytes": 10206,
+    "sha256": "6ff56ed45184de53374558e1b94e8bfa1be272f21678ba8c25bc5114e5f7906a"
+  },
+  {
+    "path": "crates/fsr-sdk/src/context_policy.rs",
+    "bytes": 1718,
+    "sha256": "dc43aba62d6ba0062853e7d463fc82c654d1675bc4dc4c212bd7a70eb6e26344"
+  },
+  {
+    "path": "crates/fsr-sdk/src/error.rs",
+    "bytes": 15920,
+    "sha256": "ebdd0a1abff97ca990de52ded97bbe3f79e90b7eacc3c7c68d6bbf606317a500"
+  },
+  {
+    "path": "crates/fsr-sdk/src/lib.rs",
+    "bytes": 14032,
+    "sha256": "aba802578f8d879a8381a0e7a7b90d741b2f5395c82257b4d5566edf17582248"
+  },
+  {
+    "path": "crates/fsr-sdk/src/query/native/utilities.rs",
+    "bytes": 5575,
+    "sha256": "ebcb6a27b6d14fb7554371820f7ccea6c5fc1c853cb8de14a38b653af4c889e1"
+  },
+  {
+    "path": "crates/fsr-sdk/src/query/native.rs",
+    "bytes": 8326,
+    "sha256": "c85a72181eb14970e276ee2592ac33fed98bbfbe14798f6a370f034c5419d91c"
+  },
+  {
+    "path": "crates/fsr-sdk/src/query/provider_selection_tests.rs",
+    "bytes": 4757,
+    "sha256": "128b34d703200c5c4407142a6f0058cfc975cc148ce8135249a5109663c29459"
+  },
+  {
+    "path": "crates/fsr-sdk/src/query/tests.rs",
+    "bytes": 22128,
+    "sha256": "322181e3cde7a8b4230a8b2bb7dd8bd501f2ac0afa3d8594fc46519f4beba99e"
+  },
+  {
+    "path": "crates/fsr-sdk/src/query/utility_tests.rs",
+    "bytes": 13223,
+    "sha256": "567991a6e0b2b7ff3afb04b60e9b216c144da1bd2d62bce2b61467f48f1cf7c1"
+  },
+  {
+    "path": "crates/fsr-sdk/src/query.rs",
+    "bytes": 6335,
+    "sha256": "4468da3ac4e843837ac7478bfbb2ae1500f23f4e8cd225c657b52ea2ca7f1f03"
+  },
+  {
+    "path": "crates/fsr-sdk/src/runtime/movable.rs",
+    "bytes": 23531,
+    "sha256": "2c99def4c0ecdec43f5f6d8920c43b0ccda9876264049265c9d5e28845b6fbe2"
+  },
+  {
+    "path": "crates/fsr-sdk/src/runtime/queries.rs",
+    "bytes": 6805,
+    "sha256": "f84f8e0cd0f6c020113f8365743987e0f052990665c9cd3cd605bfc0e21580c0"
+  },
+  {
+    "path": "crates/fsr-sdk/src/runtime/state.rs",
+    "bytes": 5501,
+    "sha256": "d0f4c45629260dd5a94ed40175509dad4f8cfef80d943a7e90698c077870ab05"
+  },
+  {
+    "path": "crates/fsr-sdk/src/runtime.rs",
+    "bytes": 26416,
+    "sha256": "13fddb501fe034b6ec872e2eeca046577af40f5388da4eb49f1e0b8b30caf462"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/common/reactive_mask.rs",
+    "bytes": 3252,
+    "sha256": "e140022fb99ec1dba771604acd9ef5ff69bd52e4fc8f913c85729fc1cf9b6198"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/common.rs",
+    "bytes": 38741,
+    "sha256": "8f0e341311a6b9ad483765e4ddcbdc23c05430cabab6b5d4f269a980f617e47d"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/diagnostics.rs",
+    "bytes": 1922,
+    "sha256": "b1c56c9f1f01d26ba65ab6052969efd0ddee6c63f223d9b7e5106d75cae8965f"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/descriptor.rs",
+    "bytes": 4116,
+    "sha256": "71ebee02e9337b80df09a2106564ca173d226b7aff09bf222357a78d7f1e607b"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/frame.rs",
+    "bytes": 25631,
+    "sha256": "7310e62a1ea99e7c89184c0ac8775ff3a6fa6f7c1abd62f1bddae8c0d9085d50"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/reactive_mask.rs",
+    "bytes": 12843,
+    "sha256": "315b9cfaf090d2c11901309dce8e626d7f00db49decc14928d800fc6b5dc55ac"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/resources.rs",
+    "bytes": 36844,
+    "sha256": "81b584779a781ae1000fa31938ac79957d9bc16c29cbe6f786e02330b8f6ecbb"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/sharpening.rs",
+    "bytes": 2828,
+    "sha256": "ab61a5a7dfe983af4531424bae5267261f950bcdccd9b22611b9bd51257e14f3"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/tests.rs",
+    "bytes": 8122,
+    "sha256": "470ad8efdd7c7312a309ba737fdc42f23204504a74c14d932bb1d96192e504be"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch.rs",
+    "bytes": 13422,
+    "sha256": "6eafb0b930a4dd32cc38c0fc7987c0d0a5b381771e5e476cbd7e859646ea2b52"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/interop.rs",
+    "bytes": 9787,
+    "sha256": "0de637fdebc463b377947f8b53b8c69aa6c18b44870d5a7c0b3220361bdfd85d"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/movable.rs",
+    "bytes": 20846,
+    "sha256": "74231044eae98db1129627b65f09ddacf10c2b6130c0405190a6d8601604fde4"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/active_render.rs",
+    "bytes": 14281,
+    "sha256": "9c255938d860b7eafceca43bb94715a9ff1d5f3a05b574aac324d80865a16e81"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/automatic_exposure.rs",
+    "bytes": 8577,
+    "sha256": "807c1b03346484bce29f7bd6a87324f0f614bf850fa8322e404a14409004cb3b"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/bgra_srgb.rs",
+    "bytes": 21962,
+    "sha256": "06f9297b0eacd0fcc481e877f60c1e2a37f78fb25ee403455d7d203aff01af91"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/callbacks.rs",
+    "bytes": 12998,
+    "sha256": "999d76bbf8b5df25ae474a5c918387730e98f8880710abcef37c60e052ac94f9"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/color_encoding.rs",
+    "bytes": 13426,
+    "sha256": "f829e3afca913a06794dce80b731ebe0263d9818f3841036858eec2c2971bc79"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/com.rs",
+    "bytes": 17864,
+    "sha256": "14415f8bc252ab155ace1bbda8c3f2bb295af520b20bf8f080a55b0713414efe"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/construction.rs",
+    "bytes": 7615,
+    "sha256": "4fe1892f16a5bd19eafd3e5c977894f920a08d82b12731e4178d1f48344f1986"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/cpu_comparison.rs",
+    "bytes": 198,
+    "sha256": "798d269208bc032d9a52ff1bf6f218d2bb8938943734c39acd65d012c769e905"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/depth_formats.rs",
+    "bytes": 10432,
+    "sha256": "b0bef84932c41df6428ebd0d18f2351205a59ab3d62f8edebc1ebcee05611f8e"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/depth_motion.rs",
+    "bytes": 8064,
+    "sha256": "4e560f8cd8383934d64b478e724e3713daaa8411f2695babc273041f8f274d32"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/diagnostics.rs",
+    "bytes": 5282,
+    "sha256": "b1529eb82ca7c15dd46ddeb639dce8d138135782ba9d57feea36ffbede149909"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/dispatch.rs",
+    "bytes": 5659,
+    "sha256": "ac07a24b4ebd3c26e667a2cc3e9c0b9abf00f2e914e7ad5f7c4f0bd948bab767"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/gpu_timing.rs",
+    "bytes": 191,
+    "sha256": "73651817d140a76423db73f2e93967f159f6fc7dbd41ca2a230076cbacc48eab"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/hdr.rs",
+    "bytes": 6687,
+    "sha256": "bcc484fb7a9d0204fff251df0774e9f1d23e29b5a76f97ec08d229c31aa2aa91"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/inspection.rs",
+    "bytes": 8611,
+    "sha256": "9e553cd3bd6398f51b8ce8984d92b5010deba11df9fc00e0e72316fa1e2cca82"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/lifecycle.rs",
+    "bytes": 4456,
+    "sha256": "b77d565b4a4e0d763f5b3022a5d8cfbf2d5716e45a185a333156de50d079f4c0"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/masks.rs",
+    "bytes": 14234,
+    "sha256": "6d769bc690cf9d871c1b3444e314804ab97e7f1219d538929b9f14a177bac25e"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/mod.rs",
+    "bytes": 1198,
+    "sha256": "02b437078d8af414b7968887b3087d1f6fd8377abc751d2df85ffb3cc4a8f159"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/movable.rs",
+    "bytes": 4562,
+    "sha256": "bbb62f8f146c966aa4c8f33fd5423812ea9ecdb783714943ddeccf10f26a2878"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/native_motion.rs",
+    "bytes": 12728,
+    "sha256": "3968f8c17061caa2f335b7f4735bbbc7dd45d423d7034efb8063bbcf5d12b4ec"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/performance.rs",
+    "bytes": 16657,
+    "sha256": "19d1df5b7095cea34ea259bc18f11beb7ba782b5c20464adc4fbc2b1b18867a9"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/performance_comparison.rs",
+    "bytes": 25483,
+    "sha256": "c182bcb3bc425356cb7a64f79571eef0c4948342da942f364fe7f463ccde0241"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/pre_exposure.rs",
+    "bytes": 3056,
+    "sha256": "3610c7d43c976ccb9eefd6b6d0412b91d9629f6923be1db58db7bab01585464b"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/preflight.rs",
+    "bytes": 3753,
+    "sha256": "bec8d80cfb27284de816844e1e4a8ce74c9b4655727dd60f4162357f96fb8ca3"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/provider_selection.rs",
+    "bytes": 13577,
+    "sha256": "898bdfe9367cb14736af0b590d8a99dcb235bc65c9a6d1b177a1a99eeac74a66"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/provider_setup.rs",
+    "bytes": 4316,
+    "sha256": "75bbd897d4c1af8448964320a05f69aa1f069b87a0b92d34a0c7b3525ae0fc8f"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/queries.rs",
+    "bytes": 11931,
+    "sha256": "ce6c2d735cf7c1fe9a0884a8418817f436fe4d0ee6194e777d617fa246aedea8"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/reactive_mask.rs",
+    "bytes": 23873,
+    "sha256": "bdbe66def48239dc86b444802ca40c742db6f62ffedf184db72361c21e6bc94c"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/scalar_views.rs",
+    "bytes": 11768,
+    "sha256": "045fc28b944666547adebfb1ec08c4f243f7ed008114d8e6dd26a1bfc6961d5c"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/sharpening.rs",
+    "bytes": 9978,
+    "sha256": "eac6491927ef3dc6f1b52ea3fd7f1dc89e61bd9f971960d22f3a29a2f0145b83"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/support.rs",
+    "bytes": 5180,
+    "sha256": "3ff372d3ea715d89ef8a36aaf3f93f27b94a15e5d004fb8e3561e7e0de4d181b"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/traits.rs",
+    "bytes": 1075,
+    "sha256": "8aecc476821f68417a7ea1ccdd24d7d6b65c7425447b86c2839cadd684206c7d"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/tuning.rs",
+    "bytes": 8897,
+    "sha256": "049806f8d7717a37c3b3539c2f031a2d526ae94b89408766f864953ab39b30af"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/typed_formats.rs",
+    "bytes": 19628,
+    "sha256": "2d1e3973b127b600b4c6b9a2076e69952a6ff2493576ba19b4077891bcd3e3a9"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/tests/utility_queries.rs",
+    "bytes": 13002,
+    "sha256": "a364c66d9c6eb19a33a3973e6ef24a2011eaf5391e44c985cd5e136810185473"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12.rs",
+    "bytes": 26924,
+    "sha256": "c2e3ca5ace2aaa12e169e29480650f103958f61134aff3d223b741521e1c049b"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/reactive_mask/tests.rs",
+    "bytes": 5507,
+    "sha256": "bebb184dcd18b8173adae9ef38f87b4a9d9d6c23e892354ca0ae905d22677d44"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/reactive_mask.rs",
+    "bytes": 2138,
+    "sha256": "83170ddbcdcf3a6dc6e02bbaffa57cbee8fa8907051896b8010c181aa065b3db"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/tuning/tests.rs",
+    "bytes": 8622,
+    "sha256": "8efb8daef9fd12fa177cf9c89ad0c82515d2a049401ab4b9fa764231252bead6"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/tuning.rs",
+    "bytes": 2897,
+    "sha256": "b974e746275e2389a3061cad3b79403b0c1f169d4661044570399ada16848f54"
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler.rs",
+    "bytes": 4914,
+    "sha256": "cd02e2c6b6a578d7d4d16665c1950ec90f708af22a498fdd4606a8b35eae4b6f"
+  },
+  {
+    "path": "crates/fsr-sdk/src/utils/provider.rs",
+    "bytes": 7937,
+    "sha256": "a675ab9b1843b521618c8416845afff4b4e7b194fda4297f2da98026f5c1d131"
+  },
+  {
+    "path": "crates/fsr-sdk/src/utils.rs",
+    "bytes": 377,
+    "sha256": "cf4700c0480db0d9c450f62ce6f8dd9dc780e5fa4d3d49c2a0f68a791021cef4"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/dimensions.rs",
+    "bytes": 13294,
+    "sha256": "d3005a3a143494196943d0b814e5f741b15b61a01471a62d7f34a83a34d08350"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/dispatch_inputs.rs",
+    "bytes": 3797,
+    "sha256": "26b327ccbf7ab7d2a6c493e41266715edf3f27afc09c7cf63ff8d636eec60ca5"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/fixtures/child.rs",
+    "bytes": 1518,
+    "sha256": "2739df78c1e16f79893321a9296a76181e664e60fde6f2b59f9f99c534dae86e"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/fixtures/directory.rs",
+    "bytes": 1882,
+    "sha256": "9531a6d7533de516040b3824bee17547e6fc571d571cd66f92f3b97e775e2c98"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/fixtures/lifecycle.rs",
+    "bytes": 4735,
+    "sha256": "51ecf31a162fe14c1c4f11c18024479c3f1cfcdb3aebfdfc1ec789e75fd688f1"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/fixtures/upscaler.rs",
+    "bytes": 10715,
+    "sha256": "cf994a6c219e17932d6c0343eb0f6037e5291472db8ab00ea92bf1ee6c52d230"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/movable.rs",
+    "bytes": 9645,
+    "sha256": "6604f496e5f7a2ab316daa55abeb727185bc53e79fb87f5ebfdf92d222f0d9f2"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/active_render.h",
+    "bytes": 5930,
+    "sha256": "5fca881b441a6575dbcc76aba7d4ea27faa7612bb6a128d414dbdb749a0a7d4b"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/callbacks.rs",
+    "bytes": 10131,
+    "sha256": "92efe8eeea67498e20a9b918503ec37b7f768dc822c1523ce6053550f1ceec38"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/color_signal.h",
+    "bytes": 2120,
+    "sha256": "3953ec73f4841572e8bf403de4c7a9a6d291b4fb1988ae0d5df7e01a0bf7b4ea"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/color_signal.rs",
+    "bytes": 10281,
+    "sha256": "e042802146b3893c82572a775b349c420da92139eec8eb1e1973825ea897a956"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/colour_signal.h",
+    "bytes": 151,
+    "sha256": "c356aeb20afa2b4422e76882abd570bc8e74dbe7c0f13271dba431f5a2d99387"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/colour_signal.rs",
+    "bytes": 168,
+    "sha256": "896e25820753f6a0ba6b2a9261a917c44560086814a33b82c99570461e007da9"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/configure.rs",
+    "bytes": 6339,
+    "sha256": "fa7d81ec94d1df29afe994ae97e8225277b265a1df2416489c4144ff0d363485"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/cpu_equipment.h",
+    "bytes": 1782,
+    "sha256": "ef13703ee91e7e1d74c32dd7bf8037aa7d655886c2866592b85173ce1cfeaaf7"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/cpu_reference.cpp",
+    "bytes": 107,
+    "sha256": "d78bf3f15eccf03a7bb261c69a492db284d95750d173c836ec8092054ddf7414"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/depth_formats.h",
+    "bytes": 7848,
+    "sha256": "8a0fa74b15391a51b865f104eb73d2e40f9087c327c103d65f52a8a9e7272c02"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/dispatch_readback.rs",
+    "bytes": 6416,
+    "sha256": "ae6a05c2a5a8f645f0a7c381d7c772b900897b87d6527c2831ab711d3ff827a6"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/followup.rs",
+    "bytes": 5435,
+    "sha256": "37a8f316959c2c40384c74e3232006f0aa2dd672d2f24f2a16946dcc46b0d1e3"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/gpu.cpp",
+    "bytes": 31124,
+    "sha256": "a04fe6a8f4fd81cc2551a44f921d0e695db746a63fa1dc079899789d21e893c9"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/gpu_reference.cpp",
+    "bytes": 129,
+    "sha256": "cb56b3ce8ef0322d0c525d0291a9b4e15e724d30eb01f46a802d41daacdfa4ed"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/gpu_timing.h",
+    "bytes": 12554,
+    "sha256": "21e09f018a6763000192894e33f95635c0cb4f676e713b5f57d7ca7e7e8ae862"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/images.h",
+    "bytes": 6615,
+    "sha256": "61a317f95c7711f636bcea879c24c38667abfe2bee61b738d30deea5c9f5c3a9"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/motion_scale.h",
+    "bytes": 2715,
+    "sha256": "f71ca225a4d8a882d44b793cb21be40e7898d3029defbebf804246e3cefeebbb"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/motion_scale.rs",
+    "bytes": 11627,
+    "sha256": "20ae6c41bf24d634871277170cc4d512f03d51b2cc8604d8d30b70590233635d"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/movable_public.rs",
+    "bytes": 11962,
+    "sha256": "361442d558589b6ae6e7ce47add53a3de4998c4fa770dbce8ced6363eba78cfc"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/performance.h",
+    "bytes": 3200,
+    "sha256": "25bd7b805385cdb0037d2eb77bc9baa088ca86ee32104c55c46b89aa0cfbdd29"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/performance_reference.h",
+    "bytes": 18057,
+    "sha256": "e888876876c84836776610de582f9fdca666912d19a83e4c9c70c941a59fb908"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/public_motion.h",
+    "bytes": 3516,
+    "sha256": "a1ab2e1402f53449bb5acd98c55cea79fdd013d2127e3cc9c646cd2ad4c6cf85"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/public_motion.rs",
+    "bytes": 13399,
+    "sha256": "7fcc00a5733bd20e98f7160c95b92fcb97f595db3bfeac14fe42f538f456d69a"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/reactive_mask.h",
+    "bytes": 7377,
+    "sha256": "792f147c956aaf431e6a1850f1b78eb5ee0ff8f62d1a8236187a4f3d56034c7d"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/reactive_mask.rs",
+    "bytes": 12313,
+    "sha256": "3ea91d3b792bd32893d1f07378827bb0689bb3eea23d4cee36dc31d1fc296f39"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/reactive_mask_abi.cpp",
+    "bytes": 1144,
+    "sha256": "4da6efd0e5c4f5d567256ea528cc53516761424ce86ab2cfecfa6f2f88865dab"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/reactive_mask_descriptor.rs",
+    "bytes": 823,
+    "sha256": "10f4aa58dda4bc3dd5372f98d8744f6b49d4d016c69c3972f3e04489e3ac068d"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/recording_ahead.rs",
+    "bytes": 8801,
+    "sha256": "0fd3824083dcb81c52d3ba31ac747ef6da839b6319c76e37e4ce2ad2b94373d9"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/semantics.rs",
+    "bytes": 9938,
+    "sha256": "56655baa09cf295aa95f13e12fca6793b84b45d555ed06b71c6d1b6520d991c8"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/sharpening.h",
+    "bytes": 2550,
+    "sha256": "aab021356fb3fe57af10d4c7a5a54deaae7e39d5684e3ef6cf79de21f3fdeabc"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/sharpening.rs",
+    "bytes": 13835,
+    "sha256": "ce51c7793009c923c84087a0c1b3da33a1b65a5e1d8c48f9252d5eed50a36f9d"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/sharpening_integration.rs",
+    "bytes": 11804,
+    "sha256": "8a1f9270ceffcd31b27f6022428fde8f6339f829b98b9e0e069e616e5029b1ce"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/single_frame.rs",
+    "bytes": 11446,
+    "sha256": "41c17a3cf55d8906222c9db5ee8a8a7d49a78176396f04e32cd5a15c16a7a2b8"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/supplied_masks.h",
+    "bytes": 5962,
+    "sha256": "d2b59e4425debfdf72bbe09d2b0984c6e57e7487b662aabda6aebc6836a12c45"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/support.rs",
+    "bytes": 2953,
+    "sha256": "18ff549a17ff2a82b27d308f660d5dcc5a7b2d5f046badc134b0e00324ac4ea1"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/temporal_calibration.h",
+    "bytes": 7757,
+    "sha256": "15ec4089ea9ef576701a1d73580707bdeee142c57c8f08cb1e50b274518e9c20"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/temporal_calibration.rs",
+    "bytes": 13312,
+    "sha256": "8ddce9c0b24b2aeaa1960aaa17b79c4839b88953d955346d1dd2a7ec0ce7c6c0"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/temporal_diagnosis.h",
+    "bytes": 4719,
+    "sha256": "37e6396380ba99cd7b9ada2f2bdc441274c15be11178334c7135437ef9ed6f54"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/temporal_diagnosis.rs",
+    "bytes": 13882,
+    "sha256": "50e4ceff4256210428a517b0454c7a6f56edf81efb1a4a7ac29cba4502565f37"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/temporal_smoke.rs",
+    "bytes": 19196,
+    "sha256": "175f046270d0fabeb7edba9809e23361088abdb141a974bab7503430dad17517"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/thread_transfer_baseline.rs",
+    "bytes": 16355,
+    "sha256": "1517c980ab611f8fcc66816211f3524f8164499b44fa936a1c9ecdee9c9f88b8"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/thread_transfers.rs",
+    "bytes": 27976,
+    "sha256": "0a441d51495820ab884b9d7f85059d5260220b55a76b79aebcbda74bfd0a1579"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/typed_formats.h",
+    "bytes": 10832,
+    "sha256": "90bffa177f1debf787ff7e3f7f1404897ce0d343fa0a9a261c7cca4dc7eeea03"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/typed_formats.rs",
+    "bytes": 17522,
+    "sha256": "fc7a5e1f5e4ed9a80629341b3b7bf48dc7c25bcd06b87e9d179c327e6cbccc57"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/typed_reference.cpp",
+    "bytes": 5474,
+    "sha256": "3cdc714161225852df21b14fe6f63d9981eea9b5ea02f8fc5ee1295b00154a88"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/variable_output.h",
+    "bytes": 11828,
+    "sha256": "36def3c520cd91ac62a1b66ee384b538f2836c8815e4bc133b0693c88c5854a3"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/native/variable_output.rs",
+    "bytes": 19363,
+    "sha256": "b1e8a4bceb992d50f6bcc59f06edafa6e18e896cd8a7181e5a3c35adf1a161f0"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/query_values.rs",
+    "bytes": 713,
+    "sha256": "f3bd103e1a1ac24866f537f3e0d796ba77a652b45c1d491120bef61e1386c841"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/reactive_mask_options.rs",
+    "bytes": 2680,
+    "sha256": "5d66f94a5405a3cf677f1498d2fc8daa2d012d74b3a9f3e9eb20d96095162285"
+  },
+  {
+    "path": "crates/fsr-sdk/tests/reactive_mask_probe.rs",
+    "bytes": 1295,
+    "sha256": "e99ddd94364d30470b6b7ec49e838cdf217e4c78aae82fc7157c5f4b2a64e649"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/Cargo.toml",
+    "bytes": 768,
+    "sha256": "9fc9794c8f9c8e0e7d75deb20f4b04bddb22ca0ed4e603972b29b231ebe2bcf7"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/LICENSE",
+    "bytes": 17099,
+    "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/LICENSE-AMD",
+    "bytes": 1195,
+    "sha256": "b29d76c1a6f598479438fa5b5cc8552f3aa3ad6831836dccf270ca5296064f1e"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/README.md",
+    "bytes": 6009,
+    "sha256": "95019633ce7e7cd70d7861ae3dae44d1d4573ff97579d7c238274caa212f2d90"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/src/api.rs",
+    "bytes": 10878,
+    "sha256": "5984e723c7ec13e821296de1518e35add27488a41226ae90f7a3c432f16acafb"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/src/dx12.rs",
+    "bytes": 3613,
+    "sha256": "349ba9de1fe890bcfc510c22d7846a641bbf530590cb3f9f29fbc2185d2180b7"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/src/lib.rs",
+    "bytes": 3057,
+    "sha256": "c1d140bcd00034cea7b75099b7229f42deb1a669b4fe1a685da3b25139d3de70"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/src/loader/mod.rs",
+    "bytes": 417,
+    "sha256": "68ea61e610cc4c8a558f859991ffbac4d9eb3c744cc8fbaae1a9e729c118a078"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/src/loader/windows.rs",
+    "bytes": 11164,
+    "sha256": "31c9a137c998700ddfeee63bdde0ae4227bc5094b7e1fcea65623845883985bd"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/src/upscale.rs",
+    "bytes": 8909,
+    "sha256": "4a684176b722196a5a0e4db2937b4d4312bb69a3d9340b6876036627ab777434"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/abi.rs",
+    "bytes": 6501,
+    "sha256": "e4d2c64e09e5ff0009ccc0ca99d2b285727e6fb8968b3e7478381cc6b8eac51e"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/callback_abi.rs",
+    "bytes": 10525,
+    "sha256": "69a835f07ddb3f455d87a83f524b268e3ef440d063d7bfd57fa47878455d88f2"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/callbacks_native_abi.cpp",
+    "bytes": 5614,
+    "sha256": "c77965385cd2cdbbda0999da6ecbe82230abcdece819dff00097865e0577469e"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/context_dimensions.rs",
+    "bytes": 6689,
+    "sha256": "f456a158c8959bde3a4f9f02ff4c6957f1dbfa4a01f724dadcdc858ae46666af"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/context_lifecycle/abi.rs",
+    "bytes": 2676,
+    "sha256": "ae938db92fe39212db633405cd03803e10f054a3c2093fe9ccca71e15b280168"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/context_lifecycle/allocator.rs",
+    "bytes": 4449,
+    "sha256": "7f16c250361cc0e517e42a70c316a330277d1e989d5b6da8b022edb15b5b8380"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp",
+    "bytes": 5227,
+    "sha256": "8131993e8f234e56beb8cb87f02f9a34506f2eba5b7b643e8041c19f23547d55"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/context_lifecycle/input_lifetime.rs",
+    "bytes": 3704,
+    "sha256": "8dde46b1e069c45b25876d95baccd2de0a8744322490d9eace231f380d1dc97c"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/context_lifecycle/native_abi.cpp",
+    "bytes": 2248,
+    "sha256": "a5c76989e9f91d6f5ab81e0dc601670b208d55c104fa8823ac639388085adf68"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/context_lifecycle.rs",
+    "bytes": 10803,
+    "sha256": "b6f0b09ab2f10c4b43138302eb7bc4f835c1bdf49d63efb13215fccf2a029853"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/dispatch_abi.rs",
+    "bytes": 8926,
+    "sha256": "9deaa885482986940a76295001b19e2fe004bc485636f3d35e30db84c9c26396"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/dispatch_native_abi.cpp",
+    "bytes": 7751,
+    "sha256": "0adc896a9084e24144ba1211d384799102b55d094e49ec95edac81a46cd376c2"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/fixtures/loader.rs",
+    "bytes": 1683,
+    "sha256": "674bcfa90ddec7a92e88dc62c4e78db38babb5da1121d4cf3ddc55af081e37bf"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/loader.rs",
+    "bytes": 7339,
+    "sha256": "3b71fb1c60ae0381f899c322474d2c3ffb62631580bfec2dd60018651596f4ad"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/native_abi.cpp",
+    "bytes": 5188,
+    "sha256": "f17932f3e6516a2e7f623214d7c2e6cbc725638b4ca5f542fdb7d245bc7e7f63"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/provider_resolution/modules.rs",
+    "bytes": 1539,
+    "sha256": "7369a72c6a819ac2c82ecbb2f917e9d4d4ecfb68115cf13f5d68c87326af3da3"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/query.rs",
+    "bytes": 2100,
+    "sha256": "a0820ce7f4451ad4b46f2796b57afd2ceeeb445d6eb9c34518417985fdcd1ca4"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/query_abi.rs",
+    "bytes": 7558,
+    "sha256": "b98e264bbd7d7f3f0d0625f9ecf457b39fc199afb54416f7bdd7836a84704b62"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/query_native_abi.cpp",
+    "bytes": 5806,
+    "sha256": "530b98c48870560b09fc93e043401188b4718d238e0dcfe559fb6463bce4f8b3"
+  },
+  {
+    "path": "crates/fsr-sdk-sys/tests/shared_runtime.rs",
+    "bytes": 11322,
+    "sha256": "6a39946daf5771e1c625ec6a88c3ec26447585f797ff3d3cdb40a9a953148270"
+  },
+  {
+    "path": "Cargo.toml",
+    "bytes": 284,
+    "sha256": "df4d45780257b3189372209baf694ae6ecae7c1590ecb48ef797d22b75b8ea31"
+  },
+  {
+    "path": "Cargo.lock",
+    "bytes": 4424,
+    "sha256": "0014ad8b08bc5fa62f562bb4d594851851ed1cc04b9eb0bb8595794b426080ed"
+  },
+  {
+    "path": "docs/adr/D042.md",
+    "bytes": 15718,
+    "sha256": "4f78a5610021c1ab221f7fe106287f1a62b8ec7dd4d821f95d7593f0143dd3c1"
+  },
+  {
+    "path": "tools/experiments/upscaler_setup/setup.rs",
+    "bytes": 17347,
+    "sha256": "bc1a88074f39eb8e21714398ffba53b3cb701e7a24a8c8df2e68a26a2573cbf6"
+  },
+  {
+    "path": "tools/experiments/upscaler_setup/composition.rs",
+    "bytes": 12700,
+    "sha256": "7fb85e92df3f1dd5a68df506c0dcd0e06a07bfd4de8b634fa35df2005ce7e7ed"
+  },
+  {
+    "path": "tools/experiments/upscaler_setup/controlled.rs",
+    "bytes": 18508,
+    "sha256": "ef9a08750927469e9e2fdc5eee45ea471cda410f6a525442870ec7d79625e593"
+  },
+  {
+    "path": "tools/experiments/upscaler_setup/run.py",
+    "bytes": 15537,
+    "sha256": "6f842850bdc7c9c17589ad9de1f9f5b9a66bae24e6270e8857f69968e56983b2"
+  }
+]

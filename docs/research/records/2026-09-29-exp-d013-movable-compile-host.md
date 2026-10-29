@@ -27,7 +27,7 @@ The probe uses repository tests, without a separate crate or copied owner:
   gains a sealed `RuntimeRetention` parameter, defaulting to `Rc<RuntimeState>`;
   only `Rc` and `Arc` implement it. Native operations and terminal cleanup remain
   shared. This is the production-source refactor; public users still use `Rc`.
-- [d013_movable.rs](../../../crates/fsr-sdk/src/context/d013_movable.rs): eight
+- [d013_movable.rs](../../../crates/fsr-sdk/src/context/movable.rs): eight
   test-only probes, using that owner and the existing fixture. The sole new
   `unsafe impl Send` applies to a concrete fixture wrapper. The generic owner
   retains its `Rc<()>` marker and remains `!Send + !Sync`.

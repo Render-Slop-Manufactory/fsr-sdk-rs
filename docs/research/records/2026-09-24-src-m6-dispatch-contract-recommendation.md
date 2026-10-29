@@ -372,7 +372,7 @@ Additionally, a small native parity check should compare this crate's generated 
 
 Use a small deterministic case such as 320×180 → 640×360:
 
-1. Create RGBA16F color, R32F depth, RG16F motion-vector, and UAV-capable RGBA16F output textures.
+1. Create RGBA16F colour, R32F depth, RG16F motion-vector, and UAV-capable RGBA16F output textures.
 2. Populate a deterministic spatial image, valid depth, zero/static motion or a controlled known displacement, and render/sample it using a nonzero known jitter.
 3. Put resources in the exact documented M6 boundary states.
 4. Record `dispatch(reset_history = true)` into an open DIRECT list.
@@ -383,7 +383,7 @@ Use a small deterministic case such as 320×180 → 640×360:
 
 “`ffxDispatch` returned OK” is explicitly not an M6 success criterion.
 
-A second short temporal run should exercise at least two ordered frames plus reset behavior and a nonzero jitter sequence; this is where MV direction, jitter convention and history ordering stop being paper assumptions.
+A second short temporal run should exercise at least two ordered frames plus reset behaviour and a nonzero jitter sequence; this is where MV direction, jitter convention and history ordering stop being paper assumptions.
 
 ## 10. Ordered implementation plan
 
@@ -401,7 +401,7 @@ Each stage can compile/test independently; in particular, do not publish the hig
 
 ## 11. Work explicitly deferred from M6
 
-**DEFERRED:** Vulkan; generalized GPU/resource abstractions; arbitrary texture formats and resource states; MSAA/arrays/mips; Query/Configure APIs; resource-requirements query as public API; manual exposure textures; reactive/transparency masks; sharpening; HDR/nonlinear-color options; inverted/infinite depth; display-resolution MVs; dynamic resolution; automatic jitter/MV generation; automatic command-list submission; queue/fence ownership; upload/readback APIs; compute-list support; multi-queue overlap; arbitrary same-context concurrent frames; placed-resource/heap aliasing support; and packaging/distribution automation.
+**DEFERRED:** Vulkan; generalized GPU/resource abstractions; arbitrary texture formats and resource states; MSAA/arrays/mips; Query/Configure APIs; resource-requirements query as public API; manual exposure textures; reactive/transparency masks; sharpening; HDR/nonlinear-colour options; inverted/infinite depth; display-resolution MVs; dynamic resolution; automatic jitter/MV generation; automatic command-list submission; queue/fence ownership; upload/readback APIs; compute-list support; multi-queue overlap; arbitrary same-context concurrent frames; placed-resource/heap aliasing support; and packaging/distribution automation.
 
 None of those are required for the fixed FSR4 dispatch profile. FSR4's masks are explicitly optional, and auto exposure removes the need for an exposure resource.
 
@@ -413,6 +413,6 @@ None of those are required for the fixed FSR4 dispatch profile. FSR4's masks are
 
 **DESIGN CHOICE requiring an ADR:** current M5 deliberately fixes creation flags to zero; M6's smallest clean null-exposure path should instead fix `AUTO_EXPOSURE`. AMD recommends automatic exposure and its v2.3.0 sample enables it.
 
-**UNKNOWN/provider-validation item:** the sample's handling of `viewSpaceToMetersFactor` is less explicit than the field contract. The M6 API should not depend on a zero default: require a positive explicit value and use `1.0` in the meter-based native fixture. The upstream descriptor defines it as the view-space-to-metres scale.
+**UNKNOWN/provider-validation item:** the sample's handling of `viewSpaceToMetersFactor` is less explicit than the field contract. The M6 API should not depend on a zero default: require a positive explicit value and use `1.0` in the metre-based native fixture. The upstream descriptor defines it as the view-space-to-metres scale.
 
 The normative upstream files used to resolve those points are pinned to commit `60f4ea81909200d8542eca14dccb2628b763a9a3`: [ffx_upscale.h](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/upscalers/include/ffx_upscale.h), [ffx_api_types.h](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/api/include/ffx_api_types.h), [ffx_api_dx12.h](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/api/include/dx12/ffx_api_dx12.h), [official DX12 FSR sample](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Samples/Upscalers/FidelityFX_FSR/dx12/fsrapirendermodule.cpp), and [FSR4 integration documentation](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/docs/techniques/super-resolution-ml.md).

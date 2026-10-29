@@ -15,14 +15,14 @@ Useful exact source pins: [ffx_upscale.h @ v2.3.0 commit](https://github.com/GPU
 |---|---|---|---|
 | `maxRenderSize` | Maximum active rendering size for this context. Per-frame `renderSize` must not exceed it. It is an allocation/configuration bound, not necessarily the current frame size. | Creation-time persistent. | **VERIFIED.** Header defines it as maximum rendering size. Same-tag open implementation rejects dispatch dimensions beyond the maximum. |
 | `maxUpscaleSize` | Presentation/output allocation target and upper bound. | Creation-time persistent. | **VERIFIED.** |
-| `color` | Current-frame rendered scene color. FSR4 strongly expects **linear** color. Normally pre-tonemap; AMD places application tonemapping after upscaling. HDR requires the HDR creation flag. Nonlinear input is supported only when declared, optionally identifying sRGB or PQ. | Application-specified texture format, active render resolution, current frame. Must be jittered. | **VERIFIED/CORROBORATED.** |
-| `depth` | Hardware/device depth, not application-linearized view-space distance. Depth convention is communicated via creation flags. Standard and reversed/infinite variants are supported; inverted means `[1..0]`. | One floating-point channel; render resolution; current frame; jittered consistently with color. | **CORROBORATED.** FSR4 docs specify one FLOAT and depth flags; same-tag open depth reconstruction derives view depth from device depth plus near/far/FOV. |
+| `color` | Current-frame rendered scene colour. FSR4 strongly expects **linear** colour. Normally pre-tonemap; AMD places application tonemapping after upscaling. HDR requires the HDR creation flag. Nonlinear input is supported only when declared, optionally identifying sRGB or PQ. | Application-specified texture format, active render resolution, current frame. Must be jittered. | **VERIFIED/CORROBORATED.** |
+| `depth` | Hardware/device depth, not application-linearized view-space distance. Depth convention is communicated via creation flags. Standard and reversed/infinite variants are supported; inverted means `[1..0]`. | One floating-point channel; render resolution; current frame; jittered consistently with colour. | **CORROBORATED.** FSR4 docs specify one FLOAT and depth flags; same-tag open depth reconstruction derives view depth from device depth plus near/far/FOV. |
 | `motionVectors` | Current-frame pixel → location of that same surface point in the **previous frame**. After scaling, the semantic quantity is screen/pixel displacement. Default convention requires jitter removed from the vectors. | 2× FLOAT, render resolution unless display-resolution-MV flag; 16-bit precision is sufficient internally. | **VERIFIED.** |
 | `motionVectorScale` | Converts the stored vector encoding to FSR's screen-space convention. The safest interpretation is `stored_mv * scale = current→previous displacement in pixels`. | Per frame; target dimensions depend on low- vs display-resolution MVs. | **CORROBORATED/INFERRED.** Public prose, sample shader and open implementation together establish this; see §2. |
 | `exposure` | Current-frame scalar exposure multiplier that should match the exposure used by the application's later tonemapper. | `R32_FLOAT`, 1×1. May be null when auto exposure is enabled. | **VERIFIED.** |
-| `preExposure` | Factor by which the supplied color was multiplied before FSR. FSR divides input color by this value to recover the original game signal. Must be `>0`. | Scalar, per frame. Dimensionless multiplier. | **VERIFIED.** |
+| `preExposure` | Factor by which the supplied colour was multiplied before FSR. FSR divides input colour by this value to recover the original game signal. Must be `>0`. | Scalar, per frame. Dimensionless multiplier. | **VERIFIED.** |
 | `reactive` | Controls how strongly current-frame samples replace/reduce reliance on temporal history. `0` = ordinary accumulation; `1` = fully reactive. | `R8_UNORM`, render resolution. Optional for FSR4. | **CORROBORATED.** FSR4 marks it optional; common same-release guidance specifies `[0,1]`. |
-| `transparencyAndComposition` | Controls history protection/locking rather than simply accumulation weighting. Intended for content such as animated textures/reflections whose temporal behavior is poorly represented by ordinary geometry motion. | `R8_UNORM`, render resolution. Optional for FSR4. | **CORROBORATED.** |
+| `transparencyAndComposition` | Controls history protection/locking rather than simply accumulation weighting. Intended for content such as animated textures/reflections whose temporal behaviour is poorly represented by ordinary geometry motion. | `R8_UNORM`, render resolution. Optional for FSR4. | **CORROBORATED.** |
 | `output` | Current reconstructed image at presentation/upscale resolution. | Presentation resolution. Public FSR4 docs do **not** publish a format whitelist or alpha-preservation contract. | Dimensions **VERIFIED**; format/alpha **UNKNOWN**. |
 | `renderSize` | Active dimensions actually rendered this frame. Not synonymous with allocation extent or context maximum. | Per frame. Nonzero should be treated as required. | **VERIFIED.** Header explicitly defines it; general docs say render-resolution resources match actual rendering resolution. |
 | `upscaleSize` | Active output resolution this dispatch should produce. `{0,0}` means `maxUpscaleSize`. Exactly one zero dimension is nonsensical. | Per frame. | **VERIFIED/CORROBORATED.** |
@@ -33,13 +33,13 @@ Useful exact source pins: [ffx_upscale.h @ v2.3.0 commit](https://github.com/GPU
 | `cameraNear` | Geometric distance to near clipping plane, in application view-space units. | Positive scalar; per frame. | **VERIFIED** meaning; exact FSR4 validation range beyond normal camera validity is not published. |
 | `cameraFar` | Geometric far-plane distance. Reversed-Z is **not** signaled by swapping near/far; flags encode the convention. | Per frame. Infinite projection indicated separately by creation flag. | **CORROBORATED/INFERRED.** Same-tag reconstruction explicitly chooses transforms from flags and normalizes near/far ordering. |
 | `cameraFovAngleVertical` | Vertical perspective FOV, **radians**, not horizontal FOV or degrees. | Per frame. Same-tag validator expects `0 < FOV <= π`. | **VERIFIED** units/direction; validator evidence is FSR3 implementation. |
-| `viewSpaceToMetersFactor` | Multiplicative conversion from application's view-space unit to meters. If one view unit is one meter, pass `1.0`. | Per frame. | Meaning **VERIFIED**. Zero-default behavior **INFERRED only**: sample zero-initializes it while same-tag fallback maps nonpositive values to 1.0. Do not rely on this; explicitly pass a positive value. |
-| dispatch colorspace flags | With nonlinear-color context mode, `SRGB` or `PQ` describes the actual perceptual encoding. They are mutually exclusive. | Per dispatch. | **VERIFIED.** |
+| `viewSpaceToMetersFactor` | Multiplicative conversion from application's view-space unit to metres. If one view unit is one metre, pass `1.0`. | Per frame. | Meaning **VERIFIED**. Zero-default behaviour **INFERRED only**: sample zero-initializes it while same-tag fallback maps nonpositive values to 1.0. Do not rely on this; explicitly pass a positive value. |
+| dispatch colorspace flags | With nonlinear-colour context mode, `SRGB` or `PQ` describes the actual perceptual encoding. They are mutually exclusive. | Per dispatch. | **VERIFIED.** |
 | resource presence | At ABI level a missing resource is `FfxApiResource.resource == nullptr`; dimensions/format/state fields do not substitute for presence. | Resource descriptor. | **VERIFIED.** |
 
 There is no separate viewport or scissor rectangle in the upscaler dispatch API. Consequently FSR only knows the resource and `renderSize`; it cannot be told that valid rendering occupies an arbitrary nonzero-origin viewport. For M6, using a top-left `(0,0)` active image whose extent exactly equals `renderSize` avoids an otherwise undocumented assumption. **INFERRED.**
 
-There is also no published numerical minimum width/height in the FSR4.1.1 documentation. `renderSize==0` is not documented as a valid sentinel; the open FSR3 code happens to fall back to the color resource extent but simultaneously emits a diagnostic saying zero render dimensions are wrong. M6 should reject zero. **UNKNOWN for FSR4 implementation behavior; contract recommendation is nonzero.**
+There is also no published numerical minimum width/height in the FSR4.1.1 documentation. `renderSize==0` is not documented as a valid sentinel; the open FSR3 code happens to fall back to the colour resource extent but simultaneously emits a diagnostic saying zero render dimensions are wrong. M6 should reject zero. **UNKNOWN for FSR4 implementation behaviour; contract recommendation is nonzero.**
 
 Dynamic render-resolution changes are a supported use case, indicated by `FFX_UPSCALE_ENABLE_DYNAMIC_RESOLUTION`; AMD's sample sets it specifically for its DRS mode. Active dimensions still must remain inside the creation maxima. Resource/window resize in the official sample destroys and recreates the context and restarts the jitter index.
 
@@ -134,13 +134,13 @@ but it is internally consistent. Let the actual FSR-coordinate jitter be `d=(-qx
 
 which is exactly what Cauldron inserts into its projection matrix. The sample simply uses the negated Halton sequence. Therefore **do not copy the sample's negation as an API rule**; copy the invariant “dispatch the actual pixel jitter that your projection used.”
 
-Jitter applies to opaque, alpha-transparent and ray-traced rendering; depth and color consequently share the jittered sample location. Motion vectors normally remove it. A constant `(0,0)` sequence violates AMD's custom-sequence guidance and defeats the temporal subpixel sampling on which reconstruction depends.
+Jitter applies to opaque, alpha-transparent and ray-traced rendering; depth and colour consequently share the jittered sample location. Motion vectors normally remove it. A constant `(0,0)` sequence violates AMD's custom-sequence guidance and defeats the temporal subpixel sampling on which reconstruction depends.
 
 Preset sequence lengths are explicitly documented as 18/23/32/72 for Quality/Balanced/Performance/Ultra Performance. For arbitrary ratios the prose says `ceil(8*n²)`. There is a minor source inconsistency: the same-tag open implementation converts `8*(displayWidth/renderWidth)^2` to integer by truncation, which also explains the documented Balanced result of 23. The robust M6 rule is therefore: **query `ffxQueryDescUpscaleGetJitterPhaseCount`; do not reimplement the formula.**
 
 ## 4. Depth/camera contract
 
-Depth should be the render's normal **device depth value**, with the same jittered projection/sample location as color—not linear view-space Z. This is supported directly by the `[1..0]` reversed-depth description and by the open same-tag code reconstructing view-space depth from device depth using `cameraNear`, `cameraFar`, FOV and depth flags.
+Depth should be the render's normal **device depth value**, with the same jittered projection/sample location as colour—not linear view-space Z. This is supported directly by the `[1..0]` reversed-depth description and by the open same-tag code reconstructing view-space depth from device depth using `cameraNear`, `cameraFar`, FOV and depth flags.
 
 The four meaningful configurations are:
 
@@ -159,9 +159,9 @@ For infinite depth, the same-tag sample uses `FLT_MAX` as its finite approximati
 
 Orthographic-camera semantics are not documented for the upscaler. The interface supplies a perspective FOV and the open reconstruction explicitly uses `cot(FovY/2)`, so an orthographic projection should be considered **UNKNOWN/unsupported until empirically demonstrated**.
 
-## 5. Color/HDR/exposure contract
+## 5. Colour/HDR/exposure contract
 
-For the ordinary path, color is scene color **before the application's final tonemapper**, preferably linear. AMD's suggested pipeline puts SSR/SSAO/denoisers before FSR and film grain, chromatic aberration, vignette, tonemapping, bloom, DoF and motion blur after it. Alpha-blended scene geometry is not something to exclude from the scene color; AMD explicitly asks that alpha-blended objects participate in jitter and preferably motion-vector generation. UI/HUD alpha semantics are not part of the FSR color contract; composing UI after reconstruction is the least ambiguous M6 choice.
+For the ordinary path, colour is scene colour **before the application's final tonemapper**, preferably linear. AMD's suggested pipeline puts SSR/SSAO/denoisers before FSR and film grain, chromatic aberration, vignette, tonemapping, bloom, DoF and motion blur after it. Alpha-blended scene geometry is not something to exclude from the scene colour; AMD explicitly asks that alpha-blended objects participate in jitter and preferably motion-vector generation. UI/HUD alpha semantics are not part of the FSR colour contract; composing UI after reconstruction is the least ambiguous M6 choice.
 
 Let the engine's un-pre-exposed linear signal be \(C\), and suppose its render target contains
 
@@ -196,12 +196,12 @@ Reactive mask:
 - `1`: maximally reactive/current-frame weighted.
 - Typical high-reactivity content: fast alpha-blended particles/transparency, especially content without reliable depth/MVs.
 - Alpha used for transparency is a useful proxy; FSR3 general guidance recommends not routinely pushing values all the way to 1, suggesting ~0.9 as a practical upper value.
-- Helper generation is optional, not required; it compares opaque-only color against opaque+translucent color.
+- Helper generation is optional, not required; it compares opaque-only colour against opaque+translucent colour.
 
 Transparency/composition mask:
 - `R8_UNORM`, render resolution.
 - Also conceptually `[0,1]`.
-- It is not “another reactive mask”: it weakens/removes history-lock protection and luminance-instability behavior.
+- It is not “another reactive mask”: it weakens/removes history-lock protection and luminance-instability behaviour.
 - `0`: no additional lock modification.
 - `1`: remove that history lock completely.
 - Examples: ray-traced reflections, animated textures and other special composition whose shading changes are not explained by conventional geometry motion.
@@ -214,7 +214,7 @@ For the smallest FSR4 M6 experiment, omitting both masks is therefore valid. The
 
 The upscaler retains temporal state internally; there is **no application-supplied frame index** in `ffxDispatchDescUpscale`. Consecutive dispatches implicitly define consecutive reconstruction frames.
 
-Across frames, color, depth, MVs, jitter, camera data, pre-exposure/exposure and active dimensions must describe the same current frame. Motion vectors must describe precisely the interval from that frame to the immediately preceding upscaler input; depth and color must correspond to the same jittered projection. This follows from AMD's current-frame resource requirement and current→previous MV definition.
+Across frames, colour, depth, MVs, jitter, camera data, pre-exposure/exposure and active dimensions must describe the same current frame. Motion vectors must describe precisely the interval from that frame to the immediately preceding upscaler input; depth and colour must correspond to the same jittered projection. This follows from AMD's current-frame resource requirement and current→previous MV definition.
 
 `reset=true` means history prior to this dispatch is unusable. AMD explicitly prescribes it on the **first frame** of a discontinuous camera transformation. The sample combines its manual reset button with `WasCameraReset()` and clears its reset boolean after the dispatch, confirming one-frame pulse semantics.
 
@@ -241,7 +241,7 @@ The same-tag open implementation also internally treats first execution as accum
 
 **Masks — version distinction, not contradiction.** The FSR3 general guide strongly recommends masks; the FSR4-specific section explicitly says FSR4 no longer requires them. FSR4-specific text wins for FSR4 correctness.
 
-**`viewSpaceToMetersFactor` — underspecified sample behavior.** Header defines the factor but no default. The sample zero-initializes the dispatch and never assigns it; same-tag open FSR3 maps nonpositive values to 1. This strongly suggests “zero → default one” compatibility behavior, but that is not an explicit FSR4 API guarantee. M6 should write `1.0` explicitly when view units are meters.
+**`viewSpaceToMetersFactor` — underspecified sample behaviour.** Header defines the factor but no default. The sample zero-initializes the dispatch and never assigns it; same-tag open FSR3 maps nonpositive values to 1. This strongly suggests “zero → default one” compatibility behaviour, but that is not an explicit FSR4 API guarantee. M6 should write `1.0` explicitly when view units are metres.
 
 **Zero `renderSize` / zero `preExposure` — implementation fallback is not contract.** Open FSR3 contains fallback code for both, while its own debug checks call them erroneous. A safe wrapper should enforce the documented semantics rather than expose those accidents as features.
 
@@ -284,7 +284,7 @@ For raw D3D12 resources, Rust cannot verify that GPU writes have completed, that
 
 **Manual versus auto exposure.** With fixed scene luminance, compare auto-exposure/null texture against a fixed explicit `R32_FLOAT` exposure and matching later tonemapper. This validates the resource binding separately from pre-exposure.
 
-**Dimensions.** First establish the baseline with resources whose physical extents exactly equal render/output dimensions. Then deliberately lie about `renderSize` by a small amount. A poison-colored border outside the declared active area is useful for subsequent experiments with oversized allocations: any leakage proves an unsupported resource-extent assumption.
+**Dimensions.** First establish the baseline with resources whose physical extents exactly equal render/output dimensions. Then deliberately lie about `renderSize` by a small amount. A poison-coloured border outside the declared active area is useful for subsequent experiments with oversized allocations: any leakage proves an unsupported resource-extent assumption.
 
 **Reset.** Warm history on pattern A, instantaneously replace it with unrelated pattern B/camera pose, and compare reset false versus a one-frame reset pulse. The reset frame should contain no measurable A-history. Repeating reset for several frames can additionally quantify the cost/quality penalty and confirm it is intended as a pulse.
 
@@ -296,19 +296,19 @@ Use deterministic readback plus per-frame image-error metrics against an analyti
 
 ## 11. Unknowns that should remain explicit in M6
 
-1. **Exact FSR4 output-format whitelist.** The release says application-specified input color but does not publish a complete accepted output-format table. Use a format demonstrated by the native sample/runtime experiment rather than promising arbitrary DXGI formats.
+1. **Exact FSR4 output-format whitelist.** The release says application-specified input colour but does not publish a complete accepted output-format table. Use a format demonstrated by the native sample/runtime experiment rather than promising arbitrary DXGI formats.
 2. **Alpha preservation/meaning.** Not documented. Do not expose a guarantee.
-3. **Input/output aliasing.** No public semantic guarantee. The official sample explicitly copies color to a temporary texture “so that the input and output texture … is different.” M6 should require distinct resources until proven otherwise.
+3. **Input/output aliasing.** No public semantic guarantee. The official sample explicitly copies colour to a temporary texture “so that the input and output texture … is different.” M6 should require distinct resources until proven otherwise.
 4. **Oversized resource allocations with a smaller active `renderSize`.** The API conceptually separates extent from active size, but FSR4's signed implementation does not publicly define every cropping/origin rule. Exact matching is the conservative M6 contract.
 5. **Minimum dimensions.** No FSR4.1.1 minimum is documented.
 6. **Orthographic projections.** No documented contract.
 7. **Invalid/no-motion sentinel.** None documented.
-8. **Exact behavior for `frameTimeDelta=0`.** It violates intended elapsed-frame semantics, but FSR4's acceptance/error behavior is unpublished.
+8. **Exact behaviour for `frameTimeDelta=0`.** It violates intended elapsed-frame semantics, but FSR4's acceptance/error behaviour is unpublished.
 9. **History preservation across changing `upscaleSize`.** Dynamic render resolution is supported, but arbitrary per-frame presentation-resolution changes are not sufficiently documented. The sample recreates context on resource resize.
-10. **Exact FSR4 behavior for null exposure when AUTO_EXPOSURE is off, zero `viewSpaceToMetersFactor`, zero `renderSize`, etc.** Same-tag FSR3 has compatibility fallbacks, but they are not FSR4 guarantees.
+10. **Exact FSR4 behaviour for null exposure when AUTO_EXPOSURE is off, zero `viewSpaceToMetersFactor`, zero `renderSize`, etc.** Same-tag FSR3 has compatibility fallbacks, but they are not FSR4 guarantees.
 11. **Exact quantitative effect of optional masks in FSR4.** Their roles are defined through the common API/general guidance, but ML internals are signed-binary-only.
 
-For the **smallest defensible M6 DX12 path**, the evidence points to a deliberately narrow profile: fixed exact-match resource dimensions; distinct input/output textures; linear pre-tonemap scene color; `preExposure=1` unless the test renderer genuinely pre-exposes; auto exposure + null exposure resource; jittered device depth with explicitly matching depth flags; low-resolution jitter-free motion vectors stored as top-down UV displacement with `motionVectorScale=(renderWidth,renderHeight)` exactly like AMD's sample; queried Halton jitter with the identical pixel offset represented in rendering and dispatch; vertical FOV radians; positive explicit `viewSpaceToMetersFactor=1`; one-frame reset on initial dispatch/cuts; and no reactive/T&C masks for the first FSR4 reconstruction. That profile removes essentially every semantic ambiguity identified above while staying well short of an engine abstraction.
+For the **smallest defensible M6 DX12 path**, the evidence points to a deliberately narrow profile: fixed exact-match resource dimensions; distinct input/output textures; linear pre-tonemap scene colour; `preExposure=1` unless the test renderer genuinely pre-exposes; auto exposure + null exposure resource; jittered device depth with explicitly matching depth flags; low-resolution jitter-free motion vectors stored as top-down UV displacement with `motionVectorScale=(renderWidth,renderHeight)` exactly like AMD's sample; queried Halton jitter with the identical pixel offset represented in rendering and dispatch; vertical FOV radians; positive explicit `viewSpaceToMetersFactor=1`; one-frame reset on initial dispatch/cuts; and no reactive/T&C masks for the first FSR4 reconstruction. That profile removes essentially every semantic ambiguity identified above while staying well short of an engine abstraction.
 I embedded the citations inline, but I omitted a consolidated source list at the bottom. That was a miss. Here are the primary `v2.3.0` sources used:
 
 ### Sources
@@ -328,10 +328,10 @@ I embedded the citations inline, but I omitted a consolidated source list at the
 5. Cauldron DX12 GBuffer shader — authoritative sample-side motion-vector calculation, including NDC→top-down-UV conversion and jitter cancellation  
 [AMD FidelityFX SDK v2.3.0 — gbufferps.hlsl](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/Cauldron2/dx12/rendermodules/gbuffer/shaders/gbufferps.hlsl?utm_source=chatgpt.com)
 
-6. Same-tag open FSR3 implementation — validation, motion-vector scaling, depth reconstruction, first-frame/reset behavior; used only where FSR4 binary internals are unavailable  
+6. Same-tag open FSR3 implementation — validation, motion-vector scaling, depth reconstruction, first-frame/reset behaviour; used only where FSR4 binary internals are unavailable\
 [AMD FidelityFX SDK v2.3.0 — ffx_fsr3upscaler.cpp](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/FidelityFX/upscalers/fsr3/internal/ffx_fsr3upscaler.cpp?utm_source=chatgpt.com)
 
-7. Cauldron camera implementation — projection construction and infinite/reversed-Z behavior used by the official sample  
+7. Cauldron camera implementation — projection construction and infinite/reversed-Z behaviour used by the official sample\
 [AMD FidelityFX SDK v2.3.0 — cameracomponent.cpp](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/blob/60f4ea81909200d8542eca14dccb2628b763a9a3/Kits/Cauldron2/dx12/framework/core/components/cameracomponent.cpp?utm_source=chatgpt.com)
 
 8. FidelityFX API resource definitions — null resource representation and ABI resource structure  

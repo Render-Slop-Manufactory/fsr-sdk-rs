@@ -22,10 +22,10 @@ loader and upscaler DLLs, unchanged public M5 `Runtime::load` and
 320×180 → 640×360 five-texture synthetic input.
 
 The probe adds only test instrumentation: two test-build markers around the
-private native call in [`dispatch.rs`](../../../crates/fsr-sdk/src/upscaler/dispatch.rs),
+private native call in [`dispatch.rs`](../../../crates/fsr-sdk/src/upscaler/dx12/dispatch.rs),
 an optional control branch in [`m6.rs`](../../../crates/fsr-sdk/tests/native/dispatch_readback.rs)
 selected by `FSR_SDK_TEST_M6_CONTROL`, and a bounded
-[runner](../../../crates/fsr-sdk/tests/run-m6-gbv-spike.ps1). The control
+[runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk/tests/run-m6-gbv-spike.ps1.txt). The control
 still creates the signed provider context and checks all five DX12-to-FFX
 resource conversions. It omits `ffxDispatch`, closes/submits the same list,
 waits on its fence and reads the sentinel output. The dispatch case uses the
@@ -106,3 +106,8 @@ not establish a successful GBV-validated FSR dispatch. A later investigation
 would need a native stack/trace or a controlled driver/provider comparison if
 that distinction becomes necessary; this experiment does not broaden M6a or
 accept a public dispatch contract.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.

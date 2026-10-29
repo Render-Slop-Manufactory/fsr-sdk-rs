@@ -23,7 +23,7 @@ ffxCreateContextDescUpscale
   -> null
 ```
 
-The distinction throughout this record is between the public API contract, behavior visible in the open v2.3.0 implementation, and behavior of a signed/external provider selected by the shipped runtime.
+The distinction throughout this record is between the public API contract, behaviour visible in the open v2.3.0 implementation, and behaviour of a signed/external provider selected by the shipped runtime.
 
 ## Baseline supplied
 
@@ -64,7 +64,7 @@ That wording does **not** unambiguously define whether “pointers passed in des
 
 **`ffxOverrideVersion` lifetime — Verified.** The exact v2.3.0 API guide constructs `CreateContextDescOverrideVersion` and explicitly comments that its lifetime only “must last until after CreateContext call.” This is direct evidence that at least one creation-chain node may cease to exist immediately after context creation.
 
-The common implementation is consistent with that statement: `GetVersionOverride` synchronously traverses the chain before selecting a provider. However, source behavior alone would not establish the contractual lifetime because the selected provider still receives the original creation-chain head; the documentation's explicit lifetime statement is the stronger evidence.
+The common implementation is consistent with that statement: `GetVersionOverride` synchronously traverses the chain before selecting a provider. However, source behaviour alone would not establish the contractual lifetime because the selected provider still receives the original creation-chain head; the documentation's explicit lifetime statement is the stronger evidence.
 
 **Reconciliation — Unresolved at the generic level.** The evidence supports either of two narrower readings: descriptor-specific exceptions exist to the broad header sentence, or that sentence primarily concerns pointees/dependencies whose liveness extends into context operation rather than necessarily the storage containing every descriptor node. AMD does not state either reconciliation explicitly. Consequently, “all creation descriptor objects must remain allocated until destruction” is not a defensible universal v2.3.0 contract.
 
@@ -84,13 +84,13 @@ Upscale -> UpscaleVersion -> BackendDX12 -> null
 
 there is no source-supported rule reducing all three descriptor-node lifetimes to the `ffxOverrideVersion` rule. Conversely, the generic header wording cannot prove that all three node objects must survive until destroy. **The node-storage lifetime of `UpscaleVersion` and `BackendDX12`, as a public signed-provider contract, remains unresolved.**
 
-No public v2.3.0 taxonomy was found distinguishing “selection-only extension descriptors” from “persistent-dependency descriptors”. Such a distinction is visible in implementation behavior, but AMD does not formalize it as a generic API rule.
+No public v2.3.0 taxonomy was found distinguishing “selection-only extension descriptors” from “persistent-dependency descriptors”. Such a distinction is visible in implementation behaviour, but AMD does not formalize it as a generic API rule.
 
 ### Message callback lifetime and threading
 
 **Public surface — Verified.** `ffxCreateContextDescUpscale::fpMessage` is documented only as a function that may receive runtime messages and “may be null”. Its type is `void (*)(uint32_t, const wchar_t*)`; there is no userdata pointer.
 
-The FSR4 v2.3.0 documentation says the debug checker validates application inputs “at dispatch upscale” and that an application can assign `fpMessage` to receive those messages. This is an **Upstream claim** describing shipped-runtime behavior, not an independently reproduced result here. It does not specify callback lifetime, thread identity, serialization, reentrancy, or asynchronous execution.
+The FSR4 v2.3.0 documentation says the debug checker validates application inputs “at dispatch upscale” and that an application can assign `fpMessage` to receive those messages. This is an **Upstream claim** describing shipped-runtime behaviour, not an independently reproduced result here. It does not specify callback lifetime, thread identity, serialization, reentrancy, or asynchronous execution.
 
 **Open FSR2/FSR3 storage — Verified implementation fact.** Both providers copy `desc->fpMessage` into persistent provider-context state. They also pass it into their legacy implementation's creation description and, after creation, install it using `ffxFsr2SetGlobalDebugMessage` / `ffxFsr3UpscalerSetGlobalDebugMessage`.
 
@@ -98,7 +98,7 @@ The important refinement is that those setters feed a **module-global** callback
 
 **Invocation path — Verified for the open providers.** FSR2 and FSR3 debug-check dispatch code synchronously executes validation and directly reaches `FFX_PRINT_MESSAGE`; the common message function then directly calls the callback. For that path, callback execution occurs on the CPU thread executing that call stack; there is no worker-thread handoff in the inspected message path. This is an implementation/control-flow fact, not a public calling-thread guarantee.
 
-The inspected open provider routines establish the following operation-level behavior:
+The inspected open provider routines establish the following operation-level behaviour:
 
 - **Create:** stores/passes/installs the callback. No direct invocation by the provider wrapper itself was found.
 - **Configure:** `GLOBALDEBUG1` can replace the global callback and the per-context copy. The common API also supports global debug configuration independently of an effect context.
@@ -110,7 +110,7 @@ The last point prevents treating context destruction as a demonstrated callback-
 
 Because `s_messageCallback` is global, any source path in that module reaching `ffxPrintMessage` while that pointer is installed can potentially invoke it. Thus the implementation structure itself is broader than a purely per-context callback model.
 
-**Asynchrony/threading — Unresolved publicly.** No v2.3.0 upscaler/common API documentation inspected provides a calling-thread guarantee or states that callback calls are serialized. Keyword inspection found no `thread` wording in `ffx_api.h`, `ffx-api.md`, `ffx_upscale.h`, or the FSR4 Super Resolution document. The open FSR2/FSR3 debug path is synchronous, but that cannot establish behavior of an external/signed provider.
+**Asynchrony/threading — Unresolved publicly.** No v2.3.0 upscaler/common API documentation inspected provides a calling-thread guarantee or states that callback calls are serialized. Keyword inspection found no `thread` wording in `ffx_api.h`, `ffx-api.md`, `ffx_upscale.h`, or the FSR4 Super Resolution document. The open FSR2/FSR3 debug path is synchronous, but that cannot establish behaviour of an external/signed provider.
 
 **Concurrent callback execution — Unresolved as a contract.** The open global callback machinery supplies no internal serialization. If independently permissible calling paths reached `ffxPrintMessage` concurrently, nothing in that code would serialize callback entry; concurrent mutation of the global callback/debug-level variables is likewise not protected. Whether those higher-level calls themselves are permitted concurrently is not documented, so this cannot be promoted to a public concurrency rule.
 
@@ -132,9 +132,9 @@ This establishes an implementation fact, not a public ownership guarantee.
 
 The precise lifetime unit is also narrower than “one AddRef per FidelityFX context”: the retained COM reference belongs to a `BackendContext_DX12` scratch/backend-interface instance and is shared across the effect backend contexts represented by that backend's internal `refCount`. The open FSR2 provider asks for a backend capable of `FFX_FSR2_CONTEXT_COUNT` effect contexts, whereas the FSR3 upscaler provider asks for one.
 
-Both open legacy upscaler providers therefore obtain the retention behavior by passing through the common open DX12 backend. This does **not** prove that a signed/external upscaler provider uses that backend implementation internally.
+Both open legacy upscaler providers therefore obtain the retention behaviour by passing through the common open DX12 backend. This does **not** prove that a signed/external upscaler provider uses that backend implementation internally.
 
-The provider framework explicitly constructs/checks an external DX12 provider and can select it instead of an internal provider. FSR v2.3.0 documentation further describes the upscaler DLL as containing FSR4 plus legacy FSR3/FSR2 providers. Consequently, open-backend `AddRef` behavior cannot establish COM behavior of the signed 4.1.1 provider path.
+The provider framework explicitly constructs/checks an external DX12 provider and can select it instead of an internal provider. FSR v2.3.0 documentation further describes the upscaler DLL as containing FSR4 plus legacy FSR3/FSR2 providers. Consequently, open-backend `AddRef` behaviour cannot establish COM behaviour of the signed 4.1.1 provider path.
 
 The resulting distinctions are:
 
@@ -174,10 +174,10 @@ Therefore absence of equivalent Upscaling wording must remain exactly that: **ab
 | Every `pNext` node survives to destroy? | Not established; version override is explicit counterexample to a universal rule. | No retained chain addresses found in inspected FSR2/3+DX12 path. | Cannot infer from legacy providers. | **Unresolved generally** |
 | `ffxOverrideVersion` node | Explicitly needs to survive only through `CreateContext`. | Read synchronously during provider selection. | Public tagged documentation applies. | **Verified** |
 | `UpscaleVersion` node | Required in chain for FSR4 compatibility; no lifetime stated. | Legacy open provider path does not establish FSR4 handling. | Signed provider is the material consumer. | **Unresolved** |
-| `BackendDX12` node storage | No node-storage-specific lifetime rule found. | Traversed synchronously; address not retained by common open DX12 wrapper. | External provider behavior not established. | **Unresolved contract / Verified open behavior** |
+| `BackendDX12` node storage | No node-storage-specific lifetime rule found. | Traversed synchronously; address not retained by common open DX12 wrapper. | External provider behaviour not established. | **Unresolved contract / Verified open behaviour** |
 | `fpMessage` nullability | May be null. | Null uses debugger-output branch in common legacy message path. | Signed provider must accept null under public API. | **Verified** |
 | `fpMessage` persistence | No stated lifetime bound. | Copied per-context **and** installed module-globally; destroy does not clear it. | Cannot assume same representation externally. | **Unresolved contract / Verified implementation** |
-| Message callback dispatch execution | FSR4 docs say debug checker operates at upscale dispatch. | Direct dispatch → debug check → message → callback call. | Documentation describes shipped runtime behavior but not threading. | **Upstream claim + Verified legacy control flow** |
+| Message callback dispatch execution | FSR4 docs say debug checker operates at upscale dispatch. | Direct dispatch → debug check → message → callback call. | Documentation describes shipped runtime behaviour but not threading. | **Upstream claim + Verified legacy control flow** |
 | Message callback thread/concurrency | No guarantee found. | Direct synchronous legacy path; global callback state unsynchronized. | Opaque provider may differ. | **Unresolved contract** |
 | DX12 COM retention | No AddRef/ownership promise or immediate-release permission found. | First backend effect context `AddRef`s device; last releases it. | Cannot be projected onto external provider. | **Verified implementation / Unresolved public guarantee** |
 | Device lifetime | Generic pointer-liveness wording is relevant. | Backend holds a COM reference while its backend refcount is nonzero. | External implementation unknown. | **Inference for application-facing liveness** |
@@ -195,7 +195,7 @@ Therefore absence of equivalent Upscaling wording must remain exactly that: **ab
 - Open FSR2 and FSR3 providers copy `fpMessage` into persistent provider state.
 - The open DX12 backend retains the D3D12 device with `AddRef` and releases it when its final backend effect context disappears.
 - No general upscaler CPU concurrency guarantee was identified.
-- The external-provider boundary is source-visible and materially prevents treating legacy open-provider details as universal behavior.
+- The external-provider boundary is source-visible and materially prevents treating legacy open-provider details as universal behaviour.
 
 ### Refined
 
@@ -216,8 +216,8 @@ No supplied conservative Rust ownership choice is contradicted here because thos
 
 - Lifetime of the concrete `ffxCreateContextDescUpscaleVersion` node after successful creation.
 - Lifetime of the concrete `ffxCreateBackendDX12Desc` **node storage**, distinct from the device it references.
-- COM-retention behavior of the signed FSR 4.1.1 provider.
-- Calling thread, asynchronous behavior, or callback concurrency of the signed provider.
+- COM-retention behaviour of the signed FSR 4.1.1 provider.
+- Calling thread, asynchronous behaviour, or callback concurrency of the signed provider.
 - Same-context and cross-context CPU concurrency guarantees for upscaling.
 - Thread safety of provider enumeration/selection as a public guarantee.
 
@@ -235,7 +235,7 @@ These are unresolved because the tagged public contract does not answer them and
 ## Experiment-only follow-up
 
 - **Descriptor retention probe:** create the signed 4.1.1 context with separately allocated descriptor nodes, then make selected node storage inaccessible after successful creation while keeping referenced resources such as the D3D12 device valid; exercise query/configure/dispatch/destroy. A resulting access would demonstrate post-create retention for that exact provider/path. No access would **not** establish a contractual call-only lifetime or prove all paths safe.
-- **Device COM-retention observation:** create with the signed provider, relinquish the application's reference under a controlled COM/debug-layer instrumentation setup, then exercise and destroy the context while observing object lifetime. This could establish observed retention/liveness for that binary and environment; it could not turn that behavior into an AMD public guarantee.
+- **Device COM-retention observation:** create with the signed provider, relinquish the application's reference under a controlled COM/debug-layer instrumentation setup, then exercise and destroy the context while observing object lifetime. This could establish observed retention/liveness for that binary and environment; it could not turn that behaviour into an AMD public guarantee.
 - **Callback execution tracing:** provide a callback recording thread IDs, nesting/reentrancy and the surrounding API phase while exercising create/configure/query/dispatch/destroy from controlled threads. This could characterize the tested binary; it could not establish a portable contract.
 - **Concurrency stress/instrumentation:** deliberately overlap same-context and separate-context operations while using sanitizing/debug instrumentation where available. A reproducible race/failure could falsify safety for the tested binary/usage; successful tests cannot prove thread safety or create a contractual guarantee.
 
@@ -243,7 +243,7 @@ No experiment can resolve the documentary question “what does AMD guarantee”
 
 ## Research implications
 
-The evidence permits a later wrapper-design review to distinguish sharply between **documented liveness obligations**, **legacy open-source retention behavior**, and **opaque-provider behavior**.
+The evidence permits a later wrapper-design review to distinguish sharply between **documented liveness obligations**, **legacy open-source retention behaviour**, and **opaque-provider behaviour**.
 
 Descriptor lifetime cannot be reduced to one universal rule from v2.3.0 evidence: `ffxOverrideVersion` is explicitly call-scoped, while no equivalent lifetime statement exists for `UpscaleVersion` or `BackendDX12` node storage. Retaining those nodes longer may be a wrapper policy, but cannot be described as a demonstrated AMD requirement for every node.
 

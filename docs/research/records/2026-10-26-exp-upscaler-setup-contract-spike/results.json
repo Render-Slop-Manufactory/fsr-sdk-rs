@@ -1,0 +1,1234 @@
+[
+  {
+    "case": "lockfile",
+    "command": [
+      "cargo",
+      "generate-lockfile",
+      "--offline"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-toolchain",
+    "command": [
+      "rustc",
+      "+stable",
+      "-Vv"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-library-portable",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "fsr-sdk",
+      "--no-default-features",
+      "--offline",
+      "--locked"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-library-dx12",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "fsr-sdk",
+      "--no-default-features",
+      "--offline",
+      "--locked",
+      "--features",
+      "dx12"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-library-dx12-movable",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "fsr-sdk",
+      "--no-default-features",
+      "--offline",
+      "--locked",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-controlled",
+    "command": [
+      "cargo",
+      "+stable",
+      "test",
+      "-p",
+      "fsr-sdk",
+      "--lib",
+      "--features",
+      "movable",
+      "--offline",
+      "--locked",
+      "setup_spike",
+      "--",
+      "--nocapture"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-portable-test",
+    "command": [
+      "cargo",
+      "+stable",
+      "test",
+      "-p",
+      "fsr-sdk",
+      "--lib",
+      "--no-default-features",
+      "--offline",
+      "--locked",
+      "setup_spike"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-clippy",
+    "command": [
+      "cargo",
+      "+stable",
+      "clippy",
+      "-p",
+      "fsr-sdk",
+      "--lib",
+      "--features",
+      "movable",
+      "--offline",
+      "--locked",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-portable",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "portable",
+      "--offline",
+      "--locked",
+      "--message-format=json"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-simple",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "simple",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-planning",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "planning",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-recording",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "recording",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-movable_traits",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_traits",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-setup_requires_unsafe",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "setup_requires_unsafe",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0133",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-load_requires_unsafe",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "load_requires_unsafe",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0133",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-loaded_runtime_has_no_query",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "loaded_runtime_has_no_query",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0599",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-legacy_constructor_cannot_take_loaded_runtime",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "legacy_constructor_cannot_take_loaded_runtime",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0308",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-configuration_has_no_provider",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "configuration_has_no_provider",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0599",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-private_state",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "private_state",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0616",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-two_live_setups",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "two_live_setups",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0499",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-resource_borrow_cannot_escape",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "resource_borrow_cannot_escape",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0515",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-local_runtime_send",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_runtime_send",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-local_context_send",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_context_send",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-local_setup_send",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_setup_send",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-local_runtime_sync",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_runtime_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-local_context_sync",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_context_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-local_setup_sync",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_setup_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-movable_runtime_sync",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_runtime_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-movable_context_sync",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_context_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-movable_setup_sync",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_setup_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-callbacks_require_unsafe",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "callbacks_require_unsafe",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0133",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-movable_setup_requires_unsafe",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_setup_requires_unsafe",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0133",
+    "passed": true
+  },
+  {
+    "case": "stable-consumer-setup_cannot_escape_runtime",
+    "command": [
+      "cargo",
+      "+stable",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "setup_cannot_escape_runtime",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0515",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-toolchain",
+    "command": [
+      "rustc",
+      "+1.88.0",
+      "-Vv"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-library-portable",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "fsr-sdk",
+      "--no-default-features",
+      "--offline",
+      "--locked"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-library-dx12",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "fsr-sdk",
+      "--no-default-features",
+      "--offline",
+      "--locked",
+      "--features",
+      "dx12"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-library-dx12-movable",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "fsr-sdk",
+      "--no-default-features",
+      "--offline",
+      "--locked",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-controlled",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "-p",
+      "fsr-sdk",
+      "--lib",
+      "--features",
+      "movable",
+      "--offline",
+      "--locked",
+      "setup_spike",
+      "--",
+      "--nocapture"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-portable-test",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "-p",
+      "fsr-sdk",
+      "--lib",
+      "--no-default-features",
+      "--offline",
+      "--locked",
+      "setup_spike"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-portable",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "portable",
+      "--offline",
+      "--locked",
+      "--message-format=json"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-simple",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "simple",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-planning",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "planning",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-recording",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "recording",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-movable_traits",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_traits",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 0,
+    "expected_diagnostic": null,
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-setup_requires_unsafe",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "setup_requires_unsafe",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0133",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-load_requires_unsafe",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "load_requires_unsafe",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0133",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-loaded_runtime_has_no_query",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "loaded_runtime_has_no_query",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0599",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-legacy_constructor_cannot_take_loaded_runtime",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "legacy_constructor_cannot_take_loaded_runtime",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0308",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-configuration_has_no_provider",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "configuration_has_no_provider",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0599",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-private_state",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "private_state",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0616",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-two_live_setups",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "two_live_setups",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0499",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-resource_borrow_cannot_escape",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "resource_borrow_cannot_escape",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0515",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-local_runtime_send",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_runtime_send",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-local_context_send",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_context_send",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-local_setup_send",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_setup_send",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-local_runtime_sync",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_runtime_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-local_context_sync",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_context_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-local_setup_sync",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "local_setup_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-movable_runtime_sync",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_runtime_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-movable_context_sync",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_context_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-movable_setup_sync",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_setup_sync",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0277",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-callbacks_require_unsafe",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "callbacks_require_unsafe",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0133",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-movable_setup_requires_unsafe",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "movable_setup_requires_unsafe",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0133",
+    "passed": true
+  },
+  {
+    "case": "1.88.0-consumer-setup_cannot_escape_runtime",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "-p",
+      "setup-spike-consumer",
+      "--bin",
+      "setup_cannot_escape_runtime",
+      "--offline",
+      "--locked",
+      "--message-format=json",
+      "--features",
+      "dx12,movable"
+    ],
+    "exit": 101,
+    "expected_diagnostic": "E0515",
+    "passed": true
+  }
+]

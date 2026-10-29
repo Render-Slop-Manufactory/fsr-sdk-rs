@@ -1,0 +1,1002 @@
+{
+  "automatic-linear": {
+    "specification": {
+      "encoding": "linear",
+      "hint": "linear",
+      "packing": "linear-before-encode",
+      "automatic": true,
+      "phase": "exposure",
+      "name": "automatic-linear",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001220703125,
+        0.00034302812281664097,
+        0.0005102080058276282
+      ],
+      [
+        0.0001220703125,
+        0.00034302812281664097,
+        0.0005102080058276282
+      ],
+      [
+        0.0001220703125,
+        0.00034302812281664097,
+        0.0005102080058276282
+      ]
+    ],
+    "output_triplets": [
+      [
+        "18df026a2510f8166dc058ab23f98f1eacf742f76ff7f2b45da45ab740001ab5",
+        "717b56f09cd7bb7b9c0f3932725939f095f9767a1ff7898cb8b84a6b651f150b",
+        "5e8fec695f825e3c5b988938b78b4433c7bde3dbd8dcada3090e31eead16853e"
+      ],
+      [
+        "18df026a2510f8166dc058ab23f98f1eacf742f76ff7f2b45da45ab740001ab5",
+        "717b56f09cd7bb7b9c0f3932725939f095f9767a1ff7898cb8b84a6b651f150b",
+        "5e8fec695f825e3c5b988938b78b4433c7bde3dbd8dcada3090e31eead16853e"
+      ],
+      [
+        "18df026a2510f8166dc058ab23f98f1eacf742f76ff7f2b45da45ab740001ab5",
+        "717b56f09cd7bb7b9c0f3932725939f095f9767a1ff7898cb8b84a6b651f150b",
+        "5e8fec695f825e3c5b988938b78b4433c7bde3dbd8dcada3090e31eead16853e"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/automatic-linear.json"
+  },
+  "automatic-pq": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "linear-before-encode",
+      "automatic": true,
+      "phase": "exposure",
+      "name": "automatic-pq",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00024303963513877536,
+        0.0002442026525978358,
+        0.00024708693589620134
+      ],
+      [
+        0.00024303963513877536,
+        0.0002442026525978358,
+        0.00024708693589620134
+      ],
+      [
+        0.00024303963513877536,
+        0.0002442026525978358,
+        0.00024708693589620134
+      ]
+    ],
+    "output_triplets": [
+      [
+        "8b53bb48125e3bba1f4859e3c06f339955d577d87fa33a3096171d0e3ba7ab66",
+        "4ad437c46de3c028cd620a4501cf7450f5eba0689dee45d44723a70cbf352203",
+        "b1418b62c12b4adbf7eacffedb7f5f6d6c29097cadcae81b0c1bfae61358ecf7"
+      ],
+      [
+        "8b53bb48125e3bba1f4859e3c06f339955d577d87fa33a3096171d0e3ba7ab66",
+        "4ad437c46de3c028cd620a4501cf7450f5eba0689dee45d44723a70cbf352203",
+        "b1418b62c12b4adbf7eacffedb7f5f6d6c29097cadcae81b0c1bfae61358ecf7"
+      ],
+      [
+        "8b53bb48125e3bba1f4859e3c06f339955d577d87fa33a3096171d0e3ba7ab66",
+        "4ad437c46de3c028cd620a4501cf7450f5eba0689dee45d44723a70cbf352203",
+        "b1418b62c12b4adbf7eacffedb7f5f6d6c29097cadcae81b0c1bfae61358ecf7"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/automatic-pq.json"
+  },
+  "automatic-srgb": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "linear-before-encode",
+      "automatic": true,
+      "phase": "exposure",
+      "name": "automatic-srgb",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.000244140625,
+        0.00030460202597021313,
+        0.0003599616570201247
+      ],
+      [
+        0.000244140625,
+        0.00030460202597021313,
+        0.0003599616570201247
+      ],
+      [
+        0.000244140625,
+        0.00030460202597021313,
+        0.0003599616570201247
+      ]
+    ],
+    "output_triplets": [
+      [
+        "95128b29c881bc2c4fe242d3189b3c1fa8787a37864ae61d58a3091955cbec49",
+        "03819b92c05467d50c91e22623572b8150f8a7a998b3e6d822d08200f0b1fae3",
+        "e55a72c99f2406456d5ff0b1eb6ee3fe46fc343ea87f4a0245900a85cf504e6f"
+      ],
+      [
+        "95128b29c881bc2c4fe242d3189b3c1fa8787a37864ae61d58a3091955cbec49",
+        "03819b92c05467d50c91e22623572b8150f8a7a998b3e6d822d08200f0b1fae3",
+        "e55a72c99f2406456d5ff0b1eb6ee3fe46fc343ea87f4a0245900a85cf504e6f"
+      ],
+      [
+        "95128b29c881bc2c4fe242d3189b3c1fa8787a37864ae61d58a3091955cbec49",
+        "03819b92c05467d50c91e22623572b8150f8a7a998b3e6d822d08200f0b1fae3",
+        "e55a72c99f2406456d5ff0b1eb6ee3fe46fc343ea87f4a0245900a85cf504e6f"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/automatic-srgb.json"
+  },
+  "exposure-linear": {
+    "specification": {
+      "encoding": "linear",
+      "hint": "linear",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "exposure",
+      "name": "exposure-linear",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        0.25,
+        1,
+        4
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001220703125,
+        0.0001271565755208287,
+        0.0005732823193558001
+      ],
+      [
+        0.0001220703125,
+        0.0001271565755208287,
+        0.0005732823193558001
+      ],
+      [
+        0.0001220703125,
+        0.0001271565755208287,
+        0.0005732823193558001
+      ]
+    ],
+    "output_triplets": [
+      [
+        "60524e644e27ea7c896df4d5453cad36a2e0a676e4a3b1a5c469c2b798862aa4",
+        "c3d99b94f8206d64d86dd923fe043a592994466b2db62b3a71eff261de831050",
+        "4bec61fbcaa37c07a85284b77d4960c8958d0d93113066abefddb31410f7a05a"
+      ],
+      [
+        "60524e644e27ea7c896df4d5453cad36a2e0a676e4a3b1a5c469c2b798862aa4",
+        "c3d99b94f8206d64d86dd923fe043a592994466b2db62b3a71eff261de831050",
+        "4bec61fbcaa37c07a85284b77d4960c8958d0d93113066abefddb31410f7a05a"
+      ],
+      [
+        "60524e644e27ea7c896df4d5453cad36a2e0a676e4a3b1a5c469c2b798862aa4",
+        "c3d99b94f8206d64d86dd923fe043a592994466b2db62b3a71eff261de831050",
+        "4bec61fbcaa37c07a85284b77d4960c8958d0d93113066abefddb31410f7a05a"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/exposure-linear.json"
+  },
+  "exposure-pq": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "exposure",
+      "name": "exposure-pq",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        0.25,
+        1,
+        4
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00024303963513877536,
+        0.0002442026525978358,
+        0.00024708693589620134
+      ],
+      [
+        0.00024303963513877536,
+        0.0002442026525978358,
+        0.00024708693589620134
+      ],
+      [
+        0.00024303963513877536,
+        0.0002442026525978358,
+        0.00024708693589620134
+      ]
+    ],
+    "output_triplets": [
+      [
+        "8b53bb48125e3bba1f4859e3c06f339955d577d87fa33a3096171d0e3ba7ab66",
+        "4ad437c46de3c028cd620a4501cf7450f5eba0689dee45d44723a70cbf352203",
+        "b1418b62c12b4adbf7eacffedb7f5f6d6c29097cadcae81b0c1bfae61358ecf7"
+      ],
+      [
+        "8b53bb48125e3bba1f4859e3c06f339955d577d87fa33a3096171d0e3ba7ab66",
+        "4ad437c46de3c028cd620a4501cf7450f5eba0689dee45d44723a70cbf352203",
+        "b1418b62c12b4adbf7eacffedb7f5f6d6c29097cadcae81b0c1bfae61358ecf7"
+      ],
+      [
+        "8b53bb48125e3bba1f4859e3c06f339955d577d87fa33a3096171d0e3ba7ab66",
+        "4ad437c46de3c028cd620a4501cf7450f5eba0689dee45d44723a70cbf352203",
+        "b1418b62c12b4adbf7eacffedb7f5f6d6c29097cadcae81b0c1bfae61358ecf7"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/exposure-pq.json"
+  },
+  "exposure-srgb": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "exposure",
+      "name": "exposure-srgb",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        0.25,
+        1,
+        4
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.000244140625,
+        0.00030460202597021313,
+        0.0003599616570201247
+      ],
+      [
+        0.000244140625,
+        0.00030460202597021313,
+        0.0003599616570201247
+      ],
+      [
+        0.000244140625,
+        0.00030460202597021313,
+        0.0003599616570201247
+      ]
+    ],
+    "output_triplets": [
+      [
+        "95128b29c881bc2c4fe242d3189b3c1fa8787a37864ae61d58a3091955cbec49",
+        "03819b92c05467d50c91e22623572b8150f8a7a998b3e6d822d08200f0b1fae3",
+        "e55a72c99f2406456d5ff0b1eb6ee3fe46fc343ea87f4a0245900a85cf504e6f"
+      ],
+      [
+        "95128b29c881bc2c4fe242d3189b3c1fa8787a37864ae61d58a3091955cbec49",
+        "03819b92c05467d50c91e22623572b8150f8a7a998b3e6d822d08200f0b1fae3",
+        "e55a72c99f2406456d5ff0b1eb6ee3fe46fc343ea87f4a0245900a85cf504e6f"
+      ],
+      [
+        "95128b29c881bc2c4fe242d3189b3c1fa8787a37864ae61d58a3091955cbec49",
+        "03819b92c05467d50c91e22623572b8150f8a7a998b3e6d822d08200f0b1fae3",
+        "e55a72c99f2406456d5ff0b1eb6ee3fe46fc343ea87f4a0245900a85cf504e6f"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/exposure-srgb.json"
+  },
+  "neutral-linear": {
+    "specification": {
+      "name": "neutral-linear",
+      "encoding": "linear",
+      "hint": "linear",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "neutral"
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001220703125,
+        0.00016531130162680818,
+        0.0002377440289753341
+      ],
+      [
+        0.0001220703125,
+        0.00016531130162680818,
+        0.0002377440289753341
+      ],
+      [
+        0.0001220703125,
+        0.00016531130162680818,
+        0.0002377440289753341
+      ]
+    ],
+    "output_triplets": [
+      [
+        "6531ce5d7905b5d0eb439a4f7511a6ebfa5515cd2b3771a3db610a979eb6370d",
+        "77cf3a6cb816b2c46357b3a9605ea03a68df40a2173f565409aad0e9d7415688",
+        "85d6d5f0c6b302ba8002669e87379edc1e55158a77b6e8b3e543a38fa1d58f5f"
+      ],
+      [
+        "6531ce5d7905b5d0eb439a4f7511a6ebfa5515cd2b3771a3db610a979eb6370d",
+        "77cf3a6cb816b2c46357b3a9605ea03a68df40a2173f565409aad0e9d7415688",
+        "85d6d5f0c6b302ba8002669e87379edc1e55158a77b6e8b3e543a38fa1d58f5f"
+      ],
+      [
+        "6531ce5d7905b5d0eb439a4f7511a6ebfa5515cd2b3771a3db610a979eb6370d",
+        "77cf3a6cb816b2c46357b3a9605ea03a68df40a2173f565409aad0e9d7415688",
+        "85d6d5f0c6b302ba8002669e87379edc1e55158a77b6e8b3e543a38fa1d58f5f"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/neutral-linear.json"
+  },
+  "neutral-pq": {
+    "specification": {
+      "name": "neutral-pq",
+      "encoding": "pq",
+      "hint": "pq",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "neutral"
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00024303963513877536,
+        0.0002442026525978358,
+        0.00024708693589620134
+      ],
+      [
+        0.00024303963513877536,
+        0.0002442026525978358,
+        0.00024708693589620134
+      ],
+      [
+        0.00024303963513877536,
+        0.0002442026525978358,
+        0.00024708693589620134
+      ]
+    ],
+    "output_triplets": [
+      [
+        "8b53bb48125e3bba1f4859e3c06f339955d577d87fa33a3096171d0e3ba7ab66",
+        "4ad437c46de3c028cd620a4501cf7450f5eba0689dee45d44723a70cbf352203",
+        "b1418b62c12b4adbf7eacffedb7f5f6d6c29097cadcae81b0c1bfae61358ecf7"
+      ],
+      [
+        "8b53bb48125e3bba1f4859e3c06f339955d577d87fa33a3096171d0e3ba7ab66",
+        "4ad437c46de3c028cd620a4501cf7450f5eba0689dee45d44723a70cbf352203",
+        "b1418b62c12b4adbf7eacffedb7f5f6d6c29097cadcae81b0c1bfae61358ecf7"
+      ],
+      [
+        "8b53bb48125e3bba1f4859e3c06f339955d577d87fa33a3096171d0e3ba7ab66",
+        "4ad437c46de3c028cd620a4501cf7450f5eba0689dee45d44723a70cbf352203",
+        "b1418b62c12b4adbf7eacffedb7f5f6d6c29097cadcae81b0c1bfae61358ecf7"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/neutral-pq.json"
+  },
+  "neutral-pq-unspecified": {
+    "specification": {
+      "name": "neutral-pq-unspecified",
+      "encoding": "pq",
+      "hint": "unspecified",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "neutral"
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00011941863269337993,
+        0.00014965708662822985,
+        0.00015789125023818462
+      ],
+      [
+        0.00011941863269337993,
+        0.00014965708662822985,
+        0.00015789125023818462
+      ],
+      [
+        0.00011941863269337993,
+        0.00014965708662822985,
+        0.00015789125023818462
+      ]
+    ],
+    "output_triplets": [
+      [
+        "28d2d8eb418137a39ea755a234ad712def91d7e5f3e0ca9b737fbee4d4fa6ad5",
+        "f5a49312f3dcce191c254a0028fa03f1c968ce3d233bc85ebd931eb0aa599d51",
+        "afb7be775311b1f4ae5bf07c461b22aa6e3154491b5a6dc83b0655e901d269cb"
+      ],
+      [
+        "28d2d8eb418137a39ea755a234ad712def91d7e5f3e0ca9b737fbee4d4fa6ad5",
+        "f5a49312f3dcce191c254a0028fa03f1c968ce3d233bc85ebd931eb0aa599d51",
+        "afb7be775311b1f4ae5bf07c461b22aa6e3154491b5a6dc83b0655e901d269cb"
+      ],
+      [
+        "28d2d8eb418137a39ea755a234ad712def91d7e5f3e0ca9b737fbee4d4fa6ad5",
+        "f5a49312f3dcce191c254a0028fa03f1c968ce3d233bc85ebd931eb0aa599d51",
+        "afb7be775311b1f4ae5bf07c461b22aa6e3154491b5a6dc83b0655e901d269cb"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/neutral-pq-unspecified.json"
+  },
+  "neutral-srgb": {
+    "specification": {
+      "name": "neutral-srgb",
+      "encoding": "srgb",
+      "hint": "srgb",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "neutral"
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.000244140625,
+        0.00030460202597021313,
+        0.0003599616570201247
+      ],
+      [
+        0.000244140625,
+        0.00030460202597021313,
+        0.0003599616570201247
+      ],
+      [
+        0.000244140625,
+        0.00030460202597021313,
+        0.0003599616570201247
+      ]
+    ],
+    "output_triplets": [
+      [
+        "95128b29c881bc2c4fe242d3189b3c1fa8787a37864ae61d58a3091955cbec49",
+        "03819b92c05467d50c91e22623572b8150f8a7a998b3e6d822d08200f0b1fae3",
+        "e55a72c99f2406456d5ff0b1eb6ee3fe46fc343ea87f4a0245900a85cf504e6f"
+      ],
+      [
+        "95128b29c881bc2c4fe242d3189b3c1fa8787a37864ae61d58a3091955cbec49",
+        "03819b92c05467d50c91e22623572b8150f8a7a998b3e6d822d08200f0b1fae3",
+        "e55a72c99f2406456d5ff0b1eb6ee3fe46fc343ea87f4a0245900a85cf504e6f"
+      ],
+      [
+        "95128b29c881bc2c4fe242d3189b3c1fa8787a37864ae61d58a3091955cbec49",
+        "03819b92c05467d50c91e22623572b8150f8a7a998b3e6d822d08200f0b1fae3",
+        "e55a72c99f2406456d5ff0b1eb6ee3fe46fc343ea87f4a0245900a85cf504e6f"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/neutral-srgb.json"
+  },
+  "neutral-srgb-unspecified": {
+    "specification": {
+      "name": "neutral-srgb-unspecified",
+      "encoding": "srgb",
+      "hint": "unspecified",
+      "pre": [
+        1,
+        1,
+        1
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ],
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "neutral"
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001620160854928776,
+        0.00018443906210302563,
+        0.0001927507602102474
+      ],
+      [
+        0.0001620160854928776,
+        0.00018443906210302563,
+        0.0001927507602102474
+      ],
+      [
+        0.0001620160854928776,
+        0.00018443906210302563,
+        0.0001927507602102474
+      ]
+    ],
+    "output_triplets": [
+      [
+        "484601940f96b06f37e55d8b66fc78d04e9057a5c847cdfb4e5a33a63f9a7ceb",
+        "de8f837200aabc8f62e6d504c1cbc7559fefc0da975642e5609a1a91a7ea2b0c",
+        "766dc78020ac1452dcb466d35b5dc917330df3847d01ba43ef03a8befb4b60ef"
+      ],
+      [
+        "484601940f96b06f37e55d8b66fc78d04e9057a5c847cdfb4e5a33a63f9a7ceb",
+        "de8f837200aabc8f62e6d504c1cbc7559fefc0da975642e5609a1a91a7ea2b0c",
+        "766dc78020ac1452dcb466d35b5dc917330df3847d01ba43ef03a8befb4b60ef"
+      ],
+      [
+        "484601940f96b06f37e55d8b66fc78d04e9057a5c847cdfb4e5a33a63f9a7ceb",
+        "de8f837200aabc8f62e6d504c1cbc7559fefc0da975642e5609a1a91a7ea2b0c",
+        "766dc78020ac1452dcb466d35b5dc917330df3847d01ba43ef03a8befb4b60ef"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/neutral-srgb-unspecified.json"
+  },
+  "pre-linear-linear-before-encode": {
+    "specification": {
+      "encoding": "linear",
+      "hint": "linear",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "exposure",
+      "name": "pre-linear-linear-before-encode",
+      "pre": [
+        0.5,
+        1,
+        2
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        6.103515625e-05,
+        0.000598907470703125,
+        0.0005880681479849548
+      ],
+      [
+        6.103515625e-05,
+        0.000598907470703125,
+        0.0005880681479849548
+      ],
+      [
+        6.103515625e-05,
+        0.000598907470703125,
+        0.0005880681479849548
+      ]
+    ],
+    "output_triplets": [
+      [
+        "5bbda33248c9feb0c5cc1ef83539c94717a8a4be28da534b9dcad93cb80609db",
+        "56812d2a1fa4e92860a571ceb87822b56384de3d7341aa9a7ad8360535efa7c6",
+        "bab6949a90267a27244deb5265468d8a109468c7982f1292f0fdef0e7e6720ff"
+      ],
+      [
+        "5bbda33248c9feb0c5cc1ef83539c94717a8a4be28da534b9dcad93cb80609db",
+        "56812d2a1fa4e92860a571ceb87822b56384de3d7341aa9a7ad8360535efa7c6",
+        "bab6949a90267a27244deb5265468d8a109468c7982f1292f0fdef0e7e6720ff"
+      ],
+      [
+        "5bbda33248c9feb0c5cc1ef83539c94717a8a4be28da534b9dcad93cb80609db",
+        "56812d2a1fa4e92860a571ceb87822b56384de3d7341aa9a7ad8360535efa7c6",
+        "bab6949a90267a27244deb5265468d8a109468c7982f1292f0fdef0e7e6720ff"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/pre-linear-linear-before-encode.json"
+  },
+  "pre-pq-encoded-after-encode": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "encoded-after-encode",
+      "automatic": false,
+      "phase": "exposure",
+      "name": "pre-pq-encoded-after-encode",
+      "pre": [
+        0.5,
+        1,
+        2
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001220703125,
+        0.00664417724299237,
+        0.009876102935977099
+      ],
+      [
+        0.0001220703125,
+        0.00664417724299237,
+        0.009876102935977099
+      ],
+      [
+        0.0001220703125,
+        0.00664417724299237,
+        0.009876102935977099
+      ]
+    ],
+    "output_triplets": [
+      [
+        "cc4989904953d15cb66bd16229ffeaa65c9534db6b2aacdc2b6ead511f3efa62",
+        "4a8a875a3b25d6513780ce0adfbda2410ac3d405ffdabbe1244072283962198f",
+        "b3e5a4f0179cac9f906f56d497388e17d71ba4f3b3970266ac73cfafca2f8dfc"
+      ],
+      [
+        "cc4989904953d15cb66bd16229ffeaa65c9534db6b2aacdc2b6ead511f3efa62",
+        "4a8a875a3b25d6513780ce0adfbda2410ac3d405ffdabbe1244072283962198f",
+        "b3e5a4f0179cac9f906f56d497388e17d71ba4f3b3970266ac73cfafca2f8dfc"
+      ],
+      [
+        "cc4989904953d15cb66bd16229ffeaa65c9534db6b2aacdc2b6ead511f3efa62",
+        "4a8a875a3b25d6513780ce0adfbda2410ac3d405ffdabbe1244072283962198f",
+        "b3e5a4f0179cac9f906f56d497388e17d71ba4f3b3970266ac73cfafca2f8dfc"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/pre-pq-encoded-after-encode.json"
+  },
+  "pre-pq-linear-before-encode": {
+    "specification": {
+      "encoding": "pq",
+      "hint": "pq",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "exposure",
+      "name": "pre-pq-linear-before-encode",
+      "pre": [
+        0.5,
+        1,
+        2
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.00024206270047322231,
+        0.008828101119374834,
+        0.00759394672827992
+      ],
+      [
+        0.00024206270047322231,
+        0.008828101119374834,
+        0.00759394672827992
+      ],
+      [
+        0.00024206270047322231,
+        0.008828101119374834,
+        0.00759394672827992
+      ]
+    ],
+    "output_triplets": [
+      [
+        "c472588c8be4f7dfd4dffcef4a082428693b0f1af64dbaa6cae8a4fd26ce8d6e",
+        "05f85b59c80d58eb1e33820240d6942b61c81ee1929758518feba8b7384236ac",
+        "300ca81a7e3a0b22ff1775720aaa19b69ceb958f2f38cd9fe8535530343085ef"
+      ],
+      [
+        "c472588c8be4f7dfd4dffcef4a082428693b0f1af64dbaa6cae8a4fd26ce8d6e",
+        "05f85b59c80d58eb1e33820240d6942b61c81ee1929758518feba8b7384236ac",
+        "300ca81a7e3a0b22ff1775720aaa19b69ceb958f2f38cd9fe8535530343085ef"
+      ],
+      [
+        "c472588c8be4f7dfd4dffcef4a082428693b0f1af64dbaa6cae8a4fd26ce8d6e",
+        "05f85b59c80d58eb1e33820240d6942b61c81ee1929758518feba8b7384236ac",
+        "300ca81a7e3a0b22ff1775720aaa19b69ceb958f2f38cd9fe8535530343085ef"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/pre-pq-linear-before-encode.json"
+  },
+  "pre-srgb-encoded-after-encode": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "encoded-after-encode",
+      "automatic": false,
+      "phase": "exposure",
+      "name": "pre-srgb-encoded-after-encode",
+      "pre": [
+        0.5,
+        1,
+        2
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [],
+      [],
+      []
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.0001220703125,
+        0.0028517386777614194,
+        0.0029851576177085323
+      ],
+      [
+        0.0001220703125,
+        0.0028517386777614194,
+        0.0029851576177085323
+      ],
+      [
+        0.0001220703125,
+        0.0028517386777614194,
+        0.0029851576177085323
+      ]
+    ],
+    "output_triplets": [
+      [
+        "3f0167fc1a86154c26693cb90c77985d29aa7c02b9bd76d0e9a7564fe6e21963",
+        "3f09f95f74dca8c2e6b8555a7934cc04cd5ef6b24d8fe67f50ecb7b4f2191507",
+        "1a0d9069578fc35c08049a3baf28624214eafd2c7669573d5cc25480e818b9bb"
+      ],
+      [
+        "3f0167fc1a86154c26693cb90c77985d29aa7c02b9bd76d0e9a7564fe6e21963",
+        "3f09f95f74dca8c2e6b8555a7934cc04cd5ef6b24d8fe67f50ecb7b4f2191507",
+        "1a0d9069578fc35c08049a3baf28624214eafd2c7669573d5cc25480e818b9bb"
+      ],
+      [
+        "3f0167fc1a86154c26693cb90c77985d29aa7c02b9bd76d0e9a7564fe6e21963",
+        "3f09f95f74dca8c2e6b8555a7934cc04cd5ef6b24d8fe67f50ecb7b4f2191507",
+        "1a0d9069578fc35c08049a3baf28624214eafd2c7669573d5cc25480e818b9bb"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/pre-srgb-encoded-after-encode.json"
+  },
+  "pre-srgb-linear-before-encode": {
+    "specification": {
+      "encoding": "srgb",
+      "hint": "srgb",
+      "packing": "linear-before-encode",
+      "automatic": false,
+      "phase": "exposure",
+      "name": "pre-srgb-linear-before-encode",
+      "pre": [
+        0.5,
+        1,
+        2
+      ],
+      "exposure": [
+        1,
+        1,
+        1
+      ]
+    },
+    "failed_same_code_frames_by_repetition": [
+      [
+        2
+      ],
+      [
+        2
+      ],
+      [
+        2
+      ]
+    ],
+    "maximum_mean_errors_by_repetition": [
+      [
+        0.000244140625,
+        0.002853591752246143,
+        0.003003918543094543
+      ],
+      [
+        0.000244140625,
+        0.002853591752246143,
+        0.003003918543094543
+      ],
+      [
+        0.000244140625,
+        0.002853591752246143,
+        0.003003918543094543
+      ]
+    ],
+    "output_triplets": [
+      [
+        "9e19acc14152d87137bd5f9af071833600ad1fb6aa39f912c2487534de853d30",
+        "ed45b71ac0600524f88b7511015a4963491019e0de2135b4657a294f74c324b6",
+        "d7c912c1edbf6a8cd788ad54ed58bb7467d5055e08d834d98f4326300ce6a1d6"
+      ],
+      [
+        "9e19acc14152d87137bd5f9af071833600ad1fb6aa39f912c2487534de853d30",
+        "ed45b71ac0600524f88b7511015a4963491019e0de2135b4657a294f74c324b6",
+        "d7c912c1edbf6a8cd788ad54ed58bb7467d5055e08d834d98f4326300ce6a1d6"
+      ],
+      [
+        "9e19acc14152d87137bd5f9af071833600ad1fb6aa39f912c2487534de853d30",
+        "ed45b71ac0600524f88b7511015a4963491019e0de2135b4657a294f74c324b6",
+        "d7c912c1edbf6a8cd788ad54ed58bb7467d5055e08d834d98f4326300ce6a1d6"
+      ]
+    ],
+    "all_repetitions_byte_identical": true,
+    "measurement": "measurements/pre-srgb-linear-before-encode.json"
+  }
+}

@@ -9,13 +9,13 @@ The normative baseline is AMD FSR SDK **v2.3.0 / commit `60f4ea8`**. In that rel
 
 ## 1. Official execution trace
 
-**VERIFIED — provider/backend/context creation.** `FSRRenderModule::UpdateFSRContext(true)` constructs `ffx::CreateBackendDX12Desc`, sets `device = GetDevice()->GetImpl()->DX12Device()`, then constructs `ffx::CreateContextDescUpscale` with `maxRenderSize`, `maxUpscaleSize`, and flags. The sample normally enables auto-exposure, HDR and debug-visualization; inverted/infinite depth, dynamic resolution, nonlinear color and debug checking are conditional. It also supplies `ffxCreateContextDescUpscaleVersion.version = FFX_UPSCALER_VERSION`. Finally it calls `ffx::CreateContext(m_UpscalingContext, nullptr, createFsr, backendDesc, headerVersion [, versionOverride])`. The VRAM/version queries around this are sample diagnostics and are not prerequisites for dispatch.
+**VERIFIED — provider/backend/context creation.** `FSRRenderModule::UpdateFSRContext(true)` constructs `ffx::CreateBackendDX12Desc`, sets `device = GetDevice()->GetImpl()->DX12Device()`, then constructs `ffx::CreateContextDescUpscale` with `maxRenderSize`, `maxUpscaleSize`, and flags. The sample normally enables auto-exposure, HDR and debug-visualization; inverted/infinite depth, dynamic resolution, nonlinear colour and debug checking are conditional. It also supplies `ffxCreateContextDescUpscaleVersion.version = FFX_UPSCALER_VERSION`. Finally it calls `ffx::CreateContext(m_UpscalingContext, nullptr, createFsr, backendDesc, headerVersion [, versionOverride])`. The VRAM/version queries around this are sample diagnostics and are not prerequisites for dispatch.
 
 The C++ `CreateContext` wrapper merely chains the descriptor headers and invokes `ffxCreateContext`; this is convenience code, not another semantic layer. At the core API level, `ffxCreateContext` selects a provider using descriptor type, optional version override and device, then invokes that provider's `CreateContext`. The DX12 backend descriptor contains only the header plus `ID3D12Device*`; backend creation converts that device to an FFX device and obtains the DX12 `FfxInterface`.
 
 **VERIFIED — per-frame setup.** The sample queries the upscaler context for jitter phase count and jitter offset. The resulting jitter is applied to the camera projection, while the dispatch descriptor later receives its negative: `{-m_JitterX,-m_JitterY}`. This query machinery is useful for a representative temporal test, but a first smoke experiment can use a controlled zero-jitter frame.
 
-Immediately before the actual upscaler, Cauldron copies its color target into a separate temporary input texture so that input and output are different resources. It transitions source/destination to `COPY_SOURCE`/`COPY_DEST`, copies, and returns both to its generic shader-read state.
+Immediately before the actual upscaler, Cauldron copies its colour target into a separate temporary input texture so that input and output are different resources. It transitions source/destination to `COPY_SOURCE`/`COPY_DEST`, copies, and returns both to its generic shader-read state.
 
 **VERIFIED — actual dispatch.** `FSRRenderModule::Execute` constructs `ffx::DispatchDescUpscale`, fills it, and calls:
 
@@ -33,7 +33,7 @@ The ABI has exactly these external resources for an upscale dispatch: `color`, `
 
 | Resource | Minimal DX12 choice | Size | Dispatch state | Status |
 |---|---|---|---|---|
-| Color | `R16G16B16A16_FLOAT` is a conservative test choice | render | `NON_PIXEL_SHADER_RESOURCE` (or sample's combined pixel+compute read) | required |
+| Colour | `R16G16B16A16_FLOAT` is a conservative test choice | render | `NON_PIXEL_SHADER_RESOURCE` (or sample's combined pixel+compute read) | required |
 | Depth | `R32_FLOAT` texture is simplest; sample renderer may use a depth-target format | render | shader read | required |
 | Motion vectors | `R16G16_FLOAT` | render unless display-resolution-MV flag | shader read | required |
 | Exposure | 1×1 floating exposure texture | 1×1 | shader read | optional; **omit with AUTO_EXPOSURE** |
@@ -41,13 +41,13 @@ The ABI has exactly these external resources for an upscale dispatch: `color`, `
 | Transparency/composition | `R8_UNORM` | render | shader read | optional/provider-dependent |
 | Output | `R16G16B16A16_FLOAT`, `ALLOW_UNORDERED_ACCESS` | upscale | imported in its pre-dispatch state | required |
 
-The SDK documentation specifies application-defined color format, one-component floating depth, two-component floating motion vectors and render/presentation resolution rules; it also explicitly requires DX12 inputs to be in `NON_PIXEL_SHADER_RESOURCE` before dispatch. The sample config explicitly makes both masks `R8_UNORM`; its mask textures also have UAV capability because the sample can generate them.
+The SDK documentation specifies application-defined colour format, one-component floating depth, two-component floating motion vectors and render/presentation resolution rules; it also explicitly requires DX12 inputs to be in `NON_PIXEL_SHADER_RESOURCE` before dispatch. The sample config explicitly makes both masks `R8_UNORM`; its mask textures also have UAV capability because the sample can generate them.
 
 **VERIFIED — masks can be omitted.** The sample passes a null `FfxApiResource` when reactive masks are disabled and independently does the same for transparency/composition. The public API now also exposes `ffxQueryDescUpscaleGetResourceRequirements`; therefore the most robust standalone test should query the selected provider after creation and verify what it considers required/optional rather than hard-code assumptions across FSR2/3/4 providers.
 
 **VERIFIED — exposure can be null in the official path.** The sample enables `FFX_UPSCALE_ENABLE_AUTO_EXPOSURE` and passes `nullptr` as `dispatchUpscale.exposure`.
 
-**INFERRED — synthetic inputs.** Color, depth, MV and masks have no requirement that they originate from rasterization. Consequently committed textures uploaded with deterministic values are sufficient for an ABI/GPU reconstruction experiment. For the first frame use a spatially varying color image, constant physically consistent depth, zero MV, no masks, and auto-exposure. Avoid a constant color input because it makes "nontrivial reconstruction" difficult to distinguish from trivial behavior.
+**INFERRED — synthetic inputs.** Colour, depth, MV and masks have no requirement that they originate from rasterization. Consequently committed textures uploaded with deterministic values are sufficient for an ABI/GPU reconstruction experiment. For the first frame use a spatially varying colour image, constant physically consistent depth, zero MV, no masks, and auto-exposure. Avoid a constant colour input because it makes "nontrivial reconstruction" difficult to distinguish from trivial behaviour.
 
 The public `FfxApiResourceDescription` contains dimensions, mip count, format, usage and type but **no sample-count field**. The official path is therefore naturally based on resolved single-sample textures; use `SampleDesc.Count=1`, one mip, one array slice for the experiment.
 
@@ -62,11 +62,11 @@ The official sample writes:
 | Field | Sample value | Character |
 |---|---|---|
 | `commandList` | raw `ID3D12GraphicsCommandList*` | per dispatch |
-| `color` | temporary pre-upscale color | resource |
+| `color` | temporary pre-upscale colour | resource |
 | `depth` | `DepthTarget` | resource |
 | `motionVectors` | `GBufferMotionVectorRT` | resource |
 | `exposure` | null | constant because auto-exposure enabled |
-| `output` | main color target | resource |
+| `output` | main colour target | resource |
 | `reactive` | mask or null | option/resource |
 | `transparencyAndComposition` | mask or null | option/resource |
 | `jitterOffset` | `(-m_JitterX,-m_JitterY)` | per frame |
@@ -257,9 +257,9 @@ For `R16G16B16A16_FLOAT`, don't make PNG writing part of the first pass. Decode 
 - min/max/mean luminance;
 - nonzero pixel count;
 - a hash over canonicalized raw output bytes or decoded values;
-- optionally MSE against a CPU nearest-neighbor copy of the input.
+- optionally MSE against a CPU nearest-neighbour copy of the input.
 
-That avoids introducing a half-float→8-bit color conversion as another possible failure source. If an inspectable image is wanted, convert finite linear RGB half floats to float, clamp/tonemap as appropriate, encode sRGB, then write an 8-bit PNG. The FFX output itself does not need to be a conventional image-file format.
+That avoids introducing a half-float→8-bit colour conversion as another possible failure source. If an inspectable image is wanted, convert finite linear RGB half floats to float, clamp/tonemap as appropriate, encode sRGB, then write an 8-bit PNG. The FFX output itself does not need to be a conventional image-file format.
 
 The M6 gate should have four distinct assertions:
 
@@ -277,7 +277,7 @@ I would make **GPU execution + nontrivial deterministic output** the first M6 ac
 
 ## 9. What the AMD sample does that M6 can omit
 
-The following are sample/framework concerns, not requirements of the basic upscale API: Sponza and its G-buffer renderer; lighting/translucency/particles; swapchain and presentation; tone mapping/UI; frame generation and its proxy swapchain; distortion fields; HUD-less buffers; version-selection UI; VRAM queries; RCAS controls; dynamic-resolution UI; automatic reactive-mask generation; copies made solely because Cauldron's renderer wants its existing color target to become the output; Cauldron resource wrappers; profiler markers; and restoring Cauldron descriptor heaps after dispatch.
+The following are sample/framework concerns, not requirements of the basic upscale API: Sponza and its G-buffer renderer; lighting/translucency/particles; swapchain and presentation; tone mapping/UI; frame generation and its proxy swapchain; distortion fields; HUD-less buffers; version-selection UI; VRAM queries; RCAS controls; dynamic-resolution UI; automatic reactive-mask generation; copies made solely because Cauldron's renderer wants its existing colour target to become the output; Cauldron resource wrappers; profiler markers; and restoring Cauldron descriptor heaps after dispatch.
 
 The only useful pieces to preserve conceptually are: distinct input/output resources, correct states, real DX12 command list, exact `FfxApiResource` descriptions, correctly populated dispatch constants, queue submission, explicit GPU completion, and delayed destruction.
 

@@ -35,7 +35,7 @@ GPU-based validation was disabled for the successful run.
 | Locally built `m6_gpu.dll` | `05366934438B9DCC9FAF89FAAAFC077AA78F4E924622F784C6881D7422194D26` |
 
 These hashes identify the local test inputs, not an independently authenticated
-SDK archive. The [runner](../../../crates/fsr-sdk/tests/run-m6.ps1),
+SDK archive. The [runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk/tests/run-m6.ps1.txt),
 [Rust native test](../../../crates/fsr-sdk/tests/native/dispatch_readback.rs), and
 [DX12 helper](../../../crates/fsr-sdk/tests/native/gpu.cpp) contain the executable
 setup. In an x64 Visual Studio developer environment with the local SDK at
@@ -59,14 +59,14 @@ on the context device. Each texture was single-sample, single-mip Texture2D:
 
 | Resource | Size | Format | Data and state before dispatch |
 |---|---:|---|---|
-| Color | 320×180 | RGBA16F | CPU gradient in red/green and 16-pixel checker in blue; `NON_PIXEL_SHADER_RESOURCE` / FFX compute read |
+| Colour | 320×180 | RGBA16F | CPU gradient in red/green and 16-pixel checker in blue; `NON_PIXEL_SHADER_RESOURCE` / FFX compute read |
 | Depth | 320×180 | R32F | Constant `0.5`; same read state |
 | Motion vectors | 320×180 | RG16F | Zero; same read state |
 | Exposure | 1×1 | R32F | `1.0`; same read state |
 | Output | 640×360 | RGBA16F | UAV-capable, initialized to half-float `65504` sentinel; `UNORDERED_ACCESS` / FFX UAV |
 
 The uploads used DX12 footprint row pitches and `COPY_DEST` to input-read or
-output-UAV barriers. The color was generated with a known subpixel offset
+output-UAV barriers. The colour was generated with a known subpixel offset
 matching dispatch jitter `(0.25, -0.25)`. The descriptor used motion-vector
 scale `(320, 180)` for UV vectors, reset `true`, frame time `16.667 ms`, near
 `0.1`, far `100`, vertical FOV `π/3`, view units to metres `1`, pre-exposure
@@ -117,7 +117,12 @@ M6a's bounded integration question is answered for this Windows/DX12 machine,
 driver and signed provider: the private production dispatch path recorded work
 through the unchanged M5 constructor and produced a fenced, plausible output.
 The proof does not establish public API safety, general resource-state
-guarantees, GPU-based validation success, temporal behavior or image quality.
+guarantees, GPU-based validation success, temporal behaviour or image quality.
 Resource state, backing-memory non-aliasing, residency and GPU completion are
 still caller obligations for any future dispatch contract. The next step is to
 decide that public contract from this result before exposing a method.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.

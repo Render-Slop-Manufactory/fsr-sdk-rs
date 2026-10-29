@@ -1,0 +1,489 @@
+{
+  "date": "2026-10-26",
+  "kind": "source-baseline-identity",
+  "scope": "Public API source, shared implementation, examples, selected tests and context/evidence references. File identity does not claim exhaustive semantic review of every inline test or rerun of historical evidence.",
+  "source_bytes": "SHA-256 of actual inspected working-tree file bytes; inputs are not rewritten. This inventory is UTF-8/LF.",
+  "versions": {
+    "fsr-sdk": "0.3.0",
+    "fsr-sdk-sys": "0.1.2",
+    "amd-sdk": "v2.3.0",
+    "amd-commit": "60f4ea81909200d8542eca14dccb2628b763a9a3"
+  },
+  "files": [
+    {
+      "path": ".agents/INTRO.md",
+      "bytes": 5838,
+      "sha256": "95b9575d531d857d1129f724d0901181e9b24b9d3b474fc75f69bc0531b97622"
+    },
+    {
+      "path": ".agents/skills/RESEARCH.md",
+      "bytes": 1653,
+      "sha256": "8858e935495caa08bf856392b06247204c2c406b264d92ab14e39e4df2c30657"
+    },
+    {
+      "path": ".agents/skills/research-investigation/SKILL.md",
+      "bytes": 1970,
+      "sha256": "b10ffc3a33f8e2f023aacadb12723e14f12466b8f0f6fc14f9820501e0796323"
+    },
+    {
+      "path": ".agents/skills/research-record/SKILL.md",
+      "bytes": 2837,
+      "sha256": "3c06f839d5ef8dc9f931fd087698df76368cd8bce8d8b71f0d34487025487d6c"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 259,
+      "sha256": "5b24f4726fa05bab36cf32941df4619facccfdfb1ac28eb06067a0c35bb029b5"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 13096,
+      "sha256": "ebd20dbddee6406d3569d79911920be27a392d4b73bb1e00348cc1896f4765da"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 4424,
+      "sha256": "0014ad8b08bc5fa62f562bb4d594851851ed1cc04b9eb0bb8595794b426080ed"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 284,
+      "sha256": "df4d45780257b3189372209baf694ae6ecae7c1590ecb48ef797d22b75b8ea31"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4967,
+      "sha256": "8440ecc1843cba91fbd153a31b7394fa949d2edbd4758c79f055711588988208"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 28133,
+      "sha256": "50e61af115276e1ee59dd30bee248b252ab100979d27f380592e319e321c4528"
+    },
+    {
+      "path": "SCOPE.md",
+      "bytes": 12915,
+      "sha256": "a7950c79ee6d2ab222cbaf0c7bd0a54f6b829ac6174f691683f3eacda2ec76c2"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/Cargo.toml",
+      "bytes": 768,
+      "sha256": "9fc9794c8f9c8e0e7d75deb20f4b04bddb22ca0ed4e603972b29b231ebe2bcf7"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/README.md",
+      "bytes": 6009,
+      "sha256": "95019633ce7e7cd70d7861ae3dae44d1d4573ff97579d7c238274caa212f2d90"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/api.rs",
+      "bytes": 10878,
+      "sha256": "5984e723c7ec13e821296de1518e35add27488a41226ae90f7a3c432f16acafb"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/dx12.rs",
+      "bytes": 3613,
+      "sha256": "349ba9de1fe890bcfc510c22d7846a641bbf530590cb3f9f29fbc2185d2180b7"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/lib.rs",
+      "bytes": 3057,
+      "sha256": "c1d140bcd00034cea7b75099b7229f42deb1a669b4fe1a685da3b25139d3de70"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/loader/mod.rs",
+      "bytes": 417,
+      "sha256": "68ea61e610cc4c8a558f859991ffbac4d9eb3c744cc8fbaae1a9e729c118a078"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/loader/windows.rs",
+      "bytes": 11164,
+      "sha256": "31c9a137c998700ddfeee63bdde0ae4227bc5094b7e1fcea65623845883985bd"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/upscale.rs",
+      "bytes": 8909,
+      "sha256": "4a684176b722196a5a0e4db2937b4d4312bb69a3d9340b6876036627ab777434"
+    },
+    {
+      "path": "crates/fsr-sdk/Cargo.toml",
+      "bytes": 1197,
+      "sha256": "1c0b0d50cf4e9be3abb4fa6aac8c1af25d224f297b1f0b7be0ffb66e1b30ca2f"
+    },
+    {
+      "path": "crates/fsr-sdk/README.md",
+      "bytes": 29251,
+      "sha256": "e87fd6c3cdf367bc1a12fc630e297c0635de7565a27de5e75a0727df5563c597"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/dx12_active_output.rs",
+      "bytes": 2643,
+      "sha256": "a8d9b223a04009f89e032048058ecd57781826164d7a793377ba4d373b1c176c"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/dx12_queries.rs",
+      "bytes": 2784,
+      "sha256": "6aea0ee7660c41471bb26ea0f37718ffe18db14bf698a339e5b69a36db4289c5"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/dx12_reactive_mask.rs",
+      "bytes": 6368,
+      "sha256": "b0216c63269e765e69206854dc3a25c59cdd2c64adb879594d7d863f774e0d48"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/dx12_recovery.rs",
+      "bytes": 3646,
+      "sha256": "e0b07a60375100c2889e8553ed9bf2be9e36fad09a72101ecc3597275224e012"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/dx12_upscale.rs",
+      "bytes": 8712,
+      "sha256": "c9bad0ca0061a2d0d50ebb661de0957b1dfbea8379d5c313c2fd3b79955add18"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/movable_upscale.rs",
+      "bytes": 5452,
+      "sha256": "83a67d6f42b4a23125067b0ee7c3e858b9fcc9ede786ab4a0c40f531c0c64497"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/provider_choice.rs",
+      "bytes": 3472,
+      "sha256": "4777ef6e9701b3e5c085077d6d98457ee0d6fd6d39041a8745eb5dbb41368e02"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context.rs",
+      "bytes": 10206,
+      "sha256": "6ff56ed45184de53374558e1b94e8bfa1be272f21678ba8c25bc5114e5f7906a"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context_policy.rs",
+      "bytes": 1718,
+      "sha256": "dc43aba62d6ba0062853e7d463fc82c654d1675bc4dc4c212bd7a70eb6e26344"
+    },
+    {
+      "path": "crates/fsr-sdk/src/error.rs",
+      "bytes": 15920,
+      "sha256": "ebdd0a1abff97ca990de52ded97bbe3f79e90b7eacc3c7c68d6bbf606317a500"
+    },
+    {
+      "path": "crates/fsr-sdk/src/lib.rs",
+      "bytes": 14032,
+      "sha256": "aba802578f8d879a8381a0e7a7b90d741b2f5395c82257b4d5566edf17582248"
+    },
+    {
+      "path": "crates/fsr-sdk/src/query.rs",
+      "bytes": 6335,
+      "sha256": "4468da3ac4e843837ac7478bfbb2ae1500f23f4e8cd225c657b52ea2ca7f1f03"
+    },
+    {
+      "path": "crates/fsr-sdk/src/query/native.rs",
+      "bytes": 8326,
+      "sha256": "c85a72181eb14970e276ee2592ac33fed98bbfbe14798f6a370f034c5419d91c"
+    },
+    {
+      "path": "crates/fsr-sdk/src/query/native/utilities.rs",
+      "bytes": 5575,
+      "sha256": "ebcb6a27b6d14fb7554371820f7ccea6c5fc1c853cb8de14a38b653af4c889e1"
+    },
+    {
+      "path": "crates/fsr-sdk/src/query/provider_selection_tests.rs",
+      "bytes": 4757,
+      "sha256": "128b34d703200c5c4407142a6f0058cfc975cc148ce8135249a5109663c29459"
+    },
+    {
+      "path": "crates/fsr-sdk/src/runtime.rs",
+      "bytes": 26416,
+      "sha256": "13fddb501fe034b6ec872e2eeca046577af40f5388da4eb49f1e0b8b30caf462"
+    },
+    {
+      "path": "crates/fsr-sdk/src/runtime/movable.rs",
+      "bytes": 23531,
+      "sha256": "2c99def4c0ecdec43f5f6d8920c43b0ccda9876264049265c9d5e28845b6fbe2"
+    },
+    {
+      "path": "crates/fsr-sdk/src/runtime/queries.rs",
+      "bytes": 6805,
+      "sha256": "f84f8e0cd0f6c020113f8365743987e0f052990665c9cd3cd605bfc0e21580c0"
+    },
+    {
+      "path": "crates/fsr-sdk/src/runtime/state.rs",
+      "bytes": 5501,
+      "sha256": "d0f4c45629260dd5a94ed40175509dad4f8cfef80d943a7e90698c077870ab05"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler.rs",
+      "bytes": 4914,
+      "sha256": "cd02e2c6b6a578d7d4d16665c1950ec90f708af22a498fdd4606a8b35eae4b6f"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/common.rs",
+      "bytes": 38741,
+      "sha256": "8f0e341311a6b9ad483765e4ddcbdc23c05430cabab6b5d4f269a980f617e47d"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/common/reactive_mask.rs",
+      "bytes": 3252,
+      "sha256": "e140022fb99ec1dba771604acd9ef5ff69bd52e4fc8f913c85729fc1cf9b6198"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12.rs",
+      "bytes": 26924,
+      "sha256": "c2e3ca5ace2aaa12e169e29480650f103958f61134aff3d223b741521e1c049b"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/diagnostics.rs",
+      "bytes": 1922,
+      "sha256": "b1c56c9f1f01d26ba65ab6052969efd0ddee6c63f223d9b7e5106d75cae8965f"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch.rs",
+      "bytes": 13422,
+      "sha256": "6eafb0b930a4dd32cc38c0fc7987c0d0a5b381771e5e476cbd7e859646ea2b52"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/descriptor.rs",
+      "bytes": 4116,
+      "sha256": "71ebee02e9337b80df09a2106564ca173d226b7aff09bf222357a78d7f1e607b"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/frame.rs",
+      "bytes": 25631,
+      "sha256": "7310e62a1ea99e7c89184c0ac8775ff3a6fa6f7c1abd62f1bddae8c0d9085d50"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/reactive_mask.rs",
+      "bytes": 12843,
+      "sha256": "315b9cfaf090d2c11901309dce8e626d7f00db49decc14928d800fc6b5dc55ac"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/resources.rs",
+      "bytes": 36844,
+      "sha256": "81b584779a781ae1000fa31938ac79957d9bc16c29cbe6f786e02330b8f6ecbb"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/sharpening.rs",
+      "bytes": 2828,
+      "sha256": "ab61a5a7dfe983af4531424bae5267261f950bcdccd9b22611b9bd51257e14f3"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/interop.rs",
+      "bytes": 9787,
+      "sha256": "0de637fdebc463b377947f8b53b8c69aa6c18b44870d5a7c0b3220361bdfd85d"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/movable.rs",
+      "bytes": 20846,
+      "sha256": "74231044eae98db1129627b65f09ddacf10c2b6130c0405190a6d8601604fde4"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/preflight.rs",
+      "bytes": 3753,
+      "sha256": "bec8d80cfb27284de816844e1e4a8ce74c9b4655727dd60f4162357f96fb8ca3"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/provider_selection.rs",
+      "bytes": 13577,
+      "sha256": "898bdfe9367cb14736af0b590d8a99dcb235bc65c9a6d1b177a1a99eeac74a66"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/traits.rs",
+      "bytes": 1075,
+      "sha256": "8aecc476821f68417a7ea1ccdd24d7d6b65c7425447b86c2839cadd684206c7d"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/reactive_mask.rs",
+      "bytes": 2138,
+      "sha256": "83170ddbcdcf3a6dc6e02bbaffa57cbee8fa8907051896b8010c181aa065b3db"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/tuning.rs",
+      "bytes": 2897,
+      "sha256": "b974e746275e2389a3061cad3b79403b0c1f169d4661044570399ada16848f54"
+    },
+    {
+      "path": "crates/fsr-sdk/src/utils.rs",
+      "bytes": 377,
+      "sha256": "cf4700c0480db0d9c450f62ce6f8dd9dc780e5fa4d3d49c2a0f68a791021cef4"
+    },
+    {
+      "path": "crates/fsr-sdk/src/utils/provider.rs",
+      "bytes": 7937,
+      "sha256": "a675ab9b1843b521618c8416845afff4b4e7b194fda4297f2da98026f5c1d131"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/dimensions.rs",
+      "bytes": 13294,
+      "sha256": "d3005a3a143494196943d0b814e5f741b15b61a01471a62d7f34a83a34d08350"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/dispatch_inputs.rs",
+      "bytes": 3797,
+      "sha256": "26b327ccbf7ab7d2a6c493e41266715edf3f27afc09c7cf63ff8d636eec60ca5"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/movable.rs",
+      "bytes": 9645,
+      "sha256": "6604f496e5f7a2ab316daa55abeb727185bc53e79fb87f5ebfdf92d222f0d9f2"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/query_values.rs",
+      "bytes": 713,
+      "sha256": "f3bd103e1a1ac24866f537f3e0d796ba77a652b45c1d491120bef61e1386c841"
+    },
+    {
+      "path": "docs/CODE_HEURISTICS.md",
+      "bytes": 5603,
+      "sha256": "ccb96e226d981844d7b85e3c6c745c0a75eddebf20c9ee2770149648173f11d6"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "bytes": 26377,
+      "sha256": "4cb3416affbc13d257ed398cd35fb3acb032dd1cd8a0a11e6ea73f8f948dfd8d"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "bytes": 37109,
+      "sha256": "358514aff5bcf230352861dd9e1b472e8966572328b408ffca8a8b1d9d9a8812"
+    },
+    {
+      "path": "docs/DX12_RECOVERY.md",
+      "bytes": 11431,
+      "sha256": "e9f5bf36ffed70f4de5e4494a70221ead46c56e65daadb05c66f701d803b7b40"
+    },
+    {
+      "path": "docs/adr/D013.md",
+      "bytes": 27375,
+      "sha256": "bd42a19ab3443375d2043167968e931eb71080398b8f7e1810b60537b69f0b55"
+    },
+    {
+      "path": "docs/adr/D014.md",
+      "bytes": 42220,
+      "sha256": "680b13f90536347aded54c5dfb4882863c6a6f760972e65ea5439ad3d69e127e"
+    },
+    {
+      "path": "docs/adr/D015.md",
+      "bytes": 6694,
+      "sha256": "4a588658f0abcf3c9e663424bdd8f8af9df325e2a3d9274d400a7a5bf85046ef"
+    },
+    {
+      "path": "docs/adr/D016.md",
+      "bytes": 15663,
+      "sha256": "64075c83b7679d477e557179ed8a86b8a7a49832e4d0a25ee7075cbb318cbaee"
+    },
+    {
+      "path": "docs/adr/D028.md",
+      "bytes": 11975,
+      "sha256": "7273ec14ce837228531811e1c896f56366d3f6955fffe7cc318a40226b669c05"
+    },
+    {
+      "path": "docs/adr/D029.md",
+      "bytes": 17017,
+      "sha256": "8f8a7ce08016cd19e0e97cbba50b04063ac23902a16946bb472ead3b9df3fa25"
+    },
+    {
+      "path": "docs/adr/D031.md",
+      "bytes": 5567,
+      "sha256": "2d3555f2c8977d71e8fa010a18f31e9cfc14df1089b7c664ecc85a07c10d0ae6"
+    },
+    {
+      "path": "docs/adr/D033.md",
+      "bytes": 14586,
+      "sha256": "79736ed47cd4fe1cd889f588f75ee6fda270f6234b1d5d31223b632bfea4fa9d"
+    },
+    {
+      "path": "docs/adr/D034.md",
+      "bytes": 16610,
+      "sha256": "978423776a6aaa252c56b0bf448d06f737e5cb5cddc01ef88d0884caf81e70fd"
+    },
+    {
+      "path": "docs/adr/D036.md",
+      "bytes": 15137,
+      "sha256": "d84d07fe784e853a87160c8cd3e9d2d6f416f149559e02628eedb658b3c3c7a3"
+    },
+    {
+      "path": "docs/adr/D040.md",
+      "bytes": 23496,
+      "sha256": "c3dca40b3ff058813251aa50e3f668f83ad5db16740f70b3cf5f4ec7542b22cf"
+    },
+    {
+      "path": "docs/adr/D041.md",
+      "bytes": 12090,
+      "sha256": "9ee00765535686e1ea275191e58a98cb3091b41c0fd8f58b8feb19a351d4ba22"
+    },
+    {
+      "path": "docs/language_policy.md",
+      "bytes": 1531,
+      "sha256": "59ce0760c1565179422dd6a40b4166fea1f37888ef4e4b3e921510ead34a2478"
+    },
+    {
+      "path": "docs/release/0.3.0-preparation.md",
+      "bytes": 27835,
+      "sha256": "b08da006d9da42150ecd4087cab3699fd3b08386a0d4dd91c4b4363d1e1d3adc"
+    },
+    {
+      "path": "docs/release/2026-10-19-windows-upscaler-verification.md",
+      "bytes": 6513,
+      "sha256": "2e55aa4e60c433eaac94219fd0899a87e966d599796c0022aba189ed180b8cee"
+    },
+    {
+      "path": "docs/release/2026-10-25-callbacks-diagnostics-verification.md",
+      "bytes": 12355,
+      "sha256": "abfbcd2ddc239998aaaeeee615d16b70e86fc3353b8765e60388c3aa75fc32f6"
+    },
+    {
+      "path": "docs/research/PROCESS.md",
+      "bytes": 7524,
+      "sha256": "ea115f705ab42073b2bc7ca51ec420166559b76b9327bdf2bf48de5478fd4eef"
+    },
+    {
+      "path": "docs/research/README.md",
+      "bytes": 38303,
+      "sha256": "c7e998aecb638aeab8b2405c629d2276f2148f2d343a302b58b7bb234f328c35"
+    },
+    {
+      "path": "docs/research/api-and-safety.md",
+      "bytes": 55040,
+      "sha256": "d27b078a621b721e70fa766e6255107fb7864a619d141a7c0c82069600d9ed3b"
+    },
+    {
+      "path": "docs/research/core-and-utilities.md",
+      "bytes": 8557,
+      "sha256": "594f08de8a6c6f0c24e2b55f862c6da5326a0132bf72e087577de84fb9bb4fb4"
+    },
+    {
+      "path": "docs/research/performance.md",
+      "bytes": 31111,
+      "sha256": "d1791c2e92a3d23adcd517f2ac900d8be1f081912a00e02401c766cfe2cd5108"
+    },
+    {
+      "path": "docs/research/records/2026-10-16-exp-native-performance-confirmation.md",
+      "bytes": 16673,
+      "sha256": "f7fcb3f57c71d38be220337494560b536f20038a59328344e2576ac1da15629c"
+    },
+    {
+      "path": "docs/research/records/2026-10-18-src-full-public-api-extensibility-and-v020-break-review.md",
+      "bytes": 49358,
+      "sha256": "345bca171b9613809e3605bf2454220e2062d0a073801def5887f9d03118cb0c"
+    },
+    {
+      "path": "docs/research/records/2026-10-19-exp-provider-setup-cost.md",
+      "bytes": 3632,
+      "sha256": "f27ca3bb1a06a08169c7706193457009c4a3a78491c11677165a541015167fb9"
+    },
+    {
+      "path": "docs/research/records/2026-10-19-exp-reactive-mask-providers.md",
+      "bytes": 5541,
+      "sha256": "84575e40b6aad627794def772c2a13620d5923ba46f29eebf0ff0b38321f5f18"
+    },
+    {
+      "path": "docs/research/runtime-threading.md",
+      "bytes": 35937,
+      "sha256": "0e43a447761c9404ccf7b2a80be7a734e39e498fd715f0273862c539f4fb9c38"
+    },
+    {
+      "path": "docs/research/templates/source.md",
+      "bytes": 899,
+      "sha256": "e30fb629c9c4749aaf25ed32982ac40e8043c5aca97f8893eded0851ea6b01bc"
+    }
+  ]
+}

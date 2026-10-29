@@ -60,8 +60,8 @@ experiment's `FSR_SDK_RESOLUTION_DIAGNOSTICS` input. A separate acquisition
 message is printed after `FfxLibrary::load` resolves all five entry points.
 Failure at acquisition would instead retain the existing `AMD loader` panic.
 
-The [runner](../../../crates/fsr-sdk-sys/tests/provider_resolution/run.ps1) builds
-the query executable using Cargo's reported artifact path, copies original DLLs
+The [runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk-sys/tests/provider_resolution/run.ps1.txt) builds
+the query executable using Cargo's reported artefact path, copies original DLLs
 into a new GUID-named directory, and executes four independent processes. It
 uses redirected stdout/stderr and a 60-second per-child timeout; it waits for
 termination before advancing. No case shares a process or previously loaded
@@ -158,7 +158,7 @@ text evidence is retained beside this record.
 
 ## Observations
 
-**Verified runtime behavior:** all four processes acquired the loader. In every
+**Verified runtime behaviour:** all four processes acquired the loader. In every
 case the upscaler provider was absent both before and immediately after that
 acquisition. No timeout or native crash occurred.
 
@@ -230,7 +230,7 @@ were not inventoried; this is not a clean-machine deployment certification.
    returned 4/count 0 with no provider module present. Together with C's exact
    module path, this confirms that success in this experiment depends on the
    staged provider, rather than an accidentally discoverable external copy.
-4. **What is now verified runtime behavior?** For these signed v2.3.0 DLLs on
+4. **What is now verified runtime behaviour?** For these signed v2.3.0 DLLs on
    this Windows x64/MSVC configuration, A and C enumerate two versions using the
    staged provider beside the executable; B and D do not enumerate a provider.
    All absolute-path loader acquisitions succeed without probe/runner search-path
@@ -245,3 +245,10 @@ were not inventoried; this is not a clean-machine deployment certification.
    systems or clean-machine dependency guarantees would need separate evidence.
    This experiment does not choose or recommend an acquisition/deployment
    architecture, write D007, or settle licensing/packaging prerequisites.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

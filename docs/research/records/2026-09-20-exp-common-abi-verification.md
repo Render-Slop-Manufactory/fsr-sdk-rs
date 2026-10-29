@@ -9,7 +9,7 @@
 - Success: Rust tests and the native compile-only assertions pass. Failure:
   either side rejects an expectation. This does not test a call across the FFI.
 - Exclusions: loading, symbol resolution, runtime queries, lifecycle, dispatch,
-  GPU behavior, extended descriptors and selection of a full-SDK binding strategy.
+  GPU behaviour, extended descriptors and selection of a full-SDK binding strategy.
 
 ## Setup and inputs
 
@@ -65,7 +65,7 @@ of empty placeholder modules. Manifests and Cargo.lock were unchanged.
   callback pointers. The header specifies no stdcall modifier; the probe checks
   explicit `__cdecl` types on the tested target.
 
-**Upstream contracts, not runtime-verified behavior:** the comments require
+**Upstream contracts, not runtime-verified behaviour:** the comments require
 pointers passed in a creation descriptor to remain live until destruction;
 allocation must provide the requested bytes with alignment for any type and may
 return null; deallocation may receive null. A null allocation-callback struct
@@ -99,7 +99,7 @@ environment the exact compile command was:
 cl /nologo /std:c++17 /W4 /WX /c /Iexternal\FidelityFX-SDK\v2.3.0\Kits\FidelityFX\api\include crates\fsr-sdk-sys\tests\native_abi.cpp /Fotarget\abi-check\native_abi.obj
 ```
 
-The object is a disposable build artifact in `target/`, not a linked library or
+The object is a disposable build artefact in `target/`, not a linked library or
 an executable. The probe is deliberately outside the Cargo build.
 
 ## Observations
@@ -147,5 +147,5 @@ or settle its placement or distribution policy; no legal conclusion was tested.
 
 The hand-written scope was separately authorized in D003, not inferred from test
 success. Full-SDK generation strategy remains open. Next investigations should
-address runtime artifacts/discovery and the contracts needed for loading and a
+address runtime artefacts/discovery and the contracts needed for loading and a
 first query, with separate execution evidence when those steps are authorized.

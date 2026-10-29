@@ -1,0 +1,2351 @@
+{
+  "schema_version": 1,
+  "profile": "experiment-colour-signal",
+  "required_cases": [
+    {
+      "id": "equipment.toolchain",
+      "claim": "Actual compiler, Cargo, Python and host identity",
+      "requires": [],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Actual compiler, Cargo, Python and host identity"
+      }
+    },
+    {
+      "id": "windows.environment",
+      "claim": "x64 Windows developer-tool environment",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "x64 Windows developer-tool environment"
+      }
+    },
+    {
+      "id": "abi.headers",
+      "claim": "Four hash-verified pinned SDK headers",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Four hash-verified pinned SDK headers"
+      }
+    },
+    {
+      "id": "abi.common",
+      "claim": "Independent native common ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native common ABI assertions"
+      }
+    },
+    {
+      "id": "abi.creation",
+      "claim": "Independent native creation ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native creation ABI assertions"
+      }
+    },
+    {
+      "id": "abi.dispatch",
+      "claim": "Independent native dispatch ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native dispatch ABI assertions"
+      }
+    },
+    {
+      "id": "abi.query",
+      "claim": "Independent native query ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native query ABI assertions"
+      }
+    },
+    {
+      "id": "native.sdk",
+      "claim": "Pinned, signed local loader/provider deployment",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Pinned, signed local loader/provider deployment"
+      }
+    },
+    {
+      "id": "native.helper",
+      "claim": "DX12 submission, fencing and readback equipment",
+      "requires": [
+        "equipment.toolchain",
+        "native.sdk",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "abi.query"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "DX12 submission, fencing and readback equipment"
+      }
+    },
+    {
+      "id": "colour.cpu-oracle",
+      "claim": "Independent transfer/input and output negative controls",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent transfer/input and output negative controls"
+      }
+    },
+    {
+      "id": "colour.build.fsr_sdk",
+      "claim": "Discover and stage exact fsr_sdk test executable",
+      "requires": [
+        "equipment.toolchain",
+        "native.helper"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Discover and stage exact fsr_sdk test executable"
+      }
+    },
+    {
+      "id": "colour.neutral-linear.r1",
+      "claim": "Declared colour signal and fenced readback: neutral-linear",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-linear",
+          "encoding": "linear",
+          "hint": "linear",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-linear.r2",
+      "claim": "Declared colour signal and fenced readback: neutral-linear",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-linear",
+          "encoding": "linear",
+          "hint": "linear",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-linear.r3",
+      "claim": "Declared colour signal and fenced readback: neutral-linear",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-linear",
+          "encoding": "linear",
+          "hint": "linear",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-srgb.r1",
+      "claim": "Declared colour signal and fenced readback: neutral-srgb",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-srgb",
+          "encoding": "srgb",
+          "hint": "srgb",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-srgb.r2",
+      "claim": "Declared colour signal and fenced readback: neutral-srgb",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-srgb",
+          "encoding": "srgb",
+          "hint": "srgb",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-srgb.r3",
+      "claim": "Declared colour signal and fenced readback: neutral-srgb",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-srgb",
+          "encoding": "srgb",
+          "hint": "srgb",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-srgb-unspecified.r1",
+      "claim": "Declared colour signal and fenced readback: neutral-srgb-unspecified",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-srgb-unspecified",
+          "encoding": "srgb",
+          "hint": "unspecified",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-srgb-unspecified.r2",
+      "claim": "Declared colour signal and fenced readback: neutral-srgb-unspecified",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-srgb-unspecified",
+          "encoding": "srgb",
+          "hint": "unspecified",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-srgb-unspecified.r3",
+      "claim": "Declared colour signal and fenced readback: neutral-srgb-unspecified",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-srgb-unspecified",
+          "encoding": "srgb",
+          "hint": "unspecified",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-pq.r1",
+      "claim": "Declared colour signal and fenced readback: neutral-pq",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-pq",
+          "encoding": "pq",
+          "hint": "pq",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-pq.r2",
+      "claim": "Declared colour signal and fenced readback: neutral-pq",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-pq",
+          "encoding": "pq",
+          "hint": "pq",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-pq.r3",
+      "claim": "Declared colour signal and fenced readback: neutral-pq",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-pq",
+          "encoding": "pq",
+          "hint": "pq",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-pq-unspecified.r1",
+      "claim": "Declared colour signal and fenced readback: neutral-pq-unspecified",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-pq-unspecified",
+          "encoding": "pq",
+          "hint": "unspecified",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-pq-unspecified.r2",
+      "claim": "Declared colour signal and fenced readback: neutral-pq-unspecified",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-pq-unspecified",
+          "encoding": "pq",
+          "hint": "unspecified",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.neutral-pq-unspecified.r3",
+      "claim": "Declared colour signal and fenced readback: neutral-pq-unspecified",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "name": "neutral-pq-unspecified",
+          "encoding": "pq",
+          "hint": "unspecified",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ],
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "neutral"
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-linear-linear-before-encode.r1",
+      "claim": "Declared colour signal and fenced readback: pre-linear-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-linear-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-linear-linear-before-encode.r2",
+      "claim": "Declared colour signal and fenced readback: pre-linear-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-linear-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-linear-linear-before-encode.r3",
+      "claim": "Declared colour signal and fenced readback: pre-linear-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-linear-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.exposure-linear.r1",
+      "claim": "Declared colour signal and fenced readback: exposure-linear",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "exposure-linear",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            0.25,
+            1,
+            4
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.exposure-linear.r2",
+      "claim": "Declared colour signal and fenced readback: exposure-linear",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "exposure-linear",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            0.25,
+            1,
+            4
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.exposure-linear.r3",
+      "claim": "Declared colour signal and fenced readback: exposure-linear",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "exposure-linear",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            0.25,
+            1,
+            4
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.automatic-linear.r1",
+      "claim": "Declared colour signal and fenced readback: automatic-linear",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": true,
+          "phase": "exposure",
+          "name": "automatic-linear",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.automatic-linear.r2",
+      "claim": "Declared colour signal and fenced readback: automatic-linear",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": true,
+          "phase": "exposure",
+          "name": "automatic-linear",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.automatic-linear.r3",
+      "claim": "Declared colour signal and fenced readback: automatic-linear",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "linear",
+          "hint": "linear",
+          "packing": "linear-before-encode",
+          "automatic": true,
+          "phase": "exposure",
+          "name": "automatic-linear",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-srgb-linear-before-encode.r1",
+      "claim": "Declared colour signal and fenced readback: pre-srgb-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-srgb-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-srgb-linear-before-encode.r2",
+      "claim": "Declared colour signal and fenced readback: pre-srgb-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-srgb-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-srgb-linear-before-encode.r3",
+      "claim": "Declared colour signal and fenced readback: pre-srgb-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-srgb-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-srgb-encoded-after-encode.r1",
+      "claim": "Declared colour signal and fenced readback: pre-srgb-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-srgb-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-srgb-encoded-after-encode.r2",
+      "claim": "Declared colour signal and fenced readback: pre-srgb-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-srgb-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-srgb-encoded-after-encode.r3",
+      "claim": "Declared colour signal and fenced readback: pre-srgb-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-srgb-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.exposure-srgb.r1",
+      "claim": "Declared colour signal and fenced readback: exposure-srgb",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "exposure-srgb",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            0.25,
+            1,
+            4
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.exposure-srgb.r2",
+      "claim": "Declared colour signal and fenced readback: exposure-srgb",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "exposure-srgb",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            0.25,
+            1,
+            4
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.exposure-srgb.r3",
+      "claim": "Declared colour signal and fenced readback: exposure-srgb",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "exposure-srgb",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            0.25,
+            1,
+            4
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.automatic-srgb.r1",
+      "claim": "Declared colour signal and fenced readback: automatic-srgb",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": true,
+          "phase": "exposure",
+          "name": "automatic-srgb",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.automatic-srgb.r2",
+      "claim": "Declared colour signal and fenced readback: automatic-srgb",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": true,
+          "phase": "exposure",
+          "name": "automatic-srgb",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.automatic-srgb.r3",
+      "claim": "Declared colour signal and fenced readback: automatic-srgb",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "srgb",
+          "hint": "srgb",
+          "packing": "linear-before-encode",
+          "automatic": true,
+          "phase": "exposure",
+          "name": "automatic-srgb",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-pq-linear-before-encode.r1",
+      "claim": "Declared colour signal and fenced readback: pre-pq-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-pq-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-pq-linear-before-encode.r2",
+      "claim": "Declared colour signal and fenced readback: pre-pq-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-pq-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-pq-linear-before-encode.r3",
+      "claim": "Declared colour signal and fenced readback: pre-pq-linear-before-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-pq-linear-before-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-pq-encoded-after-encode.r1",
+      "claim": "Declared colour signal and fenced readback: pre-pq-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-pq-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-pq-encoded-after-encode.r2",
+      "claim": "Declared colour signal and fenced readback: pre-pq-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-pq-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.pre-pq-encoded-after-encode.r3",
+      "claim": "Declared colour signal and fenced readback: pre-pq-encoded-after-encode",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "encoded-after-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "pre-pq-encoded-after-encode",
+          "pre": [
+            0.5,
+            1,
+            2
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.exposure-pq.r1",
+      "claim": "Declared colour signal and fenced readback: exposure-pq",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "exposure-pq",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            0.25,
+            1,
+            4
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.exposure-pq.r2",
+      "claim": "Declared colour signal and fenced readback: exposure-pq",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "exposure-pq",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            0.25,
+            1,
+            4
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.exposure-pq.r3",
+      "claim": "Declared colour signal and fenced readback: exposure-pq",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": false,
+          "phase": "exposure",
+          "name": "exposure-pq",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            0.25,
+            1,
+            4
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.automatic-pq.r1",
+      "claim": "Declared colour signal and fenced readback: automatic-pq",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": true,
+          "phase": "exposure",
+          "name": "automatic-pq",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.automatic-pq.r2",
+      "claim": "Declared colour signal and fenced readback: automatic-pq",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": true,
+          "phase": "exposure",
+          "name": "automatic-pq",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.automatic-pq.r3",
+      "claim": "Declared colour signal and fenced readback: automatic-pq",
+      "requires": [
+        "equipment.toolchain",
+        "colour.build.fsr_sdk",
+        "colour.cpu-oracle",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+      "scope": "native-experiment",
+      "expectation": {
+        "frames": 3,
+        "watchdog_seconds": 180,
+        "specification": {
+          "encoding": "pq",
+          "hint": "pq",
+          "packing": "linear-before-encode",
+          "automatic": true,
+          "phase": "exposure",
+          "name": "automatic-pq",
+          "pre": [
+            1,
+            1,
+            1
+          ],
+          "exposure": [
+            1,
+            1,
+            1
+          ]
+        },
+        "contract": "Native integration required; frozen numerical predictions reported separately, including failures"
+      }
+    },
+    {
+      "id": "colour.analysis",
+      "claim": "Retain independent signal-domain predictions and all failures",
+      "requires": [
+        "equipment.toolchain",
+        "colour.neutral-linear.r1",
+        "colour.neutral-linear.r2",
+        "colour.neutral-linear.r3",
+        "colour.neutral-srgb.r1",
+        "colour.neutral-srgb.r2",
+        "colour.neutral-srgb.r3",
+        "colour.neutral-srgb-unspecified.r1",
+        "colour.neutral-srgb-unspecified.r2",
+        "colour.neutral-srgb-unspecified.r3",
+        "colour.neutral-pq.r1",
+        "colour.neutral-pq.r2",
+        "colour.neutral-pq.r3",
+        "colour.neutral-pq-unspecified.r1",
+        "colour.neutral-pq-unspecified.r2",
+        "colour.neutral-pq-unspecified.r3",
+        "colour.pre-linear-linear-before-encode.r1",
+        "colour.pre-linear-linear-before-encode.r2",
+        "colour.pre-linear-linear-before-encode.r3",
+        "colour.exposure-linear.r1",
+        "colour.exposure-linear.r2",
+        "colour.exposure-linear.r3",
+        "colour.automatic-linear.r1",
+        "colour.automatic-linear.r2",
+        "colour.automatic-linear.r3",
+        "colour.pre-srgb-linear-before-encode.r1",
+        "colour.pre-srgb-linear-before-encode.r2",
+        "colour.pre-srgb-linear-before-encode.r3",
+        "colour.pre-srgb-encoded-after-encode.r1",
+        "colour.pre-srgb-encoded-after-encode.r2",
+        "colour.pre-srgb-encoded-after-encode.r3",
+        "colour.exposure-srgb.r1",
+        "colour.exposure-srgb.r2",
+        "colour.exposure-srgb.r3",
+        "colour.automatic-srgb.r1",
+        "colour.automatic-srgb.r2",
+        "colour.automatic-srgb.r3",
+        "colour.pre-pq-linear-before-encode.r1",
+        "colour.pre-pq-linear-before-encode.r2",
+        "colour.pre-pq-linear-before-encode.r3",
+        "colour.pre-pq-encoded-after-encode.r1",
+        "colour.pre-pq-encoded-after-encode.r2",
+        "colour.pre-pq-encoded-after-encode.r3",
+        "colour.exposure-pq.r1",
+        "colour.exposure-pq.r2",
+        "colour.exposure-pq.r3",
+        "colour.automatic-pq.r1",
+        "colour.automatic-pq.r2",
+        "colour.automatic-pq.r3"
+      ],
+      "selector": "",
+      "scope": "offline-analysis",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Retain independent signal-domain predictions and all failures"
+      }
+    }
+  ],
+  "resume": "disabled"
+}

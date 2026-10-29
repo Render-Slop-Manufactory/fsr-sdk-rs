@@ -96,9 +96,9 @@ trust assumption; the existing policy and controls were preserved.
 
 ## Changes and safety audit
 
-Production change: [dispatch_policy.rs](../../../crates/fsr-sdk/src/dispatch_policy.rs)
+Production change: [dispatch_policy.rs](../../../crates/fsr-sdk/src/context_policy.rs)
 contains the private shared eligibility/preflight/native-error/poison policy.
-The existing [Upscaler dispatch core](../../../crates/fsr-sdk/src/upscaler/dispatch.rs)
+The existing [Upscaler dispatch core](../../../crates/fsr-sdk/src/upscaler/dx12/dispatch.rs)
 delegates to it with its existing inspector and real owner invocation. A local
 bool copy permits inspection to borrow the complete Upscaler without changing
 its layout or private dispatch signature. Inspection can unwind before FFI
@@ -112,7 +112,7 @@ Test-only changes:
   private dispatch operation under `cfg(test)` as well as Windows/DX12.
   [test_runtime.rs](../../../crates/fsr-sdk/src/context/test_runtime.rs) resolves
   and forwards the fixture dispatch export when production loading is disabled.
-- [d013_movable.rs](../../../crates/fsr-sdk/src/context/d013_movable.rs) adds an
+- [d013_movable.rs](../../../crates/fsr-sdk/src/context/movable.rs) adds an
   owned poison bool and optional family-coordination observation to the existing
   concrete bundle. Its sole narrow Send override still applies only to this
   fixture type. RuntimeState/library are Arc-retained; the native handle points
@@ -123,7 +123,7 @@ Test-only changes:
   borrowed native dependency or movable generic owner is hidden in the bundle.
   The existing generic/local markers continue excluding Send/Sync; the concrete
   probe remains Send and not Sync.
-- [d013_transfer.rs](../../../crates/fsr-sdk/src/context/d013_transfer.rs)
+- [d013_transfer.rs](../../../crates/fsr-sdk/src/context/transfer.rs)
   exercises real shared dispatch policy and NativeContextOwner, with joined
   exclusive moves, stable handle/Input/callback identity assertions and exact
   event/thread/count/error checks. Descriptor storage for dispatch is stack-local
@@ -284,7 +284,7 @@ GPU safety, provider rollback/quiescence, provider/device termination on destina
 threads, concurrent calls, unfenced work, Miri or ThreadSanitizer. The no-default
 feature run exercises the host adapter on Windows; no Linux/macOS run is claimed.
 Windows residency observations do not establish a DLL termination callback's
-executing thread. Native error/unwind behavior and the earlier provider-termination
+executing thread. Native error/unwind behaviour and the earlier provider-termination
 limitation remain questions for a separately authorized native spike and D013
 contract review. No public Send support or D013 acceptance follows from these
 controlled results. D014 remains a separate task, and topic synthesis/ADR status

@@ -35,7 +35,7 @@ For M6, **DIRECT-only is therefore the smallest source-backed contract**. COPY a
 
 **CORROBORATED — AMD's sample submits FSR on its Graphics/DIRECT queue.** Cauldron creates a Graphics command list for each render module, closes it afterwards, batches the lists, and submits that batch to `CommandQueue::Graphics`.
 
-**INFERRED — recording now and submitting later is legal.** That is ordinary D3D12 deferred-command-list behavior; FidelityFX does not retain or independently submit the list.
+**INFERRED — recording now and submitting later is legal.** That is ordinary D3D12 deferred-command-list behaviour; FidelityFX does not retain or independently submit the list.
 
 For temporal ordering, one D3D12 detail matters: two successive `ExecuteCommandLists` calls are strictly ordered, whereas multiple lists passed in a *single* `ExecuteCommandLists` call may be merged so that later-list work begins before all earlier-list work finishes. This makes arbitrary batching of multiple dispatches for the **same temporal upscaler** something that should not be claimed safe without testing.
 
@@ -45,11 +45,11 @@ For temporal ordering, one D3D12 detail matters: two successive `ExecuteCommandL
 
 AMD explicitly says that, for DX12, **all input resources should be transitioned to `D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE` before `ffxDispatchDescUpscale`**.
 
-The official sample actually enters with the combined read state `NON_PIXEL_SHADER_RESOURCE | PIXEL_SHADER_RESOURCE` and declares it as `FFX_API_RESOURCE_STATE_PIXEL_COMPUTE_READ`. The backend maps that FFX state to exactly that D3D12 combination. Thus the documentation's `NON_PIXEL_SHADER_RESOURCE` is the normative recommendation, while the combined read state is officially demonstrated as acceptable sample behavior.
+The official sample actually enters with the combined read state `NON_PIXEL_SHADER_RESOURCE | PIXEL_SHADER_RESOURCE` and declares it as `FFX_API_RESOURCE_STATE_PIXEL_COMPUTE_READ`. The backend maps that FFX state to exactly that D3D12 combination. Thus the documentation's `NON_PIXEL_SHADER_RESOURCE` is the normative recommendation, while the combined read state is officially demonstrated as acceptable sample behaviour.
 
 | Resource | Before dispatch | During dispatch | Encoded state afterward | Status |
 |---|---|---|---|---|
-| Color | AMD: `NON_PIXEL_SHADER_RESOURCE`; sample: combined pixel/non-pixel read | SRV / compute read | Restored to state declared in `FfxApiResource.state` | **CORROBORATED** |
+| Colour | AMD: `NON_PIXEL_SHADER_RESOURCE`; sample: combined pixel/non-pixel read | SRV / compute read | Restored to state declared in `FfxApiResource.state` | **CORROBORATED** |
 | Depth | Same input-state rule | SRV / compute read | Restored to declared initial state | **CORROBORATED** |
 | Motion vectors | Same input-state rule | SRV / compute read | Restored | **CORROBORATED** |
 | Exposure, if supplied | Same input-state rule | SRV / compute read | Restored | **VERIFIED** |
@@ -58,7 +58,7 @@ The official sample actually enters with the combined read state `NON_PIXEL_SHAD
 | Output | No separate normative pre-state stated; official sample uses combined read and declares that state | Transitioned to UAV when written | Restored to declared initial state | **CORROBORATED backend + sample** |
 | Internal history/scratch | SDK-owned | SDK-managed | SDK-managed | **VERIFIED** |
 
-The crucial backend behavior is explicit: registration copies `FfxApiResource.state` into both `initialState` and `currentState`; internal jobs call `addBarrier`; and unregister walks application-owned dynamic resources and transitions each back to `initialState`.
+The crucial backend behaviour is explicit: registration copies `FfxApiResource.state` into both `initialState` and `currentState`; internal jobs call `addBarrier`; and unregister walks application-owned dynamic resources and transitions each back to `initialState`.
 
 Therefore **the application's supplied FFX state must truthfully represent the actual D3D12 state**. It is not decorative metadata: FidelityFX uses it as the `StateBefore` basis of later barriers.
 
@@ -70,7 +70,7 @@ This does **not** replace queue-to-queue synchronization. D3D12 requires explici
 
 ## 4. Resource creation constraints
 
-**VERIFIED — core FSR4 inputs are 2D frame-image resources at render/presentation resolution.** AMD specifies application-defined color, single-component floating-point depth, two-component floating-point motion vectors, optional exposure, and optional masks; motion vectors may be render or presentation resolution according to creation flags.
+**VERIFIED — core FSR4 inputs are 2D frame-image resources at render/presentation resolution.** AMD specifies application-defined colour, single-component floating-point depth, two-component floating-point motion vectors, optional exposure, and optional masks; motion vectors may be render or presentation resolution according to creation flags.
 
 **VERIFIED — FSR4 reactive and T&C masks are no longer inherently required.** The provider/context-specific `ffxQueryDescUpscaleGetResourceRequirements` returns `required_resources` and `optional_resources`; a wrapper should not hard-code historical FSR2 requirements.
 
@@ -97,7 +97,7 @@ For less ordinary resource shapes:
 
 ---
 
-## 5. Descriptor/binding behavior
+## 5. Descriptor/binding behaviour
 
 **VERIFIED — the caller does not supply FidelityFX descriptor heaps.** Backend context state owns CPU SRV/UAV heaps and a shader-visible descriptor ring. The backend creates and destroys them itself.
 
@@ -123,7 +123,7 @@ So M6 must document that `dispatch` is **not command-list-state transparent**. C
 | DX12 backend/provider-owned GPU objects | Yes | Yes | **Yes** |
 | FidelityFX runtime/DLL | Yes | Through context lifetime | Practically until outstanding work is complete and context has then been destroyed |
 
-The command-list/allocator distinction is standard D3D12: Microsoft permits `ID3D12GraphicsCommandList::Reset` while its prior execution is still running, but calling `ID3D12CommandAllocator::Reset` while GPU work using it remains outstanding is undefined behavior.
+The command-list/allocator distinction is standard D3D12: Microsoft permits `ID3D12GraphicsCommandList::Reset` while its prior execution is still running, but calling `ID3D12CommandAllocator::Reset` while GPU work using it remains outstanding is undefined behaviour.
 
 **VERIFIED — FidelityFX does not retain external resource COM objects.** Registration simply stores the incoming `ID3D12Resource*` in backend state. D3D12 places resource-memory lifetime and CPU/GPU synchronization responsibility on the application; memory must remain available until the GPU no longer needs it.
 
@@ -232,12 +232,12 @@ The open backend settles most mechanics, but the ML 4.1.1 provider is not comple
 1. **Real output-image test:** DIRECT list, documented input states, UAV-capable output, submit/fence, verify reconstructed image under D3D12 debug layer + GPU validation.
 2. **PIX state trace:** confirm actual ML-provider jobs transition output to UAV and that all external resources finish in their declared initial states.
 3. **Output-state matrix:** try initial combined-read, pure compute-read, UAV, and another legal backend-supported state.
-4. **COMPUTE-list experiment:** dispatch FSR4 on a COMPUTE list/queue with full validation. A pass establishes implementation behavior, not a public AMD guarantee.
+4. **COMPUTE-list experiment:** dispatch FSR4 on a COMPUTE list/queue with full validation. A pass establishes implementation behaviour, not a public AMD guarantee.
 5. **Descriptor-clobber test:** bind application CBV/SRV/UAV + sampler heaps, dispatch, verify rebinding requirements predicted by backend source.
 6. **Premature-destruction tests:** release an external resource/context before its queue fence and verify debug-layer diagnostics; compare against fence-before-destroy.
 7. **Two frames in flight:** record N+1 while N executes, submit in strictly ordered queue submissions, verify temporal correctness.
 8. **Same-submit overlap:** put two same-context dispatch lists into one `ExecuteCommandLists` call and test separately; do not assume this is valid simply because ordinary D3D12 permits list overlap.
-9. **Cross-queue dispatch:** only if later API scope needs it; synchronize with explicit queue fences and characterize provider behavior.
+9. **Cross-queue dispatch:** only if later API scope needs it; synchronize with explicit queue fences and characterize provider behaviour.
 10. **Resource-shape tests:** reject/verify MSAA, mip chains, arrays, placed resources and aliasing cases before broadening the public resource contract.
 11. **Provider resource-requirements query:** record the exact required/optional bitfields returned by the v2.3.0 ML 4.1.1 context; this is the authoritative way to decide mask/exposure requirements for the selected provider.
 

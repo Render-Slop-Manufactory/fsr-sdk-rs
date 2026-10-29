@@ -171,8 +171,15 @@ compatibility, allocation correctness, leak freedom, FSR image quality or speed.
 
 Minimum chain-node lifetimes, device COM ownership, callback lifetimes,
 failed-create/destroy postconditions, threading, general DLL unload contracts
-and behavior of other providers remain unresolved. The probe exits its isolated
+and behaviour of other providers remain unresolved. The probe exits its isolated
 process on unexpected native creation/destruction failure without speculative
 cleanup; those paths were not deliberately exercised and are not a wrapper policy.
 A successful create is destroyed once even if provider identification fails.
 No null/double-destroy, allocator injection or shortened-lifetime tests were run.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

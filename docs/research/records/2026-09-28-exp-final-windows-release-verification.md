@@ -44,7 +44,7 @@ Test/verification-harness changes:
   sets, sequential dispatch/submission/fence/readback, and normal Drop with all
   external dependencies retained. Check device/debug state after Drop and after
   frame-resource cleanup.
-- `crates/fsr-sdk/tests/m6_gpu.cpp`: rewrite only unsubmitted color/motion uploads
+- `crates/fsr-sdk/tests/m6_gpu.cpp`: rewrite only unsubmitted colour/motion uploads
   for the specified analytic frames. Preserve Gate A's original image. Add an
   adapter-LUID AMD check, error/corruption message ID/text reporting, post-teardown
   device checks and stage HRESULT logging. Preserve 60-second fence waits and
@@ -196,7 +196,7 @@ upscaler Drop. This serialization is a test strategy, not a wrapper requirement
 or a general cross-queue support claim.
 
 Resource profile: render 320 × 180, output 640 × 360; linear non-HDR RGBA16F
-color, R32F depth at 0.5, RG16F motion, 1 × 1 R32F exposure at 1.0, distinct
+colour, R32F depth at 0.5, RG16F motion, 1 × 1 R32F exposure at 1.0, distinct
 UAV-capable RGBA16F output. Every fresh output channel was initialized to
 half-float sentinel `0x7bff`. Frame time 16.667 ms; near/far 0.1/100;
 vertical FOV π/3; view-space-to-metres 1.0; pre-exposure 1.0; unchanged zero
@@ -294,3 +294,8 @@ Required provenance is present, the actual adapters were AMD hardware, standard
 checks passed, and no relevant unresolved failure remains within these two
 gates. This conclusion applies to the captured baseline-plus-harness state,
 not an independently changed or future release tree.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.

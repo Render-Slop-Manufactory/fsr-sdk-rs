@@ -11,11 +11,11 @@
 **Topic:** `fsr-sdk-rs` M5 construction and Query/Configure provenance repair  
 **Scope:** AMD FidelityFX/FSR SDK modern API only; Windows x64/MSVC; DirectX 12; official signed AMD runtime as the project deployment target.  
 **Pinned baseline:** FSR SDK v2.3.0, commit `60f4ea81909200d8542eca14dccb2628b763a9a3`. GitHub records tag `v2.3.0` at that commit.  
-**Evidence cut-off:** The pinned commit is normative. The v2.3.0 release record is used only to establish release metadata and explicitly documented v2.3.0 changes. No behavior from later `main` is imported.
+**Evidence cut-off:** The pinned commit is normative. The v2.3.0 release record is used only to establish release metadata and explicitly documented v2.3.0 changes. No behaviour from later `main` is imported.
 
 ## Method and exclusions
 
-This record reconstructs the relevant claims from pinned public headers, pinned documentation, pinned samples, and pinned public implementation source. Source-built FSR2/FSR3 behavior is kept distinct from the signed/external FSR4 provider. The public provider layer references `amdinternal/api/internal/dx12/ffx_provider_external.h`; that implementation is not present in the public source inspected here, so source inspection cannot establish its hidden validation or lifetime rules.
+This record reconstructs the relevant claims from pinned public headers, pinned documentation, pinned samples, and pinned public implementation source. Source-built FSR2/FSR3 behaviour is kept distinct from the signed/external FSR4 provider. The public provider layer references `amdinternal/api/internal/dx12/ffx_provider_external.h`; that implementation is not present in the public source inspected here, so source inspection cannot establish its hidden validation or lifetime rules.
 
 No native runtime experiment, binary reverse engineering, production ABI modification, Rust API design, Builder/D008 decision, Runtime ownership decision, `Send`/`Sync` decision, Dispatch synchronization investigation, or Bevy/wgpu work was performed.
 
@@ -24,7 +24,7 @@ Evidence labels used below:
 | Label | Meaning |
 |---|---|
 | **Verified** | Directly supported by identified pinned primary evidence. |
-| **Upstream claim** | AMD explicitly states the behavior, but it was not independently reproduced here. |
+| **Upstream claim** | AMD explicitly states the behaviour, but it was not independently reproduced here. |
 | **Inference** | Follows from identified evidence but is not itself a normative upstream statement. |
 | **Unresolved** | The pinned public evidence is insufficient. |
 
@@ -95,7 +95,7 @@ For **FSR4**, the pinned documentation requires the signed binary distribution, 
 
 NativeAA is defined generically at 1.0× and is documented by both FSR3 and FSR4 as a 1.0× mode, so equal render/presentation dimensions are clearly intended for providers supporting that mode. However, the bundled FSR2 helper is an important exception: it handles only Quality through Ultra Performance; NativeAA returns no valid ratio and is rejected by its render-resolution helper's enum range check.
 
-Accordingly, the evidence supports **no SDK-wide numerical size rule beyond provider contracts and the ABI's maximum/target semantics**. Exact FSR4 minimums, maximums, alignment requirements, and rejection behavior remain **Unresolved**.
+Accordingly, the evidence supports **no SDK-wide numerical size rule beyond provider contracts and the ABI's maximum/target semantics**. Exact FSR4 minimums, maximums, alignment requirements, and rejection behaviour remain **Unresolved**.
 
 ### Device/provider compatibility
 
@@ -107,13 +107,13 @@ The public FSR2 and FSR3 provider classes contain no provider-specific `IsSuppor
 
 FSR4 is different in kind: its implementation is external/signed. The v2.3.0 release explicitly added FSR Upscaling 4.1 support for Radeon RX 7000-series discrete GPUs, while the pinned FSR4 documentation includes reference numbers for both RX 9000- and RX 7000-series cards. Neither source constitutes a complete compatibility matrix or exact construction predicate.
 
-### Error behavior and malformed descriptors
+### Error behaviour and malformed descriptors
 
 The generic ABI exposes `OK`, generic `ERROR`, `ERROR_UNKNOWN_DESCTYPE`, `ERROR_RUNTIME_ERROR`, `NO_PROVIDER`, `ERROR_MEMORY`, `ERROR_PARAMETER`, and `PROVIDER_NO_SUPPORT_NEW_DESCTYPE`.
 
 Concrete public cases include null `ffxCreateContext` arguments producing `ERROR_PARAMETER`, absence of a selectable provider producing `NO_PROVIDER`, a null DX12 backend device producing `ERROR_PARAMETER`, and the source-built providers' missing backend ultimately producing generic `ERROR`.
 
-The pinned API documentation explicitly states that a descriptor's `header.type` must correspond to its actual descriptor structure and that failing to do so is undefined behavior, likely resulting in crashes. This is therefore outside the ordinary “invalid parameter returns an error code” contract.
+The pinned API documentation explicitly states that a descriptor's `header.type` must correspond to its actual descriptor structure and that failing to do so is undefined behaviour, likely resulting in crashes. This is therefore outside the ordinary “invalid parameter returns an error code” contract.
 
 No pinned public contract specifies one deterministic return code for every malformed or unsupported creation dimension/flag combination, particularly for the signed FSR4 provider. Exact signed-provider rejection remains **Unresolved**.
 
@@ -144,7 +144,7 @@ The pinned ABI directly reconstructs the previously broken inventory. No generat
 
 The five ABI-published tuning keys are `FVELOCITYFACTOR`, `FREACTIVENESSSCALE`, `FSHADINGCHANGESCALE`, `FACCUMULATIONADDEDPERFRAME`, and `FMINDISOCCLUSIONACCUMULATION`; the header gives defaults and value constraints. The public FSR3 provider forwards this descriptor to `ffxFsr3UpscalerSetConstant`, whose implementation immediately reads and copies the supplied float into context state. This proves immediate consumption for that source-built provider only; it is not a cross-provider pointer-retention contract.
 
-The public FSR2 adapter does not implement the upscaler key/value case; its Configure switch handles `GLOBALDEBUG1` only. Consequently the existence of the generic five-key ABI must not be interpreted as proof of equivalent tuning support in every provider. Signed FSR4 behavior is **Unresolved** from public source.
+The public FSR2 adapter does not implement the upscaler key/value case; its Configure switch handles `GLOBALDEBUG1` only. Consequently the existence of the generic five-key ABI must not be interpreted as proof of equivalent tuning support in every provider. Signed FSR4 behaviour is **Unresolved** from public source.
 
 ### Null-context Queries
 
@@ -180,7 +180,7 @@ The ABI exposes both global-debug descriptors, and v2.3.0 release notes describe
 
 The pinned public loader implementation, however, intercepts both debug descriptor types before context/provider routing and calls the same `ffxSetPrintMessageCallback` path; it does not consult `effectId`. That callback and debug level are stored in module-static variables in `ffx_message.cpp`.
 
-Therefore **Verified source behavior** is broader than a context-local setting within that public loader module. Calling it “process-global” is too strong: cross-DLL/process scoping and the packaged signed runtime's exact handling are **Unresolved**. There is also a primary-source discrepancy between the v2.3.0 release description of per-effect routing and this pinned loader implementation; source inspection cannot reconcile it.
+Therefore **Verified source behaviour** is broader than a context-local setting within that public loader module. Calling it “process-global” is too strong: cross-DLL/process scoping and the packaged signed runtime's exact handling are **Unresolved**. There is also a primary-source discrepancy between the v2.3.0 release description of per-effect routing and this pinned loader implementation; source inspection cannot reconcile it.
 
 ### Is Query or Configure mandatory before first Dispatch?
 
@@ -192,7 +192,7 @@ The generic Dispatch documentation requires a valid context but does not specify
 
 Query output is documented as being written through pointers supplied in the Query descriptor, and version enumeration expressly uses caller-provided capacity and arrays. No generic statement was found granting the runtime ownership of those output buffers after return.
 
-Conversely, no generic pinned statement was found that guarantees every Query or Configure implementation consumes every supplied pointer synchronously and never retains it. Public FSR3's five tuning values are copied immediately, but that implementation cannot establish signed-provider behavior. General Query/Configure pointer retention is therefore **Unresolved**.
+Conversely, no generic pinned statement was found that guarantees every Query or Configure implementation consumes every supplied pointer synchronously and never retains it. Public FSR3's five tuning values are copied immediately, but that implementation cannot establish signed-provider behaviour. General Query/Configure pointer retention is therefore **Unresolved**.
 
 No pinned public contract establishing thread safety, permitted concurrent Query/Configure/Dispatch combinations, or cross-context synchronization semantics was found. General concurrency remains **Unresolved**.
 
@@ -214,7 +214,7 @@ No pinned public contract establishing thread safety, permitted concurrent Query
 | Provider/device requirements differ between FSR2/FSR3/FSR4. | **Refined** | FSR2/3 public selection uses inherited `IsSupported=true`; FSR4 is external/signed and v2.3.0 explicitly adds RX7000 support. Complete provider/device predicates are **Unresolved**. |
 | Enumeration with a device is useful availability evidence, not complete compatibility proof. | **Confirmed** | Provider filtering by `IsSupported(device)` is **Verified**; “not a complete proof” is a conservative **Inference** because creation has additional failure paths. |
 | Generic API has parameter/runtime/memory/no-provider errors but not deterministic codes for every malformed size/flag combination. | **Confirmed** | **Verified** enum; complete per-input mapping is **Unresolved**. |
-| Type/layout mismatch may be UB. | **Confirmed**, stronger | Pinned documentation explicitly calls incorrect descriptor `type` undefined behavior. |
+| Type/layout mismatch may be UB. | **Confirmed**, stronger | Pinned documentation explicitly calls incorrect descriptor `type` undefined behaviour. |
 | Generic version enumeration exists. | **Confirmed** | **Verified**, U2/U5. |
 | Live provider metadata Query exists. | **Confirmed** | **Verified**, U2. |
 | Quality-ratio/render-resolution Queries exist. | **Confirmed** | **Verified**, U1. |
@@ -233,13 +233,13 @@ No pinned public contract establishing thread safety, permitted concurrent Query
 | Live memory requires context; V2 permits pre-create estimation. | **Confirmed** | **Verified**. |
 | Resource requirements are provider-dependent. | **Confirmed** | **Verified** by context/version-specific documentation and differing provider implementations. |
 | Global debug has broader module/process implications. | **Refined** | Public loader is **Verified module-static** and ignores `effectId`; process-wide/cross-module scope is **Unresolved**. |
-| No general Query/Configure concurrency or pointer-retention contract was established. | **Confirmed as unresolved** | FSR3 immediate-copy behavior is provider-specific; no generic concurrency/lifetime guarantee was found. |
+| No general Query/Configure concurrency or pointer-retention contract was established. | **Confirmed as unresolved** | FSR3 immediate-copy behaviour is provider-specific; no generic concurrency/lifetime guarantee was found. |
 
 ## Substantive corrections
 
 1. **Descriptor ordering must be stated more narrowly.** Public code proves whole-chain scanning for the DX12 backend, device discovery, and provider override. It does not expose signed FSR4's handling of `ffxCreateContextDescUpscaleVersion`; therefore it cannot prove arbitrary relative ordering of the backend and API-version descriptors. The only directly auditable signed-provider-oriented construction order is the official sample's root → backend → API-version → optional override.
 
-2. **NativeAA is not uniformly supported by all bundled historical providers.** The generic ABI, FSR3 and FSR4 define 1.0× NativeAA, but the pinned FSR2 quality/render helpers exclude it. Any prior wording implying FSR2 shares generic NativeAA behavior requires correction.
+2. **NativeAA is not uniformly supported by all bundled historical providers.** The generic ABI, FSR3 and FSR4 define 1.0× NativeAA, but the pinned FSR2 quality/render helpers exclude it. Any prior wording implying FSR2 shares generic NativeAA behaviour requires correction.
 
 3. **`ffxConfigureDescGlobalDebug.effectId` has an unresolved implementation/documentation discrepancy.** The v2.3.0 release describes per-effect routing, but the pinned public loader ignores `effectId` and writes one module-static callback/debug-level pair. A safe contract should not promise per-effect or process-global semantics from this source record alone.
 
@@ -251,9 +251,9 @@ No pinned public contract establishing thread safety, permitted concurrent Query
 
 ## Baseline delta
 
-**Confirmed:** root upscaler creation descriptor; mandatory API-version descriptor and `FFX_UPSCALER_VERSION`; separation of API version from provider/version ID; DX12 backend descriptor and null-device rejection; validity of zero creation flags; lack of a documented generic numerical dimension domain; FSR3 maximum-size behavior; generic error-code inventory; explicit UB for descriptor type/layout mismatch; the complete listed Query inventory; the two memory Query forms; resource-requirements Query; version enumeration/provider metadata; null-context Query restrictions; external-provider device routing; caller-owned Query outputs; version-name overwrite warning; and absence of an unconditional Query/Configure call in the documented basic Create → Dispatch application path.
+**Confirmed:** root upscaler creation descriptor; mandatory API-version descriptor and `FFX_UPSCALER_VERSION`; separation of API version from provider/version ID; DX12 backend descriptor and null-device rejection; validity of zero creation flags; lack of a documented generic numerical dimension domain; FSR3 maximum-size behaviour; generic error-code inventory; explicit UB for descriptor type/layout mismatch; the complete listed Query inventory; the two memory Query forms; resource-requirements Query; version enumeration/provider metadata; null-context Query restrictions; external-provider device routing; caller-owned Query outputs; version-name overwrite warning; and absence of an unconditional Query/Configure call in the documented basic Create → Dispatch application path.
 
-**Refined:** descriptor ordering, because public chain scans do not expose signed FSR4's API-version-descriptor handling; NativeAA, because pinned FSR2 helpers do not support it; provider/device differences, because complete FSR4 compatibility is closed and FSR2/FSR3 inherit the same permissive provider-selection `IsSupported`; global debug scope, because source proves module-static state rather than process-global state; provider enumeration, because it is support/availability evidence rather than complete creation compatibility; key/value Configure, because ABI presence is not uniform provider support; and provider-name lifetime, because only some overwrite behavior is specified.
+**Refined:** descriptor ordering, because public chain scans do not expose signed FSR4's API-version-descriptor handling; NativeAA, because pinned FSR2 helpers do not support it; provider/device differences, because complete FSR4 compatibility is closed and FSR2/FSR3 inherit the same permissive provider-selection `IsSupported`; global debug scope, because source proves module-static state rather than process-global state; provider enumeration, because it is support/availability evidence rather than complete creation compatibility; key/value Configure, because ABI presence is not uniform provider support; and provider-name lifetime, because only some overwrite behaviour is specified.
 
 **Contradicted:** none of the supplied high-level conclusions is wholly contradicted after applying the provider-specific qualifications above. The earlier unqualified implications about descriptor ordering, NativeAA uniformity, and global-debug scope are too broad and must not be carried forward unchanged.
 
@@ -261,7 +261,7 @@ No pinned public contract establishing thread safety, permitted concurrent Query
 
 ## Limits and follow-up
 
-Public source cannot establish the behavior hidden inside `amd_fidelityfx_upscaler_dx12.dll` or the external/driver provider. FSR3 source evidence must therefore not be promoted into an FSR4 runtime guarantee.
+Public source cannot establish the behaviour hidden inside `amd_fidelityfx_upscaler_dx12.dll` or the external/driver provider. FSR3 source evidence must therefore not be promoted into an FSR4 runtime guarantee.
 
 The bounded signed-runtime questions that remain observable, if M5 later requires them, are: whether the v2.3.0 signed upscaler accepts/rejects specific boundary creation dimensions and with which return code; whether backend/API-version descriptor order is accepted in both observed permutations; whether provider enumeration followed by identical-device creation can still fail for provider-specific compatibility reasons; what rounding the selected signed provider returns from render-resolution Query; whether returned provider-name pointers change after subsequent version queries; whether `ffxConfigureDescGlobalDebug.effectId` actually isolates messages in the packaged signed loader/provider combination; and whether any signed-provider Configure input pointer is retained after the call. These are discrete observable questions, not evidence supplied by this source-only investigation.
 

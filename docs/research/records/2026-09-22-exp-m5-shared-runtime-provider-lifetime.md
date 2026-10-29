@@ -20,7 +20,7 @@
 
 The repository was clean at revision `93199eddf1b655f7b075652e4e7ca1493f026070`
 before adding the [test-only probe](../../../crates/fsr-sdk-sys/tests/shared_runtime.rs),
-[runner](../../../crates/fsr-sdk-sys/tests/shared_runtime/run.ps1) and this record.
+[runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk-sys/tests/shared_runtime/run.ps1.txt) and this record.
 No production source, manifests, dependencies, lockfile, owner or decisions were
 changed. The local SDK checkout is exactly
 `60f4ea81909200d8542eca14dccb2628b763a9a3` (`v2.3.0`).
@@ -165,5 +165,12 @@ not evidence of a required or permanent leak.
 
 **Unresolved:** concurrency and `Send`/`Sync`; more than two contexts; differing
 providers, effects, devices and SDK versions; module ownership/reference counts;
-later process unload behavior; GPU dispatch and image correctness. No D008
+later process unload behaviour; GPU dispatch and image correctness. No D008
 decision or production ownership change follows automatically from this record.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

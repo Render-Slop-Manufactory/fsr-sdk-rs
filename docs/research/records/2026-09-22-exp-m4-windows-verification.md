@@ -14,9 +14,9 @@
 Repository revision: `abe1d66857cb258d4a4830c6baf863766c67ebae`, with a clean
 worktree before execution. No production code, test code, manifests or lockfile
 were changed for this experiment. The existing
-[M4 runner](../../../crates/fsr-sdk/tests/run-m4.ps1),
+[M4 runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk/tests/run-m4.ps1.txt),
 [owner fixtures](../../../crates/fsr-sdk/src/context/tests.rs),
-[native test](../../../crates/fsr-sdk/src/upscaler/tests/lifecycle.rs) and
+[native test](../../../crates/fsr-sdk/src/upscaler/dx12/tests/lifecycle.rs) and
 [C++ ABI probe](../../../crates/fsr-sdk-sys/tests/context_lifecycle/native_abi.cpp)
 are the executable evidence. Documentation was written after the run.
 
@@ -152,3 +152,8 @@ fixtures. Provider identity does not identify whether the implementation came
 from the bundled DLL or driver. No dispatch, image correctness, performance,
 public API or global threading guarantee is established. Those remain later work;
 there is no remaining failure from this bounded M4 verification run.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.

@@ -9,7 +9,7 @@
   `60f4ea81909200d8542eca14dccb2628b763a9a3`; signed DX12 provider 4.1.1.
 - Scope: two stationary synthetic scenes, five settings, eight frames per
   context, three isolated process repetitions. No new public API, production
-  dispatch behavior, dependencies, SDK pin or accepted decision was introduced.
+  dispatch behaviour, dependencies, SDK pin or accepted decision was introduced.
 
 ## Conditions fixed before execution
 
@@ -22,11 +22,11 @@ D014 file then had SHA-256
 `b5c3394f70b286a4ab76c3c5bdee3d95e891788da1afa7b421331c0dee61a643`.
 Neither scene, thresholds nor repeat policy was changed after seeing results.
 
-Render is 320x180; output is 640x360. Inputs are RGBA16F color, R32F depth 0.5,
+Render is 320x180; output is 640x360. Inputs are RGBA16F colour, R32F depth 0.5,
 RG16F motion `(0,0)`, R32F 1x1 exposure 1.0 and RGBA16F UAV output. Native
 pre-exposure is 1.0, creation/dispatch flags are zero. Camera values are near
 0.1, far 100, vertical FOV pi/3 and unit scale 1; frame time is 16.667 ms.
-Alpha is 1. For input pixel centers, `u=x+0.5-jitter_x`, `v=y+0.5-jitter_y`:
+Alpha is 1. For input pixel centres, `u=x+0.5-jitter_x`, `v=y+0.5-jitter_y`:
 
 | Scene | RGB, identical in all channels |
 |---|---|
@@ -55,7 +55,7 @@ Metrics use final-frame red values inside `x=[32,608), y=[32,328)`:
   noise policy was used.
 - `D`: enabled-to-disabled-A mean absolute difference.
 - `C`: fraction of pixels with absolute difference at least `1/1024`.
-- `G`: mean absolute horizontal neighboring-pixel difference, both pixels in
+- `G`: mean absolute horizontal neighbouring-pixel difference, both pixels in
   the ROI; `G_off` is the disabled-A baseline.
 - `B`: absolute difference of ROI mean red.
 
@@ -78,11 +78,11 @@ D014, ROADMAP and DECISIONS edits remained present. Experiment changes comprise:
   native-field override after the same resource/scalar inspection used by public
   dispatch, through the existing owner and poisoning core;
 - [sharpening.h](../../../crates/fsr-sdk/tests/native/sharpening.h): stationary
-  color-upload fixtures and packed raw red-half readback;
+  colour-upload fixtures and packed raw red-half readback;
 - small registrations/includes in
   [dispatch_readback.rs](../../../crates/fsr-sdk/tests/native/dispatch_readback.rs),
   [gpu.cpp](../../../crates/fsr-sdk/tests/native/gpu.cpp) and
-  [run.ps1](../../../crates/fsr-sdk/tests/native/run.ps1).
+  [run.ps1](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk/tests/native/run.ps1.txt).
 
 Production files and the public frame API were unchanged. The initial compile
 attempt could not call the method-private inspection helper from a sibling test
@@ -107,7 +107,7 @@ directories' `source-inputs.json` and `native-inputs.json`.
 
 Both staged AMD Authenticode signatures were Valid (`Status=0` in the captured
 JSON). Trusted SDK binaries were already local; none were downloaded or retained
-as research artifacts. DLL SHA-256 values:
+as research artefacts. DLL SHA-256 values:
 
 | DLL | SHA-256 |
 |---|---|
@@ -204,7 +204,7 @@ All edge executions passed. These metrics do not define a second effect gate.
 | Enabled 1 | 0.0042345393 | 0.4987272429 | 0.0100947167 | 0.0010167820 |
 
 The diagnostic profile averages 64 bilinear samples along parallel edge normals,
-with centers at output coordinates `Y=80..280`, `X=256+0.37*Y`. Each profile
+with centres at output coordinates `Y=80..280`, `X=256+0.37*Y`. Each profile
 samples signed normal distance -8..8 output pixels in 0.25-pixel steps. The
 normal is `(1,-0.37)/sqrt(1+0.37^2)`. Width is the distance between the first
 rising interpolated crossings of nominal values 0.18 and 0.82. Overshoot and
@@ -235,7 +235,7 @@ This experiment does not identify RCAS internals of the closed signed provider.
 
 To check whether the effect failures came from measurement code, the second
 complete run retained tightly packed final-frame red half bits under its target
-stage. The independent [.NET audit](2026-09-30-exp-d014-native-sharpening/audit-readback.ps1)
+stage. The independent [.NET audit](../../../tools/verification/archive/2026-10-10/files/docs/research/records/2026-09-30-exp-d014-native-sharpening/audit-readback.ps1.txt)
 uses `BitConverter.UInt16BitsToHalf`, rather than the C++ decoder, and separate
 f64 loops for all metrics. Its retained
 [CSV](2026-09-30-exp-d014-native-sharpening/readback-audit.csv) matches every Rust
@@ -243,7 +243,7 @@ D/C/G/B value to ten decimal places, reproduces zero repeat noise/bit mismatches
 and records all 30 image fingerprints. CSV `criteria` mechanically evaluates
 the frequency thresholds for each row; it is not an acceptance assertion for
 enabled zero, disabled controls or the edge scene. Raw image binaries remain
-reproducible local `target` artifacts rather than checked-in research data.
+reproducible local `target` artefacts rather than checked-in research data.
 
 **Inference:** the proposed 1% gradient and 0.005 mean bounds do not jointly
 describe this fixture's observed provider response. Shared descriptor inspection,
@@ -274,3 +274,12 @@ amendment before a new complete validation run; this original gate stays failed.
 The native zero observation can support precise parameter documentation without
 claiming an identity filter. No additional source-research claim about the
 closed provider is needed to preserve these measured facts.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.
+
+> Documentation compaction (2026-10-29): the original pre-run protocol remains byte-identical, including its historical M6 plan reference. That superseded plan is now in Git history; the [retained milestone summary](../../ROADMAP_HISTORY.md#010--published-2026-09-28) links the original native evidence. Experimental criteria, measurements and failed outcomes are unchanged.

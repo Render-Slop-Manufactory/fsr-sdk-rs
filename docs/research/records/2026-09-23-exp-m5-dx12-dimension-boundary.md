@@ -1,7 +1,7 @@
 # Experiment: signed DX12 upscaler creation at the Texture2D width boundary
 
 - Investigation date: 2026-09-23.
-- Topic: Behavior of the signed FidelityFX SDK v2.3.0 DX12 upscaler immediately
+- Topic: Behaviour of the signed FidelityFX SDK v2.3.0 DX12 upscaler immediately
   below, at, and one unit above the D3D12 Texture2D width limit of 16384.
 - Hypothesis: a structurally valid call at each width either creates a context
   that can be destroyed once, returns an ordinary `ffxReturnCode_t`, or fails
@@ -20,7 +20,7 @@ Repository revision before the experiment: `01753a0064205a61a526d51d7746ca52e11b
 the worktree was clean. At execution the only uncommitted changes were the
 three B cases in the experiment-only
 [`context_dimensions.rs`](../../../crates/fsr-sdk-sys/tests/context_dimensions.rs),
-case selection in its [runner](../../../crates/fsr-sdk-sys/tests/context_dimensions/run.ps1),
+case selection in its [runner](../../../tools/verification/archive/2026-10-10/files/crates/fsr-sdk-sys/tests/context_dimensions/run.ps1.txt),
 and a local-memory budget print in the reused
 [`device.cpp`](../../../crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp)
 helper. No production source or public API changed. This record and its log were
@@ -156,3 +156,10 @@ establishes that all widths in `1..=16384` are safe or supported, nor that all
 unsupported dimensions return normally. There was no GPU dispatch, no image
 output, and no basis for a Rust validation rule or runtime-trust decision.
 Proposed D008 and the accepted architecture remain unchanged.
+
+> Archive navigation added 2026-10-10: retired verification scripts are preserved in the
+> [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Script links now point to exact archived source bytes;
+> recorded commands, observations and fingerprints are unchanged. Historical commands require
+> their original layout and compatible inputs; archived sources are not current entry points.
+
+> Orchestration migration (2026-10-10): the shared native, ABI and consumer entry points are now frozen in the [indexed archive](../../../tools/verification/archive/2026-10-10/README.md). Current commands live in [verification](../../../tools/verification/README.md); command text and observations below remain historical.

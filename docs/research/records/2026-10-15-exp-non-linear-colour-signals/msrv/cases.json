@@ -1,0 +1,5500 @@
+{
+  "consumer-msrv.active-render-frame": {
+    "id": "consumer-msrv.active-render-frame",
+    "claim": "Consumer active-render-frame",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:17.635986+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:17.654840+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.active-render-frame/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.active-render-frame/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:17.911890+00:00",
+        "elapsed_seconds": 0.256
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions,UpscaleDispatch}; fn frame(f: &mut UpscaleDispatch<'_>) { f.set_active_render_size(Some(Dimensions::new(256,144).unwrap())); let _: Option<Dimensions>=f.active_render_size(); f.set_active_render_size(None); } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:17.923422+00:00"
+  },
+  "consumer-msrv.automatic-exposure-resources": {
+    "id": "consumer-msrv.automatic-exposure-resources",
+    "claim": "Consumer automatic-exposure-resources",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:17.086725+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:17.103839+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.automatic-exposure-resources/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.automatic-exposure-resources/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:17.382115+00:00",
+        "elapsed_seconds": 0.277
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{ID3D12Resource,UpscaleResources}; fn resources(r: [&ID3D12Resource;4]) -> UpscaleResources<'_> { let b=UpscaleResources::without_exposure(r[0],r[1],r[2],r[3]); assert!(b.exposure().is_none()); b.clone() } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:17.393488+00:00"
+  },
+  "consumer-msrv.colour-encoding-frame": {
+    "id": "consumer-msrv.colour-encoding-frame",
+    "claim": "Consumer colour-encoding-frame",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:18.152881+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:18.167435+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.colour-encoding-frame/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.colour-encoding-frame/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:18.444526+00:00",
+        "elapsed_seconds": 0.276
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{ColorEncodingHint,UpscaleDispatch}; fn configure(f: &mut UpscaleDispatch<'_>) { f.set_color_encoding_hint(ColorEncodingHint::Srgb); let _: ColorEncodingHint=f.color_encoding_hint(); f.set_color_encoding_hint_allow_context_mismatch(ColorEncodingHint::Pq); assert!(f.allows_color_encoding_context_mismatch()); f.set_color_encoding_hint(ColorEncodingHint::Pq); assert!(!f.allows_color_encoding_context_mismatch()); } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:18.458309+00:00"
+  },
+  "consumer-msrv.colour-encoding-options-portable": {
+    "id": "consumer-msrv.colour-encoding-options-portable",
+    "claim": "Consumer colour-encoding-options-portable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:17.928145+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:17.952999+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.colour-encoding-options-portable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.colour-encoding-options-portable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:18.145750+00:00",
+        "elapsed_seconds": 0.191
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{ColorEncodingHint, InputColorSpace, Dimensions, UpscalerOptions, common}; fn main() { let d=Dimensions::new(320,180).unwrap(); let mut o=UpscalerOptions::new(d,d); assert_eq!(o.input_color_space(), InputColorSpace::Linear); o.set_input_color_space(InputColorSpace::NonLinear); let _: common::InputColorSpace=o.input_color_space(); let _: common::ColorEncodingHint=ColorEncodingHint::default(); for hint in [ColorEncodingHint::Unspecified, ColorEncodingHint::Srgb, ColorEncodingHint::Pq] { match hint { ColorEncodingHint::Unspecified | ColorEncodingHint::Srgb | ColorEncodingHint::Pq => {}, _ => {} } } }",
+      "features": "",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:18.149266+00:00"
+  },
+  "consumer-msrv.common-movable-positive": {
+    "id": "consumer-msrv.common-movable-positive",
+    "claim": "Consumer common-movable-positive",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:08.595355+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:08.609017+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.common-movable-positive/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.common-movable-positive/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:08.822678+00:00",
+        "elapsed_seconds": 0.212
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{CameraParameters, FrameTimeMillis, JitterOffsetPixels, PreExposure, UpscalerOptions, common}; fn main() { let _: PreExposure = common::PreExposure::new(4.0).unwrap(); let d = common::Dimensions::new(320, 180).unwrap(); let _: UpscalerOptions = common::UpscalerOptions::new(d, d); let _: CameraParameters = common::CameraParameters::new(0.1, 100.0, 1.0, 1.0).unwrap(); let _: FrameTimeMillis = common::FrameTimeMillis::new(16.0).unwrap(); let _: JitterOffsetPixels = common::JitterOffsetPixels::new(0.0, 0.0).unwrap(); }",
+      "features": "movable",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:08.832411+00:00"
+  },
+  "consumer-msrv.common-positive": {
+    "id": "consumer-msrv.common-positive",
+    "claim": "Consumer common-positive",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:08.310031+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:08.326602+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.common-positive/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.common-positive/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:08.581304+00:00",
+        "elapsed_seconds": 0.253
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions, PreExposure, common}; use fsr_sdk_sys::{api::ffxApiHeader, upscale::ffxDispatchDescUpscale}; fn main() { let _: PreExposure = common::PreExposure::default(); let _: Dimensions = common::Dimensions::new(320, 180).unwrap(); let _: Option<ffxApiHeader> = None; let _: Option<ffxDispatchDescUpscale> = None; }",
+      "features": "",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:08.592420+00:00"
+  },
+  "consumer-msrv.depth-motion-profiles": {
+    "id": "consumer-msrv.depth-motion-profiles",
+    "claim": "Consumer depth-motion-profiles",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:08.835949+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:08.855357+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.depth-motion-profiles/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.depth-motion-profiles/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:09.062433+00:00",
+        "elapsed_seconds": 0.205
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{CameraParameters, DepthConvention, MotionVectorUnits, MotionVectorResolution, MotionVectorJitter, Dimensions, UpscalerOptions, common}; fn main() { let d = Dimensions::new(320, 180).unwrap(); let mut options = UpscalerOptions::new(d, d); for depth in [DepthConvention::StandardFinite, DepthConvention::ReversedFinite, DepthConvention::StandardInfinite, DepthConvention::ReversedInfinite] { options.set_depth_convention(depth); let _: common::DepthConvention = options.depth_convention(); let _ = depth.is_infinite(); } options.set_motion_vector_resolution(MotionVectorResolution::Display); let _: common::MotionVectorResolution = options.motion_vector_resolution(); options.set_motion_vector_jitter(MotionVectorJitter::Included); let _: common::MotionVectorJitter = options.motion_vector_jitter(); let _: common::MotionVectorUnits = MotionVectorUnits::Pixels; let camera = CameraParameters::new_infinite(0.1, 1.0, 1.0).unwrap(); assert!(camera.has_infinite_far_plane()); match options.depth_convention() { DepthConvention::StandardFinite | DepthConvention::ReversedFinite | DepthConvention::StandardInfinite | DepthConvention::ReversedInfinite => {}, _ => {} } }",
+      "features": "",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:09.073326+00:00"
+  },
+  "consumer-msrv.dispatch-field-private": {
+    "id": "consumer-msrv.dispatch-field-private",
+    "claim": "Consumer dispatch-field-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0616",
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:10.147575+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:10.165590+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0616",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.dispatch-field-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.dispatch-field-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:10.385145+00:00",
+        "elapsed_seconds": 0.217
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = f.reset; } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": "E0616"
+    },
+    "finished_utc": "2026-10-15T20:10:10.395647+00:00"
+  },
+  "consumer-msrv.dispatch-inputs-positive": {
+    "id": "consumer-msrv.dispatch-inputs-positive",
+    "claim": "Consumer dispatch-inputs-positive",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:09.528627+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:09.542329+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.dispatch-inputs-positive/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.dispatch-inputs-positive/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:09.867483+00:00",
+        "elapsed_seconds": 0.324
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{CameraParameters, FrameTimeMillis, JitterOffsetPixels, ID3D12GraphicsCommandList, ID3D12Resource, NativeSharpness, MotionVectorUnits, PreExposure, Sharpening, UpscaleDispatch, UpscaleResources, dx12}; fn frame<'a>(list: &'a ID3D12GraphicsCommandList, r: [&'a ID3D12Resource; 5]) -> UpscaleDispatch<'a> { let resources = UpscaleResources::new(r[0], r[1], r[2], r[3], r[4]); let copy: dx12::UpscaleResources = resources.clone(); let mut f = UpscaleDispatch::new(list, copy, JitterOffsetPixels::new(0.0, 0.0).unwrap(), FrameTimeMillis::new(16.0).unwrap(), CameraParameters::new(0.1, 100.0, 1.0, 1.0).unwrap(), true); f.set_motion_vector_units(MotionVectorUnits::Pixels); let _: MotionVectorUnits = f.motion_vector_units(); f.set_pre_exposure(PreExposure::new(0.25).unwrap()); let _: PreExposure = f.pre_exposure(); let _: &Sharpening = f.sharpening(); f.set_sharpening(Sharpening::Native(NativeSharpness::new(0.35).unwrap())); match f.sharpening() { Sharpening::Disabled => {}, Sharpening::Native(v) => { let _ = v.value(); }, _ => {} } f } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:09.878553+00:00"
+  },
+  "consumer-msrv.dispatch-literal-private": {
+    "id": "consumer-msrv.dispatch-literal-private",
+    "claim": "Consumer dispatch-literal-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0451",
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:09.882392+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:09.903971+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0451",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.dispatch-literal-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.dispatch-literal-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:10.135184+00:00",
+        "elapsed_seconds": 0.23
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = UpscaleDispatch { ..f }; } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": "E0451"
+    },
+    "finished_utc": "2026-10-15T20:10:10.144010+00:00"
+  },
+  "consumer-msrv.dx12-disabled": {
+    "id": "consumer-msrv.dx12-disabled",
+    "claim": "Consumer dx12-disabled",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:12.065391+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:12.081690+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.dx12-disabled/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.dx12-disabled/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:12.284527+00:00",
+        "elapsed_seconds": 0.201
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::MovableRuntime; fn main() { let _: Option<MovableRuntime> = None; }",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:12.295411+00:00"
+  },
+  "consumer-msrv.dynamic-resolution-options-portable": {
+    "id": "consumer-msrv.dynamic-resolution-options-portable",
+    "claim": "Consumer dynamic-resolution-options-portable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:17.397280+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:17.413306+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.dynamic-resolution-options-portable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.dynamic-resolution-options-portable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:17.628271+00:00",
+        "elapsed_seconds": 0.214
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions,UpscalerOptions}; fn main() { let d=Dimensions::new(320,180).unwrap(); let mut o=UpscalerOptions::new(d,d); assert!(!o.dynamic_resolution()); o.set_dynamic_resolution(true); assert!(o.dynamic_resolution()); }",
+      "features": "",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:17.632309+00:00"
+  },
+  "consumer-msrv.examples.dx12": {
+    "id": "consumer-msrv.examples.dx12",
+    "claim": "Downstream complete examples",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.examples.prepare"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Downstream complete examples"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:27.752931+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--examples",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:27.770390+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.examples.dx12/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.examples.dx12/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:28.074309+00:00",
+        "elapsed_seconds": 0.303
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:10:28.084626+00:00"
+  },
+  "consumer-msrv.examples.dx12-movable": {
+    "id": "consumer-msrv.examples.dx12-movable",
+    "claim": "Downstream complete examples",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.examples.prepare"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Downstream complete examples"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:28.088327+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--examples",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:28.104451+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.examples.dx12-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.examples.dx12-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:28.394863+00:00",
+        "elapsed_seconds": 0.289
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:10:28.409481+00:00"
+  },
+  "consumer-msrv.examples.prepare": {
+    "id": "consumer-msrv.examples.prepare",
+    "claim": "Prepare full public integration examples",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.metadata"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Prepare full public integration examples"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:27.741869+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "complete_windows_snippets": 2,
+      "readme_included": true
+    },
+    "finished_utc": "2026-10-15T20:10:27.750242+00:00"
+  },
+  "consumer-msrv.exposure-options-portable": {
+    "id": "consumer-msrv.exposure-options-portable",
+    "claim": "Consumer exposure-options-portable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:16.819060+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:16.839410+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.exposure-options-portable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.exposure-options-portable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:17.070904+00:00",
+        "elapsed_seconds": 0.229
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions,UpscalerOptions,ExposureMode,common}; fn main() { let d=Dimensions::new(320,180).unwrap(); let mut o=UpscalerOptions::new(d,d); o.set_exposure_mode(ExposureMode::Automatic); let _: common::ExposureMode=o.exposure_mode(); match o.exposure_mode() { ExposureMode::Explicit | ExposureMode::Automatic => {}, _ => {} } }",
+      "features": "",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:17.082450+00:00"
+  },
+  "consumer-msrv.feature-disabled": {
+    "id": "consumer-msrv.feature-disabled",
+    "claim": "Consumer feature-disabled",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:11.776104+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:11.791676+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.feature-disabled/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.feature-disabled/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:12.048404+00:00",
+        "elapsed_seconds": 0.255
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::MovableRuntime; fn main() { let _: Option<MovableRuntime> = None; }",
+      "features": "dx12",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:12.061684+00:00"
+  },
+  "consumer-msrv.hdr-options": {
+    "id": "consumer-msrv.hdr-options",
+    "claim": "Consumer hdr-options",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:09.076962+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:09.096144+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.hdr-options/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.hdr-options/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:09.276800+00:00",
+        "elapsed_seconds": 0.18
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions, UpscalerOptions, common}; fn main() { let d = Dimensions::new(320, 180).unwrap(); let mut options = common::UpscalerOptions::new(d, d); assert!(!options.high_dynamic_range()); options.set_high_dynamic_range(true); let copy: UpscalerOptions = options.clone(); assert!(copy.high_dynamic_range()); options.set_high_dynamic_range(false); assert!(!options.high_dynamic_range()); }",
+      "features": "",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:09.286929+00:00"
+  },
+  "consumer-msrv.jitter-phase-construction-private": {
+    "id": "consumer-msrv.jitter-phase-construction-private",
+    "claim": "Consumer jitter-phase-construction-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0423",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:16.560916+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:16.579691+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0423",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.jitter-phase-construction-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.jitter-phase-construction-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:16.805170+00:00",
+        "elapsed_seconds": 0.224
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::JitterPhaseCount; fn main() { let _=JitterPhaseCount(std::num::NonZeroI32::new(0).unwrap()); }",
+      "features": "",
+      "expected_diagnostic": "E0423"
+    },
+    "finished_utc": "2026-10-15T20:10:16.815549+00:00"
+  },
+  "consumer-msrv.local-positive": {
+    "id": "consumer-msrv.local-positive",
+    "claim": "Consumer local-positive",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:11.212717+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:11.234815+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.local-positive/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.local-positive/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:11.481681+00:00",
+        "elapsed_seconds": 0.246
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::Runtime; fn main() { let _: Option<Runtime> = None; }",
+      "features": "dx12",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:11.487146+00:00"
+  },
+  "consumer-msrv.local-runtime-not-send": {
+    "id": "consumer-msrv.local-runtime-not-send",
+    "claim": "Consumer local-runtime-not-send",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0277",
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:23.729581+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:23.747733+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0277",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.local-runtime-not-send/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.local-runtime-not-send/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:23.972388+00:00",
+        "elapsed_seconds": 0.223
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::Runtime; fn check<T: Send>() {} fn main() { check::<Runtime>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    },
+    "finished_utc": "2026-10-15T20:10:23.994020+00:00"
+  },
+  "consumer-msrv.local-to-movable-construction": {
+    "id": "consumer-msrv.local-to-movable-construction",
+    "claim": "Consumer local-to-movable-construction",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0308",
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:12.299577+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:12.319282+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0308",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.local-to-movable-construction/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.local-to-movable-construction/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:12.567919+00:00",
+        "elapsed_seconds": 0.247
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::Runtime, upscaler::{MovableUpscaler, UpscalerOptions, ID3D12Device}}; fn wrong(r: &Runtime, d: &ID3D12Device, o: UpscalerOptions) { let _ = MovableUpscaler::new(r, d, o); } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0308"
+    },
+    "finished_utc": "2026-10-15T20:10:12.578061+00:00"
+  },
+  "consumer-msrv.local-upscaler-not-send": {
+    "id": "consumer-msrv.local-upscaler-not-send",
+    "claim": "Consumer local-upscaler-not-send",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0277",
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:23.998198+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:24.016721+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0277",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.local-upscaler-not-send/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.local-upscaler-not-send/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:24.352182+00:00",
+        "elapsed_seconds": 0.334
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Upscaler; fn check<T: Send>() {} fn main() { check::<Upscaler>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    },
+    "finished_utc": "2026-10-15T20:10:24.362083+00:00"
+  },
+  "consumer-msrv.metadata": {
+    "id": "consumer-msrv.metadata",
+    "claim": "Source IDs and selected package provenance",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Source IDs and selected package provenance"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:27.596001+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "metadata",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--features",
+          "dx12,movable",
+          "--format-version=1",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:27.611027+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.metadata/00-metadata.stdout.txt",
+        "stderr": "cases/consumer-msrv.metadata/00-metadata.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:27.720056+00:00",
+        "elapsed_seconds": 0.107
+      }
+    ],
+    "observations": {
+      "registry_only": false,
+      "packages": [
+        {
+          "name": "fsr-sdk",
+          "version": "0.3.0",
+          "source": null,
+          "manifest_path": "<repo>\\crates\\fsr-sdk\\Cargo.toml"
+        },
+        {
+          "name": "fsr-sdk-sys",
+          "version": "0.1.2",
+          "source": null,
+          "manifest_path": "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml"
+        }
+      ]
+    },
+    "finished_utc": "2026-10-15T20:10:27.738607+00:00"
+  },
+  "consumer-msrv.movable-positive": {
+    "id": "consumer-msrv.movable-positive",
+    "claim": "Consumer movable-positive",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:11.492528+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:11.510789+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.movable-positive/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.movable-positive/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:11.768267+00:00",
+        "elapsed_seconds": 0.256
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::MovableRuntime, upscaler::MovableUpscaler}; fn send<T: Send>() {} fn main() { send::<MovableRuntime>(); send::<MovableUpscaler>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:11.772083+00:00"
+  },
+  "consumer-msrv.movable-runtime-not-sync": {
+    "id": "consumer-msrv.movable-runtime-not-sync",
+    "claim": "Consumer movable-runtime-not-sync",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0277",
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:23.181822+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:23.199627+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0277",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.movable-runtime-not-sync/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.movable-runtime-not-sync/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:23.438261+00:00",
+        "elapsed_seconds": 0.237
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::MovableRuntime; fn check<T: Sync>() {} fn main() { check::<MovableRuntime>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    },
+    "finished_utc": "2026-10-15T20:10:23.448467+00:00"
+  },
+  "consumer-msrv.movable-to-local-construction": {
+    "id": "consumer-msrv.movable-to-local-construction",
+    "claim": "Consumer movable-to-local-construction",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0308",
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:12.581534+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:12.598135+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0308",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.movable-to-local-construction/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.movable-to-local-construction/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:12.976383+00:00",
+        "elapsed_seconds": 0.377
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::MovableRuntime, upscaler::{Upscaler, UpscalerOptions, ID3D12Device}}; fn wrong(r: &MovableRuntime, d: &ID3D12Device, o: UpscalerOptions) { let _ = Upscaler::new(r, d, o); } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0308"
+    },
+    "finished_utc": "2026-10-15T20:10:12.986798+00:00"
+  },
+  "consumer-msrv.movable-upscaler-not-sync": {
+    "id": "consumer-msrv.movable-upscaler-not-sync",
+    "claim": "Consumer movable-upscaler-not-sync",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0277",
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:23.452231+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:23.471982+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0277",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.movable-upscaler-not-sync/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.movable-upscaler-not-sync/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:23.716247+00:00",
+        "elapsed_seconds": 0.243
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::MovableUpscaler; fn check<T: Sync>() {} fn main() { check::<MovableUpscaler>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    },
+    "finished_utc": "2026-10-15T20:10:23.726085+00:00"
+  },
+  "consumer-msrv.native-disabled-dispatch-resources-movable": {
+    "id": "consumer-msrv.native-disabled-dispatch-resources-movable",
+    "claim": "Consumer native-disabled-dispatch-resources-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:21.817015+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:21.834743+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-dispatch-resources-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-dispatch-resources-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:22.035744+00:00",
+        "elapsed_seconds": 0.2
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleResources; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:22.038868+00:00"
+  },
+  "consumer-msrv.native-disabled-dispatch-resources-none": {
+    "id": "consumer-msrv.native-disabled-dispatch-resources-none",
+    "claim": "Consumer native-disabled-dispatch-resources-none",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:19.303642+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:19.321873+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-dispatch-resources-none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-dispatch-resources-none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:19.544561+00:00",
+        "elapsed_seconds": 0.221
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleResources; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:19.554446+00:00"
+  },
+  "consumer-msrv.native-disabled-dx12-module-movable": {
+    "id": "consumer-msrv.native-disabled-dx12-module-movable",
+    "claim": "Consumer native-disabled-dx12-module-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:21.333718+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:21.360693+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-dx12-module-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-dx12-module-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:21.571521+00:00",
+        "elapsed_seconds": 0.209
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::dx12; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:21.574897+00:00"
+  },
+  "consumer-msrv.native-disabled-dx12-module-none": {
+    "id": "consumer-msrv.native-disabled-dx12-module-none",
+    "claim": "Consumer native-disabled-dx12-module-none",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:18.753750+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:18.772892+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-dx12-module-none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-dx12-module-none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:19.006441+00:00",
+        "elapsed_seconds": 0.232
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::dx12; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:19.019252+00:00"
+  },
+  "consumer-msrv.native-disabled-legacy-movable-movable": {
+    "id": "consumer-msrv.native-disabled-legacy-movable-movable",
+    "claim": "Consumer native-disabled-legacy-movable-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:22.501023+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:22.520783+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-legacy-movable-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-legacy-movable-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:22.724671+00:00",
+        "elapsed_seconds": 0.202
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::MovableUpscaler; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:22.728127+00:00"
+  },
+  "consumer-msrv.native-disabled-legacy-movable-none": {
+    "id": "consumer-msrv.native-disabled-legacy-movable-none",
+    "claim": "Consumer native-disabled-legacy-movable-none",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:20.144025+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:20.165772+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-legacy-movable-none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-legacy-movable-none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:20.394683+00:00",
+        "elapsed_seconds": 0.227
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::MovableUpscaler; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:20.407518+00:00"
+  },
+  "consumer-msrv.native-disabled-legacy-upscaler-movable": {
+    "id": "consumer-msrv.native-disabled-legacy-upscaler-movable",
+    "claim": "Consumer native-disabled-legacy-upscaler-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:21.579199+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:21.597715+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-legacy-upscaler-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-legacy-upscaler-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:21.809915+00:00",
+        "elapsed_seconds": 0.211
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Upscaler; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:21.813368+00:00"
+  },
+  "consumer-msrv.native-disabled-legacy-upscaler-none": {
+    "id": "consumer-msrv.native-disabled-legacy-upscaler-none",
+    "claim": "Consumer native-disabled-legacy-upscaler-none",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:19.024337+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:19.047476+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-legacy-upscaler-none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-legacy-upscaler-none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:19.288449+00:00",
+        "elapsed_seconds": 0.239
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Upscaler; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:19.299888+00:00"
+  },
+  "consumer-msrv.native-disabled-native-sharpness-movable": {
+    "id": "consumer-msrv.native-disabled-native-sharpness-movable",
+    "claim": "Consumer native-disabled-native-sharpness-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:22.042552+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:22.059873+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-native-sharpness-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-native-sharpness-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:22.263347+00:00",
+        "elapsed_seconds": 0.202
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::NativeSharpness; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:22.266383+00:00"
+  },
+  "consumer-msrv.native-disabled-native-sharpness-none": {
+    "id": "consumer-msrv.native-disabled-native-sharpness-none",
+    "claim": "Consumer native-disabled-native-sharpness-none",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:19.558445+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:19.579384+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-native-sharpness-none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-native-sharpness-none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:19.809649+00:00",
+        "elapsed_seconds": 0.228
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::NativeSharpness; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:19.820316+00:00"
+  },
+  "consumer-msrv.native-disabled-raw-dx12-movable": {
+    "id": "consumer-msrv.native-disabled-raw-dx12-movable",
+    "claim": "Consumer native-disabled-raw-dx12-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:22.947988+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:22.963504+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-raw-dx12-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-raw-dx12-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:23.174719+00:00",
+        "elapsed_seconds": 0.21
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::dx12; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:23.177810+00:00"
+  },
+  "consumer-msrv.native-disabled-raw-dx12-none": {
+    "id": "consumer-msrv.native-disabled-raw-dx12-none",
+    "claim": "Consumer native-disabled-raw-dx12-none",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:20.790945+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:20.813380+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-raw-dx12-none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-raw-dx12-none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:21.054365+00:00",
+        "elapsed_seconds": 0.236
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::dx12; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:21.068423+00:00"
+  },
+  "consumer-msrv.native-disabled-raw-loader-movable": {
+    "id": "consumer-msrv.native-disabled-raw-loader-movable",
+    "claim": "Consumer native-disabled-raw-loader-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:22.731432+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:22.746714+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-raw-loader-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-raw-loader-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:22.941541+00:00",
+        "elapsed_seconds": 0.193
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::loader; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:22.944734+00:00"
+  },
+  "consumer-msrv.native-disabled-raw-loader-none": {
+    "id": "consumer-msrv.native-disabled-raw-loader-none",
+    "claim": "Consumer native-disabled-raw-loader-none",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:20.412080+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:20.438452+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-raw-loader-none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-raw-loader-none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:20.774156+00:00",
+        "elapsed_seconds": 0.334
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::loader; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:20.786859+00:00"
+  },
+  "consumer-msrv.native-disabled-runtime-movable": {
+    "id": "consumer-msrv.native-disabled-runtime-movable",
+    "claim": "Consumer native-disabled-runtime-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:21.072557+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:21.095038+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-runtime-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-runtime-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:21.313772+00:00",
+        "elapsed_seconds": 0.217
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:21.330348+00:00"
+  },
+  "consumer-msrv.native-disabled-runtime-none": {
+    "id": "consumer-msrv.native-disabled-runtime-none",
+    "claim": "Consumer native-disabled-runtime-none",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:18.463507+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:18.485926+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-runtime-none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-runtime-none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:18.740152+00:00",
+        "elapsed_seconds": 0.252
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:18.749989+00:00"
+  },
+  "consumer-msrv.native-disabled-sharpening-movable": {
+    "id": "consumer-msrv.native-disabled-sharpening-movable",
+    "claim": "Consumer native-disabled-sharpening-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:22.269474+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:22.285146+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-sharpening-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-sharpening-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:22.495153+00:00",
+        "elapsed_seconds": 0.208
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Sharpening; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:22.498162+00:00"
+  },
+  "consumer-msrv.native-disabled-sharpening-none": {
+    "id": "consumer-msrv.native-disabled-sharpening-none",
+    "claim": "Consumer native-disabled-sharpening-none",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0432",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:19.823776+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:19.842662+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0432",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.native-disabled-sharpening-none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.native-disabled-sharpening-none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:20.127572+00:00",
+        "elapsed_seconds": 0.283
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Sharpening; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    },
+    "finished_utc": "2026-10-15T20:10:20.140415+00:00"
+  },
+  "consumer-msrv.no-local-to-movable-conversion": {
+    "id": "consumer-msrv.no-local-to-movable-conversion",
+    "claim": "Consumer no-local-to-movable-conversion",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0277",
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:12.990900+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:13.008776+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0277",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.no-local-to-movable-conversion/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.no-local-to-movable-conversion/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:13.240389+00:00",
+        "elapsed_seconds": 0.23
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::{Runtime, MovableRuntime}; fn wrong(r: Runtime) -> MovableRuntime { r.into() } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    },
+    "finished_utc": "2026-10-15T20:10:13.252507+00:00"
+  },
+  "consumer-msrv.no-movable-to-local-conversion": {
+    "id": "consumer-msrv.no-movable-to-local-conversion",
+    "claim": "Consumer no-movable-to-local-conversion",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0277",
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:13.256742+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:13.275874+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0277",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.no-movable-to-local-conversion/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.no-movable-to-local-conversion/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:13.501991+00:00",
+        "elapsed_seconds": 0.225
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::{Runtime, MovableRuntime}; fn wrong(r: MovableRuntime) -> Runtime { r.into() } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    },
+    "finished_utc": "2026-10-15T20:10:13.512122+00:00"
+  },
+  "consumer-msrv.pre-exposure-construction-private": {
+    "id": "consumer-msrv.pre-exposure-construction-private",
+    "claim": "Consumer pre-exposure-construction-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0423",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:09.290700+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:09.307421+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0423",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.pre-exposure-construction-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.pre-exposure-construction-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:09.514434+00:00",
+        "elapsed_seconds": 0.205
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::PreExposure; fn main() { let _ = PreExposure(0.0); }",
+      "features": "",
+      "expected_diagnostic": "E0423"
+    },
+    "finished_utc": "2026-10-15T20:10:09.525690+00:00"
+  },
+  "consumer-msrv.provider-id-private": {
+    "id": "consumer-msrv.provider-id-private",
+    "claim": "Consumer provider-id-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0423",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:13.969789+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:13.986165+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0423",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.provider-id-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.provider-id-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:14.181897+00:00",
+        "elapsed_seconds": 0.194
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::ProviderId; fn main() { let _ = ProviderId(1); }",
+      "features": "",
+      "expected_diagnostic": "E0423"
+    },
+    "finished_utc": "2026-10-15T20:10:14.192443+00:00"
+  },
+  "consumer-msrv.queries-local": {
+    "id": "consumer-msrv.queries-local",
+    "claim": "Consumer queries-local",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:14.929025+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:14.946893+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.queries-local/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.queries-local/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:15.229890+00:00",
+        "elapsed_seconds": 0.281
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::Runtime, upscaler::{Upscaler, ID3D12Device, UpscalerOptions}, query::{ProviderInfo, GpuMemoryUsage, ResourceRequirements, QualityMode, JitterPhaseCount}, error::Error}; fn inspect(r: &mut Runtime, u: &mut Upscaler, d: &ID3D12Device, o: &UpscalerOptions) -> Result<(), Error> { let _: Vec<ProviderInfo> = r.upscaler_providers_dx12(d)?; let _: GpuMemoryUsage = r.estimate_upscaler_memory_dx12(d, o)?; let _: ProviderInfo = u.provider()?; let _: ResourceRequirements = u.resource_requirements()?; let _: GpuMemoryUsage = u.gpu_memory_usage()?; let display=o.max_upscale_size(); let render=o.max_render_size(); let _: f32=r.upscaler_ratio_dx12(d, QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=r.upscaler_render_size_dx12(d, display, QualityMode::Balanced)?; let phase: JitterPhaseCount=r.upscaler_jitter_phase_count_dx12(d, render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=r.upscaler_jitter_offset_dx12(d, 0, phase)?; let _: f32=u.upscale_ratio(QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=u.render_size(display, QualityMode::Balanced)?; let phase: JitterPhaseCount=u.jitter_phase_count(render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=u.jitter_offset(0, phase)?; Ok(()) } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:15.240750+00:00"
+  },
+  "consumer-msrv.queries-movable": {
+    "id": "consumer-msrv.queries-movable",
+    "claim": "Consumer queries-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:15.686973+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:15.708134+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.queries-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.queries-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:15.964716+00:00",
+        "elapsed_seconds": 0.255
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::MovableRuntime, upscaler::{MovableUpscaler, ID3D12Device, UpscalerOptions}, query::{ProviderInfo, GpuMemoryUsage, ResourceRequirements, QualityMode, JitterPhaseCount}, error::Error}; fn inspect(r: &mut MovableRuntime, u: &mut MovableUpscaler, d: &ID3D12Device, o: &UpscalerOptions) -> Result<(), Error> { let _: Vec<ProviderInfo> = r.upscaler_providers_dx12(d)?; let _: GpuMemoryUsage = r.estimate_upscaler_memory_dx12(d, o)?; let _: ProviderInfo = u.provider()?; let _: ResourceRequirements = u.resource_requirements()?; let _: GpuMemoryUsage = u.gpu_memory_usage()?; let display=o.max_upscale_size(); let render=o.max_render_size(); let _: f32=r.upscaler_ratio_dx12(d, QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=r.upscaler_render_size_dx12(d, display, QualityMode::Balanced)?; let phase: JitterPhaseCount=r.upscaler_jitter_phase_count_dx12(d, render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=r.upscaler_jitter_offset_dx12(d, 0, phase)?; let _: f32=u.upscale_ratio(QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=u.render_size(display, QualityMode::Balanced)?; let phase: JitterPhaseCount=u.jitter_phase_count(render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=u.jitter_offset(0, phase)?; Ok(()) } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:15.976355+00:00"
+  },
+  "consumer-msrv.query-exclusive-local": {
+    "id": "consumer-msrv.query-exclusive-local",
+    "claim": "Consumer query-exclusive-local",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0596",
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:15.244783+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:15.263890+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0596",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.query-exclusive-local/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.query-exclusive-local/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:15.665570+00:00",
+        "elapsed_seconds": 0.4
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Upscaler; fn wrong(u: &Upscaler) { let _ = u.provider(); } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": "E0596"
+    },
+    "finished_utc": "2026-10-15T20:10:15.680577+00:00"
+  },
+  "consumer-msrv.query-exclusive-movable": {
+    "id": "consumer-msrv.query-exclusive-movable",
+    "claim": "Consumer query-exclusive-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0596",
+      "features": "dx12,movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:15.979844+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:16.002029+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0596",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.query-exclusive-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.query-exclusive-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:16.290883+00:00",
+        "elapsed_seconds": 0.287
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::MovableUpscaler; fn wrong(u: &MovableUpscaler) { let _ = u.provider(); } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0596"
+    },
+    "finished_utc": "2026-10-15T20:10:16.304067+00:00"
+  },
+  "consumer-msrv.query-memory-field-private": {
+    "id": "consumer-msrv.query-memory-field-private",
+    "claim": "Consumer query-memory-field-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0616",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:14.423382+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:14.445752+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0616",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.query-memory-field-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.query-memory-field-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:14.650762+00:00",
+        "elapsed_seconds": 0.202
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::GpuMemoryUsage; fn wrong(r: GpuMemoryUsage) { let _ = r.total_bytes; } fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0616"
+    },
+    "finished_utc": "2026-10-15T20:10:14.662224+00:00"
+  },
+  "consumer-msrv.query-provider-field-private": {
+    "id": "consumer-msrv.query-provider-field-private",
+    "claim": "Consumer query-provider-field-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0616",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:14.195940+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:14.215342+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0616",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.query-provider-field-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.query-provider-field-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:14.407461+00:00",
+        "elapsed_seconds": 0.191
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::ProviderInfo; fn wrong(r: ProviderInfo) { let _ = r.name; } fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0616"
+    },
+    "finished_utc": "2026-10-15T20:10:14.418531+00:00"
+  },
+  "consumer-msrv.query-requirements-field-private": {
+    "id": "consumer-msrv.query-requirements-field-private",
+    "claim": "Consumer query-requirements-field-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0616",
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:14.665425+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:14.686809+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0616",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.query-requirements-field-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.query-requirements-field-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:14.912468+00:00",
+        "elapsed_seconds": 0.224
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::ResourceRequirements; fn wrong(r: ResourceRequirements) { let _ = r.required; } fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0616"
+    },
+    "finished_utc": "2026-10-15T20:10:14.924441+00:00"
+  },
+  "consumer-msrv.query-results-movable": {
+    "id": "consumer-msrv.query-results-movable",
+    "claim": "Consumer query-results-movable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "movable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:13.750743+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:13.766627+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.query-results-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.query-results-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:13.962653+00:00",
+        "elapsed_seconds": 0.195
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::{ProviderInfo, ProviderId, GpuMemoryUsage, ResourceFlags, ResourceRequirements}; fn observe(p: &ProviderInfo, m: GpuMemoryUsage, r: ResourceRequirements) { let _: ProviderId = p.id(); let _: &str = p.name(); let _: u64 = m.total_bytes(); let _: u64 = m.aliasable_bytes(); let _: u64 = r.required().bits(); let _: u64 = r.optional().unknown_bits(); let _: bool = r.required().contains(ResourceFlags::COLOR); } fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:13.966322+00:00"
+  },
+  "consumer-msrv.query-results-portable": {
+    "id": "consumer-msrv.query-results-portable",
+    "claim": "Consumer query-results-portable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:13.515323+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:13.532934+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.query-results-portable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.query-results-portable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:13.736824+00:00",
+        "elapsed_seconds": 0.202
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::{ProviderInfo, ProviderId, GpuMemoryUsage, ResourceFlags, ResourceRequirements}; fn observe(p: &ProviderInfo, m: GpuMemoryUsage, r: ResourceRequirements) { let _: ProviderId = p.id(); let _: &str = p.name(); let _: u64 = m.total_bytes(); let _: u64 = m.aliasable_bytes(); let _: u64 = r.required().bits(); let _: u64 = r.optional().unknown_bits(); let _: bool = r.required().contains(ResourceFlags::COLOR); } fn main() {}",
+      "features": "",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:13.746743+00:00"
+  },
+  "consumer-msrv.query-utility-inputs-portable": {
+    "id": "consumer-msrv.query-utility-inputs-portable",
+    "claim": "Consumer query-utility-inputs-portable",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": ""
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:16.307978+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:16.329899+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.query-utility-inputs-portable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.query-utility-inputs-portable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:16.545980+00:00",
+        "elapsed_seconds": 0.214
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{query::{QualityMode, JitterPhaseCount}, error::Error}; fn main() -> Result<(), Error> { let phase=JitterPhaseCount::new(20)?; let _: i32=phase.count(); let mode=QualityMode::Balanced; match mode { QualityMode::NativeAa | QualityMode::Quality | QualityMode::Balanced | QualityMode::Performance | QualityMode::UltraPerformance => {}, _ => {} } Ok(()) }",
+      "features": "",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:16.556402+00:00"
+  },
+  "consumer-msrv.raw-loader-positive": {
+    "id": "consumer-msrv.raw-loader-positive",
+    "claim": "Consumer raw-loader-positive",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": 0,
+      "diagnostic": null,
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:10.938951+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:10.955524+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.raw-loader-positive/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.raw-loader-positive/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:11.198917+00:00",
+        "elapsed_seconds": 0.242
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::loader::{FfxLibrary, LoadError}; fn main() { let _: Option<FfxLibrary> = None; let _: Option<LoadError> = None; }",
+      "features": "dx12",
+      "expected_diagnostic": null
+    },
+    "finished_utc": "2026-10-15T20:10:11.209094+00:00"
+  },
+  "consumer-msrv.resources-literal-private": {
+    "id": "consumer-msrv.resources-literal-private",
+    "claim": "Consumer resources-literal-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0451",
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:10.398971+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:10.419178+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0451",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.resources-literal-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.resources-literal-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:10.664253+00:00",
+        "elapsed_seconds": 0.244
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleResources; fn wrong(r: UpscaleResources) { let _ = UpscaleResources { ..r }; } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": "E0451"
+    },
+    "finished_utc": "2026-10-15T20:10:10.673210+00:00"
+  },
+  "consumer-msrv.setup": {
+    "id": "consumer-msrv.setup",
+    "claim": "Isolated downstream consumer with explicit dependency provenance",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Isolated downstream consumer with explicit dependency provenance"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:08.066558+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "generate-lockfile",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:08.085800+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.setup/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.setup/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:08.303866+00:00",
+        "elapsed_seconds": 0.217
+      }
+    ],
+    "observations": {
+      "manifest": "# SPDX-License-Identifier: MPL-2.0\n[package]\nname = \"verification-consumer\"\nversion = \"0.0.0\"\nedition = \"2024\"\n[workspace]\n[features]\ndefault = []\ndx12 = [\"fsr-sdk/dx12\"]\nmovable = [\"fsr-sdk/movable\"]\n[dependencies]\nfsr-sdk = { path = \"<repo>/crates/fsr-sdk\", default-features = false }\nfsr-sdk-sys = { path = \"<repo>/crates/fsr-sdk-sys\", default-features = false }\n"
+    },
+    "finished_utc": "2026-10-15T20:10:08.307086+00:00"
+  },
+  "consumer-msrv.sharpness-construction-private": {
+    "id": "consumer-msrv.sharpness-construction-private",
+    "claim": "Consumer sharpness-construction-private",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "exit": "nonzero",
+      "diagnostic": "E0423",
+      "features": "dx12"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:10.677260+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:10.695578+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": "E0423",
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.sharpness-construction-private/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.sharpness-construction-private/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:10.924413+00:00",
+        "elapsed_seconds": 0.228
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::NativeSharpness; fn main() { let _ = NativeSharpness(0.35); }",
+      "features": "dx12",
+      "expected_diagnostic": "E0423"
+    },
+    "finished_utc": "2026-10-15T20:10:10.935149+00:00"
+  },
+  "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12": {
+    "id": "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12",
+    "claim": "Consumer normal dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Consumer normal dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:26.195748+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:26.209851+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:26.321440+00:00",
+        "elapsed_seconds": 0.11
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    },
+    "finished_utc": "2026-10-15T20:10:26.330921+00:00"
+  },
+  "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12-movable": {
+    "id": "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12-movable",
+    "claim": "Consumer normal dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Consumer normal dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:26.334324+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:26.351730+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:26.460665+00:00",
+        "elapsed_seconds": 0.107
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    },
+    "finished_utc": "2026-10-15T20:10:26.463783+00:00"
+  },
+  "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.movable": {
+    "id": "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.movable",
+    "claim": "Consumer normal dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Consumer normal dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:26.071653+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:26.089523+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:26.189848+00:00",
+        "elapsed_seconds": 0.098
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:26.192742+00:00"
+  },
+  "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.none": {
+    "id": "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.none",
+    "claim": "Consumer normal dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Consumer normal dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:25.914700+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:25.935110+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:26.064770+00:00",
+        "elapsed_seconds": 0.128
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:26.068658+00:00"
+  },
+  "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12": {
+    "id": "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12",
+    "claim": "Consumer normal dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Consumer normal dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:24.655308+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:24.673074+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:24.791150+00:00",
+        "elapsed_seconds": 0.116
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:24.794105+00:00"
+  },
+  "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12-movable": {
+    "id": "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12-movable",
+    "claim": "Consumer normal dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Consumer normal dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:24.797137+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:24.816463+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:24.937859+00:00",
+        "elapsed_seconds": 0.12
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:24.941118+00:00"
+  },
+  "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.movable": {
+    "id": "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.movable",
+    "claim": "Consumer normal dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Consumer normal dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:24.529011+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:24.545603+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:24.648721+00:00",
+        "elapsed_seconds": 0.102
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:24.651870+00:00"
+  },
+  "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.none": {
+    "id": "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.none",
+    "claim": "Consumer normal dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Consumer normal dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:24.365881+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer-msrv\\Cargo.toml",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:24.382263+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.none/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.none/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:24.514813+00:00",
+        "elapsed_seconds": 0.13
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:24.525778+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.defaults": {
+    "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:26.466871+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:26.481405+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.defaults/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.defaults/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:26.572198+00:00",
+        "elapsed_seconds": 0.089
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:26.575457+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.dx12": {
+    "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.dx12",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:26.685541+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:26.700099+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.dx12/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.dx12/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:26.786097+00:00",
+        "elapsed_seconds": 0.084
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    },
+    "finished_utc": "2026-10-15T20:10:26.789082+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.no-defaults": {
+    "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.no-defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:26.579123+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:26.594852+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.no-defaults/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.no-defaults/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:26.678964+00:00",
+        "elapsed_seconds": 0.082
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:26.682362+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.defaults": {
+    "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:24.944647+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:24.960977+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.defaults/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.defaults/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:25.051494+00:00",
+        "elapsed_seconds": 0.089
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:25.054405+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.dx12": {
+    "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.dx12",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:25.179691+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:25.195661+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.dx12/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.dx12/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:25.286235+00:00",
+        "elapsed_seconds": 0.089
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:25.290391+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.no-defaults": {
+    "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.no-defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:25.057351+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:25.073631+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.no-defaults/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.no-defaults/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:25.172802+00:00",
+        "elapsed_seconds": 0.097
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:25.176255+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.defaults": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:26.792083+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:26.806946+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.defaults/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.defaults/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:26.907232+00:00",
+        "elapsed_seconds": 0.098
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    },
+    "finished_utc": "2026-10-15T20:10:26.910411+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.dx12": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.dx12",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:27.019335+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:27.032132+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.dx12/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.dx12/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:27.133414+00:00",
+        "elapsed_seconds": 0.1
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    },
+    "finished_utc": "2026-10-15T20:10:27.136341+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.movable": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.movable",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:27.139739+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:27.155986+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:27.263215+00:00",
+        "elapsed_seconds": 0.106
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    },
+    "finished_utc": "2026-10-15T20:10:27.266734+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:26.913383+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:26.926031+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:27.012597+00:00",
+        "elapsed_seconds": 0.085
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:27.016036+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults-movable": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults-movable",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:27.269785+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:27.285410+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:27.374359+00:00",
+        "elapsed_seconds": 0.087
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:27.377400+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.defaults": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:25.297130+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:25.313245+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.defaults/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.defaults/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:25.421599+00:00",
+        "elapsed_seconds": 0.107
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:25.425152+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.dx12": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.dx12",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:25.555296+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:25.570010+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.dx12/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.dx12/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:25.670283+00:00",
+        "elapsed_seconds": 0.099
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:25.673580+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.movable": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.movable",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:25.676968+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:25.692360+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:25.801335+00:00",
+        "elapsed_seconds": 0.107
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:25.804721+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:25.428803+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:25.449477+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:25.548667+00:00",
+        "elapsed_seconds": 0.097
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:25.552173+00:00"
+  },
+  "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults-movable": {
+    "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults-movable",
+    "claim": "Real package defaults and feature dependency graph",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Real package defaults and feature dependency graph"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:25.808127+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:25.821343+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults-movable/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults-movable/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:25.909037+00:00",
+        "elapsed_seconds": 0.086
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    },
+    "finished_utc": "2026-10-15T20:10:25.912398+00:00"
+  },
+  "consumer-msrv.unsupported-vulkan": {
+    "id": "consumer-msrv.unsupported-vulkan",
+    "claim": "Explicit unsupported-backend rejection",
+    "requires": [
+      "equipment.toolchain",
+      "consumer-msrv.setup"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Explicit unsupported-backend rejection"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:27.380803+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "--no-default-features",
+          "--features",
+          "vulkan",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:27.397729+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": true
+        },
+        "stdout": "cases/consumer-msrv.unsupported-vulkan/00-command.stdout.txt",
+        "stderr": "cases/consumer-msrv.unsupported-vulkan/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 101,
+        "finished_utc": "2026-10-15T20:10:27.589909+00:00",
+        "elapsed_seconds": 0.177
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:10:27.592759+00:00"
+  },
+  "equipment.toolchain": {
+    "id": "equipment.toolchain",
+    "claim": "Actual compiler, Cargo, Python and host identity",
+    "requires": [],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Actual compiler, Cargo, Python and host identity"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:09:19.441964+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\rustc.EXE",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:09:19.453931+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/00-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:09:19.543369+00:00",
+        "elapsed_seconds": 0.089
+      },
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "-V"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:09:19.561469+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/01-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/01-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:09:19.645600+00:00",
+        "elapsed_seconds": 0.083
+      }
+    ],
+    "observations": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.14.1 (tags/v3.14.1:57e0d17, Dec  2 2025, 14:05:07) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    },
+    "finished_utc": "2026-10-15T20:09:19.817119+00:00"
+  },
+  "msrv.default.check": {
+    "id": "msrv.default.check",
+    "claim": "Workspace check (default)",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Workspace check (default)"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:09:19.820302+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--workspace",
+          "--all-targets",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:09:19.836729+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/msrv.default.check/00-command.stdout.txt",
+        "stderr": "cases/msrv.default.check/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:09:21.726778+00:00",
+        "elapsed_seconds": 1.889
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:09:21.737298+00:00"
+  },
+  "msrv.default.test": {
+    "id": "msrv.default.test",
+    "claim": "Workspace test (default)",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Workspace test (default)"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:09:21.742129+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "test",
+          "--workspace",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:09:21.760729+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/msrv.default.test/00-command.stdout.txt",
+        "stderr": "cases/msrv.default.test/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:09:34.058221+00:00",
+        "elapsed_seconds": 12.296
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:09:34.072959+00:00"
+  },
+  "msrv.movable.check": {
+    "id": "msrv.movable.check",
+    "claim": "Workspace check (movable)",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Workspace check (movable)"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:09:34.075436+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--workspace",
+          "--features",
+          "fsr-sdk/movable",
+          "--all-targets",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:09:34.085994+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/msrv.movable.check/00-command.stdout.txt",
+        "stderr": "cases/msrv.movable.check/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:09:35.940380+00:00",
+        "elapsed_seconds": 1.853
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:09:35.949427+00:00"
+  },
+  "msrv.movable.test": {
+    "id": "msrv.movable.test",
+    "claim": "Workspace test (movable)",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Workspace test (movable)"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:09:35.953918+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "test",
+          "--workspace",
+          "--features",
+          "fsr-sdk/movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:09:35.968475+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/msrv.movable.test/00-command.stdout.txt",
+        "stderr": "cases/msrv.movable.test/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:09:52.769274+00:00",
+        "elapsed_seconds": 16.799
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:09:52.785846+00:00"
+  },
+  "msrv.no-default-movable.check": {
+    "id": "msrv.no-default-movable.check",
+    "claim": "Workspace check (no-default-movable)",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Workspace check (no-default-movable)"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:00.674193+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--workspace",
+          "--no-default-features",
+          "--features",
+          "fsr-sdk/movable",
+          "--all-targets",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:00.695279+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/msrv.no-default-movable.check/00-command.stdout.txt",
+        "stderr": "cases/msrv.no-default-movable.check/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:00.846076+00:00",
+        "elapsed_seconds": 0.149
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:10:00.862988+00:00"
+  },
+  "msrv.no-default-movable.test": {
+    "id": "msrv.no-default-movable.test",
+    "claim": "Workspace test (no-default-movable)",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Workspace test (no-default-movable)"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:10:00.866599+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "test",
+          "--workspace",
+          "--no-default-features",
+          "--features",
+          "fsr-sdk/movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:10:00.884560+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/msrv.no-default-movable.test/00-command.stdout.txt",
+        "stderr": "cases/msrv.no-default-movable.test/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:08.048684+00:00",
+        "elapsed_seconds": 7.163
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:10:08.062881+00:00"
+  },
+  "msrv.no-default.check": {
+    "id": "msrv.no-default.check",
+    "claim": "Workspace check (no-default)",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Workspace check (no-default)"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:09:52.789402+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "check",
+          "--workspace",
+          "--no-default-features",
+          "--all-targets",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:09:52.801431+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/msrv.no-default.check/00-command.stdout.txt",
+        "stderr": "cases/msrv.no-default.check/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:09:52.952994+00:00",
+        "elapsed_seconds": 0.15
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:09:52.962530+00:00"
+  },
+  "msrv.no-default.test": {
+    "id": "msrv.no-default.test",
+    "claim": "Workspace test (no-default)",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Workspace test (no-default)"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T20:09:52.965883+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "+1.88.0",
+          "test",
+          "--workspace",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T20:09:52.983734+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/msrv.no-default.test/00-command.stdout.txt",
+        "stderr": "cases/msrv.no-default.test/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T20:10:00.647642+00:00",
+        "elapsed_seconds": 7.662
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T20:10:00.669008+00:00"
+  }
+}

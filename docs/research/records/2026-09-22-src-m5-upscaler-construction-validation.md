@@ -10,7 +10,7 @@
 **Target record:** `docs/research/records/2026-09-22-src-m5-upscaler-construction-validation.md`  
 **Topic:** Public construction and validation contract for a modern FidelityFX upscaler context on DirectX 12.  
 **Authoritative baseline:** AMD FidelityFX SDK v2.3.0, commit `60f4ea81909200d8542eca14dccb2628b763a9a3`.  
-**Evidence cut-off:** Pinned commit above. Current upstream was inspected only for release/delta checking; no post-baseline behavior is projected backwards.
+**Evidence cut-off:** Pinned commit above. Current upstream was inspected only for release/delta checking; no post-baseline behaviour is projected backwards.
 
 ## Scope and method
 
@@ -25,7 +25,7 @@ This investigation covers only context creation through the modern FidelityFX AP
 - API-version/provider-selection interaction;
 - creation-time failure semantics.
 
-Dispatch behavior is considered only where necessary to establish what the creation-time maxima mean. No GPU/runtime experiment was performed. Source acceptance is not treated as proof of behavior of the separately distributed signed runtime.
+Dispatch behaviour is considered only where necessary to establish what the creation-time maxima mean. No GPU/runtime experiment was performed. Source acceptance is not treated as proof of behaviour of the separately distributed signed runtime.
 
 Evidence labels used below:
 
@@ -57,11 +57,11 @@ All repository files below are from commit `60f4ea81909200d8542eca14dccb2628b763
 | `backend/dx12/ffx_backends_dx12.cpp` — | Backend-chain validation, null/duplicate device handling |
 | `backend/dx12/ffx_dx12.cpp` — | DX12 device retention and capability queries |
 | FSR3 modern provider adapter — | Translation of modern creation descriptor into legacy FSR3 context |
-| FSR3 implementation — | Allocation and maximum-dimension behavior |
+| FSR3 implementation — | Allocation and maximum-dimension behaviour |
 | FSR3 implementation, dispatch validation — | Runtime dimensions versus creation maxima |
 | SDK v2.3.0 release — | Release/tag cross-check |
 
-The public repository does not expose the complete implementation of the signed FSR4/external provider. Consequently, open FSR2/FSR3 implementation behavior is evidence for those providers, not proof of signed FSR4 behavior.
+The public repository does not expose the complete implementation of the signed FSR4/external provider. Consequently, open FSR2/FSR3 implementation behaviour is evidence for those providers, not proof of signed FSR4 behaviour.
 
 ## Findings
 
@@ -73,7 +73,7 @@ The public repository does not expose the complete implementation of the signed 
 
 The root descriptor is materially different from extension nodes: `ffxCreateContext` uses the root descriptor's `type` to select an appropriate provider. **API validity rule.**
 
-The generic API requires each descriptor header's `type` to match the actual concrete descriptor. AMD's API documentation explicitly states that supplying a descriptor with an incorrect type is undefined behavior and is likely to crash. **Safety requirement.**
+The generic API requires each descriptor header's `type` to match the actual concrete descriptor. AMD's API documentation explicitly states that supplying a descriptor with an incorrect type is undefined behaviour and is likely to crash. **Safety requirement.**
 
 #### `ffxCreateContextDescUpscaleVersion`
 
@@ -85,7 +85,7 @@ Therefore:
 
 - inclusion of the version descriptor is a **v2.3.0 API validity requirement**;
 - its `version` value must be `FFX_UPSCALER_VERSION`;
-- the exact failure code or behavior of the signed provider when this node is missing or contains another value is **Unresolved**.
+- the exact failure code or behaviour of the signed provider when this node is missing or contains another value is **Unresolved**.
 
 The open FSR3 adapter does not consume this descriptor while translating its creation data. That implementation detail does not override the explicit SDK 2.1+ public requirement.
 
@@ -97,7 +97,7 @@ A documentation inconsistency exists inside the pinned tree: the generic `ffx-ap
 
 The open DX12 backend scanner rejects a recognized backend descriptor whose `device` is null with `FFX_API_RETURN_ERROR_PARAMETER`; it also rejects a second DX12 backend descriptor in the same chain with the generic `FFX_API_RETURN_ERROR`. The open FSR3 provider calls the backend-required helper, which fails creation if no backend can be constructed.
 
-Thus a DX12 backend descriptor with a non-null valid device is a **Verified API validity requirement for the open DX12 provider path** and the construction form used by the official sample. The exact missing-backend behavior of every external/signed provider is not publicly inspectable.
+Thus a DX12 backend descriptor with a non-null valid device is a **Verified API validity requirement for the open DX12 provider path** and the construction form used by the official sample. The exact missing-backend behaviour of every external/signed provider is not publicly inspectable.
 
 #### Other applicable creation descriptors
 
@@ -105,7 +105,7 @@ Thus a DX12 backend descriptor with a non-null valid device is a **Verified API 
 
 `ffxOverrideVersion` is an optional generic extension used to request a particular provider implementation/version. Its ID is conceptually separate from `FFX_UPSCALER_VERSION`. Public documentation requires override IDs to originate from the version-query API rather than being hard-coded.
 
-The `ffxAllocationCallbacks *memCb` argument to `ffxCreateContext` is not a `pNext` node. It may be null, in which case the generic API uses its default allocation behavior.
+The `ffxAllocationCallbacks *memCb` argument to `ffxCreateContext` is not a `pNext` node. It may be null, in which case the generic API uses its default allocation behaviour.
 
 #### Descriptor ordering
 
@@ -141,11 +141,11 @@ No pinned public contract states that recognized extension nodes may be put in a
 | Situation | v2.3 evidence |
 |---|---|
 | Duplicate DX12 backend descriptor | **Verified:** open DX12 backend returns `FFX_API_RETURN_ERROR` rather than accepting a second backend. |
-| Missing DX12 backend | **Verified for open FSR3:** backend-required helper returns an error. Exact behavior for every signed provider is not public. |
-| Duplicate upscaler-version descriptor | **Unresolved.** No public rule or common failure behavior was found. |
+| Missing DX12 backend | **Verified for open FSR3:** backend-required helper returns an error. Exact behaviour for every signed provider is not public. |
+| Duplicate upscaler-version descriptor | **Unresolved.** No public rule or common failure behaviour was found. |
 | Duplicate version-override descriptor | **Source-supported:** generic source takes the first matching override encountered. No public duplicate-node contract was found. |
-| Unknown extension descriptor | **Unresolved generically.** Public return codes include unknown-descriptor/provider-does-not-support-descriptor errors, while the open DX12 backend scanner simply skips unrecognized chain nodes. These facts do not establish one universal behavior. |
-| Header `type` inconsistent with actual object layout | **Verified undefined behavior**, not a reliably rejectable input. |
+| Unknown extension descriptor | **Unresolved generically.** Public return codes include unknown-descriptor/provider-does-not-support-descriptor errors, while the open DX12 backend scanner simply skips unrecognized chain nodes. These facts do not establish one universal behaviour. |
+| Header `type` inconsistent with actual object layout | **Verified undefined behaviour**, not a reliably rejectable input. |
 
 #### Descriptor-data lifetime
 
@@ -238,28 +238,28 @@ The complete `ffxCreateContextDescUpscale::flags` set in the pinned public ABI i
 |---:|---|---|
 | `1 << 0` (`0x001`) | `FFX_UPSCALE_ENABLE_HIGH_DYNAMIC_RANGE` | Indicates HDR input/content. Provider documentation requires corresponding HDR signaling when HDR input is supplied. |
 | `1 << 1` (`0x002`) | `FFX_UPSCALE_ENABLE_DISPLAY_RESOLUTION_MOTION_VECTORS` | Motion vectors are supplied at display/upscale resolution rather than render resolution. |
-| `1 << 2` (`0x004`) | `FFX_UPSCALE_ENABLE_MOTION_VECTORS_JITTER_CANCELLATION` | Indicates motion vectors contain jitter cancellation/offset behavior described by the upscaler interface. |
+| `1 << 2` (`0x004`) | `FFX_UPSCALE_ENABLE_MOTION_VECTORS_JITTER_CANCELLATION` | Indicates motion vectors contain jitter cancellation/offset behaviour described by the upscaler interface. |
 | `1 << 3` (`0x008`) | `FFX_UPSCALE_ENABLE_DEPTH_INVERTED` | Indicates inverted-depth convention. |
 | `1 << 4` (`0x010`) | `FFX_UPSCALE_ENABLE_DEPTH_INFINITE` | Indicates an infinite depth/far-plane convention. |
 | `1 << 5` (`0x020`) | `FFX_UPSCALE_ENABLE_AUTO_EXPOSURE` | Requests provider-generated automatic exposure; affects whether an application exposure resource is necessary. |
 | `1 << 6` (`0x040`) | `FFX_UPSCALE_ENABLE_DYNAMIC_RESOLUTION` | Declares use of dynamic resolution scaling. |
 | `1 << 7` (`0x080`) | `FFX_UPSCALE_ENABLE_DEBUG_CHECKING` | Enables additional diagnostic validation/checking. |
-| `1 << 8` (`0x100`) | `FFX_UPSCALE_ENABLE_NON_LINEAR_COLORSPACE` | Indicates non-linear/perceptual color-space input. |
+| `1 << 8` (`0x100`) | `FFX_UPSCALE_ENABLE_NON_LINEAR_COLORSPACE` | Indicates non-linear/perceptual colour-space input. |
 | `1 << 9` (`0x200`) | `FFX_UPSCALE_ENABLE_DEBUG_VISUALIZATION` | Enables debug-visualization facilities; header warns this can increase memory usage. |
 
 The field documentation expressly permits **zero** or a combination of defined flag values. Therefore `flags = 0` is a documented syntactically valid combination.
 
-That does not mean zero correctly describes every application's inputs. HDR, motion-vector resolution, depth convention, exposure mode, dynamic-resolution behavior, and color-space convention must agree with the resources/semantics presented to the selected provider. Such mismatches are functional/API-semantic issues; no public evidence found here turns an incorrect semantic flag into Rust memory unsafety.
+That does not mean zero correctly describes every application's inputs. HDR, motion-vector resolution, depth convention, exposure mode, dynamic-resolution behaviour, and colour-space convention must agree with the resources/semantics presented to the selected provider. Such mismatches are functional/API-semantic issues; no public evidence found here turns an incorrect semantic flag into Rust memory unsafety.
 
 No pinned public rule declares any two creation flags mutually exclusive.
 
 Provider differences matter:
 
 - FSR4 documentation expects linear input where possible and documents the non-linear-colorspace flag for cases where that cannot be supplied. It recommends inverted depth and recommends automatic exposure unless the application has a reason to provide its own exposure. Those recommendations are not generic hard validity constraints.
-- The open FSR3 modern-to-legacy adapter maps creation bits 0 through 7 but does not propagate bits 8 or 9 into the legacy FSR3 creation flags. Thus behavior of those two flags is provider-specific in v2.3 rather than a uniform FSR3 feature.
+- The open FSR3 modern-to-legacy adapter maps creation bits 0 through 7 but does not propagate bits 8 or 9 into the legacy FSR3 creation flags. Thus behaviour of those two flags is provider-specific in v2.3 rather than a uniform FSR3 feature.
 - Debug checking is documented as a development diagnostic facility, not a prerequisite for a valid production context.
 
-Use of unknown bits outside the defined mask is not documented as valid. The exact native rejection behavior for such bits is **Unresolved**.
+Use of unknown bits outside the defined mask is not documented as valid. The exact native rejection behaviour for such bits is **Unresolved**.
 
 ### 4. DX12 device/backend requirements
 
@@ -280,7 +280,7 @@ The open DX12 backend calls `AddRef` on the supplied `ID3D12Device`, stores it i
 
 Separately, the public generic API states that pointer data passed during creation must remain live through context destruction.
 
-The open backend's `AddRef` behavior does not justify weakening that public lifetime requirement for other providers, particularly an external/signed provider whose implementation is unavailable.
+The open backend's `AddRef` behaviour does not justify weakening that public lifetime requirement for other providers, particularly an external/signed provider whose implementation is unavailable.
 
 #### Feature level and capabilities
 
@@ -288,7 +288,7 @@ No pinned public DX12 backend header establishes one minimum `D3D_FEATURE_LEVEL`
 
 The backend queries device capabilities such as shader model, wave-lane properties, FP16 support, and ray-tracing support. Provider documentation imposes additional requirements:
 
-- FSR2: Shader Model 6.2 baseline and documented texture/UAV-format capabilities, with higher shader-model behavior on some hardware.
+- FSR2: Shader Model 6.2 baseline and documented texture/UAV-format capabilities, with higher shader-model behaviour on some hardware.
 - FSR3: similarly documents Shader Model 6.2 and resource-format/UAV requirements.
 - FSR4 4.1.1: documents Shader Model 6.6 and a substantially narrower supported AMD GPU set.
 
@@ -320,7 +320,7 @@ Consequently:
 
 - API-version compatibility and provider selection are separate concerns;
 - provider availability does not imply complete device/input compatibility;
-- the project's observed 4.1.1 provider is compatible with the pinned upscaler versioning evidence, but does not establish behavior of FSR2, FSR3, other FSR4 builds, or driver/external providers.
+- the project's observed 4.1.1 provider is compatible with the pinned upscaler versioning evidence, but does not establish behaviour of FSR2, FSR3, other FSR4 builds, or driver/external providers.
 
 ### 6. Failure semantics relevant to construction
 
@@ -348,14 +348,14 @@ Specific inspected paths provide more precision:
 
 Not all invalid construction inputs have a documented deterministic return code:
 
-- incorrect descriptor `type` versus actual memory layout is explicitly undefined behavior, so ordinary error handling cannot be assumed;
+- incorrect descriptor `type` versus actual memory layout is explicitly undefined behaviour, so ordinary error handling cannot be assumed;
 - missing or malformed upscaler-version nodes have a documented contract requirement but no public signed-provider failure code;
-- duplicate version descriptors have no documented behavior;
+- duplicate version descriptors have no documented behaviour;
 - unknown extension nodes do not have one observed universal path despite generic error constants existing;
 - zero, tiny, unusually large, or otherwise unsupported dimensions do not have one documented generic creation return code;
 - unsupported provider/device combinations may be rejected at provider selection, provider creation, underlying backend/resource creation, or later capability-sensitive operations.
 
-Assertions in open implementation code are implementation evidence only. They do not establish the behavior of the signed release runtime in every build configuration.
+Assertions in open implementation code are implementation evidence only. They do not establish the behaviour of the signed release runtime in every build configuration.
 
 ## Construction-rule classification
 
@@ -374,7 +374,7 @@ Assertions in open implementation code are implementation evidence only. They do
 | Version descriptor must precede backend descriptor | Official sample uses opposite order from project baseline; scanners search the chain. | **No such requirement established** |
 | Arbitrary ordering of all valid extension descriptors is guaranteed | Not stated publicly; external provider unavailable. | **Unresolved** |
 | Duplicate DX12 backend descriptors | Open backend explicitly rejects them. | **API validity rule** |
-| Duplicate version nodes | No public behavior found. | **Unresolved** |
+| Duplicate version nodes | No public behaviour found. | **Unresolved** |
 | Unknown extension nodes | Different components can ignore or reject; generic error codes exist. | **Unresolved** |
 | Descriptor-node storage itself must remain allocated until context destruction | Header lifetime wording and sample call-local extension usage are not fully aligned. | **Unresolved** |
 | `maxRenderSize.width/height > 0` | No explicit generic public numerical rule; provider resource creation implies zero is problematic. | **Unresolved** |
@@ -382,7 +382,7 @@ Assertions in open implementation code are implementation evidence only. They do
 | Non-zero dimensions alone are sufficient | No source establishes this. | **Unresolved** |
 | Fixed generic minimum dimensions | None found. | **Unresolved** |
 | Fixed generic maximum dimensions | None found; device/provider/resource limits remain. | **Unresolved** |
-| Dimensions must be multiples of 8 | FSR4 non-multiple-of-8 behavior was fixed as a bug before v2.3. | **Not a v2.3 generic validity rule** |
+| Dimensions must be multiples of 8 | FSR4 non-multiple-of-8 behaviour was fixed as a bug before v2.3. | **Not a v2.3 generic validity rule** |
 | Other fixed alignment/granularity rule | None found. | **Unresolved** |
 | Render and upscale dimensions may be equal | Native AA 1.0 is public for supporting providers. | **API validity rule / supported provider mode** |
 | Render dimensions may exceed upscale dimensions | FSR3 lacks an explicit rejection, but documentation does not guarantee downscaling. | **Unresolved** |
@@ -394,7 +394,7 @@ Assertions in open implementation code are implementation evidence only. They do
 | `flags = 0` | Header expressly permits zero. | **API validity rule: valid combination** |
 | Only defined creation-flag bits are part of documented domain | Header defines “zero or combination” of enum values. | **API validity rule** |
 | Exact rejection of unknown flag bits | No common path found. | **Unresolved** |
-| Flags correctly describe HDR/MV/depth/exposure/DRS/color-space semantics | Provider docs depend on those interpretations. | **API validity rule / functional contract** |
+| Flags correctly describe HDR/MV/depth/exposure/DRS/colour-space semantics | Provider docs depend on those interpretations. | **API validity rule / functional contract** |
 | Enable inverted depth | Strongly recommended by FSR4 but alternatives are supported. | **Ergonomic/recommended rule** |
 | Enable automatic exposure | Recommended in FSR4 unless application supplies another exposure strategy. | **Ergonomic/recommended rule** |
 | Enable debug checking in development | Diagnostic recommendation, not construction prerequisite. | **Ergonomic/recommended rule** |
@@ -411,7 +411,7 @@ The public modern upscaler descriptor is shared, but the providers behind it do 
 
 **FSR3:** pinned documentation identifies version 3.1.5. Its open implementation provides the strongest inspectable evidence for dimension maxima and variable dispatch sizes, but that evidence remains FSR3-specific where no public generic rule says otherwise.
 
-**FSR4:** pinned documentation identifies 4.1.1, requires the API-version descriptor, and documents substantially narrower GPU/shader requirements. The actual signed/external provider's creation validation implementation is not present in the inspected public source, so exact rejection behavior cannot be reconstructed from the repository.
+**FSR4:** pinned documentation identifies 4.1.1, requires the API-version descriptor, and documents substantially narrower GPU/shader requirements. The actual signed/external provider's creation validation implementation is not present in the inspected public source, so exact rejection behaviour cannot be reconstructed from the repository.
 
 The existence or selection of one provider therefore cannot establish construction validity for another provider.
 
@@ -464,7 +464,7 @@ The evidence materially refines the baseline in these areas:
 
 6. Device-scoped provider enumeration is not sufficient evidence of every provider capability or later-operation requirement.
 
-7. The open DX12 backend itself retains a COM reference, but that source observation does not supersede the generic public lifetime contract or establish behavior of every external provider.
+7. The open DX12 backend itself retains a COM reference, but that source observation does not supersede the generic public lifetime contract or establish behaviour of every external provider.
 
 ### Left unresolved
 
@@ -473,10 +473,10 @@ Public v2.3 material does not settle:
 - exact generic zero-dimension rejection rules;
 - any fixed numerical creation minimum or maximum;
 - a general alignment/granularity constraint;
-- unrestricted aspect-ratio behavior;
+- unrestricted aspect-ratio behaviour;
 - whether `maxRenderSize > maxUpscaleSize` is a supported generic use case;
-- exact signed-FSR4 behavior for missing, duplicate, or incorrect version descriptors;
-- behavior of duplicate version descriptors;
+- exact signed-FSR4 behaviour for missing, duplicate, or incorrect version descriptors;
+- behaviour of duplicate version descriptors;
 - a universal rule for unknown extension descriptors;
 - a universal arbitrary-extension-order guarantee;
 - the exact lifetime requirement for the storage of each `pNext` node after `ffxCreateContext` returns;
@@ -490,11 +490,11 @@ The successful M4 signed-runtime lifecycle establishes none of these unresolved 
 
 As checked on 2026-09-22, AMD's public release listing still identifies FSR SDK v2.3.0 as the relevant released SDK, so no later released SDK contract was imported into this record.
 
-One historical difference inside the pinned documentation is relevant: SDK 2.1 introduced the mandatory upscaler-version creation node and fixed an FSR4 issue with dimensions not divisible by eight. Those are historical explanations of the v2.3 contract, not newer behavior projected onto it.
+One historical difference inside the pinned documentation is relevant: SDK 2.1 introduced the mandatory upscaler-version creation node and fixed an FSR4 issue with dimensions not divisible by eight. Those are historical explanations of the v2.3 contract, not newer behaviour projected onto it.
 
 ## Limits and follow-up
 
-The principal evidence boundary is the signed/external FSR4 provider: its complete creation validator is not available in the inspected public repository. Open FSR3 behavior can clarify the shared API's mechanics but cannot establish undocumented FSR4 rejection rules.
+The principal evidence boundary is the signed/external FSR4 provider: its complete creation validator is not available in the inspected public repository. Open FSR3 behaviour can clarify the shared API's mechanics but cannot establish undocumented FSR4 rejection rules.
 
 If the unresolved cases become material to safe-construction guarantees, narrow experiments against the exact signed v2.3.0 Windows/DX12 runtime would be needed. The smallest useful tests would be:
 
@@ -502,8 +502,8 @@ If the unresolved cases become material to safe-construction guarantees, narrow 
 2. compare otherwise-identical chains with the version node absent, with an incorrect version value, with two version nodes, and with backend/version node order swapped;
 3. if exact invalid-flag rejection matters, test one otherwise-unused bit outside the defined creation mask.
 
-A deliberately mismatched descriptor `type`, dangling pointer, malformed object layout, or other case already documented as undefined behavior should **not** be used as a validation experiment.
+A deliberately mismatched descriptor `type`, dangling pointer, malformed object layout, or other case already documented as undefined behaviour should **not** be used as a validation experiment.
 
-Those tests would characterize the signed runtime only. They would not retroactively turn provider-specific runtime behavior into a public v2.3 source contract.
+Those tests would characterize the signed runtime only. They would not retroactively turn provider-specific runtime behaviour into a public v2.3 source contract.
 
 The source-supported construction boundary is therefore narrower than “all fields non-zero and creation succeeded”: descriptor structural correctness and pointer validity are safety obligations; the version node and valid DX12 backend are explicit API requirements; many dimension and provider-compatibility limits are intentionally or effectively delegated to native/provider validation; and several edge conditions remain undocumented in publicly available v2.3 material.

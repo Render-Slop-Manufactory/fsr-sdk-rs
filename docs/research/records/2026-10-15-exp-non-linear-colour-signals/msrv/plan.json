@@ -1,0 +1,1426 @@
+{
+  "schema_version": 1,
+  "profile": "msrv",
+  "required_cases": [
+    {
+      "id": "equipment.toolchain",
+      "claim": "Actual compiler, Cargo, Python and host identity",
+      "requires": [],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Actual compiler, Cargo, Python and host identity"
+      }
+    },
+    {
+      "id": "msrv.default.check",
+      "claim": "Workspace check (default)",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Workspace check (default)"
+      }
+    },
+    {
+      "id": "msrv.default.test",
+      "claim": "Workspace test (default)",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Workspace test (default)"
+      }
+    },
+    {
+      "id": "msrv.movable.check",
+      "claim": "Workspace check (movable)",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Workspace check (movable)"
+      }
+    },
+    {
+      "id": "msrv.movable.test",
+      "claim": "Workspace test (movable)",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Workspace test (movable)"
+      }
+    },
+    {
+      "id": "msrv.no-default.check",
+      "claim": "Workspace check (no-default)",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Workspace check (no-default)"
+      }
+    },
+    {
+      "id": "msrv.no-default.test",
+      "claim": "Workspace test (no-default)",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Workspace test (no-default)"
+      }
+    },
+    {
+      "id": "msrv.no-default-movable.check",
+      "claim": "Workspace check (no-default-movable)",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Workspace check (no-default-movable)"
+      }
+    },
+    {
+      "id": "msrv.no-default-movable.test",
+      "claim": "Workspace test (no-default-movable)",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Workspace test (no-default-movable)"
+      }
+    },
+    {
+      "id": "consumer-msrv.setup",
+      "claim": "Isolated downstream consumer with explicit dependency provenance",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Isolated downstream consumer with explicit dependency provenance"
+      }
+    },
+    {
+      "id": "consumer-msrv.common-positive",
+      "claim": "Consumer common-positive",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.common-movable-positive",
+      "claim": "Consumer common-movable-positive",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.depth-motion-profiles",
+      "claim": "Consumer depth-motion-profiles",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.hdr-options",
+      "claim": "Consumer hdr-options",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.pre-exposure-construction-private",
+      "claim": "Consumer pre-exposure-construction-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0423",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.dispatch-inputs-positive",
+      "claim": "Consumer dispatch-inputs-positive",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.dispatch-literal-private",
+      "claim": "Consumer dispatch-literal-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0451",
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.dispatch-field-private",
+      "claim": "Consumer dispatch-field-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0616",
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.resources-literal-private",
+      "claim": "Consumer resources-literal-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0451",
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.sharpness-construction-private",
+      "claim": "Consumer sharpness-construction-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0423",
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.raw-loader-positive",
+      "claim": "Consumer raw-loader-positive",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.local-positive",
+      "claim": "Consumer local-positive",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.movable-positive",
+      "claim": "Consumer movable-positive",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.feature-disabled",
+      "claim": "Consumer feature-disabled",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.dx12-disabled",
+      "claim": "Consumer dx12-disabled",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.local-to-movable-construction",
+      "claim": "Consumer local-to-movable-construction",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0308",
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.movable-to-local-construction",
+      "claim": "Consumer movable-to-local-construction",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0308",
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.no-local-to-movable-conversion",
+      "claim": "Consumer no-local-to-movable-conversion",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0277",
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.no-movable-to-local-conversion",
+      "claim": "Consumer no-movable-to-local-conversion",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0277",
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.query-results-portable",
+      "claim": "Consumer query-results-portable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.query-results-movable",
+      "claim": "Consumer query-results-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.provider-id-private",
+      "claim": "Consumer provider-id-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0423",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.query-provider-field-private",
+      "claim": "Consumer query-provider-field-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0616",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.query-memory-field-private",
+      "claim": "Consumer query-memory-field-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0616",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.query-requirements-field-private",
+      "claim": "Consumer query-requirements-field-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0616",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.queries-local",
+      "claim": "Consumer queries-local",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.query-exclusive-local",
+      "claim": "Consumer query-exclusive-local",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0596",
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.queries-movable",
+      "claim": "Consumer queries-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.query-exclusive-movable",
+      "claim": "Consumer query-exclusive-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0596",
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.query-utility-inputs-portable",
+      "claim": "Consumer query-utility-inputs-portable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.jitter-phase-construction-private",
+      "claim": "Consumer jitter-phase-construction-private",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0423",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.exposure-options-portable",
+      "claim": "Consumer exposure-options-portable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.automatic-exposure-resources",
+      "claim": "Consumer automatic-exposure-resources",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.dynamic-resolution-options-portable",
+      "claim": "Consumer dynamic-resolution-options-portable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.active-render-frame",
+      "claim": "Consumer active-render-frame",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.colour-encoding-options-portable",
+      "claim": "Consumer colour-encoding-options-portable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.colour-encoding-frame",
+      "claim": "Consumer colour-encoding-frame",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": 0,
+        "diagnostic": null,
+        "features": "dx12"
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-runtime-none",
+      "claim": "Consumer native-disabled-runtime-none",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-dx12-module-none",
+      "claim": "Consumer native-disabled-dx12-module-none",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-legacy-upscaler-none",
+      "claim": "Consumer native-disabled-legacy-upscaler-none",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-dispatch-resources-none",
+      "claim": "Consumer native-disabled-dispatch-resources-none",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-native-sharpness-none",
+      "claim": "Consumer native-disabled-native-sharpness-none",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-sharpening-none",
+      "claim": "Consumer native-disabled-sharpening-none",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-legacy-movable-none",
+      "claim": "Consumer native-disabled-legacy-movable-none",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-raw-loader-none",
+      "claim": "Consumer native-disabled-raw-loader-none",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-raw-dx12-none",
+      "claim": "Consumer native-disabled-raw-dx12-none",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": ""
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-runtime-movable",
+      "claim": "Consumer native-disabled-runtime-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-dx12-module-movable",
+      "claim": "Consumer native-disabled-dx12-module-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-legacy-upscaler-movable",
+      "claim": "Consumer native-disabled-legacy-upscaler-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-dispatch-resources-movable",
+      "claim": "Consumer native-disabled-dispatch-resources-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-native-sharpness-movable",
+      "claim": "Consumer native-disabled-native-sharpness-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-sharpening-movable",
+      "claim": "Consumer native-disabled-sharpening-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-legacy-movable-movable",
+      "claim": "Consumer native-disabled-legacy-movable-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-raw-loader-movable",
+      "claim": "Consumer native-disabled-raw-loader-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.native-disabled-raw-dx12-movable",
+      "claim": "Consumer native-disabled-raw-dx12-movable",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0432",
+        "features": "movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.movable-runtime-not-sync",
+      "claim": "Consumer movable-runtime-not-sync",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0277",
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.movable-upscaler-not-sync",
+      "claim": "Consumer movable-upscaler-not-sync",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0277",
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.local-runtime-not-send",
+      "claim": "Consumer local-runtime-not-send",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0277",
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.local-upscaler-not-send",
+      "claim": "Consumer local-upscaler-not-send",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "exit": "nonzero",
+        "diagnostic": "E0277",
+        "features": "dx12,movable"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.none",
+      "claim": "Consumer normal dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Consumer normal dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.movable",
+      "claim": "Consumer normal dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Consumer normal dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12",
+      "claim": "Consumer normal dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Consumer normal dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.consumer.x86_64-unknown-linux-gnu.dx12-movable",
+      "claim": "Consumer normal dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Consumer normal dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.defaults",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.no-defaults",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.dx12",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.defaults",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.dx12",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.movable",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults-movable",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.none",
+      "claim": "Consumer normal dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Consumer normal dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.movable",
+      "claim": "Consumer normal dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Consumer normal dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12",
+      "claim": "Consumer normal dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Consumer normal dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.consumer.x86_64-pc-windows-msvc.dx12-movable",
+      "claim": "Consumer normal dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Consumer normal dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.defaults",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.no-defaults",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.dx12",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.defaults",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.dx12",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.movable",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults-movable",
+      "claim": "Real package defaults and feature dependency graph",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Real package defaults and feature dependency graph"
+      }
+    },
+    {
+      "id": "consumer-msrv.unsupported-vulkan",
+      "claim": "Explicit unsupported-backend rejection",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Explicit unsupported-backend rejection"
+      }
+    },
+    {
+      "id": "consumer-msrv.metadata",
+      "claim": "Source IDs and selected package provenance",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.setup"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Source IDs and selected package provenance"
+      }
+    },
+    {
+      "id": "consumer-msrv.examples.prepare",
+      "claim": "Prepare full public integration examples",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.metadata"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Prepare full public integration examples"
+      }
+    },
+    {
+      "id": "consumer-msrv.examples.dx12",
+      "claim": "Downstream complete examples",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.examples.prepare"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Downstream complete examples"
+      }
+    },
+    {
+      "id": "consumer-msrv.examples.dx12-movable",
+      "claim": "Downstream complete examples",
+      "requires": [
+        "equipment.toolchain",
+        "consumer-msrv.examples.prepare"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Downstream complete examples"
+      }
+    }
+  ],
+  "resume": "disabled"
+}
