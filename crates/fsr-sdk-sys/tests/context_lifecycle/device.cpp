@@ -5,16 +5,32 @@
 #include <dxgi1_4.h>
 #include <cstdio>
 #include <cstdint>
+#include <cstdlib>
+#include <climits>
 #include <type_traits>
 
 extern "C" __declspec(dllexport) int32_t __cdecl probe_create_device(ID3D12Device** output)
 {
     *output = nullptr;
+    char selection[32]{};
+    const DWORD length = GetEnvironmentVariableA("FSR_SDK_TEST_ADAPTER_INDEX", selection, sizeof(selection));
+    UINT requested = 0;
+    const bool explicitSelection = length != 0;
+    if (explicitSelection) {
+        if (length >= sizeof(selection)) return E_INVALIDARG;
+        for (DWORD i = 0; i < length; ++i) {
+            if (selection[i] < '0' || selection[i] > '9') return E_INVALIDARG;
+        }
+        char* end = nullptr;
+        const unsigned long long parsed = std::strtoull(selection, &end, 10);
+        if (*end != '\0' || parsed > UINT_MAX) return E_INVALIDARG;
+        requested = static_cast<UINT>(parsed);
+    }
     IDXGIFactory1* factory = nullptr;
     HRESULT result = CreateDXGIFactory1(IID_PPV_ARGS(&factory));
     if (FAILED(result)) return result;
     // First enumerated hardware adapter supporting feature level 12_0; no WARP.
-    for (UINT index = 0; ; ++index) {
+    for (UINT index = explicitSelection ? requested : 0; ; ++index) {
         IDXGIAdapter1* adapter = nullptr;
         result = factory->EnumAdapters1(index, &adapter);
         if (FAILED(result)) break;
@@ -25,8 +41,10 @@ extern "C" __declspec(dllexport) int32_t __cdecl probe_create_device(ID3D12Devic
             if (SUCCEEDED(result)) {
                 char name[512]{};
                 WideCharToMultiByte(CP_UTF8, 0, desc.Description, -1, name, sizeof(name), nullptr, nullptr);
-                std::fprintf(stderr, "Adapter: %s; vendor=0x%04x device=0x%04x; feature_level=12_0\n",
-                             name, desc.VendorId, desc.DeviceId);
+                std::fprintf(stderr, "Adapter: %s; vendor=0x%04x device=0x%04x; feature_level=12_0; index=%u; luid=0x%08lx%08lx\n",
+                             name, desc.VendorId, desc.DeviceId, index,
+                             static_cast<unsigned long>(desc.AdapterLuid.HighPart),
+                             static_cast<unsigned long>(desc.AdapterLuid.LowPart));
                 IDXGIAdapter3* adapter3 = nullptr;
                 if (SUCCEEDED(adapter->QueryInterface(IID_PPV_ARGS(&adapter3)))) {
                     DXGI_QUERY_VIDEO_MEMORY_INFO memory{};
@@ -50,6 +68,10 @@ extern "C" __declspec(dllexport) int32_t __cdecl probe_create_device(ID3D12Devic
             }
         }
         adapter->Release();
+        if (explicitSelection) {
+            if (SUCCEEDED(result)) result = DXGI_ERROR_UNSUPPORTED;
+            break;
+        }
     }
     factory->Release();
     return result;

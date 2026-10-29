@@ -38,3 +38,8 @@ static_assert(FFX_API_CREATE_CONTEXT_DESC_TYPE_UPSCALE_VERSION == 0x0001000bu);
 static_assert(FFX_API_CREATE_CONTEXT_DESC_TYPE_BACKEND_DX12 == 2u);
 static_assert(FFX_API_QUERY_DESC_TYPE_GET_PROVIDER_VERSION == 6u);
 static_assert(FFX_UPSCALER_VERSION == ((4u << 22) | (1u << 12) | 1u));
+
+// The callback slice shares this creation ABI prerequisite.
+#undef LAYOUT
+#undef FIELD
+#include "../callbacks_native_abi.cpp"

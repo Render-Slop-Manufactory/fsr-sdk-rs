@@ -1,11 +1,14 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! Paired production creation ABI checks and test-only provider query ABI.
+//! Paired production creation and provider query ABI checks.
 //! Derived from local AMD SDK v2.3.0; see ../../LICENSE-AMD.
 #![allow(non_camel_case_types, non_snake_case)]
 
 pub use fsr_sdk_sys::{
-    api::{FfxApiDimensions2D, ffxApiHeader, ffxApiMessage, ffxQueryDescHeader},
+    api::{
+        FFX_API_QUERY_DESC_TYPE_GET_PROVIDER_VERSION, FfxApiDimensions2D, ffxApiHeader,
+        ffxApiMessage, ffxQueryDescHeader, ffxQueryGetProviderVersion,
+    },
     dx12::*,
     upscale::{
         FFX_API_CREATE_CONTEXT_DESC_TYPE_UPSCALE_VERSION, FFX_UPSCALER_VERSION,
@@ -13,15 +16,6 @@ pub use fsr_sdk_sys::{
     },
 };
 use std::ffi::c_char;
-
-#[repr(C)]
-pub struct ffxQueryGetProviderVersion {
-    pub header: ffxQueryDescHeader,
-    pub versionId: u64,
-    pub versionName: *const c_char,
-}
-
-pub const FFX_API_QUERY_DESC_TYPE_GET_PROVIDER_VERSION: u64 = 6;
 
 // Paired field types and numeric layouts are checked against native_abi.cpp.
 macro_rules! field {
@@ -63,7 +57,7 @@ layout!(ffxCreateBackendDX12Desc, 24, 8);
 field!(ffxCreateBackendDX12Desc, header, ffxApiHeader, 0);
 field!(ffxCreateBackendDX12Desc, device, *mut ID3D12Device, 16);
 layout!(ffxQueryGetProviderVersion, 32, 8);
-field!(ffxQueryGetProviderVersion, header, ffxApiHeader, 0);
+field!(ffxQueryGetProviderVersion, header, ffxQueryDescHeader, 0);
 field!(ffxQueryGetProviderVersion, versionId, u64, 16);
 field!(ffxQueryGetProviderVersion, versionName, *const c_char, 24);
 

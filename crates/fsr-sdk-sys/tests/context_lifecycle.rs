@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
-//! Run only via context_lifecycle/run.ps1 in a dedicated test process.
+//! Run only via tools/verification/run.py run experiment-allocation or experiment-input-lifetime in a dedicated test process.
 #![cfg(all(windows, target_arch = "x86_64", target_env = "msvc", feature = "dx12"))]
 
 #[path = "context_lifecycle/abi.rs"]
@@ -33,7 +33,7 @@ fn stop_without_cleanup(message: &str) -> ! {
 }
 
 #[test]
-#[ignore = "isolated allocation-failure experiment; use run.ps1 -FailureInjection"]
+#[ignore = "isolated allocation-failure experiment; use tools/verification/run.py run experiment-allocation --native"]
 fn probes_create_allocation_failure() {
     let fail_at = std::env::var("FSR_SDK_FAIL_AT")
         .expect("set FSR_SDK_FAIL_AT (0 disables injection)")
@@ -43,10 +43,10 @@ fn probes_create_allocation_failure() {
 }
 
 #[test]
-#[ignore = "isolated returned-error experiment; use run.ps1 -InputLifetime"]
+#[ignore = "isolated returned-error experiment; use tools/verification/run.py run experiment-input-lifetime --native"]
 fn probes_create_error_input_lifetime() {
     let mode = std::env::var("FSR_SDK_INPUT_LIFETIME")
-        .expect("use run.ps1 -InputLifetime to select an isolated lifetime variant");
+        .expect("use tools/verification/run.py run experiment-input-lifetime --native to select an isolated lifetime variant");
     assert!(matches!(
         mode.as_str(),
         "retain" | "protect" | "cleanup" | "discover"

@@ -85,8 +85,8 @@ fn assert_unloaded(path: &Path) {
 
 #[test]
 fn missing_file_reports_path_and_source() {
-    std::thread::Builder::new().name("d013-load-failure".into()).spawn(|| {
-        assert_eq!(std::thread::current().name(), Some("d013-load-failure"));
+    std::thread::Builder::new().name("loader-failure-worker".into()).spawn(|| {
+        assert_eq!(std::thread::current().name(), Some("loader-failure-worker"));
         let path = work_dir().join("does-not-exist.dll");
         // SAFETY: The file does not exist; no DLL code can execute.
         let error = unsafe { FfxLibrary::load(&path) }.err().expect("missing file");
@@ -95,7 +95,7 @@ fn missing_file_reports_path_and_source() {
         assert_eq!(source.kind(), std::io::ErrorKind::NotFound);
         assert!(error.to_string().contains("does-not-exist.dll"));
         assert_unloaded(&path);
-        println!("worker=d013-load-failure category=Path source=io/NotFound runtime=none module=absent");
+        println!("worker=loader-failure-worker category=Path source=io/NotFound runtime=none module=absent");
     }).unwrap().join().unwrap();
     println!("CASE PASS missing-file");
 }
@@ -124,8 +124,8 @@ fn each_missing_symbol_reports_name_and_releases_library() {
     ] {
         let dir = work_dir();
         let path = fixture(&dir, Some(symbol));
-        std::thread::Builder::new().name("d013-load-failure".into()).spawn(move || {
-            assert_eq!(std::thread::current().name(), Some("d013-load-failure"));
+        std::thread::Builder::new().name("loader-failure-worker".into()).spawn(move || {
+            assert_eq!(std::thread::current().name(), Some("loader-failure-worker"));
             assert_unloaded(&path);
             // SAFETY: Controlled DLL with matching remaining exports and no
             // custom initialization or termination routines. No observer owns it.
@@ -135,7 +135,7 @@ fn each_missing_symbol_reports_name_and_releases_library() {
             assert!(error.source().unwrap().downcast_ref::<libloading::Error>().is_some());
             assert!(error.to_string().contains(symbol));
             assert_unloaded(&path);
-            println!("worker=d013-load-failure category=Symbol symbol={symbol} source=libloading runtime=none module=released");
+            println!("worker=loader-failure-worker category=Symbol symbol={symbol} source=libloading runtime=none module=released");
         }).unwrap().join().unwrap();
     }
     println!("CASE PASS missing-exports");
