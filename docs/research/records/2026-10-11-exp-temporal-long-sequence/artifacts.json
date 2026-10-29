@@ -1,0 +1,57 @@
+[
+  {
+    "path": "arms.txt",
+    "bytes": 84,
+    "sha256": "3094f6d58ed2c54b98b89343237e441a639708eab65bb1204653ab6fec37fbe6"
+  },
+  {
+    "path": "checks.json",
+    "bytes": 1234,
+    "sha256": "ac8ad768af503cbfb8968f3529799e0a8a1c7d819225a4ac12e368882b077c9a"
+  },
+  {
+    "path": "inputs.json",
+    "bytes": 22210,
+    "sha256": "4105af4c5835689e88d44016d933caf623853e93a8645ac1b376bd29c95164f9"
+  },
+  {
+    "path": "jitter.txt",
+    "bytes": 933,
+    "sha256": "c90b7bbbed7a4e2b792030751575013f90c6608866889f6c9dfa04942a1da776"
+  },
+  {
+    "path": "measurements.json",
+    "bytes": 590206,
+    "sha256": "87aec3da4efc0972063aae124535f6abf2d799c573dfdf5413b3595d138840d7"
+  },
+  {
+    "path": "native-observations.json",
+    "bytes": 6327,
+    "sha256": "21582979fd322e8009694d72b9d50193b6e5259ef7efd17f351271e2f1704579"
+  },
+  {
+    "path": "outcomes.json",
+    "bytes": 50161,
+    "sha256": "d734fb06067de4aaefef1806cc7565eefac0b6007814229017bca993fe31e83e"
+  },
+  {
+    "path": "protocol.json",
+    "bytes": 3500,
+    "sha256": "d5892c43ce09b5e2c687b1543f0cd67eeaafc0d447faf28a35f7b02d361c060c"
+  },
+  {
+    "path": "README.md",
+    "bytes": 1298,
+    "sha256": "65505c52905c641877dac3aa30575784ebf5057d210e73156c5f126473b91d2d"
+  },
+  {
+    "path": "retention.json",
+    "bytes": 460,
+    "sha256": "22e95b50ce71f16c393cc0ca3e8258d594a7e5fe9dfe67eea6f134edc327524c"
+  },
+  {
+    "path": "run.json",
+    "bytes": 2098,
+    "sha256": "20878603965afe3d321d49d8c1240ae2d420d0fa41167c01f57a21b4f021bfa9"
+  }
+]

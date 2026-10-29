@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "policy": "compact-calibration",
+  "applied_utc": "2026-10-11T23:05:33.051105+00:00",
+  "original_status": "passed",
+  "offline_image_reanalysis_available": false,
+  "removed_files": 8673,
+  "removed_bytes": 6031517901,
+  "removed_inventory_sha256": "a6638a7bc1d31d463d5fefb7921c6f466d9eef7a3c097891a4132e2e347f7686",
+  "reproduction": "Run the pinned protocol again; GPU results may change with equipment or software."
+}

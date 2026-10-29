@@ -1,0 +1,1381 @@
+[
+  {
+    "id": "equipment.toolchain",
+    "claim": "Actual compiler, Cargo, Python and host identity",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:00.614669+00:00",
+    "finished_utc": "2026-10-11T22:41:01.564564+00:00",
+    "observations": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    },
+    "selector": "",
+    "scope": "host",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\rustc.EXE",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:41:00.656670+00:00",
+        "finished_utc": "2026-10-11T22:41:00.811444+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.14,
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      },
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "-V"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:41:00.853442+00:00",
+        "finished_utc": "2026-10-11T22:41:00.954562+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.11,
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.protocol",
+    "claim": "Freeze the image matrix, jitter and evaluation protocol",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:01.567562+00:00",
+    "finished_utc": "2026-10-11T22:41:01.692604+00:00",
+    "observations": {
+      "protocol_sha256": "8a63bef05e5d72bd45c8bc6d33b47d0e3ba69ad6b36bb6a6758405d3ea246def",
+      "arms": [
+        {
+          "name": "stationary-p00-correct",
+          "group": "stationary-p00",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p00-negated-x",
+          "group": "stationary-p00",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": -1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p00-negated-y",
+          "group": "stationary-p00",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": 1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p00-negated-jitter",
+          "group": "stationary-p00",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": -1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p00-lagged-jitter",
+          "group": "stationary-p00",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 1
+        },
+        {
+          "name": "stationary-p00-zero-jitter",
+          "group": "stationary-p00",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": 0,
+          "jitter_y": 0,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p08-correct",
+          "group": "stationary-p08",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 8,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p08-negated-x",
+          "group": "stationary-p08",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 8,
+          "jitter_x": -1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p08-negated-y",
+          "group": "stationary-p08",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 8,
+          "jitter_x": 1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p08-negated-jitter",
+          "group": "stationary-p08",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 8,
+          "jitter_x": -1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p08-lagged-jitter",
+          "group": "stationary-p08",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 8,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 1
+        },
+        {
+          "name": "stationary-p08-zero-jitter",
+          "group": "stationary-p08",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 8,
+          "jitter_x": 0,
+          "jitter_y": 0,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p16-correct",
+          "group": "stationary-p16",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 16,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p16-negated-x",
+          "group": "stationary-p16",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 16,
+          "jitter_x": -1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p16-negated-y",
+          "group": "stationary-p16",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 16,
+          "jitter_x": 1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p16-negated-jitter",
+          "group": "stationary-p16",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 16,
+          "jitter_x": -1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p16-lagged-jitter",
+          "group": "stationary-p16",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 16,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 1
+        },
+        {
+          "name": "stationary-p16-zero-jitter",
+          "group": "stationary-p16",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 16,
+          "jitter_x": 0,
+          "jitter_y": 0,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p24-correct",
+          "group": "stationary-p24",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 24,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p24-negated-x",
+          "group": "stationary-p24",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 24,
+          "jitter_x": -1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p24-negated-y",
+          "group": "stationary-p24",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 24,
+          "jitter_x": 1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p24-negated-jitter",
+          "group": "stationary-p24",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 24,
+          "jitter_x": -1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "stationary-p24-lagged-jitter",
+          "group": "stationary-p24",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 24,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 1
+        },
+        {
+          "name": "stationary-p24-zero-jitter",
+          "group": "stationary-p24",
+          "scene": 2,
+          "velocity": [
+            0,
+            0
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 24,
+          "jitter_x": 0,
+          "jitter_y": 0,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "moving-p00-correct",
+          "group": "moving-p00",
+          "scene": 2,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "moving-p00-negated-x",
+          "group": "moving-p00",
+          "scene": 2,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": -1,
+          "jitter_y": 1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "moving-p00-negated-y",
+          "group": "moving-p00",
+          "scene": 2,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": 1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "moving-p00-negated-jitter",
+          "group": "moving-p00",
+          "scene": 2,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": -1,
+          "jitter_y": -1,
+          "dispatch_lag": 0
+        },
+        {
+          "name": "moving-p00-lagged-jitter",
+          "group": "moving-p00",
+          "scene": 2,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": 1,
+          "jitter_y": 1,
+          "dispatch_lag": 1
+        },
+        {
+          "name": "moving-p00-zero-jitter",
+          "group": "moving-p00",
+          "scene": 2,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false,
+          "jitter_phase": 0,
+          "jitter_x": 0,
+          "jitter_y": 0,
+          "dispatch_lag": 0
+        }
+      ],
+      "numpy": "2.3.5"
+    },
+    "selector": "",
+    "scope": "host",
+    "commands": []
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.position-evaluator",
+    "claim": "Known spatial phase, bias, contrast and unidentifiable controls",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:01.696604+00:00",
+    "finished_utc": "2026-10-11T22:41:02.515677+00:00",
+    "observations": {
+      "passed": true,
+      "controls": 26
+    },
+    "selector": "",
+    "scope": "offline-analysis",
+    "commands": []
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.evaluator",
+    "claim": "Known-defect and severity validation before GPU execution",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:02.518679+00:00",
+    "finished_utc": "2026-10-11T22:41:11.039198+00:00",
+    "observations": {
+      "controls": 13,
+      "passed": true
+    },
+    "selector": "",
+    "scope": "offline-analysis",
+    "commands": []
+  },
+  {
+    "id": "windows.environment",
+    "claim": "x64 Windows developer-tool environment",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:11.043203+00:00",
+    "finished_utc": "2026-10-11T22:41:15.014329+00:00",
+    "observations": {
+      "msvc": "14.44.35207",
+      "windows_sdk": "10.0.22621.0\\",
+      "target_arch": "x64"
+    },
+    "selector": "",
+    "scope": "host",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:41:11.046196+00:00",
+        "finished_utc": "2026-10-11T22:41:14.996816+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 3.938,
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "abi.headers",
+    "claim": "Four hash-verified pinned SDK headers",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:15.017330+00:00",
+    "finished_utc": "2026-10-11T22:41:15.020328+00:00",
+    "observations": {
+      "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+      "headers": [
+        {
+          "path": "api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        }
+      ]
+    },
+    "selector": "",
+    "scope": "host",
+    "commands": []
+  },
+  {
+    "id": "abi.common",
+    "claim": "Independent native common ABI assertions",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:15.023332+00:00",
+    "finished_utc": "2026-10-11T22:41:15.411626+00:00",
+    "observations": {},
+    "selector": "",
+    "scope": "windows-compilation",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+          "/Fo<run>\\common.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:41:15.026328+00:00",
+        "finished_utc": "2026-10-11T22:41:15.407626+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.391,
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "abi.creation",
+    "claim": "Independent native creation ABI assertions",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:15.414139+00:00",
+    "finished_utc": "2026-10-11T22:41:15.918617+00:00",
+    "observations": {},
+    "selector": "",
+    "scope": "windows-compilation",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+          "/Fo<run>\\creation.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:41:15.418139+00:00",
+        "finished_utc": "2026-10-11T22:41:15.915617+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.5,
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "abi.dispatch",
+    "claim": "Independent native dispatch ABI assertions",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:15.921616+00:00",
+    "finished_utc": "2026-10-11T22:41:16.028708+00:00",
+    "observations": {},
+    "selector": "",
+    "scope": "windows-compilation",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+          "/Fo<run>\\dispatch.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:41:15.924617+00:00",
+        "finished_utc": "2026-10-11T22:41:16.025708+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.094,
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "native.sdk",
+    "claim": "Pinned, signed local loader/provider deployment",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:16.030711+00:00",
+    "finished_utc": "2026-10-11T22:41:16.953232+00:00",
+    "observations": {
+      "artifacts": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      ],
+      "signatures": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US"
+        }
+      ],
+      "adapter_index": 0
+    },
+    "selector": "",
+    "scope": "host",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1",
+          "-Mode",
+          "signatures",
+          "-Directory",
+          "<run>\\native"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:41:16.124755+00:00",
+        "finished_utc": "2026-10-11T22:41:16.949722+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.812,
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "native.helper",
+    "claim": "DX12 submission, fencing and readback equipment",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:16.956230+00:00",
+    "finished_utc": "2026-10-11T22:41:18.252918+00:00",
+    "observations": {
+      "helper_sha256": "520feeec951fd6304c1cb5612e6390cac37da4a3486a7c7751c06697c4b8a26c"
+    },
+    "selector": "",
+    "scope": "windows-compilation",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/LD",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+          "/Fo<run>\\native\\",
+          "/link",
+          "/OUT:<run>\\native\\m6_gpu.dll",
+          "/IMPLIB:<run>\\native\\m6_gpu.lib",
+          "d3d12.lib",
+          "dxgi.lib"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:41:16.959231+00:00",
+        "finished_utc": "2026-10-11T22:41:18.123048+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.156,
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.build.fsr_sdk",
+    "claim": "Discover and stage exact fsr_sdk test executable",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:18.256428+00:00",
+    "finished_utc": "2026-10-11T22:41:18.807618+00:00",
+    "observations": {
+      "executable_sha256": "cda94ce5e49a2c2f966b6846553fbe1e9c4b2403f213879ce5f4728bdd71f2b7",
+      "manifest": "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+      "registry_artifact": false
+    },
+    "selector": "",
+    "scope": "windows-compilation",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "--no-run",
+          "--message-format=json",
+          "--features",
+          "dx12,movable",
+          "--lib",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:41:18.309952+00:00",
+        "finished_utc": "2026-10-11T22:41:18.648425+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.344,
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.input-only",
+    "claim": "Independent input oracle",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:41:18.810619+00:00",
+    "finished_utc": "2026-10-11T22:42:56.624604+00:00",
+    "observations": {
+      "elapsed_seconds": 38.047,
+      "native_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ],
+      "decoded_bytes": 912387960,
+      "compressed_bytes": 242106966,
+      "input_audit": {
+        "status": "passed",
+        "frames": 990,
+        "complete_input_bytes_checked": 912387960,
+        "input_digest": "2a36736220cabb2797233e592d76e687ac249d2a6d75d2cc852190f15f49fff9"
+      },
+      "image_quality": "Evaluated separately by the frozen offline protocol",
+      "payload_inventory": {
+        "files": 990,
+        "sha256": "ae81180a96385051717bade46adac573c6afe96f1bcfaadd22cacce6b0ab142f"
+      }
+    },
+    "selector": "upscaler::dx12::m6::native_temporal_diagnosis_inputs",
+    "scope": "native-gpu",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-jitter-explore-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_temporal_diagnosis_inputs",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T22:41:18.812620+00:00",
+        "finished_utc": "2026-10-11T22:41:56.870692+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 38.047,
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Temporal diagnosis input-only: COMPLETED frames=990",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.lifecycle.explicit",
+    "claim": "lifecycle.explicit",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:42:56.633614+00:00",
+    "finished_utc": "2026-10-11T22:42:57.020774+00:00",
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "selector": "upscaler::dx12::tests::native_lifecycle",
+    "scope": "native-gpu",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-jitter-explore-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::native_lifecycle",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T22:42:56.634615+00:00",
+        "finished_utc": "2026-10-11T22:42:57.012714+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.375,
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Production owner: destroy A/B OK",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.lifecycle.drop",
+    "claim": "lifecycle.drop",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:42:57.023775+00:00",
+    "finished_utc": "2026-10-11T22:42:57.371007+00:00",
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "selector": "upscaler::dx12::tests::native_lifecycle_drop",
+    "scope": "native-gpu",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-jitter-explore-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::native_lifecycle_drop",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T22:42:57.024776+00:00",
+        "finished_utc": "2026-10-11T22:42:57.363493+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.344,
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Production owner: destroy A/B OK",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.dispatch.single",
+    "claim": "dispatch.single",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:42:57.374515+00:00",
+    "finished_utc": "2026-10-11T22:42:59.876619+00:00",
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "selector": "upscaler::dx12::m6::native_dispatch_readback",
+    "scope": "native-gpu",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-jitter-explore-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_dispatch_readback",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T22:42:57.375521+00:00",
+        "finished_utc": "2026-10-11T22:42:59.862589+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 2.484,
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate A: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.dispatch.temporal",
+    "claim": "dispatch.temporal",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:42:59.879620+00:00",
+    "finished_utc": "2026-10-11T22:43:00.338524+00:00",
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "selector": "upscaler::dx12::m6::native_temporal_smoke",
+    "scope": "native-gpu",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-jitter-explore-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_temporal_smoke",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T22:42:59.881622+00:00",
+        "finished_utc": "2026-10-11T22:43:00.323492+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.437,
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate B: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.dispatch.semantics",
+    "claim": "dispatch.semantics",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:43:00.341524+00:00",
+    "finished_utc": "2026-10-11T22:43:02.472286+00:00",
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "selector": "upscaler::dx12::m6::native_semantic_comparisons",
+    "scope": "native-gpu",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-jitter-explore-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_semantic_comparisons",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T22:43:00.343525+00:00",
+        "finished_utc": "2026-10-11T22:43:02.454768+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 2.11,
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate C: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.r1",
+    "claim": "Fixed 3840-frame matrix",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:43:02.475798+00:00",
+    "finished_utc": "2026-10-11T22:58:21.020412+00:00",
+    "observations": {
+      "order_seed": 419,
+      "arm_order": [
+        "stationary-p08-correct",
+        "stationary-p24-correct",
+        "moving-p00-correct",
+        "moving-p00-negated-jitter",
+        "stationary-p08-lagged-jitter",
+        "stationary-p00-negated-jitter",
+        "stationary-p08-negated-y",
+        "stationary-p16-negated-jitter",
+        "stationary-p08-negated-x",
+        "stationary-p00-negated-x",
+        "stationary-p16-zero-jitter",
+        "stationary-p16-negated-x",
+        "moving-p00-zero-jitter",
+        "stationary-p16-correct",
+        "moving-p00-negated-x",
+        "stationary-p16-negated-y",
+        "stationary-p24-negated-y",
+        "stationary-p00-zero-jitter",
+        "moving-p00-lagged-jitter",
+        "stationary-p00-correct",
+        "stationary-p00-negated-y",
+        "stationary-p16-lagged-jitter",
+        "stationary-p24-lagged-jitter",
+        "stationary-p08-zero-jitter",
+        "stationary-p08-negated-jitter",
+        "moving-p00-negated-y",
+        "stationary-p00-lagged-jitter",
+        "stationary-p24-zero-jitter",
+        "stationary-p24-negated-jitter",
+        "stationary-p24-negated-x"
+      ],
+      "elapsed_seconds": 175.938,
+      "native_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ],
+      "actual_loaded_modules": {
+        "amd_fidelityfx_loader_dx12.dll": {
+          "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        "amd_fidelityfx_upscaler_dx12.dll": {
+          "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      },
+      "decoded_bytes": 10616847360,
+      "compressed_bytes": 5783885791,
+      "input_audit": {
+        "status": "passed",
+        "frames": 3840,
+        "complete_input_bytes_checked": 3538959360,
+        "input_digest": "61c251d2b212f9fdbe3057b250d25e7b1c4f57633ab399108231f5134958f1f7"
+      },
+      "image_quality": "Evaluated separately by the frozen offline protocol",
+      "payload_inventory": {
+        "files": 7680,
+        "sha256": "c7855ccfa1472b6a3114e6e849456be3e023e2d88985f6ea56091526a17c862e"
+      }
+    },
+    "selector": "upscaler::dx12::m6::native_temporal_diagnosis",
+    "scope": "native-gpu",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-jitter-explore-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_temporal_diagnosis",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T22:43:02.477796+00:00",
+        "finished_utc": "2026-10-11T22:45:58.408700+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 175.938,
+        "timeout_seconds": 360,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Temporal diagnosis matrix: COMPLETED frames=3840",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "experiment.temporal-jitter-explore.audit",
+    "claim": "Independent evaluation under the frozen protocol",
+    "evaluation": "passed",
+    "execution": "completed",
+    "started_utc": "2026-10-11T22:58:21.063949+00:00",
+    "finished_utc": "2026-10-11T23:04:31.753451+00:00",
+    "observations": {},
+    "selector": "",
+    "scope": "offline-analysis",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "<repo>\\tools\\verification\\temporal_jitter.py",
+          "audit",
+          "--run",
+          "<run>",
+          "--output",
+          "<run>\\analysis\\temporal-jitter"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T22:58:21.065949+00:00",
+        "finished_utc": "2026-10-11T23:04:31.744397+00:00",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 370.672,
+        "timeout_seconds": 900,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        }
+      }
+    ]
+  }
+]

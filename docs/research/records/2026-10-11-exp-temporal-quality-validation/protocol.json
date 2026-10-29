@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "purpose": "Validate the image evaluator against known defects; confirm bounded calibration-derived quality checks on fresh GPU runs and screen texture/speed/motion interactions",
+  "render": [320,180], "display": [640,360], "frames": 64, "repeats": 3,
+  "late_window": [32,63], "input_only_frames": [0,1,31,32,63],
+  "order_seeds": [419, 827, 1237],
+  "scenes": [
+    {"name":"flat-slow","scene":1,"velocity":[0.375,0.25],"controls":["correct","reverse"]},
+    {"name":"flat-fast","scene":1,"velocity":[2,1],"controls":["correct","reverse"]},
+    {"name":"textured-slow","scene":2,"velocity":[0.375,0.25],"controls":["correct","reverse","reset-all"]},
+    {"name":"textured-fast","scene":2,"velocity":[2,1],"controls":["correct","reverse"]}
+  ],
+  "geometry_and_inputs": "Exactly the temporal-diagnosis generator: top-down UV, LH +Z, near .5/far 20/FOV pi/3, zF=2/zB=8, linear RGB, same flat/sinusoidal textures and half truncation, same 32-entry Halton jitter. Fixed 64-frame motion, 320x180 to 640x360. No masks, sharpening or cuts.",
+  "design": "Full texture (flat/textured) x speed (slow/fast) x motion (correct/reverse) factorial, plus one textured-slow reset-all history ablation. Three independent process blocks with reproducibly shuffled arm orders. Within each block, paired arms have identical colour/depth/exposure. Frames are correlated observations, not independent experimental replications.",
+  "reference": "Analytic point reference for interior/detail/true-flow error residual; exact area reference for silhouette error. Keep distinct because AMD does not promise either reference filter. Exclude 2 display pixels around silhouette and 8 at viewport. Uncovered-background error is measured at ages 2..5 outside silhouette exclusion; empty masks are not passes.",
+  "calibration_source": "docs/research/records/2026-10-11-exp-temporal-quality-metric-diagnosis/measurements.json, repeat 1 textured-slow-correct, pooled frames 32..63. Historical data select budgets; only fresh runs confirm them.",
+  "native_budgets": {
+    "foreground": 0.006599587519502123,
+    "background": 0.003138194689362351,
+    "edge": 0.032131707505351895,
+    "temporal": 0.0008303100348939459,
+    "disocclusion": 0.014176143044673558
+  },
+  "budget_rationale": "Each native budget is 1.25 times the corresponding calibrated MAE plus 0.000001 absolute numerical slack. The 25% allowance is an explicit local regression policy, not a confidence interval or perceptual threshold. All five must pass individually on textured-slow-correct in every block; no weighted score can compensate a failed property.",
+  "native_sensitivity": "On textured-slow only, reversed motion must exceed correct foreground and temporal MAE by at least 10%; reset-all must exceed correct temporal MAE by at least 10%. Correct and both controls must have populated regions. These scoped predictions were selected from calibration and must be confirmed anew. Other cells and all interactions are diagnostic, including any favourable wrong-input rankings; they cannot silently acquire acceptance status.",
+  "synthetic_budgets": {"foreground":0.002,"background":0.002,"edge":0.005,"temporal":0.001,"disocclusion":0.002,"texture":0.05},
+  "synthetic_controls": "Analytic textured-fast frames 39/40: ideal area, missing object (analytic background only), constant foreground, 9x9 box blur, texture contrast reduced by 25/50/100%, age2..5 ghost contamination at 25/50/100%, and alternating foreground bias at amplitude .01/.02/.04. The ideal must pass all six properties; each defect must fail its named property and the conjunction. Severity must monotonically increase the targeted score. CPU controls are not AMD outputs.",
+  "texture_metric": "Foreground-interior RMS of centred output-minus-point-reference error, divided by RMS of centred point-reference texture. Centring removes mean-colour bias; zero texture energy is unevaluated. Pool squared numerator and denominator energies, not per-frame ratios.",
+  "execution": "45-frame input-only DX12 oracle before AMD prerequisites; three independent 576-frame GPU children (360s watchdog each), full exact input-byte validation and finite/sentinel/fence/device checks. Offline property evaluation must save complete outcomes before returning nonzero on a failed criterion. Freeze protocol before execution; no threshold edits after seeing a result.",
+  "limits": "This validates a synthetic evaluator and bounded local regression predictions, not universal perceptual quality, all providers or a scientific confidence interval. Identical repetitions establish reproducibility on this equipment, not uncertainty across hardware. Textured-fast is a new diagnostic cell, not a held-out quality acceptance claim. Standard compact retention removes full payloads; raw historical outputs cannot be reconstructed from hashes."
+}

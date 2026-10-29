@@ -1,0 +1,3499 @@
+{
+  "protocol": {
+    "schema_version": 1,
+    "confirmation": false,
+    "repeats": 1,
+    "order_seeds": [
+      611
+    ],
+    "frames": 128,
+    "cut_frame": 64,
+    "render": [
+      320,
+      180
+    ],
+    "display": [
+      640,
+      360
+    ],
+    "input_only_frames": [
+      0,
+      1,
+      31,
+      32,
+      63,
+      64,
+      65,
+      95,
+      96,
+      127
+    ],
+    "scenes": [
+      {
+        "name": "cut",
+        "scene": 2,
+        "velocity": [
+          0.375,
+          0.25
+        ],
+        "controls": [
+          "reset",
+          "no-reset",
+          "fresh"
+        ]
+      }
+    ],
+    "windows": [
+      [
+        0,
+        7
+      ],
+      [
+        8,
+        31
+      ],
+      [
+        32,
+        63
+      ]
+    ],
+    "geometry": "Same analytic sinusoidal scene and camera/depth/colour as temporal diagnosis. At frame 64 camera translates (192/focal,96/focal), focal=90/tan(pi/6): FG displacement (-96,+48), BG (-24,+12) render pixels. World textures stay fixed; foreground keeps its local texture. All geometry remains in the measured viewport through frame 127.",
+    "motion": "Unjittered previousUV-currentUV: ordinary FG (-.375/320,-.25/180), BG zero. Cut FG ((96-.375)/320,(-48-.25)/180), BG (24/320,-12/180). Colour/depth/motion/exposure/jitter/timing identical across post-cut arms, including fresh frame 64. Jitter uses absolute phase; does not restart.",
+    "histories": "reset and no-reset build frames 0..63 in one context, then continue through 127. reset requests reset at 0 and 64; no-reset at 0 only. fresh starts one new context at absolute frame 64, resets once there, and continues through 127. All resources retained until fences and context destruction; no lifetime-policy changes.",
+    "evaluation": "Full byte input audit and finite/sentinel/fence/device/debug checks precede analysis. Point reference for interiors, exact area for edge, known true-flow foreground temporal residual from 65 onwards. Ghost region is pre-cut foreground interior intersected with current background interior; it measures the old screen footprint, not a universal physical disocclusion age. Per-frame metrics and paired RGBA maximum/reset-fresh/no-reset-fresh differences retained. Synthetic old-history contamination at 0/25/50/100% must discriminate and increase with severity before GPU dispatch.",
+    "selection_rule": "Exploration establishes no native quality acceptance. Select five fresh-context limits as 1.25 times the maximum window MAE plus .000001. Reset/fresh RGBA difference must remain <=.000001 on all 64 post-cut frames. No-reset/fresh interior MAE averaged over first eight frames must exceed reset/fresh by >=.0001, demonstrating retained-history sensitivity without requiring no-reset to lose every analytic metric. Selection fails if these fixed predictions are unsupported. Freeze selected limits before three independent confirmations.",
+    "limits": "128 frames per history arm plus 64 fresh frames = 320 GPU frames per block; 25 input-only frames. Native child watchdog 360s. Correlated frames, one GPU/provider/driver; reset equality alone is not improved perceptual quality. No universal quality, lifetime or hardware support claim. Ordinary/release gates remain unchanged."
+  },
+  "protocol_sha256": "b0f85ce63615e0bd88de134ae9df7ceab73258f5e042380749381722f2e4f7a3",
+  "numpy": "2.3.5",
+  "ghost_controls": {
+    "passed": true,
+    "scope": "Analytic old-frame contamination; CPU only",
+    "limit": 0.002,
+    "controls": [
+      {
+        "severity": 0,
+        "score": {
+          "pixels": 10292,
+          "mae": 0.0,
+          "rmse": 0.0,
+          "signed_mean": 0.0
+        }
+      },
+      {
+        "severity": 0.25,
+        "score": {
+          "pixels": 10292,
+          "mae": 0.05807641283965082,
+          "rmse": 0.06877031379590486,
+          "signed_mean": 0.009329988639819846
+        }
+      },
+      {
+        "severity": 0.5,
+        "score": {
+          "pixels": 10292,
+          "mae": 0.11615282567930164,
+          "rmse": 0.1375406275918097,
+          "signed_mean": 0.01865997727963969
+        }
+      },
+      {
+        "severity": 1,
+        "score": {
+          "pixels": 10292,
+          "mae": 0.2323056513586033,
+          "rmse": 0.2750812551836194,
+          "signed_mean": 0.03731995455927938
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "repeat": 1,
+      "windows": [
+        {
+          "frames": [
+            64,
+            71
+          ],
+          "arms": {
+            "reset": {
+              "foreground": {
+                "pixel_frames": 82664,
+                "mae": 0.0025113309507066774,
+                "rmse": 0.003792530519535201,
+                "signed_mean": -0.002047473182123565
+              },
+              "background": {
+                "pixel_frames": 1619448,
+                "mae": 0.001835167601859118,
+                "rmse": 0.0022858505183225414,
+                "signed_mean": -0.0012880281729653134
+              },
+              "edge": {
+                "pixel_frames": 15136,
+                "mae": 0.02402996626973328,
+                "rmse": 0.04826005756658996,
+                "signed_mean": -0.009085761256731316
+              },
+              "temporal": {
+                "pixel_frames": 70928,
+                "mae": 0.000859060308599036,
+                "rmse": 0.0012540574233232443,
+                "signed_mean": -0.00042415949711138126
+              },
+              "disocclusion": {
+                "pixel_frames": 47584,
+                "mae": 0.0016705151940864488,
+                "rmse": 0.0026243817585681227,
+                "signed_mean": -0.0014081139434910033
+              },
+              "texture": {
+                "pixel_frames": 82664,
+                "numerator": 1.2106397987799697,
+                "denominator": 1622.3691778190005,
+                "nrmse": 0.02731697655939963
+              },
+              "ghost": {
+                "pixel_frames": 82336,
+                "mae": 0.0018471713831870308,
+                "rmse": 0.0022811846250146016,
+                "signed_mean": -0.0012943902558470932
+              }
+            },
+            "no-reset": {
+              "foreground": {
+                "pixel_frames": 82664,
+                "mae": 0.005468483912550029,
+                "rmse": 0.008290224590412062,
+                "signed_mean": -0.005389569093751385
+              },
+              "background": {
+                "pixel_frames": 1619448,
+                "mae": 0.0023322248705177876,
+                "rmse": 0.0027506470340178833,
+                "signed_mean": -0.00222854624899338
+              },
+              "edge": {
+                "pixel_frames": 15136,
+                "mae": 0.025598607551279864,
+                "rmse": 0.04997846809697025,
+                "signed_mean": -0.011073236006069952
+              },
+              "temporal": {
+                "pixel_frames": 70928,
+                "mae": 0.000670855632584843,
+                "rmse": 0.0010476300123170793,
+                "signed_mean": -1.9062864045855496e-05
+              },
+              "disocclusion": {
+                "pixel_frames": 47584,
+                "mae": 0.0024009924694276055,
+                "rmse": 0.003367136771487549,
+                "signed_mean": -0.0022237699303598387
+              },
+              "texture": {
+                "pixel_frames": 82664,
+                "numerator": 3.297517230953884,
+                "denominator": 1622.3691778190005,
+                "nrmse": 0.04508361094786643
+              },
+              "ghost": {
+                "pixel_frames": 82336,
+                "mae": 0.0024193543152904685,
+                "rmse": 0.0032145172486316024,
+                "signed_mean": -0.0021363876913109746
+              }
+            },
+            "fresh": {
+              "foreground": {
+                "pixel_frames": 82664,
+                "mae": 0.0025113309507066774,
+                "rmse": 0.003792530519535201,
+                "signed_mean": -0.002047473182123565
+              },
+              "background": {
+                "pixel_frames": 1619448,
+                "mae": 0.001835167601859118,
+                "rmse": 0.0022858505183225414,
+                "signed_mean": -0.0012880281729653134
+              },
+              "edge": {
+                "pixel_frames": 15136,
+                "mae": 0.02402996626973328,
+                "rmse": 0.04826005756658996,
+                "signed_mean": -0.009085761256731316
+              },
+              "temporal": {
+                "pixel_frames": 70928,
+                "mae": 0.000859060308599036,
+                "rmse": 0.0012540574233232443,
+                "signed_mean": -0.00042415949711138126
+              },
+              "disocclusion": {
+                "pixel_frames": 47584,
+                "mae": 0.0016705151940864488,
+                "rmse": 0.0026243817585681227,
+                "signed_mean": -0.0014081139434910033
+              },
+              "texture": {
+                "pixel_frames": 82664,
+                "numerator": 1.2106397987799697,
+                "denominator": 1622.3691778190005,
+                "nrmse": 0.02731697655939963
+              },
+              "ghost": {
+                "pixel_frames": 82336,
+                "mae": 0.0018471713831870308,
+                "rmse": 0.0022811846250146016,
+                "signed_mean": -0.0012943902558470932
+              }
+            }
+          }
+        },
+        {
+          "frames": [
+            72,
+            95
+          ],
+          "arms": {
+            "reset": {
+              "foreground": {
+                "pixel_frames": 247992,
+                "mae": 0.004386134415930048,
+                "rmse": 0.006575773205828774,
+                "signed_mean": -0.004332740969265935
+              },
+              "background": {
+                "pixel_frames": 4858344,
+                "mae": 0.002540634999474368,
+                "rmse": 0.0030729527729010963,
+                "signed_mean": -0.002489364797292558
+              },
+              "edge": {
+                "pixel_frames": 45408,
+                "mae": 0.025587529879264756,
+                "rmse": 0.04772954208789851,
+                "signed_mean": -0.010397999342372496
+              },
+              "temporal": {
+                "pixel_frames": 243042,
+                "mae": 0.0006709926659280149,
+                "rmse": 0.0010186727635025762,
+                "signed_mean": -6.235332445872148e-05
+              },
+              "disocclusion": {
+                "pixel_frames": 8394,
+                "mae": 0.010540877499940662,
+                "rmse": 0.020753180561797247,
+                "signed_mean": -0.0033919767899306804
+              },
+              "texture": {
+                "pixel_frames": 247992,
+                "numerator": 5.211110694510614,
+                "denominator": 4867.107533457001,
+                "nrmse": 0.032721234363599916
+              },
+              "ghost": {
+                "pixel_frames": 247008,
+                "mae": 0.002538722479590338,
+                "rmse": 0.0028679106742463024,
+                "signed_mean": -0.002512149786018771
+              }
+            },
+            "no-reset": {
+              "foreground": {
+                "pixel_frames": 247992,
+                "mae": 0.005692467128158997,
+                "rmse": 0.008619101491492582,
+                "signed_mean": -0.00565246477013136
+              },
+              "background": {
+                "pixel_frames": 4858344,
+                "mae": 0.0025502422999081798,
+                "rmse": 0.0031171295337658854,
+                "signed_mean": -0.0024892508177909818
+              },
+              "edge": {
+                "pixel_frames": 45408,
+                "mae": 0.025871488141585113,
+                "rmse": 0.04801443816957196,
+                "signed_mean": -0.010697012196574263
+              },
+              "temporal": {
+                "pixel_frames": 243042,
+                "mae": 0.0006676261689002773,
+                "rmse": 0.0010377488698780392,
+                "signed_mean": -1.0222853591326607e-05
+              },
+              "disocclusion": {
+                "pixel_frames": 8394,
+                "mae": 0.010851567499448937,
+                "rmse": 0.021423159084839532,
+                "signed_mean": -0.003469774679109955
+              },
+              "texture": {
+                "pixel_frames": 247992,
+                "numerator": 9.678508114757097,
+                "denominator": 4867.107533457001,
+                "nrmse": 0.044593210277363064
+              },
+              "ghost": {
+                "pixel_frames": 247008,
+                "mae": 0.00256391083126905,
+                "rmse": 0.0029359501243313643,
+                "signed_mean": -0.0025285607101883994
+              }
+            },
+            "fresh": {
+              "foreground": {
+                "pixel_frames": 247992,
+                "mae": 0.004386134415930048,
+                "rmse": 0.006575773205828774,
+                "signed_mean": -0.004332740969265935
+              },
+              "background": {
+                "pixel_frames": 4858344,
+                "mae": 0.002540634999474368,
+                "rmse": 0.0030729527729010963,
+                "signed_mean": -0.002489364797292558
+              },
+              "edge": {
+                "pixel_frames": 45408,
+                "mae": 0.025587529879264756,
+                "rmse": 0.04772954208789851,
+                "signed_mean": -0.010397999342372496
+              },
+              "temporal": {
+                "pixel_frames": 243042,
+                "mae": 0.0006709926659280149,
+                "rmse": 0.0010186727635025762,
+                "signed_mean": -6.235332445872148e-05
+              },
+              "disocclusion": {
+                "pixel_frames": 8394,
+                "mae": 0.010540877499940662,
+                "rmse": 0.020753180561797247,
+                "signed_mean": -0.0033919767899306804
+              },
+              "texture": {
+                "pixel_frames": 247992,
+                "numerator": 5.211110694510614,
+                "denominator": 4867.107533457001,
+                "nrmse": 0.032721234363599916
+              },
+              "ghost": {
+                "pixel_frames": 247008,
+                "mae": 0.002538722479590338,
+                "rmse": 0.0028679106742463024,
+                "signed_mean": -0.002512149786018771
+              }
+            }
+          }
+        },
+        {
+          "frames": [
+            96,
+            127
+          ],
+          "arms": {
+            "reset": {
+              "foreground": {
+                "pixel_frames": 330656,
+                "mae": 0.004929760223839741,
+                "rmse": 0.0074124831436754215,
+                "signed_mean": -0.004855708370516109
+              },
+              "background": {
+                "pixel_frames": 6477792,
+                "mae": 0.0025295466377961793,
+                "rmse": 0.002976724476706474,
+                "signed_mean": -0.0024777665050158258
+              },
+              "edge": {
+                "pixel_frames": 60544,
+                "mae": 0.024262692414123335,
+                "rmse": 0.04805642558628139,
+                "signed_mean": -0.011014741509744288
+              },
+              "temporal": {
+                "pixel_frames": 324056,
+                "mae": 0.000669690045179351,
+                "rmse": 0.0010353827221871506,
+                "signed_mean": -2.93683802444421e-05
+              },
+              "disocclusion": {
+                "pixel_frames": 11192,
+                "mae": 0.007477649809488732,
+                "rmse": 0.014884947694534129,
+                "signed_mean": -0.0027597892066746573
+              },
+              "texture": {
+                "pixel_frames": 330656,
+                "numerator": 9.345443114196144,
+                "denominator": 6489.476711276002,
+                "nrmse": 0.03794854333371801
+              },
+              "ghost": {
+                "pixel_frames": 329344,
+                "mae": 0.002494215409584765,
+                "rmse": 0.0028438759565721423,
+                "signed_mean": -0.0024560469919855097
+              }
+            },
+            "no-reset": {
+              "foreground": {
+                "pixel_frames": 330656,
+                "mae": 0.0058238977591116,
+                "rmse": 0.008811759316730667,
+                "signed_mean": -0.0057582628639889335
+              },
+              "background": {
+                "pixel_frames": 6477792,
+                "mae": 0.002499184055911043,
+                "rmse": 0.0029527478686623048,
+                "signed_mean": -0.0024446217240866462
+              },
+              "edge": {
+                "pixel_frames": 60544,
+                "mae": 0.024327449887666185,
+                "rmse": 0.048249601882551535,
+                "signed_mean": -0.01114640266743969
+              },
+              "temporal": {
+                "pixel_frames": 324056,
+                "mae": 0.0006674646655681835,
+                "rmse": 0.0010414615744001026,
+                "signed_mean": -2.387370123975072e-05
+              },
+              "disocclusion": {
+                "pixel_frames": 11192,
+                "mae": 0.0074687864050739005,
+                "rmse": 0.01479242220723989,
+                "signed_mean": -0.002732289211328279
+              },
+              "texture": {
+                "pixel_frames": 330656,
+                "numerator": 13.970099327740519,
+                "denominator": 6489.476711276002,
+                "nrmse": 0.04639753498136286
+              },
+              "ghost": {
+                "pixel_frames": 329344,
+                "mae": 0.00246574809243417,
+                "rmse": 0.0028167570574872494,
+                "signed_mean": -0.002425899937150431
+              }
+            },
+            "fresh": {
+              "foreground": {
+                "pixel_frames": 330656,
+                "mae": 0.004929760223839741,
+                "rmse": 0.0074124831436754215,
+                "signed_mean": -0.004855708370516109
+              },
+              "background": {
+                "pixel_frames": 6477792,
+                "mae": 0.0025295466377961793,
+                "rmse": 0.002976724476706474,
+                "signed_mean": -0.0024777665050158258
+              },
+              "edge": {
+                "pixel_frames": 60544,
+                "mae": 0.024262692414123335,
+                "rmse": 0.04805642558628139,
+                "signed_mean": -0.011014741509744288
+              },
+              "temporal": {
+                "pixel_frames": 324056,
+                "mae": 0.000669690045179351,
+                "rmse": 0.0010353827221871506,
+                "signed_mean": -2.93683802444421e-05
+              },
+              "disocclusion": {
+                "pixel_frames": 11192,
+                "mae": 0.007477649809488732,
+                "rmse": 0.014884947694534129,
+                "signed_mean": -0.0027597892066746573
+              },
+              "texture": {
+                "pixel_frames": 330656,
+                "numerator": 9.345443114196144,
+                "denominator": 6489.476711276002,
+                "nrmse": 0.03794854333371801
+              },
+              "ghost": {
+                "pixel_frames": 329344,
+                "mae": 0.002494215409584765,
+                "rmse": 0.0028438759565721423,
+                "signed_mean": -0.0024560469919855097
+              }
+            }
+          }
+        }
+      ],
+      "trajectories": {
+        "reset": [
+          {
+            "frame": 64,
+            "foreground": 0.002582811014166291,
+            "background": 0.0027054353239322547,
+            "edge": 0.016177987791882235,
+            "disocclusion": 0.0027441879087482988,
+            "temporal": null,
+            "texture": 0.04389232380572865,
+            "ghost": 0.0027464494053173866
+          },
+          {
+            "frame": 65,
+            "foreground": 0.0015095725245791978,
+            "background": 0.0017860557917613094,
+            "edge": 0.020018528719721762,
+            "disocclusion": 0.001595066848078748,
+            "temporal": 0.0011892839637223601,
+            "texture": 0.02120701785042471,
+            "ghost": 0.0018332822290813785
+          },
+          {
+            "frame": 66,
+            "foreground": 0.0017647743364073772,
+            "background": 0.0012412977869100447,
+            "edge": 0.020777369375661332,
+            "disocclusion": 0.0012339718134255012,
+            "temporal": 0.0009621428975665904,
+            "texture": 0.01967956351464643,
+            "ghost": 0.0012295003005495817
+          },
+          {
+            "frame": 67,
+            "foreground": 0.0022072006841975956,
+            "background": 0.0013905262796215124,
+            "edge": 0.01789443574112776,
+            "disocclusion": 0.001387985164033047,
+            "temporal": 0.0010235977259278196,
+            "texture": 0.023680852577526404,
+            "ghost": 0.0013840370461446986
+          },
+          {
+            "frame": 68,
+            "foreground": 0.0025085242030220673,
+            "background": 0.00163485476833579,
+            "edge": 0.037629759446543266,
+            "disocclusion": 0.001674272717503108,
+            "temporal": 0.0006975558959486015,
+            "texture": 0.023290258330283344,
+            "ghost": 0.0016184995971276987
+          },
+          {
+            "frame": 69,
+            "foreground": 0.00291767936632705,
+            "background": 0.0019177171425956668,
+            "edge": 0.0240098366550244,
+            "disocclusion": 0.001968680985484254,
+            "temporal": 0.000649642243938006,
+            "texture": 0.022083962461437394,
+            "ghost": 0.0019160522630068285
+          },
+          {
+            "frame": 70,
+            "foreground": 0.003145205052413078,
+            "background": 0.001967474167288263,
+            "edge": 0.0356844301801678,
+            "disocclusion": 0.009935064866166412,
+            "temporal": 0.0007644428901684323,
+            "texture": 0.02593537195552448,
+            "ghost": 0.0019829369954963965
+          },
+          {
+            "frame": 71,
+            "foreground": 0.003454490977333962,
+            "background": 0.0020376491284560916,
+            "edge": 0.02110731097216322,
+            "disocclusion": 0.007506767569219673,
+            "temporal": 0.0007251617933961689,
+            "texture": 0.03058312708042825,
+            "ghost": 0.0020666132287722786
+          },
+          {
+            "frame": 72,
+            "foreground": 0.003570836433009846,
+            "background": 0.0021067278643831294,
+            "edge": 0.03696088552180792,
+            "disocclusion": 0.00680195596072522,
+            "temporal": 0.0008103745499660193,
+            "texture": 0.03245382010042216,
+            "ghost": 0.002140234767243235
+          },
+          {
+            "frame": 73,
+            "foreground": 0.0036227516776633183,
+            "background": 0.0022380127755908742,
+            "edge": 0.01794079578878039,
+            "disocclusion": 0.005806968840076362,
+            "temporal": 0.000650158355836623,
+            "texture": 0.028148244223297723,
+            "ghost": 0.0023116869711451472
+          },
+          {
+            "frame": 74,
+            "foreground": 0.0038914591640091764,
+            "background": 0.002371252754649004,
+            "edge": 0.028921441789430742,
+            "disocclusion": 0.013642554386466811,
+            "temporal": 0.0005786222388234446,
+            "texture": 0.029378978358731798,
+            "ghost": 0.0024484863337621617
+          },
+          {
+            "frame": 75,
+            "foreground": 0.004023069697315969,
+            "background": 0.0024907997291333498,
+            "edge": 0.02111492959797683,
+            "disocclusion": 0.011207060109178373,
+            "temporal": 0.0005992845715753226,
+            "texture": 0.02894254983650737,
+            "ghost": 0.002575199468591619
+          },
+          {
+            "frame": 76,
+            "foreground": 0.004125098951914076,
+            "background": 0.002570916528577181,
+            "edge": 0.03379187129575058,
+            "disocclusion": 0.005243655569665273,
+            "temporal": 0.0007127166374685896,
+            "texture": 0.03097679162320565,
+            "ghost": 0.0026569490160844576
+          },
+          {
+            "frame": 77,
+            "foreground": 0.004160473363456801,
+            "background": 0.002618238205488425,
+            "edge": 0.02548213010926404,
+            "disocclusion": 0.005013083697027192,
+            "temporal": 0.0006139157921370343,
+            "texture": 0.030206148431654638,
+            "ghost": 0.0027201261325932305
+          },
+          {
+            "frame": 78,
+            "foreground": 0.004379832907709152,
+            "background": 0.0026247108579952306,
+            "edge": 0.02814403619895086,
+            "disocclusion": 0.009857519446617608,
+            "temporal": 0.0006046435657483671,
+            "texture": 0.0327239137082257,
+            "ghost": 0.0027251044756883103
+          },
+          {
+            "frame": 79,
+            "foreground": 0.004399271066137235,
+            "background": 0.002665615214499072,
+            "edge": 0.020202475149801384,
+            "disocclusion": 0.008470631307807178,
+            "temporal": 0.0007740577056446542,
+            "texture": 0.03363318866346822,
+            "ghost": 0.0027387168705691944
+          },
+          {
+            "frame": 80,
+            "foreground": 0.0044002463005257475,
+            "background": 0.0025768841093411826,
+            "edge": 0.037170198755405504,
+            "disocclusion": 0.007460078991059654,
+            "temporal": 0.0007217488198081664,
+            "texture": 0.03423889126496815,
+            "ghost": 0.0026350046862543687
+          },
+          {
+            "frame": 81,
+            "foreground": 0.0043992209048488015,
+            "background": 0.002574728471257941,
+            "edge": 0.021492717721312185,
+            "disocclusion": 0.007200692640682752,
+            "temporal": 0.0007046959653470569,
+            "texture": 0.032557740750416626,
+            "ghost": 0.0026068950505733195
+          },
+          {
+            "frame": 82,
+            "foreground": 0.004472598503582539,
+            "background": 0.0025457745240349138,
+            "edge": 0.029141792396704187,
+            "disocclusion": 0.01648149403007332,
+            "temporal": 0.0006714487730048182,
+            "texture": 0.03284595944416902,
+            "ghost": 0.0025592867775346344
+          },
+          {
+            "frame": 83,
+            "foreground": 0.004655153602328454,
+            "background": 0.002567249457071125,
+            "edge": 0.024270882479971174,
+            "disocclusion": 0.013888329381595847,
+            "temporal": 0.0005817134000603389,
+            "texture": 0.03242102098826905,
+            "ghost": 0.002547016339589916
+          },
+          {
+            "frame": 84,
+            "foreground": 0.0045932209149572994,
+            "background": 0.0026199446877464058,
+            "edge": 0.04022144137687552,
+            "disocclusion": 0.012190790505520717,
+            "temporal": 0.0005936542216774324,
+            "texture": 0.03418242340558811,
+            "ghost": 0.0025781663799718108
+          },
+          {
+            "frame": 85,
+            "foreground": 0.00470593167431363,
+            "background": 0.002659615356568552,
+            "edge": 0.021478727844186543,
+            "disocclusion": 0.01061966773941278,
+            "temporal": 0.00077967219775237,
+            "texture": 0.03289655054931014,
+            "ghost": 0.0026349161068699866
+          },
+          {
+            "frame": 86,
+            "foreground": 0.004675733328999646,
+            "background": 0.0026588044856899855,
+            "edge": 0.029867753400781655,
+            "disocclusion": 0.020698920457335346,
+            "temporal": 0.0006292166845312407,
+            "texture": 0.03416442552603319,
+            "ghost": 0.002613810188885431
+          },
+          {
+            "frame": 87,
+            "foreground": 0.004719170809813535,
+            "background": 0.002679279605000371,
+            "edge": 0.02537587529024398,
+            "disocclusion": 0.01823078539831274,
+            "temporal": 0.0005841368974380914,
+            "texture": 0.03388758632965418,
+            "ghost": 0.0026469932535553783
+          },
+          {
+            "frame": 88,
+            "foreground": 0.004596997022464123,
+            "background": 0.0026260654080738142,
+            "edge": 0.03258459425656726,
+            "disocclusion": 0.01320539779023685,
+            "temporal": 0.0007462787997227166,
+            "texture": 0.03493014569163005,
+            "ghost": 0.002564513706557525
+          },
+          {
+            "frame": 89,
+            "foreground": 0.004524210164692225,
+            "background": 0.002606051490155117,
+            "edge": 0.022203389948723427,
+            "disocclusion": 0.012484475606602218,
+            "temporal": 0.0007384596933412595,
+            "texture": 0.03289324874071541,
+            "ghost": 0.0025466371114107357
+          },
+          {
+            "frame": 90,
+            "foreground": 0.004541247404867646,
+            "background": 0.002588525020350686,
+            "edge": 0.02236081302089768,
+            "disocclusion": 0.017763545546151706,
+            "temporal": 0.0007034957169665556,
+            "texture": 0.033046833967118466,
+            "ghost": 0.002505679619910161
+          },
+          {
+            "frame": 91,
+            "foreground": 0.0045164415447242175,
+            "background": 0.0025314822199767988,
+            "edge": 0.019300011103066117,
+            "disocclusion": 0.014801186386868163,
+            "temporal": 0.000592920154134469,
+            "texture": 0.03227923630083592,
+            "ghost": 0.002444916389955759
+          },
+          {
+            "frame": 92,
+            "foreground": 0.004584443929213515,
+            "background": 0.002511470146568615,
+            "edge": 0.028633020212650045,
+            "disocclusion": 0.009031983470993241,
+            "temporal": 0.0005762815143594627,
+            "texture": 0.03331247442427698,
+            "ghost": 0.0024138834837737237
+          },
+          {
+            "frame": 93,
+            "foreground": 0.0045100696503852745,
+            "background": 0.0025037401731844854,
+            "edge": 0.014809589696501606,
+            "disocclusion": 0.007938451116729944,
+            "temporal": 0.0007353737817346177,
+            "texture": 0.0342760761075221,
+            "ghost": 0.002411023617301321
+          },
+          {
+            "frame": 94,
+            "foreground": 0.0044848357179054854,
+            "background": 0.002487080028441546,
+            "edge": 0.021795068927570407,
+            "disocclusion": 0.005565409970834056,
+            "temporal": 0.0007902640798021479,
+            "texture": 0.03552148070700634,
+            "ghost": 0.002413213448535059
+          },
+          {
+            "frame": 95,
+            "foreground": 0.004719783321301347,
+            "background": 0.0025524091122855527,
+            "edge": 0.0181727770933232,
+            "disocclusion": 0.0060411151846067705,
+            "temporal": 0.000609423699265893,
+            "texture": 0.03408493459691307,
+            "ghost": 0.0024908793138116313
+          },
+          {
+            "frame": 96,
+            "foreground": 0.004696874468060227,
+            "background": 0.0025425729057410628,
+            "edge": 0.026452268355415972,
+            "disocclusion": 0.004722464113968626,
+            "temporal": 0.0006181878820772727,
+            "texture": 0.03555446394731881,
+            "ghost": 0.002510852413432554
+          },
+          {
+            "frame": 97,
+            "foreground": 0.004875409656437318,
+            "background": 0.002557683960488611,
+            "edge": 0.017129658801897273,
+            "disocclusion": 0.005072680461548282,
+            "temporal": 0.000565406128243596,
+            "texture": 0.03322024615803751,
+            "ghost": 0.0025339153126453322
+          },
+          {
+            "frame": 98,
+            "foreground": 0.0048151070887363446,
+            "background": 0.0025124290909348517,
+            "edge": 0.02029026119295353,
+            "disocclusion": 0.005513319068518728,
+            "temporal": 0.0006475528648093237,
+            "texture": 0.03556819861318316,
+            "ghost": 0.0025053311153635386
+          },
+          {
+            "frame": 99,
+            "foreground": 0.004709964102673274,
+            "background": 0.002538261456291878,
+            "edge": 0.017009481819335356,
+            "disocclusion": 0.004566516618241905,
+            "temporal": 0.0008440322792272715,
+            "texture": 0.03405062626157976,
+            "ghost": 0.002539211525676108
+          },
+          {
+            "frame": 100,
+            "foreground": 0.004654229007231713,
+            "background": 0.002507481944928071,
+            "edge": 0.03137363205371478,
+            "disocclusion": 0.004903281072249988,
+            "temporal": 0.0005577961120882623,
+            "texture": 0.034824736400037276,
+            "ghost": 0.0024931301523871017
+          },
+          {
+            "frame": 101,
+            "foreground": 0.0049149099422860065,
+            "background": 0.0025762746553018574,
+            "edge": 0.018093422673449492,
+            "disocclusion": 0.004991984300735789,
+            "temporal": 0.000584345330740135,
+            "texture": 0.03398976996871577,
+            "ghost": 0.0025675047381588495
+          },
+          {
+            "frame": 102,
+            "foreground": 0.004770032479620163,
+            "background": 0.0025320022759240625,
+            "edge": 0.02931830146198281,
+            "disocclusion": 0.0047078392770492005,
+            "temporal": 0.0007819464665484414,
+            "texture": 0.03660176125927025,
+            "ghost": 0.0025175722267925913
+          },
+          {
+            "frame": 103,
+            "foreground": 0.004845803445616523,
+            "background": 0.0025063098717424386,
+            "edge": 0.017553391262800654,
+            "disocclusion": 0.0036812274078191964,
+            "temporal": 0.0006729172406810358,
+            "texture": 0.041765516286786916,
+            "ghost": 0.0024742936451648276
+          },
+          {
+            "frame": 104,
+            "foreground": 0.004752153607368313,
+            "background": 0.0024777166312001143,
+            "edge": 0.03073261125413807,
+            "disocclusion": 0.0042311670945690966,
+            "temporal": 0.0007887594605549648,
+            "texture": 0.04129133871430783,
+            "ghost": 0.002429016963533522
+          },
+          {
+            "frame": 105,
+            "foreground": 0.004715793604294849,
+            "background": 0.0025117428422676983,
+            "edge": 0.014457622585044601,
+            "disocclusion": 0.005152134176056832,
+            "temporal": 0.000654793820881095,
+            "texture": 0.035875323477395984,
+            "ghost": 0.002481385695098939
+          },
+          {
+            "frame": 106,
+            "foreground": 0.0048651503115627924,
+            "background": 0.0025274888918040157,
+            "edge": 0.024595235467852652,
+            "disocclusion": 0.006719008049704473,
+            "temporal": 0.0005721283810451267,
+            "texture": 0.03690239674225547,
+            "ghost": 0.0024924067419578237
+          },
+          {
+            "frame": 107,
+            "foreground": 0.004872042847373899,
+            "background": 0.0025904175161053002,
+            "edge": 0.019863748350132764,
+            "disocclusion": 0.005780491251447861,
+            "temporal": 0.0006109372386515965,
+            "texture": 0.03729588038321991,
+            "ghost": 0.0025694974974232567
+          },
+          {
+            "frame": 108,
+            "foreground": 0.004842509898830401,
+            "background": 0.002596759241280012,
+            "edge": 0.03167008456823479,
+            "disocclusion": 0.005371199882597921,
+            "temporal": 0.000718036795074928,
+            "texture": 0.037845675379508364,
+            "ghost": 0.0025844320882021984
+          },
+          {
+            "frame": 109,
+            "foreground": 0.004802728858832116,
+            "background": 0.0026023951834641076,
+            "edge": 0.023733128886598846,
+            "disocclusion": 0.00468422308313594,
+            "temporal": 0.0005883271228418348,
+            "texture": 0.03578844111613416,
+            "ghost": 0.0026121691196515167
+          },
+          {
+            "frame": 110,
+            "foreground": 0.00488377997257957,
+            "background": 0.002557135079845875,
+            "edge": 0.026023307120520398,
+            "disocclusion": 0.005612044566939831,
+            "temporal": 0.00059878283302817,
+            "texture": 0.03920367231528509,
+            "ghost": 0.0025583714463893884
+          },
+          {
+            "frame": 111,
+            "foreground": 0.004914893727939942,
+            "background": 0.002598505506310378,
+            "edge": 0.018008124344661088,
+            "disocclusion": 0.006046071771942894,
+            "temporal": 0.000793047477882554,
+            "texture": 0.04379793539697755,
+            "ghost": 0.002600683789820925
+          },
+          {
+            "frame": 112,
+            "foreground": 0.004859874486566251,
+            "background": 0.0024908710163944327,
+            "edge": 0.031117254883181875,
+            "disocclusion": 0.005771583312109929,
+            "temporal": 0.0007389598593445676,
+            "texture": 0.042319650575449584,
+            "ghost": 0.002477556507361273
+          },
+          {
+            "frame": 113,
+            "foreground": 0.004854438457924815,
+            "background": 0.002498999230908141,
+            "edge": 0.01845440161240208,
+            "disocclusion": 0.0068139820291907285,
+            "temporal": 0.0007199037197402751,
+            "texture": 0.038128016453153495,
+            "ghost": 0.0024645321910452766
+          },
+          {
+            "frame": 114,
+            "foreground": 0.004898895531404463,
+            "background": 0.0024602980970915575,
+            "edge": 0.025452496992235712,
+            "disocclusion": 0.011017405528808574,
+            "temporal": 0.0006972853829541607,
+            "texture": 0.038519217014505364,
+            "ghost": 0.0024269353743893657
+          },
+          {
+            "frame": 115,
+            "foreground": 0.005045673163058878,
+            "background": 0.002477208852661319,
+            "edge": 0.02314104006111294,
+            "disocclusion": 0.009241893363167133,
+            "temporal": 0.0005877058658660415,
+            "texture": 0.0366293377997605,
+            "ghost": 0.00241568638257677
+          },
+          {
+            "frame": 116,
+            "foreground": 0.0050161754347300596,
+            "background": 0.0025320079312613694,
+            "edge": 0.03816444644870718,
+            "disocclusion": 0.008509315227400959,
+            "temporal": 0.0006017277372897073,
+            "texture": 0.03932241175024472,
+            "ghost": 0.0024603663220803657
+          },
+          {
+            "frame": 117,
+            "foreground": 0.005126674176434407,
+            "background": 0.0025825874862010255,
+            "edge": 0.02471218173512989,
+            "disocclusion": 0.007104865408800494,
+            "temporal": 0.0007566852826239887,
+            "texture": 0.03641665357361661,
+            "ghost": 0.0025385430369620028
+          },
+          {
+            "frame": 118,
+            "foreground": 0.00511050261937562,
+            "background": 0.0025892485231036834,
+            "edge": 0.033030584475455156,
+            "disocclusion": 0.01671425107312583,
+            "temporal": 0.000651994061107321,
+            "texture": 0.038611573753442235,
+            "ghost": 0.00255607518368733
+          },
+          {
+            "frame": 119,
+            "foreground": 0.005146239801602543,
+            "background": 0.0026183573782454193,
+            "edge": 0.02506243550180359,
+            "disocclusion": 0.013665372737056185,
+            "temporal": 0.000604666126328982,
+            "texture": 0.04176671124104497,
+            "ghost": 0.0025838185673947005
+          },
+          {
+            "frame": 120,
+            "foreground": 0.005084182792555804,
+            "background": 0.002562909012241639,
+            "edge": 0.03559176646468108,
+            "disocclusion": 0.010931788350570024,
+            "temporal": 0.0007106193833185759,
+            "texture": 0.04086627369315954,
+            "ghost": 0.0024966056816460415
+          },
+          {
+            "frame": 121,
+            "foreground": 0.004963721141562378,
+            "background": 0.0025468723061044837,
+            "edge": 0.02396199610550465,
+            "disocclusion": 0.009093045988760495,
+            "temporal": 0.0007326410065794118,
+            "texture": 0.03804027286454596,
+            "ghost": 0.0024774966351475093
+          },
+          {
+            "frame": 122,
+            "foreground": 0.0050103017923758915,
+            "background": 0.002540250088779884,
+            "edge": 0.02428281264782789,
+            "disocclusion": 0.01926846401926237,
+            "temporal": 0.0006933961267582808,
+            "texture": 0.03702529730683161,
+            "ghost": 0.002466055547790461
+          },
+          {
+            "frame": 123,
+            "foreground": 0.005026282021007036,
+            "background": 0.0024862860593776307,
+            "edge": 0.020164927483730846,
+            "disocclusion": 0.013855949671800956,
+            "temporal": 0.0006155305710603149,
+            "texture": 0.037477396249479114,
+            "ghost": 0.002419781694322039
+          },
+          {
+            "frame": 124,
+            "foreground": 0.005172446622873008,
+            "background": 0.0024579462830620616,
+            "edge": 0.03312189919651937,
+            "disocclusion": 0.008664104210807927,
+            "temporal": 0.0005884848392494388,
+            "texture": 0.03759454246827118,
+            "ghost": 0.0023652176489288865
+          },
+          {
+            "frame": 125,
+            "foreground": 0.00510034145709615,
+            "background": 0.0024465795812407573,
+            "edge": 0.017731721938618373,
+            "disocclusion": 0.006837051291881158,
+            "temporal": 0.0007416706829408566,
+            "texture": 0.037959255383672924,
+            "ghost": 0.002362074720859746
+          },
+          {
+            "frame": 126,
+            "foreground": 0.0051041969599389826,
+            "background": 0.0024263222554597157,
+            "edge": 0.024363393110582283,
+            "disocclusion": 0.007418411090226328,
+            "temporal": 0.0007820782401365596,
+            "texture": 0.039133882865350585,
+            "ghost": 0.002376645874560419
+          },
+          {
+            "frame": 127,
+            "foreground": 0.005305253359231652,
+            "background": 0.0024936307782933093,
+            "edge": 0.020393140748356325,
+            "disocclusion": 0.007391143088838733,
+            "temporal": 0.0006099769640316278,
+            "texture": 0.038268775763860716,
+            "ghost": 0.0024577272662618267
+          }
+        ],
+        "no-reset": [
+          {
+            "frame": 64,
+            "foreground": 0.0055299072261211215,
+            "background": 0.002345441376871394,
+            "edge": 0.02912021615122601,
+            "disocclusion": 0.002748498537484892,
+            "temporal": null,
+            "texture": 0.046831212349090955,
+            "ghost": 0.0026785397540963693
+          },
+          {
+            "frame": 65,
+            "foreground": 0.0055445526430379175,
+            "background": 0.0022465751957563983,
+            "edge": 0.019289148917052835,
+            "disocclusion": 0.0022576603186740297,
+            "temporal": 0.0006227616221585588,
+            "texture": 0.043633486967997015,
+            "ghost": 0.0022438793769081564
+          },
+          {
+            "frame": 66,
+            "foreground": 0.005386437036895786,
+            "background": 0.0021804618133961684,
+            "edge": 0.023759327136170336,
+            "disocclusion": 0.0021138703893768206,
+            "temporal": 0.0006787874093977221,
+            "texture": 0.04401821525651317,
+            "ghost": 0.00210118381172674
+          },
+          {
+            "frame": 67,
+            "foreground": 0.005304682006381718,
+            "background": 0.002269350746417946,
+            "edge": 0.018723761261380326,
+            "disocclusion": 0.002243356661570842,
+            "temporal": 0.0008530998501122067,
+            "texture": 0.04419904276636129,
+            "ghost": 0.002231353394739928
+          },
+          {
+            "frame": 68,
+            "foreground": 0.005315402516742923,
+            "background": 0.002317540898949806,
+            "edge": 0.036960080462332665,
+            "disocclusion": 0.002416766317474322,
+            "temporal": 0.0005687655330230131,
+            "texture": 0.043908539256061294,
+            "ghost": 0.0023783327652858303
+          },
+          {
+            "frame": 69,
+            "foreground": 0.005552363764126571,
+            "background": 0.0024324823182705424,
+            "edge": 0.023130167653603404,
+            "disocclusion": 0.0026013080027964706,
+            "temporal": 0.000574325915268584,
+            "texture": 0.042845450844723604,
+            "ghost": 0.0025540566068766877
+          },
+          {
+            "frame": 70,
+            "foreground": 0.005490140359856283,
+            "background": 0.0024264557985640175,
+            "edge": 0.03487693743720793,
+            "disocclusion": 0.007220717313732835,
+            "temporal": 0.0007410101727319535,
+            "texture": 0.045694711976371594,
+            "ghost": 0.0025812156952799785
+          },
+          {
+            "frame": 71,
+            "foreground": 0.005625724769714709,
+            "background": 0.002439502531522145,
+            "edge": 0.021108054337807235,
+            "disocclusion": 0.005911623162426153,
+            "temporal": 0.0006583295453997453,
+            "texture": 0.04919108347012268,
+            "ghost": 0.0025862731174100552
+          },
+          {
+            "frame": 72,
+            "foreground": 0.005526409175927576,
+            "background": 0.00243464070935263,
+            "edge": 0.03683500796538922,
+            "disocclusion": 0.0062918425094292945,
+            "temporal": 0.000748932395194415,
+            "texture": 0.04916626228250426,
+            "ghost": 0.0025842733893781658
+          },
+          {
+            "frame": 73,
+            "foreground": 0.005560589667852246,
+            "background": 0.002492829119960783,
+            "edge": 0.01743922264748926,
+            "disocclusion": 0.006663365890975924,
+            "temporal": 0.0006467575184472153,
+            "texture": 0.04523549829911657,
+            "ghost": 0.0026869525736265484
+          },
+          {
+            "frame": 74,
+            "foreground": 0.005701247020067129,
+            "background": 0.002529384407147099,
+            "edge": 0.02936491082881284,
+            "disocclusion": 0.00998277397420485,
+            "temporal": 0.0005898909562658689,
+            "texture": 0.04582088714008565,
+            "ghost": 0.002701583962326943
+          },
+          {
+            "frame": 75,
+            "foreground": 0.005709972040458958,
+            "background": 0.002596706597127029,
+            "edge": 0.02099767235974003,
+            "disocclusion": 0.007802115026091683,
+            "temporal": 0.0006143621628415889,
+            "texture": 0.043962577379060334,
+            "ghost": 0.002750071239219346
+          },
+          {
+            "frame": 76,
+            "foreground": 0.005687108550339413,
+            "background": 0.0026191598151178667,
+            "edge": 0.03359759113157747,
+            "disocclusion": 0.0052375577037174804,
+            "temporal": 0.0007159479129788084,
+            "texture": 0.04505437744973541,
+            "ghost": 0.0027716535828959696
+          },
+          {
+            "frame": 77,
+            "foreground": 0.005673373308415278,
+            "background": 0.002629265538681586,
+            "edge": 0.025867020468679888,
+            "disocclusion": 0.004982524004360175,
+            "temporal": 0.0006083729192248703,
+            "texture": 0.044092393082382414,
+            "ghost": 0.0027754244766222355
+          },
+          {
+            "frame": 78,
+            "foreground": 0.005838689656309725,
+            "background": 0.0025994773760559344,
+            "edge": 0.0281353377199776,
+            "disocclusion": 0.009441386568257774,
+            "temporal": 0.0006091532702123215,
+            "texture": 0.04623257537193912,
+            "ghost": 0.002719998464904162
+          },
+          {
+            "frame": 79,
+            "foreground": 0.005815047639266443,
+            "background": 0.0026356878569568074,
+            "edge": 0.020574667893365865,
+            "disocclusion": 0.008249924189843811,
+            "temporal": 0.0007424996272092937,
+            "texture": 0.045250580546188066,
+            "ghost": 0.002712483459962951
+          },
+          {
+            "frame": 80,
+            "foreground": 0.0057284069524217475,
+            "background": 0.0025321831662833516,
+            "edge": 0.03772664101988286,
+            "disocclusion": 0.007993039699818506,
+            "temporal": 0.0007159286001811666,
+            "texture": 0.04486396926827696,
+            "ghost": 0.0025711942387665926
+          },
+          {
+            "frame": 81,
+            "foreground": 0.005685784602364775,
+            "background": 0.0025310809385381793,
+            "edge": 0.02204762227167465,
+            "disocclusion": 0.008189227372815402,
+            "temporal": 0.0007035748905868044,
+            "texture": 0.04349303702708006,
+            "ghost": 0.00255754232877116
+          },
+          {
+            "frame": 82,
+            "foreground": 0.005702810618944001,
+            "background": 0.002500225695573415,
+            "edge": 0.029438643463666956,
+            "disocclusion": 0.018711776859808953,
+            "temporal": 0.0006684390902573842,
+            "texture": 0.043519779948431765,
+            "ghost": 0.0024771838486160507
+          },
+          {
+            "frame": 83,
+            "foreground": 0.005837023927033636,
+            "background": 0.002515776276964351,
+            "edge": 0.024302136019299113,
+            "disocclusion": 0.015488973698318621,
+            "temporal": 0.0005845185560829522,
+            "texture": 0.043442615020804286,
+            "ghost": 0.0024759643086065567
+          },
+          {
+            "frame": 84,
+            "foreground": 0.005767599895254833,
+            "background": 0.0025734038025757174,
+            "edge": 0.04062513965574843,
+            "disocclusion": 0.013026977040744467,
+            "temporal": 0.0005992391545681747,
+            "texture": 0.04513561910666514,
+            "ghost": 0.00252193739634031
+          },
+          {
+            "frame": 85,
+            "foreground": 0.005869705394772794,
+            "background": 0.0026154385880950977,
+            "edge": 0.022146117225829112,
+            "disocclusion": 0.011243724907387398,
+            "temporal": 0.0007567184148681037,
+            "texture": 0.04344396977714179,
+            "ghost": 0.0025819279532727016
+          },
+          {
+            "frame": 86,
+            "foreground": 0.005844064251056157,
+            "background": 0.00261647172283664,
+            "edge": 0.030017447052383822,
+            "disocclusion": 0.02104665602350298,
+            "temporal": 0.0006402608573833484,
+            "texture": 0.04457542454144838,
+            "ghost": 0.0025850215488306284
+          },
+          {
+            "frame": 87,
+            "foreground": 0.005912410416603892,
+            "background": 0.0026472678721997872,
+            "edge": 0.02560170814114331,
+            "disocclusion": 0.0186287782061435,
+            "temporal": 0.0005933870029944401,
+            "texture": 0.04498839383094451,
+            "ghost": 0.0026184142719685496
+          },
+          {
+            "frame": 88,
+            "foreground": 0.005771158010152575,
+            "background": 0.002591541124745466,
+            "edge": 0.0334180117631437,
+            "disocclusion": 0.013738066672018507,
+            "temporal": 0.000729015336565434,
+            "texture": 0.045837034890303975,
+            "ghost": 0.0025181756393430326
+          },
+          {
+            "frame": 89,
+            "foreground": 0.0056295388211611746,
+            "background": 0.0025792829844384535,
+            "edge": 0.02271892153410989,
+            "disocclusion": 0.013245294415751053,
+            "temporal": 0.0007409719399370999,
+            "texture": 0.043710394924817014,
+            "ghost": 0.0025101745607700038
+          },
+          {
+            "frame": 90,
+            "foreground": 0.00560442980488089,
+            "background": 0.0025665189402248644,
+            "edge": 0.02279879693631851,
+            "disocclusion": 0.018867984523499273,
+            "temporal": 0.0006989085636187567,
+            "texture": 0.04354258965144658,
+            "ghost": 0.0024711596911195376
+          },
+          {
+            "frame": 91,
+            "foreground": 0.005602109304060736,
+            "background": 0.0025132889191788964,
+            "edge": 0.01990027637709995,
+            "disocclusion": 0.016197129939201093,
+            "temporal": 0.0006109002422522011,
+            "texture": 0.043349819385152415,
+            "ghost": 0.0024275214163421532
+          },
+          {
+            "frame": 92,
+            "foreground": 0.005602187295879793,
+            "background": 0.002476324711041533,
+            "edge": 0.029400845247070314,
+            "disocclusion": 0.009906749877351602,
+            "temporal": 0.0005897012624740234,
+            "texture": 0.04413589782021062,
+            "ghost": 0.002366308510249971
+          },
+          {
+            "frame": 93,
+            "foreground": 0.005478951657304218,
+            "background": 0.0024655372424295355,
+            "edge": 0.015123156528563015,
+            "disocclusion": 0.008733566764768023,
+            "temporal": 0.0007356700351264473,
+            "texture": 0.04378483746147486,
+            "ghost": 0.002364892577473782
+          },
+          {
+            "frame": 94,
+            "foreground": 0.005429566506263856,
+            "background": 0.0024367191734021468,
+            "edge": 0.021870435363308554,
+            "disocclusion": 0.006274708867255927,
+            "temporal": 0.0007817761687597538,
+            "texture": 0.04451009521690564,
+            "ghost": 0.0023533201614022083
+          },
+          {
+            "frame": 95,
+            "foreground": 0.005642025342029379,
+            "background": 0.0025076586997311535,
+            "edge": 0.018360743990197947,
+            "disocclusion": 0.006439740728746968,
+            "temporal": 0.0005968730064243705,
+            "texture": 0.042543423722651956,
+            "ghost": 0.0024306803496476383
+          },
+          {
+            "frame": 96,
+            "foreground": 0.005629380258049821,
+            "background": 0.002485307399346562,
+            "edge": 0.02670698356312237,
+            "disocclusion": 0.004932509545290532,
+            "temporal": 0.0006116267493932046,
+            "texture": 0.04459319002089606,
+            "ghost": 0.0024284507699291733
+          },
+          {
+            "frame": 97,
+            "foreground": 0.005835205058136969,
+            "background": 0.0025051646093315456,
+            "edge": 0.017177480934530878,
+            "disocclusion": 0.005633729275461479,
+            "temporal": 0.0005861428135970006,
+            "texture": 0.04257323450796706,
+            "ghost": 0.002434051605709385
+          },
+          {
+            "frame": 98,
+            "foreground": 0.005717233983771643,
+            "background": 0.0024547950484794055,
+            "edge": 0.020438663196891447,
+            "disocclusion": 0.005817349050534195,
+            "temporal": 0.0006547149187107349,
+            "texture": 0.043937818123101324,
+            "ghost": 0.0023801091947222475
+          },
+          {
+            "frame": 99,
+            "foreground": 0.005565893705817114,
+            "background": 0.0024819021254268337,
+            "edge": 0.01758613664922548,
+            "disocclusion": 0.005168178602554881,
+            "temporal": 0.0008197695354391312,
+            "texture": 0.042583407353066906,
+            "ghost": 0.002411863023143023
+          },
+          {
+            "frame": 100,
+            "foreground": 0.005569400367166554,
+            "background": 0.0024467267506315953,
+            "edge": 0.0316594042801967,
+            "disocclusion": 0.0053509139556049325,
+            "temporal": 0.0005809191335119642,
+            "texture": 0.04435034441828874,
+            "ghost": 0.002367776534244806
+          },
+          {
+            "frame": 101,
+            "foreground": 0.005827872267865727,
+            "background": 0.0025202016651241434,
+            "edge": 0.018681336461739837,
+            "disocclusion": 0.004940494714310505,
+            "temporal": 0.0005897447176218679,
+            "texture": 0.04337096373925821,
+            "ghost": 0.0024578710301154283
+          },
+          {
+            "frame": 102,
+            "foreground": 0.005752927589928767,
+            "background": 0.0024742459079339176,
+            "edge": 0.030014181725223237,
+            "disocclusion": 0.004441807873711618,
+            "temporal": 0.000743566323378531,
+            "texture": 0.045998162283314,
+            "ghost": 0.002435026022101498
+          },
+          {
+            "frame": 103,
+            "foreground": 0.005829347333432153,
+            "background": 0.002449835494965033,
+            "edge": 0.018263765770091638,
+            "disocclusion": 0.003558804135778346,
+            "temporal": 0.0006851098636605488,
+            "texture": 0.05066354582846146,
+            "ghost": 0.002386455725396882
+          },
+          {
+            "frame": 104,
+            "foreground": 0.005682378019484226,
+            "background": 0.002417617336190593,
+            "edge": 0.031144588980719076,
+            "disocclusion": 0.004061554510732272,
+            "temporal": 0.0007783217291600542,
+            "texture": 0.04959559219905242,
+            "ghost": 0.0023840185355010605
+          },
+          {
+            "frame": 105,
+            "foreground": 0.005657790008156632,
+            "background": 0.002451896295654448,
+            "edge": 0.014825303829344386,
+            "disocclusion": 0.0050354868222569,
+            "temporal": 0.0006563062774704115,
+            "texture": 0.044451114106387406,
+            "ghost": 0.002434670315438067
+          },
+          {
+            "frame": 106,
+            "foreground": 0.005783263447843879,
+            "background": 0.002466163584209495,
+            "edge": 0.024580730448413624,
+            "disocclusion": 0.006349343206004011,
+            "temporal": 0.0005876224453830725,
+            "texture": 0.04571212945486708,
+            "ghost": 0.002447914547221826
+          },
+          {
+            "frame": 107,
+            "foreground": 0.00580009007589582,
+            "background": 0.0025328722912802567,
+            "edge": 0.019700911338598987,
+            "disocclusion": 0.005588692282277772,
+            "temporal": 0.0006093418022059218,
+            "texture": 0.0447627805713369,
+            "ghost": 0.002525561365140705
+          },
+          {
+            "frame": 108,
+            "foreground": 0.005740651778586571,
+            "background": 0.0025403556029520076,
+            "edge": 0.0315764138248219,
+            "disocclusion": 0.005143825218918649,
+            "temporal": 0.0007213442062221042,
+            "texture": 0.04575665925100426,
+            "ghost": 0.0025470097063519485
+          },
+          {
+            "frame": 109,
+            "foreground": 0.005712842119012734,
+            "background": 0.0025560722576677356,
+            "edge": 0.022627746546931015,
+            "disocclusion": 0.004504994524724256,
+            "temporal": 0.0006005682629309677,
+            "texture": 0.04410444460462287,
+            "ghost": 0.0025922924059571754
+          },
+          {
+            "frame": 110,
+            "foreground": 0.005811201963074225,
+            "background": 0.0025194699078789993,
+            "edge": 0.026270333844435608,
+            "disocclusion": 0.005564245888104816,
+            "temporal": 0.0005981074604971076,
+            "texture": 0.04758882400740464,
+            "ghost": 0.002582728794142935
+          },
+          {
+            "frame": 111,
+            "foreground": 0.005871816230074967,
+            "background": 0.0025687114870826563,
+            "edge": 0.0187282278754592,
+            "disocclusion": 0.006540747098427455,
+            "temporal": 0.000759598302933682,
+            "texture": 0.051710426577156535,
+            "ghost": 0.0026040722868916357
+          },
+          {
+            "frame": 112,
+            "foreground": 0.00580527048916638,
+            "background": 0.002465181858583581,
+            "edge": 0.03195058196522269,
+            "disocclusion": 0.006617953508268745,
+            "temporal": 0.0007273655310209624,
+            "texture": 0.050020090931787796,
+            "ghost": 0.002468730340376983
+          },
+          {
+            "frame": 113,
+            "foreground": 0.005763484194393176,
+            "background": 0.0024786187993371812,
+            "edge": 0.019185967511649013,
+            "disocclusion": 0.007640135355926582,
+            "temporal": 0.0007147776431569705,
+            "texture": 0.04614461877557474,
+            "ghost": 0.0024709176161571717
+          },
+          {
+            "frame": 114,
+            "foreground": 0.0058109963991732835,
+            "background": 0.0024488971778285967,
+            "edge": 0.026227174249104444,
+            "disocclusion": 0.012670167053586779,
+            "temporal": 0.000699793601545878,
+            "texture": 0.04702815349381788,
+            "ghost": 0.0024435507439911847
+          },
+          {
+            "frame": 115,
+            "foreground": 0.005942597130702917,
+            "background": 0.0024745073487136707,
+            "edge": 0.023673944895688585,
+            "disocclusion": 0.010784691183963274,
+            "temporal": 0.0005909306382605745,
+            "texture": 0.04527370055743919,
+            "ghost": 0.0024551537386287813
+          },
+          {
+            "frame": 116,
+            "foreground": 0.005923735856896972,
+            "background": 0.00252983350079077,
+            "edge": 0.03846671219306257,
+            "disocclusion": 0.008920336423940863,
+            "temporal": 0.0005998198896667953,
+            "texture": 0.047795231083125764,
+            "ghost": 0.0025016226699436815
+          },
+          {
+            "frame": 117,
+            "foreground": 0.006027606417374767,
+            "background": 0.0025787997245969117,
+            "edge": 0.024376184883012412,
+            "disocclusion": 0.0072907372737628035,
+            "temporal": 0.0007328893847580219,
+            "texture": 0.04491221006307247,
+            "ghost": 0.002575940698651853
+          },
+          {
+            "frame": 118,
+            "foreground": 0.005981785944177164,
+            "background": 0.0025854599649868014,
+            "edge": 0.03251590214308014,
+            "disocclusion": 0.01650418411050856,
+            "temporal": 0.0006487011740050754,
+            "texture": 0.046902882985700355,
+            "ghost": 0.0025648695717260675
+          },
+          {
+            "frame": 119,
+            "foreground": 0.006038317229388966,
+            "background": 0.0026219771932400856,
+            "edge": 0.02510584304362135,
+            "disocclusion": 0.013271634900789668,
+            "temporal": 0.0006164124615190736,
+            "texture": 0.05037992881582508,
+            "ghost": 0.0026005936534412672
+          },
+          {
+            "frame": 120,
+            "foreground": 0.005986115052637227,
+            "background": 0.0025682018865545338,
+            "edge": 0.03464489218868542,
+            "disocclusion": 0.010544882909748926,
+            "temporal": 0.0006988790889478345,
+            "texture": 0.049693931773155064,
+            "ghost": 0.0025072353297567597
+          },
+          {
+            "frame": 121,
+            "foreground": 0.005855681280766348,
+            "background": 0.0025475240455274336,
+            "edge": 0.0230636870967871,
+            "disocclusion": 0.00898159199093408,
+            "temporal": 0.000729285862143016,
+            "texture": 0.04672632532187142,
+            "ghost": 0.002492130659626669
+          },
+          {
+            "frame": 122,
+            "foreground": 0.005845865336586308,
+            "background": 0.0025350366811832826,
+            "edge": 0.02405041943668709,
+            "disocclusion": 0.01747008098140482,
+            "temporal": 0.0006909370306748909,
+            "texture": 0.045412823924762216,
+            "ghost": 0.0024841503215050176
+          },
+          {
+            "frame": 123,
+            "foreground": 0.005840014654159646,
+            "background": 0.0024758997505327676,
+            "edge": 0.02016936744590352,
+            "disocclusion": 0.012570761970335643,
+            "temporal": 0.000627199994348628,
+            "texture": 0.04569646825979767,
+            "ghost": 0.002446589809489352
+          },
+          {
+            "frame": 124,
+            "foreground": 0.00598699355451141,
+            "background": 0.0024423854279348118,
+            "edge": 0.03284550204886641,
+            "disocclusion": 0.007887465244577339,
+            "temporal": 0.000604664660105392,
+            "texture": 0.04581835556347594,
+            "ghost": 0.0023652892832065468
+          },
+          {
+            "frame": 125,
+            "foreground": 0.0058747783363666045,
+            "background": 0.0024386206457303015,
+            "edge": 0.017250913519806208,
+            "disocclusion": 0.006352752284264966,
+            "temporal": 0.0007233755157722702,
+            "texture": 0.04559604144239029,
+            "ghost": 0.0023518355691747998
+          },
+          {
+            "frame": 126,
+            "foreground": 0.005853618287381084,
+            "background": 0.0024215665000469977,
+            "edge": 0.023519505841342516,
+            "disocclusion": 0.0066266441199151795,
+            "temporal": 0.0007700159366331435,
+            "texture": 0.04718593872349563,
+            "ghost": 0.002341695589625215
+          },
+          {
+            "frame": 127,
+            "foreground": 0.0060439271469303404,
+            "background": 0.0024901189369204964,
+            "edge": 0.02011608325511087,
+            "disocclusion": 0.0066828007941155025,
+            "temporal": 0.0006012166829796338,
+            "texture": 0.04646241803114815,
+            "ghost": 0.0024137615005842858
+          }
+        ],
+        "fresh": [
+          {
+            "frame": 64,
+            "foreground": 0.002582811014166291,
+            "background": 0.0027054353239322547,
+            "edge": 0.016177987791882235,
+            "disocclusion": 0.0027441879087482988,
+            "temporal": null,
+            "texture": 0.04389232380572865,
+            "ghost": 0.0027464494053173866
+          },
+          {
+            "frame": 65,
+            "foreground": 0.0015095725245791978,
+            "background": 0.0017860557917613094,
+            "edge": 0.020018528719721762,
+            "disocclusion": 0.001595066848078748,
+            "temporal": 0.0011892839637223601,
+            "texture": 0.02120701785042471,
+            "ghost": 0.0018332822290813785
+          },
+          {
+            "frame": 66,
+            "foreground": 0.0017647743364073772,
+            "background": 0.0012412977869100447,
+            "edge": 0.020777369375661332,
+            "disocclusion": 0.0012339718134255012,
+            "temporal": 0.0009621428975665904,
+            "texture": 0.01967956351464643,
+            "ghost": 0.0012295003005495817
+          },
+          {
+            "frame": 67,
+            "foreground": 0.0022072006841975956,
+            "background": 0.0013905262796215124,
+            "edge": 0.01789443574112776,
+            "disocclusion": 0.001387985164033047,
+            "temporal": 0.0010235977259278196,
+            "texture": 0.023680852577526404,
+            "ghost": 0.0013840370461446986
+          },
+          {
+            "frame": 68,
+            "foreground": 0.0025085242030220673,
+            "background": 0.00163485476833579,
+            "edge": 0.037629759446543266,
+            "disocclusion": 0.001674272717503108,
+            "temporal": 0.0006975558959486015,
+            "texture": 0.023290258330283344,
+            "ghost": 0.0016184995971276987
+          },
+          {
+            "frame": 69,
+            "foreground": 0.00291767936632705,
+            "background": 0.0019177171425956668,
+            "edge": 0.0240098366550244,
+            "disocclusion": 0.001968680985484254,
+            "temporal": 0.000649642243938006,
+            "texture": 0.022083962461437394,
+            "ghost": 0.0019160522630068285
+          },
+          {
+            "frame": 70,
+            "foreground": 0.003145205052413078,
+            "background": 0.001967474167288263,
+            "edge": 0.0356844301801678,
+            "disocclusion": 0.009935064866166412,
+            "temporal": 0.0007644428901684323,
+            "texture": 0.02593537195552448,
+            "ghost": 0.0019829369954963965
+          },
+          {
+            "frame": 71,
+            "foreground": 0.003454490977333962,
+            "background": 0.0020376491284560916,
+            "edge": 0.02110731097216322,
+            "disocclusion": 0.007506767569219673,
+            "temporal": 0.0007251617933961689,
+            "texture": 0.03058312708042825,
+            "ghost": 0.0020666132287722786
+          },
+          {
+            "frame": 72,
+            "foreground": 0.003570836433009846,
+            "background": 0.0021067278643831294,
+            "edge": 0.03696088552180792,
+            "disocclusion": 0.00680195596072522,
+            "temporal": 0.0008103745499660193,
+            "texture": 0.03245382010042216,
+            "ghost": 0.002140234767243235
+          },
+          {
+            "frame": 73,
+            "foreground": 0.0036227516776633183,
+            "background": 0.0022380127755908742,
+            "edge": 0.01794079578878039,
+            "disocclusion": 0.005806968840076362,
+            "temporal": 0.000650158355836623,
+            "texture": 0.028148244223297723,
+            "ghost": 0.0023116869711451472
+          },
+          {
+            "frame": 74,
+            "foreground": 0.0038914591640091764,
+            "background": 0.002371252754649004,
+            "edge": 0.028921441789430742,
+            "disocclusion": 0.013642554386466811,
+            "temporal": 0.0005786222388234446,
+            "texture": 0.029378978358731798,
+            "ghost": 0.0024484863337621617
+          },
+          {
+            "frame": 75,
+            "foreground": 0.004023069697315969,
+            "background": 0.0024907997291333498,
+            "edge": 0.02111492959797683,
+            "disocclusion": 0.011207060109178373,
+            "temporal": 0.0005992845715753226,
+            "texture": 0.02894254983650737,
+            "ghost": 0.002575199468591619
+          },
+          {
+            "frame": 76,
+            "foreground": 0.004125098951914076,
+            "background": 0.002570916528577181,
+            "edge": 0.03379187129575058,
+            "disocclusion": 0.005243655569665273,
+            "temporal": 0.0007127166374685896,
+            "texture": 0.03097679162320565,
+            "ghost": 0.0026569490160844576
+          },
+          {
+            "frame": 77,
+            "foreground": 0.004160473363456801,
+            "background": 0.002618238205488425,
+            "edge": 0.02548213010926404,
+            "disocclusion": 0.005013083697027192,
+            "temporal": 0.0006139157921370343,
+            "texture": 0.030206148431654638,
+            "ghost": 0.0027201261325932305
+          },
+          {
+            "frame": 78,
+            "foreground": 0.004379832907709152,
+            "background": 0.0026247108579952306,
+            "edge": 0.02814403619895086,
+            "disocclusion": 0.009857519446617608,
+            "temporal": 0.0006046435657483671,
+            "texture": 0.0327239137082257,
+            "ghost": 0.0027251044756883103
+          },
+          {
+            "frame": 79,
+            "foreground": 0.004399271066137235,
+            "background": 0.002665615214499072,
+            "edge": 0.020202475149801384,
+            "disocclusion": 0.008470631307807178,
+            "temporal": 0.0007740577056446542,
+            "texture": 0.03363318866346822,
+            "ghost": 0.0027387168705691944
+          },
+          {
+            "frame": 80,
+            "foreground": 0.0044002463005257475,
+            "background": 0.0025768841093411826,
+            "edge": 0.037170198755405504,
+            "disocclusion": 0.007460078991059654,
+            "temporal": 0.0007217488198081664,
+            "texture": 0.03423889126496815,
+            "ghost": 0.0026350046862543687
+          },
+          {
+            "frame": 81,
+            "foreground": 0.0043992209048488015,
+            "background": 0.002574728471257941,
+            "edge": 0.021492717721312185,
+            "disocclusion": 0.007200692640682752,
+            "temporal": 0.0007046959653470569,
+            "texture": 0.032557740750416626,
+            "ghost": 0.0026068950505733195
+          },
+          {
+            "frame": 82,
+            "foreground": 0.004472598503582539,
+            "background": 0.0025457745240349138,
+            "edge": 0.029141792396704187,
+            "disocclusion": 0.01648149403007332,
+            "temporal": 0.0006714487730048182,
+            "texture": 0.03284595944416902,
+            "ghost": 0.0025592867775346344
+          },
+          {
+            "frame": 83,
+            "foreground": 0.004655153602328454,
+            "background": 0.002567249457071125,
+            "edge": 0.024270882479971174,
+            "disocclusion": 0.013888329381595847,
+            "temporal": 0.0005817134000603389,
+            "texture": 0.03242102098826905,
+            "ghost": 0.002547016339589916
+          },
+          {
+            "frame": 84,
+            "foreground": 0.0045932209149572994,
+            "background": 0.0026199446877464058,
+            "edge": 0.04022144137687552,
+            "disocclusion": 0.012190790505520717,
+            "temporal": 0.0005936542216774324,
+            "texture": 0.03418242340558811,
+            "ghost": 0.0025781663799718108
+          },
+          {
+            "frame": 85,
+            "foreground": 0.00470593167431363,
+            "background": 0.002659615356568552,
+            "edge": 0.021478727844186543,
+            "disocclusion": 0.01061966773941278,
+            "temporal": 0.00077967219775237,
+            "texture": 0.03289655054931014,
+            "ghost": 0.0026349161068699866
+          },
+          {
+            "frame": 86,
+            "foreground": 0.004675733328999646,
+            "background": 0.0026588044856899855,
+            "edge": 0.029867753400781655,
+            "disocclusion": 0.020698920457335346,
+            "temporal": 0.0006292166845312407,
+            "texture": 0.03416442552603319,
+            "ghost": 0.002613810188885431
+          },
+          {
+            "frame": 87,
+            "foreground": 0.004719170809813535,
+            "background": 0.002679279605000371,
+            "edge": 0.02537587529024398,
+            "disocclusion": 0.01823078539831274,
+            "temporal": 0.0005841368974380914,
+            "texture": 0.03388758632965418,
+            "ghost": 0.0026469932535553783
+          },
+          {
+            "frame": 88,
+            "foreground": 0.004596997022464123,
+            "background": 0.0026260654080738142,
+            "edge": 0.03258459425656726,
+            "disocclusion": 0.01320539779023685,
+            "temporal": 0.0007462787997227166,
+            "texture": 0.03493014569163005,
+            "ghost": 0.002564513706557525
+          },
+          {
+            "frame": 89,
+            "foreground": 0.004524210164692225,
+            "background": 0.002606051490155117,
+            "edge": 0.022203389948723427,
+            "disocclusion": 0.012484475606602218,
+            "temporal": 0.0007384596933412595,
+            "texture": 0.03289324874071541,
+            "ghost": 0.0025466371114107357
+          },
+          {
+            "frame": 90,
+            "foreground": 0.004541247404867646,
+            "background": 0.002588525020350686,
+            "edge": 0.02236081302089768,
+            "disocclusion": 0.017763545546151706,
+            "temporal": 0.0007034957169665556,
+            "texture": 0.033046833967118466,
+            "ghost": 0.002505679619910161
+          },
+          {
+            "frame": 91,
+            "foreground": 0.0045164415447242175,
+            "background": 0.0025314822199767988,
+            "edge": 0.019300011103066117,
+            "disocclusion": 0.014801186386868163,
+            "temporal": 0.000592920154134469,
+            "texture": 0.03227923630083592,
+            "ghost": 0.002444916389955759
+          },
+          {
+            "frame": 92,
+            "foreground": 0.004584443929213515,
+            "background": 0.002511470146568615,
+            "edge": 0.028633020212650045,
+            "disocclusion": 0.009031983470993241,
+            "temporal": 0.0005762815143594627,
+            "texture": 0.03331247442427698,
+            "ghost": 0.0024138834837737237
+          },
+          {
+            "frame": 93,
+            "foreground": 0.0045100696503852745,
+            "background": 0.0025037401731844854,
+            "edge": 0.014809589696501606,
+            "disocclusion": 0.007938451116729944,
+            "temporal": 0.0007353737817346177,
+            "texture": 0.0342760761075221,
+            "ghost": 0.002411023617301321
+          },
+          {
+            "frame": 94,
+            "foreground": 0.0044848357179054854,
+            "background": 0.002487080028441546,
+            "edge": 0.021795068927570407,
+            "disocclusion": 0.005565409970834056,
+            "temporal": 0.0007902640798021479,
+            "texture": 0.03552148070700634,
+            "ghost": 0.002413213448535059
+          },
+          {
+            "frame": 95,
+            "foreground": 0.004719783321301347,
+            "background": 0.0025524091122855527,
+            "edge": 0.0181727770933232,
+            "disocclusion": 0.0060411151846067705,
+            "temporal": 0.000609423699265893,
+            "texture": 0.03408493459691307,
+            "ghost": 0.0024908793138116313
+          },
+          {
+            "frame": 96,
+            "foreground": 0.004696874468060227,
+            "background": 0.0025425729057410628,
+            "edge": 0.026452268355415972,
+            "disocclusion": 0.004722464113968626,
+            "temporal": 0.0006181878820772727,
+            "texture": 0.03555446394731881,
+            "ghost": 0.002510852413432554
+          },
+          {
+            "frame": 97,
+            "foreground": 0.004875409656437318,
+            "background": 0.002557683960488611,
+            "edge": 0.017129658801897273,
+            "disocclusion": 0.005072680461548282,
+            "temporal": 0.000565406128243596,
+            "texture": 0.03322024615803751,
+            "ghost": 0.0025339153126453322
+          },
+          {
+            "frame": 98,
+            "foreground": 0.0048151070887363446,
+            "background": 0.0025124290909348517,
+            "edge": 0.02029026119295353,
+            "disocclusion": 0.005513319068518728,
+            "temporal": 0.0006475528648093237,
+            "texture": 0.03556819861318316,
+            "ghost": 0.0025053311153635386
+          },
+          {
+            "frame": 99,
+            "foreground": 0.004709964102673274,
+            "background": 0.002538261456291878,
+            "edge": 0.017009481819335356,
+            "disocclusion": 0.004566516618241905,
+            "temporal": 0.0008440322792272715,
+            "texture": 0.03405062626157976,
+            "ghost": 0.002539211525676108
+          },
+          {
+            "frame": 100,
+            "foreground": 0.004654229007231713,
+            "background": 0.002507481944928071,
+            "edge": 0.03137363205371478,
+            "disocclusion": 0.004903281072249988,
+            "temporal": 0.0005577961120882623,
+            "texture": 0.034824736400037276,
+            "ghost": 0.0024931301523871017
+          },
+          {
+            "frame": 101,
+            "foreground": 0.0049149099422860065,
+            "background": 0.0025762746553018574,
+            "edge": 0.018093422673449492,
+            "disocclusion": 0.004991984300735789,
+            "temporal": 0.000584345330740135,
+            "texture": 0.03398976996871577,
+            "ghost": 0.0025675047381588495
+          },
+          {
+            "frame": 102,
+            "foreground": 0.004770032479620163,
+            "background": 0.0025320022759240625,
+            "edge": 0.02931830146198281,
+            "disocclusion": 0.0047078392770492005,
+            "temporal": 0.0007819464665484414,
+            "texture": 0.03660176125927025,
+            "ghost": 0.0025175722267925913
+          },
+          {
+            "frame": 103,
+            "foreground": 0.004845803445616523,
+            "background": 0.0025063098717424386,
+            "edge": 0.017553391262800654,
+            "disocclusion": 0.0036812274078191964,
+            "temporal": 0.0006729172406810358,
+            "texture": 0.041765516286786916,
+            "ghost": 0.0024742936451648276
+          },
+          {
+            "frame": 104,
+            "foreground": 0.004752153607368313,
+            "background": 0.0024777166312001143,
+            "edge": 0.03073261125413807,
+            "disocclusion": 0.0042311670945690966,
+            "temporal": 0.0007887594605549648,
+            "texture": 0.04129133871430783,
+            "ghost": 0.002429016963533522
+          },
+          {
+            "frame": 105,
+            "foreground": 0.004715793604294849,
+            "background": 0.0025117428422676983,
+            "edge": 0.014457622585044601,
+            "disocclusion": 0.005152134176056832,
+            "temporal": 0.000654793820881095,
+            "texture": 0.035875323477395984,
+            "ghost": 0.002481385695098939
+          },
+          {
+            "frame": 106,
+            "foreground": 0.0048651503115627924,
+            "background": 0.0025274888918040157,
+            "edge": 0.024595235467852652,
+            "disocclusion": 0.006719008049704473,
+            "temporal": 0.0005721283810451267,
+            "texture": 0.03690239674225547,
+            "ghost": 0.0024924067419578237
+          },
+          {
+            "frame": 107,
+            "foreground": 0.004872042847373899,
+            "background": 0.0025904175161053002,
+            "edge": 0.019863748350132764,
+            "disocclusion": 0.005780491251447861,
+            "temporal": 0.0006109372386515965,
+            "texture": 0.03729588038321991,
+            "ghost": 0.0025694974974232567
+          },
+          {
+            "frame": 108,
+            "foreground": 0.004842509898830401,
+            "background": 0.002596759241280012,
+            "edge": 0.03167008456823479,
+            "disocclusion": 0.005371199882597921,
+            "temporal": 0.000718036795074928,
+            "texture": 0.037845675379508364,
+            "ghost": 0.0025844320882021984
+          },
+          {
+            "frame": 109,
+            "foreground": 0.004802728858832116,
+            "background": 0.0026023951834641076,
+            "edge": 0.023733128886598846,
+            "disocclusion": 0.00468422308313594,
+            "temporal": 0.0005883271228418348,
+            "texture": 0.03578844111613416,
+            "ghost": 0.0026121691196515167
+          },
+          {
+            "frame": 110,
+            "foreground": 0.00488377997257957,
+            "background": 0.002557135079845875,
+            "edge": 0.026023307120520398,
+            "disocclusion": 0.005612044566939831,
+            "temporal": 0.00059878283302817,
+            "texture": 0.03920367231528509,
+            "ghost": 0.0025583714463893884
+          },
+          {
+            "frame": 111,
+            "foreground": 0.004914893727939942,
+            "background": 0.002598505506310378,
+            "edge": 0.018008124344661088,
+            "disocclusion": 0.006046071771942894,
+            "temporal": 0.000793047477882554,
+            "texture": 0.04379793539697755,
+            "ghost": 0.002600683789820925
+          },
+          {
+            "frame": 112,
+            "foreground": 0.004859874486566251,
+            "background": 0.0024908710163944327,
+            "edge": 0.031117254883181875,
+            "disocclusion": 0.005771583312109929,
+            "temporal": 0.0007389598593445676,
+            "texture": 0.042319650575449584,
+            "ghost": 0.002477556507361273
+          },
+          {
+            "frame": 113,
+            "foreground": 0.004854438457924815,
+            "background": 0.002498999230908141,
+            "edge": 0.01845440161240208,
+            "disocclusion": 0.0068139820291907285,
+            "temporal": 0.0007199037197402751,
+            "texture": 0.038128016453153495,
+            "ghost": 0.0024645321910452766
+          },
+          {
+            "frame": 114,
+            "foreground": 0.004898895531404463,
+            "background": 0.0024602980970915575,
+            "edge": 0.025452496992235712,
+            "disocclusion": 0.011017405528808574,
+            "temporal": 0.0006972853829541607,
+            "texture": 0.038519217014505364,
+            "ghost": 0.0024269353743893657
+          },
+          {
+            "frame": 115,
+            "foreground": 0.005045673163058878,
+            "background": 0.002477208852661319,
+            "edge": 0.02314104006111294,
+            "disocclusion": 0.009241893363167133,
+            "temporal": 0.0005877058658660415,
+            "texture": 0.0366293377997605,
+            "ghost": 0.00241568638257677
+          },
+          {
+            "frame": 116,
+            "foreground": 0.0050161754347300596,
+            "background": 0.0025320079312613694,
+            "edge": 0.03816444644870718,
+            "disocclusion": 0.008509315227400959,
+            "temporal": 0.0006017277372897073,
+            "texture": 0.03932241175024472,
+            "ghost": 0.0024603663220803657
+          },
+          {
+            "frame": 117,
+            "foreground": 0.005126674176434407,
+            "background": 0.0025825874862010255,
+            "edge": 0.02471218173512989,
+            "disocclusion": 0.007104865408800494,
+            "temporal": 0.0007566852826239887,
+            "texture": 0.03641665357361661,
+            "ghost": 0.0025385430369620028
+          },
+          {
+            "frame": 118,
+            "foreground": 0.00511050261937562,
+            "background": 0.0025892485231036834,
+            "edge": 0.033030584475455156,
+            "disocclusion": 0.01671425107312583,
+            "temporal": 0.000651994061107321,
+            "texture": 0.038611573753442235,
+            "ghost": 0.00255607518368733
+          },
+          {
+            "frame": 119,
+            "foreground": 0.005146239801602543,
+            "background": 0.0026183573782454193,
+            "edge": 0.02506243550180359,
+            "disocclusion": 0.013665372737056185,
+            "temporal": 0.000604666126328982,
+            "texture": 0.04176671124104497,
+            "ghost": 0.0025838185673947005
+          },
+          {
+            "frame": 120,
+            "foreground": 0.005084182792555804,
+            "background": 0.002562909012241639,
+            "edge": 0.03559176646468108,
+            "disocclusion": 0.010931788350570024,
+            "temporal": 0.0007106193833185759,
+            "texture": 0.04086627369315954,
+            "ghost": 0.0024966056816460415
+          },
+          {
+            "frame": 121,
+            "foreground": 0.004963721141562378,
+            "background": 0.0025468723061044837,
+            "edge": 0.02396199610550465,
+            "disocclusion": 0.009093045988760495,
+            "temporal": 0.0007326410065794118,
+            "texture": 0.03804027286454596,
+            "ghost": 0.0024774966351475093
+          },
+          {
+            "frame": 122,
+            "foreground": 0.0050103017923758915,
+            "background": 0.002540250088779884,
+            "edge": 0.02428281264782789,
+            "disocclusion": 0.01926846401926237,
+            "temporal": 0.0006933961267582808,
+            "texture": 0.03702529730683161,
+            "ghost": 0.002466055547790461
+          },
+          {
+            "frame": 123,
+            "foreground": 0.005026282021007036,
+            "background": 0.0024862860593776307,
+            "edge": 0.020164927483730846,
+            "disocclusion": 0.013855949671800956,
+            "temporal": 0.0006155305710603149,
+            "texture": 0.037477396249479114,
+            "ghost": 0.002419781694322039
+          },
+          {
+            "frame": 124,
+            "foreground": 0.005172446622873008,
+            "background": 0.0024579462830620616,
+            "edge": 0.03312189919651937,
+            "disocclusion": 0.008664104210807927,
+            "temporal": 0.0005884848392494388,
+            "texture": 0.03759454246827118,
+            "ghost": 0.0023652176489288865
+          },
+          {
+            "frame": 125,
+            "foreground": 0.00510034145709615,
+            "background": 0.0024465795812407573,
+            "edge": 0.017731721938618373,
+            "disocclusion": 0.006837051291881158,
+            "temporal": 0.0007416706829408566,
+            "texture": 0.037959255383672924,
+            "ghost": 0.002362074720859746
+          },
+          {
+            "frame": 126,
+            "foreground": 0.0051041969599389826,
+            "background": 0.0024263222554597157,
+            "edge": 0.024363393110582283,
+            "disocclusion": 0.007418411090226328,
+            "temporal": 0.0007820782401365596,
+            "texture": 0.039133882865350585,
+            "ghost": 0.002376645874560419
+          },
+          {
+            "frame": 127,
+            "foreground": 0.005305253359231652,
+            "background": 0.0024936307782933093,
+            "edge": 0.020393140748356325,
+            "disocclusion": 0.007391143088838733,
+            "temporal": 0.0006099769640316278,
+            "texture": 0.038268775763860716,
+            "ghost": 0.0024577272662618267
+          }
+        ]
+      },
+      "pairs": [
+        {
+          "frame": 64,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0029727879728707893,
+            "rmse": 0.004094424390039672,
+            "signed_mean": -0.0019066564890422276
+          }
+        },
+        {
+          "frame": 65,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0020340847848658735,
+            "rmse": 0.002923358481032522,
+            "signed_mean": -0.0016493578047701008
+          }
+        },
+        {
+          "frame": 66,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.001556685270130272,
+            "rmse": 0.002311731599429719,
+            "signed_mean": -0.0013055028626739048
+          }
+        },
+        {
+          "frame": 67,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0013013347021487284,
+            "rmse": 0.0019879819772211024,
+            "signed_mean": -0.0010709105003915275
+          }
+        },
+        {
+          "frame": 68,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0010734405564396244,
+            "rmse": 0.0017318207153701965,
+            "signed_mean": -0.0008220358615502347
+          }
+        },
+        {
+          "frame": 69,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0009254836793396851,
+            "rmse": 0.0015607616294899766,
+            "signed_mean": -0.0006675250407163531
+          }
+        },
+        {
+          "frame": 70,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0008790842070498547,
+            "rmse": 0.0014855577676230202,
+            "signed_mean": -0.0005611599690709309
+          }
+        },
+        {
+          "frame": 71,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0008564168564795877,
+            "rmse": 0.0014145589031020437,
+            "signed_mean": -0.00047343623607026375
+          }
+        },
+        {
+          "frame": 72,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0008275773113355046,
+            "rmse": 0.001374252870731983,
+            "signed_mean": -0.0003904483905929084
+          }
+        },
+        {
+          "frame": 73,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0007677241495972175,
+            "rmse": 0.0013021515270499845,
+            "signed_mean": -0.00032994231071432347
+          }
+        },
+        {
+          "frame": 74,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0007099554907329072,
+            "rmse": 0.0012709279425285353,
+            "signed_mean": -0.00023649143621333897
+          }
+        },
+        {
+          "frame": 75,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006624350948050767,
+            "rmse": 0.0011846122394953812,
+            "signed_mean": -0.0001820585712692541
+          }
+        },
+        {
+          "frame": 76,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0006731820502579267,
+            "rmse": 0.0011706892830832048,
+            "signed_mean": -0.00012175042054212142
+          }
+        },
+        {
+          "frame": 77,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006759645037409626,
+            "rmse": 0.0011366694446825253,
+            "signed_mean": -7.251917392735986e-05
+          }
+        },
+        {
+          "frame": 78,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0006999651292156754,
+            "rmse": 0.001153944384304951,
+            "signed_mean": -4.31678285722469e-05
+          }
+        },
+        {
+          "frame": 79,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0007114049106446674,
+            "rmse": 0.001155955740377576,
+            "signed_mean": -2.1139599824111427e-05
+          }
+        },
+        {
+          "frame": 80,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0007561721330232481,
+            "rmse": 0.0011894193303467464,
+            "signed_mean": -7.306970573107455e-06
+          }
+        },
+        {
+          "frame": 81,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0007108701740842353,
+            "rmse": 0.0011302816734884635,
+            "signed_mean": -2.523114761709971e-06
+          }
+        },
+        {
+          "frame": 82,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0006895059211560268,
+            "rmse": 0.0011128400605191172,
+            "signed_mean": -7.874001803430704e-06
+          }
+        },
+        {
+          "frame": 83,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006668666164327297,
+            "rmse": 0.001068896548159309,
+            "signed_mean": 3.3079052343012884e-07
+          }
+        },
+        {
+          "frame": 84,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0006515849479308535,
+            "rmse": 0.0010757895508979151,
+            "signed_mean": -5.888572689383621e-06
+          }
+        },
+        {
+          "frame": 85,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006810574150964919,
+            "rmse": 0.0010960843070381076,
+            "signed_mean": -6.731462794463487e-06
+          }
+        },
+        {
+          "frame": 86,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0007039157565975649,
+            "rmse": 0.001136645864249271,
+            "signed_mean": -9.987110286874491e-06
+          }
+        },
+        {
+          "frame": 87,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006890930994052545,
+            "rmse": 0.0011228436328013939,
+            "signed_mean": -1.721105580553753e-05
+          }
+        },
+        {
+          "frame": 88,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0007343407490113726,
+            "rmse": 0.0011886007065434049,
+            "signed_mean": -1.4675760171527765e-05
+          }
+        },
+        {
+          "frame": 89,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0007236168013968625,
+            "rmse": 0.0011519302218409141,
+            "signed_mean": -2.1529316594630323e-05
+          }
+        },
+        {
+          "frame": 90,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0007307799080451075,
+            "rmse": 0.0011735827080868587,
+            "signed_mean": -2.3932019787309253e-05
+          }
+        },
+        {
+          "frame": 91,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006785599370786452,
+            "rmse": 0.001094250923195487,
+            "signed_mean": -2.9499952448814428e-05
+          }
+        },
+        {
+          "frame": 92,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.000648889657536649,
+            "rmse": 0.0010660817089624298,
+            "signed_mean": -9.489841442191638e-06
+          }
+        },
+        {
+          "frame": 93,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006584519292165553,
+            "rmse": 0.0010593863867505017,
+            "signed_mean": 8.580656434841688e-08
+          }
+        },
+        {
+          "frame": 94,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0007007261083681437,
+            "rmse": 0.001104901588049534,
+            "signed_mean": 9.820532543270586e-06
+          }
+        },
+        {
+          "frame": 95,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006828985733395398,
+            "rmse": 0.001078873957665581,
+            "signed_mean": 8.466056363393079e-06
+          }
+        },
+        {
+          "frame": 96,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0007019871362798628,
+            "rmse": 0.0010985589334673704,
+            "signed_mean": 1.6224006672562523e-05
+          }
+        },
+        {
+          "frame": 97,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006607373301405776,
+            "rmse": 0.0010369955695316404,
+            "signed_mean": 1.0344234829855527e-05
+          }
+        },
+        {
+          "frame": 98,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.000632755886517036,
+            "rmse": 0.0009851171451599984,
+            "signed_mean": 1.3668459295636319e-05
+          }
+        },
+        {
+          "frame": 99,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.000658384010977216,
+            "rmse": 0.0010151841384846711,
+            "signed_mean": 1.851518166034463e-05
+          }
+        },
+        {
+          "frame": 100,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0006663117302963798,
+            "rmse": 0.0010356039446415752,
+            "signed_mean": 1.7730212414497353e-05
+          }
+        },
+        {
+          "frame": 101,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006429102272063848,
+            "rmse": 0.001005866943104746,
+            "signed_mean": 1.7529984551956287e-05
+          }
+        },
+        {
+          "frame": 102,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0006782205180879179,
+            "rmse": 0.0010433269342447547,
+            "signed_mean": 1.089974977307177e-05
+          }
+        },
+        {
+          "frame": 103,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0007087983808059098,
+            "rmse": 0.0010747492167889582,
+            "signed_mean": 1.2432098902841645e-05
+          }
+        },
+        {
+          "frame": 104,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.00073190515585179,
+            "rmse": 0.0011095064305629845,
+            "signed_mean": 1.7839613935336945e-05
+          }
+        },
+        {
+          "frame": 105,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006946916668356395,
+            "rmse": 0.0010492165487918927,
+            "signed_mean": 1.5556911869402833e-05
+          }
+        },
+        {
+          "frame": 106,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0006575853415074007,
+            "rmse": 0.001008712371055941,
+            "signed_mean": 1.5415899988298632e-05
+          }
+        },
+        {
+          "frame": 107,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006238534215021821,
+            "rmse": 0.0009593078739604286,
+            "signed_mean": 1.044917329260939e-05
+          }
+        },
+        {
+          "frame": 108,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0006470598334968245,
+            "rmse": 0.000989252721964062,
+            "signed_mean": 9.824352118575415e-06
+          }
+        },
+        {
+          "frame": 109,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006562292809193028,
+            "rmse": 0.0010010848030623568,
+            "signed_mean": 2.4222896571132802e-06
+          }
+        },
+        {
+          "frame": 110,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0006851159951782035,
+            "rmse": 0.0010324177425250112,
+            "signed_mean": -8.590228726274128e-06
+          }
+        },
+        {
+          "frame": 111,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006984004810010269,
+            "rmse": 0.0010718096090976846,
+            "signed_mean": -1.6512263216278686e-05
+          }
+        },
+        {
+          "frame": 112,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0007434841363797088,
+            "rmse": 0.0011247142188071024,
+            "signed_mean": -1.8890441818475696e-05
+          }
+        },
+        {
+          "frame": 113,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006946899449647831,
+            "rmse": 0.0010616230365449986,
+            "signed_mean": -2.2566648126173506e-05
+          }
+        },
+        {
+          "frame": 114,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0006745776100969108,
+            "rmse": 0.0010674535625156529,
+            "signed_mean": -3.151255023877648e-05
+          }
+        },
+        {
+          "frame": 115,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006533160667491058,
+            "rmse": 0.0010308978169965917,
+            "signed_mean": -3.782299787162681e-05
+          }
+        },
+        {
+          "frame": 116,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0006385107495866736,
+            "rmse": 0.0010349643307867385,
+            "signed_mean": -3.987059600575732e-05
+          }
+        },
+        {
+          "frame": 117,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006696075478577857,
+            "rmse": 0.001059527416941257,
+            "signed_mean": -3.7441986114882394e-05
+          }
+        },
+        {
+          "frame": 118,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0006909632373515053,
+            "rmse": 0.0010876233323076035,
+            "signed_mean": -3.7038685602077064e-05
+          }
+        },
+        {
+          "frame": 119,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006731946831493145,
+            "rmse": 0.0010619460553849944,
+            "signed_mean": -4.7461074331337396e-05
+          }
+        },
+        {
+          "frame": 120,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0007211293449170392,
+            "rmse": 0.0011397200626672567,
+            "signed_mean": -4.90888923630353e-05
+          }
+        },
+        {
+          "frame": 121,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0007129032252682898,
+            "rmse": 0.0011064749769042939,
+            "signed_mean": -4.36587051827474e-05
+          }
+        },
+        {
+          "frame": 122,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0007210199057611374,
+            "rmse": 0.0011284290564519757,
+            "signed_mean": -3.612470737396793e-05
+          }
+        },
+        {
+          "frame": 123,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.000664572510494933,
+            "rmse": 0.0010289242080435503,
+            "signed_mean": -3.0340703724241668e-05
+          }
+        },
+        {
+          "frame": 124,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212932,
+            "mae": 0.0006343455613788478,
+            "rmse": 0.000996910414594732,
+            "signed_mean": -2.6004311541262782e-05
+          }
+        },
+        {
+          "frame": 125,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.000643915991105559,
+            "rmse": 0.0009877145107435694,
+            "signed_mean": -3.2059322158002714e-05
+          }
+        },
+        {
+          "frame": 126,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212760,
+            "mae": 0.0006912962015898685,
+            "rmse": 0.0010507597295309422,
+            "signed_mean": -3.376680036949889e-05
+          }
+        },
+        {
+          "frame": 127,
+          "reset_fresh_maximum": 0.0,
+          "reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "signed_mean": 0.0
+          },
+          "no_reset_fresh": {
+            "pixels": 212682,
+            "mae": 0.0006754612391534074,
+            "rmse": 0.0010313822184377895,
+            "signed_mean": -3.366372315828326e-05
+          }
+        }
+      ],
+      "early_reset_mae": 0.0,
+      "early_no_reset_mae": 0.001449914753665552
+    }
+  ],
+  "output_frames": 320,
+  "scope": "Synthetic camera cut; correlated frames on one equipment configuration; no universal reset/perceptual guarantee",
+  "passed": true,
+  "acceptance": "Exploration completion only; no quality/reset acceptance"
+}

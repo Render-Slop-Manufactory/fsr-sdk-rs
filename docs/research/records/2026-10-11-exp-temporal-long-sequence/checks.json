@@ -1,0 +1,35 @@
+{
+  "first_window_matches_previous_quality_metrics": true,
+  "protocol_sha256": "d5892c43ce09b5e2c687b1543f0cd67eeaafc0d447faf28a35f7b02d361c060c",
+  "input_identity": "96c0490e8aa4895adc7456ce6c6fc9b9bb8dc951781dac99770922ab8d569e86",
+  "format": {
+    "command": "cargo fmt --all -- --check",
+    "exit": 0
+  },
+  "clippy": {
+    "command": "cargo clippy -p fsr-sdk --all-targets --features dx12,movable --locked --offline -- -D warnings",
+    "exit": 0,
+    "warning": "Incremental-cache hard linking failed; copy fallback succeeded"
+  },
+  "infrastructure": {
+    "command": "python -m unittest discover -s tools/verification/tests -v",
+    "attempts": [
+      "Initial sandbox temporal subset: 31 tests, six temporary-file access errors and one new fixture decoding error",
+      "First permitted full suite: 62 tests, one new fixture decoding error; 61 passed",
+      "Corrected focused motion test: one test passed"
+    ],
+    "final_status": "passed",
+    "final_tests": 62,
+    "elapsed_seconds": 66.18,
+    "exit": 0
+  },
+  "relative_links": {
+    "checked": 99,
+    "passed": true
+  },
+  "repository_size": {
+    "observed_bytes": 12433740,
+    "violations": [],
+    "passed": true
+  }
+}

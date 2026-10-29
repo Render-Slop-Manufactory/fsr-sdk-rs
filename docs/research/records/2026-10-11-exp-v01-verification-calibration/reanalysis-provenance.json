@@ -1,0 +1,9 @@
+{
+  "source_attempt": "20261011T022157Z-experiment-v01-calibration-b5aece19bb76",
+  "analysis_source_attempt": "20261011T022652Z-experiment-v01-calibration-e24cf68f8c33",
+  "script": "v01.py",
+  "script_sha256": "adf8b404268495d833135130ce712587fc7217b6e9b933d1a0cecf7d801a17f7",
+  "elapsed_seconds": 301.328,
+  "original_status_unchanged": "failed",
+  "namespace": "experiment.v01-calibration"
+}

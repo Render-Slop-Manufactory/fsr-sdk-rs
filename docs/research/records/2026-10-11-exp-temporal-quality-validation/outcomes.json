@@ -1,0 +1,1515 @@
+[
+  {
+    "id": "abi.common",
+    "claim": "Independent native common ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native common ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:35.139117+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+          "/Fo<run>\\common.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:11:35.141117+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.common/00-command.stdout.txt",
+        "stderr": "cases/abi.common/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:35.437799+00:00",
+        "elapsed_seconds": 0.297
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-11T14:11:35.440806+00:00"
+  },
+  {
+    "id": "abi.creation",
+    "claim": "Independent native creation ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native creation ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:35.443812+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+          "/Fo<run>\\creation.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:11:35.444813+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.creation/00-command.stdout.txt",
+        "stderr": "cases/abi.creation/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:35.883932+00:00",
+        "elapsed_seconds": 0.437
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-11T14:11:35.885934+00:00"
+  },
+  {
+    "id": "abi.dispatch",
+    "claim": "Independent native dispatch ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native dispatch ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:35.888933+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+          "/Fo<run>\\dispatch.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:11:35.890935+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.dispatch/00-command.stdout.txt",
+        "stderr": "cases/abi.dispatch/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:35.979453+00:00",
+        "elapsed_seconds": 0.078
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-11T14:11:35.982153+00:00"
+  },
+  {
+    "id": "abi.headers",
+    "claim": "Four hash-verified pinned SDK headers",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Four hash-verified pinned SDK headers"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:35.133117+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+      "headers": [
+        {
+          "path": "api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        }
+      ]
+    },
+    "finished_utc": "2026-10-11T14:11:35.136118+00:00"
+  },
+  {
+    "id": "equipment.toolchain",
+    "claim": "Actual compiler, Cargo, Python and host identity",
+    "requires": [],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Actual compiler, Cargo, Python and host identity"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:24.720746+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\rustc.EXE",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:11:24.732745+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/00-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:24.802265+00:00",
+        "elapsed_seconds": 0.062
+      },
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "-V"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:11:24.814267+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/01-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/01-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:24.868840+00:00",
+        "elapsed_seconds": 0.047
+      }
+    ],
+    "observations": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    },
+    "finished_utc": "2026-10-11T14:11:24.940844+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.audit",
+    "claim": "Independent evaluation under the frozen protocol",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.r1",
+      "experiment.temporal-quality.r2",
+      "experiment.temporal-quality.r3",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "",
+    "scope": "offline-analysis",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent evaluation under the frozen protocol"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:16:46.449450+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "<repo>\\tools\\verification\\temporal_quality.py",
+          "audit",
+          "--run",
+          "<run>",
+          "--output",
+          "<run>\\analysis\\temporal-quality"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:16:46.451454+00:00",
+        "timeout_seconds": 900,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.audit/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.audit/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:18:22.741537+00:00",
+        "elapsed_seconds": 96.297
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-11T14:18:22.749537+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.build.fsr_sdk",
+    "claim": "Discover and stage exact fsr_sdk test executable",
+    "requires": [
+      "equipment.toolchain",
+      "native.helper",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Discover and stage exact fsr_sdk test executable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:38.167717+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "--no-run",
+          "--message-format=json",
+          "--features",
+          "dx12,movable",
+          "--lib",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:11:38.182716+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.build.fsr_sdk/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.build.fsr_sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:41.221662+00:00",
+        "elapsed_seconds": 3.031
+      }
+    ],
+    "observations": {
+      "executable_sha256": "414f65010c4753c397bd075d006faa4ca65a8454d2b17e17699c4aff59993e26",
+      "manifest": "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+      "registry_artifact": false
+    },
+    "finished_utc": "2026-10-11T14:11:41.427203+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.dispatch.semantics",
+    "claim": "dispatch.semantics",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.build.fsr_sdk",
+      "experiment.temporal-quality.input-only",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "upscaler::dx12::m6::native_semantic_comparisons",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Gate C: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:48.987183+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-quality-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_semantic_comparisons",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T14:11:48.988182+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate C: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.dispatch.semantics/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.dispatch.semantics/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:51.002045+00:00",
+        "elapsed_seconds": 2.015
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-11T14:11:51.014046+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.dispatch.single",
+    "claim": "dispatch.single",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.build.fsr_sdk",
+      "experiment.temporal-quality.input-only",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "upscaler::dx12::m6::native_dispatch_readback",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Gate A: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:46.085625+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-quality-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_dispatch_readback",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T14:11:46.086625+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate A: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.dispatch.single/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.dispatch.single/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:48.478471+00:00",
+        "elapsed_seconds": 2.391
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-11T14:11:48.486564+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.dispatch.temporal",
+    "claim": "dispatch.temporal",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.build.fsr_sdk",
+      "experiment.temporal-quality.input-only",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "upscaler::dx12::m6::native_temporal_smoke",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Gate B: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:48.488567+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-quality-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_temporal_smoke",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T14:11:48.489562+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate B: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.dispatch.temporal/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.dispatch.temporal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:48.976183+00:00",
+        "elapsed_seconds": 0.484
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-11T14:11:48.984185+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.evaluator",
+    "claim": "Known-defect and severity validation before GPU execution",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.protocol"
+    ],
+    "selector": "",
+    "scope": "offline-analysis",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Known-defect and severity validation before GPU execution"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:25.026419+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "controls": 13,
+      "passed": true
+    },
+    "finished_utc": "2026-10-11T14:11:33.102210+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.input-only",
+    "claim": "Independent input oracle",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.protocol",
+      "experiment.temporal-quality.build.fsr_sdk",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "upscaler::dx12::m6::native_temporal_diagnosis_inputs",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent input oracle"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:41.431207+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-quality-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_temporal_diagnosis_inputs",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T14:11:41.432204+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Temporal diagnosis input-only: COMPLETED frames=45",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.input-only/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.input-only/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_TEST_TEMPORAL_DIAGNOSIS_OUTPUT": "<run>\\readbacks\\experiment.temporal-quality.input-only",
+          "FSR_SDK_TEST_TEMPORAL_DIAGNOSIS_ARMS": "<run>\\cases\\experiment.temporal-quality.protocol\\arms.txt",
+          "FSR_SDK_TEST_TEMPORAL_CALIBRATION_JITTER": "<run>\\cases\\experiment.temporal-quality.protocol\\jitter.txt"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:43.467284+00:00",
+        "elapsed_seconds": 2.031
+      }
+    ],
+    "observations": {
+      "elapsed_seconds": 2.031,
+      "native_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ],
+      "decoded_bytes": 41472180,
+      "compressed_bytes": 6132717,
+      "input_audit": {
+        "status": "passed",
+        "frames": 45,
+        "complete_input_bytes_checked": 41472180,
+        "input_digest": "386110f34466bd70da2e6c1a65f55ce4c7f0a17de08498d5e97f1eda911e4c3e"
+      },
+      "image_quality": "Evaluated separately by the frozen offline protocol",
+      "payload_inventory": {
+        "files": 45,
+        "sha256": "578f68ce1dc3eae5cb824e75403f8c909143444d54e9a3e988d7a4857e488955"
+      }
+    },
+    "finished_utc": "2026-10-11T14:11:45.339008+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.lifecycle.drop",
+    "claim": "lifecycle.drop",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.build.fsr_sdk",
+      "experiment.temporal-quality.input-only",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "upscaler::dx12::tests::native_lifecycle_drop",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Production owner: destroy A/B OK",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:45.722785+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-quality-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::native_lifecycle_drop",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T14:11:45.723786+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Production owner: destroy A/B OK",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.lifecycle.drop/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.lifecycle.drop/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:46.074623+00:00",
+        "elapsed_seconds": 0.359
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-11T14:11:46.082624+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.lifecycle.explicit",
+    "claim": "lifecycle.explicit",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.build.fsr_sdk",
+      "experiment.temporal-quality.input-only",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "upscaler::dx12::tests::native_lifecycle",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Production owner: destroy A/B OK",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:45.343009+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-quality-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::native_lifecycle",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T14:11:45.344011+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Production owner: destroy A/B OK",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.lifecycle.explicit/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.lifecycle.explicit/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:45.711785+00:00",
+        "elapsed_seconds": 0.359
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-11T14:11:45.719786+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.protocol",
+    "claim": "Freeze the image matrix, jitter and evaluation protocol",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Freeze the image matrix, jitter and evaluation protocol"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:24.943844+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "protocol_sha256": "04ed563f01814063d952bb2c6197c90e7399dbbbfc4c6bf9af342fbcdc669554",
+      "arms": [
+        {
+          "name": "flat-slow-correct",
+          "group": "flat-slow",
+          "scene": 1,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false
+        },
+        {
+          "name": "flat-slow-reverse",
+          "group": "flat-slow",
+          "scene": 1,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 1,
+          "jitter": 1,
+          "reset_all": false
+        },
+        {
+          "name": "flat-fast-correct",
+          "group": "flat-fast",
+          "scene": 1,
+          "velocity": [
+            2,
+            1
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false
+        },
+        {
+          "name": "flat-fast-reverse",
+          "group": "flat-fast",
+          "scene": 1,
+          "velocity": [
+            2,
+            1
+          ],
+          "motion": 1,
+          "jitter": 1,
+          "reset_all": false
+        },
+        {
+          "name": "textured-slow-correct",
+          "group": "textured-slow",
+          "scene": 2,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false
+        },
+        {
+          "name": "textured-slow-reverse",
+          "group": "textured-slow",
+          "scene": 2,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 1,
+          "jitter": 1,
+          "reset_all": false
+        },
+        {
+          "name": "textured-slow-reset-all",
+          "group": "textured-slow",
+          "scene": 2,
+          "velocity": [
+            0.375,
+            0.25
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": true
+        },
+        {
+          "name": "textured-fast-correct",
+          "group": "textured-fast",
+          "scene": 2,
+          "velocity": [
+            2,
+            1
+          ],
+          "motion": 0,
+          "jitter": 1,
+          "reset_all": false
+        },
+        {
+          "name": "textured-fast-reverse",
+          "group": "textured-fast",
+          "scene": 2,
+          "velocity": [
+            2,
+            1
+          ],
+          "motion": 1,
+          "jitter": 1,
+          "reset_all": false
+        }
+      ],
+      "numpy": "2.3.5"
+    },
+    "finished_utc": "2026-10-11T14:11:25.024419+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.r1",
+    "claim": "Fixed 576-frame matrix",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.input-only",
+      "experiment.temporal-quality.dispatch.single",
+      "experiment.temporal-quality.dispatch.temporal",
+      "experiment.temporal-quality.dispatch.semantics",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "upscaler::dx12::m6::native_temporal_diagnosis",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Fixed 576-frame matrix"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:51.017047+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-quality-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_temporal_diagnosis",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T14:11:51.020047+00:00",
+        "timeout_seconds": 360,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Temporal diagnosis matrix: COMPLETED frames=576",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.r1/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.r1/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_TEST_TEMPORAL_DIAGNOSIS_OUTPUT": "<run>\\readbacks\\experiment.temporal-quality.r1",
+          "FSR_SDK_TEST_TEMPORAL_DIAGNOSIS_ARMS": "<run>\\cases\\experiment.temporal-quality.r1\\arms.txt",
+          "FSR_SDK_TEST_TEMPORAL_CALIBRATION_JITTER": "<run>\\cases\\experiment.temporal-quality.protocol\\jitter.txt"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:12:15.630491+00:00",
+        "elapsed_seconds": 24.609
+      }
+    ],
+    "observations": {
+      "order_seed": 419,
+      "arm_order": [
+        "flat-slow-reverse",
+        "flat-fast-reverse",
+        "textured-slow-reverse",
+        "flat-slow-correct",
+        "textured-slow-correct",
+        "textured-slow-reset-all",
+        "textured-fast-correct",
+        "textured-fast-reverse",
+        "flat-fast-correct"
+      ],
+      "elapsed_seconds": 24.609,
+      "native_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ],
+      "actual_loaded_modules": {
+        "amd_fidelityfx_loader_dx12.dll": {
+          "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        "amd_fidelityfx_upscaler_dx12.dll": {
+          "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      },
+      "decoded_bytes": 1592527104,
+      "compressed_bytes": 538518159,
+      "input_audit": {
+        "status": "passed",
+        "frames": 576,
+        "complete_input_bytes_checked": 530843904,
+        "input_digest": "c84961e6c125a2da8d10ebb634da943d1766b71f1c2554dc40b6d29af5ca82b1"
+      },
+      "image_quality": "Evaluated separately by the frozen offline protocol",
+      "payload_inventory": {
+        "files": 1152,
+        "sha256": "8ec3e012ab3eada5e555f448f40789d8475fc72fdefe5f76aeabd916b333bc84"
+      }
+    },
+    "finished_utc": "2026-10-11T14:13:31.503622+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.r2",
+    "claim": "Fixed 576-frame matrix",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.input-only",
+      "experiment.temporal-quality.dispatch.single",
+      "experiment.temporal-quality.dispatch.temporal",
+      "experiment.temporal-quality.dispatch.semantics",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "upscaler::dx12::m6::native_temporal_diagnosis",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Fixed 576-frame matrix"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:13:31.513189+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-quality-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_temporal_diagnosis",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T14:13:31.516190+00:00",
+        "timeout_seconds": 360,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Temporal diagnosis matrix: COMPLETED frames=576",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.r2/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.r2/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_TEST_TEMPORAL_DIAGNOSIS_OUTPUT": "<run>\\readbacks\\experiment.temporal-quality.r2",
+          "FSR_SDK_TEST_TEMPORAL_DIAGNOSIS_ARMS": "<run>\\cases\\experiment.temporal-quality.r2\\arms.txt",
+          "FSR_SDK_TEST_TEMPORAL_CALIBRATION_JITTER": "<run>\\cases\\experiment.temporal-quality.protocol\\jitter.txt"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:13:56.073756+00:00",
+        "elapsed_seconds": 24.547
+      }
+    ],
+    "observations": {
+      "order_seed": 827,
+      "arm_order": [
+        "flat-fast-correct",
+        "textured-fast-reverse",
+        "flat-slow-reverse",
+        "textured-slow-reset-all",
+        "flat-slow-correct",
+        "textured-fast-correct",
+        "flat-fast-reverse",
+        "textured-slow-correct",
+        "textured-slow-reverse"
+      ],
+      "elapsed_seconds": 24.547,
+      "native_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ],
+      "actual_loaded_modules": {
+        "amd_fidelityfx_loader_dx12.dll": {
+          "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        "amd_fidelityfx_upscaler_dx12.dll": {
+          "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      },
+      "decoded_bytes": 1592527104,
+      "compressed_bytes": 538518159,
+      "input_audit": {
+        "status": "passed",
+        "frames": 576,
+        "complete_input_bytes_checked": 530843904,
+        "input_digest": "d72fdc91e2dd985510ec18d2f537be1542adb0b12d5600eabaa3f690ffb1ea1d"
+      },
+      "image_quality": "Evaluated separately by the frozen offline protocol",
+      "payload_inventory": {
+        "files": 1152,
+        "sha256": "8ec3e012ab3eada5e555f448f40789d8475fc72fdefe5f76aeabd916b333bc84"
+      }
+    },
+    "finished_utc": "2026-10-11T14:15:08.704960+00:00"
+  },
+  {
+    "id": "experiment.temporal-quality.r3",
+    "claim": "Fixed 576-frame matrix",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.input-only",
+      "experiment.temporal-quality.dispatch.single",
+      "experiment.temporal-quality.dispatch.temporal",
+      "experiment.temporal-quality.dispatch.semantics",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "upscaler::dx12::m6::native_temporal_diagnosis",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Fixed 576-frame matrix"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:15:08.714962+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\experiment.temporal-quality-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_temporal_diagnosis",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-11T14:15:08.716962+00:00",
+        "timeout_seconds": 360,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Temporal diagnosis matrix: COMPLETED frames=576",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/experiment.temporal-quality.r3/00-command.stdout.txt",
+        "stderr": "cases/experiment.temporal-quality.r3/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_TEST_TEMPORAL_DIAGNOSIS_OUTPUT": "<run>\\readbacks\\experiment.temporal-quality.r3",
+          "FSR_SDK_TEST_TEMPORAL_DIAGNOSIS_ARMS": "<run>\\cases\\experiment.temporal-quality.r3\\arms.txt",
+          "FSR_SDK_TEST_TEMPORAL_CALIBRATION_JITTER": "<run>\\cases\\experiment.temporal-quality.protocol\\jitter.txt"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:15:32.109834+00:00",
+        "elapsed_seconds": 23.391
+      }
+    ],
+    "observations": {
+      "order_seed": 1237,
+      "arm_order": [
+        "flat-slow-correct",
+        "textured-slow-correct",
+        "flat-fast-reverse",
+        "textured-fast-correct",
+        "textured-slow-reverse",
+        "flat-slow-reverse",
+        "textured-fast-reverse",
+        "textured-slow-reset-all",
+        "flat-fast-correct"
+      ],
+      "elapsed_seconds": 23.391,
+      "native_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ],
+      "actual_loaded_modules": {
+        "amd_fidelityfx_loader_dx12.dll": {
+          "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        "amd_fidelityfx_upscaler_dx12.dll": {
+          "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      },
+      "decoded_bytes": 1592527104,
+      "compressed_bytes": 538518159,
+      "input_audit": {
+        "status": "passed",
+        "frames": 576,
+        "complete_input_bytes_checked": 530843904,
+        "input_digest": "4742159288b973de3236b84093acdfd13c59f450ad113ec145fc765147d2aea2"
+      },
+      "image_quality": "Evaluated separately by the frozen offline protocol",
+      "payload_inventory": {
+        "files": 1152,
+        "sha256": "8ec3e012ab3eada5e555f448f40789d8475fc72fdefe5f76aeabd916b333bc84"
+      }
+    },
+    "finished_utc": "2026-10-11T14:16:46.439450+00:00"
+  },
+  {
+    "id": "native.helper",
+    "claim": "DX12 submission, fencing and readback equipment",
+    "requires": [
+      "equipment.toolchain",
+      "native.sdk",
+      "abi.common",
+      "abi.creation",
+      "abi.dispatch",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "DX12 submission, fencing and readback equipment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:37.014838+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/LD",
+          "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+          "/Fo<run>\\native\\",
+          "/link",
+          "/OUT:<run>\\native\\m6_gpu.dll",
+          "/IMPLIB:<run>\\native\\m6_gpu.lib",
+          "d3d12.lib",
+          "dxgi.lib"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:11:37.015838+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.helper/00-command.stdout.txt",
+        "stderr": "cases/native.helper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:38.130701+00:00",
+        "elapsed_seconds": 1.109
+      }
+    ],
+    "observations": {
+      "helper_sha256": "b2b26ae0d907e51bff7f7c2a89ad38daea45ef9e531de8d0166498c423e27d50"
+    },
+    "finished_utc": "2026-10-11T14:11:38.164711+00:00"
+  },
+  {
+    "id": "native.sdk",
+    "claim": "Pinned, signed local loader/provider deployment",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Pinned, signed local loader/provider deployment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:35.985664+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1",
+          "-Mode",
+          "signatures",
+          "-Directory",
+          "<run>\\native"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:11:36.066180+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.sdk/00-command.stdout.txt",
+        "stderr": "cases/native.sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:37.008837+00:00",
+        "elapsed_seconds": 0.937
+      }
+    ],
+    "observations": {
+      "artifacts": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      ],
+      "signatures": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US"
+        }
+      ],
+      "adapter_index": 0
+    },
+    "finished_utc": "2026-10-11T14:11:37.011838+00:00"
+  },
+  {
+    "id": "windows.environment",
+    "claim": "x64 Windows developer-tool environment",
+    "requires": [
+      "equipment.toolchain",
+      "experiment.temporal-quality.evaluator"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "x64 Windows developer-tool environment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-11T14:11:33.105208+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-11T14:11:33.107208+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/windows.environment/00-environment.stdout.txt",
+        "stderr": "cases/windows.environment/00-environment.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-11T14:11:35.121548+00:00",
+        "elapsed_seconds": 2.015
+      }
+    ],
+    "observations": {
+      "msvc": "14.44.35207",
+      "windows_sdk": "10.0.22621.0\\",
+      "target_arch": "x64"
+    },
+    "finished_utc": "2026-10-11T14:11:35.131118+00:00"
+  }
+]

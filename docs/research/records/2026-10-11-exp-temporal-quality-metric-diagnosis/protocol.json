@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "purpose": "Explain contrary motion/jitter quality rankings; diagnostic experiment, no acceptance thresholds or parameter search",
+  "render": [320,180], "display": [640,360], "frames": 64, "repeats": 2,
+  "late_window": [32,63], "input_only_frames": [0,1,31,32,63],
+  "scenes": [
+    {"name":"plane","scene":0,"velocity":[0,0],"controls":["correct","negated-jitter","zero-jitter","reset-all"]},
+    {"name":"flat-slow","scene":1,"velocity":[0.375,0.25],"controls":["correct","reverse","zero-motion","negated-jitter","reset-all"]},
+    {"name":"flat-fast","scene":1,"velocity":[2,1],"controls":["correct","reverse","zero-motion","negated-jitter","reset-all"]},
+    {"name":"textured-slow","scene":2,"velocity":[0.375,0.25],"controls":["correct","reverse","zero-motion","negated-jitter","reset-all"]}
+  ],
+  "geometry": "Existing LH +Z, top-down UV, near .5/far 20/FOV pi/3, zF=2/zB=8, rectangle [100+vx*t,164+vx*t) x [50+vy*t,94+vy*t). No camera cuts. Sample x+.5-jx,y+.5-jy; Halton(2,3), indices 1..32, repeated without restarting motion.",
+  "colours": "Plane and flat colours match original calibration. Textured BG RGB=(.25+.1 sin(.35x), .30+.1 sin(.27y), .35+.1 sin(.21x+.17y)); textured FG in local rectangle coordinates u=x-left,v=y-top: (.65+.15 sin(.4u), .20+.10 sin(.3v), .15+.08 sin(.23u+.19v)). Linear RGB; same native half truncation as calibration.",
+  "controls": "Reverse negates FG current-to-previous motion; zero-motion sets it to zero. Background zero throughout. Negated/zero dispatch jitter keep image sampling unchanged. Reset-all uses the same context but requests reset every frame; correct resets only frame 0. Current colour/depth inputs remain identical across a scene's arms.",
+  "references": "Unjittered analytic point and exact box-integrated RGB references, including partially covered silhouette pixels and sinusoidal textures; no promised provider filter. Independent area integral validated against dense quadrature before GPU execution.",
+  "metrics": "Pool RGB MAE/RMSE, bias and true-flow temporal error residual over 32..63. Same 2-display-pixel silhouette exclusion and 8-display-pixel viewport exclusion as original; explicit age0/1/2..5 counts; flat-only directed leakage. Also measure permanent background, shifted point references +/-0.5 render pixels, and foreground-interior temporal residual. Record all controls and both repeats, including contrary rankings.",
+  "metric_negative_controls": "On analytic flat-fast references, evaluate ideal area reconstruction, constant background, temporally constant foreground, and 3x3 blurred area reconstruction. These are metric experiments, never AMD outputs. Reveal whether leakage/temporal smoothness can favour missing objects or detail.",
+  "structural_criteria": "Complete exact frame/input inventory; independently compare every input byte, allowing no texture mismatch; full RGBA finite/no sentinel; successful dispatch, fence==1, zero ordinary DX12 debug/device errors; actual loaded staged DLL identities; exact colour/depth/exposure equality across arms and motion equality for jitter/reset controls.",
+  "bounds": "95-frame input-only child before AMD regressions; two 1216-frame independent children, 360s watchdog each; offline audit 900s; fence 60000ms; one submitted frame at a time, per-arm resources retained through context destruction. No GBV, other provider, HDR, masks, sharpening, API or support changes.",
+  "retention": "Full inputs/outputs and verbose metrics remain in ignored target only for diagnosis; compact summaries, input/source/native identities and selected crops retained. Default finalized compaction and exports omit raw payloads. Historical records remain unchanged."
+}

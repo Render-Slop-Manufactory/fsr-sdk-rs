@@ -1,0 +1,60 @@
+[
+  {
+    "repeat": 1,
+    "frames": 1216,
+    "native_log_counts": {
+      "Temporal diagnosis begin:": 1216,
+      "DX12 list close: HRESULT=0x00000000": 1216,
+      "DX12 submission:": 1216,
+      "DX12 signal: HRESULT=0x00000000": 1216,
+      "DX12 fence completion: HRESULT=0x00000000": 1216,
+      "DX12 mapped readback: HRESULT=0x00000000": 1216,
+      "Temporal diagnosis cleanup complete:": 19
+    },
+    "all_dispatch_ok": true,
+    "all_fences_one": true,
+    "all_debug_device_zero": true,
+    "all_pixels_finite_written": true,
+    "decoded_bytes": 3362001664,
+    "compressed_bytes": 831977605,
+    "loaded_modules": {
+      "amd_fidelityfx_loader_dx12.dll": {
+        "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+        "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+      },
+      "amd_fidelityfx_upscaler_dx12.dll": {
+        "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+        "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+      }
+    }
+  },
+  {
+    "repeat": 2,
+    "frames": 1216,
+    "native_log_counts": {
+      "Temporal diagnosis begin:": 1216,
+      "DX12 list close: HRESULT=0x00000000": 1216,
+      "DX12 submission:": 1216,
+      "DX12 signal: HRESULT=0x00000000": 1216,
+      "DX12 fence completion: HRESULT=0x00000000": 1216,
+      "DX12 mapped readback: HRESULT=0x00000000": 1216,
+      "Temporal diagnosis cleanup complete:": 19
+    },
+    "all_dispatch_ok": true,
+    "all_fences_one": true,
+    "all_debug_device_zero": true,
+    "all_pixels_finite_written": true,
+    "decoded_bytes": 3362001664,
+    "compressed_bytes": 831977605,
+    "loaded_modules": {
+      "amd_fidelityfx_loader_dx12.dll": {
+        "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+        "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+      },
+      "amd_fidelityfx_upscaler_dx12.dll": {
+        "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+        "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+      }
+    }
+  }
+]

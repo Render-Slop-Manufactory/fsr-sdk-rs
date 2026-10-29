@@ -1,0 +1,20 @@
+{
+  "output_counts": [
+    3840,
+    3840,
+    3840,
+    3840
+  ],
+  "all_output_hashes_equal_to_pilot": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "basis": "Every native output was generated anew and round-trip checked; compares all 3840 decoded SHA256 entries including warmup",
+  "all_window_measurements_equal_to_pilot": [
+    true,
+    true,
+    true
+  ]
+}

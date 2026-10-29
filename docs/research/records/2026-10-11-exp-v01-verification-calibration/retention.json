@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-11",
+  "policy": "Compact results; generated raw frames and verbose intermediate exports removed",
+  "previous_bytes": 904407693,
+  "previous_files": 6443,
+  "previous_inventory_sha256": "885a9f7520f48fc53eeb97921c797454d607140564a97ba3ee18e931887ab4ea",
+  "offline_image_reanalysis_available": false,
+  "compact_pooling_matches_original_results": true,
+  "results": "Original pass/fail outcomes and numerical findings remain unchanged"
+}

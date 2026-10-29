@@ -1,0 +1,135 @@
+{
+  "attempts": {
+    "exploration": {
+      "input_identity": "019c51050bdd24ff3bff126ba5e5f45db25d02964eb0b83d343ef0cbc7957bf6",
+      "summary_sha256": "7a7102836d5e3e2ef83bd4208547bf6a9b09304e7269fc04fae571e27e152808",
+      "summary_bytes": 246732,
+      "status": "passed",
+      "started_utc": "2026-10-11T22:41:00.612669+00:00",
+      "finished_utc": "2026-10-11T23:04:32.018533+00:00"
+    },
+    "confirmation": {
+      "input_identity": "4d4f5def1195b9fa8d4e8eb0411921b094737e1d7c46fb61cf05b3d95ec44ff0",
+      "summary_sha256": "4b5183be159b31ecbdad361b9bb7935ff2c4d00893257825c1a51c2426810dfa",
+      "summary_bytes": 715366,
+      "status": "passed",
+      "started_utc": "2026-10-11T23:10:01.562382+00:00",
+      "finished_utc": "2026-10-11T23:54:35.238803+00:00"
+    },
+    "initial-failure": {
+      "input_identity": "8afd22f5f3a69a40e9fcbf213016e310265ecd7305d2fab06cc5ff2258c5db4e",
+      "status": "failed",
+      "started_utc": "2026-10-11T22:36:51.466529+00:00",
+      "finished_utc": "2026-10-11T22:39:28.350387+00:00"
+    }
+  },
+  "artefacts": [
+    {
+      "path": "confirmation-cases.json",
+      "bytes": 54572,
+      "sha256": "16f859284a433df9ef128dcdd66ddcbe6ec53a10dc4faf31b27b948e58bb8413"
+    },
+    {
+      "path": "confirmation-inputs.json",
+      "bytes": 23862,
+      "sha256": "7098bb3f58cd3069bc169c66fdd20d7afc6a987b97db84aaefbfe84891609c66"
+    },
+    {
+      "path": "confirmation-measurements.json",
+      "bytes": 290178,
+      "sha256": "5a3ded80951dd1e077eca0872106f841ec506e49bc3ed0d0ec535ed96edfcb9d"
+    },
+    {
+      "path": "confirmation-protocol.json",
+      "bytes": 3956,
+      "sha256": "9ceed69658fc572655333da7f98891c6f35f2f48d615e197a36d64af5951b52b"
+    },
+    {
+      "path": "confirmation-retention.json",
+      "bytes": 462,
+      "sha256": "81f7df0f26b43e20bdc5833275fe458e79cea2df54a63a52425d49252f56ab49"
+    },
+    {
+      "path": "confirmation-run.json",
+      "bytes": 2368,
+      "sha256": "4327c5977f097345309931c79a38cde2d6fa74e3d3c59dc93c1bc566c674567a"
+    },
+    {
+      "path": "criteria.json",
+      "bytes": 2555,
+      "sha256": "4f5307fce037ac162ba0c6a9f99c67e2bf83bda1be87d76f48b28c9357fb44bc"
+    },
+    {
+      "path": "exploration-cases.json",
+      "bytes": 43281,
+      "sha256": "839435030e7eb14145d3dfdc9cea8789c7c2c15a1a81220d1e651f76a7d6ef28"
+    },
+    {
+      "path": "exploration-inputs.json",
+      "bytes": 23704,
+      "sha256": "738cbccfb85a1aa898214cca92dfe1ebfae6d674efb6490b1f7f94651a7d0eaa"
+    },
+    {
+      "path": "exploration-measurements.json",
+      "bytes": 246732,
+      "sha256": "7a7102836d5e3e2ef83bd4208547bf6a9b09304e7269fc04fae571e27e152808"
+    },
+    {
+      "path": "exploration-protocol.json",
+      "bytes": 3897,
+      "sha256": "8a63bef05e5d72bd45c8bc6d33b47d0e3ba69ad6b36bb6a6758405d3ea246def"
+    },
+    {
+      "path": "exploration-retention.json",
+      "bytes": 460,
+      "sha256": "a0b7ece8824cb9e561b9a24930a6983f9799efef9d66b6eb4ea892696dfaf600"
+    },
+    {
+      "path": "exploration-run.json",
+      "bytes": 2298,
+      "sha256": "33f5a6b972aa14d2774cf4bc2bdcdcc06cb7e6addb73b7be4d11d2052c756530"
+    },
+    {
+      "path": "implementation-checks.json",
+      "bytes": 654,
+      "sha256": "781077d376c5b649700e29646bec5bd7d5220009379705e0c9877bfd78e12d9f"
+    },
+    {
+      "path": "initial-failure-cases.json",
+      "bytes": 31967,
+      "sha256": "d4ce359d5a7e7e8924c925c1b6cdaaadcd112e2204fd12e0a1ff125945581c0b"
+    },
+    {
+      "path": "initial-failure-inputs.json",
+      "bytes": 23704,
+      "sha256": "0afa79d00f192b475c01fa04724fcb85ebb7513645042c9cd31d047d5f70cbc0"
+    },
+    {
+      "path": "initial-failure-protocol.json",
+      "bytes": 3757,
+      "sha256": "66804e9dee20cc02f42551d448ce096639ee7690a062b0e02dd3e8c8d0afc1eb"
+    },
+    {
+      "path": "initial-failure-retention.json",
+      "bytes": 458,
+      "sha256": "daf2d94633c73d185e00dba4710cd7da1d1358a71e4edebe77a2c3d1a54c1826"
+    },
+    {
+      "path": "initial-failure-run.json",
+      "bytes": 2305,
+      "sha256": "65b7d6a4821a3678c532ea6b78721211a730315d74d878614b66af4ec767f7ca"
+    },
+    {
+      "path": "output-identities.json",
+      "bytes": 387,
+      "sha256": "fbde93f3edcc1aa5532fc95826bde1aba0147d1bec3518648fcd5ca6a4221915"
+    },
+    {
+      "path": "results.json",
+      "bytes": 2759,
+      "sha256": "0a8a5287a73057390b1ca58672e353b06c4849686afc32feb9c9cf857afec805"
+    }
+  ],
+  "sanitization": "Personal paths and labelled transient addresses normalized; meaningful IDs/codes/hashes retained",
+  "retention": "Raw inputs/readbacks and verbose trajectories removed after verified audit; repeat windows shared only if exactly equal"
+}

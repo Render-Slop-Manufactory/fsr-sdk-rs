@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "identity": "019c51050bdd24ff3bff126ba5e5f45db25d02964eb0b83d343ef0cbc7957bf6",
+  "files": [
+    {
+      "path": ".github/actions/setup-rust/action.yml",
+      "sha256": "fe4ce6781f0079e4af1b53ce9af15f66b471851fc24fd024439129c86bd9ed8c"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "d2738b8eee33fd8f7c0164b2eef787f1b88b1e978e9309c2a445c112ebd283f8"
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "2dd6dbae5015e07d03ef0212ba2eccb289c94c7cabbef70a98ea7a5e43085686"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "df4d45780257b3189372209baf694ae6ecae7c1590ecb48ef797d22b75b8ea31"
+    },
+    {
+      "path": "crates/fsr-sdk/Cargo.toml",
+      "sha256": "7a92149990a0ed31258a416dd51154aed27bb4b370b4683d9258a2ff23fccebb"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/dx12_upscale.rs",
+      "sha256": "b22b2a2a1b7fe87eecc4584f4e28dce7f898ffe7416c452f2cb172175279077a"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/movable_upscale.rs",
+      "sha256": "590d80c4f41653631ae6cc664f0fe4af50f31178cdc4909bb16353aae0adfeac"
+    },
+    {
+      "path": "crates/fsr-sdk/LICENSE",
+      "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3"
+    },
+    {
+      "path": "crates/fsr-sdk/LICENSE-AMD",
+      "sha256": "b29d76c1a6f598479438fa5b5cc8552f3aa3ad6831836dccf270ca5296064f1e"
+    },
+    {
+      "path": "crates/fsr-sdk/README.md",
+      "sha256": "fef669698c58e9e949db1223f80225a2f663ec4755c0d073310957fade4f9130"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context/d013_movable.rs",
+      "sha256": "43288318958597344345dd06196084efe06e526104e862a4628b669d3f2a947a"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context/d013_transfer.rs",
+      "sha256": "92cda51855e8572a5f740d02efade57a2edb4f4b04b114f91ca25f82ddb41426"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context/test_runtime.rs",
+      "sha256": "df56eabd48efc33d95546b527f0a87095f494a6085b7938729b9989d7b8f6434"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context/tests.rs",
+      "sha256": "d522868984e0451e35d7b7965a9f1722f20ad1509937b76db5222d7179c6dad0"
+    },
+    {
+      "path": "crates/fsr-sdk/src/context.rs",
+      "sha256": "33633a6b9c764af21c527e6784dbb44bf11b9189090dfbaaceb2f0d2d84915a0"
+    },
+    {
+      "path": "crates/fsr-sdk/src/dispatch_policy.rs",
+      "sha256": "64ec8b12be4eb66ea6c89988f53710b82abe522cb7d92c43681e513aa75a1778"
+    },
+    {
+      "path": "crates/fsr-sdk/src/error.rs",
+      "sha256": "05b6959068dee4e90bf483423405006e450b2ddc73d7f63133f64f5360e03cbf"
+    },
+    {
+      "path": "crates/fsr-sdk/src/lib.rs",
+      "sha256": "5ff30d3d703fe842e7a3b36ff98dc1645d9ce8ec6ed365c06ec80886648b963e"
+    },
+    {
+      "path": "crates/fsr-sdk/src/query.rs",
+      "sha256": "f52f65ba81af539ef4836eb7f2a7834245c17cafa0c54e0b1a07d26b9dc5ed6d"
+    },
+    {
+      "path": "crates/fsr-sdk/src/runtime/movable.rs",
+      "sha256": "39fbddce0c80de5811e360734c489968e4229753344ad7a2e101895eb70ab220"
+    },
+    {
+      "path": "crates/fsr-sdk/src/runtime/state.rs",
+      "sha256": "6ccb76437a38754a6ef6444eb0772ac7148883e4f3b263b0e672451690f04dcd"
+    },
+    {
+      "path": "crates/fsr-sdk/src/runtime.rs",
+      "sha256": "52ded87459b9e0881c64180fd8d54570f851212df4a8efaedd393b4a56da5002"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/common.rs",
+      "sha256": "4f71e997e60e4985695de8500892c0f6da670caccbeeff2f83df4a197a993305"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/descriptor.rs",
+      "sha256": "c45f7d795157aa2a5236dd86c7946fa535266d7e572294f0580d005d1ab97578"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/frame.rs",
+      "sha256": "fa9b1d9b98d0d010182d6ca376705a22f8c8c9e5bf133cb93e6b3a9fea9dda8b"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/resources.rs",
+      "sha256": "fd5aad8ea7fe32f96765ad811d5d4d9362b61cfc9671482bd10553789f483aec"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/sharpening.rs",
+      "sha256": "ab61a5a7dfe983af4531424bae5267261f950bcdccd9b22611b9bd51257e14f3"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/tests.rs",
+      "sha256": "1b24425ad5a144b22d252d96d312d0b04cb5f915926ba37bc9dd4c8a97fb485b"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch.rs",
+      "sha256": "df813aaeb96492ea6e9d9115f5eb6f884209bb0154db63df546ab6e7fab60561"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/movable.rs",
+      "sha256": "a5dd49c71d402af979f071eeebe66faa277560d4c31c8c47c032185d54f105a0"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/com.rs",
+      "sha256": "8eb11228f6b2aa23aac6348d0313d4f7a64aef1209469674c0adc48f19e04eea"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/construction.rs",
+      "sha256": "cfb5d68feeeead06968ba959d715459e4ee14bbbe00c1a09dad63561a60cfc22"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/dispatch.rs",
+      "sha256": "ac07a24b4ebd3c26e667a2cc3e9c0b9abf00f2e914e7ad5f7c4f0bd948bab767"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/inspection.rs",
+      "sha256": "4bf02f63065408340358a360fc23cfc0eb9268aa6169e09ad78e1428894bcb3b"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/lifecycle.rs",
+      "sha256": "04ca7dd92022bab0ca3fa67e10233a2166010edfe505a8c854a707266f377a41"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/mod.rs",
+      "sha256": "0986347e32896e161ac72f1f82a9c2f846a04c8c1b0700311e37d0662e25ab56"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/movable.rs",
+      "sha256": "bbb62f8f146c966aa4c8f33fd5423812ea9ecdb783714943ddeccf10f26a2878"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/sharpening.rs",
+      "sha256": "eac6491927ef3dc6f1b52ea3fd7f1dc89e61bd9f971960d22f3a29a2f0145b83"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/support.rs",
+      "sha256": "d7da4bee3e5295de1ead74ca8a477ad57167d37ccae2dc0e67fdf4a49e948f37"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/traits.rs",
+      "sha256": "8aecc476821f68417a7ea1ccdd24d7d6b65c7425447b86c2839cadd684206c7d"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12.rs",
+      "sha256": "e4641231ae189c77cda0d803c0b612080879802b67fb00ea1015cdd80a902ca3"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler.rs",
+      "sha256": "1e7ce54395aef4f97bca920c7598d4b61dd621aed1986a50b51959a8357a7cc2"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/dimensions.rs",
+      "sha256": "4f5d7e6dba74841ce07be838d2f7026e328310b6fd97bd8b82e745970940ddfb"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/dispatch_inputs.rs",
+      "sha256": "4f88716abad5c708f07acbc31e0caf8a14111ab6a664d2e1aca7a5aec307240c"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/fixtures/child.rs",
+      "sha256": "2739df78c1e16f79893321a9296a76181e664e60fde6f2b59f9f99c534dae86e"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/fixtures/directory.rs",
+      "sha256": "9531a6d7533de516040b3824bee17547e6fc571d571cd66f92f3b97e775e2c98"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/fixtures/lifecycle.rs",
+      "sha256": "9c92d59d99d60c691d4b347ee2cb192839c0bb42abc115797a33568cb6ed6f93"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/fixtures/upscaler.rs",
+      "sha256": "619d9b6e9e906b604dc9f20e7ec6e276d713ea420d78ba4786a13fbff7c91552"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/movable.rs",
+      "sha256": "6604f496e5f7a2ab316daa55abeb727185bc53e79fb87f5ebfdf92d222f0d9f2"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/dispatch_readback.rs",
+      "sha256": "16b90b30dee20802d9ef6bba3538b28bc86be56cb9be65014b91002eea876d1b"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/gpu.cpp",
+      "sha256": "98959d454e46cd7c0ff08ac3979d16eb88acf04d557668a516c94d9690be6cbd"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/images.h",
+      "sha256": "d97ab5c4023dd10ade07c0fd6b112210cc2d49f06e70319b1d56f3e25de214a1"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/movable_public.rs",
+      "sha256": "ab53d73b97e5acc72bbd256e835528d5f0d0ee44192ff00b8c4d9faf499e9c53"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/recording_ahead.rs",
+      "sha256": "8a3870f3d1f9247864c36d8b8d85ae035373d988f9d9360c74ec5b69def9b8a2"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/semantics.rs",
+      "sha256": "9332b8ff804ca882d190a261397309525a1be88e2c7fe84ac5637e2c764d1d57"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/sharpening.h",
+      "sha256": "aab021356fb3fe57af10d4c7a5a54deaae7e39d5684e3ef6cf79de21f3fdeabc"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/sharpening.rs",
+      "sha256": "56ddbeeaf41d941e947b8fbff98a0ce1e19fc68bff698d5fdfb9b169b713e6d7"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/sharpening_integration.rs",
+      "sha256": "f1c58cbba404526c95ee93fe15454178cc59e477d7e15215d370a73b0f56171e"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/single_frame.rs",
+      "sha256": "396cfe1c7a59da0c3a229d076c4553959c2ac76295d3906ce4e49899644e263f"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/support.rs",
+      "sha256": "caaae52d9966599c86d13a283788532d01bc593fe30cafd1b2b9460cde7035f8"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/temporal_calibration.h",
+      "sha256": "15ec4089ea9ef576701a1d73580707bdeee142c57c8f08cb1e50b274518e9c20"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/temporal_calibration.rs",
+      "sha256": "5e789911b10e233aca1862fd54a0bd9a4a922a7194370a43fa37e3ba07747be0"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/temporal_diagnosis.h",
+      "sha256": "03f10dd5f532ca7aa27d0e23641bf33cb7a4a171ed6ecc0a9c504f097c869210"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/temporal_diagnosis.rs",
+      "sha256": "af1e93fc12791f31e14dea83d6a0777b93f0d5c622ca617bafabe581cf31aa67"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/temporal_smoke.rs",
+      "sha256": "e08faeac5bb1df6f996b4162eec3220fea58c5a60dc62ef6e9849a6ea193cd4f"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/thread_transfer_baseline.rs",
+      "sha256": "60ba8227c5ac7405e84cf70c42fcd94484b72fd2efe7d85eeee3ba9d357da1cc"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/thread_transfers.rs",
+      "sha256": "8e7a06b710feb6359e6d91f409617a46cdc75451aa7e8db8e4e6753998d70129"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/Cargo.toml",
+      "sha256": "7ead2f7a88df11e16317da0e0c86dd55a2cd444dec45ad9be513974be0db79be"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/LICENSE",
+      "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/LICENSE-AMD",
+      "sha256": "b29d76c1a6f598479438fa5b5cc8552f3aa3ad6831836dccf270ca5296064f1e"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/README.md",
+      "sha256": "e8ba18631f8743cac8f29b5a72609406942a3f80fd450244fb2809474913be81"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/api.rs",
+      "sha256": "fecc201ec4ef8445f593aaae591ecec35be6277922b0a669f1f4b0caafb6b7de"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/dx12.rs",
+      "sha256": "30cd53f1b222282a437bb980c45373242e105184b33f33e305959622f230b080"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/lib.rs",
+      "sha256": "5159a34c2d4ad5bc99abe815f92802e3f4a93c9a493574dcbf843312b4a5609e"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/loader/mod.rs",
+      "sha256": "68ea61e610cc4c8a558f859991ffbac4d9eb3c744cc8fbaae1a9e729c118a078"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/loader/windows.rs",
+      "sha256": "31c9a137c998700ddfeee63bdde0ae4227bc5094b7e1fcea65623845883985bd"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/upscale.rs",
+      "sha256": "19ed563413e262f703190a4ab6af16849e6e4ab5bbccd4d19a94afb0cfb432ad"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/abi.rs",
+      "sha256": "e4d2c64e09e5ff0009ccc0ca99d2b285727e6fb8968b3e7478381cc6b8eac51e"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/context_dimensions.rs",
+      "sha256": "f456a158c8959bde3a4f9f02ff4c6957f1dbfa4a01f724dadcdc858ae46666af"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/context_lifecycle/abi.rs",
+      "sha256": "abf6f2a084c3f7fe4705138cbb9c841cef4eabe2361805a2a0e3f20b0dcbdca4"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/context_lifecycle/allocator.rs",
+      "sha256": "7f16c250361cc0e517e42a70c316a330277d1e989d5b6da8b022edb15b5b8380"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp",
+      "sha256": "8131993e8f234e56beb8cb87f02f9a34506f2eba5b7b643e8041c19f23547d55"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/context_lifecycle/input_lifetime.rs",
+      "sha256": "8dde46b1e069c45b25876d95baccd2de0a8744322490d9eace231f380d1dc97c"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/context_lifecycle/native_abi.cpp",
+      "sha256": "e5d64e6bfcc9d12fbafa7f5a34e7fa48f28679f7dc25173c28cc99db18134935"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/context_lifecycle.rs",
+      "sha256": "b6f0b09ab2f10c4b43138302eb7bc4f835c1bdf49d63efb13215fccf2a029853"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/dispatch_abi.rs",
+      "sha256": "8501653c8f745d3e814c2203d3881a171b6663e5a87129d705e94736e01f011c"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/dispatch_native_abi.cpp",
+      "sha256": "66d0a4db60359dece0c8be08d7adcad75fe5242e8e02270c4ee295f5c1854162"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/fixtures/loader.rs",
+      "sha256": "674bcfa90ddec7a92e88dc62c4e78db38babb5da1121d4cf3ddc55af081e37bf"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/loader.rs",
+      "sha256": "853c160bb225d9847ae05565c0b0af3b66e7375a2767ed72c82e22a8202391a4"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/native_abi.cpp",
+      "sha256": "f17932f3e6516a2e7f623214d7c2e6cbc725638b4ca5f542fdb7d245bc7e7f63"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/provider_resolution/modules.rs",
+      "sha256": "7369a72c6a819ac2c82ecbb2f917e9d4d4ecfb68115cf13f5d68c87326af3da3"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/query.rs",
+      "sha256": "a0820ce7f4451ad4b46f2796b57afd2ceeeb445d6eb9c34518417985fdcd1ca4"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/shared_runtime.rs",
+      "sha256": "6a39946daf5771e1c625ec6a88c3ec26447585f797ff3d3cdb40a9a953148270"
+    },
+    {
+      "path": "docs/release/2026-10-09-m9-native-sharpening-protocol.md",
+      "sha256": "5e9c50a3777bcfe89f774b335588f446938e44690d3ea496603d1dda3b656018"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3"
+    },
+    {
+      "path": "README.md",
+      "sha256": "7f340981292591792ca8fc12961f2df5761c1aafec9e049ab6d39e92744938ec"
+    },
+    {
+      "path": "tools/native-headers.json",
+      "sha256": "ceaf9b7d9987749ad9b77ce8e8a05e321b095d471c9af9d73d8a99160c663ff6"
+    },
+    {
+      "path": "tools/verification/analysis.py",
+      "sha256": "9317afcf9c646599cabd9601b2124db1ed9c3313e8d910aed8c16ddbf4762b8f"
+    },
+    {
+      "path": "tools/verification/consumer-cases.json",
+      "sha256": "78e144667318b06580487e1eafc51d456b83e74500e7405cf61ba851516d2eae"
+    },
+    {
+      "path": "tools/verification/consumers.py",
+      "sha256": "9aaffe140ae96babbc14d32b23b49a0634c5271d037726d3fe2d34bcecff333f"
+    },
+    {
+      "path": "tools/verification/examples.py",
+      "sha256": "a00e2c314aab703048aa7d68324873acd0ba3f13c7531d26c3301f043e029168"
+    },
+    {
+      "path": "tools/verification/execution.py",
+      "sha256": "3276d056112b2112d947fb55165b00fddff8515767191a3c693e7f09b2a25e90"
+    },
+    {
+      "path": "tools/verification/native-cases.json",
+      "sha256": "af409af103bf9f52a45821a77158f08fb6ca09536eceffd7b0679d72da703582"
+    },
+    {
+      "path": "tools/verification/native.py",
+      "sha256": "f631d26b664db9a6974e9eedaec12b2379066ffac4636cb8f3563e83141727e5"
+    },
+    {
+      "path": "tools/verification/profiles.py",
+      "sha256": "0c219f975a1fcb945b7ce57a4510b004bbbf6d46b91d06d875a8e458ebef91d8"
+    },
+    {
+      "path": "tools/verification/README.md",
+      "sha256": "ae5c8298387f8e2bd5af2ba8f37a7c3a0348e794ddd3f80ad9da316dcccd3040"
+    },
+    {
+      "path": "tools/verification/records.py",
+      "sha256": "fc97a324840220b5062a72216c5386ab70b00024c5e088ce8d47734dfd05cda2"
+    },
+    {
+      "path": "tools/verification/release.py",
+      "sha256": "098c13b577fa7dd39638c33036a6aad2918554d5f7ebb6d7379dc1c42196d564"
+    },
+    {
+      "path": "tools/verification/repository_size.py",
+      "sha256": "90c815197bb826acd95d82f627e767e15a20ac1a410393c790768bfa197f8360"
+    },
+    {
+      "path": "tools/verification/retention.py",
+      "sha256": "a561d28a4f374de49d750e6970b0bcd3d4181c1f05fcdf30c1e842f3c724fe61"
+    },
+    {
+      "path": "tools/verification/run.py",
+      "sha256": "7089aefe9f050dc2379d153376331a1b37a51c3f3dd5984ff89447a2224bffa2"
+    },
+    {
+      "path": "tools/verification/temporal-calibration-protocol.json",
+      "sha256": "bb2d62a21f8202f50fbbad18d595376f272e8a89dd6db94e978f994f2f05590f"
+    },
+    {
+      "path": "tools/verification/temporal-diagnosis-protocol.json",
+      "sha256": "054ccb6e0f1a6995bfdc63fc435d084758f3f08c23633f6c493446f5ea0e20ae"
+    },
+    {
+      "path": "tools/verification/temporal-jitter-confirm-protocol.json",
+      "sha256": "ae4ba821c0126202d2182e85cd112f81e2a7e43c38a6cbd73e4d7f99eb3cac2b"
+    },
+    {
+      "path": "tools/verification/temporal-jitter-protocol.json",
+      "sha256": "8a63bef05e5d72bd45c8bc6d33b47d0e3ba69ad6b36bb6a6758405d3ea246def"
+    },
+    {
+      "path": "tools/verification/temporal-long-protocol.json",
+      "sha256": "d5892c43ce09b5e2c687b1543f0cd67eeaafc0d447faf28a35f7b02d361c060c"
+    },
+    {
+      "path": "tools/verification/temporal-quality-protocol.json",
+      "sha256": "04ed563f01814063d952bb2c6197c90e7399dbbbfc4c6bf9af342fbcdc669554"
+    },
+    {
+      "path": "tools/verification/temporal-reset-confirm-protocol.json",
+      "sha256": "dc3e73de8923e35229604c1eb15d41bae2425a310c4cb0b95a2f4b4c84decd84"
+    },
+    {
+      "path": "tools/verification/temporal-reset-criteria.json",
+      "sha256": "96d4a0cedd7b993fb53e7a743afe62d6dedb2d4833e498be588002ac637f901c"
+    },
+    {
+      "path": "tools/verification/temporal-reset-protocol.json",
+      "sha256": "b0f85ce63615e0bd88de134ae9df7ceab73258f5e042380749381722f2e4f7a3"
+    },
+    {
+      "path": "tools/verification/temporal_calibration.py",
+      "sha256": "5db30b1260671fb1df0873c980817ec2d615041852713a25bd4fe10b27703a73"
+    },
+    {
+      "path": "tools/verification/temporal_diagnosis.py",
+      "sha256": "e065b664ad6f07b9ac88cc2f5f8d38a25c038be758e211b6c28dab378ba2faa0"
+    },
+    {
+      "path": "tools/verification/temporal_jitter.py",
+      "sha256": "173bf00c5144d1305ff518e26bc326980d1184b3e202d0d3e02980bbfb63ea20"
+    },
+    {
+      "path": "tools/verification/temporal_long.py",
+      "sha256": "062604d2bf8527e67b38f492746d2d5dbec53ee6fbcb09eb01f89d440b477ffd"
+    },
+    {
+      "path": "tools/verification/temporal_quality.py",
+      "sha256": "b11a0ac4aec5782d2d3dd9a59c9c8cf7c86de6b9d5f621783379bde4d25d9d31"
+    },
+    {
+      "path": "tools/verification/temporal_reset.py",
+      "sha256": "facd9e4e2581c896fd4562231cc9809d78901c0b972b1b29eaf39eac03902c89"
+    },
+    {
+      "path": "tools/verification/tests/test_archive.py",
+      "sha256": "ee5fe3449107bc0b93fe93f9b3c1d3a1277cb0d4598a6ce5cc49b71d7a7783c5"
+    },
+    {
+      "path": "tools/verification/tests/test_infrastructure.py",
+      "sha256": "789a44afa01b4b8184e5474d37e6136d75ed6a972fa8a925ba2c48107aa840d6"
+    },
+    {
+      "path": "tools/verification/tests/test_temporal_calibration.py",
+      "sha256": "67b07c413c7f63314c1f8c4d06ae5639a6b0346f4bc21ada87b677264ea699cf"
+    },
+    {
+      "path": "tools/verification/tests/test_temporal_diagnosis.py",
+      "sha256": "124697af1583cfebc43f3cf687a0f94085251582ffeece6992aea76217811564"
+    },
+    {
+      "path": "tools/verification/tests/test_temporal_jitter.py",
+      "sha256": "e617dd03471d131f447491b9fc8ec767bc7779ae307583cd4f7b9a729b0d3dba"
+    },
+    {
+      "path": "tools/verification/tests/test_temporal_long.py",
+      "sha256": "8d1be03f9dd27e0b9531cbf5eb0257610b3ebe5248b298552050869d8a694a33"
+    },
+    {
+      "path": "tools/verification/tests/test_temporal_quality.py",
+      "sha256": "fc3c376b9b365a9d372fa7613c1f4f8a6cb339566ac49140ad1e1ccfb34a2258"
+    },
+    {
+      "path": "tools/verification/tests/test_temporal_reset.py",
+      "sha256": "42955ddeb4c280ca29206503a03e38037d3b7f67aa02c52018001a2122c83b4a"
+    },
+    {
+      "path": "tools/verification/tests/watchdog_fixture.py",
+      "sha256": "74101b9bb050ef6ad831c912e3c299724e342d5053f225f8de7599fc6fadccda"
+    },
+    {
+      "path": "tools/verification/windows.ps1",
+      "sha256": "d5ebaf9fcf3c159cb79de4e4745fa16929920434bcb7fbaa10a5c3105db75fb2"
+    },
+    {
+      "path": "sdk/api/include/ffx_api.h",
+      "sha256": "91f7f4a9111d18996e3bae083bf82d47ac6497de144b352abfca44f07d2871c4"
+    },
+    {
+      "path": "sdk/api/include/ffx_api_types.h",
+      "sha256": "b54fbd96a0eed82662a49c00e28e5368ab69959f9856dae5c12fed109d123d66"
+    },
+    {
+      "path": "sdk/api/include/dx12/ffx_api_dx12.h",
+      "sha256": "2082d6c2914e9c2fa9fae6247d35f64c643ccb703311c83c8dba9a35356bc711"
+    },
+    {
+      "path": "sdk/upscalers/include/ffx_upscale.h",
+      "sha256": "f13abcdd4389e22aa50562a90255bec9511e004722c7d2bf6f959d92fd78355c"
+    },
+    {
+      "path": "sdk/signedbin/amd_fidelityfx_denoiser_dx12.dll",
+      "sha256": "48f1e5888ba6a0a3d59a98b9751e37c392b0f7b8c223d0082d5c1f40642879d3"
+    },
+    {
+      "path": "sdk/signedbin/amd_fidelityfx_framegeneration_dx12.dll",
+      "sha256": "02297beedd285e822d3a64f314cf00faf378dcec0edc47ff0c4dd71b3a8c2f18"
+    },
+    {
+      "path": "sdk/signedbin/amd_fidelityfx_loader_dx12.dll",
+      "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+    },
+    {
+      "path": "sdk/signedbin/amd_fidelityfx_radiancecache_dx12.dll",
+      "sha256": "256db18d924c8cd38923d04e3ecd210695d3f0f796b240eab9663ad4d54e31a0"
+    },
+    {
+      "path": "sdk/signedbin/amd_fidelityfx_upscaler_dx12.dll",
+      "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+    }
+  ],
+  "source_identity": "bb22ac5c7c75a792bba58a0c75e7df7d889b5357677d2c0a36b31e3432cc532c",
+  "configuration": {
+    "command": "run",
+    "profile": "experiment-temporal-jitter-explore",
+    "output_root": "<repo>\\target\\verification",
+    "online": false,
+    "toolchain": null,
+    "native": true,
+    "sdk_root": "external/FidelityFX-SDK/v2.3.0/Kits/FidelityFX",
+    "adapter_index": 0,
+    "retain_diagnostics": false,
+    "wrapper_archive": null,
+    "sys_archive": null
+  },
+  "environment": {
+    "RUSTFLAGS": null,
+    "RUSTDOCFLAGS": "-D warnings",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_BUILD_TARGET": null,
+    "CARGO_HOME": null,
+    "RUSTUP_TOOLCHAIN": null
+  }
+}

@@ -1,0 +1,2284 @@
+{
+  "status": "structurally_complete",
+  "diagnostic_only": true,
+  "image_quality_thresholds": null,
+  "numpy": "2.3.5",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "output_frames": 903,
+  "input_only_frames": 21,
+  "elapsed_seconds": 286.391,
+  "repeats": [
+    {
+      "repeat": 1,
+      "arms": [
+        {
+          "arm": "a-correct",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5_edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6868992,
+              "mae": 0.0010921510354445624,
+              "rmse": 0.001200216652124888
+            },
+            "edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "foreground": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "interior": {
+              "pixel_frames": 6868992,
+              "mae": 0.0010921510354445624,
+              "rmse": 0.001200216652124888
+            },
+            "permanent_background": {
+              "pixel_frames": 6868992,
+              "mae": 0.0010921510354445624,
+              "rmse": 0.001200216652124888
+            }
+          }
+        },
+        {
+          "arm": "b-correct",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 4152,
+              "mae": 0.09035825637493979,
+              "rmse": 0.11249930921820038
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.09035825637493979,
+              "rmse": 0.11249930921820038
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 4152,
+              "mae": 0.05756879450039138,
+              "rmse": 0.08070357261175674
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.05756879450039138,
+              "rmse": 0.08070357261175674
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 16608,
+              "mae": 0.026545919664563013,
+              "rmse": 0.044958503759290974
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 11192,
+              "mae": 0.016082645513513186,
+              "rmse": 0.029902646989199397
+            },
+            "age2to5_edge": {
+              "pixel_frames": 5416,
+              "mae": 0.04816795886296583,
+              "rmse": 0.06595742964502524
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6477792,
+              "mae": 0.0005509322126714096,
+              "rmse": 0.0017028286250970056
+            },
+            "edge": {
+              "pixel_frames": 60544,
+              "mae": 0.059362748544597554,
+              "rmse": 0.11948159093045436
+            },
+            "foreground": {
+              "pixel_frames": 330656,
+              "mae": 0.0020012356680498386,
+              "rmse": 0.0043314469107789905
+            },
+            "interior": {
+              "pixel_frames": 6808448,
+              "mae": 0.0006213669930121877,
+              "rmse": 0.0019157146597002716
+            },
+            "permanent_background": {
+              "pixel_frames": 6210048,
+              "mae": 0.0004810090345047789,
+              "rmse": 0.0005857075781492753
+            }
+          }
+        },
+        {
+          "arm": "b-reverse-motion",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 4152,
+              "mae": 0.12202892658721198,
+              "rmse": 0.18011678549212254
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.12202892658721198,
+              "rmse": 0.18011678549212254
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 4152,
+              "mae": 0.02613417001282013,
+              "rmse": 0.060037824563037294
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.02613417001282013,
+              "rmse": 0.060037824563037294
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 16608,
+              "mae": 0.0013623785804155629,
+              "rmse": 0.004130219907604236
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 11192,
+              "mae": 0.0006669112435686949,
+              "rmse": 0.001679672207300259
+            },
+            "age2to5_edge": {
+              "pixel_frames": 5416,
+              "mae": 0.0027995407728066534,
+              "rmse": 0.0068176175582393495
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6477792,
+              "mae": 0.00047576196713569775,
+              "rmse": 0.0005821128890156588
+            },
+            "edge": {
+              "pixel_frames": 60544,
+              "mae": 0.06111835122864544,
+              "rmse": 0.14521860442466913
+            },
+            "foreground": {
+              "pixel_frames": 330656,
+              "mae": 0.0016120389921556978,
+              "rmse": 0.004518217681351371
+            },
+            "interior": {
+              "pixel_frames": 6808448,
+              "mae": 0.0005309458821755149,
+              "rmse": 0.0011462242026786646
+            },
+            "permanent_background": {
+              "pixel_frames": 6210048,
+              "mae": 0.00047639200469675483,
+              "rmse": 0.0005794627999633927
+            }
+          }
+        },
+        {
+          "arm": "b-negated-jitter",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 4152,
+              "mae": 0.14922692918134334,
+              "rmse": 0.22414026592943107
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.14922692918134334,
+              "rmse": 0.22414026592943107
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 4152,
+              "mae": 0.044460338281375446,
+              "rmse": 0.08201437518963559
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.044460338281375446,
+              "rmse": 0.08201437518963559
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 16608,
+              "mae": 0.020751583170416116,
+              "rmse": 0.057086420123090315
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 11192,
+              "mae": 0.009532153166161282,
+              "rmse": 0.020947382450285143
+            },
+            "age2to5_edge": {
+              "pixel_frames": 5416,
+              "mae": 0.04393619554257639,
+              "rmse": 0.0953228275662958
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6477792,
+              "mae": 0.0004967697841828843,
+              "rmse": 0.0011460620410455955
+            },
+            "edge": {
+              "pixel_frames": 60544,
+              "mae": 0.09752211409441765,
+              "rmse": 0.19755532089487007
+            },
+            "foreground": {
+              "pixel_frames": 330656,
+              "mae": 0.0012291053282937304,
+              "rmse": 0.00683959299781947
+            },
+            "interior": {
+              "pixel_frames": 6808448,
+              "mae": 0.0005323360603259224,
+              "rmse": 0.001876583927763792
+            },
+            "permanent_background": {
+              "pixel_frames": 6210048,
+              "mae": 0.00047011666611505734,
+              "rmse": 0.0005733208068417774
+            }
+          }
+        },
+        {
+          "arm": "cut-history",
+          "frames": 41,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 1165,
+              "mae": 0.07011603490477468,
+              "rmse": 0.09724346685479546
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 1165,
+              "mae": 0.07011603490477468,
+              "rmse": 0.09724346685479546
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 823,
+              "mae": 0.04537327311791211,
+              "rmse": 0.07078777026444687
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 823,
+              "mae": 0.04537327311791211,
+              "rmse": 0.07078777026444687
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 2723,
+              "mae": 0.027277940518270292,
+              "rmse": 0.04610651558448129
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 1792,
+              "mae": 0.014582372847057523,
+              "rmse": 0.027074253687085752
+            },
+            "age2to5_edge": {
+              "pixel_frames": 931,
+              "mae": 0.05171452190045426,
+              "rmse": 0.06933022747276658
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 1821964,
+              "mae": 0.00038058605046260635,
+              "rmse": 0.001159755534410571
+            },
+            "edge": {
+              "pixel_frames": 16860,
+              "mae": 0.05707874531894864,
+              "rmse": 0.12747235379114602
+            },
+            "foreground": {
+              "pixel_frames": 93080,
+              "mae": 0.0011465408419182982,
+              "rmse": 0.0029946457451219466
+            },
+            "interior": {
+              "pixel_frames": 1915044,
+              "mae": 0.00041781499767671514,
+              "rmse": 0.0013097861149794355
+            },
+            "permanent_background": {
+              "pixel_frames": 1666152,
+              "mae": 0.0003468215516201403,
+              "rmse": 0.00045587027129630246
+            }
+          }
+        },
+        {
+          "arm": "cut-fresh",
+          "frames": 4,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 431,
+              "mae": 0.023671538905404098,
+              "rmse": 0.03089912273438739
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 431,
+              "mae": 0.023671538905404098,
+              "rmse": 0.03089912273438739
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 216,
+              "mae": 0.01281267330970293,
+              "rmse": 0.01806520146809974
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 216,
+              "mae": 0.01281267330970293,
+              "rmse": 0.01806520146809974
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 128,
+              "mae": 0.011400858561197916,
+              "rmse": 0.014838364946092522
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 1,
+              "mae": 0.007975260416666666,
+              "rmse": 0.009275201918331148
+            },
+            "age2to5_edge": {
+              "pixel_frames": 127,
+              "mae": 0.011427831774934383,
+              "rmse": 0.01487391526816362
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 809724,
+              "mae": 0.00017762058317221876,
+              "rmse": 0.00019191138533371593
+            },
+            "edge": {
+              "pixel_frames": 7568,
+              "mae": 0.0549787974340803,
+              "rmse": 0.13800542326904716
+            },
+            "foreground": {
+              "pixel_frames": 41332,
+              "mae": 0.00044214973534617547,
+              "rmse": 0.0009860806809381631
+            },
+            "interior": {
+              "pixel_frames": 851056,
+              "mae": 0.00019046758609288906,
+              "rmse": 0.0002868174842696824
+            },
+            "permanent_background": {
+              "pixel_frames": 808296,
+              "mae": 0.0001775700669119821,
+              "rmse": 0.00019151861116867638
+            }
+          }
+        }
+      ],
+      "reset": [
+        {
+          "frame": 37,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212682,
+              "components": 638046,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10292,
+              "components": 30876,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202390,
+              "components": 607170,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1974,
+              "components": 5922,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        },
+        {
+          "frame": 38,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212760,
+              "components": 638280,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10332,
+              "components": 30996,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202428,
+              "components": 607284,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1896,
+              "components": 5688,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        },
+        {
+          "frame": 39,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212682,
+              "components": 638046,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10292,
+              "components": 30876,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202390,
+              "components": 607170,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1974,
+              "components": 5922,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        },
+        {
+          "frame": 40,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212932,
+              "components": 638796,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10416,
+              "components": 31248,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202516,
+              "components": 607548,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1724,
+              "components": 5172,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        }
+      ]
+    },
+    {
+      "repeat": 2,
+      "arms": [
+        {
+          "arm": "a-correct",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5_edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6868992,
+              "mae": 0.0010921510354445624,
+              "rmse": 0.001200216652124888
+            },
+            "edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "foreground": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "interior": {
+              "pixel_frames": 6868992,
+              "mae": 0.0010921510354445624,
+              "rmse": 0.001200216652124888
+            },
+            "permanent_background": {
+              "pixel_frames": 6868992,
+              "mae": 0.0010921510354445624,
+              "rmse": 0.001200216652124888
+            }
+          }
+        },
+        {
+          "arm": "b-correct",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 4152,
+              "mae": 0.09035825637493979,
+              "rmse": 0.11249930921820038
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.09035825637493979,
+              "rmse": 0.11249930921820038
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 4152,
+              "mae": 0.05756879450039138,
+              "rmse": 0.08070357261175674
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.05756879450039138,
+              "rmse": 0.08070357261175674
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 16608,
+              "mae": 0.026545919664563013,
+              "rmse": 0.044958503759290974
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 11192,
+              "mae": 0.016082645513513186,
+              "rmse": 0.029902646989199397
+            },
+            "age2to5_edge": {
+              "pixel_frames": 5416,
+              "mae": 0.04816795886296583,
+              "rmse": 0.06595742964502524
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6477792,
+              "mae": 0.0005509322126714096,
+              "rmse": 0.0017028286250970056
+            },
+            "edge": {
+              "pixel_frames": 60544,
+              "mae": 0.059362748544597554,
+              "rmse": 0.11948159093045436
+            },
+            "foreground": {
+              "pixel_frames": 330656,
+              "mae": 0.0020012356680498386,
+              "rmse": 0.0043314469107789905
+            },
+            "interior": {
+              "pixel_frames": 6808448,
+              "mae": 0.0006213669930121877,
+              "rmse": 0.0019157146597002716
+            },
+            "permanent_background": {
+              "pixel_frames": 6210048,
+              "mae": 0.0004810090345047789,
+              "rmse": 0.0005857075781492753
+            }
+          }
+        },
+        {
+          "arm": "b-reverse-motion",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 4152,
+              "mae": 0.12202892658721198,
+              "rmse": 0.18011678549212254
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.12202892658721198,
+              "rmse": 0.18011678549212254
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 4152,
+              "mae": 0.02613417001282013,
+              "rmse": 0.060037824563037294
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.02613417001282013,
+              "rmse": 0.060037824563037294
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 16608,
+              "mae": 0.0013623785804155629,
+              "rmse": 0.004130219907604236
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 11192,
+              "mae": 0.0006669112435686949,
+              "rmse": 0.001679672207300259
+            },
+            "age2to5_edge": {
+              "pixel_frames": 5416,
+              "mae": 0.0027995407728066534,
+              "rmse": 0.0068176175582393495
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6477792,
+              "mae": 0.00047576196713569775,
+              "rmse": 0.0005821128890156588
+            },
+            "edge": {
+              "pixel_frames": 60544,
+              "mae": 0.06111835122864544,
+              "rmse": 0.14521860442466913
+            },
+            "foreground": {
+              "pixel_frames": 330656,
+              "mae": 0.0016120389921556978,
+              "rmse": 0.004518217681351371
+            },
+            "interior": {
+              "pixel_frames": 6808448,
+              "mae": 0.0005309458821755149,
+              "rmse": 0.0011462242026786646
+            },
+            "permanent_background": {
+              "pixel_frames": 6210048,
+              "mae": 0.00047639200469675483,
+              "rmse": 0.0005794627999633927
+            }
+          }
+        },
+        {
+          "arm": "b-negated-jitter",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 4152,
+              "mae": 0.14922692918134334,
+              "rmse": 0.22414026592943107
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.14922692918134334,
+              "rmse": 0.22414026592943107
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 4152,
+              "mae": 0.044460338281375446,
+              "rmse": 0.08201437518963559
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.044460338281375446,
+              "rmse": 0.08201437518963559
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 16608,
+              "mae": 0.020751583170416116,
+              "rmse": 0.057086420123090315
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 11192,
+              "mae": 0.009532153166161282,
+              "rmse": 0.020947382450285143
+            },
+            "age2to5_edge": {
+              "pixel_frames": 5416,
+              "mae": 0.04393619554257639,
+              "rmse": 0.0953228275662958
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6477792,
+              "mae": 0.0004967697841828843,
+              "rmse": 0.0011460620410455955
+            },
+            "edge": {
+              "pixel_frames": 60544,
+              "mae": 0.09752211409441765,
+              "rmse": 0.19755532089487007
+            },
+            "foreground": {
+              "pixel_frames": 330656,
+              "mae": 0.0012291053282937304,
+              "rmse": 0.00683959299781947
+            },
+            "interior": {
+              "pixel_frames": 6808448,
+              "mae": 0.0005323360603259224,
+              "rmse": 0.001876583927763792
+            },
+            "permanent_background": {
+              "pixel_frames": 6210048,
+              "mae": 0.00047011666611505734,
+              "rmse": 0.0005733208068417774
+            }
+          }
+        },
+        {
+          "arm": "cut-history",
+          "frames": 41,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 1165,
+              "mae": 0.07011603490477468,
+              "rmse": 0.09724346685479546
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 1165,
+              "mae": 0.07011603490477468,
+              "rmse": 0.09724346685479546
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 823,
+              "mae": 0.04537327311791211,
+              "rmse": 0.07078777026444687
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 823,
+              "mae": 0.04537327311791211,
+              "rmse": 0.07078777026444687
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 2723,
+              "mae": 0.027277940518270292,
+              "rmse": 0.04610651558448129
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 1792,
+              "mae": 0.014582372847057523,
+              "rmse": 0.027074253687085752
+            },
+            "age2to5_edge": {
+              "pixel_frames": 931,
+              "mae": 0.05171452190045426,
+              "rmse": 0.06933022747276658
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 1821964,
+              "mae": 0.00038058605046260635,
+              "rmse": 0.001159755534410571
+            },
+            "edge": {
+              "pixel_frames": 16860,
+              "mae": 0.05707874531894864,
+              "rmse": 0.12747235379114602
+            },
+            "foreground": {
+              "pixel_frames": 93080,
+              "mae": 0.0011465408419182982,
+              "rmse": 0.0029946457451219466
+            },
+            "interior": {
+              "pixel_frames": 1915044,
+              "mae": 0.00041781499767671514,
+              "rmse": 0.0013097861149794355
+            },
+            "permanent_background": {
+              "pixel_frames": 1666152,
+              "mae": 0.0003468215516201403,
+              "rmse": 0.00045587027129630246
+            }
+          }
+        },
+        {
+          "arm": "cut-fresh",
+          "frames": 4,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 431,
+              "mae": 0.023671538905404098,
+              "rmse": 0.03089912273438739
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 431,
+              "mae": 0.023671538905404098,
+              "rmse": 0.03089912273438739
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 216,
+              "mae": 0.01281267330970293,
+              "rmse": 0.01806520146809974
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 216,
+              "mae": 0.01281267330970293,
+              "rmse": 0.01806520146809974
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 128,
+              "mae": 0.011400858561197916,
+              "rmse": 0.014838364946092522
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 1,
+              "mae": 0.007975260416666666,
+              "rmse": 0.009275201918331148
+            },
+            "age2to5_edge": {
+              "pixel_frames": 127,
+              "mae": 0.011427831774934383,
+              "rmse": 0.01487391526816362
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 809724,
+              "mae": 0.00017762058317221876,
+              "rmse": 0.00019191138533371593
+            },
+            "edge": {
+              "pixel_frames": 7568,
+              "mae": 0.0549787974340803,
+              "rmse": 0.13800542326904716
+            },
+            "foreground": {
+              "pixel_frames": 41332,
+              "mae": 0.00044214973534617547,
+              "rmse": 0.0009860806809381631
+            },
+            "interior": {
+              "pixel_frames": 851056,
+              "mae": 0.00019046758609288906,
+              "rmse": 0.0002868174842696824
+            },
+            "permanent_background": {
+              "pixel_frames": 808296,
+              "mae": 0.0001775700669119821,
+              "rmse": 0.00019151861116867638
+            }
+          }
+        }
+      ],
+      "reset": [
+        {
+          "frame": 37,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212682,
+              "components": 638046,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10292,
+              "components": 30876,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202390,
+              "components": 607170,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1974,
+              "components": 5922,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        },
+        {
+          "frame": 38,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212760,
+              "components": 638280,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10332,
+              "components": 30996,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202428,
+              "components": 607284,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1896,
+              "components": 5688,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        },
+        {
+          "frame": 39,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212682,
+              "components": 638046,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10292,
+              "components": 30876,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202390,
+              "components": 607170,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1974,
+              "components": 5922,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        },
+        {
+          "frame": 40,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212932,
+              "components": 638796,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10416,
+              "components": 31248,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202516,
+              "components": 607548,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1724,
+              "components": 5172,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        }
+      ]
+    },
+    {
+      "repeat": 3,
+      "arms": [
+        {
+          "arm": "a-correct",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5_edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6868992,
+              "mae": 0.0010921510354445624,
+              "rmse": 0.001200216652124888
+            },
+            "edge": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "foreground": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "interior": {
+              "pixel_frames": 6868992,
+              "mae": 0.0010921510354445624,
+              "rmse": 0.001200216652124888
+            },
+            "permanent_background": {
+              "pixel_frames": 6868992,
+              "mae": 0.0010921510354445624,
+              "rmse": 0.001200216652124888
+            }
+          }
+        },
+        {
+          "arm": "b-correct",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 4152,
+              "mae": 0.09035825637493979,
+              "rmse": 0.11249930921820038
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.09035825637493979,
+              "rmse": 0.11249930921820038
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 4152,
+              "mae": 0.05756879450039138,
+              "rmse": 0.08070357261175674
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.05756879450039138,
+              "rmse": 0.08070357261175674
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 16608,
+              "mae": 0.026545919664563013,
+              "rmse": 0.044958503759290974
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 11192,
+              "mae": 0.016082645513513186,
+              "rmse": 0.029902646989199397
+            },
+            "age2to5_edge": {
+              "pixel_frames": 5416,
+              "mae": 0.04816795886296583,
+              "rmse": 0.06595742964502524
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6477792,
+              "mae": 0.0005509322126714096,
+              "rmse": 0.0017028286250970056
+            },
+            "edge": {
+              "pixel_frames": 60544,
+              "mae": 0.059362748544597554,
+              "rmse": 0.11948159093045436
+            },
+            "foreground": {
+              "pixel_frames": 330656,
+              "mae": 0.0020012356680498386,
+              "rmse": 0.0043314469107789905
+            },
+            "interior": {
+              "pixel_frames": 6808448,
+              "mae": 0.0006213669930121877,
+              "rmse": 0.0019157146597002716
+            },
+            "permanent_background": {
+              "pixel_frames": 6210048,
+              "mae": 0.0004810090345047789,
+              "rmse": 0.0005857075781492753
+            }
+          }
+        },
+        {
+          "arm": "b-reverse-motion",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 4152,
+              "mae": 0.12202892658721198,
+              "rmse": 0.18011678549212254
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.12202892658721198,
+              "rmse": 0.18011678549212254
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 4152,
+              "mae": 0.02613417001282013,
+              "rmse": 0.060037824563037294
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.02613417001282013,
+              "rmse": 0.060037824563037294
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 16608,
+              "mae": 0.0013623785804155629,
+              "rmse": 0.004130219907604236
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 11192,
+              "mae": 0.0006669112435686949,
+              "rmse": 0.001679672207300259
+            },
+            "age2to5_edge": {
+              "pixel_frames": 5416,
+              "mae": 0.0027995407728066534,
+              "rmse": 0.0068176175582393495
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6477792,
+              "mae": 0.00047576196713569775,
+              "rmse": 0.0005821128890156588
+            },
+            "edge": {
+              "pixel_frames": 60544,
+              "mae": 0.06111835122864544,
+              "rmse": 0.14521860442466913
+            },
+            "foreground": {
+              "pixel_frames": 330656,
+              "mae": 0.0016120389921556978,
+              "rmse": 0.004518217681351371
+            },
+            "interior": {
+              "pixel_frames": 6808448,
+              "mae": 0.0005309458821755149,
+              "rmse": 0.0011462242026786646
+            },
+            "permanent_background": {
+              "pixel_frames": 6210048,
+              "mae": 0.00047639200469675483,
+              "rmse": 0.0005794627999633927
+            }
+          }
+        },
+        {
+          "arm": "b-negated-jitter",
+          "frames": 64,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 4152,
+              "mae": 0.14922692918134334,
+              "rmse": 0.22414026592943107
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.14922692918134334,
+              "rmse": 0.22414026592943107
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 4152,
+              "mae": 0.044460338281375446,
+              "rmse": 0.08201437518963559
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 4152,
+              "mae": 0.044460338281375446,
+              "rmse": 0.08201437518963559
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 16608,
+              "mae": 0.020751583170416116,
+              "rmse": 0.057086420123090315
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 11192,
+              "mae": 0.009532153166161282,
+              "rmse": 0.020947382450285143
+            },
+            "age2to5_edge": {
+              "pixel_frames": 5416,
+              "mae": 0.04393619554257639,
+              "rmse": 0.0953228275662958
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 6477792,
+              "mae": 0.0004967697841828843,
+              "rmse": 0.0011460620410455955
+            },
+            "edge": {
+              "pixel_frames": 60544,
+              "mae": 0.09752211409441765,
+              "rmse": 0.19755532089487007
+            },
+            "foreground": {
+              "pixel_frames": 330656,
+              "mae": 0.0012291053282937304,
+              "rmse": 0.00683959299781947
+            },
+            "interior": {
+              "pixel_frames": 6808448,
+              "mae": 0.0005323360603259224,
+              "rmse": 0.001876583927763792
+            },
+            "permanent_background": {
+              "pixel_frames": 6210048,
+              "mae": 0.00047011666611505734,
+              "rmse": 0.0005733208068417774
+            }
+          }
+        },
+        {
+          "arm": "cut-history",
+          "frames": 41,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 1165,
+              "mae": 0.07011603490477468,
+              "rmse": 0.09724346685479546
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 1165,
+              "mae": 0.07011603490477468,
+              "rmse": 0.09724346685479546
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 823,
+              "mae": 0.04537327311791211,
+              "rmse": 0.07078777026444687
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 823,
+              "mae": 0.04537327311791211,
+              "rmse": 0.07078777026444687
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 2723,
+              "mae": 0.027277940518270292,
+              "rmse": 0.04610651558448129
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 1792,
+              "mae": 0.014582372847057523,
+              "rmse": 0.027074253687085752
+            },
+            "age2to5_edge": {
+              "pixel_frames": 931,
+              "mae": 0.05171452190045426,
+              "rmse": 0.06933022747276658
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 1821964,
+              "mae": 0.00038058605046260635,
+              "rmse": 0.001159755534410571
+            },
+            "edge": {
+              "pixel_frames": 16860,
+              "mae": 0.05707874531894864,
+              "rmse": 0.12747235379114602
+            },
+            "foreground": {
+              "pixel_frames": 93080,
+              "mae": 0.0011465408419182982,
+              "rmse": 0.0029946457451219466
+            },
+            "interior": {
+              "pixel_frames": 1915044,
+              "mae": 0.00041781499767671514,
+              "rmse": 0.0013097861149794355
+            },
+            "permanent_background": {
+              "pixel_frames": 1666152,
+              "mae": 0.0003468215516201403,
+              "rmse": 0.00045587027129630246
+            }
+          }
+        },
+        {
+          "arm": "cut-fresh",
+          "frames": 4,
+          "late_summary": {
+            "age0": {
+              "pixel_frames": 431,
+              "mae": 0.023671538905404098,
+              "rmse": 0.03089912273438739
+            },
+            "age0_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age0_edge": {
+              "pixel_frames": 431,
+              "mae": 0.023671538905404098,
+              "rmse": 0.03089912273438739
+            },
+            "age0_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1": {
+              "pixel_frames": 216,
+              "mae": 0.01281267330970293,
+              "rmse": 0.01806520146809974
+            },
+            "age1_2to8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age1_edge": {
+              "pixel_frames": 216,
+              "mae": 0.01281267330970293,
+              "rmse": 0.01806520146809974
+            },
+            "age1_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "age2to5": {
+              "pixel_frames": 128,
+              "mae": 0.011400858561197916,
+              "rmse": 0.014838364946092522
+            },
+            "age2to5_2to8": {
+              "pixel_frames": 1,
+              "mae": 0.007975260416666666,
+              "rmse": 0.009275201918331148
+            },
+            "age2to5_edge": {
+              "pixel_frames": 127,
+              "mae": 0.011427831774934383,
+              "rmse": 0.01487391526816362
+            },
+            "age2to5_over8": {
+              "pixel_frames": 0,
+              "mae": null,
+              "rmse": null
+            },
+            "background": {
+              "pixel_frames": 809724,
+              "mae": 0.00017762058317221876,
+              "rmse": 0.00019191138533371593
+            },
+            "edge": {
+              "pixel_frames": 7568,
+              "mae": 0.0549787974340803,
+              "rmse": 0.13800542326904716
+            },
+            "foreground": {
+              "pixel_frames": 41332,
+              "mae": 0.00044214973534617547,
+              "rmse": 0.0009860806809381631
+            },
+            "interior": {
+              "pixel_frames": 851056,
+              "mae": 0.00019046758609288906,
+              "rmse": 0.0002868174842696824
+            },
+            "permanent_background": {
+              "pixel_frames": 808296,
+              "mae": 0.0001775700669119821,
+              "rmse": 0.00019151861116867638
+            }
+          }
+        }
+      ],
+      "reset": [
+        {
+          "frame": 37,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212682,
+              "components": 638046,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10292,
+              "components": 30876,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202390,
+              "components": 607170,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1974,
+              "components": 5922,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        },
+        {
+          "frame": 38,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212760,
+              "components": 638280,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10332,
+              "components": 30996,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202428,
+              "components": 607284,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1896,
+              "components": 5688,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        },
+        {
+          "frame": 39,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212682,
+              "components": 638046,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10292,
+              "components": 30876,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202390,
+              "components": 607170,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1974,
+              "components": 5922,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        },
+        {
+          "frame": 40,
+          "rgba": {
+            "pixels": 230400,
+            "components": 921600,
+            "mae": 0.0,
+            "rmse": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0,
+            "signed_mean": 0.0
+          },
+          "rgb": {
+            "interior": {
+              "pixels": 212932,
+              "components": 638796,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "foreground": {
+              "pixels": 10416,
+              "components": 31248,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "background": {
+              "pixels": 202516,
+              "components": 607548,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            },
+            "edge": {
+              "pixels": 1724,
+              "components": 5172,
+              "mae": 0.0,
+              "rmse": 0.0,
+              "p95": 0.0,
+              "maximum": 0.0,
+              "signed_mean": 0.0
+            }
+          },
+          "inputs_identical": true
+        }
+      ]
+    }
+  ],
+  "repeat_all_bit_identical": true
+}

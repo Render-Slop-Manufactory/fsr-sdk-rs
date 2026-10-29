@@ -1,0 +1,96 @@
+{
+  "groups": {
+    "stationary": {
+      "windows": 36,
+      "correct_maximum": {
+        "x_rms": 0.029564533904553936,
+        "y_rms": 0.035958809258538636,
+        "radial_rms": 0.04655083631470111
+      },
+      "negative_controls": {
+        "negated-x": {
+          "minimum_ratio": 3.082436665913959,
+          "window": "stationary-p00:32-63",
+          "minimum_excess": 0.05746432796963036
+        },
+        "negated-y": {
+          "minimum_ratio": 4.448250396943964,
+          "window": "stationary-p24:32-63",
+          "minimum_excess": 0.1182136259979511
+        },
+        "negated-jitter": {
+          "minimum_ratio": 3.923590207801083,
+          "window": "stationary-p08:32-63",
+          "minimum_excess": 0.1302097173940347
+        },
+        "lagged-jitter": {
+          "minimum_ratio": 3.240530329306847,
+          "window": "stationary-p16:32-63",
+          "minimum_excess": 0.09814311120559072
+        },
+        "zero-jitter": {
+          "minimum_ratio": 7.628667046218518,
+          "window": "stationary-p08:32-63",
+          "minimum_excess": 0.3014451269472858
+        }
+      },
+      "other_metric_improvements": {
+        "foreground": 0,
+        "background": 0,
+        "edge": 36,
+        "temporal": 123,
+        "texture": 0
+      }
+    },
+    "moving": {
+      "windows": 9,
+      "correct_maximum": {
+        "x_rms": 0.01688067511462244,
+        "y_rms": 0.028397787237063255,
+        "radial_rms": 0.0330362151628625
+      },
+      "negative_controls": {
+        "negated-x": {
+          "minimum_ratio": 7.452525519015037,
+          "window": "moving-p00:32-63",
+          "minimum_excess": 0.10623491944384114
+        },
+        "negated-y": {
+          "minimum_ratio": 4.647053371280923,
+          "window": "moving-p00:32-63",
+          "minimum_excess": 0.09972846695614358
+        },
+        "negated-jitter": {
+          "minimum_ratio": 4.402869469548108,
+          "window": "moving-p00:32-63",
+          "minimum_excess": 0.10811430645084083
+        },
+        "lagged-jitter": {
+          "minimum_ratio": 4.108780783514761,
+          "window": "moving-p00:32-63",
+          "minimum_excess": 0.09839872934207966
+        },
+        "zero-jitter": {
+          "minimum_ratio": 2.1769405889282387,
+          "window": "moving-p00:32-63",
+          "minimum_excess": 0.03457804101345314
+        }
+      },
+      "other_metric_improvements": {
+        "foreground": 6,
+        "background": 0,
+        "edge": 0,
+        "temporal": 0,
+        "texture": 0
+      }
+    }
+  },
+  "passed": true,
+  "output_frames": 11520,
+  "estimator_controls": 44,
+  "repeated_equal": [
+    null,
+    true,
+    true
+  ]
+}

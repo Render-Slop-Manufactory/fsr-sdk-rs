@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "purpose": "Extend the confirmed textured-slow workload to 256 continuous frames; expose late failures without whole-run averaging or budget retuning",
+  "render": [320,180], "display": [640,360], "frames": 256, "repeats": 3,
+  "input_only_frames": [0,1,31,32,63,64,95,96,127,128,159,160,191,192,223,224,255],
+  "order_seeds": [419,827,1237],
+  "windows": [[32,63],[64,95],[96,127],[128,159],[160,191],[192,223],[224,255]],
+  "scenes": [{"name":"textured-slow","scene":2,"velocity":[0.375,0.25],"controls":["correct","reverse"]}],
+  "geometry_and_inputs": "Unchanged temporal-diagnosis analytic sinusoidal foreground/background, camera, colour/depth/exposure, half truncation and motion convention. Rectangle [100+vx*t,164+vx*t) x [50+vy*t,94+vy*t), entirely inside render viewport [4,316) x [4,176) throughout. At frame 255: [195.625,259.625) x [113.75,157.75). The original 32-entry Halton jitter repeats eight times; motion and history never restart at cycle boundaries.",
+  "history": "One context per arm. Only frame 0 requests reset. All frame resources remain live until fenced completion and context destruction. No chunked execution, extra resets or resource-lifetime changes. Test-only frame count is bounded to 64..256 in multiples of 32. Record native retained-resource memory at each arm's end; this is workload memory, not an algorithm allocation benchmark.",
+  "reference": "Same analytic point/interior/true-flow residual and exact area/silhouette references, 2-display-pixel silhouette and 8-display-pixel viewport exclusions, uncovered background ages 2..5. All complete input bytes and outputs checked before quality analysis; all window regions must be populated.",
+  "calibration_source": "Native limits are copied unchanged from temporal-quality-protocol.json, derived from the earlier 64-frame diagnosis. The first window reproduces that range; later windows are a new duration extension. No post-observation budget edits.",
+  "native_budgets": {
+    "foreground": 0.006599587519502123,
+    "background": 0.003138194689362351,
+    "edge": 0.032131707505351895,
+    "temporal": 0.0008303100348939459,
+    "disocclusion": 0.014176143044673558
+  },
+  "minimum_motion_ratio": 1.1,
+  "acceptance": "Each correct-arm window must pass all five limits separately in all three process blocks. Reversed motion must be at least 1.1 times correct foreground and temporal MAE in every window. No compensation by other properties or time windows. Retain per-frame MAE/texture trajectories and window scores, including failed outcomes; texture NRMSE remains diagnostic.",
+  "evaluator_validation": "Reuse temporal-quality's 13 analytic known-defect/severity controls before native execution; do not infer correctness from a favourable GPU ranking alone.",
+  "execution": "34 input-only frames before AMD dispatch prerequisites. Three independently ordered 512-frame children, each with a 360s native watchdog. Full exact input-byte validation, fence/device/debug/finite/sentinel checks and pinned loaded DLL identities. Freeze source and protocol before running. Standard compaction removes full raw payloads after analysis.",
+  "limits": "At 60 Hz this is 4.267 seconds of synthetic steady motion. No cuts, reset-recovery or jitter-sign confirmation; no fast trajectory that leaves the viewport, universal quality guarantee, hardware population inference or memory-performance claim. Repeating jitter phases is intentional, not independent randomized sampling."
+}

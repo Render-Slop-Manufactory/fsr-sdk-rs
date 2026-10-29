@@ -1,0 +1,30 @@
+{
+  "accessed": "2026-10-11",
+  "sources": [
+    {
+      "title": "NIST: Full factorial designs",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri333.htm",
+      "used_for": "Cross all three selected factors without aliasing their interactions"
+    },
+    {
+      "title": "NIST: Randomized block designs",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm",
+      "used_for": "Independent process blocks, fixed deployment, seeded shuffled treatment order"
+    },
+    {
+      "title": "NIST: Confirmatory runs",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section4/pri46.htm",
+      "used_for": "Separate calibration from three fresh confirmation runs"
+    },
+    {
+      "title": "NASA/NPARC: Verification Assessment",
+      "url": "https://www.grc.nasa.gov/www/wind/valid/tutorial/verassess.html",
+      "used_for": "Independent analytic verification and error cancellation concerns"
+    },
+    {
+      "title": "Terry et al.: Validation in Fusion Research, v1, 2008",
+      "url": "https://arxiv.org/html/0801.2787v1",
+      "used_for": "Validate synthetic diagnostics; qualify their domain and examine sensitivity/fortuitous agreement"
+    }
+  ]
+}

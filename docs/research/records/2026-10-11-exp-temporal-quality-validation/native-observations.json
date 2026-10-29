@@ -1,0 +1,146 @@
+[
+  {
+    "repeat": 1,
+    "frames": 576,
+    "native_log_counts": {
+      "Temporal diagnosis begin:": 576,
+      "DX12 list close: HRESULT=0x00000000": 576,
+      "DX12 submission:": 576,
+      "DX12 signal: HRESULT=0x00000000": 576,
+      "DX12 fence completion: HRESULT=0x00000000": 576,
+      "DX12 mapped readback: HRESULT=0x00000000": 576,
+      "Temporal diagnosis cleanup complete:": 9
+    },
+    "all_dispatch_ok": true,
+    "all_fences_one": true,
+    "all_debug_device_zero": true,
+    "all_pixels_finite_written": true,
+    "order_seed": 419,
+    "arm_order": [
+      "flat-slow-reverse",
+      "flat-fast-reverse",
+      "textured-slow-reverse",
+      "flat-slow-correct",
+      "textured-slow-correct",
+      "textured-slow-reset-all",
+      "textured-fast-correct",
+      "textured-fast-reverse",
+      "flat-fast-correct"
+    ],
+    "elapsed_seconds": 24.609,
+    "input_audit": {
+      "status": "passed",
+      "frames": 576,
+      "complete_input_bytes_checked": 530843904,
+      "input_digest": "c84961e6c125a2da8d10ebb634da943d1766b71f1c2554dc40b6d29af5ca82b1"
+    },
+    "decoded_bytes": 1592527104,
+    "compressed_bytes": 538518159,
+    "loaded_modules": {
+      "amd_fidelityfx_loader_dx12.dll": {
+        "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+        "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+      },
+      "amd_fidelityfx_upscaler_dx12.dll": {
+        "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+        "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+      }
+    }
+  },
+  {
+    "repeat": 2,
+    "frames": 576,
+    "native_log_counts": {
+      "Temporal diagnosis begin:": 576,
+      "DX12 list close: HRESULT=0x00000000": 576,
+      "DX12 submission:": 576,
+      "DX12 signal: HRESULT=0x00000000": 576,
+      "DX12 fence completion: HRESULT=0x00000000": 576,
+      "DX12 mapped readback: HRESULT=0x00000000": 576,
+      "Temporal diagnosis cleanup complete:": 9
+    },
+    "all_dispatch_ok": true,
+    "all_fences_one": true,
+    "all_debug_device_zero": true,
+    "all_pixels_finite_written": true,
+    "order_seed": 827,
+    "arm_order": [
+      "flat-fast-correct",
+      "textured-fast-reverse",
+      "flat-slow-reverse",
+      "textured-slow-reset-all",
+      "flat-slow-correct",
+      "textured-fast-correct",
+      "flat-fast-reverse",
+      "textured-slow-correct",
+      "textured-slow-reverse"
+    ],
+    "elapsed_seconds": 24.547,
+    "input_audit": {
+      "status": "passed",
+      "frames": 576,
+      "complete_input_bytes_checked": 530843904,
+      "input_digest": "d72fdc91e2dd985510ec18d2f537be1542adb0b12d5600eabaa3f690ffb1ea1d"
+    },
+    "decoded_bytes": 1592527104,
+    "compressed_bytes": 538518159,
+    "loaded_modules": {
+      "amd_fidelityfx_loader_dx12.dll": {
+        "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+        "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+      },
+      "amd_fidelityfx_upscaler_dx12.dll": {
+        "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+        "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+      }
+    }
+  },
+  {
+    "repeat": 3,
+    "frames": 576,
+    "native_log_counts": {
+      "Temporal diagnosis begin:": 576,
+      "DX12 list close: HRESULT=0x00000000": 576,
+      "DX12 submission:": 576,
+      "DX12 signal: HRESULT=0x00000000": 576,
+      "DX12 fence completion: HRESULT=0x00000000": 576,
+      "DX12 mapped readback: HRESULT=0x00000000": 576,
+      "Temporal diagnosis cleanup complete:": 9
+    },
+    "all_dispatch_ok": true,
+    "all_fences_one": true,
+    "all_debug_device_zero": true,
+    "all_pixels_finite_written": true,
+    "order_seed": 1237,
+    "arm_order": [
+      "flat-slow-correct",
+      "textured-slow-correct",
+      "flat-fast-reverse",
+      "textured-fast-correct",
+      "textured-slow-reverse",
+      "flat-slow-reverse",
+      "textured-fast-reverse",
+      "textured-slow-reset-all",
+      "flat-fast-correct"
+    ],
+    "elapsed_seconds": 23.391,
+    "input_audit": {
+      "status": "passed",
+      "frames": 576,
+      "complete_input_bytes_checked": 530843904,
+      "input_digest": "4742159288b973de3236b84093acdfd13c59f450ad113ec145fc765147d2aea2"
+    },
+    "decoded_bytes": 1592527104,
+    "compressed_bytes": 538518159,
+    "loaded_modules": {
+      "amd_fidelityfx_loader_dx12.dll": {
+        "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+        "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+      },
+      "amd_fidelityfx_upscaler_dx12.dll": {
+        "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+        "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+      }
+    }
+  }
+]

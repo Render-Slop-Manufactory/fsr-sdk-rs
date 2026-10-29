@@ -1,0 +1,2848 @@
+[
+  {
+    "attempt": "attempt-1",
+    "run": {
+      "schema_version": 1,
+      "profile": "experiment-v01-calibration",
+      "started_utc": "2026-10-11T02:21:58.030299+00:00",
+      "status": "failed",
+      "input_identity": "6e92561715ec23f0d7f08b064fdd378bc9c28da2060c34cfe5f71f5088e9d2d9",
+      "required": [
+        "equipment.toolchain",
+        "experiment.v01-calibration.protocol",
+        "windows.environment",
+        "abi.headers",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "native.sdk",
+        "native.helper",
+        "experiment.v01-calibration.build.fsr_sdk",
+        "experiment.v01-calibration.input-only",
+        "experiment.v01-calibration.lifecycle.explicit",
+        "experiment.v01-calibration.lifecycle.drop",
+        "experiment.v01-calibration.dispatch.single",
+        "experiment.v01-calibration.dispatch.temporal",
+        "experiment.v01-calibration.dispatch.semantics",
+        "experiment.v01-calibration.r1",
+        "experiment.v01-calibration.r2",
+        "experiment.v01-calibration.r3",
+        "experiment.v01-calibration.audit"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "experiment.v01-calibration.protocol": "passed",
+        "windows.environment": "passed",
+        "abi.headers": "passed",
+        "abi.common": "passed",
+        "abi.creation": "passed",
+        "abi.dispatch": "passed",
+        "native.sdk": "passed",
+        "native.helper": "passed",
+        "experiment.v01-calibration.build.fsr_sdk": "passed",
+        "experiment.v01-calibration.input-only": "passed",
+        "experiment.v01-calibration.lifecycle.explicit": "passed",
+        "experiment.v01-calibration.lifecycle.drop": "passed",
+        "experiment.v01-calibration.dispatch.single": "passed",
+        "experiment.v01-calibration.dispatch.temporal": "passed",
+        "experiment.v01-calibration.dispatch.semantics": "passed",
+        "experiment.v01-calibration.r1": "passed",
+        "experiment.v01-calibration.r2": "passed",
+        "experiment.v01-calibration.r3": "passed",
+        "experiment.v01-calibration.audit": "failed"
+      },
+      "finished_utc": "2026-10-11T02:24:18.039857+00:00",
+      "inputs_unchanged": true,
+      "completed": 20
+    },
+    "cases": [
+      {
+        "id": "abi.common",
+        "claim": "Independent native common ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+              "/Fo<run>\\common.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.453,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.creation",
+        "claim": "Independent native creation ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+              "/Fo<run>\\creation.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.469,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.dispatch",
+        "claim": "Independent native dispatch ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+              "/Fo<run>\\dispatch.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.093,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.headers",
+        "claim": "Four hash-verified pinned SDK headers",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "equipment.toolchain",
+        "claim": "Actual compiler, Cargo, Python and host identity",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\rustc.EXE",
+              "-vV"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.078,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          },
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "-V"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.063,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.audit",
+        "claim": "Independent RGB, geometry, age, control, reset and repeat audit",
+        "execution": "completed",
+        "evaluation": "failed",
+        "reason": "command: completed, exit=1; expectation not met",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+              "<repo>\\tools\\verification\\v01.py",
+              "audit",
+              "--run",
+              "<run>",
+              "--output",
+              "<run>\\analysis\\v01"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 1,
+            "execution": "completed",
+            "elapsed_seconds": 0.282,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.build.fsr_sdk",
+        "claim": "Discover and stage exact fsr_sdk test executable",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "test",
+              "--manifest-path",
+              "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+              "--no-run",
+              "--message-format=json",
+              "--features",
+              "dx12,movable",
+              "--lib",
+              "--locked",
+              "--offline"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 3.078,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.semantics",
+        "claim": "dispatch.semantics",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_semantic_comparisons",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 2.0,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Gate C: PASSED",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.single",
+        "claim": "dispatch.single",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_dispatch_readback",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 2.235,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Gate A: PASSED",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.temporal",
+        "claim": "dispatch.temporal",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_temporal_smoke",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.469,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Gate B: PASSED",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.input-only",
+        "claim": "Input-only validation",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_input_only",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.094,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 input-only: COMPLETED frames=21",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.lifecycle.drop",
+        "claim": "lifecycle.drop",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::tests::native_lifecycle_drop",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.328,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Production owner: destroy A/B OK",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.lifecycle.explicit",
+        "claim": "lifecycle.explicit",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::tests::native_lifecycle",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.36,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Production owner: destroy A/B OK",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.protocol",
+        "claim": "Freeze bounded protocol, jitter and reproducible source snapshot",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.r1",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_calibration",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 12.5,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 calibration: COMPLETED frames=301",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.r2",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_calibration",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 12.266,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 calibration: COMPLETED frames=301",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.r3",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_calibration",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 12.719,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 calibration: COMPLETED frames=301",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "native.helper",
+        "claim": "DX12 submission, fencing and readback equipment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/MT",
+              "/LD",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+              "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+              "/Fo<run>\\native\\",
+              "/link",
+              "/OUT:<run>\\native\\m6_gpu.dll",
+              "/IMPLIB:<run>\\native\\m6_gpu.lib",
+              "d3d12.lib",
+              "dxgi.lib"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.125,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "native.sdk",
+        "claim": "Pinned, signed local loader/provider deployment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1",
+              "-Mode",
+              "signatures",
+              "-Directory",
+              "<run>\\native"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.516,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "windows.environment",
+        "claim": "x64 Windows developer-tool environment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 4.078,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "attempt": "attempt-2",
+    "run": {
+      "schema_version": 1,
+      "profile": "experiment-v01-calibration",
+      "started_utc": "2026-10-11T02:26:00.490065+00:00",
+      "status": "failed",
+      "input_identity": "c6f667e60ff6cd05ec5ce9fd03e961efd0b411d4998dfbcfee419e6d3180d658",
+      "required": [
+        "equipment.toolchain",
+        "experiment.v01-calibration.protocol",
+        "windows.environment",
+        "abi.headers",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "native.sdk",
+        "native.helper",
+        "experiment.v01-calibration.build.fsr_sdk",
+        "experiment.v01-calibration.input-only",
+        "experiment.v01-calibration.lifecycle.explicit",
+        "experiment.v01-calibration.lifecycle.drop",
+        "experiment.v01-calibration.dispatch.single",
+        "experiment.v01-calibration.dispatch.temporal",
+        "experiment.v01-calibration.dispatch.semantics",
+        "experiment.v01-calibration.r1",
+        "experiment.v01-calibration.r2",
+        "experiment.v01-calibration.r3",
+        "experiment.v01-calibration.audit"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "experiment.v01-calibration.protocol": "passed",
+        "windows.environment": "passed",
+        "abi.headers": "passed",
+        "abi.common": "passed",
+        "abi.creation": "passed",
+        "abi.dispatch": "passed",
+        "native.sdk": "passed",
+        "native.helper": "passed",
+        "experiment.v01-calibration.build.fsr_sdk": "passed",
+        "experiment.v01-calibration.input-only": "failed",
+        "experiment.v01-calibration.lifecycle.explicit": "blocked",
+        "experiment.v01-calibration.lifecycle.drop": "blocked",
+        "experiment.v01-calibration.dispatch.single": "blocked",
+        "experiment.v01-calibration.dispatch.temporal": "blocked",
+        "experiment.v01-calibration.dispatch.semantics": "blocked",
+        "experiment.v01-calibration.r1": "blocked",
+        "experiment.v01-calibration.r2": "blocked",
+        "experiment.v01-calibration.r3": "blocked",
+        "experiment.v01-calibration.audit": "blocked"
+      },
+      "finished_utc": "2026-10-11T02:26:09.471185+00:00",
+      "inputs_unchanged": true,
+      "completed": 20
+    },
+    "cases": [
+      {
+        "id": "abi.common",
+        "claim": "Independent native common ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+              "/Fo<run>\\common.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.344,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.creation",
+        "claim": "Independent native creation ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+              "/Fo<run>\\creation.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.453,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.dispatch",
+        "claim": "Independent native dispatch ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+              "/Fo<run>\\dispatch.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.093,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.headers",
+        "claim": "Four hash-verified pinned SDK headers",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "equipment.toolchain",
+        "claim": "Actual compiler, Cargo, Python and host identity",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\rustc.EXE",
+              "-vV"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.046,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          },
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "-V"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.047,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.audit",
+        "claim": "Independent RGB, geometry, age, control, reset and repeat audit",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.r1, experiment.v01-calibration.r2, experiment.v01-calibration.r3",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.build.fsr_sdk",
+        "claim": "Discover and stage exact fsr_sdk test executable",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "test",
+              "--manifest-path",
+              "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+              "--no-run",
+              "--message-format=json",
+              "--features",
+              "dx12,movable",
+              "--lib",
+              "--locked",
+              "--offline"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.203,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.semantics",
+        "claim": "dispatch.semantics",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.input-only",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.single",
+        "claim": "dispatch.single",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.input-only",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.temporal",
+        "claim": "dispatch.temporal",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.input-only",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.input-only",
+        "claim": "Input-only validation",
+        "execution": "failed",
+        "evaluation": "failed",
+        "reason": "cannot access local variable 'name' where it is not associated with a value",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.lifecycle.drop",
+        "claim": "lifecycle.drop",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.input-only",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.lifecycle.explicit",
+        "claim": "lifecycle.explicit",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.input-only",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.protocol",
+        "claim": "Freeze bounded protocol, jitter and reproducible source snapshot",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.r1",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.input-only, experiment.v01-calibration.dispatch.single, experiment.v01-calibration.dispatch.temporal, experiment.v01-calibration.dispatch.semantics",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.r2",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.input-only, experiment.v01-calibration.dispatch.single, experiment.v01-calibration.dispatch.temporal, experiment.v01-calibration.dispatch.semantics",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.r3",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.input-only, experiment.v01-calibration.dispatch.single, experiment.v01-calibration.dispatch.temporal, experiment.v01-calibration.dispatch.semantics",
+        "commands": []
+      },
+      {
+        "id": "native.helper",
+        "claim": "DX12 submission, fencing and readback equipment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/MT",
+              "/LD",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+              "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+              "/Fo<run>\\native\\",
+              "/link",
+              "/OUT:<run>\\native\\m6_gpu.dll",
+              "/IMPLIB:<run>\\native\\m6_gpu.lib",
+              "d3d12.lib",
+              "dxgi.lib"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.016,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "native.sdk",
+        "claim": "Pinned, signed local loader/provider deployment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1",
+              "-Mode",
+              "signatures",
+              "-Directory",
+              "<run>\\native"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.312,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "windows.environment",
+        "claim": "x64 Windows developer-tool environment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 3.938,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "attempt": "attempt-3",
+    "run": {
+      "schema_version": 1,
+      "profile": "experiment-v01-calibration",
+      "started_utc": "2026-10-11T02:26:52.849935+00:00",
+      "status": "failed",
+      "input_identity": "79acbb902ff7b3d9bb4949c15a7c203af47e9016872bbdd3a8cc69522fb11166",
+      "required": [
+        "equipment.toolchain",
+        "experiment.v01-calibration.protocol",
+        "windows.environment",
+        "abi.headers",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "native.sdk",
+        "native.helper",
+        "experiment.v01-calibration.build.fsr_sdk",
+        "experiment.v01-calibration.input-only",
+        "experiment.v01-calibration.lifecycle.explicit",
+        "experiment.v01-calibration.lifecycle.drop",
+        "experiment.v01-calibration.dispatch.single",
+        "experiment.v01-calibration.dispatch.temporal",
+        "experiment.v01-calibration.dispatch.semantics",
+        "experiment.v01-calibration.r1",
+        "experiment.v01-calibration.r2",
+        "experiment.v01-calibration.r3",
+        "experiment.v01-calibration.audit"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "experiment.v01-calibration.protocol": "passed",
+        "windows.environment": "passed",
+        "abi.headers": "passed",
+        "abi.common": "passed",
+        "abi.creation": "passed",
+        "abi.dispatch": "passed",
+        "native.sdk": "passed",
+        "native.helper": "passed",
+        "experiment.v01-calibration.build.fsr_sdk": "passed",
+        "experiment.v01-calibration.input-only": "passed",
+        "experiment.v01-calibration.lifecycle.explicit": "passed",
+        "experiment.v01-calibration.lifecycle.drop": "passed",
+        "experiment.v01-calibration.dispatch.single": "passed",
+        "experiment.v01-calibration.dispatch.temporal": "passed",
+        "experiment.v01-calibration.dispatch.semantics": "passed",
+        "experiment.v01-calibration.r1": "failed",
+        "experiment.v01-calibration.r2": "failed",
+        "experiment.v01-calibration.r3": "failed",
+        "experiment.v01-calibration.audit": "blocked"
+      },
+      "finished_utc": "2026-10-11T02:28:54.590895+00:00",
+      "inputs_unchanged": true,
+      "completed": 20
+    },
+    "cases": [
+      {
+        "id": "abi.common",
+        "claim": "Independent native common ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+              "/Fo<run>\\common.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.313,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.creation",
+        "claim": "Independent native creation ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+              "/Fo<run>\\creation.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.406,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.dispatch",
+        "claim": "Independent native dispatch ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+              "/Fo<run>\\dispatch.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.094,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.headers",
+        "claim": "Four hash-verified pinned SDK headers",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "equipment.toolchain",
+        "claim": "Actual compiler, Cargo, Python and host identity",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\rustc.EXE",
+              "-vV"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.063,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          },
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "-V"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.047,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.audit",
+        "claim": "Independent RGB, geometry, age, control, reset and repeat audit",
+        "execution": "blocked",
+        "evaluation": "blocked",
+        "reason": "Unmet prerequisites: experiment.v01-calibration.r1, experiment.v01-calibration.r2, experiment.v01-calibration.r3",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.build.fsr_sdk",
+        "claim": "Discover and stage exact fsr_sdk test executable",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "test",
+              "--manifest-path",
+              "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+              "--no-run",
+              "--message-format=json",
+              "--features",
+              "dx12,movable",
+              "--lib",
+              "--locked",
+              "--offline"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.203,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.semantics",
+        "claim": "dispatch.semantics",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_semantic_comparisons",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.969,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Gate C: PASSED",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.single",
+        "claim": "dispatch.single",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_dispatch_readback",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 2.219,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Gate A: PASSED",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.temporal",
+        "claim": "dispatch.temporal",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_temporal_smoke",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.437,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Gate B: PASSED",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.input-only",
+        "claim": "Input-only validation",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_input_only",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.031,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 input-only: COMPLETED frames=21",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.lifecycle.drop",
+        "claim": "lifecycle.drop",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::tests::native_lifecycle_drop",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.313,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Production owner: destroy A/B OK",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.lifecycle.explicit",
+        "claim": "lifecycle.explicit",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::tests::native_lifecycle",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.344,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Production owner: destroy A/B OK",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.protocol",
+        "claim": "Freeze bounded protocol, jitter and reproducible source snapshot",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.r1",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "completed",
+        "evaluation": "failed",
+        "reason": "Actual loaded module differs from pinned staged deployment",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_calibration",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 12.547,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 calibration: COMPLETED frames=301",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.r2",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "completed",
+        "evaluation": "failed",
+        "reason": "Actual loaded module differs from pinned staged deployment",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_calibration",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 12.328,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 calibration: COMPLETED frames=301",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.r3",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "completed",
+        "evaluation": "failed",
+        "reason": "Actual loaded module differs from pinned staged deployment",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_calibration",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 12.859,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 calibration: COMPLETED frames=301",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "native.helper",
+        "claim": "DX12 submission, fencing and readback equipment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/MT",
+              "/LD",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+              "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+              "/Fo<run>\\native\\",
+              "/link",
+              "/OUT:<run>\\native\\m6_gpu.dll",
+              "/IMPLIB:<run>\\native\\m6_gpu.lib",
+              "d3d12.lib",
+              "dxgi.lib"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.0,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "native.sdk",
+        "claim": "Pinned, signed local loader/provider deployment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1",
+              "-Mode",
+              "signatures",
+              "-Directory",
+              "<run>\\native"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.312,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "windows.environment",
+        "claim": "x64 Windows developer-tool environment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 3.796,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "attempt": "attempt-4",
+    "run": {
+      "schema_version": 1,
+      "profile": "experiment-v01-calibration",
+      "started_utc": "2026-10-11T02:29:33.857718+00:00",
+      "status": "passed",
+      "input_identity": "3c2739d77d78d502deffcc28669c83579dd248e04c7b8fd438b0daf729e57473",
+      "required": [
+        "equipment.toolchain",
+        "experiment.v01-calibration.protocol",
+        "windows.environment",
+        "abi.headers",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "native.sdk",
+        "native.helper",
+        "experiment.v01-calibration.build.fsr_sdk",
+        "experiment.v01-calibration.input-only",
+        "experiment.v01-calibration.lifecycle.explicit",
+        "experiment.v01-calibration.lifecycle.drop",
+        "experiment.v01-calibration.dispatch.single",
+        "experiment.v01-calibration.dispatch.temporal",
+        "experiment.v01-calibration.dispatch.semantics",
+        "experiment.v01-calibration.r1",
+        "experiment.v01-calibration.r2",
+        "experiment.v01-calibration.r3",
+        "experiment.v01-calibration.audit"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "experiment.v01-calibration.protocol": "passed",
+        "windows.environment": "passed",
+        "abi.headers": "passed",
+        "abi.common": "passed",
+        "abi.creation": "passed",
+        "abi.dispatch": "passed",
+        "native.sdk": "passed",
+        "native.helper": "passed",
+        "experiment.v01-calibration.build.fsr_sdk": "passed",
+        "experiment.v01-calibration.input-only": "passed",
+        "experiment.v01-calibration.lifecycle.explicit": "passed",
+        "experiment.v01-calibration.lifecycle.drop": "passed",
+        "experiment.v01-calibration.dispatch.single": "passed",
+        "experiment.v01-calibration.dispatch.temporal": "passed",
+        "experiment.v01-calibration.dispatch.semantics": "passed",
+        "experiment.v01-calibration.r1": "passed",
+        "experiment.v01-calibration.r2": "passed",
+        "experiment.v01-calibration.r3": "passed",
+        "experiment.v01-calibration.audit": "passed"
+      },
+      "finished_utc": "2026-10-11T02:36:48.979784+00:00",
+      "inputs_unchanged": true,
+      "completed": 20
+    },
+    "cases": [
+      {
+        "id": "abi.common",
+        "claim": "Independent native common ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+              "/Fo<run>\\common.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.375,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.creation",
+        "claim": "Independent native creation ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+              "/Fo<run>\\creation.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.5,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.dispatch",
+        "claim": "Independent native dispatch ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+              "/Fo<run>\\dispatch.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.109,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.headers",
+        "claim": "Four hash-verified pinned SDK headers",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "equipment.toolchain",
+        "claim": "Actual compiler, Cargo, Python and host identity",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\rustc.EXE",
+              "-vV"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.078,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          },
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "-V"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.062,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.audit",
+        "claim": "Independent RGB, geometry, age, control, reset and repeat audit",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+              "<repo>\\tools\\verification\\v01.py",
+              "audit",
+              "--run",
+              "<run>",
+              "--output",
+              "<run>\\analysis\\v01"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 286.703,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.build.fsr_sdk",
+        "claim": "Discover and stage exact fsr_sdk test executable",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "test",
+              "--manifest-path",
+              "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+              "--no-run",
+              "--message-format=json",
+              "--features",
+              "dx12,movable",
+              "--lib",
+              "--locked",
+              "--offline"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.234,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.semantics",
+        "claim": "dispatch.semantics",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_semantic_comparisons",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 2.344,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Gate C: PASSED",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.single",
+        "claim": "dispatch.single",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_dispatch_readback",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 2.797,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Gate A: PASSED",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.dispatch.temporal",
+        "claim": "dispatch.temporal",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_temporal_smoke",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.5,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Gate B: PASSED",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.input-only",
+        "claim": "Input-only validation",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_input_only",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.172,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 input-only: COMPLETED frames=21",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.lifecycle.drop",
+        "claim": "lifecycle.drop",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::tests::native_lifecycle_drop",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.344,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Production owner: destroy A/B OK",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.lifecycle.explicit",
+        "claim": "lifecycle.explicit",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::tests::native_lifecycle",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.39,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Production owner: destroy A/B OK",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.protocol",
+        "claim": "Freeze bounded protocol, jitter and reproducible source snapshot",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "experiment.v01-calibration.r1",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_calibration",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 13.328,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 calibration: COMPLETED frames=301",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.r2",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_calibration",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 13.265,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 calibration: COMPLETED frames=301",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.v01-calibration.r3",
+        "claim": "Independent 301-frame calibration child",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.v01-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_v01_calibration",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 13.406,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "V01 calibration: COMPLETED frames=301",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "native.helper",
+        "claim": "DX12 submission, fencing and readback equipment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/MT",
+              "/LD",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+              "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+              "/Fo<run>\\native\\",
+              "/link",
+              "/OUT:<run>\\native\\m6_gpu.dll",
+              "/IMPLIB:<run>\\native\\m6_gpu.lib",
+              "d3d12.lib",
+              "dxgi.lib"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.187,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "native.sdk",
+        "claim": "Pinned, signed local loader/provider deployment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1",
+              "-Mode",
+              "signatures",
+              "-Directory",
+              "<run>\\native"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.516,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "windows.environment",
+        "claim": "x64 Windows developer-tool environment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 4.531,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "attempt": "check-fast-sandbox",
+    "run": {
+      "schema_version": 1,
+      "profile": "fast",
+      "started_utc": "2026-10-11T02:24:02.766145+00:00",
+      "status": "failed",
+      "input_identity": "36939c5dd5e0c9a5132c2e807dac8f221bde2eb97d5805be32130724b302365b",
+      "required": [
+        "equipment.toolchain",
+        "rust.format",
+        "rust.default.test"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "rust.format": "passed",
+        "rust.default.test": "failed"
+      },
+      "finished_utc": "2026-10-11T02:24:11.090315+00:00",
+      "inputs_unchanged": true,
+      "completed": 3
+    },
+    "cases": [
+      {
+        "id": "equipment.toolchain",
+        "claim": "Actual compiler, Cargo, Python and host identity",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\rustc.EXE",
+              "-vV"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.069,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          },
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "-V"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.062,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "rust.default.test",
+        "claim": "Workspace test (default)",
+        "execution": "completed",
+        "evaluation": "failed",
+        "reason": "command: completed, exit=101; expectation not met",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "test",
+              "--workspace",
+              "--locked",
+              "--offline"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 101,
+            "execution": "completed",
+            "elapsed_seconds": 7.391,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "rust.format",
+        "claim": "Repository Rust formatting",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "fmt",
+              "--all",
+              "--",
+              "--check"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.363,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "attempt": "check-fast",
+    "run": {
+      "schema_version": 1,
+      "profile": "fast",
+      "started_utc": "2026-10-11T02:24:49.783353+00:00",
+      "status": "passed",
+      "input_identity": "36939c5dd5e0c9a5132c2e807dac8f221bde2eb97d5805be32130724b302365b",
+      "required": [
+        "equipment.toolchain",
+        "rust.format",
+        "rust.default.test"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "rust.format": "passed",
+        "rust.default.test": "passed"
+      },
+      "finished_utc": "2026-10-11T02:24:57.466532+00:00",
+      "inputs_unchanged": true,
+      "completed": 3
+    },
+    "cases": [
+      {
+        "id": "equipment.toolchain",
+        "claim": "Actual compiler, Cargo, Python and host identity",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\rustc.EXE",
+              "-vV"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.054,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          },
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "-V"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.05,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "rust.default.test",
+        "claim": "Workspace test (default)",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "test",
+              "--workspace",
+              "--locked",
+              "--offline"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 7.08,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "rust.format",
+        "claim": "Repository Rust formatting",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "fmt",
+              "--all",
+              "--",
+              "--check"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.272,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "attempt": "check-renamed-inputs",
+    "run": {
+      "schema_version": 1,
+      "profile": "temporal-calibration-rename-input-check",
+      "started_utc": "2026-10-11T02:43:51.222186+00:00",
+      "status": "passed",
+      "input_identity": "6f0d322b52b532cc90e699703f79d7d8a088eb05bab4a3438879e7148480ed42",
+      "required": [
+        "equipment.toolchain",
+        "experiment.temporal-calibration.protocol",
+        "windows.environment",
+        "abi.headers",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "native.sdk",
+        "native.helper",
+        "experiment.temporal-calibration.build.fsr_sdk",
+        "experiment.temporal-calibration.input-only"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "experiment.temporal-calibration.protocol": "passed",
+        "windows.environment": "passed",
+        "abi.headers": "passed",
+        "abi.common": "passed",
+        "abi.creation": "passed",
+        "abi.dispatch": "passed",
+        "native.sdk": "passed",
+        "native.helper": "passed",
+        "experiment.temporal-calibration.build.fsr_sdk": "passed",
+        "experiment.temporal-calibration.input-only": "passed"
+      },
+      "finished_utc": "2026-10-11T02:44:04.164433+00:00",
+      "inputs_unchanged": true,
+      "completed": 11
+    },
+    "cases": [
+      {
+        "id": "abi.common",
+        "claim": "Independent native common ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+              "/Fo<run>\\common.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.313,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.creation",
+        "claim": "Independent native creation ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+              "/Fo<run>\\creation.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.407,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.dispatch",
+        "claim": "Independent native dispatch ABI assertions",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/c",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+              "/Fo<run>\\dispatch.obj"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.093,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "abi.headers",
+        "claim": "Four hash-verified pinned SDK headers",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "equipment.toolchain",
+        "claim": "Actual compiler, Cargo, Python and host identity",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\rustc.EXE",
+              "-vV"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.094,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          },
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "-V"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 0.063,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.temporal-calibration.build.fsr_sdk",
+        "claim": "Discover and stage exact fsr_sdk test executable",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<user-home>\\.cargo\\bin\\cargo.EXE",
+              "test",
+              "--manifest-path",
+              "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+              "--no-run",
+              "--message-format=json",
+              "--features",
+              "dx12,movable",
+              "--lib",
+              "--locked",
+              "--offline"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 2.484,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.temporal-calibration.input-only",
+        "claim": "Input-only validation",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "<run>\\native\\experiment.temporal-calibration-fsr_sdk.exe",
+              "--ignored",
+              "--exact",
+              "upscaler::dx12::m6::native_temporal_input_only",
+              "--nocapture",
+              "--test-threads=1"
+            ],
+            "cwd": "<run>\\native",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.062,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [
+                "Temporal calibration input-only: COMPLETED frames=21",
+                "1 passed; 0 failed"
+              ],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "experiment.temporal-calibration.protocol",
+        "claim": "Freeze bounded protocol, jitter and reproducible source snapshot",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": []
+      },
+      {
+        "id": "native.helper",
+        "claim": "DX12 submission, fencing and readback equipment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+              "/nologo",
+              "/std:c++17",
+              "/W4",
+              "/WX",
+              "/MT",
+              "/LD",
+              "/I<repo>\\external\\FidelityFX-SDK\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+              "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+              "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+              "/Fo<run>\\native\\",
+              "/link",
+              "/OUT:<run>\\native\\m6_gpu.dll",
+              "/IMPLIB:<run>\\native\\m6_gpu.lib",
+              "d3d12.lib",
+              "dxgi.lib"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.031,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "native.sdk",
+        "claim": "Pinned, signed local loader/provider deployment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1",
+              "-Mode",
+              "signatures",
+              "-Directory",
+              "<run>\\native"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 1.297,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "windows.environment",
+        "claim": "x64 Windows developer-tool environment",
+        "execution": "completed",
+        "evaluation": "passed",
+        "commands": [
+          {
+            "args": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+              "-NoProfile",
+              "-NonInteractive",
+              "-File",
+              "<repo>\\tools\\verification\\windows.ps1"
+            ],
+            "cwd": "<repo>",
+            "exit_code": 0,
+            "execution": "completed",
+            "elapsed_seconds": 3.812,
+            "expectation": {
+              "diagnostic": null,
+              "markers": [],
+              "observation_only": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

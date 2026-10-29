@@ -1,0 +1,35 @@
+{
+  "format": {
+    "command": "cargo fmt --all -- --check",
+    "exit": 0
+  },
+  "clippy": {
+    "command": "cargo clippy -p fsr-sdk --all-targets --features dx12,movable --locked --offline -- -D warnings",
+    "exit": 0,
+    "warning": "Incremental-cache hard-link copy fallback"
+  },
+  "infrastructure": {
+    "command": "python -m unittest discover -s tools/verification/tests -v",
+    "final_tests": 69,
+    "exit": 0,
+    "elapsed_seconds": 89.669,
+    "earlier_attempts": [
+      "Six initial reset tests passed",
+      "Restricted full suite failed on temporary-file permissions; permitted 68-test rerun passed",
+      "Additional calibration-defect guard: seven focused tests passed before criteria selection"
+    ]
+  },
+  "exploration_provenance_verified": true,
+  "collector_first_attempt": "SyntaxError before any files were created; corrected and rerun",
+  "selection_counterexample_validation": "Added after exploration completion, before selecting any thresholds; generator/evaluation and fixed selection/recovery/sensitivity rules unchanged",
+  "relative_links": {
+    "checked": 106,
+    "passed": true
+  },
+  "repository_size": {
+    "observed_bytes": 13169164,
+    "violations": [],
+    "passed": true
+  },
+  "finalization_first_attempt": "Checks/inventories succeeded; final console print used wrong inventory shape. Corrected and rerun."
+}

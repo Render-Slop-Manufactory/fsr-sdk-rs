@@ -1,0 +1,67 @@
+[
+  {
+    "path": "attempts.json",
+    "bytes": 2389,
+    "sha256": "1b34973e4e47954b0d5b53faf340f99239f3252125b3d272eea7418a1f185442"
+  },
+  {
+    "path": "checks.json",
+    "bytes": 94135,
+    "sha256": "a64b9fe723afe67b41f673702e6c8e91bdcd40c0834b8a06795f415c98b3fe0a"
+  },
+  {
+    "path": "contact-sheet.png",
+    "bytes": 136932,
+    "sha256": "d05f050c546faa3e63b219730d1e2664bba6c73900af3b0b4d35cea0c14000a0"
+  },
+  {
+    "path": "diagnostic-summary.json",
+    "bytes": 59913,
+    "sha256": "d0ea7d9574d7d309ba1c9b67264bc48ac627b330d2b9758616e051d8a70297bd"
+  },
+  {
+    "path": "inputs.json",
+    "bytes": 19990,
+    "sha256": "bcc9eff7e8e9ea7f1cf5d9023a8061bc9e158139a9c2a197d19829b17e643a59"
+  },
+  {
+    "path": "jitter.json",
+    "bytes": 1608,
+    "sha256": "46564e083f66166b0af2d6bc3a4763c260a319619ca7c36034d7c1393082f854"
+  },
+  {
+    "path": "jitter.txt",
+    "bytes": 933,
+    "sha256": "c90b7bbbed7a4e2b792030751575013f90c6608866889f6c9dfa04942a1da776"
+  },
+  {
+    "path": "package-inspection.json",
+    "bytes": 229,
+    "sha256": "d839b4deebdab1d87aac9fe7b678199d4982802b044637560cc0eafa66405756"
+  },
+  {
+    "path": "protocol.json",
+    "bytes": 4591,
+    "sha256": "c69d977f67b176226f8c6701bea1fe841ec8df19425f381c9140290f4d27a2da"
+  },
+  {
+    "path": "README.md",
+    "bytes": 2951,
+    "sha256": "ebfa28474edfd78a535380abf3dc46b877efcbd097b8270b2c4958226383ca26"
+  },
+  {
+    "path": "reanalysis-provenance.json",
+    "bytes": 406,
+    "sha256": "aaf850c90c6595147c2e96a9d0a420cca01426c428784325ef08c208f60e8f25"
+  },
+  {
+    "path": "retention.json",
+    "bytes": 470,
+    "sha256": "7a03fea738703a7382ad7d2ae1234f68c4f97a77b29844ec7e095c1617ab3080"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 67391,
+    "sha256": "f5091c13d57c0c7a038609457bbb927fa340060e4f473ce9f756d36f110167c4"
+  }
+]

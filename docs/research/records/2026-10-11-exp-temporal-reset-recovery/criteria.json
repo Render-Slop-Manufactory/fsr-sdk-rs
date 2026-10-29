@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "exploration_input_identity": "677508b8b0dedec95a5e14ef3d6e406c3c7398269b59153b3f0b25991cb8a91d",
+  "exploration_summary_sha256": "5b2dde966bc1c337e06746f308c31845eca13c9685512d939b7811c87df24836",
+  "native_budgets": {
+    "foreground": 0.006163200279799676,
+    "background": 0.00317679374934296,
+    "edge": 0.03198541234908095,
+    "temporal": 0.0010748253857487948,
+    "ghost": 0.003174403099487923
+  },
+  "pair_maximum": 1e-06,
+  "minimum_history_difference": 0.0001,
+  "rule": "1.25 times largest fresh-context window MAE plus .000001; fixed RGBA reset/fresh tolerance .000001 from the cut onwards; first-eight-frame no-reset/fresh interior MAE must exceed reset/fresh by .0001",
+  "claim": "Reset clears pre-cut history to the fresh-context result. No prediction that no-reset loses every analytic quality metric.",
+  "known_defect_validation": {
+    "properties": {
+      "foreground": {
+        "defect_mae": 0.23530732633651863,
+        "limit": 0.006163200279799676,
+        "passed": true
+      },
+      "background": {
+        "defect_mae": 0.234153612462032,
+        "limit": 0.00317679374934296,
+        "passed": true
+      },
+      "edge": {
+        "defect_mae": 0.08773681985564549,
+        "limit": 0.03198541234908095,
+        "passed": true
+      },
+      "temporal": {
+        "defect_mae": 0.02000000000000001,
+        "limit": 0.0010748253857487948,
+        "passed": true
+      },
+      "ghost": {
+        "defect_mae": 0.05807641283965082,
+        "limit": 0.003174403099487923,
+        "passed": true
+      }
+    },
+    "passed": true,
+    "scope": "Known analytic missing-object, constant-image, blur, flicker and 25% old-history defects; not AMD outputs"
+  }
+}

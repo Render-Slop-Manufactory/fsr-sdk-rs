@@ -1,0 +1,28 @@
+{
+  "infrastructure": {
+    "focused_tests": 4,
+    "full_tests": 56,
+    "status": "passed",
+    "sandbox_attempt": "exit 1: denied temporary-file access; permitted host rerun exit 0"
+  },
+  "clippy": {
+    "command": "cargo clippy -p fsr-sdk --all-targets --features dx12,movable --locked --offline -- -D warnings",
+    "exit": 0,
+    "warning": "Incremental-cache hard linking failed; copy fallback succeeded"
+  },
+  "protocol_sha256": "04ed563f01814063d952bb2c6197c90e7399dbbbfc4c6bf9af342fbcdc669554",
+  "input_identity": "2f3f973ba101e1c989b93c00f2d4c246e02aab71b79b4b6f25d42c1789e83074",
+  "rust_format": {
+    "command": "cargo fmt --all -- --check",
+    "exit": 0
+  },
+  "whitespace": {
+    "command": "git diff --check",
+    "exit": 0
+  },
+  "repository_size": {
+    "bytes": 11724061,
+    "maximum_bytes": 15000000,
+    "status": "passed"
+  }
+}

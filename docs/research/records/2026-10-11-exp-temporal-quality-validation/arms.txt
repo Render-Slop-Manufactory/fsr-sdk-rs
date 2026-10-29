@@ -1,0 +1,9 @@
+flat-slow-correct 1 0.375 0.25 0 1 0
+flat-slow-reverse 1 0.375 0.25 1 1 0
+flat-fast-correct 1 2 1 0 1 0
+flat-fast-reverse 1 2 1 1 1 0
+textured-slow-correct 2 0.375 0.25 0 1 0
+textured-slow-reverse 2 0.375 0.25 1 1 0
+textured-slow-reset-all 2 0.375 0.25 0 1 1
+textured-fast-correct 2 2 1 0 1 0
+textured-fast-reverse 2 2 1 1 1 0

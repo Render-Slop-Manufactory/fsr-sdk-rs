@@ -1,0 +1,538 @@
+[
+  {
+    "attempt": "20261011T125730Z-experiment-temporal-diagnosis-5ef387746cb3",
+    "run": {
+      "schema_version": 1,
+      "profile": "experiment-temporal-diagnosis",
+      "started_utc": "2026-10-11T12:57:30.781777+00:00",
+      "status": "failed",
+      "input_identity": "6c35214db789f607de3edb6030f8deed7923696604e84ec02977b4be4d43c081",
+      "required": [
+        "equipment.toolchain",
+        "experiment.temporal-diagnosis.protocol",
+        "windows.environment",
+        "abi.headers",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "native.sdk",
+        "native.helper",
+        "experiment.temporal-diagnosis.build.fsr_sdk",
+        "experiment.temporal-diagnosis.input-only",
+        "experiment.temporal-diagnosis.lifecycle.explicit",
+        "experiment.temporal-diagnosis.lifecycle.drop",
+        "experiment.temporal-diagnosis.dispatch.single",
+        "experiment.temporal-diagnosis.dispatch.temporal",
+        "experiment.temporal-diagnosis.dispatch.semantics",
+        "experiment.temporal-diagnosis.r1",
+        "experiment.temporal-diagnosis.r2",
+        "experiment.temporal-diagnosis.audit"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "experiment.temporal-diagnosis.protocol": "passed",
+        "windows.environment": "passed",
+        "abi.headers": "passed",
+        "abi.common": "passed",
+        "abi.creation": "passed",
+        "abi.dispatch": "passed",
+        "native.sdk": "passed",
+        "native.helper": "passed",
+        "experiment.temporal-diagnosis.build.fsr_sdk": "passed",
+        "experiment.temporal-diagnosis.input-only": "failed",
+        "experiment.temporal-diagnosis.lifecycle.explicit": "blocked",
+        "experiment.temporal-diagnosis.lifecycle.drop": "blocked",
+        "experiment.temporal-diagnosis.dispatch.single": "blocked",
+        "experiment.temporal-diagnosis.dispatch.temporal": "blocked",
+        "experiment.temporal-diagnosis.dispatch.semantics": "blocked",
+        "experiment.temporal-diagnosis.r1": "blocked",
+        "experiment.temporal-diagnosis.r2": "blocked",
+        "experiment.temporal-diagnosis.audit": "blocked"
+      },
+      "finished_utc": "2026-10-11T12:57:42.851843+00:00",
+      "inputs_unchanged": true,
+      "completed": 19
+    },
+    "cases": [
+      {
+        "id": "abi.common",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "abi.creation",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "abi.dispatch",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "abi.headers",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "equipment.toolchain",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.audit",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.r1, experiment.temporal-diagnosis.r2"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.build.fsr_sdk",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.dispatch.semantics",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.dispatch.single",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.dispatch.temporal",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.input-only",
+        "evaluation": "failed",
+        "execution": "failed",
+        "reason": "cannot access local variable 'name' where it is not associated with a value"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.lifecycle.drop",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.lifecycle.explicit",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.protocol",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.r1",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only, experiment.temporal-diagnosis.dispatch.single, experiment.temporal-diagnosis.dispatch.temporal, experiment.temporal-diagnosis.dispatch.semantics"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.r2",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only, experiment.temporal-diagnosis.dispatch.single, experiment.temporal-diagnosis.dispatch.temporal, experiment.temporal-diagnosis.dispatch.semantics"
+      },
+      {
+        "id": "native.helper",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "native.sdk",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "windows.environment",
+        "evaluation": "passed",
+        "execution": "completed"
+      }
+    ]
+  },
+  {
+    "attempt": "20261011T125818Z-experiment-temporal-diagnosis-ce269c959e9e",
+    "run": {
+      "schema_version": 1,
+      "profile": "experiment-temporal-diagnosis",
+      "started_utc": "2026-10-11T12:58:19.142648+00:00",
+      "status": "failed",
+      "input_identity": "1f789adf130c81c41d78eab67f5fa95ff3cf3ecd4c0e3368113726259a1759b1",
+      "required": [
+        "equipment.toolchain",
+        "experiment.temporal-diagnosis.protocol",
+        "windows.environment",
+        "abi.headers",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "native.sdk",
+        "native.helper",
+        "experiment.temporal-diagnosis.build.fsr_sdk",
+        "experiment.temporal-diagnosis.input-only",
+        "experiment.temporal-diagnosis.lifecycle.explicit",
+        "experiment.temporal-diagnosis.lifecycle.drop",
+        "experiment.temporal-diagnosis.dispatch.single",
+        "experiment.temporal-diagnosis.dispatch.temporal",
+        "experiment.temporal-diagnosis.dispatch.semantics",
+        "experiment.temporal-diagnosis.r1",
+        "experiment.temporal-diagnosis.r2",
+        "experiment.temporal-diagnosis.audit"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "experiment.temporal-diagnosis.protocol": "passed",
+        "windows.environment": "passed",
+        "abi.headers": "passed"
+      },
+      "finished_utc": "2026-10-11T12:58:24.173753+00:00",
+      "inputs_unchanged": true,
+      "completed": 4
+    },
+    "cases": [
+      {
+        "id": "abi.headers",
+        "evaluation": "passed",
+        "execution": "running"
+      },
+      {
+        "id": "equipment.toolchain",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.protocol",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "windows.environment",
+        "evaluation": "passed",
+        "execution": "completed"
+      }
+    ]
+  },
+  {
+    "attempt": "20261011T125839Z-experiment-temporal-diagnosis-238de74070ca",
+    "run": {
+      "schema_version": 1,
+      "profile": "experiment-temporal-diagnosis",
+      "started_utc": "2026-10-11T12:58:39.739440+00:00",
+      "status": "failed",
+      "input_identity": "1f789adf130c81c41d78eab67f5fa95ff3cf3ecd4c0e3368113726259a1759b1",
+      "required": [
+        "equipment.toolchain",
+        "experiment.temporal-diagnosis.protocol",
+        "windows.environment",
+        "abi.headers",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "native.sdk",
+        "native.helper",
+        "experiment.temporal-diagnosis.build.fsr_sdk",
+        "experiment.temporal-diagnosis.input-only",
+        "experiment.temporal-diagnosis.lifecycle.explicit",
+        "experiment.temporal-diagnosis.lifecycle.drop",
+        "experiment.temporal-diagnosis.dispatch.single",
+        "experiment.temporal-diagnosis.dispatch.temporal",
+        "experiment.temporal-diagnosis.dispatch.semantics",
+        "experiment.temporal-diagnosis.r1",
+        "experiment.temporal-diagnosis.r2",
+        "experiment.temporal-diagnosis.audit"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "experiment.temporal-diagnosis.protocol": "passed",
+        "windows.environment": "passed",
+        "abi.headers": "passed",
+        "abi.common": "passed",
+        "abi.creation": "passed",
+        "abi.dispatch": "passed",
+        "native.sdk": "passed",
+        "native.helper": "passed",
+        "experiment.temporal-diagnosis.build.fsr_sdk": "passed",
+        "experiment.temporal-diagnosis.input-only": "failed",
+        "experiment.temporal-diagnosis.lifecycle.explicit": "blocked",
+        "experiment.temporal-diagnosis.lifecycle.drop": "blocked",
+        "experiment.temporal-diagnosis.dispatch.single": "blocked",
+        "experiment.temporal-diagnosis.dispatch.temporal": "blocked",
+        "experiment.temporal-diagnosis.dispatch.semantics": "blocked",
+        "experiment.temporal-diagnosis.r1": "blocked",
+        "experiment.temporal-diagnosis.r2": "blocked",
+        "experiment.temporal-diagnosis.audit": "blocked"
+      },
+      "finished_utc": "2026-10-11T12:58:52.711810+00:00",
+      "inputs_unchanged": true,
+      "completed": 19
+    },
+    "cases": [
+      {
+        "id": "abi.common",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "abi.creation",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "abi.dispatch",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "abi.headers",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "equipment.toolchain",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.audit",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.r1, experiment.temporal-diagnosis.r2"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.build.fsr_sdk",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.dispatch.semantics",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.dispatch.single",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.dispatch.temporal",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.input-only",
+        "evaluation": "failed",
+        "execution": "completed",
+        "reason": "Input mismatch ('flat-fast-zero-motion', 1) bytes=921604 first=756889"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.lifecycle.drop",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.lifecycle.explicit",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.protocol",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.r1",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only, experiment.temporal-diagnosis.dispatch.single, experiment.temporal-diagnosis.dispatch.temporal, experiment.temporal-diagnosis.dispatch.semantics"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.r2",
+        "evaluation": "blocked",
+        "execution": "blocked",
+        "reason": "Unmet prerequisites: experiment.temporal-diagnosis.input-only, experiment.temporal-diagnosis.dispatch.single, experiment.temporal-diagnosis.dispatch.temporal, experiment.temporal-diagnosis.dispatch.semantics"
+      },
+      {
+        "id": "native.helper",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "native.sdk",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "windows.environment",
+        "evaluation": "passed",
+        "execution": "completed"
+      }
+    ]
+  },
+  {
+    "attempt": "20261011T125928Z-experiment-temporal-diagnosis-075141f7cb06",
+    "run": {
+      "schema_version": 1,
+      "profile": "experiment-temporal-diagnosis",
+      "started_utc": "2026-10-11T12:59:29.080330+00:00",
+      "status": "passed",
+      "input_identity": "b068e894bf1bec4d02a4d84393003b74c0c4916a47e2ce7272481d9024c29d47",
+      "required": [
+        "equipment.toolchain",
+        "experiment.temporal-diagnosis.protocol",
+        "windows.environment",
+        "abi.headers",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "native.sdk",
+        "native.helper",
+        "experiment.temporal-diagnosis.build.fsr_sdk",
+        "experiment.temporal-diagnosis.input-only",
+        "experiment.temporal-diagnosis.lifecycle.explicit",
+        "experiment.temporal-diagnosis.lifecycle.drop",
+        "experiment.temporal-diagnosis.dispatch.single",
+        "experiment.temporal-diagnosis.dispatch.temporal",
+        "experiment.temporal-diagnosis.dispatch.semantics",
+        "experiment.temporal-diagnosis.r1",
+        "experiment.temporal-diagnosis.r2",
+        "experiment.temporal-diagnosis.audit"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "experiment.temporal-diagnosis.protocol": "passed",
+        "windows.environment": "passed",
+        "abi.headers": "passed",
+        "abi.common": "passed",
+        "abi.creation": "passed",
+        "abi.dispatch": "passed",
+        "native.sdk": "passed",
+        "native.helper": "passed",
+        "experiment.temporal-diagnosis.build.fsr_sdk": "passed",
+        "experiment.temporal-diagnosis.input-only": "passed",
+        "experiment.temporal-diagnosis.lifecycle.explicit": "passed",
+        "experiment.temporal-diagnosis.lifecycle.drop": "passed",
+        "experiment.temporal-diagnosis.dispatch.single": "passed",
+        "experiment.temporal-diagnosis.dispatch.temporal": "passed",
+        "experiment.temporal-diagnosis.dispatch.semantics": "passed",
+        "experiment.temporal-diagnosis.r1": "passed",
+        "experiment.temporal-diagnosis.r2": "passed",
+        "experiment.temporal-diagnosis.audit": "passed"
+      },
+      "finished_utc": "2026-10-11T13:20:47.367145+00:00",
+      "inputs_unchanged": true,
+      "completed": 19
+    },
+    "cases": [
+      {
+        "id": "abi.common",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "abi.creation",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "abi.dispatch",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "abi.headers",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "equipment.toolchain",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.audit",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.build.fsr_sdk",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.dispatch.semantics",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.dispatch.single",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.dispatch.temporal",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.input-only",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.lifecycle.drop",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.lifecycle.explicit",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.protocol",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.r1",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "experiment.temporal-diagnosis.r2",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "native.helper",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "native.sdk",
+        "evaluation": "passed",
+        "execution": "completed"
+      },
+      {
+        "id": "windows.environment",
+        "evaluation": "passed",
+        "execution": "completed"
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "infrastructure": {
+    "full_suite": "52 passed on permitted host rerun; initial sandbox temporary-file denial",
+    "diagnosis_after_repairs": "5 passed"
+  },
+  "rust_format": "cargo fmt --all -- --check passed",
+  "rust_clippy": "passed, nonfatal incremental hard-link fallback",
+  "package": {
+    "files": 66,
+    "sha256": "10685f8a28c98608e2c3b06e527f236d485bca0bcd840d90e5c8a74e767ee3d6",
+    "license_texts_byte_identical": true,
+    "amd_binaries": false
+  },
+  "protocol_sha256": "054ccb6e0f1a6995bfdc63fc435d084758f3f08c23633f6c493446f5ea0e20ae",
+  "primary_input_identity": "b068e894bf1bec4d02a4d84393003b74c0c4916a47e2ce7272481d9024c29d47"
+}

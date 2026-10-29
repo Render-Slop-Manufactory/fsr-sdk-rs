@@ -1,0 +1,212 @@
+[
+  {
+    "repeat": 1,
+    "frames": 320,
+    "native_log_counts": {
+      "Temporal diagnosis begin:": 320,
+      "DX12 list close: HRESULT=0x00000000": 320,
+      "DX12 submission:": 320,
+      "DX12 signal: HRESULT=0x00000000": 320,
+      "DX12 fence completion: HRESULT=0x00000000": 320,
+      "DX12 mapped readback: HRESULT=0x00000000": 320,
+      "Temporal diagnosis cleanup complete:": 3
+    },
+    "pre_cut_reset_no_reset_outputs_identical": true,
+    "full_outputs_identical_repeat1": null,
+    "resets_by_arm": {
+      "cut-no-reset": [
+        0
+      ],
+      "cut-reset": [
+        0,
+        64
+      ],
+      "cut-fresh": [
+        64
+      ]
+    },
+    "all_dispatch_ok": true,
+    "all_fences_one": true,
+    "all_debug_device_zero": true,
+    "all_pixels_finite_written": true,
+    "order_seed": 419,
+    "arm_order": [
+      "cut-no-reset",
+      "cut-reset",
+      "cut-fresh"
+    ],
+    "elapsed_seconds": 14.766,
+    "input_audit": {
+      "status": "passed",
+      "frames": 320,
+      "complete_input_bytes_checked": 294913280,
+      "input_digest": "0f75b3e87090ad65a11c0dae0ff78aff49476b227642a81a441568793d3d0703"
+    },
+    "decoded_bytes": 884737280,
+    "compressed_bytes": 509309149,
+    "gpu_memory_by_order": [
+      {
+        "usage_bytes": 703160320,
+        "budget_bytes": 16165400576
+      },
+      {
+        "usage_bytes": 703160320,
+        "budget_bytes": 16165400576
+      },
+      {
+        "usage_bytes": 400908288,
+        "budget_bytes": 16165400576
+      }
+    ],
+    "loaded_modules": {
+      "amd_fidelityfx_loader_dx12.dll": {
+        "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+        "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+      },
+      "amd_fidelityfx_upscaler_dx12.dll": {
+        "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+        "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+      }
+    }
+  },
+  {
+    "repeat": 2,
+    "frames": 320,
+    "native_log_counts": {
+      "Temporal diagnosis begin:": 320,
+      "DX12 list close: HRESULT=0x00000000": 320,
+      "DX12 submission:": 320,
+      "DX12 signal: HRESULT=0x00000000": 320,
+      "DX12 fence completion: HRESULT=0x00000000": 320,
+      "DX12 mapped readback: HRESULT=0x00000000": 320,
+      "Temporal diagnosis cleanup complete:": 3
+    },
+    "pre_cut_reset_no_reset_outputs_identical": true,
+    "full_outputs_identical_repeat1": true,
+    "resets_by_arm": {
+      "cut-reset": [
+        0,
+        64
+      ],
+      "cut-fresh": [
+        64
+      ],
+      "cut-no-reset": [
+        0
+      ]
+    },
+    "all_dispatch_ok": true,
+    "all_fences_one": true,
+    "all_debug_device_zero": true,
+    "all_pixels_finite_written": true,
+    "order_seed": 827,
+    "arm_order": [
+      "cut-reset",
+      "cut-fresh",
+      "cut-no-reset"
+    ],
+    "elapsed_seconds": 14.969,
+    "input_audit": {
+      "status": "passed",
+      "frames": 320,
+      "complete_input_bytes_checked": 294913280,
+      "input_digest": "f2d92e8f93f436621bc11a4f7af5b76d8f9bc29481978de4a748077f079c05da"
+    },
+    "decoded_bytes": 884737280,
+    "compressed_bytes": 509309149,
+    "gpu_memory_by_order": [
+      {
+        "usage_bytes": 703160320,
+        "budget_bytes": 16165400576
+      },
+      {
+        "usage_bytes": 400908288,
+        "budget_bytes": 16165400576
+      },
+      {
+        "usage_bytes": 703160320,
+        "budget_bytes": 16165400576
+      }
+    ],
+    "loaded_modules": {
+      "amd_fidelityfx_loader_dx12.dll": {
+        "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+        "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+      },
+      "amd_fidelityfx_upscaler_dx12.dll": {
+        "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+        "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+      }
+    }
+  },
+  {
+    "repeat": 3,
+    "frames": 320,
+    "native_log_counts": {
+      "Temporal diagnosis begin:": 320,
+      "DX12 list close: HRESULT=0x00000000": 320,
+      "DX12 submission:": 320,
+      "DX12 signal: HRESULT=0x00000000": 320,
+      "DX12 fence completion: HRESULT=0x00000000": 320,
+      "DX12 mapped readback: HRESULT=0x00000000": 320,
+      "Temporal diagnosis cleanup complete:": 3
+    },
+    "pre_cut_reset_no_reset_outputs_identical": true,
+    "full_outputs_identical_repeat1": true,
+    "resets_by_arm": {
+      "cut-fresh": [
+        64
+      ],
+      "cut-no-reset": [
+        0
+      ],
+      "cut-reset": [
+        0,
+        64
+      ]
+    },
+    "all_dispatch_ok": true,
+    "all_fences_one": true,
+    "all_debug_device_zero": true,
+    "all_pixels_finite_written": true,
+    "order_seed": 1237,
+    "arm_order": [
+      "cut-fresh",
+      "cut-no-reset",
+      "cut-reset"
+    ],
+    "elapsed_seconds": 17.453,
+    "input_audit": {
+      "status": "passed",
+      "frames": 320,
+      "complete_input_bytes_checked": 294913280,
+      "input_digest": "57d025c5c41878db41d2f86dcd3f94fe21b5aa2c42b30d125d5079847efefb30"
+    },
+    "decoded_bytes": 884737280,
+    "compressed_bytes": 509309149,
+    "gpu_memory_by_order": [
+      {
+        "usage_bytes": 367353856,
+        "budget_bytes": 16165400576
+      },
+      {
+        "usage_bytes": 703160320,
+        "budget_bytes": 16165400576
+      },
+      {
+        "usage_bytes": 703160320,
+        "budget_bytes": 16165400576
+      }
+    ],
+    "loaded_modules": {
+      "amd_fidelityfx_loader_dx12.dll": {
+        "path": "\\\\?\\<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+        "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+      },
+      "amd_fidelityfx_upscaler_dx12.dll": {
+        "path": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+        "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+      }
+    }
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "path": "arms.txt",
+    "bytes": 336,
+    "sha256": "37ec23fb7987c02e0fc7c965aeef1122f5b95df6093307d3651f9e1ab851b7d0"
+  },
+  {
+    "path": "checks.json",
+    "bytes": 884,
+    "sha256": "f869c63a2742b1df117ef0297c63016eba9bf0ea8295141951603dfe3c0fd817"
+  },
+  {
+    "path": "inputs.json",
+    "bytes": 21733,
+    "sha256": "9250ae91544101c065f4c8da29754052f473f5f76d993a8022d526e896c0528a"
+  },
+  {
+    "path": "jitter.txt",
+    "bytes": 933,
+    "sha256": "c90b7bbbed7a4e2b792030751575013f90c6608866889f6c9dfa04942a1da776"
+  },
+  {
+    "path": "measurements.json",
+    "bytes": 79405,
+    "sha256": "5e12f5c7aae1568b6498d2f639a0c58a80e5decc7ab7256b954eec79d9214795"
+  },
+  {
+    "path": "native-observations.json",
+    "bytes": 4959,
+    "sha256": "fb16656cf02cd7a08325f4033e6acffa39fc6ca165e8b44a45251ccadfcaacad"
+  },
+  {
+    "path": "outcomes.json",
+    "bytes": 54063,
+    "sha256": "271eec0c3882cbe596cfc84d02b7687fdd51b0708b023456305a6fc3f2bba881"
+  },
+  {
+    "path": "protocol.json",
+    "bytes": 4872,
+    "sha256": "04ed563f01814063d952bb2c6197c90e7399dbbbfc4c6bf9af342fbcdc669554"
+  },
+  {
+    "path": "README.md",
+    "bytes": 1065,
+    "sha256": "fb9ff0c0fb9f141bd053fb8d3ed4921c35ba8c72328c9da336e60b7b5b9a2526"
+  },
+  {
+    "path": "retention.json",
+    "bytes": 460,
+    "sha256": "b07714c853cd9a0ac3040d1754ab17f67ea07a0249fa5c2231d59a7d6760db3f"
+  },
+  {
+    "path": "run.json",
+    "bytes": 2179,
+    "sha256": "c4f5263e53799a3d426d02b8f4f365e3814953b859d74e4bdb3a8ebb63ac1e82"
+  },
+  {
+    "path": "sources.json",
+    "bytes": 1249,
+    "sha256": "a76018db4e60d17cd5400c19170cb2e6914384087561f83023f8b195ffb465ec"
+  }
+]

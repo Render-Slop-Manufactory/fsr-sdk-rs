@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-12 (Europe/Berlin)",
+  "checks": [
+    {
+      "command": "python -m unittest discover -s tools/verification/tests",
+      "exit_code": 0,
+      "tests": 79,
+      "elapsed_seconds": 123.198
+    },
+    {
+      "command": "cargo fmt --all -- --check",
+      "exit_code": 0
+    },
+    {
+      "command": "cargo clippy --workspace --all-targets --locked --offline -- -D warnings",
+      "exit_code": 0
+    }
+  ],
+  "note": "Unit suite required the authorised rerun outside the temporary-directory sandbox. Commands normalize the existing Python executable path. Native experiment evidence is retained separately."
+}
