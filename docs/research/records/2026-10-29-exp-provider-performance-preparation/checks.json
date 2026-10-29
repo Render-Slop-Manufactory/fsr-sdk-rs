@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "status": "prepared and compilation-verified; GPU timing deliberately deferred to maintainer",
+  "checks": [
+    {
+      "attempt": "20261029T005150Z-experiment-provider-performance-build-065771824a3e",
+      "status": "failed",
+      "inputs_unchanged": true,
+      "started_utc": "2026-10-29T00:51:50.372199+00:00",
+      "finished_utc": "2026-10-29T00:52:03.921268+00:00",
+      "completed": 11,
+      "required": 11,
+      "input_identity": "6d2fca58831c17aa70417f74ddd32bdedf6f6b0e8820f351d0c7960870459ec4",
+      "producer_source_identity": "9ac4f42da347128f14f977524c6d29b8d1331f85efae59f8808bbeb699591cc9",
+      "run_sha256": "870a36d9cde54fe2abf9f47be376e007d403ebdc5b789cf91ca1875b71a20428",
+      "artifact_inventory_sha256": "5c44605d8462e07ae08ed27d9515f878511c48bfa2d478fb96b8431b8389059e",
+      "probe_source_sha256": "72c2a7a1b0bbfc24eed3e69208a20d045aa7102a5616318ef4b849c4460b5755",
+      "probe_binary_sha256": null,
+      "probe_compile_commands": [
+        {
+          "args": [
+            "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+            "/nologo",
+            "/std:c++17",
+            "/O2",
+            "/W4",
+            "/WX",
+            "/MT",
+            "/EHsc",
+            "/I<repo>\\crates\\fsr-sdk\\tests\\native",
+            "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+            "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+            "<run>\\native\\provider_reference.cpp",
+            "/Fo<run>\\native\\provider_reference.obj",
+            "/Fe<run>\\native\\provider-reference.exe",
+            "/link",
+            "<run>\\native\\gpu_helper.lib",
+            "d3d12.lib"
+          ],
+          "cwd": "<repo>",
+          "started_utc": "2026-10-29T00:52:02.660991+00:00",
+          "timeout_seconds": 1200,
+          "expectation": {
+            "diagnostic": null,
+            "markers": [],
+            "observation_only": false
+          },
+          "stdout": "cases/provider-performance.build/00-command.stdout.txt",
+          "stderr": "cases/provider-performance.build/00-command.stderr.txt",
+          "execution": "completed",
+          "environment_overrides": {},
+          "exit_code": 2,
+          "finished_utc": "2026-10-29T00:52:03.618723+00:00",
+          "elapsed_seconds": 0.956
+        }
+      ],
+      "compile_output": "provider_reference.cpp\n<repo>\\target\\provider-build-check\\20261029T005150Z-experiment-provider-performance-build-065771824a3e\\native\\provider_reference.cpp(209): error C2220: Die folgende Warnung wird als Fehler behandelt.\n<repo>\\target\\provider-build-check\\20261029T005150Z-experiment-provider-performance-build-065771824a3e\\native\\provider_reference.cpp(209): warning C4456: Deklaration von \"count\" blendet vorherige lokale Deklaration aus\n<repo>\\target\\provider-build-check\\20261029T005150Z-experiment-provider-performance-build-065771824a3e\\native\\provider_reference.cpp(109): note: Siehe Deklaration von \"count\"\n",
+      "gpu_processes_started": 0
+    },
+    {
+      "attempt": "20261029T005235Z-experiment-provider-performance-build-4f1d2c85d4da",
+      "status": "passed",
+      "inputs_unchanged": true,
+      "started_utc": "2026-10-29T00:52:36.022601+00:00",
+      "finished_utc": "2026-10-29T00:52:46.306307+00:00",
+      "completed": 11,
+      "required": 11,
+      "input_identity": "82ef9c23ba784403c905851146adde7a57bee323fc0668c754ece237790518ee",
+      "producer_source_identity": "e366842aca902efa8605df8e11b3eb84c53b23c527616b1177320b69dc23bc40",
+      "run_sha256": "44972a9465e89469b08ffc107cc78661520878515308c3d4f15001f333ee24c4",
+      "artifact_inventory_sha256": "db5adff30318cc4eb47061523ed2fe04f8c6444118d15c62302f3009ad12c0c4",
+      "probe_source_sha256": "a3fad87915ea53bf8a55fcd4bc4d335d4a7ad062ba94fd0ae5b5b46e8ed4bdd4",
+      "probe_binary_sha256": "2b0a93079b4c6f26bae25d6cd7ebaf08411acf0238b23fe2e3b9d4d86f7a7a34",
+      "probe_compile_commands": [
+        {
+          "args": [
+            "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+            "/nologo",
+            "/std:c++17",
+            "/O2",
+            "/W4",
+            "/WX",
+            "/MT",
+            "/EHsc",
+            "/I<repo>\\crates\\fsr-sdk\\tests\\native",
+            "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+            "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+            "<run>\\native\\provider_reference.cpp",
+            "/Fo<run>\\native\\provider_reference.obj",
+            "/Fe<run>\\native\\provider-reference.exe",
+            "/link",
+            "<run>\\native\\gpu_helper.lib",
+            "d3d12.lib"
+          ],
+          "cwd": "<repo>",
+          "started_utc": "2026-10-29T00:52:44.227323+00:00",
+          "timeout_seconds": 1200,
+          "expectation": {
+            "diagnostic": null,
+            "markers": [],
+            "observation_only": false
+          },
+          "stdout": "cases/provider-performance.build/00-command.stdout.txt",
+          "stderr": "cases/provider-performance.build/00-command.stderr.txt",
+          "execution": "completed",
+          "environment_overrides": {},
+          "exit_code": 0,
+          "finished_utc": "2026-10-29T00:52:45.932621+00:00",
+          "elapsed_seconds": 1.703
+        }
+      ],
+      "compile_output": "provider_reference.cpp\n",
+      "gpu_processes_started": 0
+    }
+  ],
+  "selected_protocol": {
+    "schema_version": 1,
+    "question": "Does explicit provider 4.1.1 versus the current default 4.1.2 alter GPU/context costs on one unchanged driver?",
+    "arms": {
+      "explicit-4.1.1": 17700776140664213505,
+      "default": 17700776142811697154
+    },
+    "blocks": 8,
+    "seed": 6102901,
+    "workload": "max",
+    "output": [
+      1920,
+      1080
+    ],
+    "frames": 160,
+    "warmup": 32,
+    "warm_context_pairs_per_child": 8,
+    "measurement_limit_seconds": 600,
+    "child_timeout_seconds": 120,
+    "base_reference_sha256": "e888876876c84836776610de582f9fdca666912d19a83e4c9c70c941a59fb908",
+    "analysis": "Equal-weight paired process means, default minus explicit 4.1.1. Two-sided 95% Student t intervals are descriptive; no speed gate or adaptive sample selection.",
+    "stopping": "Exactly eight balanced pairs, no pilot, trimming, early success or optional extension. Check the primary allowance before each child; incomplete evidence cannot pass. Build/debug controls and bounded child completion are outside that allowance.",
+    "limits": "C++ only, maximum render SDR at 1080p, same current driver. Initial provider identity verified per process; warm creations reuse the same immutable override chain. No driver rollback, Rust overhead requalification, image-quality, throughput or universal parity claim. Provider outputs need not be byte-identical across arms."
+  },
+  "tested_files": {
+    "tools/verification/provider_performance.py": "ff4b6a6cd562c30f0646170a433a5f907e4e2344e5250be129a0c33f0a6e9eee",
+    "tools/verification/provider-performance-protocol.json": "039f8c70149722e20ffd80fcd1a79af85de5c3e57da6ce7502653ae060789d9e",
+    "tools/verification/profiles.py": "8a7d554f52e96774df986d8322d9d555eae02850d6f1e8858cfd8c08439473f6",
+    "tools/verification/tests/test_provider_performance.py": "6cf422e420a19dbe5e77f2b7f4b5464b121fb0845784d295ce860f37dacc06ec",
+    "crates/fsr-sdk/tests/native/performance_reference.h": "e888876876c84836776610de582f9fdca666912d19a83e4c9c70c941a59fb908",
+    "crates/fsr-sdk/tests/native/gpu.cpp": "a04fe6a8f4fd81cc2551a44f921d0e695db746a63fa1dc079899789d21e893c9"
+  },
+  "observation_limits": "Compilation/ABI/signature checks only. Provider availability/override, device creation and valid GPU execution remain untested until the manual run. No driver state changed.",
+  "unit_tests": {
+    "command": "python -m unittest test_provider_performance test_release_performance test_performance_characterization test_performance_reconfirmation test_infrastructure",
+    "working_directory": "tools/verification/tests",
+    "passed": 65,
+    "total": 65,
+    "exit_code": 0,
+    "native_calls": "mocked",
+    "sandbox_temp_failure_before_retry": true
+  }
+}

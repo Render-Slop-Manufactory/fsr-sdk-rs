@@ -1,0 +1,1845 @@
+{
+  "schema_version": 1,
+  "run": "20261029T005841Z-experiment-provider-performance-03dce9970361",
+  "status": "passed",
+  "completed": 30,
+  "required": 30,
+  "started_utc": "2026-10-29T00:58:41.216764+00:00",
+  "finished_utc": "2026-10-29T01:00:16.693959+00:00",
+  "elapsed_seconds": 95.477195,
+  "inputs_unchanged": true,
+  "source_and_sdk_identity": "c5b0246a772c8b62f6709dd530c400cd358b8b53f1d3dc951116aa09f21cdbcb",
+  "repository_source_identity": "e0bf8741d1e538d48e8ca15259faf28637c323381de4884368068b1fc65494e8",
+  "input_identity": "bf26626b29756b0fa23a7b27713ccdffeb696c28143ab8acf055f666fbcfe1be",
+  "configuration": {
+    "command": "run",
+    "profile": "experiment-provider-performance",
+    "require_passed": true,
+    "output_root": "target/provider-performance",
+    "online": false,
+    "toolchain": null,
+    "native": true,
+    "sdk_root": "target/sdk-windows-verification/v2.3.0/Kits/FidelityFX",
+    "adapter_index": 0,
+    "performance_plan": null,
+    "runtime_manifest": null,
+    "runtime_sha256": null,
+    "retain_diagnostics": false,
+    "wrapper_archive": null,
+    "sys_archive": null,
+    "proton": null,
+    "umu": "umu-run",
+    "cargo_xwin": "cargo-xwin",
+    "vulkaninfo": "vulkaninfo",
+    "xwin_cache": null,
+    "allow_launcher_network": false,
+    "vulkan_validation_manifest": null
+  },
+  "equipment": {
+    "adapter_driver": {
+      "adapter": "AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011567",
+      "driver": "HRESULT=0x00000000; version=32.0.32015.7029"
+    },
+    "frequency_hz": 10000000,
+    "gpu_frequency_hz": 100000000,
+    "query": {
+      "render": [
+        1280,
+        720
+      ],
+      "phase": 18
+    },
+    "smaller": {
+      "render": [
+        960,
+        540
+      ],
+      "phase": 32
+    }
+  },
+  "analysis": {
+    "protocol": {
+      "schema_version": 1,
+      "question": "Does explicit provider 4.1.1 versus the current default 4.1.2 alter GPU/context costs on one unchanged driver?",
+      "arms": {
+        "explicit-4.1.1": 17700776140664213505,
+        "default": 17700776142811697154
+      },
+      "blocks": 8,
+      "seed": 6102901,
+      "workload": "max",
+      "output": [
+        1920,
+        1080
+      ],
+      "frames": 160,
+      "warmup": 32,
+      "warm_context_pairs_per_child": 8,
+      "measurement_limit_seconds": 600,
+      "child_timeout_seconds": 120,
+      "base_reference_sha256": "e888876876c84836776610de582f9fdca666912d19a83e4c9c70c941a59fb908",
+      "analysis": "Equal-weight paired process means, default minus explicit 4.1.1. Two-sided 95% Student t intervals are descriptive; no speed gate or adaptive sample selection.",
+      "stopping": "Exactly eight balanced pairs, no pilot, trimming, early success or optional extension. Check the primary allowance before each child; incomplete evidence cannot pass. Build/debug controls and bounded child completion are outside that allowance.",
+      "limits": "C++ only, maximum render SDR at 1080p, same current driver. Initial provider identity verified per process; warm creations reuse the same immutable override chain. No driver rollback, Rust overhead requalification, image-quality, throughput or universal parity claim. Provider outputs need not be byte-identical across arms."
+    },
+    "metrics": {
+      "cpu": {
+        "process_means_ns": {
+          "explicit-4.1.1": [
+            64033.59375,
+            53633.59375,
+            49362.5,
+            51029.6875,
+            47004.6875,
+            51467.96875,
+            49484.375,
+            52343.75
+          ],
+          "default": [
+            54806.25,
+            65810.9375,
+            49492.1875,
+            50172.65625,
+            49668.75,
+            50192.96875,
+            52173.4375,
+            50475.0
+          ]
+        },
+        "default_minus_explicit": {
+          "blocks": 8,
+          "mean_difference_ns": 554.00390625,
+          "block_sd_ns": 5990.154660150406,
+          "lower_one_sided_95_ns": -3458.409481038362,
+          "upper_one_sided_95_ns": 4566.417293538362,
+          "two_sided_95_ns": [
+            -4453.890713433446,
+            5561.898525933446
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            -9227.34375,
+            12177.34375,
+            129.6875,
+            -857.03125,
+            2664.0625,
+            -1275.0,
+            2689.0625,
+            -1868.75
+          ]
+        }
+      },
+      "gpu": {
+        "process_means_ns": {
+          "explicit-4.1.1": [
+            1035832.5,
+            1031982.8125,
+            1038981.25,
+            1032039.375,
+            1041461.5625,
+            1065766.875,
+            1075619.375,
+            1056273.125
+          ],
+          "default": [
+            1046924.375,
+            1080885.0,
+            1055505.9375,
+            1050859.0625,
+            1058023.4375,
+            1045190.9375,
+            1069736.5625,
+            1062854.375
+          ]
+        },
+        "default_minus_explicit": {
+          "blocks": 8,
+          "mean_difference_ns": 11502.8515625,
+          "block_sd_ns": 20208.767748225422,
+          "lower_one_sided_95_ns": -2033.682108826777,
+          "upper_one_sided_95_ns": 25039.385233826775,
+          "two_sided_95_ns": [
+            -5392.101075372182,
+            28397.804200372182
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            11091.875,
+            48902.1875,
+            16524.6875,
+            18819.6875,
+            16561.875,
+            -20575.9375,
+            -5882.8125,
+            6581.25
+          ]
+        }
+      },
+      "first_dispatch_cpu": {
+        "process_means_ns": {
+          "explicit-4.1.1": [
+            9594300.0,
+            10797500.0,
+            9638400.0,
+            9616700.0,
+            11146900.0,
+            10115200.0,
+            9608400.0,
+            9677600.0
+          ],
+          "default": [
+            10210200.0,
+            10606300.0,
+            10123400.0,
+            10040200.0,
+            10049800.0,
+            10633100.0,
+            9915500.0,
+            10711300.0
+          ]
+        },
+        "default_minus_explicit": {
+          "blocks": 8,
+          "mean_difference_ns": 261850.0,
+          "block_sd_ns": 645494.1672858091,
+          "lower_one_sided_95_ns": -170524.38516639272,
+          "upper_one_sided_95_ns": 694224.3851663927,
+          "two_sided_95_ns": [
+            -277796.6286408844,
+            801496.6286408844
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            615900.0,
+            -191200.0,
+            485000.0,
+            423500.0,
+            -1097100.0,
+            517900.0,
+            307100.0,
+            1033700.0
+          ]
+        }
+      },
+      "load": {
+        "process_means_ns": {
+          "explicit-4.1.1": [
+            858300.0,
+            754200.0,
+            857400.0,
+            736200.0,
+            749000.0,
+            701300.0,
+            745200.0,
+            744300.0
+          ],
+          "default": [
+            659100.0,
+            704900.0,
+            663600.0,
+            658900.0,
+            777200.0,
+            826800.0,
+            700000.0,
+            710300.0
+          ]
+        },
+        "default_minus_explicit": {
+          "blocks": 8,
+          "mean_difference_ns": -55637.5,
+          "block_sd_ns": 107321.3723555831,
+          "lower_one_sided_95_ns": -127525.07813656992,
+          "upper_one_sided_95_ns": 16250.078136569922,
+          "two_sided_95_ns": [
+            -145360.41262727987,
+            34085.412627279875
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            -199200.0,
+            -49300.0,
+            -193800.0,
+            -77300.0,
+            28200.0,
+            125500.0,
+            -45200.0,
+            -34000.0
+          ]
+        }
+      },
+      "provider_query": {
+        "process_means_ns": {
+          "explicit-4.1.1": [
+            40567200.0,
+            38552900.0,
+            38692300.0,
+            39504800.0,
+            38837000.0,
+            40041100.0,
+            39329300.0,
+            38408000.0
+          ],
+          "default": [
+            40731500.0,
+            44479400.0,
+            42237400.0,
+            42449400.0,
+            41052900.0,
+            41851400.0,
+            41111800.0,
+            41088500.0
+          ]
+        },
+        "default_minus_explicit": {
+          "blocks": 8,
+          "mean_difference_ns": 2633712.5,
+          "block_sd_ns": 1666778.4602447064,
+          "lower_one_sided_95_ns": 1517246.467491614,
+          "upper_one_sided_95_ns": 3750178.5325083863,
+          "two_sided_95_ns": [
+            1240250.8355136714,
+            4027174.1644863286
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            164300.0,
+            5926500.0,
+            3545100.0,
+            2944600.0,
+            2215900.0,
+            1810300.0,
+            1782500.0,
+            2680500.0
+          ]
+        }
+      },
+      "first_create": {
+        "process_means_ns": {
+          "explicit-4.1.1": [
+            52362000.0,
+            53187200.0,
+            53456400.0,
+            53179000.0,
+            53566700.0,
+            52403800.0,
+            55031200.0,
+            55255700.0
+          ],
+          "default": [
+            58568100.0,
+            56679600.0,
+            57335100.0,
+            56997400.0,
+            59302200.0,
+            57635300.0,
+            59221500.0,
+            59273000.0
+          ]
+        },
+        "default_minus_explicit": {
+          "blocks": 8,
+          "mean_difference_ns": 4571275.0,
+          "block_sd_ns": 1008991.8656758339,
+          "lower_one_sided_95_ns": 3895417.2468712814,
+          "upper_one_sided_95_ns": 5247132.753128719,
+          "two_sided_95_ns": [
+            3727736.6905408087,
+            5414813.309459192
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            6206100.0,
+            3492400.0,
+            3878700.0,
+            3818400.0,
+            5735500.0,
+            5231500.0,
+            4190300.0,
+            4017300.0
+          ]
+        }
+      },
+      "warm_create": {
+        "process_means_ns": {
+          "explicit-4.1.1": [
+            52906450.0,
+            53307325.0,
+            54020750.0,
+            53241525.0,
+            54119675.0,
+            54486400.0,
+            54341900.0,
+            59346950.0
+          ],
+          "default": [
+            59694712.5,
+            57438212.5,
+            57348900.0,
+            57129925.0,
+            57341987.5,
+            57208125.0,
+            57667787.5,
+            56941887.5
+          ]
+        },
+        "default_minus_explicit": {
+          "blocks": 8,
+          "mean_difference_ns": 3125070.3125,
+          "block_sd_ns": 2559279.997503636,
+          "lower_one_sided_95_ns": 1410775.7898365273,
+          "upper_one_sided_95_ns": 4839364.835163472,
+          "two_sided_95_ns": [
+            985458.6902785278,
+            5264681.934721472
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            6788262.5,
+            4130887.5,
+            3328150.0,
+            3888400.0,
+            3222312.5,
+            2721725.0,
+            3325887.5,
+            -2405062.5
+          ]
+        }
+      },
+      "used_destroy": {
+        "process_means_ns": {
+          "explicit-4.1.1": [
+            4890600.0,
+            5194500.0,
+            4809400.0,
+            4822200.0,
+            5664000.0,
+            5106200.0,
+            5214000.0,
+            5151500.0
+          ],
+          "default": [
+            9220400.0,
+            9004800.0,
+            9150300.0,
+            9108300.0,
+            9492100.0,
+            9512400.0,
+            10216500.0,
+            9829000.0
+          ]
+        },
+        "default_minus_explicit": {
+          "blocks": 8,
+          "mean_difference_ns": 4335175.0,
+          "block_sd_ns": 396888.335321518,
+          "lower_one_sided_95_ns": 4069325.425113954,
+          "upper_one_sided_95_ns": 4601024.574886045,
+          "two_sided_95_ns": [
+            4003368.048120423,
+            4666981.951879577
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            4329800.0,
+            3810300.0,
+            4340900.0,
+            4286100.0,
+            3828100.0,
+            4406200.0,
+            5002500.0,
+            4677500.0
+          ]
+        }
+      },
+      "unused_destroy": {
+        "process_means_ns": {
+          "explicit-4.1.1": [
+            3477662.5,
+            3445387.5,
+            3580100.0,
+            3509937.5,
+            3589275.0,
+            3676175.0,
+            3679925.0,
+            3728112.5
+          ],
+          "default": [
+            7597112.5,
+            7605137.5,
+            7439725.0,
+            7646675.0,
+            7670525.0,
+            7720362.5,
+            7910375.0,
+            7842787.5
+          ]
+        },
+        "default_minus_explicit": {
+          "blocks": 8,
+          "mean_difference_ns": 4093265.625,
+          "block_sd_ns": 109162.06226090441,
+          "lower_one_sided_95_ns": 4020145.0889120954,
+          "upper_one_sided_95_ns": 4166386.1610879046,
+          "two_sided_95_ns": [
+            4002003.857101639,
+            4184527.392898361
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            4119450.0,
+            4159750.0,
+            3859625.0,
+            4136737.5,
+            4081250.0,
+            4044187.5,
+            4230450.0,
+            4114675.0
+          ]
+        }
+      }
+    },
+    "speed_gate": null,
+    "limit": "C++ only, maximum render SDR at 1080p, same current driver. Initial provider identity verified per process; warm creations reuse the same immutable override chain. No driver rollback, Rust overhead requalification, image-quality, throughput or universal parity claim. Provider outputs need not be byte-identical across arms.",
+    "inference": "Equal-weight paired process means, default minus explicit 4.1.1. Two-sided 95% Student t intervals are descriptive; no speed gate or adaptive sample selection.",
+    "elapsed_primary_seconds": 79.85617009992711,
+    "schedule": [
+      [
+        "default",
+        "explicit-4.1.1"
+      ],
+      [
+        "explicit-4.1.1",
+        "default"
+      ],
+      [
+        "default",
+        "explicit-4.1.1"
+      ],
+      [
+        "explicit-4.1.1",
+        "default"
+      ],
+      [
+        "explicit-4.1.1",
+        "default"
+      ],
+      [
+        "default",
+        "explicit-4.1.1"
+      ],
+      [
+        "default",
+        "explicit-4.1.1"
+      ],
+      [
+        "explicit-4.1.1",
+        "default"
+      ]
+    ],
+    "equipment": {
+      "adapter_driver": {
+        "adapter": "AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011567",
+        "driver": "HRESULT=0x00000000; version=32.0.32015.7029"
+      },
+      "frequency_hz": 10000000,
+      "gpu_frequency_hz": 100000000,
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      }
+    }
+  },
+  "audit": {
+    "full_inventory_verified": true,
+    "native_logs_reparsed": 18,
+    "all_eight_pair_metrics_recomputed": true,
+    "all_final_readbacks_rehashed": true,
+    "cross_provider_inputs_matched": true,
+    "current_repository_and_sdk_files_match_captured_inputs": true
+  },
+  "case_observations": [
+    {
+      "id": "provider-performance.control.explicit-4.1.1",
+      "arm": "explicit-4.1.1",
+      "debug_control": true,
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:58:48.446502+00:00",
+      "finished_utc": "2026-10-29T00:58:52.759326+00:00",
+      "command_seconds": 4.288,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "fe23cc344ecbf67881b4056b76c9bd5a068d7f5f1e594dbafa227d139df1fba1",
+      "readback_sha256": "e0707dabe4755d3038b2816408a31a3c38fc116409768e2752b443a155a9dae0"
+    },
+    {
+      "id": "provider-performance.control.default",
+      "arm": "default",
+      "debug_control": true,
+      "provider": {
+        "id": 17700776142811697154,
+        "name": "4.1.2 *"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:58:52.761914+00:00",
+      "finished_utc": "2026-10-29T00:58:56.686927+00:00",
+      "command_seconds": 3.901,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "69087f36f3a08f6ae2d31ff8d1ea3bb1636e6949fb00439234d2125fa3192a4b",
+      "readback_sha256": "e0707dabe4755d3038b2816408a31a3c38fc116409768e2752b443a155a9dae0"
+    },
+    {
+      "id": "provider-performance.block1.default",
+      "arm": "default",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776142811697154,
+        "name": "4.1.2 *"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:58:56.689090+00:00",
+      "finished_utc": "2026-10-29T00:59:01.685651+00:00",
+      "command_seconds": 4.965,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3f2a1a5106d6554fb5b693ebd017d4d0beb1978b8f37a36f3d4b006c39be7cb1",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block1.explicit-4.1.1",
+      "arm": "explicit-4.1.1",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:01.688127+00:00",
+      "finished_utc": "2026-10-29T00:59:06.665843+00:00",
+      "command_seconds": 4.95,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4ce96045d61b4fb2204c9958c78e89dc8a4fdc1e8fef0bdec505dda3e3362831",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block2.explicit-4.1.1",
+      "arm": "explicit-4.1.1",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:06.668307+00:00",
+      "finished_utc": "2026-10-29T00:59:11.606990+00:00",
+      "command_seconds": 4.909,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c430eb3822b431fc5478adb893fd29989a64c6ebfcfad2ca6377587f53ca2321",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block2.default",
+      "arm": "default",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776142811697154,
+        "name": "4.1.2 *"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:11.609390+00:00",
+      "finished_utc": "2026-10-29T00:59:16.731752+00:00",
+      "command_seconds": 5.094,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "47d13e28517680f56184938b64db79514d3482192673a527a89601b4b80a7470",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block3.default",
+      "arm": "default",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776142811697154,
+        "name": "4.1.2 *"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:16.734600+00:00",
+      "finished_utc": "2026-10-29T00:59:21.677418+00:00",
+      "command_seconds": 4.913,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "225c2e01ef896c502980594f947d3827f63764f30a3c63f97db5f4f1fad13f3a",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block3.explicit-4.1.1",
+      "arm": "explicit-4.1.1",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:21.679718+00:00",
+      "finished_utc": "2026-10-29T00:59:26.552977+00:00",
+      "command_seconds": 4.845,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3c012dd6a8f6e59fbf75752fc3198adae2edb6f837ad5c931e4e4365840ef05a",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block4.explicit-4.1.1",
+      "arm": "explicit-4.1.1",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:26.555494+00:00",
+      "finished_utc": "2026-10-29T00:59:31.588361+00:00",
+      "command_seconds": 4.844,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f890eba14b558c95dcbb55c217289dac50a4338d25e2816371179476a3304af1",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block4.default",
+      "arm": "default",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776142811697154,
+        "name": "4.1.2 *"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:31.590704+00:00",
+      "finished_utc": "2026-10-29T00:59:36.536317+00:00",
+      "command_seconds": 4.917,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "385543be1ff5c9c3e4981fac399b78d54099807822e32a59f1d4e6ab0be47158",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block5.explicit-4.1.1",
+      "arm": "explicit-4.1.1",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:36.538494+00:00",
+      "finished_utc": "2026-10-29T00:59:41.428449+00:00",
+      "command_seconds": 4.861,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a222b271322b1d7b959f12ade37b09c042d10d85b397da98ddeda008d0acbe77",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block5.default",
+      "arm": "default",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776142811697154,
+        "name": "4.1.2 *"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:41.431005+00:00",
+      "finished_utc": "2026-10-29T00:59:46.543310+00:00",
+      "command_seconds": 4.942,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2f50426d8f4b9e407fa4166f1d9ab318436ed750928161e84c1f77ffeafd9209",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block6.default",
+      "arm": "default",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776142811697154,
+        "name": "4.1.2 *"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:46.545657+00:00",
+      "finished_utc": "2026-10-29T00:59:51.487612+00:00",
+      "command_seconds": 4.914,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c9cb16ff1d3a7266ebaa53601ff02956a5fbe9d7de8a741b52d1c49bafb8d2e2",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block6.explicit-4.1.1",
+      "arm": "explicit-4.1.1",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:51.489844+00:00",
+      "finished_utc": "2026-10-29T00:59:56.389091+00:00",
+      "command_seconds": 4.871,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "035a7f474e209be1257cde3744d246c954d3ba9e7804e6dabaafcee0654cb597",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block7.default",
+      "arm": "default",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776142811697154,
+        "name": "4.1.2 *"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T00:59:56.391534+00:00",
+      "finished_utc": "2026-10-29T01:00:01.646957+00:00",
+      "command_seconds": 4.962,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8ca5f044a0030e0fb37362edd8b409dd1d535b922615c979472262223eba5bc8",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block7.explicit-4.1.1",
+      "arm": "explicit-4.1.1",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T01:00:01.649547+00:00",
+      "finished_utc": "2026-10-29T01:00:06.558326+00:00",
+      "command_seconds": 4.879,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4d5a1b7e66e72ad87cbe3a18d9e7655509965e1be23f34f153ebb9b5055963eb",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block8.explicit-4.1.1",
+      "arm": "explicit-4.1.1",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T01:00:06.560848+00:00",
+      "finished_utc": "2026-10-29T01:00:11.537346+00:00",
+      "command_seconds": 4.939,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2c9361ec07c5e3aef6cf1fe3e92eb7e17804c93f009a7e7019b18336120b1ea7",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    },
+    {
+      "id": "provider-performance.block8.default",
+      "arm": "default",
+      "debug_control": false,
+      "provider": {
+        "id": 17700776142811697154,
+        "name": "4.1.2 *"
+      },
+      "available": [
+        {
+          "id": 17700776142811697154,
+          "name": "4.1.2 *"
+        },
+        {
+          "id": 17700776140664213505,
+          "name": "4.1.1"
+        },
+        {
+          "id": 17700776140660019205,
+          "name": "3.1.5"
+        },
+        {
+          "id": 17700776140655833092,
+          "name": "2.3.4"
+        }
+      ],
+      "started_utc": "2026-10-29T01:00:11.539913+00:00",
+      "finished_utc": "2026-10-29T01:00:16.523904+00:00",
+      "command_seconds": 4.955,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "736b1d7702f0cf55ca1b375d5cc82592491796610fade6394d038eb154e7b826",
+      "readback_sha256": "5f96a2fb3e0d8c607652afe0aef1a7b67f77fa03f20b7606c353b17185123fe4"
+    }
+  ],
+  "protocol_sha256": "039f8c70149722e20ffd80fcd1a79af85de5c3e57da6ce7502653ae060789d9e",
+  "schedule_sha256": "8d586ab01b80c916418f5f852b951abb010d6bf2fe2f054da8f1783d56b3cfcc",
+  "run_sha256": "06c30aef6a3ee2c26a4a24a13eec4a2778515ed31bf2f38d380e9cd24da923d5",
+  "inputs_sha256": "cc0baa1e4ab86e75d8de9adfebd55acba9e83b95b8ace83631932162d18cd571",
+  "artifact_inventory_sha256": "37f89e6448bc766f6f69900ba141907caa17e6fbef8f37cc00f61a493cf0f656",
+  "original_analysis_sha256": "8d7d6622d9bc0d7ffc5701e28e6a7442f5560f775f708a59cd21832b78230b59",
+  "input_hashes": {
+    "crates/fsr-sdk/tests/native/gpu.cpp": "a04fe6a8f4fd81cc2551a44f921d0e695db746a63fa1dc079899789d21e893c9",
+    "crates/fsr-sdk/tests/native/performance_reference.h": "e888876876c84836776610de582f9fdca666912d19a83e4c9c70c941a59fb908",
+    "tools/verification/provider-performance-protocol.json": "039f8c70149722e20ffd80fcd1a79af85de5c3e57da6ce7502653ae060789d9e",
+    "tools/verification/provider_performance.py": "ff4b6a6cd562c30f0646170a433a5f907e4e2344e5250be129a0c33f0a6e9eee",
+    "sdk/api/include/ffx_api.h": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd",
+    "sdk/api/include/ffx_api_types.h": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49",
+    "sdk/api/include/dx12/ffx_api_dx12.h": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530",
+    "sdk/upscalers/include/ffx_upscale.h": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf",
+    "sdk/signedbin/amd_fidelityfx_loader_dx12.dll": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa",
+    "sdk/signedbin/amd_fidelityfx_upscaler_dx12.dll": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+  },
+  "reported_conditions": {
+    "animated_wallpaper": "Maintainer reported disabled for this run; not independently monitored",
+    "game_and_other_background_work": "No utilization/process/clock-state monitoring; game closure not independently recorded",
+    "launch": "Maintainer terminal; assistant found the run already active and started no duplicate"
+  },
+  "cross_run_comparison": {
+    "historical_cpp_max_gpu_mean_ns": 938529.8409598215,
+    "explicit_4_1_1_vs_historical_percent": 11.58351750478146,
+    "default_vs_historical_percent": 12.809141993261886,
+    "historical_sdr_lifecycle": {
+      "load": {
+        "consumer_means_ns": {
+          "cpp-minimal": 640225.0,
+          "rust-wrapper": 515337.5
+        },
+        "difference": {
+          "blocks": 8,
+          "mean_difference_ns": -124887.5,
+          "block_sd_ns": 40959.19354326066,
+          "lower_one_sided_95_ns": -152323.38869229425,
+          "upper_one_sided_95_ns": -97451.61130770577,
+          "two_sided_95_ns": [
+            -159130.24273524646,
+            -90644.75726475354
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            -150000.0,
+            -80200.0,
+            -120500.0,
+            -92600.0,
+            -199400.0,
+            -143000.0,
+            -79200.0,
+            -134200.0
+          ]
+        }
+      },
+      "provider_query": {
+        "consumer_means_ns": {
+          "cpp-minimal": 66745325.0,
+          "rust-wrapper": 65651487.5
+        },
+        "difference": {
+          "blocks": 8,
+          "mean_difference_ns": -1093837.5,
+          "block_sd_ns": 2004430.6109484416,
+          "lower_one_sided_95_ns": -2436474.6560593694,
+          "upper_one_sided_95_ns": 248799.6560593692,
+          "two_sided_95_ns": [
+            -2769583.426707919,
+            581908.4267079192
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            486100.0,
+            1049500.0,
+            -52800.0,
+            -904000.0,
+            -762700.0,
+            -5361900.0,
+            -2334200.0,
+            -870700.0
+          ]
+        }
+      },
+      "first_create": {
+        "consumer_means_ns": {
+          "cpp-minimal": 50415675.0,
+          "rust-wrapper": 50482625.0
+        },
+        "difference": {
+          "blocks": 8,
+          "mean_difference_ns": 66950.0,
+          "block_sd_ns": 1683724.26907903,
+          "lower_one_sided_95_ns": -1060866.9231085235,
+          "upper_one_sided_95_ns": 1194766.9231085235,
+          "two_sided_95_ns": [
+            -1340678.715205761,
+            1474578.715205761
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            3586200.0,
+            -1111200.0,
+            -357600.0,
+            -1376700.0,
+            -1511300.0,
+            -69500.0,
+            174800.0,
+            1200900.0
+          ]
+        }
+      },
+      "used_destroy": {
+        "consumer_means_ns": {
+          "cpp-minimal": 5972987.5,
+          "rust-wrapper": 4762550.0
+        },
+        "difference": {
+          "blocks": 8,
+          "mean_difference_ns": -1210437.5,
+          "block_sd_ns": 2067097.8019142132,
+          "lower_one_sided_95_ns": -2595051.314466467,
+          "upper_one_sided_95_ns": 174176.3144664669,
+          "two_sided_95_ns": [
+            -2938574.5094550685,
+            517699.5094550685
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            -5153700.0,
+            -138300.0,
+            650300.0,
+            -335200.0,
+            -59300.0,
+            -487900.0,
+            -3756700.0,
+            -402700.0
+          ]
+        }
+      },
+      "warm_create": {
+        "consumer_means_ns": {
+          "cpp-minimal": 50623868.75,
+          "rust-wrapper": 50618217.1875
+        },
+        "difference": {
+          "blocks": 8,
+          "mean_difference_ns": -5651.5625,
+          "block_sd_ns": 601109.4725676868,
+          "lower_one_sided_95_ns": -408295.53945799614,
+          "upper_one_sided_95_ns": 396992.41445799614,
+          "two_sided_95_ns": [
+            -508191.65775638656,
+            496888.53275638656
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            -406775.0,
+            -208525.0,
+            772162.5,
+            -157575.0,
+            424087.5,
+            -442250.0,
+            800400.0,
+            -826737.5
+          ]
+        }
+      },
+      "unused_destroy": {
+        "consumer_means_ns": {
+          "cpp-minimal": 3245014.0625,
+          "rust-wrapper": 3271953.125
+        },
+        "difference": {
+          "blocks": 8,
+          "mean_difference_ns": 26939.0625,
+          "block_sd_ns": 124718.45747764314,
+          "lower_one_sided_95_ns": -56601.68674881567,
+          "upper_one_sided_95_ns": 110479.81174881567,
+          "two_sided_95_ns": [
+            -77328.17726469504,
+            131206.30226469506
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            -86300.0,
+            127112.5,
+            83325.0,
+            -85112.5,
+            74837.5,
+            217637.5,
+            34750.0,
+            -150737.5
+          ]
+        }
+      },
+      "first_dispatch": {
+        "consumer_means_ns": {
+          "cpp-minimal": 9366487.5,
+          "rust-wrapper": 9493475.0
+        },
+        "difference": {
+          "blocks": 8,
+          "mean_difference_ns": 126987.5,
+          "block_sd_ns": 363321.8346531272,
+          "lower_one_sided_95_ns": -116378.06833071366,
+          "upper_one_sided_95_ns": 370353.06833071366,
+          "two_sided_95_ns": [
+            -176757.15505490458,
+            430732.1550549046
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            -171000.0,
+            114500.0,
+            277200.0,
+            -193000.0,
+            -325900.0,
+            235700.0,
+            816100.0,
+            262300.0
+          ]
+        }
+      }
+    },
+    "prior_p08_default_sdr_lifecycle": {
+      "load": {
+        "consumer_process_means_ns": {
+          "cpp-minimal": [
+            730100.0,
+            757200.0,
+            750500.0,
+            656900.0,
+            671200.0,
+            765600.0,
+            713100.0,
+            627800.0
+          ],
+          "rust-wrapper": [
+            544200.0,
+            742900.0,
+            525000.0,
+            720600.0,
+            512000.0,
+            587400.0,
+            531800.0,
+            558400.0
+          ]
+        },
+        "consumer_means_ns": {
+          "cpp-minimal": 709050.0,
+          "rust-wrapper": 590287.5
+        },
+        "paired_difference": {
+          "blocks": 8,
+          "mean_difference_ns": -118762.5,
+          "block_sd_ns": 101151.17310950265,
+          "lower_one_sided_95_ns": -186517.06463995547,
+          "upper_one_sided_95_ns": -51007.93536004455,
+          "two_sided_95_ns": [
+            -203326.99696693278,
+            -34198.00303306723
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            -185900.0,
+            -14300.0,
+            -225500.0,
+            63700.0,
+            -159200.0,
+            -178200.0,
+            -181300.0,
+            -69400.0
+          ]
+        },
+        "initial_p08_means_ns": {
+          "cpp-minimal": 683712.5,
+          "rust-wrapper": 560150.0
+        },
+        "historical_means_ns": {
+          "cpp-minimal": 640225.0,
+          "rust-wrapper": 515337.5
+        }
+      },
+      "provider_query": {
+        "consumer_process_means_ns": {
+          "cpp-minimal": [
+            72625300.0,
+            74832700.0,
+            74990700.0,
+            74752600.0,
+            73454900.0,
+            75856800.0,
+            73598500.0,
+            73536600.0
+          ],
+          "rust-wrapper": [
+            78916500.0,
+            96556800.0,
+            74403600.0,
+            76653400.0,
+            74700800.0,
+            73445300.0,
+            73929900.0,
+            83606000.0
+          ]
+        },
+        "consumer_means_ns": {
+          "cpp-minimal": 74206012.5,
+          "rust-wrapper": 79026537.5
+        },
+        "paired_difference": {
+          "blocks": 8,
+          "mean_difference_ns": 4820525.0,
+          "block_sd_ns": 7914218.637318893,
+          "lower_one_sided_95_ns": -480693.18415754475,
+          "upper_one_sided_95_ns": 10121743.184157545,
+          "two_sided_95_ns": [
+            -1795927.3591503706,
+            11436977.35915037
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            6291200.0,
+            21724100.0,
+            -587100.0,
+            1900800.0,
+            1245900.0,
+            -2411500.0,
+            331400.0,
+            10069400.0
+          ]
+        },
+        "initial_p08_means_ns": {
+          "cpp-minimal": 71921212.5,
+          "rust-wrapper": 72250662.5
+        },
+        "historical_means_ns": {
+          "cpp-minimal": 66745325.0,
+          "rust-wrapper": 65651487.5
+        }
+      },
+      "first_create": {
+        "consumer_process_means_ns": {
+          "cpp-minimal": [
+            62944300.0,
+            65049900.0,
+            62786300.0,
+            62341200.0,
+            62464200.0,
+            65034300.0,
+            65086700.0,
+            63017500.0
+          ],
+          "rust-wrapper": [
+            67708900.0,
+            75889200.0,
+            62871900.0,
+            64099800.0,
+            64544400.0,
+            67023700.0,
+            63402100.0,
+            64881000.0
+          ]
+        },
+        "consumer_means_ns": {
+          "cpp-minimal": 63590550.0,
+          "rust-wrapper": 66302625.0
+        },
+        "paired_difference": {
+          "blocks": 8,
+          "mean_difference_ns": 2712075.0,
+          "block_sd_ns": 3761543.876332088,
+          "lower_one_sided_95_ns": 192462.4252741807,
+          "upper_one_sided_95_ns": 5231687.57472582,
+          "two_sided_95_ns": [
+            -432654.3782417448,
+            5856804.378241745
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            4764600.0,
+            10839300.0,
+            85600.0,
+            1758600.0,
+            2080200.0,
+            1989400.0,
+            -1684600.0,
+            1863500.0
+          ]
+        },
+        "initial_p08_means_ns": {
+          "cpp-minimal": 63691912.5,
+          "rust-wrapper": 62989950.0
+        },
+        "historical_means_ns": {
+          "cpp-minimal": 50415675.0,
+          "rust-wrapper": 50482625.0
+        }
+      },
+      "warm_create": {
+        "consumer_process_means_ns": {
+          "cpp-minimal": [
+            68029975.0,
+            66843162.5,
+            62945275.0,
+            62648275.0,
+            64089087.5,
+            64938387.5,
+            69123750.0,
+            66609250.0
+          ],
+          "rust-wrapper": [
+            68411950.0,
+            67022850.0,
+            70665737.5,
+            64102450.0,
+            69792000.0,
+            64629750.0,
+            67776050.0,
+            63488425.0
+          ]
+        },
+        "consumer_means_ns": {
+          "cpp-minimal": 65653395.3125,
+          "rust-wrapper": 66986151.5625
+        },
+        "paired_difference": {
+          "blocks": 8,
+          "mean_difference_ns": 1332756.25,
+          "block_sd_ns": 3622602.7921369206,
+          "lower_one_sided_95_ns": -1093788.766724729,
+          "upper_one_sided_95_ns": 3759301.266724729,
+          "two_sided_95_ns": [
+            -1695815.4749806696,
+            4361327.974980669
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            381975.0,
+            179687.5,
+            7720462.5,
+            1454175.0,
+            5702912.5,
+            -308637.5,
+            -1347700.0,
+            -3120825.0
+          ]
+        },
+        "initial_p08_means_ns": {
+          "cpp-minimal": 62694373.4375,
+          "rust-wrapper": 62972321.875
+        },
+        "historical_means_ns": {
+          "cpp-minimal": 50623868.75,
+          "rust-wrapper": 50618217.1875
+        }
+      },
+      "used_destroy": {
+        "consumer_process_means_ns": {
+          "cpp-minimal": [
+            15541300.0,
+            17302900.0,
+            14245300.0,
+            14146400.0,
+            14888600.0,
+            15227700.0,
+            15016700.0,
+            17156200.0
+          ],
+          "rust-wrapper": [
+            15993100.0,
+            15945000.0,
+            14913800.0,
+            14654400.0,
+            15256100.0,
+            15026400.0,
+            14853300.0,
+            14685000.0
+          ]
+        },
+        "consumer_means_ns": {
+          "cpp-minimal": 15440637.5,
+          "rust-wrapper": 15165887.5
+        },
+        "paired_difference": {
+          "blocks": 8,
+          "mean_difference_ns": -274750.0,
+          "block_sd_ns": 1099232.0917024626,
+          "lower_one_sided_95_ns": -1011053.7869164476,
+          "upper_one_sided_95_ns": 461553.78691644757,
+          "two_sided_95_ns": [
+            -1193731.0263900468,
+            644231.0263900469
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            451800.0,
+            -1357900.0,
+            668500.0,
+            508000.0,
+            367500.0,
+            -201300.0,
+            -163400.0,
+            -2471200.0
+          ]
+        },
+        "initial_p08_means_ns": {
+          "cpp-minimal": 15126700.0,
+          "rust-wrapper": 15189337.5
+        },
+        "historical_means_ns": {
+          "cpp-minimal": 5972987.5,
+          "rust-wrapper": 4762550.0
+        }
+      },
+      "unused_destroy": {
+        "consumer_process_means_ns": {
+          "cpp-minimal": [
+            14273975.0,
+            14204550.0,
+            12901962.5,
+            12822525.0,
+            12928800.0,
+            13769425.0,
+            14080262.5,
+            13610750.0
+          ],
+          "rust-wrapper": [
+            14434562.5,
+            14018300.0,
+            13672612.5,
+            12857475.0,
+            13820087.5,
+            13266962.5,
+            13385037.5,
+            13179575.0
+          ]
+        },
+        "consumer_means_ns": {
+          "cpp-minimal": 13574031.25,
+          "rust-wrapper": 13579326.5625
+        },
+        "paired_difference": {
+          "blocks": 8,
+          "mean_difference_ns": 5295.3125,
+          "block_sd_ns": 582051.5027276941,
+          "lower_one_sided_95_ns": -384582.97514629405,
+          "upper_one_sided_95_ns": 395173.60014629405,
+          "two_sided_95_ns": [
+            -481311.92124636465,
+            491902.54624636465
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            160587.5,
+            -186250.0,
+            770650.0,
+            34950.0,
+            891287.5,
+            -502462.5,
+            -695225.0,
+            -431175.0
+          ]
+        },
+        "initial_p08_means_ns": {
+          "cpp-minimal": 13302209.375,
+          "rust-wrapper": 13316440.625
+        },
+        "historical_means_ns": {
+          "cpp-minimal": 3245014.0625,
+          "rust-wrapper": 3271953.125
+        }
+      },
+      "first_dispatch": {
+        "consumer_process_means_ns": {
+          "cpp-minimal": [
+            10382900.0,
+            10701900.0,
+            10708000.0,
+            10679200.0,
+            11684300.0,
+            10579400.0,
+            13219000.0,
+            10342200.0
+          ],
+          "rust-wrapper": [
+            12087800.0,
+            15606600.0,
+            10715200.0,
+            12815900.0,
+            11636000.0,
+            11233200.0,
+            10530900.0,
+            10353600.0
+          ]
+        },
+        "consumer_means_ns": {
+          "cpp-minimal": 11037112.5,
+          "rust-wrapper": 11872400.0
+        },
+        "paired_difference": {
+          "blocks": 8,
+          "mean_difference_ns": 835287.5,
+          "block_sd_ns": 2190970.498228386,
+          "lower_one_sided_95_ns": -632300.543548895,
+          "upper_one_sided_95_ns": 2302875.543548895,
+          "two_sided_95_ns": [
+            -996409.6751924008,
+            2666984.675192401
+          ],
+          "budget_ns": null,
+          "verdict": null,
+          "block_differences_ns": [
+            1704900.0,
+            4904700.0,
+            7200.0,
+            2136700.0,
+            -48300.0,
+            653800.0,
+            -2688100.0,
+            11400.0
+          ]
+        },
+        "initial_p08_means_ns": {
+          "cpp-minimal": 10404162.5,
+          "rust-wrapper": 10334050.0
+        },
+        "historical_means_ns": {
+          "cpp-minimal": 9366487.5,
+          "rust-wrapper": 9493475.0
+        }
+      }
+    },
+    "limit": "Different runs/helper/driver/background and startup-enumeration boundaries; descriptive only, no causal driver/wallpaper estimate."
+  },
+  "limits": "Current-driver one-workload C++ provider/selection-route comparison; eight pairs, descriptive unadjusted pointwise intervals, no quality/FPS/equivalence claim or P08/release approval. Enumeration before render query warms startup state unlike the original P08 path.",
+  "toolchain": {
+    "equipment.toolchain": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.14.1 (tags/v3.14.1:57e0d17, Dec  2 2025, 14:05:07) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    },
+    "windows.environment": {
+      "msvc": "14.44.35207",
+      "windows_sdk": "10.0.22621.0\\",
+      "target_arch": "x64"
+    },
+    "provider-performance.build": {
+      "probe_source_sha256": "a3fad87915ea53bf8a55fcd4bc4d335d4a7ad062ba94fd0ae5b5b46e8ed4bdd4",
+      "executable_sha256": "a52bf1d985e36f13d6c47ba996bbee53e9039dbe28a9b3834d6c5e474a594898",
+      "base_reference_sha256": "e888876876c84836776610de582f9fdca666912d19a83e4c9c70c941a59fb908",
+      "compile_only": true
+    }
+  }
+}

@@ -1,0 +1,2 @@
+# Preserve compact evidence byte identities.
+* -text whitespace=cr-at-eol

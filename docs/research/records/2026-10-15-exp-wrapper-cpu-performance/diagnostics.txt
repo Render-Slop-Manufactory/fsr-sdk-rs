@@ -1,0 +1,8 @@
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+PERF output sentinel control: changed=0
+PERF provider: ProviderInfo { id: ProviderId(17700776140664213505), name: "4.1.1" }
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+PERF native: PASSED diagnostics=true

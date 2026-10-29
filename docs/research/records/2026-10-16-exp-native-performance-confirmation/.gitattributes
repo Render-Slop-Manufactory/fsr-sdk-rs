@@ -1,0 +1,2 @@
+# Preserve compact evidence bytes across checkouts.
+* -text whitespace=cr-at-eol

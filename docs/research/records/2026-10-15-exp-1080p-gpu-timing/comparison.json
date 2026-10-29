@@ -1,0 +1,277 @@
+{
+  "protocol": {
+    "question": "Bounded matched Rust/C++ 1080p FSR command GPU interval, independently of CPU recording",
+    "output": [
+      1920,
+      1080
+    ],
+    "render": "Pre-create SDK Quality query, checked against live context; allocation follows reported dimensions",
+    "frames": 160,
+    "warmup": 32,
+    "debug_frames": 4,
+    "scene": "Analytic ramp translating one render pixel right each frame; projection-jittered samples; UV current-to-previous motion excludes jitter; standard finite depth 0.5; explicit exposure 1",
+    "history": "One context per process, reset only first frame; all frame jitters queried in advance from live provider",
+    "process_orders": [
+      [
+        "cpp-minimal",
+        "rust-wrapper"
+      ],
+      [
+        "rust-wrapper",
+        "cpp-minimal"
+      ],
+      [
+        "cpp-minimal",
+        "rust-wrapper"
+      ],
+      [
+        "rust-wrapper",
+        "cpp-minimal"
+      ]
+    ],
+    "cpu": "QPC around dispatch only; no query recording, upload, submission, wait, readback or logging",
+    "gpu": "Same direct queue EndQuery timestamps around FSR recording; provider barriers included; fixture uploads/transitions, empty bracket, ResolveQueryData and final readback outside",
+    "synchronization": "One frame in flight; completed monotonically increasing fence before query, allocator, list or upload reuse",
+    "controls": "Untouched sentinel, restored final sentinel, finite and fully written output, exact matched descriptors/jitters/provider/adapter/driver/output per history cohort, separate debug-layer children, per-frame empty GPU brackets and stable queried queue frequency",
+    "interpretation": "Descriptive process distributions and nearby median differences; no speed threshold, clock locking, FPS, throughput, image-quality or universal parity claim"
+  },
+  "blocks": [
+    {
+      "block": 1,
+      "order": [
+        "cpp-minimal",
+        "rust-wrapper"
+      ],
+      "distributions": {
+        "cpp-minimal": {
+          "cpu": {
+            "samples": 128,
+            "min_ns": 30300.0,
+            "median_ns": 37200.0,
+            "p95_ns": 63700.0,
+            "max_ns": 106100.0
+          },
+          "gpu": {
+            "samples": 128,
+            "min_ns": 678040.0,
+            "median_ns": 942200.0,
+            "p95_ns": 944560.0,
+            "max_ns": 945880.0
+          },
+          "empty_gpu": {
+            "samples": 160,
+            "min_ns": 40.0,
+            "median_ns": 80.0,
+            "p95_ns": 80.0,
+            "max_ns": 80.0
+          }
+        },
+        "rust-wrapper": {
+          "cpu": {
+            "samples": 128,
+            "min_ns": 31500.0,
+            "median_ns": 36900.0,
+            "p95_ns": 62800.0,
+            "max_ns": 184900.0
+          },
+          "gpu": {
+            "samples": 128,
+            "min_ns": 672560.0,
+            "median_ns": 941800.0,
+            "p95_ns": 945400.0,
+            "max_ns": 967280.0
+          },
+          "empty_gpu": {
+            "samples": 160,
+            "min_ns": 0.0,
+            "median_ns": 80.0,
+            "p95_ns": 80.0,
+            "max_ns": 80.0
+          }
+        }
+      },
+      "wrapper_minus_cpp_median_ns": {
+        "cpu": -300.0,
+        "gpu": -400.0
+      }
+    },
+    {
+      "block": 2,
+      "order": [
+        "rust-wrapper",
+        "cpp-minimal"
+      ],
+      "distributions": {
+        "rust-wrapper": {
+          "cpu": {
+            "samples": 128,
+            "min_ns": 31900.0,
+            "median_ns": 47800.0,
+            "p95_ns": 75600.0,
+            "max_ns": 187200.0
+          },
+          "gpu": {
+            "samples": 128,
+            "min_ns": 666000.0,
+            "median_ns": 945640.0,
+            "p95_ns": 948240.0,
+            "max_ns": 949600.0
+          },
+          "empty_gpu": {
+            "samples": 160,
+            "min_ns": 40.0,
+            "median_ns": 40.0,
+            "p95_ns": 80.0,
+            "max_ns": 80.0
+          }
+        },
+        "cpp-minimal": {
+          "cpu": {
+            "samples": 128,
+            "min_ns": 29800.0,
+            "median_ns": 39600.0,
+            "p95_ns": 70100.0,
+            "max_ns": 104100.0
+          },
+          "gpu": {
+            "samples": 128,
+            "min_ns": 920480.0,
+            "median_ns": 944560.0,
+            "p95_ns": 947520.0,
+            "max_ns": 949640.0
+          },
+          "empty_gpu": {
+            "samples": 160,
+            "min_ns": 40.0,
+            "median_ns": 80.0,
+            "p95_ns": 80.0,
+            "max_ns": 80.0
+          }
+        }
+      },
+      "wrapper_minus_cpp_median_ns": {
+        "cpu": 8200.0,
+        "gpu": 1080.0
+      }
+    },
+    {
+      "block": 3,
+      "order": [
+        "cpp-minimal",
+        "rust-wrapper"
+      ],
+      "distributions": {
+        "cpp-minimal": {
+          "cpu": {
+            "samples": 128,
+            "min_ns": 29500.0,
+            "median_ns": 33500.0,
+            "p95_ns": 52100.0,
+            "max_ns": 184200.0
+          },
+          "gpu": {
+            "samples": 128,
+            "min_ns": 663040.0,
+            "median_ns": 938080.0,
+            "p95_ns": 942960.0,
+            "max_ns": 945000.0
+          },
+          "empty_gpu": {
+            "samples": 160,
+            "min_ns": 0.0,
+            "median_ns": 40.0,
+            "p95_ns": 80.0,
+            "max_ns": 80.0
+          }
+        },
+        "rust-wrapper": {
+          "cpu": {
+            "samples": 128,
+            "min_ns": 31800.0,
+            "median_ns": 40000.0,
+            "p95_ns": 67100.0,
+            "max_ns": 115100.0
+          },
+          "gpu": {
+            "samples": 128,
+            "min_ns": 677520.0,
+            "median_ns": 938640.0,
+            "p95_ns": 945160.0,
+            "max_ns": 959200.0
+          },
+          "empty_gpu": {
+            "samples": 160,
+            "min_ns": 40.0,
+            "median_ns": 40.0,
+            "p95_ns": 80.0,
+            "max_ns": 80.0
+          }
+        }
+      },
+      "wrapper_minus_cpp_median_ns": {
+        "cpu": 6500.0,
+        "gpu": 560.0
+      }
+    },
+    {
+      "block": 4,
+      "order": [
+        "rust-wrapper",
+        "cpp-minimal"
+      ],
+      "distributions": {
+        "rust-wrapper": {
+          "cpu": {
+            "samples": 128,
+            "min_ns": 31400.0,
+            "median_ns": 39800.0,
+            "p95_ns": 67900.0,
+            "max_ns": 92100.0
+          },
+          "gpu": {
+            "samples": 128,
+            "min_ns": 913520.0,
+            "median_ns": 942440.0,
+            "p95_ns": 945120.0,
+            "max_ns": 946520.0
+          },
+          "empty_gpu": {
+            "samples": 160,
+            "min_ns": 40.0,
+            "median_ns": 40.0,
+            "p95_ns": 80.0,
+            "max_ns": 80.0
+          }
+        },
+        "cpp-minimal": {
+          "cpu": {
+            "samples": 128,
+            "min_ns": 29500.0,
+            "median_ns": 41200.0,
+            "p95_ns": 58200.0,
+            "max_ns": 67500.0
+          },
+          "gpu": {
+            "samples": 128,
+            "min_ns": 660720.0,
+            "median_ns": 942000.0,
+            "p95_ns": 945520.0,
+            "max_ns": 947360.0
+          },
+          "empty_gpu": {
+            "samples": 160,
+            "min_ns": 40.0,
+            "median_ns": 40.0,
+            "p95_ns": 80.0,
+            "max_ns": 80.0
+          }
+        }
+      },
+      "wrapper_minus_cpp_median_ns": {
+        "cpu": -1400.0,
+        "gpu": 440.0
+      }
+    }
+  ],
+  "performance_threshold": null
+}

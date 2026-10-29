@@ -1,0 +1,4083 @@
+{
+  "abi.common": {
+    "id": "abi.common",
+    "claim": "Independent native common ABI assertions",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+          "/Fo<run>\\common.obj"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.322,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "abi.creation": {
+    "id": "abi.creation",
+    "claim": "Independent native creation ABI assertions",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+          "/Fo<run>\\creation.obj"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.403,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "abi.dispatch": {
+    "id": "abi.dispatch",
+    "claim": "Independent native dispatch ABI assertions",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+          "/Fo<run>\\dispatch.obj"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.09,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "abi.headers": {
+    "id": "abi.headers",
+    "claim": "Four hash-verified pinned SDK headers",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [],
+    "observations": {
+      "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+      "headers": [
+        {
+          "path": "api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        }
+      ]
+    }
+  },
+  "abi.query": {
+    "id": "abi.query",
+    "claim": "Independent native query ABI assertions",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\query_native_abi.cpp",
+          "/Fo<run>\\query.obj"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.092,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "active-timing.build.fsr_sdk": {
+    "id": "active-timing.build.fsr_sdk",
+    "claim": "Discover and stage exact fsr_sdk test executable",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "--no-run",
+          "--message-format=json",
+          "--features",
+          "dx12,movable",
+          "--lib",
+          "--release",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.284,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "executable_sha256": "3ba0451cba26b470c1d1ad6974b59b9ddf2d169ddda7c9bd2f08f884a67d296e",
+      "manifest": "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+      "registry_artifact": false
+    }
+  },
+  "active.analysis": {
+    "id": "active.analysis",
+    "claim": "Stratified CPU/GPU transition and stable-control comparisons",
+    "scope": "offline-analysis",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [],
+    "observations": {
+      "blocks": 4,
+      "independent_timed_processes": 24,
+      "performance_threshold": null
+    }
+  },
+  "active.block1.max.cpp-minimal": {
+    "id": "active.block1.max.cpp-minimal",
+    "claim": "max cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.163,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block1.max.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3880907879086686125,
+          10457460458374959981
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13127550047680011980,
+          147966205615221849
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15895568748068261067,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3365489001915008511,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 32400.0,
+        "median_ns": 35700.0,
+        "p95_ns": 66800.0,
+        "max_ns": 116100.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 933320.0,
+        "median_ns": 956600.0,
+        "p95_ns": 979240.0,
+        "max_ns": 1322280.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block1.max.rust-wrapper": {
+    "id": "active.block1.max.rust-wrapper",
+    "claim": "max rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.291,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block1.max.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3880907879086686125,
+          10457460458374959981
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13127550047680011980,
+          147966205615221849
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15895568748068261067,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3365489001915008511,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 31800.0,
+        "median_ns": 36100.0,
+        "p95_ns": 79300.0,
+        "max_ns": 101900.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 931880.0,
+        "median_ns": 953560.0,
+        "p95_ns": 975000.0,
+        "max_ns": 1322600.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "active.block1.small.cpp-minimal": {
+    "id": "active.block1.small.cpp-minimal",
+    "claim": "small cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 3.819,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block1.small.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15846793085892611301,
+          1725789830670616121
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          4221062636408182914,
+          2543426727235732349
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13007223362593787878,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13542459560889825399,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          9656933453500970089,
+          18010396235206516073
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          18359387517279082502,
+          6051557402432663665
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 29900.0,
+        "median_ns": 32900.0,
+        "p95_ns": 53700.0,
+        "max_ns": 69500.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 926800.0,
+        "median_ns": 951760.0,
+        "p95_ns": 959280.0,
+        "max_ns": 1322720.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "active.block1.small.rust-wrapper": {
+    "id": "active.block1.small.rust-wrapper",
+    "claim": "small rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 3.914,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block1.small.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15846793085892611301,
+          1725789830670616121
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          4221062636408182914,
+          2543426727235732349
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13007223362593787878,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13542459560889825399,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          9656933453500970089,
+          18010396235206516073
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          18359387517279082502,
+          6051557402432663665
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 31700.0,
+        "median_ns": 42300.0,
+        "p95_ns": 69200.0,
+        "max_ns": 94200.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 929400.0,
+        "median_ns": 954480.0,
+        "p95_ns": 961800.0,
+        "max_ns": 1290600.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "active.block1.transition.cpp-minimal": {
+    "id": "active.block1.transition.cpp-minimal",
+    "claim": "transition cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.086,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block1.transition.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          17558156013382722217,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          14714304720340682290,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          5958109422524647164,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          6177197728141360843,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 30400.0,
+        "median_ns": 33900.0,
+        "p95_ns": 64600.0,
+        "max_ns": 105400.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 925360.0,
+        "median_ns": 951880.0,
+        "p95_ns": 976560.0,
+        "max_ns": 1324600.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "active.block1.transition.rust-wrapper": {
+    "id": "active.block1.transition.rust-wrapper",
+    "claim": "transition rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.162,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block1.transition.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          17558156013382722217,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          14714304720340682290,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          5958109422524647164,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          6177197728141360843,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 31100.0,
+        "median_ns": 35200.0,
+        "p95_ns": 69500.0,
+        "max_ns": 75700.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 922960.0,
+        "median_ns": 953960.0,
+        "p95_ns": 975000.0,
+        "max_ns": 1326880.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "active.block2.max.cpp-minimal": {
+    "id": "active.block2.max.cpp-minimal",
+    "claim": "max cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.54,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block2.max.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3880907879086686125,
+          10457460458374959981
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13127550047680011980,
+          147966205615221849
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15895568748068261067,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3365489001915008511,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 36400.0,
+        "median_ns": 62800.0,
+        "p95_ns": 124000.0,
+        "max_ns": 256300.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 939600.0,
+        "median_ns": 959200.0,
+        "p95_ns": 1212160.0,
+        "max_ns": 1839720.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block2.max.rust-wrapper": {
+    "id": "active.block2.max.rust-wrapper",
+    "claim": "max rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.469,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block2.max.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3880907879086686125,
+          10457460458374959981
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13127550047680011980,
+          147966205615221849
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15895568748068261067,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3365489001915008511,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 40600.0,
+        "median_ns": 61000.0,
+        "p95_ns": 92200.0,
+        "max_ns": 126400.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 941160.0,
+        "median_ns": 955560.0,
+        "p95_ns": 1089840.0,
+        "max_ns": 2027000.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block2.small.cpp-minimal": {
+    "id": "active.block2.small.cpp-minimal",
+    "claim": "small cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.054,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block2.small.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15846793085892611301,
+          1725789830670616121
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          4221062636408182914,
+          2543426727235732349
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13007223362593787878,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13542459560889825399,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          9656933453500970089,
+          18010396235206516073
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          18359387517279082502,
+          6051557402432663665
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 31000.0,
+        "median_ns": 57300.0,
+        "p95_ns": 99200.0,
+        "max_ns": 294100.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 921440.0,
+        "median_ns": 950680.0,
+        "p95_ns": 1055760.0,
+        "max_ns": 1452480.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block2.small.rust-wrapper": {
+    "id": "active.block2.small.rust-wrapper",
+    "claim": "small rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.44,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block2.small.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15846793085892611301,
+          1725789830670616121
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          4221062636408182914,
+          2543426727235732349
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13007223362593787878,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13542459560889825399,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          9656933453500970089,
+          18010396235206516073
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          18359387517279082502,
+          6051557402432663665
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 60800.0,
+        "median_ns": 88100.0,
+        "p95_ns": 169500.0,
+        "max_ns": 321700.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 928560.0,
+        "median_ns": 953640.0,
+        "p95_ns": 1313320.0,
+        "max_ns": 3533480.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "active.block2.transition.cpp-minimal": {
+    "id": "active.block2.transition.cpp-minimal",
+    "claim": "transition cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.137,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block2.transition.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          17558156013382722217,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          14714304720340682290,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          5958109422524647164,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          6177197728141360843,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 31300.0,
+        "median_ns": 43800.0,
+        "p95_ns": 67700.0,
+        "max_ns": 100300.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 926080.0,
+        "median_ns": 955120.0,
+        "p95_ns": 1032120.0,
+        "max_ns": 1340640.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "active.block2.transition.rust-wrapper": {
+    "id": "active.block2.transition.rust-wrapper",
+    "claim": "transition rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.157,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block2.transition.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          17558156013382722217,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          14714304720340682290,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          5958109422524647164,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          6177197728141360843,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 32000.0,
+        "median_ns": 37100.0,
+        "p95_ns": 69300.0,
+        "max_ns": 104200.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 923720.0,
+        "median_ns": 952600.0,
+        "p95_ns": 979440.0,
+        "max_ns": 1324120.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block3.max.cpp-minimal": {
+    "id": "active.block3.max.cpp-minimal",
+    "claim": "max cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.623,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block3.max.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3880907879086686125,
+          10457460458374959981
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13127550047680011980,
+          147966205615221849
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15895568748068261067,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3365489001915008511,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 38400.0,
+        "median_ns": 60400.0,
+        "p95_ns": 102700.0,
+        "max_ns": 306700.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 935920.0,
+        "median_ns": 953840.0,
+        "p95_ns": 1055640.0,
+        "max_ns": 1754800.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block3.max.rust-wrapper": {
+    "id": "active.block3.max.rust-wrapper",
+    "claim": "max rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.59,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block3.max.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3880907879086686125,
+          10457460458374959981
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13127550047680011980,
+          147966205615221849
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15895568748068261067,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3365489001915008511,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 38400.0,
+        "median_ns": 62300.0,
+        "p95_ns": 107200.0,
+        "max_ns": 203900.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 939080.0,
+        "median_ns": 955720.0,
+        "p95_ns": 1045880.0,
+        "max_ns": 1867600.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block3.small.cpp-minimal": {
+    "id": "active.block3.small.cpp-minimal",
+    "claim": "small cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.074,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block3.small.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15846793085892611301,
+          1725789830670616121
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          4221062636408182914,
+          2543426727235732349
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13007223362593787878,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13542459560889825399,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          9656933453500970089,
+          18010396235206516073
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          18359387517279082502,
+          6051557402432663665
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 32500.0,
+        "median_ns": 44500.0,
+        "p95_ns": 80200.0,
+        "max_ns": 137000.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 932000.0,
+        "median_ns": 950560.0,
+        "p95_ns": 1039680.0,
+        "max_ns": 1117400.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block3.small.rust-wrapper": {
+    "id": "active.block3.small.rust-wrapper",
+    "claim": "small rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.178,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block3.small.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15846793085892611301,
+          1725789830670616121
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          4221062636408182914,
+          2543426727235732349
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13007223362593787878,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13542459560889825399,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          9656933453500970089,
+          18010396235206516073
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          18359387517279082502,
+          6051557402432663665
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 36300.0,
+        "median_ns": 48800.0,
+        "p95_ns": 78600.0,
+        "max_ns": 112000.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 924920.0,
+        "median_ns": 951800.0,
+        "p95_ns": 1066600.0,
+        "max_ns": 1254280.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 160.0
+      }
+    }
+  },
+  "active.block3.transition.cpp-minimal": {
+    "id": "active.block3.transition.cpp-minimal",
+    "claim": "transition cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.567,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block3.transition.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          17558156013382722217,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          14714304720340682290,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          5958109422524647164,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          6177197728141360843,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 38500.0,
+        "median_ns": 70000.0,
+        "p95_ns": 110300.0,
+        "max_ns": 155300.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 931040.0,
+        "median_ns": 957640.0,
+        "p95_ns": 1163080.0,
+        "max_ns": 1547920.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block3.transition.rust-wrapper": {
+    "id": "active.block3.transition.rust-wrapper",
+    "claim": "transition rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.423,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block3.transition.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          17558156013382722217,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          14714304720340682290,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          5958109422524647164,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          6177197728141360843,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 35800.0,
+        "median_ns": 58700.0,
+        "p95_ns": 107600.0,
+        "max_ns": 324400.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 938720.0,
+        "median_ns": 955440.0,
+        "p95_ns": 1055040.0,
+        "max_ns": 1324760.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block4.max.cpp-minimal": {
+    "id": "active.block4.max.cpp-minimal",
+    "claim": "max cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.498,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block4.max.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3880907879086686125,
+          10457460458374959981
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13127550047680011980,
+          147966205615221849
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15895568748068261067,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3365489001915008511,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 40900.0,
+        "median_ns": 62300.0,
+        "p95_ns": 94300.0,
+        "max_ns": 198600.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 945400.0,
+        "median_ns": 959800.0,
+        "p95_ns": 1093800.0,
+        "max_ns": 1329320.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block4.max.rust-wrapper": {
+    "id": "active.block4.max.rust-wrapper",
+    "claim": "max rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.808,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block4.max.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3880907879086686125,
+          10457460458374959981
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13127550047680011980,
+          147966205615221849
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15895568748068261067,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3365489001915008511,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 46400.0,
+        "median_ns": 68700.0,
+        "p95_ns": 99500.0,
+        "max_ns": 118500.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 921800.0,
+        "median_ns": 957840.0,
+        "p95_ns": 1119520.0,
+        "max_ns": 1916800.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block4.small.cpp-minimal": {
+    "id": "active.block4.small.cpp-minimal",
+    "claim": "small cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.369,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block4.small.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15846793085892611301,
+          1725789830670616121
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          4221062636408182914,
+          2543426727235732349
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13007223362593787878,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13542459560889825399,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          9656933453500970089,
+          18010396235206516073
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          18359387517279082502,
+          6051557402432663665
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 45500.0,
+        "median_ns": 71400.0,
+        "p95_ns": 109000.0,
+        "max_ns": 242800.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 930480.0,
+        "median_ns": 948440.0,
+        "p95_ns": 1150880.0,
+        "max_ns": 1438920.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block4.small.rust-wrapper": {
+    "id": "active.block4.small.rust-wrapper",
+    "claim": "small rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.388,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block4.small.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          15846793085892611301,
+          1725789830670616121
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          4221062636408182914,
+          2543426727235732349
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13007223362593787878,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          13542459560889825399,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          9656933453500970089,
+          18010396235206516073
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          18359387517279082502,
+          6051557402432663665
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 43400.0,
+        "median_ns": 73900.0,
+        "p95_ns": 119100.0,
+        "max_ns": 402500.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 938440.0,
+        "median_ns": 954840.0,
+        "p95_ns": 1158200.0,
+        "max_ns": 1879280.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block4.transition.cpp-minimal": {
+    "id": "active.block4.transition.cpp-minimal",
+    "claim": "transition cpp-minimal active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.336,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block4.transition.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          17558156013382722217,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          14714304720340682290,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          5958109422524647164,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          6177197728141360843,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 35500.0,
+        "median_ns": 59900.0,
+        "p95_ns": 99900.0,
+        "max_ns": 156500.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 942920.0,
+        "median_ns": 957960.0,
+        "p95_ns": 1108440.0,
+        "max_ns": 1812840.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.block4.transition.rust-wrapper": {
+    "id": "active.block4.transition.rust-wrapper",
+    "claim": "transition rust-wrapper active-size timing",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.527,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.block4.transition.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          31,
+          2073600,
+          2073600,
+          18446744073709551615,
+          3644565732498091010,
+          9958122690284262669
+        ],
+        [
+          63,
+          2073600,
+          2073600,
+          18446744073709551615,
+          16522563333091834624,
+          12312497222958810337
+        ],
+        [
+          64,
+          2073600,
+          2073600,
+          18446744073709551615,
+          17558156013382722217,
+          5381300038382736605
+        ],
+        [
+          111,
+          2073600,
+          2073600,
+          18446744073709551615,
+          14714304720340682290,
+          15601475518415439501
+        ],
+        [
+          112,
+          2073600,
+          2073600,
+          18446744073709551615,
+          5958109422524647164,
+          14378779677723364921
+        ],
+        [
+          159,
+          2073600,
+          2073600,
+          18446744073709551615,
+          6177197728141360843,
+          14563225451995240761
+        ]
+      ],
+      "cpu": {
+        "samples": 128,
+        "min_ns": 43500.0,
+        "median_ns": 66800.0,
+        "p95_ns": 118100.0,
+        "max_ns": 251800.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 941840.0,
+        "median_ns": 955040.0,
+        "p95_ns": 1251480.0,
+        "max_ns": 1903800.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.build.cpp": {
+    "id": "active.build.cpp",
+    "claim": "Independent optimized active-size C++ consumer",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/O2",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/EHsc",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu_reference.cpp",
+          "/Fo<run>\\native\\active_reference.obj",
+          "/Fe<run>\\native\\active-reference.exe",
+          "/link",
+          "<run>\\native\\gpu_helper.lib",
+          "d3d12.lib"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.238,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "executable_sha256": "c686581d5ac66e3b944aaf588009bd4a3329db9a7c5206fdcae59222a4a1a553",
+      "optimizer": "/O2 /MT",
+      "independence": "Standalone pinned-header C++ SDK consumer; shared equipment contains no AMD calls"
+    }
+  },
+  "active.diagnostics.max.cpp-minimal": {
+    "id": "active.diagnostics.max.cpp-minimal",
+    "claim": "max cpp-minimal debug controls",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 3.985,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.diagnostics.max.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          0,
+          2073600,
+          2073600,
+          0,
+          13651638919483069600,
+          16036624802644482785
+        ],
+        [
+          1,
+          2073600,
+          2073600,
+          0,
+          2512909429971313317,
+          2023425603195393461
+        ],
+        [
+          2,
+          2073600,
+          2073600,
+          0,
+          10747291272929087371,
+          15445934767081235257
+        ],
+        [
+          3,
+          2073600,
+          2073600,
+          0,
+          17713904190100142940,
+          8383042797465832409
+        ]
+      ],
+      "cpu": {
+        "samples": 4,
+        "min_ns": 170400.0,
+        "median_ns": 202200.0,
+        "p95_ns": 202200.0,
+        "max_ns": 2106369700.0
+      },
+      "gpu": {
+        "samples": 4,
+        "min_ns": 964120.0,
+        "median_ns": 1220440.0,
+        "p95_ns": 1220440.0,
+        "max_ns": 1302200.0
+      },
+      "empty_gpu": {
+        "samples": 4,
+        "min_ns": 80.0,
+        "median_ns": 120.0,
+        "p95_ns": 120.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "active.diagnostics.max.rust-wrapper": {
+    "id": "active.diagnostics.max.rust-wrapper",
+    "claim": "max rust-wrapper debug controls",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 3.637,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.diagnostics.max.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "max"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "max",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          0,
+          2073600,
+          2073600,
+          0,
+          13651638919483069600,
+          16036624802644482785
+        ],
+        [
+          1,
+          2073600,
+          2073600,
+          0,
+          2512909429971313317,
+          2023425603195393461
+        ],
+        [
+          2,
+          2073600,
+          2073600,
+          0,
+          10747291272929087371,
+          15445934767081235257
+        ],
+        [
+          3,
+          2073600,
+          2073600,
+          0,
+          17713904190100142940,
+          8383042797465832409
+        ]
+      ],
+      "cpu": {
+        "samples": 4,
+        "min_ns": 175300.0,
+        "median_ns": 186900.0,
+        "p95_ns": 186900.0,
+        "max_ns": 2021526200.0
+      },
+      "gpu": {
+        "samples": 4,
+        "min_ns": 845240.0,
+        "median_ns": 1174040.0,
+        "p95_ns": 1174040.0,
+        "max_ns": 1300320.0
+      },
+      "empty_gpu": {
+        "samples": 4,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.diagnostics.small.cpp-minimal": {
+    "id": "active.diagnostics.small.cpp-minimal",
+    "claim": "small cpp-minimal debug controls",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.49,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.diagnostics.small.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          0,
+          2073600,
+          2073600,
+          0,
+          13952181004187198736,
+          14240382280486311233
+        ],
+        [
+          1,
+          2073600,
+          2073600,
+          0,
+          5573812294841506148,
+          1365597472237971385
+        ],
+        [
+          2,
+          2073600,
+          2073600,
+          0,
+          9128470941801597797,
+          8394787571094759217
+        ],
+        [
+          3,
+          2073600,
+          2073600,
+          0,
+          7333059858861250834,
+          9133556642289826377
+        ]
+      ],
+      "cpu": {
+        "samples": 4,
+        "min_ns": 171400.0,
+        "median_ns": 176000.0,
+        "p95_ns": 176000.0,
+        "max_ns": 71176400.0
+      },
+      "gpu": {
+        "samples": 4,
+        "min_ns": 1175120.0,
+        "median_ns": 1297960.0,
+        "p95_ns": 1297960.0,
+        "max_ns": 1298880.0
+      },
+      "empty_gpu": {
+        "samples": 4,
+        "min_ns": 80.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "active.diagnostics.small.rust-wrapper": {
+    "id": "active.diagnostics.small.rust-wrapper",
+    "claim": "small rust-wrapper debug controls",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.535,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.diagnostics.small.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "small"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "small",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          0,
+          2073600,
+          2073600,
+          0,
+          13952181004187198736,
+          14240382280486311233
+        ],
+        [
+          1,
+          2073600,
+          2073600,
+          0,
+          5573812294841506148,
+          1365597472237971385
+        ],
+        [
+          2,
+          2073600,
+          2073600,
+          0,
+          9128470941801597797,
+          8394787571094759217
+        ],
+        [
+          3,
+          2073600,
+          2073600,
+          0,
+          7333059858861250834,
+          9133556642289826377
+        ]
+      ],
+      "cpu": {
+        "samples": 4,
+        "min_ns": 176600.0,
+        "median_ns": 178400.0,
+        "p95_ns": 178400.0,
+        "max_ns": 73603200.0
+      },
+      "gpu": {
+        "samples": 4,
+        "min_ns": 956200.0,
+        "median_ns": 1178840.0,
+        "p95_ns": 1178840.0,
+        "max_ns": 1298680.0
+      },
+      "empty_gpu": {
+        "samples": 4,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.diagnostics.transition.cpp-minimal": {
+    "id": "active.diagnostics.transition.cpp-minimal",
+    "claim": "transition cpp-minimal debug controls",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.476,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.diagnostics.transition.cpp-minimal\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          0,
+          2073600,
+          2073600,
+          0,
+          13651638919483069600,
+          16036624802644482785
+        ],
+        [
+          1,
+          2073600,
+          2073600,
+          0,
+          8544493480682874816,
+          1365597472237971385
+        ],
+        [
+          2,
+          2073600,
+          2073600,
+          0,
+          16937193119358721452,
+          8394787571094759217
+        ],
+        [
+          3,
+          2073600,
+          2073600,
+          0,
+          10452130906043804252,
+          8383042797465832409
+        ]
+      ],
+      "cpu": {
+        "samples": 4,
+        "min_ns": 177500.0,
+        "median_ns": 180500.0,
+        "p95_ns": 180500.0,
+        "max_ns": 72850000.0
+      },
+      "gpu": {
+        "samples": 4,
+        "min_ns": 963920.0,
+        "median_ns": 1297760.0,
+        "p95_ns": 1297760.0,
+        "max_ns": 1300920.0
+      },
+      "empty_gpu": {
+        "samples": 4,
+        "min_ns": 80.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    }
+  },
+  "active.diagnostics.transition.rust-wrapper": {
+    "id": "active.diagnostics.transition.rust-wrapper",
+    "claim": "transition rust-wrapper debug controls",
+    "scope": "native-experiment",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\active-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.555,
+        "timeout_seconds": 240,
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\active.diagnostics.transition.rust-wrapper\\final.rgba16f",
+          "FSR_SDK_ACTIVE_TIMING": "transition"
+        }
+      }
+    ],
+    "observations": {
+      "mode": "transition",
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "smaller": {
+        "render": [
+          960,
+          540
+        ],
+        "phase": 32
+      },
+      "checkpoints": [
+        [
+          0,
+          2073600,
+          2073600,
+          0,
+          13651638919483069600,
+          16036624802644482785
+        ],
+        [
+          1,
+          2073600,
+          2073600,
+          0,
+          8544493480682874816,
+          1365597472237971385
+        ],
+        [
+          2,
+          2073600,
+          2073600,
+          0,
+          16937193119358721452,
+          8394787571094759217
+        ],
+        [
+          3,
+          2073600,
+          2073600,
+          0,
+          10452130906043804252,
+          8383042797465832409
+        ]
+      ],
+      "cpu": {
+        "samples": 4,
+        "min_ns": 177800.0,
+        "median_ns": 285900.0,
+        "p95_ns": 285900.0,
+        "max_ns": 69273100.0
+      },
+      "gpu": {
+        "samples": 4,
+        "min_ns": 883440.0,
+        "median_ns": 1298120.0,
+        "p95_ns": 1298120.0,
+        "max_ns": 1300200.0
+      },
+      "empty_gpu": {
+        "samples": 4,
+        "min_ns": 40.0,
+        "median_ns": 80.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    }
+  },
+  "equipment.toolchain": {
+    "id": "equipment.toolchain",
+    "claim": "Actual compiler, Cargo, Python and host identity",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\rustc.EXE",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.062,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      },
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "-V"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.06,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.14.1 (tags/v3.14.1:57e0d17, Dec  2 2025, 14:05:07) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    }
+  },
+  "native.helper": {
+    "id": "native.helper",
+    "claim": "DX12 submission, fencing and readback equipment",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/LD",
+          "/O2",
+          "/DFSR_GPU_TIMING",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+          "/Fo<run>\\native\\",
+          "/link",
+          "/OUT:<run>\\native\\gpu_helper.dll",
+          "/IMPLIB:<run>\\native\\gpu_helper.lib",
+          "d3d12.lib",
+          "dxgi.lib"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.154,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "helper_sha256": "b741a781586173196ab24b5ca2964df0f9ef32e06a5f4ad114743962e6cb79af"
+    }
+  },
+  "native.sdk": {
+    "id": "native.sdk",
+    "claim": "Pinned, signed local loader/provider deployment",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1",
+          "-Mode",
+          "signatures",
+          "-Directory",
+          "<run>\\native"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.87,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "artifacts": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      ],
+      "signatures": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.7"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.7"
+        }
+      ],
+      "adapter_index": 0
+    }
+  },
+  "windows.environment": {
+    "id": "windows.environment",
+    "claim": "x64 Windows developer-tool environment",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 3.265,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "msvc": "14.44.35207",
+      "windows_sdk": "10.0.22621.0\\",
+      "target_arch": "x64"
+    }
+  }
+}

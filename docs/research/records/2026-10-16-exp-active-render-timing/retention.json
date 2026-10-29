@@ -1,0 +1,6 @@
+{
+  "format": "Compact selected run/equipment/command identities, final all-process measurements and initial/final summaries; selected logs",
+  "normalization": "UTF-8/LF; private paths and pointer-labelled transient addresses normalized; meaningful numeric codes, IDs and hashes preserved",
+  "temporary": "Raw final GPU images, native builds and full local logs remain under ignored target/. Original input readback buffers are not permanently retained.",
+  "limits": "Full historical image reanalysis requires surviving local final images or a fresh GPU run; timing and bytes can vary between stacks."
+}

@@ -1,0 +1,18 @@
+   Compiling fsr-sdk v0.3.0 (<repo>\crates\fsr-sdk)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.29s
+     Running unittests src\lib.rs (target\verification-build\current\debug\deps\fsr_sdk-cf0799098de092d4.exe)
+     Running tests\dimensions.rs (target\verification-build\current\debug\deps\dimensions-58335fd4ff54ed1f.exe)
+     Running tests\dispatch_inputs.rs (target\verification-build\current\debug\deps\dispatch_inputs-6b6ed90a2fc9fc04.exe)
+     Running tests\movable.rs (target\verification-build\current\debug\deps\movable-0f7c8fd1aaada0a2.exe)
+     Running tests\query_values.rs (target\verification-build\current\debug\deps\query_values-e2cb0d10d77a814f.exe)
+     Running unittests src\lib.rs (target\verification-build\current\debug\deps\fsr_sdk_sys-44cb7be5d0702430.exe)
+     Running tests\abi.rs (target\verification-build\current\debug\deps\abi-330ed6990d881251.exe)
+     Running tests\context_dimensions.rs (target\verification-build\current\debug\deps\context_dimensions-8a2b6d01aa83527d.exe)
+     Running tests\context_lifecycle.rs (target\verification-build\current\debug\deps\context_lifecycle-fb0415ab21a63784.exe)
+     Running tests\dispatch_abi.rs (target\verification-build\current\debug\deps\dispatch_abi-9d7850a661f31eb7.exe)
+     Running tests\loader.rs (target\verification-build\current\debug\deps\loader-7ec24dc4e37b7e6f.exe)
+     Running tests\query.rs (target\verification-build\current\debug\deps\query-bc1685c0df1f2b71.exe)
+     Running tests\query_abi.rs (target\verification-build\current\debug\deps\query_abi-b926e7b521652069.exe)
+     Running tests\shared_runtime.rs (target\verification-build\current\debug\deps\shared_runtime-63b5381d6ae6e13d.exe)
+   Doc-tests fsr_sdk
+   Doc-tests fsr_sdk_sys

@@ -1,0 +1,3818 @@
+{
+  "abi.common": {
+    "id": "abi.common",
+    "claim": "Independent native common ABI assertions",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+          "/Fo<run>\\common.obj"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.278,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "abi.creation": {
+    "id": "abi.creation",
+    "claim": "Independent native creation ABI assertions",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+          "/Fo<run>\\creation.obj"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.452,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "abi.dispatch": {
+    "id": "abi.dispatch",
+    "claim": "Independent native dispatch ABI assertions",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+          "/Fo<run>\\dispatch.obj"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.114,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "abi.headers": {
+    "id": "abi.headers",
+    "claim": "Four hash-verified pinned SDK headers",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [],
+    "observations": {
+      "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+      "headers": [
+        {
+          "path": "api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        }
+      ]
+    }
+  },
+  "abi.query": {
+    "id": "abi.query",
+    "claim": "Independent native query ABI assertions",
+    "scope": "windows-compilation",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\query_native_abi.cpp",
+          "/Fo<run>\\query.obj"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.098,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "archive.integrity": {
+    "id": "archive.integrity",
+    "claim": "Frozen historical scripts, references and dependency index",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+          "tools/verification/archive/check.py",
+          "--report",
+          "<run>\\cases\\archive.integrity\\archive-checks.json",
+          "--require-powershell"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.662,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "archive_checks": {
+        "schema_version": 1,
+        "archives": [
+          {
+            "archive": "2026-10-10",
+            "integrity": {
+              "execution": "completed",
+              "evaluation": "passed",
+              "retired_scripts": 19,
+              "context_snapshots": 4
+            },
+            "python_syntax": {
+              "execution": "completed",
+              "evaluation": "passed",
+              "sources": 7
+            },
+            "json_syntax": {
+              "execution": "completed",
+              "evaluation": "passed",
+              "sources": 1
+            },
+            "powershell_syntax": {
+              "sources": 15,
+              "required": true,
+              "execution": "completed",
+              "evaluation": "passed",
+              "parser": "C:\\Program Files\\PowerShell\\7\\pwsh.EXE"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "consumer.active-render-frame": {
+    "id": "consumer.active-render-frame",
+    "claim": "Consumer active-render-frame",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.171,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions,UpscaleDispatch}; fn frame(f: &mut UpscaleDispatch<'_>) { f.set_active_render_size(Some(Dimensions::new(256,144).unwrap())); let _: Option<Dimensions>=f.active_render_size(); f.set_active_render_size(None); } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.automatic-exposure-resources": {
+    "id": "consumer.automatic-exposure-resources",
+    "claim": "Consumer automatic-exposure-resources",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.163,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{ID3D12Resource,UpscaleResources}; fn resources(r: [&ID3D12Resource;4]) -> UpscaleResources<'_> { let b=UpscaleResources::without_exposure(r[0],r[1],r[2],r[3]); assert!(b.exposure().is_none()); b.clone() } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.colour-encoding-frame": {
+    "id": "consumer.colour-encoding-frame",
+    "claim": "Consumer colour-encoding-frame",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.162,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{ColorEncodingHint,UpscaleDispatch}; fn configure(f: &mut UpscaleDispatch<'_>) { f.set_color_encoding_hint(ColorEncodingHint::Srgb); let _: ColorEncodingHint=f.color_encoding_hint(); f.set_color_encoding_hint_allow_context_mismatch(ColorEncodingHint::Pq); assert!(f.allows_color_encoding_context_mismatch()); f.set_color_encoding_hint(ColorEncodingHint::Pq); assert!(!f.allows_color_encoding_context_mismatch()); } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.colour-encoding-options-portable": {
+    "id": "consumer.colour-encoding-options-portable",
+    "claim": "Consumer colour-encoding-options-portable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.134,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{ColorEncodingHint, InputColorSpace, Dimensions, UpscalerOptions, common}; fn main() { let d=Dimensions::new(320,180).unwrap(); let mut o=UpscalerOptions::new(d,d); assert_eq!(o.input_color_space(), InputColorSpace::Linear); o.set_input_color_space(InputColorSpace::NonLinear); let _: common::InputColorSpace=o.input_color_space(); let _: common::ColorEncodingHint=ColorEncodingHint::default(); for hint in [ColorEncodingHint::Unspecified, ColorEncodingHint::Srgb, ColorEncodingHint::Pq] { match hint { ColorEncodingHint::Unspecified | ColorEncodingHint::Srgb | ColorEncodingHint::Pq => {}, _ => {} } } }",
+      "features": "",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.common-movable-positive": {
+    "id": "consumer.common-movable-positive",
+    "claim": "Consumer common-movable-positive",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.147,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{CameraParameters, FrameTimeMillis, JitterOffsetPixels, PreExposure, UpscalerOptions, common}; fn main() { let _: PreExposure = common::PreExposure::new(4.0).unwrap(); let d = common::Dimensions::new(320, 180).unwrap(); let _: UpscalerOptions = common::UpscalerOptions::new(d, d); let _: CameraParameters = common::CameraParameters::new(0.1, 100.0, 1.0, 1.0).unwrap(); let _: FrameTimeMillis = common::FrameTimeMillis::new(16.0).unwrap(); let _: JitterOffsetPixels = common::JitterOffsetPixels::new(0.0, 0.0).unwrap(); }",
+      "features": "movable",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.common-positive": {
+    "id": "consumer.common-positive",
+    "claim": "Consumer common-positive",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.145,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions, PreExposure, common}; use fsr_sdk_sys::{api::ffxApiHeader, upscale::ffxDispatchDescUpscale}; fn main() { let _: PreExposure = common::PreExposure::default(); let _: Dimensions = common::Dimensions::new(320, 180).unwrap(); let _: Option<ffxApiHeader> = None; let _: Option<ffxDispatchDescUpscale> = None; }",
+      "features": "",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.depth-motion-profiles": {
+    "id": "consumer.depth-motion-profiles",
+    "claim": "Consumer depth-motion-profiles",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.138,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{CameraParameters, DepthConvention, MotionVectorUnits, MotionVectorResolution, MotionVectorJitter, Dimensions, UpscalerOptions, common}; fn main() { let d = Dimensions::new(320, 180).unwrap(); let mut options = UpscalerOptions::new(d, d); for depth in [DepthConvention::StandardFinite, DepthConvention::ReversedFinite, DepthConvention::StandardInfinite, DepthConvention::ReversedInfinite] { options.set_depth_convention(depth); let _: common::DepthConvention = options.depth_convention(); let _ = depth.is_infinite(); } options.set_motion_vector_resolution(MotionVectorResolution::Display); let _: common::MotionVectorResolution = options.motion_vector_resolution(); options.set_motion_vector_jitter(MotionVectorJitter::Included); let _: common::MotionVectorJitter = options.motion_vector_jitter(); let _: common::MotionVectorUnits = MotionVectorUnits::Pixels; let camera = CameraParameters::new_infinite(0.1, 1.0, 1.0).unwrap(); assert!(camera.has_infinite_far_plane()); match options.depth_convention() { DepthConvention::StandardFinite | DepthConvention::ReversedFinite | DepthConvention::StandardInfinite | DepthConvention::ReversedInfinite => {}, _ => {} } }",
+      "features": "",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.dispatch-field-private": {
+    "id": "consumer.dispatch-field-private",
+    "claim": "Consumer dispatch-field-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.157,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = f.reset; } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": "E0616"
+    }
+  },
+  "consumer.dispatch-inputs-positive": {
+    "id": "consumer.dispatch-inputs-positive",
+    "claim": "Consumer dispatch-inputs-positive",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.198,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{CameraParameters, FrameTimeMillis, JitterOffsetPixels, ID3D12GraphicsCommandList, ID3D12Resource, NativeSharpness, MotionVectorUnits, PreExposure, Sharpening, UpscaleDispatch, UpscaleResources, dx12}; fn frame<'a>(list: &'a ID3D12GraphicsCommandList, r: [&'a ID3D12Resource; 5]) -> UpscaleDispatch<'a> { let resources = UpscaleResources::new(r[0], r[1], r[2], r[3], r[4]); let copy: dx12::UpscaleResources = resources.clone(); let mut f = UpscaleDispatch::new(list, copy, JitterOffsetPixels::new(0.0, 0.0).unwrap(), FrameTimeMillis::new(16.0).unwrap(), CameraParameters::new(0.1, 100.0, 1.0, 1.0).unwrap(), true); f.set_motion_vector_units(MotionVectorUnits::Pixels); let _: MotionVectorUnits = f.motion_vector_units(); f.set_pre_exposure(PreExposure::new(0.25).unwrap()); let _: PreExposure = f.pre_exposure(); let _: &Sharpening = f.sharpening(); f.set_sharpening(Sharpening::Native(NativeSharpness::new(0.35).unwrap())); match f.sharpening() { Sharpening::Disabled => {}, Sharpening::Native(v) => { let _ = v.value(); }, _ => {} } f } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.dispatch-literal-private": {
+    "id": "consumer.dispatch-literal-private",
+    "claim": "Consumer dispatch-literal-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.166,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleDispatch; fn wrong(f: UpscaleDispatch) { let _ = UpscaleDispatch { ..f }; } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": "E0451"
+    }
+  },
+  "consumer.dx12-disabled": {
+    "id": "consumer.dx12-disabled",
+    "claim": "Consumer dx12-disabled",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.123,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::MovableRuntime; fn main() { let _: Option<MovableRuntime> = None; }",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.dynamic-resolution-options-portable": {
+    "id": "consumer.dynamic-resolution-options-portable",
+    "claim": "Consumer dynamic-resolution-options-portable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.13,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions,UpscalerOptions}; fn main() { let d=Dimensions::new(320,180).unwrap(); let mut o=UpscalerOptions::new(d,d); assert!(!o.dynamic_resolution()); o.set_dynamic_resolution(true); assert!(o.dynamic_resolution()); }",
+      "features": "",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.examples.dx12": {
+    "id": "consumer.examples.dx12",
+    "claim": "Downstream complete examples",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--examples",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.216,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "consumer.examples.dx12-movable": {
+    "id": "consumer.examples.dx12-movable",
+    "claim": "Downstream complete examples",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--examples",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.226,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "consumer.examples.prepare": {
+    "id": "consumer.examples.prepare",
+    "claim": "Prepare full public integration examples",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [],
+    "observations": {
+      "complete_windows_snippets": 2,
+      "readme_included": true
+    }
+  },
+  "consumer.exposure-options-portable": {
+    "id": "consumer.exposure-options-portable",
+    "claim": "Consumer exposure-options-portable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.129,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions,UpscalerOptions,ExposureMode,common}; fn main() { let d=Dimensions::new(320,180).unwrap(); let mut o=UpscalerOptions::new(d,d); o.set_exposure_mode(ExposureMode::Automatic); let _: common::ExposureMode=o.exposure_mode(); match o.exposure_mode() { ExposureMode::Explicit | ExposureMode::Automatic => {}, _ => {} } }",
+      "features": "",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.feature-disabled": {
+    "id": "consumer.feature-disabled",
+    "claim": "Consumer feature-disabled",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.167,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::MovableRuntime; fn main() { let _: Option<MovableRuntime> = None; }",
+      "features": "dx12",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.hdr-options": {
+    "id": "consumer.hdr-options",
+    "claim": "Consumer hdr-options",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.152,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::{Dimensions, UpscalerOptions, common}; fn main() { let d = Dimensions::new(320, 180).unwrap(); let mut options = common::UpscalerOptions::new(d, d); assert!(!options.high_dynamic_range()); options.set_high_dynamic_range(true); let copy: UpscalerOptions = options.clone(); assert!(copy.high_dynamic_range()); options.set_high_dynamic_range(false); assert!(!options.high_dynamic_range()); }",
+      "features": "",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.jitter-phase-construction-private": {
+    "id": "consumer.jitter-phase-construction-private",
+    "claim": "Consumer jitter-phase-construction-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.143,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::JitterPhaseCount; fn main() { let _=JitterPhaseCount(std::num::NonZeroI32::new(0).unwrap()); }",
+      "features": "",
+      "expected_diagnostic": "E0423"
+    }
+  },
+  "consumer.local-positive": {
+    "id": "consumer.local-positive",
+    "claim": "Consumer local-positive",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.159,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::Runtime; fn main() { let _: Option<Runtime> = None; }",
+      "features": "dx12",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.local-runtime-not-send": {
+    "id": "consumer.local-runtime-not-send",
+    "claim": "Consumer local-runtime-not-send",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.165,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::Runtime; fn check<T: Send>() {} fn main() { check::<Runtime>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    }
+  },
+  "consumer.local-to-movable-construction": {
+    "id": "consumer.local-to-movable-construction",
+    "claim": "Consumer local-to-movable-construction",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.165,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::Runtime, upscaler::{MovableUpscaler, UpscalerOptions, ID3D12Device}}; fn wrong(r: &Runtime, d: &ID3D12Device, o: UpscalerOptions) { let _ = MovableUpscaler::new(r, d, o); } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0308"
+    }
+  },
+  "consumer.local-upscaler-not-send": {
+    "id": "consumer.local-upscaler-not-send",
+    "claim": "Consumer local-upscaler-not-send",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.183,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Upscaler; fn check<T: Send>() {} fn main() { check::<Upscaler>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    }
+  },
+  "consumer.metadata": {
+    "id": "consumer.metadata",
+    "claim": "Source IDs and selected package provenance",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "metadata",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--features",
+          "dx12,movable",
+          "--format-version=1",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.087,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "registry_only": false,
+      "packages": [
+        {
+          "name": "fsr-sdk",
+          "version": "0.3.0",
+          "source": null,
+          "manifest_path": "<repo>\\crates\\fsr-sdk\\Cargo.toml"
+        },
+        {
+          "name": "fsr-sdk-sys",
+          "version": "0.1.2",
+          "source": null,
+          "manifest_path": "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml"
+        }
+      ]
+    }
+  },
+  "consumer.movable-positive": {
+    "id": "consumer.movable-positive",
+    "claim": "Consumer movable-positive",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.161,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::MovableRuntime, upscaler::MovableUpscaler}; fn send<T: Send>() {} fn main() { send::<MovableRuntime>(); send::<MovableUpscaler>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.movable-runtime-not-sync": {
+    "id": "consumer.movable-runtime-not-sync",
+    "claim": "Consumer movable-runtime-not-sync",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.164,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::MovableRuntime; fn check<T: Sync>() {} fn main() { check::<MovableRuntime>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    }
+  },
+  "consumer.movable-to-local-construction": {
+    "id": "consumer.movable-to-local-construction",
+    "claim": "Consumer movable-to-local-construction",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.163,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::MovableRuntime, upscaler::{Upscaler, UpscalerOptions, ID3D12Device}}; fn wrong(r: &MovableRuntime, d: &ID3D12Device, o: UpscalerOptions) { let _ = Upscaler::new(r, d, o); } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0308"
+    }
+  },
+  "consumer.movable-upscaler-not-sync": {
+    "id": "consumer.movable-upscaler-not-sync",
+    "claim": "Consumer movable-upscaler-not-sync",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.173,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::MovableUpscaler; fn check<T: Sync>() {} fn main() { check::<MovableUpscaler>(); }",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    }
+  },
+  "consumer.native-disabled-dispatch-resources-movable": {
+    "id": "consumer.native-disabled-dispatch-resources-movable",
+    "claim": "Consumer native-disabled-dispatch-resources-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.136,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleResources; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-dispatch-resources-none": {
+    "id": "consumer.native-disabled-dispatch-resources-none",
+    "claim": "Consumer native-disabled-dispatch-resources-none",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.136,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleResources; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-dx12-module-movable": {
+    "id": "consumer.native-disabled-dx12-module-movable",
+    "claim": "Consumer native-disabled-dx12-module-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.136,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::dx12; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-dx12-module-none": {
+    "id": "consumer.native-disabled-dx12-module-none",
+    "claim": "Consumer native-disabled-dx12-module-none",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.137,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::dx12; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-legacy-movable-movable": {
+    "id": "consumer.native-disabled-legacy-movable-movable",
+    "claim": "Consumer native-disabled-legacy-movable-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.133,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::MovableUpscaler; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-legacy-movable-none": {
+    "id": "consumer.native-disabled-legacy-movable-none",
+    "claim": "Consumer native-disabled-legacy-movable-none",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.137,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::MovableUpscaler; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-legacy-upscaler-movable": {
+    "id": "consumer.native-disabled-legacy-upscaler-movable",
+    "claim": "Consumer native-disabled-legacy-upscaler-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.135,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Upscaler; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-legacy-upscaler-none": {
+    "id": "consumer.native-disabled-legacy-upscaler-none",
+    "claim": "Consumer native-disabled-legacy-upscaler-none",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.137,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Upscaler; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-native-sharpness-movable": {
+    "id": "consumer.native-disabled-native-sharpness-movable",
+    "claim": "Consumer native-disabled-native-sharpness-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.138,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::NativeSharpness; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-native-sharpness-none": {
+    "id": "consumer.native-disabled-native-sharpness-none",
+    "claim": "Consumer native-disabled-native-sharpness-none",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.134,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::NativeSharpness; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-raw-dx12-movable": {
+    "id": "consumer.native-disabled-raw-dx12-movable",
+    "claim": "Consumer native-disabled-raw-dx12-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.148,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::dx12; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-raw-dx12-none": {
+    "id": "consumer.native-disabled-raw-dx12-none",
+    "claim": "Consumer native-disabled-raw-dx12-none",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.135,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::dx12; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-raw-loader-movable": {
+    "id": "consumer.native-disabled-raw-loader-movable",
+    "claim": "Consumer native-disabled-raw-loader-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.134,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::loader; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-raw-loader-none": {
+    "id": "consumer.native-disabled-raw-loader-none",
+    "claim": "Consumer native-disabled-raw-loader-none",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.138,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::loader; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-runtime-movable": {
+    "id": "consumer.native-disabled-runtime-movable",
+    "claim": "Consumer native-disabled-runtime-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.137,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-runtime-none": {
+    "id": "consumer.native-disabled-runtime-none",
+    "claim": "Consumer native-disabled-runtime-none",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.137,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-sharpening-movable": {
+    "id": "consumer.native-disabled-sharpening-movable",
+    "claim": "Consumer native-disabled-sharpening-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.134,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Sharpening; fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.native-disabled-sharpening-none": {
+    "id": "consumer.native-disabled-sharpening-none",
+    "claim": "Consumer native-disabled-sharpening-none",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.139,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Sharpening; fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0432"
+    }
+  },
+  "consumer.no-local-to-movable-conversion": {
+    "id": "consumer.no-local-to-movable-conversion",
+    "claim": "Consumer no-local-to-movable-conversion",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.165,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::{Runtime, MovableRuntime}; fn wrong(r: Runtime) -> MovableRuntime { r.into() } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    }
+  },
+  "consumer.no-movable-to-local-conversion": {
+    "id": "consumer.no-movable-to-local-conversion",
+    "claim": "Consumer no-movable-to-local-conversion",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.16,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::runtime::{Runtime, MovableRuntime}; fn wrong(r: MovableRuntime) -> Runtime { r.into() } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0277"
+    }
+  },
+  "consumer.pre-exposure-construction-private": {
+    "id": "consumer.pre-exposure-construction-private",
+    "claim": "Consumer pre-exposure-construction-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.164,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::PreExposure; fn main() { let _ = PreExposure(0.0); }",
+      "features": "",
+      "expected_diagnostic": "E0423"
+    }
+  },
+  "consumer.provider-id-private": {
+    "id": "consumer.provider-id-private",
+    "claim": "Consumer provider-id-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.149,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::ProviderId; fn main() { let _ = ProviderId(1); }",
+      "features": "",
+      "expected_diagnostic": "E0423"
+    }
+  },
+  "consumer.queries-local": {
+    "id": "consumer.queries-local",
+    "claim": "Consumer queries-local",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.177,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::Runtime, upscaler::{Upscaler, ID3D12Device, UpscalerOptions}, query::{ProviderInfo, GpuMemoryUsage, ResourceRequirements, QualityMode, JitterPhaseCount}, error::Error}; fn inspect(r: &mut Runtime, u: &mut Upscaler, d: &ID3D12Device, o: &UpscalerOptions) -> Result<(), Error> { let _: Vec<ProviderInfo> = r.upscaler_providers_dx12(d)?; let _: GpuMemoryUsage = r.estimate_upscaler_memory_dx12(d, o)?; let _: ProviderInfo = u.provider()?; let _: ResourceRequirements = u.resource_requirements()?; let _: GpuMemoryUsage = u.gpu_memory_usage()?; let display=o.max_upscale_size(); let render=o.max_render_size(); let _: f32=r.upscaler_ratio_dx12(d, QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=r.upscaler_render_size_dx12(d, display, QualityMode::Balanced)?; let phase: JitterPhaseCount=r.upscaler_jitter_phase_count_dx12(d, render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=r.upscaler_jitter_offset_dx12(d, 0, phase)?; let _: f32=u.upscale_ratio(QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=u.render_size(display, QualityMode::Balanced)?; let phase: JitterPhaseCount=u.jitter_phase_count(render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=u.jitter_offset(0, phase)?; Ok(()) } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.queries-movable": {
+    "id": "consumer.queries-movable",
+    "claim": "Consumer queries-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.164,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{runtime::MovableRuntime, upscaler::{MovableUpscaler, ID3D12Device, UpscalerOptions}, query::{ProviderInfo, GpuMemoryUsage, ResourceRequirements, QualityMode, JitterPhaseCount}, error::Error}; fn inspect(r: &mut MovableRuntime, u: &mut MovableUpscaler, d: &ID3D12Device, o: &UpscalerOptions) -> Result<(), Error> { let _: Vec<ProviderInfo> = r.upscaler_providers_dx12(d)?; let _: GpuMemoryUsage = r.estimate_upscaler_memory_dx12(d, o)?; let _: ProviderInfo = u.provider()?; let _: ResourceRequirements = u.resource_requirements()?; let _: GpuMemoryUsage = u.gpu_memory_usage()?; let display=o.max_upscale_size(); let render=o.max_render_size(); let _: f32=r.upscaler_ratio_dx12(d, QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=r.upscaler_render_size_dx12(d, display, QualityMode::Balanced)?; let phase: JitterPhaseCount=r.upscaler_jitter_phase_count_dx12(d, render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=r.upscaler_jitter_offset_dx12(d, 0, phase)?; let _: f32=u.upscale_ratio(QualityMode::Balanced)?; let _: fsr_sdk::upscaler::Dimensions=u.render_size(display, QualityMode::Balanced)?; let phase: JitterPhaseCount=u.jitter_phase_count(render, display)?; let _: fsr_sdk::upscaler::JitterOffsetPixels=u.jitter_offset(0, phase)?; Ok(()) } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.query-exclusive-local": {
+    "id": "consumer.query-exclusive-local",
+    "claim": "Consumer query-exclusive-local",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.157,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::Upscaler; fn wrong(u: &Upscaler) { let _ = u.provider(); } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": "E0596"
+    }
+  },
+  "consumer.query-exclusive-movable": {
+    "id": "consumer.query-exclusive-movable",
+    "claim": "Consumer query-exclusive-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.154,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::MovableUpscaler; fn wrong(u: &MovableUpscaler) { let _ = u.provider(); } fn main() {}",
+      "features": "dx12,movable",
+      "expected_diagnostic": "E0596"
+    }
+  },
+  "consumer.query-memory-field-private": {
+    "id": "consumer.query-memory-field-private",
+    "claim": "Consumer query-memory-field-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.128,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::GpuMemoryUsage; fn wrong(r: GpuMemoryUsage) { let _ = r.total_bytes; } fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0616"
+    }
+  },
+  "consumer.query-provider-field-private": {
+    "id": "consumer.query-provider-field-private",
+    "claim": "Consumer query-provider-field-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.132,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::ProviderInfo; fn wrong(r: ProviderInfo) { let _ = r.name; } fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0616"
+    }
+  },
+  "consumer.query-requirements-field-private": {
+    "id": "consumer.query-requirements-field-private",
+    "claim": "Consumer query-requirements-field-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.13,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::ResourceRequirements; fn wrong(r: ResourceRequirements) { let _ = r.required; } fn main() {}",
+      "features": "",
+      "expected_diagnostic": "E0616"
+    }
+  },
+  "consumer.query-results-movable": {
+    "id": "consumer.query-results-movable",
+    "claim": "Consumer query-results-movable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.132,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::{ProviderInfo, ProviderId, GpuMemoryUsage, ResourceFlags, ResourceRequirements}; fn observe(p: &ProviderInfo, m: GpuMemoryUsage, r: ResourceRequirements) { let _: ProviderId = p.id(); let _: &str = p.name(); let _: u64 = m.total_bytes(); let _: u64 = m.aliasable_bytes(); let _: u64 = r.required().bits(); let _: u64 = r.optional().unknown_bits(); let _: bool = r.required().contains(ResourceFlags::COLOR); } fn main() {}",
+      "features": "movable",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.query-results-portable": {
+    "id": "consumer.query-results-portable",
+    "claim": "Consumer query-results-portable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.129,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::query::{ProviderInfo, ProviderId, GpuMemoryUsage, ResourceFlags, ResourceRequirements}; fn observe(p: &ProviderInfo, m: GpuMemoryUsage, r: ResourceRequirements) { let _: ProviderId = p.id(); let _: &str = p.name(); let _: u64 = m.total_bytes(); let _: u64 = m.aliasable_bytes(); let _: u64 = r.required().bits(); let _: u64 = r.optional().unknown_bits(); let _: bool = r.required().contains(ResourceFlags::COLOR); } fn main() {}",
+      "features": "",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.query-utility-inputs-portable": {
+    "id": "consumer.query-utility-inputs-portable",
+    "claim": "Consumer query-utility-inputs-portable",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.129,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::{query::{QualityMode, JitterPhaseCount}, error::Error}; fn main() -> Result<(), Error> { let phase=JitterPhaseCount::new(20)?; let _: i32=phase.count(); let mode=QualityMode::Balanced; match mode { QualityMode::NativeAa | QualityMode::Quality | QualityMode::Balanced | QualityMode::Performance | QualityMode::UltraPerformance => {}, _ => {} } Ok(()) }",
+      "features": "",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.raw-loader-positive": {
+    "id": "consumer.raw-loader-positive",
+    "claim": "Consumer raw-loader-positive",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.168,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk_sys::loader::{FfxLibrary, LoadError}; fn main() { let _: Option<FfxLibrary> = None; let _: Option<LoadError> = None; }",
+      "features": "dx12",
+      "expected_diagnostic": null
+    }
+  },
+  "consumer.resources-literal-private": {
+    "id": "consumer.resources-literal-private",
+    "claim": "Consumer resources-literal-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.158,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::UpscaleResources; fn wrong(r: UpscaleResources) { let _ = UpscaleResources { ..r }; } fn main() {}",
+      "features": "dx12",
+      "expected_diagnostic": "E0451"
+    }
+  },
+  "consumer.setup": {
+    "id": "consumer.setup",
+    "claim": "Isolated downstream consumer with explicit dependency provenance",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "generate-lockfile",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.148,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "manifest": "# SPDX-License-Identifier: MPL-2.0\n[package]\nname = \"verification-consumer\"\nversion = \"0.0.0\"\nedition = \"2024\"\n[workspace]\n[features]\ndefault = []\ndx12 = [\"fsr-sdk/dx12\"]\nmovable = [\"fsr-sdk/movable\"]\n[dependencies]\nfsr-sdk = { path = \"<repo>/crates/fsr-sdk\", default-features = false }\nfsr-sdk-sys = { path = \"<repo>/crates/fsr-sdk-sys\", default-features = false }\n"
+    }
+  },
+  "consumer.sharpness-construction-private": {
+    "id": "consumer.sharpness-construction-private",
+    "claim": "Consumer sharpness-construction-private",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--bin",
+          "verification-consumer",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.172,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "source": "use fsr_sdk::upscaler::NativeSharpness; fn main() { let _ = NativeSharpness(0.35); }",
+      "features": "dx12",
+      "expected_diagnostic": "E0423"
+    }
+  },
+  "consumer.tree.consumer.x86_64-pc-windows-msvc.dx12": {
+    "id": "consumer.tree.consumer.x86_64-pc-windows-msvc.dx12",
+    "claim": "Consumer normal dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.089,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    }
+  },
+  "consumer.tree.consumer.x86_64-pc-windows-msvc.dx12-movable": {
+    "id": "consumer.tree.consumer.x86_64-pc-windows-msvc.dx12-movable",
+    "claim": "Consumer normal dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.087,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    }
+  },
+  "consumer.tree.consumer.x86_64-pc-windows-msvc.movable": {
+    "id": "consumer.tree.consumer.x86_64-pc-windows-msvc.movable",
+    "claim": "Consumer normal dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.078,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.consumer.x86_64-pc-windows-msvc.none": {
+    "id": "consumer.tree.consumer.x86_64-pc-windows-msvc.none",
+    "claim": "Consumer normal dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.211,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.consumer.x86_64-unknown-linux-gnu.dx12": {
+    "id": "consumer.tree.consumer.x86_64-unknown-linux-gnu.dx12",
+    "claim": "Consumer normal dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.097,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.consumer.x86_64-unknown-linux-gnu.dx12-movable": {
+    "id": "consumer.tree.consumer.x86_64-unknown-linux-gnu.dx12-movable",
+    "claim": "Consumer normal dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "dx12,movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.085,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.consumer.x86_64-unknown-linux-gnu.movable": {
+    "id": "consumer.tree.consumer.x86_64-unknown-linux-gnu.movable",
+    "claim": "Consumer normal dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.076,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.consumer.x86_64-unknown-linux-gnu.none": {
+    "id": "consumer.tree.consumer.x86_64-unknown-linux-gnu.none",
+    "claim": "Consumer normal dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<run>\\consumer\\Cargo.toml",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.099,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.defaults": {
+    "id": "consumer.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.068,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.dx12": {
+    "id": "consumer.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.dx12",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.07,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    }
+  },
+  "consumer.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.no-defaults": {
+    "id": "consumer.tree.fsr-sdk-sys.x86_64-pc-windows-msvc.no-defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.068,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.defaults": {
+    "id": "consumer.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.071,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.dx12": {
+    "id": "consumer.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.dx12",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.069,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.no-defaults": {
+    "id": "consumer.tree.fsr-sdk-sys.x86_64-unknown-linux-gnu.no-defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk-sys\\Cargo.toml",
+          "-p",
+          "fsr-sdk-sys",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.067,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.defaults": {
+    "id": "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.078,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.dx12": {
+    "id": "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.dx12",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.079,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.movable": {
+    "id": "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.movable",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.078,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": true
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults": {
+    "id": "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.067,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults-movable": {
+    "id": "consumer.tree.fsr-sdk.x86_64-pc-windows-msvc.no-defaults-movable",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-pc-windows-msvc",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.072,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-pc-windows-msvc",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.defaults": {
+    "id": "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.077,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.dx12": {
+    "id": "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.dx12",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "dx12",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.077,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.movable": {
+    "id": "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.movable",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.077,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults": {
+    "id": "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.069,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults-movable": {
+    "id": "consumer.tree.fsr-sdk.x86_64-unknown-linux-gnu.no-defaults-movable",
+    "claim": "Real package defaults and feature dependency graph",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "tree",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "-p",
+          "fsr-sdk",
+          "--target",
+          "x86_64-unknown-linux-gnu",
+          "--edges",
+          "normal",
+          "--prefix",
+          "none",
+          "--no-default-features",
+          "--features",
+          "movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.078,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "target": "x86_64-unknown-linux-gnu",
+      "expected_loader": false
+    }
+  },
+  "consumer.unsupported-vulkan": {
+    "id": "consumer.unsupported-vulkan",
+    "claim": "Explicit unsupported-backend rejection",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "--no-default-features",
+          "--features",
+          "vulkan",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 101,
+        "execution": "completed",
+        "elapsed_seconds": 0.135,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "equipment.toolchain": {
+    "id": "equipment.toolchain",
+    "claim": "Actual compiler, Cargo, Python and host identity",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\rustc.EXE",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.26,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      },
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "-V"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.123,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.14.1 (tags/v3.14.1:57e0d17, Dec  2 2025, 14:05:07) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    }
+  },
+  "infrastructure.tests": {
+    "id": "infrastructure.tests",
+    "claim": "Watchdog, negative-control, completeness and evidence-integrity tests",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tools/verification/tests",
+          "-v"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 130.252,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.default.check": {
+    "id": "rust.default.check",
+    "claim": "Workspace check (default)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--workspace",
+          "--all-targets",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.164,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.default.clippy": {
+    "id": "rust.default.clippy",
+    "claim": "Workspace clippy (default)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "clippy",
+          "--workspace",
+          "--all-targets",
+          "--locked",
+          "--offline",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.274,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.default.doc": {
+    "id": "rust.default.doc",
+    "claim": "Workspace doc (default)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "doc",
+          "--workspace",
+          "--no-deps",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 2.215,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.default.test": {
+    "id": "rust.default.test",
+    "claim": "Workspace test (default)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--workspace",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 8.327,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.format": {
+    "id": "rust.format",
+    "claim": "Repository Rust formatting",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "fmt",
+          "--all",
+          "--",
+          "--check"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.36,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.movable.check": {
+    "id": "rust.movable.check",
+    "claim": "Workspace check (movable)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--workspace",
+          "--features",
+          "fsr-sdk/movable",
+          "--all-targets",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.126,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.movable.clippy": {
+    "id": "rust.movable.clippy",
+    "claim": "Workspace clippy (movable)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "clippy",
+          "--workspace",
+          "--features",
+          "fsr-sdk/movable",
+          "--all-targets",
+          "--locked",
+          "--offline",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.237,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.movable.doc": {
+    "id": "rust.movable.doc",
+    "claim": "Workspace doc (movable)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "doc",
+          "--workspace",
+          "--features",
+          "fsr-sdk/movable",
+          "--no-deps",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.311,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.movable.test": {
+    "id": "rust.movable.test",
+    "claim": "Workspace test (movable)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--workspace",
+          "--features",
+          "fsr-sdk/movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 8.823,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.no-default-movable.check": {
+    "id": "rust.no-default-movable.check",
+    "claim": "Workspace check (no-default-movable)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--workspace",
+          "--no-default-features",
+          "--features",
+          "fsr-sdk/movable",
+          "--all-targets",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.089,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.no-default-movable.clippy": {
+    "id": "rust.no-default-movable.clippy",
+    "claim": "Workspace clippy (no-default-movable)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "clippy",
+          "--workspace",
+          "--no-default-features",
+          "--features",
+          "fsr-sdk/movable",
+          "--all-targets",
+          "--locked",
+          "--offline",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.21,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.no-default-movable.doc": {
+    "id": "rust.no-default-movable.doc",
+    "claim": "Workspace doc (no-default-movable)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "doc",
+          "--workspace",
+          "--no-default-features",
+          "--features",
+          "fsr-sdk/movable",
+          "--no-deps",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.176,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.no-default-movable.test": {
+    "id": "rust.no-default-movable.test",
+    "claim": "Workspace test (no-default-movable)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--workspace",
+          "--no-default-features",
+          "--features",
+          "fsr-sdk/movable",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 4.896,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.no-default.check": {
+    "id": "rust.no-default.check",
+    "claim": "Workspace check (no-default)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "check",
+          "--workspace",
+          "--no-default-features",
+          "--all-targets",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.093,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.no-default.clippy": {
+    "id": "rust.no-default.clippy",
+    "claim": "Workspace clippy (no-default)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "clippy",
+          "--workspace",
+          "--no-default-features",
+          "--all-targets",
+          "--locked",
+          "--offline",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 0.213,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.no-default.doc": {
+    "id": "rust.no-default.doc",
+    "claim": "Workspace doc (no-default)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "doc",
+          "--workspace",
+          "--no-default-features",
+          "--no-deps",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 1.942,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "rust.no-default.test": {
+    "id": "rust.no-default.test",
+    "claim": "Workspace test (no-default)",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--workspace",
+          "--no-default-features",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 5.827,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {}
+  },
+  "windows.environment": {
+    "id": "windows.environment",
+    "claim": "x64 Windows developer-tool environment",
+    "scope": "host",
+    "execution": "completed",
+    "evaluation": "passed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1"
+        ],
+        "cwd": "<repo>",
+        "exit_code": 0,
+        "execution": "completed",
+        "elapsed_seconds": 2.319,
+        "timeout_seconds": 1200,
+        "environment_overrides": {}
+      }
+    ],
+    "observations": {
+      "msvc": "14.44.35207",
+      "windows_sdk": "10.0.22621.0\\",
+      "target_arch": "x64"
+    }
+  }
+}

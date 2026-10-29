@@ -1,0 +1,3887 @@
+{
+  "protocol": {
+    "question": "CPU recording and GPU command interval around one active-render shrink/grow sequence versus matched stable-size controls",
+    "output": [
+      1920,
+      1080
+    ],
+    "maximum": "SDK Quality render-size query, checked against live context",
+    "smaller": "Live-context SDK Performance render-size query, strictly inside maximum; Rust additionally cross-checks its pre-create query",
+    "creation": "Dynamic resolution enabled in every workload; identical fixed maximum allocations and output; explicit exposure, linear SDR, local owner",
+    "frames": 160,
+    "warmup": 32,
+    "transition": {
+      "shrink": 64,
+      "grow": 112
+    },
+    "debug_frames": 4,
+    "debug_transition": {
+      "shrink": 1,
+      "grow": 3
+    },
+    "workloads": [
+      "max",
+      "small",
+      "transition"
+    ],
+    "blocks": 4,
+    "ordering": "Odd blocks: max,small,transition with C++ then Rust; even blocks: transition,small,max with Rust then C++",
+    "scene": "RGBA16F ramp: R=.1+.75*((x+.5-jx)/active_width-frame/max_width), G=.1+.75*(y+.5-jy)/active_height, B=.2, A=1; depth .5; inactive colour/motion guards 65504 and depth 1",
+    "motion": "UV current-to-previous, zero on frame 0 then (-1/max_width,0); native scale equals active dimensions; fixed output-space trajectory",
+    "history": "One context per process, reset only frame 0; jitter phase queried separately for each size, offset index=global frame modulo current phase; no query in timed loop",
+    "checkpoints": [
+      31,
+      63,
+      64,
+      111,
+      112,
+      159
+    ],
+    "debug_checkpoints": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "checks": "Untouched output sentinel; restore sentinel at each checkpoint; complete finite/written RGBA output, exact read-only colour/depth/motion input guards, output/input FNV-1a equality between matched consumers; final output SHA-256; device/debug diagnostics and terminal cleanup",
+    "input_oracle": "At each checkpoint sample GPU-readback colour/depth/motion at (0,0), (active_width-1,active_height-1), and (active_width,active_height) when inactive. Independent Python analytic scene/motion prediction: one relative binary16 step plus 1e-6 for binary32 arithmetic; depth/alpha/inactive guards exact. Full input readback bytes also match uploads; samples do not prove every generated texel analytically correct.",
+    "diagnostics": "Separate debug controls require zero debug errors. Timed processes disable the debug layer; UINT64_MAX denotes an unavailable info queue and is never reported as zero observed errors. Device-removal checks remain mandatory.",
+    "stable_matching": "Transition and corresponding stable-size controls must have identical full input hashes, sampled inputs and jitter at each checkpoint. Outputs must also match before the shrink, while histories are identical; no cross-history output equality is required afterwards.",
+    "timing": "P04 same-queue FSR timestamps and separate QPC dispatch interval; upload, queries, sentinel restoration, resolve, fencing, input/output readback, hashing and logging excluded; identical checkpoint schedule in stable controls",
+    "segments": {
+      "before": [
+        32,
+        64
+      ],
+      "first_shrink": [
+        64,
+        65
+      ],
+      "small_settling": [
+        65,
+        80
+      ],
+      "small_steady": [
+        80,
+        112
+      ],
+      "first_grow": [
+        112,
+        113
+      ],
+      "max_settling": [
+        113,
+        128
+      ],
+      "max_steady": [
+        128,
+        160
+      ]
+    },
+    "interpretation": "Four independent process blocks; descriptive signed differences and distributions, retaining per-block single transition samples, warm-up and tails. No speed, parity, quality, throughput, variable-output or universal-support gate"
+  },
+  "blocks": [
+    {
+      "block": 1,
+      "segments": {
+        "before": {
+          "frames": [
+            32,
+            64
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 45400.0,
+                  "median_ns": 60700.0,
+                  "p95_ns": 95400.0,
+                  "max_ns": 116100.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 936160.0,
+                  "median_ns": 958800.0,
+                  "p95_ns": 980080.0,
+                  "max_ns": 1201240.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 37400.0,
+                  "median_ns": 69400.0,
+                  "p95_ns": 94200.0,
+                  "max_ns": 101900.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 937080.0,
+                  "median_ns": 954200.0,
+                  "p95_ns": 980640.0,
+                  "max_ns": 1322600.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 31500.0,
+                  "median_ns": 33700.0,
+                  "p95_ns": 60200.0,
+                  "max_ns": 69500.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 929600.0,
+                  "median_ns": 950400.0,
+                  "p95_ns": 957640.0,
+                  "max_ns": 1321720.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 35400.0,
+                  "median_ns": 54900.0,
+                  "p95_ns": 68000.0,
+                  "max_ns": 70500.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 934640.0,
+                  "median_ns": 953440.0,
+                  "p95_ns": 958480.0,
+                  "max_ns": 969600.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 32700.0,
+                  "median_ns": 55700.0,
+                  "p95_ns": 85500.0,
+                  "max_ns": 105400.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 925360.0,
+                  "median_ns": 953040.0,
+                  "p95_ns": 976560.0,
+                  "max_ns": 984440.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 50300.0,
+                  "median_ns": 60800.0,
+                  "p95_ns": 70900.0,
+                  "max_ns": 75700.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 926760.0,
+                  "median_ns": 950560.0,
+                  "p95_ns": 975000.0,
+                  "max_ns": 1321880.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -5000.0,
+              "gpu": -5760.0
+            },
+            "rust-wrapper": {
+              "cpu": -8600.0,
+              "gpu": -3640.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 8700.0,
+              "gpu": -4600.0
+            },
+            "small": {
+              "cpu": 21200.0,
+              "gpu": 3040.0
+            },
+            "transition": {
+              "cpu": 5100.0,
+              "gpu": -2480.0
+            }
+          }
+        },
+        "first_shrink": {
+          "frames": [
+            64,
+            65
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 72300.0,
+                  "median_ns": 72300.0,
+                  "p95_ns": 72300.0,
+                  "max_ns": 72300.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 982360.0,
+                  "median_ns": 982360.0,
+                  "p95_ns": 982360.0,
+                  "max_ns": 982360.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 69400.0,
+                  "median_ns": 69400.0,
+                  "p95_ns": 69400.0,
+                  "max_ns": 69400.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 970680.0,
+                  "median_ns": 970680.0,
+                  "p95_ns": 970680.0,
+                  "max_ns": 970680.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 64200.0,
+                  "median_ns": 64200.0,
+                  "p95_ns": 64200.0,
+                  "max_ns": 64200.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1207760.0,
+                  "median_ns": 1207760.0,
+                  "p95_ns": 1207760.0,
+                  "max_ns": 1207760.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 69900.0,
+                  "median_ns": 69900.0,
+                  "p95_ns": 69900.0,
+                  "max_ns": 69900.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1290600.0,
+                  "median_ns": 1290600.0,
+                  "p95_ns": 1290600.0,
+                  "max_ns": 1290600.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 63800.0,
+                  "median_ns": 63800.0,
+                  "p95_ns": 63800.0,
+                  "max_ns": 63800.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1299120.0,
+                  "median_ns": 1299120.0,
+                  "p95_ns": 1299120.0,
+                  "max_ns": 1299120.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 72500.0,
+                  "median_ns": 72500.0,
+                  "p95_ns": 72500.0,
+                  "max_ns": 72500.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1300000.0,
+                  "median_ns": 1300000.0,
+                  "p95_ns": 1300000.0,
+                  "max_ns": 1300000.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -400.0,
+              "gpu": 91360.0
+            },
+            "rust-wrapper": {
+              "cpu": 2600.0,
+              "gpu": 9400.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -2900.0,
+              "gpu": -11680.0
+            },
+            "small": {
+              "cpu": 5700.0,
+              "gpu": 82840.0
+            },
+            "transition": {
+              "cpu": 8700.0,
+              "gpu": 880.0
+            }
+          }
+        },
+        "small_settling": {
+          "frames": [
+            65,
+            80
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 33700.0,
+                  "median_ns": 35800.0,
+                  "p95_ns": 63500.0,
+                  "max_ns": 66400.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 944080.0,
+                  "median_ns": 958200.0,
+                  "p95_ns": 977440.0,
+                  "max_ns": 1322280.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 32700.0,
+                  "median_ns": 34500.0,
+                  "p95_ns": 40000.0,
+                  "max_ns": 70400.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 932960.0,
+                  "median_ns": 954240.0,
+                  "p95_ns": 966600.0,
+                  "max_ns": 1171920.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 31700.0,
+                  "median_ns": 35800.0,
+                  "p95_ns": 53700.0,
+                  "max_ns": 66900.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 930000.0,
+                  "median_ns": 951560.0,
+                  "p95_ns": 959440.0,
+                  "max_ns": 969360.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 33400.0,
+                  "median_ns": 34500.0,
+                  "p95_ns": 39500.0,
+                  "max_ns": 70900.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 942720.0,
+                  "median_ns": 953640.0,
+                  "p95_ns": 962800.0,
+                  "max_ns": 991720.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 31400.0,
+                  "median_ns": 33900.0,
+                  "p95_ns": 52600.0,
+                  "max_ns": 64500.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 936600.0,
+                  "median_ns": 952400.0,
+                  "p95_ns": 962400.0,
+                  "max_ns": 1324600.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 32800.0,
+                  "median_ns": 35100.0,
+                  "p95_ns": 49700.0,
+                  "max_ns": 69500.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 933600.0,
+                  "median_ns": 954600.0,
+                  "p95_ns": 961760.0,
+                  "max_ns": 968200.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -1900.0,
+              "gpu": 840.0
+            },
+            "rust-wrapper": {
+              "cpu": 600.0,
+              "gpu": 960.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -1300.0,
+              "gpu": -3960.0
+            },
+            "small": {
+              "cpu": -1300.0,
+              "gpu": 2080.0
+            },
+            "transition": {
+              "cpu": 1200.0,
+              "gpu": 2200.0
+            }
+          }
+        },
+        "small_steady": {
+          "frames": [
+            80,
+            112
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 33600.0,
+                  "median_ns": 35900.0,
+                  "p95_ns": 41400.0,
+                  "max_ns": 58100.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 935000.0,
+                  "median_ns": 957280.0,
+                  "p95_ns": 977520.0,
+                  "max_ns": 981600.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 33200.0,
+                  "median_ns": 34100.0,
+                  "p95_ns": 41900.0,
+                  "max_ns": 56900.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 931880.0,
+                  "median_ns": 951240.0,
+                  "p95_ns": 961160.0,
+                  "max_ns": 973880.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 30700.0,
+                  "median_ns": 33700.0,
+                  "p95_ns": 47900.0,
+                  "max_ns": 53500.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 927920.0,
+                  "median_ns": 947320.0,
+                  "p95_ns": 953320.0,
+                  "max_ns": 960360.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 33400.0,
+                  "median_ns": 58200.0,
+                  "p95_ns": 69000.0,
+                  "max_ns": 94200.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 944320.0,
+                  "median_ns": 955880.0,
+                  "p95_ns": 958360.0,
+                  "max_ns": 961800.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 30900.0,
+                  "median_ns": 32200.0,
+                  "p95_ns": 37400.0,
+                  "max_ns": 42700.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 926600.0,
+                  "median_ns": 950800.0,
+                  "p95_ns": 954600.0,
+                  "max_ns": 954920.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 32900.0,
+                  "median_ns": 34800.0,
+                  "p95_ns": 41600.0,
+                  "max_ns": 44600.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 931240.0,
+                  "median_ns": 954520.0,
+                  "p95_ns": 957600.0,
+                  "max_ns": 968480.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -1500.0,
+              "gpu": 3480.0
+            },
+            "rust-wrapper": {
+              "cpu": -23400.0,
+              "gpu": -1360.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -1800.0,
+              "gpu": -6040.0
+            },
+            "small": {
+              "cpu": 24500.0,
+              "gpu": 8560.0
+            },
+            "transition": {
+              "cpu": 2600.0,
+              "gpu": 3720.0
+            }
+          }
+        },
+        "first_grow": {
+          "frames": [
+            112,
+            113
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 66900.0,
+                  "median_ns": 66900.0,
+                  "p95_ns": 66900.0,
+                  "max_ns": 66900.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 960840.0,
+                  "median_ns": 960840.0,
+                  "p95_ns": 960840.0,
+                  "max_ns": 960840.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 70100.0,
+                  "median_ns": 70100.0,
+                  "p95_ns": 70100.0,
+                  "max_ns": 70100.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1302680.0,
+                  "median_ns": 1302680.0,
+                  "p95_ns": 1302680.0,
+                  "max_ns": 1302680.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 64200.0,
+                  "median_ns": 64200.0,
+                  "p95_ns": 64200.0,
+                  "max_ns": 64200.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1293840.0,
+                  "median_ns": 1293840.0,
+                  "p95_ns": 1293840.0,
+                  "max_ns": 1293840.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 69900.0,
+                  "median_ns": 69900.0,
+                  "p95_ns": 69900.0,
+                  "max_ns": 69900.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 960880.0,
+                  "median_ns": 960880.0,
+                  "p95_ns": 960880.0,
+                  "max_ns": 960880.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 64600.0,
+                  "median_ns": 64600.0,
+                  "p95_ns": 64600.0,
+                  "max_ns": 64600.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1297680.0,
+                  "median_ns": 1297680.0,
+                  "p95_ns": 1297680.0,
+                  "max_ns": 1297680.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 75300.0,
+                  "median_ns": 75300.0,
+                  "p95_ns": 75300.0,
+                  "max_ns": 75300.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1295400.0,
+                  "median_ns": 1295400.0,
+                  "p95_ns": 1295400.0,
+                  "max_ns": 1295400.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -2300.0,
+              "gpu": 336840.0
+            },
+            "rust-wrapper": {
+              "cpu": 5200.0,
+              "gpu": -7280.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 3200.0,
+              "gpu": 341840.0
+            },
+            "small": {
+              "cpu": 5700.0,
+              "gpu": -332960.0
+            },
+            "transition": {
+              "cpu": 10700.0,
+              "gpu": -2280.0
+            }
+          }
+        },
+        "max_settling": {
+          "frames": [
+            113,
+            128
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 33900.0,
+                  "median_ns": 34400.0,
+                  "p95_ns": 48300.0,
+                  "max_ns": 66200.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 937160.0,
+                  "median_ns": 957200.0,
+                  "p95_ns": 975560.0,
+                  "max_ns": 1313880.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 31800.0,
+                  "median_ns": 32900.0,
+                  "p95_ns": 50400.0,
+                  "max_ns": 70000.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 936040.0,
+                  "median_ns": 953720.0,
+                  "p95_ns": 960200.0,
+                  "max_ns": 997440.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 30100.0,
+                  "median_ns": 31100.0,
+                  "p95_ns": 46900.0,
+                  "max_ns": 66100.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 937880.0,
+                  "median_ns": 953760.0,
+                  "p95_ns": 959280.0,
+                  "max_ns": 1322720.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 32000.0,
+                  "median_ns": 33300.0,
+                  "p95_ns": 37000.0,
+                  "max_ns": 70700.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 947160.0,
+                  "median_ns": 954800.0,
+                  "p95_ns": 960600.0,
+                  "max_ns": 977400.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 30600.0,
+                  "median_ns": 31500.0,
+                  "p95_ns": 38900.0,
+                  "max_ns": 65600.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 931160.0,
+                  "median_ns": 951320.0,
+                  "p95_ns": 962320.0,
+                  "max_ns": 965560.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 31100.0,
+                  "median_ns": 32300.0,
+                  "p95_ns": 37200.0,
+                  "max_ns": 71200.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 922960.0,
+                  "median_ns": 942360.0,
+                  "p95_ns": 960200.0,
+                  "max_ns": 1326880.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -2900.0,
+              "gpu": -5880.0
+            },
+            "rust-wrapper": {
+              "cpu": -600.0,
+              "gpu": -11360.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -1500.0,
+              "gpu": -3480.0
+            },
+            "small": {
+              "cpu": 2200.0,
+              "gpu": 1040.0
+            },
+            "transition": {
+              "cpu": 800.0,
+              "gpu": -8960.0
+            }
+          }
+        },
+        "max_steady": {
+          "frames": [
+            128,
+            160
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 32400.0,
+                  "median_ns": 33500.0,
+                  "p95_ns": 35200.0,
+                  "max_ns": 35400.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 933320.0,
+                  "median_ns": 948720.0,
+                  "p95_ns": 957320.0,
+                  "max_ns": 968880.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 32300.0,
+                  "median_ns": 33700.0,
+                  "p95_ns": 42300.0,
+                  "max_ns": 60100.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 932880.0,
+                  "median_ns": 953840.0,
+                  "p95_ns": 963280.0,
+                  "max_ns": 976920.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 29900.0,
+                  "median_ns": 30800.0,
+                  "p95_ns": 32500.0,
+                  "max_ns": 36200.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 926800.0,
+                  "median_ns": 953400.0,
+                  "p95_ns": 955960.0,
+                  "max_ns": 956240.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 31700.0,
+                  "median_ns": 34100.0,
+                  "p95_ns": 48600.0,
+                  "max_ns": 54700.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 929400.0,
+                  "median_ns": 954480.0,
+                  "p95_ns": 957600.0,
+                  "max_ns": 963840.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 30400.0,
+                  "median_ns": 32200.0,
+                  "p95_ns": 43900.0,
+                  "max_ns": 48600.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 929120.0,
+                  "median_ns": 951880.0,
+                  "p95_ns": 973320.0,
+                  "max_ns": 1186880.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 31100.0,
+                  "median_ns": 33600.0,
+                  "p95_ns": 41200.0,
+                  "max_ns": 53100.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 929800.0,
+                  "median_ns": 955360.0,
+                  "p95_ns": 973200.0,
+                  "max_ns": 1324400.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -1300.0,
+              "gpu": 3160.0
+            },
+            "rust-wrapper": {
+              "cpu": -100.0,
+              "gpu": 1520.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 200.0,
+              "gpu": 5120.0
+            },
+            "small": {
+              "cpu": 3300.0,
+              "gpu": 1080.0
+            },
+            "transition": {
+              "cpu": 1400.0,
+              "gpu": 3480.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 2,
+      "segments": {
+        "before": {
+          "frames": [
+            32,
+            64
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 43400.0,
+                  "median_ns": 69300.0,
+                  "p95_ns": 101100.0,
+                  "max_ns": 256300.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 945720.0,
+                  "median_ns": 960200.0,
+                  "p95_ns": 1045520.0,
+                  "max_ns": 1171640.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 44000.0,
+                  "median_ns": 54200.0,
+                  "p95_ns": 82700.0,
+                  "max_ns": 105400.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 945520.0,
+                  "median_ns": 955680.0,
+                  "p95_ns": 1090920.0,
+                  "max_ns": 1901480.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 53000.0,
+                  "median_ns": 69300.0,
+                  "p95_ns": 99200.0,
+                  "max_ns": 132500.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 922920.0,
+                  "median_ns": 950680.0,
+                  "p95_ns": 1031280.0,
+                  "max_ns": 1452480.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 66600.0,
+                  "median_ns": 88100.0,
+                  "p95_ns": 121300.0,
+                  "max_ns": 178900.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 939840.0,
+                  "median_ns": 953960.0,
+                  "p95_ns": 1043080.0,
+                  "max_ns": 1419560.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 31700.0,
+                  "median_ns": 35700.0,
+                  "p95_ns": 42000.0,
+                  "max_ns": 66100.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 930480.0,
+                  "median_ns": 956160.0,
+                  "p95_ns": 979760.0,
+                  "max_ns": 1326560.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 37800.0,
+                  "median_ns": 64700.0,
+                  "p95_ns": 73300.0,
+                  "max_ns": 104200.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 923720.0,
+                  "median_ns": 954240.0,
+                  "p95_ns": 1284640.0,
+                  "max_ns": 1324120.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -33600.0,
+              "gpu": -4040.0
+            },
+            "rust-wrapper": {
+              "cpu": 10500.0,
+              "gpu": -1440.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -15100.0,
+              "gpu": -4520.0
+            },
+            "small": {
+              "cpu": 18800.0,
+              "gpu": 3280.0
+            },
+            "transition": {
+              "cpu": 29000.0,
+              "gpu": -1920.0
+            }
+          }
+        },
+        "first_shrink": {
+          "frames": [
+            64,
+            65
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 65200.0,
+                  "median_ns": 65200.0,
+                  "p95_ns": 65200.0,
+                  "max_ns": 65200.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1051280.0,
+                  "median_ns": 1051280.0,
+                  "p95_ns": 1051280.0,
+                  "max_ns": 1051280.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 77400.0,
+                  "median_ns": 77400.0,
+                  "p95_ns": 77400.0,
+                  "max_ns": 77400.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 955400.0,
+                  "median_ns": 955400.0,
+                  "p95_ns": 955400.0,
+                  "max_ns": 955400.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 97900.0,
+                  "median_ns": 97900.0,
+                  "p95_ns": 97900.0,
+                  "max_ns": 97900.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 958560.0,
+                  "median_ns": 958560.0,
+                  "p95_ns": 958560.0,
+                  "max_ns": 958560.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 106100.0,
+                  "median_ns": 106100.0,
+                  "p95_ns": 106100.0,
+                  "max_ns": 106100.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 962240.0,
+                  "median_ns": 962240.0,
+                  "p95_ns": 962240.0,
+                  "max_ns": 962240.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 70600.0,
+                  "median_ns": 70600.0,
+                  "p95_ns": 70600.0,
+                  "max_ns": 70600.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1080760.0,
+                  "median_ns": 1080760.0,
+                  "p95_ns": 1080760.0,
+                  "max_ns": 1080760.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 69300.0,
+                  "median_ns": 69300.0,
+                  "p95_ns": 69300.0,
+                  "max_ns": 69300.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1297160.0,
+                  "median_ns": 1297160.0,
+                  "p95_ns": 1297160.0,
+                  "max_ns": 1297160.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -27300.0,
+              "gpu": 122200.0
+            },
+            "rust-wrapper": {
+              "cpu": -36800.0,
+              "gpu": 334920.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 12200.0,
+              "gpu": -95880.0
+            },
+            "small": {
+              "cpu": 8200.0,
+              "gpu": 3680.0
+            },
+            "transition": {
+              "cpu": -1300.0,
+              "gpu": 216400.0
+            }
+          }
+        },
+        "small_settling": {
+          "frames": [
+            65,
+            80
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 42100.0,
+                  "median_ns": 50400.0,
+                  "p95_ns": 64900.0,
+                  "max_ns": 67800.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 945960.0,
+                  "median_ns": 958000.0,
+                  "p95_ns": 997320.0,
+                  "max_ns": 1006200.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 47400.0,
+                  "median_ns": 55500.0,
+                  "p95_ns": 87200.0,
+                  "max_ns": 92200.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 945640.0,
+                  "median_ns": 954480.0,
+                  "p95_ns": 1062880.0,
+                  "max_ns": 1089840.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 49400.0,
+                  "median_ns": 67400.0,
+                  "p95_ns": 177400.0,
+                  "max_ns": 234600.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 941560.0,
+                  "median_ns": 948720.0,
+                  "p95_ns": 1078160.0,
+                  "max_ns": 1085320.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 72400.0,
+                  "median_ns": 85400.0,
+                  "p95_ns": 237600.0,
+                  "max_ns": 321700.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 949480.0,
+                  "median_ns": 987600.0,
+                  "p95_ns": 1034120.0,
+                  "max_ns": 1038880.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 40200.0,
+                  "median_ns": 51900.0,
+                  "p95_ns": 67700.0,
+                  "max_ns": 81700.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 936840.0,
+                  "median_ns": 955920.0,
+                  "p95_ns": 969000.0,
+                  "max_ns": 1322680.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 33100.0,
+                  "median_ns": 37000.0,
+                  "p95_ns": 44600.0,
+                  "max_ns": 74900.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 932800.0,
+                  "median_ns": 952520.0,
+                  "p95_ns": 962320.0,
+                  "max_ns": 1221400.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -15500.0,
+              "gpu": 7200.0
+            },
+            "rust-wrapper": {
+              "cpu": -48400.0,
+              "gpu": -35080.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 5100.0,
+              "gpu": -3520.0
+            },
+            "small": {
+              "cpu": 18000.0,
+              "gpu": 38880.0
+            },
+            "transition": {
+              "cpu": -14900.0,
+              "gpu": -3400.0
+            }
+          }
+        },
+        "small_steady": {
+          "frames": [
+            80,
+            112
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 53800.0,
+                  "median_ns": 69900.0,
+                  "p95_ns": 137700.0,
+                  "max_ns": 187600.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 939600.0,
+                  "median_ns": 959040.0,
+                  "p95_ns": 1313800.0,
+                  "max_ns": 1745800.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 43200.0,
+                  "median_ns": 66000.0,
+                  "p95_ns": 89400.0,
+                  "max_ns": 121200.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 943760.0,
+                  "median_ns": 956560.0,
+                  "p95_ns": 1060400.0,
+                  "max_ns": 2027000.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 31200.0,
+                  "median_ns": 33700.0,
+                  "p95_ns": 55500.0,
+                  "max_ns": 85000.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 921440.0,
+                  "median_ns": 949280.0,
+                  "p95_ns": 954720.0,
+                  "max_ns": 999280.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 72500.0,
+                  "median_ns": 80800.0,
+                  "p95_ns": 121100.0,
+                  "max_ns": 134300.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 933080.0,
+                  "median_ns": 952960.0,
+                  "p95_ns": 1098760.0,
+                  "max_ns": 1478280.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 34100.0,
+                  "median_ns": 41700.0,
+                  "p95_ns": 69600.0,
+                  "max_ns": 84600.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 926080.0,
+                  "median_ns": 953160.0,
+                  "p95_ns": 992040.0,
+                  "max_ns": 1032120.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 33000.0,
+                  "median_ns": 34600.0,
+                  "p95_ns": 38500.0,
+                  "max_ns": 38900.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 930840.0,
+                  "median_ns": 949120.0,
+                  "p95_ns": 953520.0,
+                  "max_ns": 954560.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": 8000.0,
+              "gpu": 3880.0
+            },
+            "rust-wrapper": {
+              "cpu": -46200.0,
+              "gpu": -3840.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -3900.0,
+              "gpu": -2480.0
+            },
+            "small": {
+              "cpu": 47100.0,
+              "gpu": 3680.0
+            },
+            "transition": {
+              "cpu": -7100.0,
+              "gpu": -4040.0
+            }
+          }
+        },
+        "first_grow": {
+          "frames": [
+            112,
+            113
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 136200.0,
+                  "median_ns": 136200.0,
+                  "p95_ns": 136200.0,
+                  "max_ns": 136200.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 962920.0,
+                  "median_ns": 962920.0,
+                  "p95_ns": 962920.0,
+                  "max_ns": 962920.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 88000.0,
+                  "median_ns": 88000.0,
+                  "p95_ns": 88000.0,
+                  "max_ns": 88000.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 955000.0,
+                  "median_ns": 955000.0,
+                  "p95_ns": 955000.0,
+                  "max_ns": 955000.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 294100.0,
+                  "median_ns": 294100.0,
+                  "p95_ns": 294100.0,
+                  "max_ns": 294100.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 952640.0,
+                  "median_ns": 952640.0,
+                  "p95_ns": 952640.0,
+                  "max_ns": 952640.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 83800.0,
+                  "median_ns": 83800.0,
+                  "p95_ns": 83800.0,
+                  "max_ns": 83800.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 956200.0,
+                  "median_ns": 956200.0,
+                  "p95_ns": 956200.0,
+                  "max_ns": 956200.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 66100.0,
+                  "median_ns": 66100.0,
+                  "p95_ns": 66100.0,
+                  "max_ns": 66100.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1299480.0,
+                  "median_ns": 1299480.0,
+                  "p95_ns": 1299480.0,
+                  "max_ns": 1299480.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 69000.0,
+                  "median_ns": 69000.0,
+                  "p95_ns": 69000.0,
+                  "max_ns": 69000.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1300240.0,
+                  "median_ns": 1300240.0,
+                  "p95_ns": 1300240.0,
+                  "max_ns": 1300240.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -70100.0,
+              "gpu": 336560.0
+            },
+            "rust-wrapper": {
+              "cpu": -19000.0,
+              "gpu": 345240.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -48200.0,
+              "gpu": -7920.0
+            },
+            "small": {
+              "cpu": -210300.0,
+              "gpu": 3560.0
+            },
+            "transition": {
+              "cpu": 2900.0,
+              "gpu": 760.0
+            }
+          }
+        },
+        "max_settling": {
+          "frames": [
+            113,
+            128
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 41600.0,
+                  "median_ns": 44200.0,
+                  "p95_ns": 61500.0,
+                  "max_ns": 65400.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 945280.0,
+                  "median_ns": 956160.0,
+                  "p95_ns": 1313160.0,
+                  "max_ns": 1839720.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 67400.0,
+                  "median_ns": 74700.0,
+                  "p95_ns": 114900.0,
+                  "max_ns": 126400.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 944880.0,
+                  "median_ns": 956040.0,
+                  "p95_ns": 1098520.0,
+                  "max_ns": 1125840.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 31000.0,
+                  "median_ns": 32200.0,
+                  "p95_ns": 45800.0,
+                  "max_ns": 65900.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 928280.0,
+                  "median_ns": 952000.0,
+                  "p95_ns": 959200.0,
+                  "max_ns": 1323080.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 82600.0,
+                  "median_ns": 126500.0,
+                  "p95_ns": 275500.0,
+                  "max_ns": 280200.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 944920.0,
+                  "median_ns": 953640.0,
+                  "p95_ns": 1313320.0,
+                  "max_ns": 3533480.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 31300.0,
+                  "median_ns": 43900.0,
+                  "p95_ns": 52600.0,
+                  "max_ns": 66500.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 939560.0,
+                  "median_ns": 953280.0,
+                  "p95_ns": 1289080.0,
+                  "max_ns": 1340640.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 32700.0,
+                  "median_ns": 41000.0,
+                  "p95_ns": 45400.0,
+                  "max_ns": 71100.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 941000.0,
+                  "median_ns": 954600.0,
+                  "p95_ns": 978120.0,
+                  "max_ns": 993640.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -300.0,
+              "gpu": -2880.0
+            },
+            "rust-wrapper": {
+              "cpu": -33700.0,
+              "gpu": -1440.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 30500.0,
+              "gpu": -120.0
+            },
+            "small": {
+              "cpu": 94300.0,
+              "gpu": 1640.0
+            },
+            "transition": {
+              "cpu": -2900.0,
+              "gpu": 1320.0
+            }
+          }
+        },
+        "max_steady": {
+          "frames": [
+            128,
+            160
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 36400.0,
+                  "median_ns": 56300.0,
+                  "p95_ns": 73900.0,
+                  "max_ns": 91000.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 944240.0,
+                  "median_ns": 977960.0,
+                  "p95_ns": 1056920.0,
+                  "max_ns": 1061040.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 40600.0,
+                  "median_ns": 51300.0,
+                  "p95_ns": 68500.0,
+                  "max_ns": 99700.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 941160.0,
+                  "median_ns": 955640.0,
+                  "p95_ns": 1068720.0,
+                  "max_ns": 1135880.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 31200.0,
+                  "median_ns": 57100.0,
+                  "p95_ns": 74800.0,
+                  "max_ns": 173100.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 931080.0,
+                  "median_ns": 950520.0,
+                  "p95_ns": 1068320.0,
+                  "max_ns": 1176880.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 60800.0,
+                  "median_ns": 85100.0,
+                  "p95_ns": 141900.0,
+                  "max_ns": 164400.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 928560.0,
+                  "median_ns": 952600.0,
+                  "p95_ns": 1367440.0,
+                  "max_ns": 2027400.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 36000.0,
+                  "median_ns": 51400.0,
+                  "p95_ns": 64700.0,
+                  "max_ns": 100300.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 944200.0,
+                  "median_ns": 955280.0,
+                  "p95_ns": 1026120.0,
+                  "max_ns": 1035120.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 32000.0,
+                  "median_ns": 33200.0,
+                  "p95_ns": 38000.0,
+                  "max_ns": 40900.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 934560.0,
+                  "median_ns": 954080.0,
+                  "p95_ns": 966320.0,
+                  "max_ns": 979440.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -4900.0,
+              "gpu": -22680.0
+            },
+            "rust-wrapper": {
+              "cpu": -18100.0,
+              "gpu": -1560.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -5000.0,
+              "gpu": -22320.0
+            },
+            "small": {
+              "cpu": 28000.0,
+              "gpu": 2080.0
+            },
+            "transition": {
+              "cpu": -18200.0,
+              "gpu": -1200.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 3,
+      "segments": {
+        "before": {
+          "frames": [
+            32,
+            64
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 54100.0,
+                  "median_ns": 68500.0,
+                  "p95_ns": 99600.0,
+                  "max_ns": 306700.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 939200.0,
+                  "median_ns": 952440.0,
+                  "p95_ns": 1008840.0,
+                  "max_ns": 1065800.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 44900.0,
+                  "median_ns": 74600.0,
+                  "p95_ns": 107100.0,
+                  "max_ns": 203900.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 944880.0,
+                  "median_ns": 955080.0,
+                  "p95_ns": 1004720.0,
+                  "max_ns": 1029720.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 37900.0,
+                  "median_ns": 57900.0,
+                  "p95_ns": 88700.0,
+                  "max_ns": 137000.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 932000.0,
+                  "median_ns": 951640.0,
+                  "p95_ns": 1039680.0,
+                  "max_ns": 1117400.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 37300.0,
+                  "median_ns": 44900.0,
+                  "p95_ns": 67200.0,
+                  "max_ns": 72000.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 938240.0,
+                  "median_ns": 952800.0,
+                  "p95_ns": 1033240.0,
+                  "max_ns": 1066600.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 67400.0,
+                  "median_ns": 93100.0,
+                  "p95_ns": 120000.0,
+                  "max_ns": 155300.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 931040.0,
+                  "median_ns": 955840.0,
+                  "p95_ns": 1166600.0,
+                  "max_ns": 1547920.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 44100.0,
+                  "median_ns": 70000.0,
+                  "p95_ns": 118600.0,
+                  "max_ns": 120400.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 939040.0,
+                  "median_ns": 962360.0,
+                  "p95_ns": 1060160.0,
+                  "max_ns": 1324760.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": 24600.0,
+              "gpu": 3400.0
+            },
+            "rust-wrapper": {
+              "cpu": -4600.0,
+              "gpu": 7280.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 6100.0,
+              "gpu": 2640.0
+            },
+            "small": {
+              "cpu": -13000.0,
+              "gpu": 1160.0
+            },
+            "transition": {
+              "cpu": -23100.0,
+              "gpu": 6520.0
+            }
+          }
+        },
+        "first_shrink": {
+          "frames": [
+            64,
+            65
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 108400.0,
+                  "median_ns": 108400.0,
+                  "p95_ns": 108400.0,
+                  "max_ns": 108400.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1000480.0,
+                  "median_ns": 1000480.0,
+                  "p95_ns": 1000480.0,
+                  "max_ns": 1000480.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 118400.0,
+                  "median_ns": 118400.0,
+                  "p95_ns": 118400.0,
+                  "max_ns": 118400.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 976480.0,
+                  "median_ns": 976480.0,
+                  "p95_ns": 976480.0,
+                  "max_ns": 976480.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 67500.0,
+                  "median_ns": 67500.0,
+                  "p95_ns": 67500.0,
+                  "max_ns": 67500.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 943560.0,
+                  "median_ns": 943560.0,
+                  "p95_ns": 943560.0,
+                  "max_ns": 943560.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 77900.0,
+                  "median_ns": 77900.0,
+                  "p95_ns": 77900.0,
+                  "max_ns": 77900.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1076320.0,
+                  "median_ns": 1076320.0,
+                  "p95_ns": 1076320.0,
+                  "max_ns": 1076320.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 66900.0,
+                  "median_ns": 66900.0,
+                  "p95_ns": 66900.0,
+                  "max_ns": 66900.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 999680.0,
+                  "median_ns": 999680.0,
+                  "p95_ns": 999680.0,
+                  "max_ns": 999680.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 101300.0,
+                  "median_ns": 101300.0,
+                  "p95_ns": 101300.0,
+                  "max_ns": 101300.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 954000.0,
+                  "median_ns": 954000.0,
+                  "p95_ns": 954000.0,
+                  "max_ns": 954000.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -600.0,
+              "gpu": 56120.0
+            },
+            "rust-wrapper": {
+              "cpu": 23400.0,
+              "gpu": -122320.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 10000.0,
+              "gpu": -24000.0
+            },
+            "small": {
+              "cpu": 10400.0,
+              "gpu": 132760.0
+            },
+            "transition": {
+              "cpu": 34400.0,
+              "gpu": -45680.0
+            }
+          }
+        },
+        "small_settling": {
+          "frames": [
+            65,
+            80
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 56500.0,
+                  "median_ns": 67800.0,
+                  "p95_ns": 112100.0,
+                  "max_ns": 133700.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 936600.0,
+                  "median_ns": 980920.0,
+                  "p95_ns": 1060080.0,
+                  "max_ns": 1754800.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 42700.0,
+                  "median_ns": 51300.0,
+                  "p95_ns": 63700.0,
+                  "max_ns": 73700.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 941600.0,
+                  "median_ns": 952800.0,
+                  "p95_ns": 1006640.0,
+                  "max_ns": 1867600.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 39200.0,
+                  "median_ns": 63400.0,
+                  "p95_ns": 83400.0,
+                  "max_ns": 93200.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 935320.0,
+                  "median_ns": 950600.0,
+                  "p95_ns": 1039320.0,
+                  "max_ns": 1039440.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 42000.0,
+                  "median_ns": 54500.0,
+                  "p95_ns": 93700.0,
+                  "max_ns": 112000.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 942440.0,
+                  "median_ns": 952240.0,
+                  "p95_ns": 1031960.0,
+                  "max_ns": 1053520.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 55200.0,
+                  "median_ns": 62300.0,
+                  "p95_ns": 83700.0,
+                  "max_ns": 86400.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 942680.0,
+                  "median_ns": 951480.0,
+                  "p95_ns": 1155760.0,
+                  "max_ns": 1162840.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 43600.0,
+                  "median_ns": 84800.0,
+                  "p95_ns": 111700.0,
+                  "max_ns": 133200.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 943320.0,
+                  "median_ns": 953040.0,
+                  "p95_ns": 1042840.0,
+                  "max_ns": 1058560.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -1100.0,
+              "gpu": 880.0
+            },
+            "rust-wrapper": {
+              "cpu": 30300.0,
+              "gpu": 800.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -16500.0,
+              "gpu": -28120.0
+            },
+            "small": {
+              "cpu": -8900.0,
+              "gpu": 1640.0
+            },
+            "transition": {
+              "cpu": 22500.0,
+              "gpu": 1560.0
+            }
+          }
+        },
+        "small_steady": {
+          "frames": [
+            80,
+            112
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 38400.0,
+                  "median_ns": 49400.0,
+                  "p95_ns": 69800.0,
+                  "max_ns": 101000.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 949520.0,
+                  "median_ns": 953280.0,
+                  "p95_ns": 1044680.0,
+                  "max_ns": 1113520.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 40000.0,
+                  "median_ns": 69300.0,
+                  "p95_ns": 98500.0,
+                  "max_ns": 107300.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 939080.0,
+                  "median_ns": 956600.0,
+                  "p95_ns": 1045880.0,
+                  "max_ns": 1097280.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 34000.0,
+                  "median_ns": 44000.0,
+                  "p95_ns": 55100.0,
+                  "max_ns": 67200.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 939120.0,
+                  "median_ns": 950240.0,
+                  "p95_ns": 1043920.0,
+                  "max_ns": 1065920.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 38100.0,
+                  "median_ns": 47400.0,
+                  "p95_ns": 74700.0,
+                  "max_ns": 81300.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 938960.0,
+                  "median_ns": 951360.0,
+                  "p95_ns": 1057520.0,
+                  "max_ns": 1070560.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 38500.0,
+                  "median_ns": 65800.0,
+                  "p95_ns": 93900.0,
+                  "max_ns": 104300.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 941080.0,
+                  "median_ns": 969520.0,
+                  "p95_ns": 1070360.0,
+                  "max_ns": 1283000.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 40700.0,
+                  "median_ns": 52100.0,
+                  "p95_ns": 80500.0,
+                  "max_ns": 89600.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 938720.0,
+                  "median_ns": 952400.0,
+                  "p95_ns": 1004480.0,
+                  "max_ns": 1055040.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": 21800.0,
+              "gpu": 19280.0
+            },
+            "rust-wrapper": {
+              "cpu": 4700.0,
+              "gpu": 1040.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 19900.0,
+              "gpu": 3320.0
+            },
+            "small": {
+              "cpu": 3400.0,
+              "gpu": 1120.0
+            },
+            "transition": {
+              "cpu": -13700.0,
+              "gpu": -17120.0
+            }
+          }
+        },
+        "first_grow": {
+          "frames": [
+            112,
+            113
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 67400.0,
+                  "median_ns": 67400.0,
+                  "p95_ns": 67400.0,
+                  "max_ns": 67400.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 966120.0,
+                  "median_ns": 966120.0,
+                  "p95_ns": 966120.0,
+                  "max_ns": 966120.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 72500.0,
+                  "median_ns": 72500.0,
+                  "p95_ns": 72500.0,
+                  "max_ns": 72500.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 948200.0,
+                  "median_ns": 948200.0,
+                  "p95_ns": 948200.0,
+                  "max_ns": 948200.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 104100.0,
+                  "median_ns": 104100.0,
+                  "p95_ns": 104100.0,
+                  "max_ns": 104100.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 975560.0,
+                  "median_ns": 975560.0,
+                  "p95_ns": 975560.0,
+                  "max_ns": 975560.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 82600.0,
+                  "median_ns": 82600.0,
+                  "p95_ns": 82600.0,
+                  "max_ns": 82600.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 948200.0,
+                  "median_ns": 948200.0,
+                  "p95_ns": 948200.0,
+                  "max_ns": 948200.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 68200.0,
+                  "median_ns": 68200.0,
+                  "p95_ns": 68200.0,
+                  "max_ns": 68200.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 957720.0,
+                  "median_ns": 957720.0,
+                  "p95_ns": 957720.0,
+                  "max_ns": 957720.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 70100.0,
+                  "median_ns": 70100.0,
+                  "p95_ns": 70100.0,
+                  "max_ns": 70100.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 954280.0,
+                  "median_ns": 954280.0,
+                  "p95_ns": 954280.0,
+                  "max_ns": 954280.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": 800.0,
+              "gpu": -8400.0
+            },
+            "rust-wrapper": {
+              "cpu": -2400.0,
+              "gpu": 6080.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 5100.0,
+              "gpu": -17920.0
+            },
+            "small": {
+              "cpu": -21500.0,
+              "gpu": -27360.0
+            },
+            "transition": {
+              "cpu": 1900.0,
+              "gpu": -3440.0
+            }
+          }
+        },
+        "max_settling": {
+          "frames": [
+            113,
+            128
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 42300.0,
+                  "median_ns": 57500.0,
+                  "p95_ns": 68100.0,
+                  "max_ns": 70300.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 949880.0,
+                  "median_ns": 953840.0,
+                  "p95_ns": 1055640.0,
+                  "max_ns": 1063080.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 38400.0,
+                  "median_ns": 44000.0,
+                  "p95_ns": 54300.0,
+                  "max_ns": 77800.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 939720.0,
+                  "median_ns": 951960.0,
+                  "p95_ns": 1034720.0,
+                  "max_ns": 1057960.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 33000.0,
+                  "median_ns": 44600.0,
+                  "p95_ns": 61300.0,
+                  "max_ns": 80200.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 936800.0,
+                  "median_ns": 952080.0,
+                  "p95_ns": 1039080.0,
+                  "max_ns": 1054600.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 40400.0,
+                  "median_ns": 51500.0,
+                  "p95_ns": 75900.0,
+                  "max_ns": 99600.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 924920.0,
+                  "median_ns": 949760.0,
+                  "p95_ns": 1061520.0,
+                  "max_ns": 1092480.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 54400.0,
+                  "median_ns": 64200.0,
+                  "p95_ns": 90100.0,
+                  "max_ns": 94300.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 935320.0,
+                  "median_ns": 954840.0,
+                  "p95_ns": 1094800.0,
+                  "max_ns": 1116080.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 42400.0,
+                  "median_ns": 67600.0,
+                  "p95_ns": 89700.0,
+                  "max_ns": 324400.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 954200.0,
+                  "median_ns": 957840.0,
+                  "p95_ns": 1045120.0,
+                  "max_ns": 1072240.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": 6700.0,
+              "gpu": 1000.0
+            },
+            "rust-wrapper": {
+              "cpu": 23600.0,
+              "gpu": 5880.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -13500.0,
+              "gpu": -1880.0
+            },
+            "small": {
+              "cpu": 6900.0,
+              "gpu": -2320.0
+            },
+            "transition": {
+              "cpu": 3400.0,
+              "gpu": 3000.0
+            }
+          }
+        },
+        "max_steady": {
+          "frames": [
+            128,
+            160
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 38900.0,
+                  "median_ns": 47100.0,
+                  "p95_ns": 96600.0,
+                  "max_ns": 141800.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 935920.0,
+                  "median_ns": 953880.0,
+                  "p95_ns": 1042840.0,
+                  "max_ns": 1083800.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 39100.0,
+                  "median_ns": 64500.0,
+                  "p95_ns": 111500.0,
+                  "max_ns": 146400.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 941760.0,
+                  "median_ns": 975600.0,
+                  "p95_ns": 1046720.0,
+                  "max_ns": 1067600.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 32500.0,
+                  "median_ns": 39100.0,
+                  "p95_ns": 51900.0,
+                  "max_ns": 65700.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 934160.0,
+                  "median_ns": 948960.0,
+                  "p95_ns": 1010440.0,
+                  "max_ns": 1037160.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 36300.0,
+                  "median_ns": 49100.0,
+                  "p95_ns": 77700.0,
+                  "max_ns": 110200.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 940480.0,
+                  "median_ns": 951840.0,
+                  "p95_ns": 1128480.0,
+                  "max_ns": 1254280.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 44800.0,
+                  "median_ns": 68500.0,
+                  "p95_ns": 97300.0,
+                  "max_ns": 114900.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 944160.0,
+                  "median_ns": 960160.0,
+                  "p95_ns": 1177440.0,
+                  "max_ns": 1266160.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 35800.0,
+                  "median_ns": 47900.0,
+                  "p95_ns": 68800.0,
+                  "max_ns": 105700.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 944600.0,
+                  "median_ns": 961400.0,
+                  "p95_ns": 1044200.0,
+                  "max_ns": 1067080.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": 21400.0,
+              "gpu": 6280.0
+            },
+            "rust-wrapper": {
+              "cpu": -16600.0,
+              "gpu": -14200.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 17400.0,
+              "gpu": 21720.0
+            },
+            "small": {
+              "cpu": 10000.0,
+              "gpu": 2880.0
+            },
+            "transition": {
+              "cpu": -20600.0,
+              "gpu": 1240.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 4,
+      "segments": {
+        "before": {
+          "frames": [
+            32,
+            64
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 48700.0,
+                  "median_ns": 64400.0,
+                  "p95_ns": 78500.0,
+                  "max_ns": 82600.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 950880.0,
+                  "median_ns": 959880.0,
+                  "p95_ns": 1121440.0,
+                  "max_ns": 1329320.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 49500.0,
+                  "median_ns": 68800.0,
+                  "p95_ns": 96500.0,
+                  "max_ns": 105900.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 921800.0,
+                  "median_ns": 952440.0,
+                  "p95_ns": 1156800.0,
+                  "max_ns": 1367240.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 64400.0,
+                  "median_ns": 74800.0,
+                  "p95_ns": 103300.0,
+                  "max_ns": 150000.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 930480.0,
+                  "median_ns": 948440.0,
+                  "p95_ns": 965880.0,
+                  "max_ns": 1010680.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 50500.0,
+                  "median_ns": 73100.0,
+                  "p95_ns": 106400.0,
+                  "max_ns": 193200.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 948640.0,
+                  "median_ns": 954840.0,
+                  "p95_ns": 1101960.0,
+                  "max_ns": 1300480.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 38900.0,
+                  "median_ns": 63500.0,
+                  "p95_ns": 102900.0,
+                  "max_ns": 104700.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 949920.0,
+                  "median_ns": 959160.0,
+                  "p95_ns": 1071480.0,
+                  "max_ns": 1812840.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 53600.0,
+                  "median_ns": 69900.0,
+                  "p95_ns": 88500.0,
+                  "max_ns": 107100.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 942200.0,
+                  "median_ns": 955040.0,
+                  "p95_ns": 1179000.0,
+                  "max_ns": 1301400.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -900.0,
+              "gpu": -720.0
+            },
+            "rust-wrapper": {
+              "cpu": 1100.0,
+              "gpu": 2600.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 4400.0,
+              "gpu": -7440.0
+            },
+            "small": {
+              "cpu": -1700.0,
+              "gpu": 6400.0
+            },
+            "transition": {
+              "cpu": 6400.0,
+              "gpu": -4120.0
+            }
+          }
+        },
+        "first_shrink": {
+          "frames": [
+            64,
+            65
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 64500.0,
+                  "median_ns": 64500.0,
+                  "p95_ns": 64500.0,
+                  "max_ns": 64500.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 953840.0,
+                  "median_ns": 953840.0,
+                  "p95_ns": 953840.0,
+                  "max_ns": 953840.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 73800.0,
+                  "median_ns": 73800.0,
+                  "p95_ns": 73800.0,
+                  "max_ns": 73800.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1051840.0,
+                  "median_ns": 1051840.0,
+                  "p95_ns": 1051840.0,
+                  "max_ns": 1051840.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 66500.0,
+                  "median_ns": 66500.0,
+                  "p95_ns": 66500.0,
+                  "max_ns": 66500.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 942920.0,
+                  "median_ns": 942920.0,
+                  "p95_ns": 942920.0,
+                  "max_ns": 942920.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 76900.0,
+                  "median_ns": 76900.0,
+                  "p95_ns": 76900.0,
+                  "max_ns": 76900.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1043120.0,
+                  "median_ns": 1043120.0,
+                  "p95_ns": 1043120.0,
+                  "max_ns": 1043120.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 88900.0,
+                  "median_ns": 88900.0,
+                  "p95_ns": 88900.0,
+                  "max_ns": 88900.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1774640.0,
+                  "median_ns": 1774640.0,
+                  "p95_ns": 1774640.0,
+                  "max_ns": 1774640.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 71400.0,
+                  "median_ns": 71400.0,
+                  "p95_ns": 71400.0,
+                  "max_ns": 71400.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 953000.0,
+                  "median_ns": 953000.0,
+                  "p95_ns": 953000.0,
+                  "max_ns": 953000.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": 22400.0,
+              "gpu": 831720.0
+            },
+            "rust-wrapper": {
+              "cpu": -5500.0,
+              "gpu": -90120.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 9300.0,
+              "gpu": 98000.0
+            },
+            "small": {
+              "cpu": 10400.0,
+              "gpu": 100200.0
+            },
+            "transition": {
+              "cpu": -17500.0,
+              "gpu": -821640.0
+            }
+          }
+        },
+        "small_settling": {
+          "frames": [
+            65,
+            80
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 40900.0,
+                  "median_ns": 54400.0,
+                  "p95_ns": 61200.0,
+                  "max_ns": 94300.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 945400.0,
+                  "median_ns": 958680.0,
+                  "p95_ns": 1047760.0,
+                  "max_ns": 1093800.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 58200.0,
+                  "median_ns": 70600.0,
+                  "p95_ns": 90100.0,
+                  "max_ns": 94400.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 939160.0,
+                  "median_ns": 999400.0,
+                  "p95_ns": 1061600.0,
+                  "max_ns": 1772560.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 54500.0,
+                  "median_ns": 63000.0,
+                  "p95_ns": 92900.0,
+                  "max_ns": 201600.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 941560.0,
+                  "median_ns": 949680.0,
+                  "p95_ns": 975200.0,
+                  "max_ns": 1103880.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 43400.0,
+                  "median_ns": 75300.0,
+                  "p95_ns": 94500.0,
+                  "max_ns": 98800.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 938440.0,
+                  "median_ns": 962160.0,
+                  "p95_ns": 1113320.0,
+                  "max_ns": 1357960.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 35500.0,
+                  "median_ns": 71300.0,
+                  "p95_ns": 102400.0,
+                  "max_ns": 156500.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 946760.0,
+                  "median_ns": 954120.0,
+                  "p95_ns": 1056200.0,
+                  "max_ns": 1057160.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 54500.0,
+                  "median_ns": 72500.0,
+                  "p95_ns": 120100.0,
+                  "max_ns": 251800.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 947440.0,
+                  "median_ns": 960360.0,
+                  "p95_ns": 1338920.0,
+                  "max_ns": 1429400.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": 8300.0,
+              "gpu": 4440.0
+            },
+            "rust-wrapper": {
+              "cpu": -2800.0,
+              "gpu": -1800.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 16200.0,
+              "gpu": 40720.0
+            },
+            "small": {
+              "cpu": 12300.0,
+              "gpu": 12480.0
+            },
+            "transition": {
+              "cpu": 1200.0,
+              "gpu": 6240.0
+            }
+          }
+        },
+        "small_steady": {
+          "frames": [
+            80,
+            112
+          ],
+          "stable_control": "small",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 47300.0,
+                  "median_ns": 64200.0,
+                  "p95_ns": 107400.0,
+                  "max_ns": 198600.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 946240.0,
+                  "median_ns": 957320.0,
+                  "p95_ns": 1084120.0,
+                  "max_ns": 1242680.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 46400.0,
+                  "median_ns": 57700.0,
+                  "p95_ns": 95800.0,
+                  "max_ns": 118500.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 941600.0,
+                  "median_ns": 959520.0,
+                  "p95_ns": 1107880.0,
+                  "max_ns": 1916800.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 45500.0,
+                  "median_ns": 74500.0,
+                  "p95_ns": 110000.0,
+                  "max_ns": 226000.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 937920.0,
+                  "median_ns": 948800.0,
+                  "p95_ns": 1161800.0,
+                  "max_ns": 1438920.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 59900.0,
+                  "median_ns": 73900.0,
+                  "p95_ns": 123900.0,
+                  "max_ns": 402500.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 944120.0,
+                  "median_ns": 954560.0,
+                  "p95_ns": 1158200.0,
+                  "max_ns": 1730720.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 36300.0,
+                  "median_ns": 54100.0,
+                  "p95_ns": 79800.0,
+                  "max_ns": 90700.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 942920.0,
+                  "median_ns": 955840.0,
+                  "p95_ns": 1060600.0,
+                  "max_ns": 1076840.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 45200.0,
+                  "median_ns": 60900.0,
+                  "p95_ns": 133400.0,
+                  "max_ns": 148500.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 941840.0,
+                  "median_ns": 952280.0,
+                  "p95_ns": 1110080.0,
+                  "max_ns": 1694360.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -20400.0,
+              "gpu": 7040.0
+            },
+            "rust-wrapper": {
+              "cpu": -13000.0,
+              "gpu": -2280.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -6500.0,
+              "gpu": 2200.0
+            },
+            "small": {
+              "cpu": -600.0,
+              "gpu": 5760.0
+            },
+            "transition": {
+              "cpu": 6800.0,
+              "gpu": -3560.0
+            }
+          }
+        },
+        "first_grow": {
+          "frames": [
+            112,
+            113
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 83500.0,
+                  "median_ns": 83500.0,
+                  "p95_ns": 83500.0,
+                  "max_ns": 83500.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 954120.0,
+                  "median_ns": 954120.0,
+                  "p95_ns": 954120.0,
+                  "max_ns": 954120.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 118100.0,
+                  "median_ns": 118100.0,
+                  "p95_ns": 118100.0,
+                  "max_ns": 118100.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1083720.0,
+                  "median_ns": 1083720.0,
+                  "p95_ns": 1083720.0,
+                  "max_ns": 1083720.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 68500.0,
+                  "median_ns": 68500.0,
+                  "p95_ns": 68500.0,
+                  "max_ns": 68500.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1094560.0,
+                  "median_ns": 1094560.0,
+                  "p95_ns": 1094560.0,
+                  "max_ns": 1094560.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 74400.0,
+                  "median_ns": 74400.0,
+                  "p95_ns": 74400.0,
+                  "max_ns": 74400.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 979640.0,
+                  "median_ns": 979640.0,
+                  "p95_ns": 979640.0,
+                  "max_ns": 979640.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 62200.0,
+                  "median_ns": 62200.0,
+                  "p95_ns": 62200.0,
+                  "max_ns": 62200.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 983640.0,
+                  "median_ns": 983640.0,
+                  "p95_ns": 983640.0,
+                  "max_ns": 983640.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 1,
+                  "min_ns": 72500.0,
+                  "median_ns": 72500.0,
+                  "p95_ns": 72500.0,
+                  "max_ns": 72500.0
+                },
+                "gpu": {
+                  "samples": 1,
+                  "min_ns": 1034160.0,
+                  "median_ns": 1034160.0,
+                  "p95_ns": 1034160.0,
+                  "max_ns": 1034160.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -21300.0,
+              "gpu": 29520.0
+            },
+            "rust-wrapper": {
+              "cpu": -45600.0,
+              "gpu": -49560.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 34600.0,
+              "gpu": 129600.0
+            },
+            "small": {
+              "cpu": 5900.0,
+              "gpu": -114920.0
+            },
+            "transition": {
+              "cpu": 10300.0,
+              "gpu": 50520.0
+            }
+          }
+        },
+        "max_settling": {
+          "frames": [
+            113,
+            128
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 48000.0,
+                  "median_ns": 71000.0,
+                  "p95_ns": 99500.0,
+                  "max_ns": 113600.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 949360.0,
+                  "median_ns": 973880.0,
+                  "p95_ns": 1082520.0,
+                  "max_ns": 1185960.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 52400.0,
+                  "median_ns": 70700.0,
+                  "p95_ns": 87400.0,
+                  "max_ns": 94600.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 946920.0,
+                  "median_ns": 951920.0,
+                  "p95_ns": 1107920.0,
+                  "max_ns": 1282720.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 61900.0,
+                  "median_ns": 72300.0,
+                  "p95_ns": 100800.0,
+                  "max_ns": 109000.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 944440.0,
+                  "median_ns": 948440.0,
+                  "p95_ns": 955880.0,
+                  "max_ns": 972040.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 58200.0,
+                  "median_ns": 86900.0,
+                  "p95_ns": 133100.0,
+                  "max_ns": 137200.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 947840.0,
+                  "median_ns": 954280.0,
+                  "p95_ns": 1169960.0,
+                  "max_ns": 1879280.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 59900.0,
+                  "median_ns": 68500.0,
+                  "p95_ns": 99900.0,
+                  "max_ns": 121500.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 944080.0,
+                  "median_ns": 979520.0,
+                  "p95_ns": 1063680.0,
+                  "max_ns": 1116320.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 15,
+                  "min_ns": 52000.0,
+                  "median_ns": 70300.0,
+                  "p95_ns": 118100.0,
+                  "max_ns": 121300.0
+                },
+                "gpu": {
+                  "samples": 15,
+                  "min_ns": 944680.0,
+                  "median_ns": 954280.0,
+                  "p95_ns": 1415360.0,
+                  "max_ns": 1856720.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": -2500.0,
+              "gpu": 5640.0
+            },
+            "rust-wrapper": {
+              "cpu": -400.0,
+              "gpu": 2360.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": -300.0,
+              "gpu": -21960.0
+            },
+            "small": {
+              "cpu": 14600.0,
+              "gpu": 5840.0
+            },
+            "transition": {
+              "cpu": 1800.0,
+              "gpu": -25240.0
+            }
+          }
+        },
+        "max_steady": {
+          "frames": [
+            128,
+            160
+          ],
+          "stable_control": "max",
+          "distributions": {
+            "max": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 41200.0,
+                  "median_ns": 56800.0,
+                  "p95_ns": 88800.0,
+                  "max_ns": 92100.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 951880.0,
+                  "median_ns": 979440.0,
+                  "p95_ns": 1068960.0,
+                  "max_ns": 1077080.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 47800.0,
+                  "median_ns": 71000.0,
+                  "p95_ns": 104100.0,
+                  "max_ns": 110400.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 944160.0,
+                  "median_ns": 959720.0,
+                  "p95_ns": 1061320.0,
+                  "max_ns": 1095920.0
+                }
+              }
+            },
+            "small": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 51700.0,
+                  "median_ns": 67300.0,
+                  "p95_ns": 93800.0,
+                  "max_ns": 242800.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 937360.0,
+                  "median_ns": 948360.0,
+                  "p95_ns": 1158440.0,
+                  "max_ns": 1409120.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 50100.0,
+                  "median_ns": 69200.0,
+                  "p95_ns": 117300.0,
+                  "max_ns": 127200.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 946360.0,
+                  "median_ns": 954760.0,
+                  "p95_ns": 1071880.0,
+                  "max_ns": 1413360.0
+                }
+              }
+            },
+            "transition": {
+              "cpp-minimal": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 40300.0,
+                  "median_ns": 58600.0,
+                  "p95_ns": 64200.0,
+                  "max_ns": 68400.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 944320.0,
+                  "median_ns": 960480.0,
+                  "p95_ns": 1121760.0,
+                  "max_ns": 1147040.0
+                }
+              },
+              "rust-wrapper": {
+                "cpu": {
+                  "samples": 32,
+                  "min_ns": 43500.0,
+                  "median_ns": 63700.0,
+                  "p95_ns": 101500.0,
+                  "max_ns": 119200.0
+                },
+                "gpu": {
+                  "samples": 32,
+                  "min_ns": 946600.0,
+                  "median_ns": 957280.0,
+                  "p95_ns": 1077960.0,
+                  "max_ns": 1903800.0
+                }
+              }
+            }
+          },
+          "transition_minus_stable_median_ns": {
+            "cpp-minimal": {
+              "cpu": 1800.0,
+              "gpu": -18960.0
+            },
+            "rust-wrapper": {
+              "cpu": -7300.0,
+              "gpu": -2440.0
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "max": {
+              "cpu": 14200.0,
+              "gpu": -19720.0
+            },
+            "small": {
+              "cpu": 1900.0,
+              "gpu": 6400.0
+            },
+            "transition": {
+              "cpu": 5100.0,
+              "gpu": -3200.0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "performance_threshold": null,
+  "limit": "One frame per transition per process; correlated frame samples are not independent process repetitions. Serial fences/checkpoint readbacks can affect subsequent clocks."
+}

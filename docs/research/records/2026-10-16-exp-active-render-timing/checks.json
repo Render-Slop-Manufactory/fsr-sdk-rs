@@ -1,0 +1,146 @@
+{
+  "failed-parser": {
+    "attempt": "20261015T221521Z-experiment-active-timing-b168436882ea",
+    "status": "failed",
+    "cases": 42,
+    "evaluations": {
+      "passed": 17,
+      "failed": 1,
+      "blocked": 24,
+      "not_evaluated": 0
+    },
+    "inputs_unchanged": true,
+    "verify_run": {
+      "exit_code": 0,
+      "verified_status": "failed",
+      "input_identity": "41123561b821b78a76a70a3eb1cacf8e9b7b03415736ad2b95459b6d6495192a",
+      "command": "python tools/verification/run.py verify-run --run target/verification/20261015T221521Z-experiment-active-timing-b168436882ea"
+    }
+  },
+  "first-complete": {
+    "attempt": "20261015T221643Z-experiment-active-timing-4517497fe448",
+    "status": "passed",
+    "cases": 42,
+    "evaluations": {
+      "passed": 42,
+      "failed": 0,
+      "blocked": 0,
+      "not_evaluated": 0
+    },
+    "inputs_unchanged": true,
+    "verify_run": {
+      "exit_code": 0,
+      "verified_status": "passed",
+      "input_identity": "3b3fd9d60c928342b27089405cf4e485e974169daa2f8eee2585c623ea85978f",
+      "command": "python tools/verification/run.py verify-run --run target/verification/20261015T221643Z-experiment-active-timing-4517497fe448"
+    }
+  },
+  "final": {
+    "attempt": "20261015T221942Z-experiment-active-timing-2bc25ce2edbc",
+    "status": "passed",
+    "cases": 42,
+    "evaluations": {
+      "passed": 42,
+      "failed": 0,
+      "blocked": 0,
+      "not_evaluated": 0
+    },
+    "inputs_unchanged": true,
+    "verify_run": {
+      "exit_code": 0,
+      "verified_status": "passed",
+      "input_identity": "77732dcfccc36dc99e43a8de512094780bb17659b5ae95b724560a4dfebc0ac2",
+      "command": "python tools/verification/run.py verify-run --run target/verification/20261015T221942Z-experiment-active-timing-2bc25ce2edbc"
+    }
+  },
+  "gpu-regression": {
+    "attempt": "20261015T222155Z-experiment-gpu-timing-577337dfa404",
+    "status": "passed",
+    "cases": 22,
+    "evaluations": {
+      "passed": 22,
+      "failed": 0,
+      "blocked": 0,
+      "not_evaluated": 0
+    },
+    "inputs_unchanged": true,
+    "verify_run": {
+      "exit_code": 0,
+      "verified_status": "passed",
+      "input_identity": "fe0ad48955a13e668f0efd73e1423beda1aee42c73fae96645065a8c62e44c0c",
+      "command": "python tools/verification/run.py verify-run --run target/verification/20261015T222155Z-experiment-gpu-timing-577337dfa404"
+    }
+  },
+  "cpu-regression": {
+    "attempt": "20261015T222238Z-experiment-cpu-comparison-26ff0491c61d",
+    "status": "passed",
+    "cases": 45,
+    "evaluations": {
+      "passed": 45,
+      "failed": 0,
+      "blocked": 0,
+      "not_evaluated": 0
+    },
+    "inputs_unchanged": true,
+    "verify_run": {
+      "exit_code": 0,
+      "verified_status": "passed",
+      "input_identity": "b8c9db1278c4bc3d3ad5d20b2613c843465d6f8d99536671d4953b3048e40625",
+      "command": "python tools/verification/run.py verify-run --run target/verification/20261015T222238Z-experiment-cpu-comparison-26ff0491c61d"
+    }
+  },
+  "ci-sandbox": {
+    "attempt": "20261015T222408Z-ci-a8e4b3699445",
+    "status": "failed",
+    "cases": 115,
+    "evaluations": {
+      "passed": 110,
+      "failed": 5,
+      "blocked": 0,
+      "not_evaluated": 0
+    },
+    "inputs_unchanged": true,
+    "verify_run": {
+      "exit_code": 0,
+      "verified_status": "failed",
+      "input_identity": "a8f155aaddf18800733a1dc1be74231aa459d87736a2a7b7c94081131a2a27f8",
+      "command": "python tools/verification/run.py verify-run --run target/verification/20261015T222408Z-ci-a8e4b3699445"
+    }
+  },
+  "ci": {
+    "attempt": "20261015T222620Z-ci-5a31cc3bbeda",
+    "status": "passed",
+    "cases": 115,
+    "evaluations": {
+      "passed": 115,
+      "failed": 0,
+      "blocked": 0,
+      "not_evaluated": 0
+    },
+    "inputs_unchanged": true,
+    "verify_run": {
+      "exit_code": 0,
+      "verified_status": "passed",
+      "input_identity": "a8f155aaddf18800733a1dc1be74231aa459d87736a2a7b7c94081131a2a27f8",
+      "command": "python tools/verification/run.py verify-run --run target/verification/20261015T222620Z-ci-5a31cc3bbeda"
+    }
+  },
+  "msrv": {
+    "attempt": "20261015T222951Z-msrv-44a7aa5f4a53",
+    "status": "passed",
+    "cases": 98,
+    "evaluations": {
+      "passed": 98,
+      "failed": 0,
+      "blocked": 0,
+      "not_evaluated": 0
+    },
+    "inputs_unchanged": true,
+    "verify_run": {
+      "exit_code": 0,
+      "verified_status": "passed",
+      "input_identity": "a711f1b846fc98d12ae3580430889973748bdb7c0f620258113d44b6fad71450",
+      "command": "python tools/verification/run.py verify-run --run target/verification/20261015T222951Z-msrv-44a7aa5f4a53"
+    }
+  }
+}

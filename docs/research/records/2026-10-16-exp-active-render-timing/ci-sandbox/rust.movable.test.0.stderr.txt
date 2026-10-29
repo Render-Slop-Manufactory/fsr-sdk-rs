@@ -1,0 +1,4 @@
+   Compiling fsr-sdk v0.3.0 (<repo>\crates\fsr-sdk)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.46s
+     Running unittests src\lib.rs (target\verification-build\current\debug\deps\fsr_sdk-cf0799098de092d4.exe)
+error: test failed, to rerun pass `-p fsr-sdk --lib`

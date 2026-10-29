@@ -1,0 +1,262 @@
+{
+  "protocol": {
+    "schema_version": 1,
+    "scope": "P03 CPU recording only, one local context per process, SDK v2.3.0 DX12",
+    "render": [
+      320,
+      180
+    ],
+    "output": [
+      640,
+      360
+    ],
+    "warmup_frames": 32,
+    "measured_frames": 128,
+    "empty_clock_pairs": 256,
+    "diagnostic_frames": 4,
+    "process_orders": [
+      [
+        "cpp-minimal",
+        "rust-raw",
+        "rust-wrapper"
+      ],
+      [
+        "rust-wrapper",
+        "rust-raw",
+        "cpp-minimal"
+      ],
+      [
+        "rust-raw",
+        "cpp-minimal",
+        "rust-wrapper"
+      ],
+      [
+        "rust-wrapper",
+        "cpp-minimal",
+        "rust-raw"
+      ],
+      [
+        "rust-raw",
+        "rust-wrapper",
+        "cpp-minimal"
+      ],
+      [
+        "cpp-minimal",
+        "rust-wrapper",
+        "rust-raw"
+      ]
+    ],
+    "warm_state_orders": [
+      [
+        [
+          "rust-wrapper",
+          false
+        ],
+        [
+          "rust-raw",
+          false
+        ],
+        [
+          "rust-wrapper",
+          true
+        ],
+        [
+          "rust-raw",
+          true
+        ]
+      ],
+      [
+        [
+          "rust-raw",
+          true
+        ],
+        [
+          "rust-wrapper",
+          true
+        ],
+        [
+          "rust-raw",
+          false
+        ],
+        [
+          "rust-wrapper",
+          false
+        ]
+      ],
+      [
+        [
+          "rust-raw",
+          false
+        ],
+        [
+          "rust-wrapper",
+          true
+        ],
+        [
+          "rust-wrapper",
+          false
+        ],
+        [
+          "rust-raw",
+          true
+        ]
+      ]
+    ],
+    "input": "Existing shared static texture generator; zero jitter/motion, explicit exposure, preExposure 1, standard finite depth, UV motion scale 320/180, frame time 16.667 ms, camera 0.1/100/pi-over-3/1. Reset only frame zero. No masks, HDR, sharpening or dynamic sizing.",
+    "timing": "Both consumers call the same helper QPC exports. One timer bracket around dispatch; setup, frame construction, submission, fence, sentinel restore, readback, output copy and logging excluded. Full wrapper includes validation; minimal C++ and prepared Rust raw do not. No empty timer subtraction.",
+    "validity": "Pinned SDK/signatures/ABI; matching provider and canonical descriptors; untouched-sentinel control; each final output independently overwrites sentinel; exact RGBA16F output hashes agree within each frame-count cohort; separate debug controls and zero device removal. Invalid comparisons reject rather than receive speed scores.",
+    "statistics": "Retain warmup and measured samples. Compare nearby process medians within each block, not individual frames across processes. Descriptive distributions and signed differences, no speed gate or equivalence claim. Warm-state controls assess sensitivity but cannot isolate scheduling/clock changes."
+  },
+  "blocks": [
+    {
+      "block": 1,
+      "order": [
+        "cpp-minimal",
+        "rust-raw",
+        "rust-wrapper"
+      ],
+      "process_median_ns": {
+        "cpp-minimal": 34200.0,
+        "rust-raw": 37900.0,
+        "rust-wrapper": 40500.0
+      },
+      "wrapper_minus_cpp_ns": 6300.0,
+      "raw_minus_cpp_ns": 3700.0,
+      "wrapper_minus_raw_ns": 2600.0
+    },
+    {
+      "block": 2,
+      "order": [
+        "rust-wrapper",
+        "rust-raw",
+        "cpp-minimal"
+      ],
+      "process_median_ns": {
+        "rust-wrapper": 33700.0,
+        "rust-raw": 32000.0,
+        "cpp-minimal": 38200.0
+      },
+      "wrapper_minus_cpp_ns": -4500.0,
+      "raw_minus_cpp_ns": -6200.0,
+      "wrapper_minus_raw_ns": 1700.0
+    },
+    {
+      "block": 3,
+      "order": [
+        "rust-raw",
+        "cpp-minimal",
+        "rust-wrapper"
+      ],
+      "process_median_ns": {
+        "rust-raw": 36600.0,
+        "cpp-minimal": 32300.0,
+        "rust-wrapper": 41700.0
+      },
+      "wrapper_minus_cpp_ns": 9400.0,
+      "raw_minus_cpp_ns": 4300.0,
+      "wrapper_minus_raw_ns": 5100.0
+    },
+    {
+      "block": 4,
+      "order": [
+        "rust-wrapper",
+        "cpp-minimal",
+        "rust-raw"
+      ],
+      "process_median_ns": {
+        "rust-wrapper": 42800.0,
+        "cpp-minimal": 49200.0,
+        "rust-raw": 36700.0
+      },
+      "wrapper_minus_cpp_ns": -6400.0,
+      "raw_minus_cpp_ns": -12500.0,
+      "wrapper_minus_raw_ns": 6100.0
+    },
+    {
+      "block": 5,
+      "order": [
+        "rust-raw",
+        "rust-wrapper",
+        "cpp-minimal"
+      ],
+      "process_median_ns": {
+        "rust-raw": 32700.0,
+        "rust-wrapper": 33700.0,
+        "cpp-minimal": 32100.0
+      },
+      "wrapper_minus_cpp_ns": 1600.0,
+      "raw_minus_cpp_ns": 600.0,
+      "wrapper_minus_raw_ns": 1000.0
+    },
+    {
+      "block": 6,
+      "order": [
+        "cpp-minimal",
+        "rust-wrapper",
+        "rust-raw"
+      ],
+      "process_median_ns": {
+        "cpp-minimal": 32000.0,
+        "rust-wrapper": 33800.0,
+        "rust-raw": 32300.0
+      },
+      "wrapper_minus_cpp_ns": 1800.0,
+      "raw_minus_cpp_ns": 300.0,
+      "wrapper_minus_raw_ns": 1500.0
+    }
+  ],
+  "warm_state_controls": [
+    {
+      "block": 1,
+      "process_median_ns": {
+        "prepared": {
+          "rust-wrapper": 40300.0,
+          "rust-raw": 36900.0
+        },
+        "preinspected": {
+          "rust-wrapper": 37900.0,
+          "rust-raw": 32600.0
+        }
+      },
+      "delta_ns": {
+        "prepared": 3400.0,
+        "preinspected": 5300.0
+      }
+    },
+    {
+      "block": 2,
+      "process_median_ns": {
+        "prepared": {
+          "rust-wrapper": 33800.0,
+          "rust-raw": 34400.0
+        },
+        "preinspected": {
+          "rust-wrapper": 38900.0,
+          "rust-raw": 32600.0
+        }
+      },
+      "delta_ns": {
+        "prepared": -600.0,
+        "preinspected": 6300.0
+      }
+    },
+    {
+      "block": 3,
+      "process_median_ns": {
+        "prepared": {
+          "rust-wrapper": 34000.0,
+          "rust-raw": 34100.0
+        },
+        "preinspected": {
+          "rust-wrapper": 32900.0,
+          "rust-raw": 32700.0
+        }
+      },
+      "delta_ns": {
+        "prepared": -100.0,
+        "preinspected": 200.0
+      }
+    }
+  ],
+  "interpretation": "Differences of separate process medians, not per-frame pairs. Descriptive only; no equivalence, GPU-time or speed acceptance verdict."
+}

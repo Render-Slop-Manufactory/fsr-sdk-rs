@@ -1,0 +1,7 @@
+{
+  "observed_date": "2026-10-16",
+  "timing": "Read after native runs on the same machine",
+  "command": "Get-ItemPropertyValue -LiteralPath 'HKLM:\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0' -Name ProcessorNameString",
+  "exit_code": 0,
+  "name": "AMD Ryzen 5 5600 6-Core Processor"
+}

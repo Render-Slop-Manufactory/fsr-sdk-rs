@@ -1,0 +1,56 @@
+[
+  {
+    "attempt": "20261019T191658Z-experiment-provider-setup-41d2ddabd41c",
+    "default": {
+      "count": 32,
+      "mean_ms": 232.14315,
+      "median_ms": 230.74265,
+      "minimum_ms": 220.8783,
+      "maximum_ms": 246.2602
+    },
+    "selected": {
+      "count": 32,
+      "mean_ms": 707.671746875,
+      "median_ms": 707.10405,
+      "minimum_ms": 681.7045,
+      "maximum_ms": 743.587
+    },
+    "median_paired_difference_ms": 474.44000000000005
+  },
+  {
+    "attempt": "20261019T191753Z-experiment-provider-setup-3c20085df4ba",
+    "default": {
+      "count": 32,
+      "mean_ms": 229.59105937500001,
+      "median_ms": 229.55445,
+      "minimum_ms": 223.7289,
+      "maximum_ms": 238.0538
+    },
+    "selected": {
+      "count": 32,
+      "mean_ms": 700.025353125,
+      "median_ms": 696.98335,
+      "minimum_ms": 679.6169,
+      "maximum_ms": 739.2881
+    },
+    "median_paired_difference_ms": 469.3875
+  },
+  {
+    "attempt": "20261019T191856Z-experiment-provider-setup-326ec1e5d136",
+    "default": {
+      "count": 32,
+      "mean_ms": 229.56686875,
+      "median_ms": 230.20749999999998,
+      "minimum_ms": 220.9484,
+      "maximum_ms": 238.1383
+    },
+    "selected": {
+      "count": 32,
+      "mean_ms": 703.421709375,
+      "median_ms": 699.04935,
+      "minimum_ms": 677.3368,
+      "maximum_ms": 762.8377
+    },
+    "median_paired_difference_ms": 471.45320000000004
+  }
+]
