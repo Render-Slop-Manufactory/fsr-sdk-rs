@@ -1,0 +1,1429 @@
+{
+  "schema_version": 1,
+  "manifest_sha256": "ff4406dce8d0b43b2360f11c5d533ad74e0c6c1ea6e579fff45291e2a7db84d1",
+  "attempts": [
+    {
+      "attempt": "20261014T000636Z-proton-timeout-cc249cd0365b",
+      "status": "failed",
+      "started_utc": "2026-10-14T00:06:37.624473+00:00",
+      "finished_utc": "2026-10-14T00:08:21.061107+00:00",
+      "inputs_unchanged": true,
+      "input_identity": "8bff6cf3632b930ac86d9f6e4ceebda88688c4e61865df92b3c54d96dc4a6b27",
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "passed",
+        "proton.launch": "passed",
+        "proton.queries": "passed",
+        "proton.dispatch": "passed",
+        "proton.timeout.fixture": "passed",
+        "proton.timeout.expiry": "failed",
+        "proton.timeout.post-queries": "passed",
+        "proton.timeout.post-dispatch": "passed",
+        "proton.offline.integrity": "passed"
+      },
+      "source_sha256": {
+        "tools/verification/execution.py": "3276d056112b2112d947fb55165b00fddff8515767191a3c693e7f09b2a25e90",
+        "tools/verification/fixtures/proton_timeout.cpp": "b136f36fac7667fa5026849e40dce163f7282231a92f568b161459b8da8878c5",
+        "tools/verification/proton.py": "3e0cc5809dcf95a19a7c2d039de16a761e27406d0be3c9341e547f4397916432",
+        "tools/verification/proton_runtime.py": "f6c53b336e7f305d167fcb4f9bd0f5c910499c1d9a46a8c5d5bef26a2afcc3bd",
+        "tools/verification/proton_timeout.py": "5a08d820b85d946289e424eec8c82c8c211ef5f27e60f28aa6742ad8d928226d"
+      },
+      "native": {
+        "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7",
+        "executable_sha256": "7b88f69a19ce236e84ecdcd14ae6d927ba686e421f0059cb065d6fcfc6161098",
+        "fixture_sha256": "adbf02577bbaf2f1ac557404c66092401083013a9df4ad5d415eae0fd04bfa8c"
+      },
+      "timeout": {
+        "target_prefix": "<repo>/target/proton-prefixes/20261014T000646Z-proton-dcc770ba64cf",
+        "unrelated_prefix": "<repo>/target/proton-prefixes/20261014T000726Z-timeout-sentinel-0b0370bdd088",
+        "watchdog_root": 90438,
+        "before_timeout": [
+          {
+            "pid": 90438,
+            "start_ticks": 995077,
+            "ppid": 88935,
+            "process_group": 90438,
+            "session": 90438,
+            "executable": "bwrap"
+          },
+          {
+            "pid": 90439,
+            "start_ticks": 995077,
+            "ppid": 90438,
+            "process_group": 90438,
+            "session": 90438,
+            "executable": ".umu-run-wrappe"
+          },
+          {
+            "pid": 90470,
+            "start_ticks": 995117,
+            "ppid": 90439,
+            "process_group": 90470,
+            "session": 90470,
+            "executable": "srt-bwrap"
+          },
+          {
+            "pid": 90541,
+            "start_ticks": 995227,
+            "ppid": 90470,
+            "process_group": 90541,
+            "session": 90541,
+            "executable": "pv-adverb"
+          },
+          {
+            "pid": 90573,
+            "start_ticks": 995235,
+            "ppid": 90541,
+            "process_group": 90541,
+            "session": 90541,
+            "executable": "python3"
+          },
+          {
+            "pid": 90574,
+            "start_ticks": 995241,
+            "ppid": 90573,
+            "process_group": 90541,
+            "session": 90541,
+            "executable": "start.exe"
+          },
+          {
+            "pid": 90576,
+            "start_ticks": 995241,
+            "ppid": 90541,
+            "process_group": 90576,
+            "session": 90576,
+            "executable": "wineserver"
+          },
+          {
+            "pid": 90580,
+            "start_ticks": 995285,
+            "ppid": 90541,
+            "process_group": 90580,
+            "session": 90580,
+            "executable": "services.exe"
+          },
+          {
+            "pid": 90583,
+            "start_ticks": 995290,
+            "ppid": 90541,
+            "process_group": 90583,
+            "session": 90583,
+            "executable": "winedevice.exe"
+          },
+          {
+            "pid": 90592,
+            "start_ticks": 995379,
+            "ppid": 90541,
+            "process_group": 90592,
+            "session": 90592,
+            "executable": "svchost.exe"
+          },
+          {
+            "pid": 90597,
+            "start_ticks": 995382,
+            "ppid": 90541,
+            "process_group": 90597,
+            "session": 90597,
+            "executable": "plugplay.exe"
+          },
+          {
+            "pid": 90604,
+            "start_ticks": 995445,
+            "ppid": 90541,
+            "process_group": 90604,
+            "session": 90604,
+            "executable": "winedevice.exe"
+          },
+          {
+            "pid": 90627,
+            "start_ticks": 995702,
+            "ppid": 90541,
+            "process_group": 90541,
+            "session": 90541,
+            "executable": "timeout-fixture"
+          },
+          {
+            "pid": 90629,
+            "start_ticks": 995704,
+            "ppid": 90541,
+            "process_group": 90629,
+            "session": 90629,
+            "executable": "timeout-fixture"
+          }
+        ],
+        "detached_groups": true,
+        "ready_parent_and_detached_child": true,
+        "descendants_stopped": false,
+        "surviving_processes": [
+          {
+            "pid": 90470,
+            "start_ticks": 995117,
+            "ppid": 1425,
+            "process_group": 90470,
+            "session": 90470,
+            "executable": "srt-bwrap"
+          },
+          {
+            "pid": 90541,
+            "start_ticks": 995227,
+            "ppid": 90470,
+            "process_group": 90541,
+            "session": 90541,
+            "executable": "pv-adverb"
+          },
+          {
+            "pid": 90573,
+            "start_ticks": 995235,
+            "ppid": 90541,
+            "process_group": 90541,
+            "session": 90541,
+            "executable": "python3"
+          },
+          {
+            "pid": 90574,
+            "start_ticks": 995241,
+            "ppid": 90573,
+            "process_group": 90541,
+            "session": 90541,
+            "executable": "start.exe"
+          },
+          {
+            "pid": 90576,
+            "start_ticks": 995241,
+            "ppid": 90541,
+            "process_group": 90576,
+            "session": 90576,
+            "executable": "wineserver"
+          },
+          {
+            "pid": 90580,
+            "start_ticks": 995285,
+            "ppid": 90541,
+            "process_group": 90580,
+            "session": 90580,
+            "executable": "services.exe"
+          },
+          {
+            "pid": 90583,
+            "start_ticks": 995290,
+            "ppid": 90541,
+            "process_group": 90583,
+            "session": 90583,
+            "executable": "winedevice.exe"
+          },
+          {
+            "pid": 90592,
+            "start_ticks": 995379,
+            "ppid": 90541,
+            "process_group": 90592,
+            "session": 90592,
+            "executable": "svchost.exe"
+          },
+          {
+            "pid": 90597,
+            "start_ticks": 995382,
+            "ppid": 90541,
+            "process_group": 90597,
+            "session": 90597,
+            "executable": "plugplay.exe"
+          },
+          {
+            "pid": 90604,
+            "start_ticks": 995445,
+            "ppid": 90541,
+            "process_group": 90604,
+            "session": 90604,
+            "executable": "winedevice.exe"
+          },
+          {
+            "pid": 90627,
+            "start_ticks": 995702,
+            "ppid": 90541,
+            "process_group": 90541,
+            "session": 90541,
+            "executable": "timeout-fixture"
+          },
+          {
+            "pid": 90629,
+            "start_ticks": 995704,
+            "ppid": 90541,
+            "process_group": 90629,
+            "session": 90629,
+            "executable": "timeout-fixture"
+          }
+        ],
+        "unrelated_heartbeat_advanced": true,
+        "unrelated_processes_preserved": true,
+        "emergency_cleanup": [],
+        "command": {
+          "execution": "timed_out",
+          "exit_code": -9,
+          "timeout_seconds": 1,
+          "elapsed_seconds": 7.459
+        }
+      },
+      "controls": {
+        "proton.launch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            },
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "selected_output": []
+        },
+        "proton.queries": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": []
+        },
+        "proton.dispatch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": [
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton single-frame: PASSED"
+          ]
+        },
+        "proton.timeout.post-queries": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.timeout.post-queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": []
+        },
+        "proton.timeout.post-dispatch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.timeout.post-dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": [
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton single-frame: PASSED"
+          ]
+        }
+      },
+      "runtime_integrity": {
+        "runtime": {
+          "proton": {
+            "entries": 8138,
+            "bytes": 1404192639,
+            "sha256": "ceeed77a92488627402161d2f255799d606c2dda777d50025d2b5911fd6bb3ef"
+          },
+          "runtime": {
+            "entries": 9593,
+            "bytes": 810303158,
+            "sha256": "ec3b47dbb379a66706fa35894dfbc29deba4f9a986355d63c6bf255782ba8a84"
+          },
+          "launcher": {
+            "entries": 63,
+            "bytes": 1484292,
+            "sha256": "ecc31faf8fa5ac3347278ea24fc1d6da74a97ee71483614731f11f7ead565517"
+          }
+        },
+        "runtime_unchanged": true
+      }
+    },
+    {
+      "attempt": "20261014T001526Z-proton-timeout-2d2d8b85cb48",
+      "status": "passed",
+      "started_utc": "2026-10-14T00:15:28.105970+00:00",
+      "finished_utc": "2026-10-14T00:17:10.952222+00:00",
+      "inputs_unchanged": true,
+      "input_identity": "26df06a2072f36692900214f2009c84b65e85fd5eae1db7bfa4bb4d95a794e8a",
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "passed",
+        "proton.launch": "passed",
+        "proton.queries": "passed",
+        "proton.dispatch": "passed",
+        "proton.timeout.fixture": "passed",
+        "proton.timeout.expiry": "passed",
+        "proton.timeout.post-queries": "passed",
+        "proton.timeout.post-dispatch": "passed",
+        "proton.offline.integrity": "passed"
+      },
+      "source_sha256": {
+        "tools/verification/execution.py": "3276d056112b2112d947fb55165b00fddff8515767191a3c693e7f09b2a25e90",
+        "tools/verification/fixtures/proton_timeout.cpp": "b136f36fac7667fa5026849e40dce163f7282231a92f568b161459b8da8878c5",
+        "tools/verification/proton.py": "542a07d6f01a48f35422979042ce767b4436a95e5ade6250992637bee13fade0",
+        "tools/verification/proton_runtime.py": "d3331ece3a4c4bff05e628f4c10fb849528972f0ffd57357cb4a5b379fa87a70",
+        "tools/verification/proton_timeout.py": "fc6052f9fb972f5066c907261e4a59956a0d58845786e88475aff32eda5e0784"
+      },
+      "native": {
+        "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7",
+        "executable_sha256": "7b88f69a19ce236e84ecdcd14ae6d927ba686e421f0059cb065d6fcfc6161098",
+        "fixture_sha256": "adbf02577bbaf2f1ac557404c66092401083013a9df4ad5d415eae0fd04bfa8c"
+      },
+      "timeout": {
+        "target_prefix": "<repo>/target/proton-prefixes/20261014T001536Z-proton-34f2281fc877",
+        "unrelated_prefix": "<repo>/target/proton-prefixes/20261014T001619Z-timeout-sentinel-381b82047f90",
+        "watchdog_root": 93939,
+        "before_timeout": [
+          {
+            "pid": 93939,
+            "start_ticks": 1048473,
+            "ppid": 92397,
+            "process_group": 93939,
+            "session": 93939,
+            "executable": "bwrap"
+          },
+          {
+            "pid": 93940,
+            "start_ticks": 1048474,
+            "ppid": 93939,
+            "process_group": 93939,
+            "session": 93939,
+            "executable": "bwrap"
+          },
+          {
+            "pid": 93941,
+            "start_ticks": 1048474,
+            "ppid": 93940,
+            "process_group": 93939,
+            "session": 93939,
+            "executable": ".umu-run-wrappe"
+          },
+          {
+            "pid": 93972,
+            "start_ticks": 1048523,
+            "ppid": 93941,
+            "process_group": 93972,
+            "session": 93972,
+            "executable": "srt-bwrap"
+          },
+          {
+            "pid": 94044,
+            "start_ticks": 1048652,
+            "ppid": 93972,
+            "process_group": 94044,
+            "session": 94044,
+            "executable": "pv-adverb"
+          },
+          {
+            "pid": 94076,
+            "start_ticks": 1048661,
+            "ppid": 94044,
+            "process_group": 94044,
+            "session": 94044,
+            "executable": "python3"
+          },
+          {
+            "pid": 94077,
+            "start_ticks": 1048669,
+            "ppid": 94076,
+            "process_group": 94044,
+            "session": 94044,
+            "executable": "start.exe"
+          },
+          {
+            "pid": 94079,
+            "start_ticks": 1048670,
+            "ppid": 94044,
+            "process_group": 94079,
+            "session": 94079,
+            "executable": "wineserver"
+          },
+          {
+            "pid": 94083,
+            "start_ticks": 1048680,
+            "ppid": 94044,
+            "process_group": 94083,
+            "session": 94083,
+            "executable": "services.exe"
+          },
+          {
+            "pid": 94086,
+            "start_ticks": 1048684,
+            "ppid": 94044,
+            "process_group": 94086,
+            "session": 94086,
+            "executable": "winedevice.exe"
+          },
+          {
+            "pid": 94095,
+            "start_ticks": 1048689,
+            "ppid": 94044,
+            "process_group": 94095,
+            "session": 94095,
+            "executable": "svchost.exe"
+          },
+          {
+            "pid": 94100,
+            "start_ticks": 1048758,
+            "ppid": 94044,
+            "process_group": 94100,
+            "session": 94100,
+            "executable": "plugplay.exe"
+          },
+          {
+            "pid": 94107,
+            "start_ticks": 1048827,
+            "ppid": 94044,
+            "process_group": 94107,
+            "session": 94107,
+            "executable": "winedevice.exe"
+          },
+          {
+            "pid": 94126,
+            "start_ticks": 1049068,
+            "ppid": 94044,
+            "process_group": 94044,
+            "session": 94044,
+            "executable": "timeout-fixture"
+          },
+          {
+            "pid": 94128,
+            "start_ticks": 1049070,
+            "ppid": 94044,
+            "process_group": 94128,
+            "session": 94128,
+            "executable": "timeout-fixture"
+          }
+        ],
+        "detached_groups": true,
+        "ready_parent_and_detached_child": true,
+        "descendants_stopped": true,
+        "surviving_processes": [],
+        "heartbeats_stopped": true,
+        "unrelated_heartbeat_advanced": true,
+        "unrelated_processes_preserved": true,
+        "emergency_cleanup": [],
+        "command": {
+          "execution": "timed_out",
+          "exit_code": -9,
+          "timeout_seconds": 1,
+          "elapsed_seconds": 7.236
+        }
+      },
+      "controls": {
+        "proton.launch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            },
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            },
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "selected_output": []
+        },
+        "proton.queries": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": []
+        },
+        "proton.dispatch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": [
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton single-frame: PASSED"
+          ]
+        },
+        "proton.timeout.post-queries": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.timeout.post-queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": []
+        },
+        "proton.timeout.post-dispatch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.timeout.post-dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": [
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton single-frame: PASSED"
+          ]
+        }
+      },
+      "runtime_integrity": {
+        "runtime": {
+          "proton": {
+            "entries": 8138,
+            "bytes": 1404192639,
+            "sha256": "ceeed77a92488627402161d2f255799d606c2dda777d50025d2b5911fd6bb3ef"
+          },
+          "runtime": {
+            "entries": 9593,
+            "bytes": 810303158,
+            "sha256": "ec3b47dbb379a66706fa35894dfbc29deba4f9a986355d63c6bf255782ba8a84"
+          },
+          "launcher": {
+            "entries": 63,
+            "bytes": 1484292,
+            "sha256": "ecc31faf8fa5ac3347278ea24fc1d6da74a97ee71483614731f11f7ead565517"
+          }
+        },
+        "runtime_unchanged": true
+      }
+    },
+    {
+      "attempt": "20261014T002049Z-proton-timeout-1f50360a32cb",
+      "status": "passed",
+      "started_utc": "2026-10-14T00:20:50.215848+00:00",
+      "finished_utc": "2026-10-14T00:22:30.612534+00:00",
+      "inputs_unchanged": true,
+      "input_identity": "4ef62e9e9f87f764430ce020bf665a05257a83586283d6791bcb0d7604110c51",
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "passed",
+        "proton.launch": "passed",
+        "proton.queries": "passed",
+        "proton.dispatch": "passed",
+        "proton.timeout.fixture": "passed",
+        "proton.timeout.expiry": "passed",
+        "proton.timeout.post-queries": "passed",
+        "proton.timeout.post-dispatch": "passed",
+        "proton.offline.integrity": "passed"
+      },
+      "source_sha256": {
+        "tools/verification/execution.py": "3276d056112b2112d947fb55165b00fddff8515767191a3c693e7f09b2a25e90",
+        "tools/verification/fixtures/proton_timeout.cpp": "b136f36fac7667fa5026849e40dce163f7282231a92f568b161459b8da8878c5",
+        "tools/verification/proton.py": "542a07d6f01a48f35422979042ce767b4436a95e5ade6250992637bee13fade0",
+        "tools/verification/proton_runtime.py": "d3331ece3a4c4bff05e628f4c10fb849528972f0ffd57357cb4a5b379fa87a70",
+        "tools/verification/proton_timeout.py": "6a8de458ce9c90c466461255699beba3e075218258cb686fb7c0c2ce9501f48b"
+      },
+      "native": {
+        "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7",
+        "executable_sha256": "7b88f69a19ce236e84ecdcd14ae6d927ba686e421f0059cb065d6fcfc6161098",
+        "fixture_sha256": "adbf02577bbaf2f1ac557404c66092401083013a9df4ad5d415eae0fd04bfa8c"
+      },
+      "timeout": {
+        "target_prefix": "<repo>/target/proton-prefixes/20261014T002058Z-proton-23cf15d733f6",
+        "unrelated_prefix": "<repo>/target/proton-prefixes/20261014T002138Z-timeout-sentinel-73d2471ac9c6",
+        "watchdog_root": 96588,
+        "before_timeout": [
+          {
+            "pid": 96588,
+            "start_ticks": 1080415,
+            "ppid": 94993,
+            "process_group": 96588,
+            "session": 96588,
+            "executable": "bwrap"
+          },
+          {
+            "pid": 96589,
+            "start_ticks": 1080415,
+            "ppid": 96588,
+            "process_group": 96588,
+            "session": 96588,
+            "executable": "bwrap"
+          },
+          {
+            "pid": 96590,
+            "start_ticks": 1080415,
+            "ppid": 96589,
+            "process_group": 96588,
+            "session": 96588,
+            "executable": ".umu-run-wrappe"
+          },
+          {
+            "pid": 96621,
+            "start_ticks": 1080464,
+            "ppid": 96590,
+            "process_group": 96621,
+            "session": 96621,
+            "executable": "srt-bwrap"
+          },
+          {
+            "pid": 96694,
+            "start_ticks": 1080592,
+            "ppid": 96621,
+            "process_group": 96694,
+            "session": 96694,
+            "executable": "pv-adverb"
+          },
+          {
+            "pid": 96726,
+            "start_ticks": 1080601,
+            "ppid": 96694,
+            "process_group": 96694,
+            "session": 96694,
+            "executable": "python3"
+          },
+          {
+            "pid": 96727,
+            "start_ticks": 1080608,
+            "ppid": 96726,
+            "process_group": 96694,
+            "session": 96694,
+            "executable": "start.exe"
+          },
+          {
+            "pid": 96729,
+            "start_ticks": 1080609,
+            "ppid": 96694,
+            "process_group": 96729,
+            "session": 96729,
+            "executable": "wineserver"
+          },
+          {
+            "pid": 96733,
+            "start_ticks": 1080630,
+            "ppid": 96694,
+            "process_group": 96733,
+            "session": 96733,
+            "executable": "services.exe"
+          },
+          {
+            "pid": 96736,
+            "start_ticks": 1080634,
+            "ppid": 96694,
+            "process_group": 96736,
+            "session": 96736,
+            "executable": "winedevice.exe"
+          },
+          {
+            "pid": 96745,
+            "start_ticks": 1080706,
+            "ppid": 96694,
+            "process_group": 96745,
+            "session": 96745,
+            "executable": "svchost.exe"
+          },
+          {
+            "pid": 96750,
+            "start_ticks": 1080710,
+            "ppid": 96694,
+            "process_group": 96750,
+            "session": 96750,
+            "executable": "plugplay.exe"
+          },
+          {
+            "pid": 96757,
+            "start_ticks": 1080777,
+            "ppid": 96694,
+            "process_group": 96757,
+            "session": 96757,
+            "executable": "winedevice.exe"
+          },
+          {
+            "pid": 96777,
+            "start_ticks": 1081023,
+            "ppid": 96694,
+            "process_group": 96694,
+            "session": 96694,
+            "executable": "timeout-fixture"
+          },
+          {
+            "pid": 96779,
+            "start_ticks": 1081025,
+            "ppid": 96694,
+            "process_group": 96779,
+            "session": 96779,
+            "executable": "timeout-fixture"
+          }
+        ],
+        "detached_groups": true,
+        "ready_parent_and_detached_child": true,
+        "descendants_stopped": true,
+        "surviving_processes": [],
+        "heartbeats_stopped": true,
+        "unrelated_heartbeat_advanced": true,
+        "unrelated_processes_preserved": true,
+        "emergency_cleanup": [],
+        "command": {
+          "execution": "timed_out",
+          "exit_code": -9,
+          "timeout_seconds": 1,
+          "elapsed_seconds": 7.383
+        }
+      },
+      "controls": {
+        "proton.launch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            },
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            },
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "selected_output": []
+        },
+        "proton.queries": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": []
+        },
+        "proton.dispatch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": [
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton single-frame: PASSED"
+          ]
+        },
+        "proton.timeout.post-queries": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.timeout.post-queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": []
+        },
+        "proton.timeout.post-dispatch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.timeout.post-dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": [
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton single-frame: PASSED"
+          ]
+        }
+      },
+      "runtime_integrity": {
+        "runtime": {
+          "proton": {
+            "entries": 8138,
+            "bytes": 1404192639,
+            "sha256": "ceeed77a92488627402161d2f255799d606c2dda777d50025d2b5911fd6bb3ef"
+          },
+          "runtime": {
+            "entries": 9593,
+            "bytes": 810303158,
+            "sha256": "ec3b47dbb379a66706fa35894dfbc29deba4f9a986355d63c6bf255782ba8a84"
+          },
+          "launcher": {
+            "entries": 63,
+            "bytes": 1484292,
+            "sha256": "ecc31faf8fa5ac3347278ea24fc1d6da74a97ee71483614731f11f7ead565517"
+          }
+        },
+        "runtime_unchanged": true
+      }
+    },
+    {
+      "attempt": "20261014T002434Z-proton-d8d4fbc93955",
+      "status": "passed",
+      "started_utc": "2026-10-14T00:24:35.195901+00:00",
+      "finished_utc": "2026-10-14T00:25:21.943001+00:00",
+      "inputs_unchanged": true,
+      "input_identity": "69e1776bef73ebd1417be1a700e70e8c7f41cdd471dabece61f8b61be7906fef",
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "passed",
+        "proton.launch": "passed",
+        "proton.queries": "passed",
+        "proton.dispatch": "passed"
+      },
+      "source_sha256": {
+        "tools/verification/execution.py": "3276d056112b2112d947fb55165b00fddff8515767191a3c693e7f09b2a25e90",
+        "tools/verification/fixtures/proton_timeout.cpp": "b136f36fac7667fa5026849e40dce163f7282231a92f568b161459b8da8878c5",
+        "tools/verification/proton.py": "542a07d6f01a48f35422979042ce767b4436a95e5ade6250992637bee13fade0",
+        "tools/verification/proton_runtime.py": "d3331ece3a4c4bff05e628f4c10fb849528972f0ffd57357cb4a5b379fa87a70",
+        "tools/verification/proton_timeout.py": "6a8de458ce9c90c466461255699beba3e075218258cb686fb7c0c2ce9501f48b"
+      },
+      "native": {
+        "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7",
+        "executable_sha256": "7b88f69a19ce236e84ecdcd14ae6d927ba686e421f0059cb065d6fcfc6161098"
+      },
+      "controls": {
+        "proton.launch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            },
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "selected_output": []
+        },
+        "proton.queries": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": []
+        },
+        "proton.dispatch": {
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "process_containment": [
+            {
+              "distinct_pid_namespace": true,
+              "parent_death_policy": "--die-with-parent"
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "selected_output": [
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton single-frame: PASSED"
+          ]
+        }
+      }
+    }
+  ]
+}

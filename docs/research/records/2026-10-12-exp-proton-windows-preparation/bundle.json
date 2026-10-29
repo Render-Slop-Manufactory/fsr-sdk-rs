@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "source_attempt_identity": "5c0280584460c18f5cc05184f05bcde88fdfbdcc9ddd175fc5ea8ed2c540b929",
+  "build_host": "Windows x64/MSVC",
+  "scope": "Public queries followed by unchanged Gate A; no Linux cross-build claim",
+  "cases": [
+    {
+      "id": "native.queries.public",
+      "selector": "upscaler::dx12::tests::queries::native_public_queries",
+      "markers": [
+        "M10 public queries: PASSED",
+        "1 passed; 0 failed"
+      ]
+    },
+    {
+      "id": "native.dispatch.single",
+      "selector": "upscaler::dx12::m6::native_dispatch_readback",
+      "markers": [
+        "Gate A: PASSED",
+        "1 passed; 0 failed"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "app/amd_fidelityfx_loader_dx12.dll",
+      "bytes": 26376,
+      "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+    },
+    {
+      "path": "app/amd_fidelityfx_upscaler_dx12.dll",
+      "bytes": 28761864,
+      "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+    },
+    {
+      "path": "app/m6_gpu.dll",
+      "bytes": 185856,
+      "sha256": "952acc4c3cc1065360e5bd26b12c2ea93c133afe327ed01a374ef492390fa54c"
+    },
+    {
+      "path": "app/native-fsr_sdk.exe",
+      "bytes": 2597376,
+      "sha256": "8ee627b498e6579953941d93211fb93438be2f75c028506d66f5968212187543"
+    },
+    {
+      "path": "notices/AMD-3rdpartynotice.md",
+      "bytes": 2441,
+      "sha256": "94401a90486d1b53b528bb7f845a7b8daf7227b60eb7c0fc3b8c5571ba202a27"
+    },
+    {
+      "path": "notices/AMD-license.md",
+      "bytes": 60891,
+      "sha256": "6757f2fec461238da6f84f83536ec195e8c036b1773a06f6f34301b9ed8c0963"
+    },
+    {
+      "path": "notices/LICENSE",
+      "bytes": 17099,
+      "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3"
+    },
+    {
+      "path": "README.txt",
+      "bytes": 337,
+      "sha256": "d94be0d067d7e0193f1513f96c454e3a0fbbcd7a1121410a55d818e75f86c352"
+    },
+    {
+      "path": "tools/verification/execution.py",
+      "bytes": 11482,
+      "sha256": "3276d056112b2112d947fb55165b00fddff8515767191a3c693e7f09b2a25e90"
+    },
+    {
+      "path": "tools/verification/proton_spike.py",
+      "bytes": 12830,
+      "sha256": "d6692e1da6e141589e7109795fff2ed6dcce98fd2d7911247311bbe1d9b3c5a8"
+    },
+    {
+      "path": "tools/verification/records.py",
+      "bytes": 8393,
+      "sha256": "fc97a324840220b5062a72216c5386ab70b00024c5e088ce8d47734dfd05cda2"
+    },
+    {
+      "path": "windows-provenance.json",
+      "bytes": 48534,
+      "sha256": "ee4672e96eee239fa21f025259f611c7614b0067145469b0b0070f8a10c93286"
+    }
+  ]
+}

@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "manifest_sha256": "ff4406dce8d0b43b2360f11c5d533ad74e0c6c1ea6e579fff45291e2a7db84d1",
+  "runtime_policy": "local-steamrt3-v1",
+  "components": {
+    "proton": {
+      "entries": 8138,
+      "bytes": 1404192639,
+      "sha256": "ceeed77a92488627402161d2f255799d606c2dda777d50025d2b5911fd6bb3ef"
+    },
+    "runtime": {
+      "entries": 9593,
+      "bytes": 810303158,
+      "sha256": "ec3b47dbb379a66706fa35894dfbc29deba4f9a986355d63c6bf255782ba8a84"
+    },
+    "launcher": {
+      "entries": 63,
+      "bytes": 1484292,
+      "sha256": "ecc31faf8fa5ac3347278ea24fc1d6da74a97ee71483614731f11f7ead565517"
+    }
+  },
+  "umu_shim_sha256": "8a24de7915dd39ee57ecb882139167c7d560aee06e96e7cd07ecb42bedc779e3",
+  "attempts": [
+    {
+      "attempt": "20261013T234657Z-proton-offline-ed73de9088c9",
+      "status": "passed",
+      "started_utc": "2026-10-13T23:46:59.737976+00:00",
+      "finished_utc": "2026-10-13T23:47:57.930018+00:00",
+      "inputs_unchanged": true,
+      "input_identity": "1e4c2b9c5f3d0ba35147da84a928f1e57ff3496bc33643d7c53e6b3fe1bede3f",
+      "source_sha256": {
+        "tools/verification/execution.py": "3276d056112b2112d947fb55165b00fddff8515767191a3c693e7f09b2a25e90",
+        "tools/verification/profiles.py": "e163a55d4746d67b02d240460b74efc4b80312d773c48f81008889ca79ba7b22",
+        "tools/verification/proton.py": "28a4ef52cfd6c2d59f23aae57e79b720a2fd9a45b5c8ab3f257331a9d4b5d428",
+        "tools/verification/proton_runtime.py": "f6c53b336e7f305d167fcb4f9bd0f5c910499c1d9a46a8c5d5bef26a2afcc3bd",
+        "tools/verification/run.py": "4fbba0aeb992b280c7297c4538d6cdce413fad45f96a051393ce53f2caef9016",
+        "tools/verification/tests/test_proton_runtime.py": "faf0874c522b0b7763dedbe7f411168ad1bebee2fe5bbe982034738fa524fb52"
+      },
+      "cases": [
+        {
+          "id": "equipment.toolchain",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "proton.equipment",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "proton.offline.missing-manifest",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            1
+          ],
+          "runtime_acquired": false,
+          "network_proof": "OFFLINE NETWORK: {\"distinct_namespace\": true, \"interfaces\": [\"lo\"], \"unreachable_errno\": [101, 101]}"
+        },
+        {
+          "id": "proton.offline.missing-proton",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            1
+          ],
+          "runtime_acquired": false,
+          "network_proof": "OFFLINE NETWORK: {\"distinct_namespace\": true, \"interfaces\": [\"lo\"], \"unreachable_errno\": [101, 101]}"
+        },
+        {
+          "id": "proton.offline.missing-runtime",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            1
+          ],
+          "runtime_acquired": false,
+          "network_proof": "OFFLINE NETWORK: {\"distinct_namespace\": true, \"interfaces\": [\"lo\"], \"unreachable_errno\": [101, 101]}"
+        },
+        {
+          "id": "proton.sdk",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "proton.helper",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7"
+        },
+        {
+          "id": "proton.build",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "executable_sha256": "7b88f69a19ce236e84ecdcd14ae6d927ba686e421f0059cb065d6fcfc6161098"
+        },
+        {
+          "id": "proton.launch",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            },
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ]
+        },
+        {
+          "id": "proton.queries",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          }
+        },
+        {
+          "id": "proton.dispatch",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "readback": [
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton single-frame: PASSED"
+          ]
+        },
+        {
+          "id": "proton.offline.integrity",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [],
+          "runtime_unchanged": true
+        }
+      ]
+    },
+    {
+      "attempt": "20261013T235017Z-proton-offline-21ceb6103b0a",
+      "status": "passed",
+      "started_utc": "2026-10-13T23:50:19.093629+00:00",
+      "finished_utc": "2026-10-13T23:51:18.229497+00:00",
+      "inputs_unchanged": true,
+      "input_identity": "7d3e830341f88b4b61c64763d6371c272d5634a1307583fed3d234a8d29475ce",
+      "source_sha256": {
+        "tools/verification/execution.py": "3276d056112b2112d947fb55165b00fddff8515767191a3c693e7f09b2a25e90",
+        "tools/verification/profiles.py": "e163a55d4746d67b02d240460b74efc4b80312d773c48f81008889ca79ba7b22",
+        "tools/verification/proton.py": "3e0cc5809dcf95a19a7c2d039de16a761e27406d0be3c9341e547f4397916432",
+        "tools/verification/proton_runtime.py": "f6c53b336e7f305d167fcb4f9bd0f5c910499c1d9a46a8c5d5bef26a2afcc3bd",
+        "tools/verification/run.py": "4fbba0aeb992b280c7297c4538d6cdce413fad45f96a051393ce53f2caef9016",
+        "tools/verification/tests/test_proton_runtime.py": "11a11cbeee7eea623e3db1cae84557354672da7a9cbd41a652d2b52b254d10a5"
+      },
+      "cases": [
+        {
+          "id": "equipment.toolchain",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "proton.equipment",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "proton.offline.missing-manifest",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            1
+          ],
+          "runtime_acquired": false,
+          "network_proof": "OFFLINE NETWORK: {\"distinct_namespace\": true, \"interfaces\": [\"lo\"], \"unreachable_errno\": [101, 101]}"
+        },
+        {
+          "id": "proton.offline.missing-proton",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            1
+          ],
+          "runtime_acquired": false,
+          "network_proof": "OFFLINE NETWORK: {\"distinct_namespace\": true, \"interfaces\": [\"lo\"], \"unreachable_errno\": [101, 101]}"
+        },
+        {
+          "id": "proton.offline.missing-runtime",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            1
+          ],
+          "runtime_acquired": false,
+          "network_proof": "OFFLINE NETWORK: {\"distinct_namespace\": true, \"interfaces\": [\"lo\"], \"unreachable_errno\": [101, 101]}"
+        },
+        {
+          "id": "proton.sdk",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "proton.helper",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7"
+        },
+        {
+          "id": "proton.build",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "executable_sha256": "7b88f69a19ce236e84ecdcd14ae6d927ba686e421f0059cb065d6fcfc6161098"
+        },
+        {
+          "id": "proton.launch",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0,
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            },
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ]
+        },
+        {
+          "id": "proton.queries",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          }
+        },
+        {
+          "id": "proton.dispatch",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [
+            0
+          ],
+          "offline_network": [
+            {
+              "distinct_namespace": true,
+              "interfaces": [
+                "lo"
+              ],
+              "unreachable_errno": [
+                101,
+                101
+              ]
+            }
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "Z:<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "readback": [
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton single-frame: PASSED"
+          ]
+        },
+        {
+          "id": "proton.offline.integrity",
+          "execution": "completed",
+          "evaluation": "passed",
+          "exit_codes": [],
+          "runtime_unchanged": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1990 @@
+{
+  "date": "2026-10-13",
+  "source_baseline": "42282d3040c177da51ea3c601a7c08ed56840a7b",
+  "attempts": [
+    {
+      "name": "20261013T002658Z-proton-9260588e16c7",
+      "schema_version": 1,
+      "profile": "proton",
+      "started_utc": "2026-10-13T00:26:59.284059+00:00",
+      "status": "failed",
+      "input_identity": "2da68f4faf0f0985aa95606a4df7f61ade5e8fe2d9f0d4ff0db88761f143a3a9",
+      "required": [
+        "equipment.toolchain",
+        "proton.equipment",
+        "proton.sdk",
+        "proton.helper",
+        "proton.build",
+        "proton.launch",
+        "proton.queries",
+        "proton.dispatch"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "failed",
+        "proton.launch": "blocked",
+        "proton.queries": "blocked",
+        "proton.dispatch": "blocked"
+      },
+      "finished_utc": "2026-10-13T00:27:01.473720+00:00",
+      "inputs_unchanged": true,
+      "completed": 8,
+      "integrity_verification": "passed",
+      "observations": {
+        "proton.equipment": {
+          "proton_version": "1791480010 experimental-11.0-20261008-x86_64"
+        },
+        "proton.helper": {
+          "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7"
+        },
+        "proton.build": {
+          "reason": "command: completed, exit=101; expectation not met"
+        },
+        "proton.queries": {
+          "reason": "Unmet prerequisites: proton.launch"
+        },
+        "proton.dispatch": {
+          "reason": "Unmet prerequisites: proton.queries"
+        }
+      }
+    },
+    {
+      "name": "20261013T002820Z-proton-7abd66342756",
+      "schema_version": 1,
+      "profile": "proton",
+      "started_utc": "2026-10-13T00:28:21.373008+00:00",
+      "status": "failed",
+      "input_identity": "2da68f4faf0f0985aa95606a4df7f61ade5e8fe2d9f0d4ff0db88761f143a3a9",
+      "required": [
+        "equipment.toolchain",
+        "proton.equipment",
+        "proton.sdk",
+        "proton.helper",
+        "proton.build",
+        "proton.launch",
+        "proton.queries",
+        "proton.dispatch"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "passed",
+        "proton.launch": "passed",
+        "proton.queries": "failed",
+        "proton.dispatch": "blocked"
+      },
+      "finished_utc": "2026-10-13T00:29:01.836058+00:00",
+      "inputs_unchanged": true,
+      "completed": 8,
+      "integrity_verification": "passed",
+      "observations": {
+        "proton.equipment": {
+          "proton_version": "1791480010 experimental-11.0-20261008-x86_64"
+        },
+        "proton.helper": {
+          "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7"
+        },
+        "proton.build": {
+          "executable_sha256": "496e0c4c115ddb92b29e014def0d3bc33788b4a41bb64a650049b30f7194980a"
+        },
+        "proton.queries": {
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 1,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "reason": "Vulkan validation reported 1 errors"
+        },
+        "proton.dispatch": {
+          "reason": "Unmet prerequisites: proton.queries"
+        }
+      }
+    },
+    {
+      "name": "20261013T003256Z-proton-c04d7bfeebc7",
+      "schema_version": 1,
+      "profile": "proton",
+      "started_utc": "2026-10-13T00:32:57.146781+00:00",
+      "status": "passed",
+      "input_identity": "5af6a0c502fcbbc1be671a023fd9c0ef9f8e9f2ba265c1c7987ad6a1d00c6f97",
+      "required": [
+        "equipment.toolchain",
+        "proton.equipment",
+        "proton.sdk",
+        "proton.helper",
+        "proton.build",
+        "proton.launch",
+        "proton.queries",
+        "proton.dispatch"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "passed",
+        "proton.launch": "passed",
+        "proton.queries": "passed",
+        "proton.dispatch": "passed"
+      },
+      "finished_utc": "2026-10-13T00:33:19.827450+00:00",
+      "inputs_unchanged": true,
+      "completed": 8,
+      "integrity_verification": "passed",
+      "observations": {
+        "proton.equipment": {
+          "proton_version": "1791480010 experimental-11.0-20261008-x86_64"
+        },
+        "proton.helper": {
+          "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7"
+        },
+        "proton.build": {
+          "executable_sha256": "496e0c4c115ddb92b29e014def0d3bc33788b4a41bb64a650049b30f7194980a"
+        },
+        "proton.queries": {
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "metrics": [
+            "M10 local: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+            "M10 movable: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+            "M10 public queries: PASSED"
+          ]
+        },
+        "proton.dispatch": {
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "metrics": [
+            "Proton validation: DirectX debug HRESULT=0x887a002d; D3D12 GBV not enabled; Vulkan diagnostics recorded by launcher",
+            "Gate A queries: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }",
+            "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10058594, max_red: 0.84765625, left_red: 0.193594, right_red: 0.7556911, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton validation: DirectX info queue unavailable; error count unavailable",
+            "Proton device checkpoint: device_removed=0x00000000"
+          ]
+        }
+      },
+      "selected_inputs": [
+        {
+          "path": "crates/fsr-sdk/src/upscaler/dx12/tests/queries.rs",
+          "sha256": "658968a069bd3d133f6335bdf0a18244284a8bc0a296b3deb92a4e2a3326c381"
+        },
+        {
+          "path": "crates/fsr-sdk/tests/native/gpu.cpp",
+          "sha256": "9a743af26a017652884d8f8fb25fc3b94b0243f66f4eac3cf3976a18e5f757db"
+        },
+        {
+          "path": "crates/fsr-sdk/tests/native/single_frame.rs",
+          "sha256": "cd0c382c9a7cc4453c73b63f03c3355199452d2d7057409b05802b4c7aaefccd"
+        },
+        {
+          "path": "crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp",
+          "sha256": "8131993e8f234e56beb8cb87f02f9a34506f2eba5b7b643e8041c19f23547d55"
+        },
+        {
+          "path": "tools/verification/nix/flake.lock",
+          "sha256": "835855bf9ee53c877d8d00a14ad94bb1f1700d80276981fbe3bf46806b066b14"
+        },
+        {
+          "path": "tools/verification/proton.py",
+          "sha256": "7e6b9bfa5a7fa04786235f6a65f8cb4c292f5b13d73d031b50075c4c05a8a46a"
+        },
+        {
+          "path": "tools/verification/vulkan_validation.py",
+          "sha256": "caf846c11d9f84e1d875e74b3dafa67ae3bb42e25e3678927be36b967a5dce59"
+        },
+        {
+          "path": "sdk/api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "sdk/api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "sdk/api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "sdk/upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        },
+        {
+          "path": "sdk/signedbin/amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "path": "sdk/signedbin/amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        },
+        {
+          "path": "vulkan-validation/manifest.json",
+          "sha256": "825b8bac33c1038edd2bda89282eeeb51d1d2dd14d1ff4793aaeacafb4853ff9"
+        },
+        {
+          "path": "vulkan-validation/layer.so",
+          "sha256": "21532eb6dc6f587ffc276b07f048c7de6ced8db2929caaf9fabe30962001e963"
+        },
+        {
+          "path": "proton/proton",
+          "sha256": "2304e055b98c0016b54273bfe67633a0fb122913fabcdd4857639b3835a23d75"
+        },
+        {
+          "path": "proton/version",
+          "sha256": "e2dc436a90648081b0934399c0070b9a87afa5022f74ccf1f2c56d2c3a618409"
+        },
+        {
+          "path": "proton/toolmanifest.vdf",
+          "sha256": "bb81d44a687cc6f4ea7ae05fa9f0502f35c48e462051809dce3b2a58492e3498"
+        },
+        {
+          "path": "proton/files/bin/wine",
+          "sha256": "7a6de49c00d8ed2ba55c6967d3643c5ef729f5e562fb51e47e4f41c6cdb5c92a"
+        },
+        {
+          "path": "proton/files/bin/wineserver",
+          "sha256": "d63136a1588b79250597ee9efbc4c1e1b45742485a66d4bc5ffbe5dc24d69a1d"
+        },
+        {
+          "path": "proton/contrib/amdxcffx64.dll",
+          "sha256": "4e7dc37aebea3a90e3d3cc43e24cb2b54176b2535315f20dbe63b3b7cfc56b1e"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-windows/amdxc64.dll",
+          "sha256": "4164ed39060f2b486d4d594a4a94746c074a77b4dbb2e3d4c943c0bf8c0c4acd"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-windows/amd_ags_x64.dll",
+          "sha256": "206d6665387f348acb58c829f272c0f9963d4d2a491075c57fc76e23c8b7a8be"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-unix/amd_ags_x64.so",
+          "sha256": "1b202ccfbd93bdef614ccc12c1851d4412935f42243418eaf304a01d34c16b2b"
+        },
+        {
+          "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12.dll",
+          "sha256": "abe8d165cdc217626fcd6d77807ea39dbe5e03805a97c854c3d3c50a23c6acb6"
+        },
+        {
+          "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12core.dll",
+          "sha256": "672fa362363f8bd33d88724785e5042bfcec9b259f6a0aee00b7c4bc349d645f"
+        },
+        {
+          "path": "proton/files/lib/wine/dxvk/x86_64-windows/dxgi.dll",
+          "sha256": "adb29a9214a3ab1e01d5f68cfcb77757804097986e4423b8b5856e8efb35061d"
+        },
+        {
+          "path": "tools/cargo_xwin",
+          "sha256": "c360d5e87df2bf66337d330a5a76647c36a1552b0782f9c06ea73908f3c1a338"
+        },
+        {
+          "path": "tools/umu",
+          "sha256": "f66f80fba77f413092ec541e064123cf67d825395d03a63e475d9a9ba5f315f6"
+        },
+        {
+          "path": "tools/clang-cl",
+          "sha256": "f53f4d9b4eefe3f3f19e8eac7db8208428d8501fb8a9761552ef3e8bff4e7251"
+        }
+      ]
+    },
+    {
+      "name": "20261013T003425Z-proton-0beeaeb54195",
+      "schema_version": 1,
+      "profile": "proton",
+      "started_utc": "2026-10-13T00:34:25.717286+00:00",
+      "status": "passed",
+      "input_identity": "26517fed7f7e2876c5a5b2e3e80eaab7954df570b9145359b02eda7c2894941d",
+      "required": [
+        "equipment.toolchain",
+        "proton.equipment",
+        "proton.sdk",
+        "proton.helper",
+        "proton.build",
+        "proton.launch",
+        "proton.queries",
+        "proton.dispatch"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "passed",
+        "proton.launch": "passed",
+        "proton.queries": "passed",
+        "proton.dispatch": "passed"
+      },
+      "finished_utc": "2026-10-13T00:34:45.560026+00:00",
+      "inputs_unchanged": true,
+      "completed": 8,
+      "integrity_verification": "passed",
+      "observations": {
+        "proton.equipment": {
+          "proton_version": "1791480010 experimental-11.0-20261008-x86_64"
+        },
+        "proton.helper": {
+          "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7"
+        },
+        "proton.build": {
+          "executable_sha256": "496e0c4c115ddb92b29e014def0d3bc33788b4a41bb64a650049b30f7194980a"
+        },
+        "proton.queries": {
+          "provider_experiment": {
+            "upgrade_control": "automatic",
+            "same_workload_and_acceptance": true
+          },
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "metrics": [
+            "M10 local: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+            "M10 movable: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+            "M10 public queries: PASSED"
+          ]
+        },
+        "proton.dispatch": {
+          "provider_experiment": {
+            "upgrade_control": "automatic",
+            "same_workload_and_acceptance": true
+          },
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "metrics": [
+            "Proton validation: DirectX debug HRESULT=0x887a002d; D3D12 GBV not enabled; Vulkan diagnostics recorded by launcher",
+            "Gate A queries: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }",
+            "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10058594, max_red: 0.84765625, left_red: 0.193594, right_red: 0.7556911, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton validation: DirectX info queue unavailable; error count unavailable",
+            "Proton device checkpoint: device_removed=0x00000000"
+          ]
+        }
+      },
+      "selected_inputs": [
+        {
+          "path": "crates/fsr-sdk/src/upscaler/dx12/tests/queries.rs",
+          "sha256": "658968a069bd3d133f6335bdf0a18244284a8bc0a296b3deb92a4e2a3326c381"
+        },
+        {
+          "path": "crates/fsr-sdk/tests/native/gpu.cpp",
+          "sha256": "9a743af26a017652884d8f8fb25fc3b94b0243f66f4eac3cf3976a18e5f757db"
+        },
+        {
+          "path": "crates/fsr-sdk/tests/native/single_frame.rs",
+          "sha256": "cd0c382c9a7cc4453c73b63f03c3355199452d2d7057409b05802b4c7aaefccd"
+        },
+        {
+          "path": "crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp",
+          "sha256": "8131993e8f234e56beb8cb87f02f9a34506f2eba5b7b643e8041c19f23547d55"
+        },
+        {
+          "path": "tools/verification/nix/flake.lock",
+          "sha256": "835855bf9ee53c877d8d00a14ad94bb1f1700d80276981fbe3bf46806b066b14"
+        },
+        {
+          "path": "tools/verification/proton.py",
+          "sha256": "7e6b9bfa5a7fa04786235f6a65f8cb4c292f5b13d73d031b50075c4c05a8a46a"
+        },
+        {
+          "path": "tools/verification/vulkan_validation.py",
+          "sha256": "caf846c11d9f84e1d875e74b3dafa67ae3bb42e25e3678927be36b967a5dce59"
+        },
+        {
+          "path": "sdk/api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "sdk/api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "sdk/api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "sdk/upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        },
+        {
+          "path": "sdk/signedbin/amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "path": "sdk/signedbin/amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        },
+        {
+          "path": "vulkan-validation/manifest.json",
+          "sha256": "825b8bac33c1038edd2bda89282eeeb51d1d2dd14d1ff4793aaeacafb4853ff9"
+        },
+        {
+          "path": "vulkan-validation/layer.so",
+          "sha256": "21532eb6dc6f587ffc276b07f048c7de6ced8db2929caaf9fabe30962001e963"
+        },
+        {
+          "path": "proton/proton",
+          "sha256": "2304e055b98c0016b54273bfe67633a0fb122913fabcdd4857639b3835a23d75"
+        },
+        {
+          "path": "proton/version",
+          "sha256": "e2dc436a90648081b0934399c0070b9a87afa5022f74ccf1f2c56d2c3a618409"
+        },
+        {
+          "path": "proton/toolmanifest.vdf",
+          "sha256": "bb81d44a687cc6f4ea7ae05fa9f0502f35c48e462051809dce3b2a58492e3498"
+        },
+        {
+          "path": "proton/files/bin/wine",
+          "sha256": "7a6de49c00d8ed2ba55c6967d3643c5ef729f5e562fb51e47e4f41c6cdb5c92a"
+        },
+        {
+          "path": "proton/files/bin/wineserver",
+          "sha256": "d63136a1588b79250597ee9efbc4c1e1b45742485a66d4bc5ffbe5dc24d69a1d"
+        },
+        {
+          "path": "proton/contrib/amdxcffx64.dll",
+          "sha256": "4e7dc37aebea3a90e3d3cc43e24cb2b54176b2535315f20dbe63b3b7cfc56b1e"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-windows/amdxc64.dll",
+          "sha256": "4164ed39060f2b486d4d594a4a94746c074a77b4dbb2e3d4c943c0bf8c0c4acd"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-windows/amd_ags_x64.dll",
+          "sha256": "206d6665387f348acb58c829f272c0f9963d4d2a491075c57fc76e23c8b7a8be"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-unix/amd_ags_x64.so",
+          "sha256": "1b202ccfbd93bdef614ccc12c1851d4412935f42243418eaf304a01d34c16b2b"
+        },
+        {
+          "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12.dll",
+          "sha256": "abe8d165cdc217626fcd6d77807ea39dbe5e03805a97c854c3d3c50a23c6acb6"
+        },
+        {
+          "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12core.dll",
+          "sha256": "672fa362363f8bd33d88724785e5042bfcec9b259f6a0aee00b7c4bc349d645f"
+        },
+        {
+          "path": "proton/files/lib/wine/dxvk/x86_64-windows/dxgi.dll",
+          "sha256": "adb29a9214a3ab1e01d5f68cfcb77757804097986e4423b8b5856e8efb35061d"
+        },
+        {
+          "path": "tools/cargo_xwin",
+          "sha256": "c360d5e87df2bf66337d330a5a76647c36a1552b0782f9c06ea73908f3c1a338"
+        },
+        {
+          "path": "tools/umu",
+          "sha256": "f66f80fba77f413092ec541e064123cf67d825395d03a63e475d9a9ba5f315f6"
+        },
+        {
+          "path": "tools/clang-cl",
+          "sha256": "f53f4d9b4eefe3f3f19e8eac7db8208428d8501fb8a9761552ef3e8bff4e7251"
+        },
+        {
+          "path": "experiment/provider_probe.py",
+          "sha256": "53cc10b9c7d42825188856d33de8e7574e2c8f61c6f92f8ff69c3a0f97ec4283"
+        }
+      ]
+    },
+    {
+      "name": "20261013T003538Z-proton-620be03800cb",
+      "schema_version": 1,
+      "profile": "proton",
+      "started_utc": "2026-10-13T00:35:39.837924+00:00",
+      "status": "passed",
+      "input_identity": "26517fed7f7e2876c5a5b2e3e80eaab7954df570b9145359b02eda7c2894941d",
+      "required": [
+        "equipment.toolchain",
+        "proton.equipment",
+        "proton.sdk",
+        "proton.helper",
+        "proton.build",
+        "proton.launch",
+        "proton.queries",
+        "proton.dispatch"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "passed",
+        "proton.launch": "passed",
+        "proton.queries": "passed",
+        "proton.dispatch": "passed"
+      },
+      "finished_utc": "2026-10-13T00:36:03.135659+00:00",
+      "inputs_unchanged": true,
+      "completed": 8,
+      "integrity_verification": "passed",
+      "observations": {
+        "proton.equipment": {
+          "proton_version": "1791480010 experimental-11.0-20261008-x86_64"
+        },
+        "proton.helper": {
+          "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7"
+        },
+        "proton.build": {
+          "executable_sha256": "496e0c4c115ddb92b29e014def0d3bc33788b4a41bb64a650049b30f7194980a"
+        },
+        "proton.queries": {
+          "provider_experiment": {
+            "upgrade_control": "disabled",
+            "same_workload_and_acceptance": true
+          },
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "metrics": [
+            "M10 local: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+            "M10 movable: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+            "M10 public queries: PASSED"
+          ]
+        },
+        "proton.dispatch": {
+          "provider_experiment": {
+            "upgrade_control": "disabled",
+            "same_workload_and_acceptance": true
+          },
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "metrics": [
+            "Proton validation: DirectX debug HRESULT=0x887a002d; D3D12 GBV not enabled; Vulkan diagnostics recorded by launcher",
+            "Gate A queries: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }",
+            "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10058594, max_red: 0.84765625, left_red: 0.193594, right_red: 0.7556911, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton validation: DirectX info queue unavailable; error count unavailable",
+            "Proton device checkpoint: device_removed=0x00000000"
+          ]
+        }
+      },
+      "selected_inputs": [
+        {
+          "path": "crates/fsr-sdk/src/upscaler/dx12/tests/queries.rs",
+          "sha256": "658968a069bd3d133f6335bdf0a18244284a8bc0a296b3deb92a4e2a3326c381"
+        },
+        {
+          "path": "crates/fsr-sdk/tests/native/gpu.cpp",
+          "sha256": "9a743af26a017652884d8f8fb25fc3b94b0243f66f4eac3cf3976a18e5f757db"
+        },
+        {
+          "path": "crates/fsr-sdk/tests/native/single_frame.rs",
+          "sha256": "cd0c382c9a7cc4453c73b63f03c3355199452d2d7057409b05802b4c7aaefccd"
+        },
+        {
+          "path": "crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp",
+          "sha256": "8131993e8f234e56beb8cb87f02f9a34506f2eba5b7b643e8041c19f23547d55"
+        },
+        {
+          "path": "tools/verification/nix/flake.lock",
+          "sha256": "835855bf9ee53c877d8d00a14ad94bb1f1700d80276981fbe3bf46806b066b14"
+        },
+        {
+          "path": "tools/verification/proton.py",
+          "sha256": "7e6b9bfa5a7fa04786235f6a65f8cb4c292f5b13d73d031b50075c4c05a8a46a"
+        },
+        {
+          "path": "tools/verification/vulkan_validation.py",
+          "sha256": "caf846c11d9f84e1d875e74b3dafa67ae3bb42e25e3678927be36b967a5dce59"
+        },
+        {
+          "path": "sdk/api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "sdk/api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "sdk/api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "sdk/upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        },
+        {
+          "path": "sdk/signedbin/amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "path": "sdk/signedbin/amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        },
+        {
+          "path": "vulkan-validation/manifest.json",
+          "sha256": "825b8bac33c1038edd2bda89282eeeb51d1d2dd14d1ff4793aaeacafb4853ff9"
+        },
+        {
+          "path": "vulkan-validation/layer.so",
+          "sha256": "21532eb6dc6f587ffc276b07f048c7de6ced8db2929caaf9fabe30962001e963"
+        },
+        {
+          "path": "proton/proton",
+          "sha256": "2304e055b98c0016b54273bfe67633a0fb122913fabcdd4857639b3835a23d75"
+        },
+        {
+          "path": "proton/version",
+          "sha256": "e2dc436a90648081b0934399c0070b9a87afa5022f74ccf1f2c56d2c3a618409"
+        },
+        {
+          "path": "proton/toolmanifest.vdf",
+          "sha256": "bb81d44a687cc6f4ea7ae05fa9f0502f35c48e462051809dce3b2a58492e3498"
+        },
+        {
+          "path": "proton/files/bin/wine",
+          "sha256": "7a6de49c00d8ed2ba55c6967d3643c5ef729f5e562fb51e47e4f41c6cdb5c92a"
+        },
+        {
+          "path": "proton/files/bin/wineserver",
+          "sha256": "d63136a1588b79250597ee9efbc4c1e1b45742485a66d4bc5ffbe5dc24d69a1d"
+        },
+        {
+          "path": "proton/contrib/amdxcffx64.dll",
+          "sha256": "4e7dc37aebea3a90e3d3cc43e24cb2b54176b2535315f20dbe63b3b7cfc56b1e"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-windows/amdxc64.dll",
+          "sha256": "4164ed39060f2b486d4d594a4a94746c074a77b4dbb2e3d4c943c0bf8c0c4acd"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-windows/amd_ags_x64.dll",
+          "sha256": "206d6665387f348acb58c829f272c0f9963d4d2a491075c57fc76e23c8b7a8be"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-unix/amd_ags_x64.so",
+          "sha256": "1b202ccfbd93bdef614ccc12c1851d4412935f42243418eaf304a01d34c16b2b"
+        },
+        {
+          "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12.dll",
+          "sha256": "abe8d165cdc217626fcd6d77807ea39dbe5e03805a97c854c3d3c50a23c6acb6"
+        },
+        {
+          "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12core.dll",
+          "sha256": "672fa362363f8bd33d88724785e5042bfcec9b259f6a0aee00b7c4bc349d645f"
+        },
+        {
+          "path": "proton/files/lib/wine/dxvk/x86_64-windows/dxgi.dll",
+          "sha256": "adb29a9214a3ab1e01d5f68cfcb77757804097986e4423b8b5856e8efb35061d"
+        },
+        {
+          "path": "tools/cargo_xwin",
+          "sha256": "c360d5e87df2bf66337d330a5a76647c36a1552b0782f9c06ea73908f3c1a338"
+        },
+        {
+          "path": "tools/umu",
+          "sha256": "f66f80fba77f413092ec541e064123cf67d825395d03a63e475d9a9ba5f315f6"
+        },
+        {
+          "path": "tools/clang-cl",
+          "sha256": "f53f4d9b4eefe3f3f19e8eac7db8208428d8501fb8a9761552ef3e8bff4e7251"
+        },
+        {
+          "path": "experiment/provider_probe.py",
+          "sha256": "53cc10b9c7d42825188856d33de8e7574e2c8f61c6f92f8ff69c3a0f97ec4283"
+        }
+      ]
+    },
+    {
+      "name": "20261013T003727Z-proton-5ff822ab9429",
+      "schema_version": 1,
+      "profile": "proton",
+      "started_utc": "2026-10-13T00:37:27.724756+00:00",
+      "status": "passed",
+      "input_identity": "2525d350a3a3a3f00b986f243db763c2f133eb9e8d7bf14fea4d05238a8b66a8",
+      "required": [
+        "equipment.toolchain",
+        "proton.equipment",
+        "proton.sdk",
+        "proton.helper",
+        "proton.build",
+        "proton.launch",
+        "proton.queries",
+        "proton.dispatch"
+      ],
+      "cases": {
+        "equipment.toolchain": "passed",
+        "proton.equipment": "passed",
+        "proton.sdk": "passed",
+        "proton.helper": "passed",
+        "proton.build": "passed",
+        "proton.launch": "passed",
+        "proton.queries": "passed",
+        "proton.dispatch": "passed"
+      },
+      "finished_utc": "2026-10-13T00:37:49.189414+00:00",
+      "inputs_unchanged": true,
+      "completed": 8,
+      "integrity_verification": "passed",
+      "observations": {
+        "proton.equipment": {
+          "proton_version": "1791559474 proton-11.0-2e-x86_64"
+        },
+        "proton.helper": {
+          "helper_sha256": "5df2adc3241e92e4e9bf3178c8ab37fe8979f34aa3a1d835ccb2ec7b3f2a4fb7"
+        },
+        "proton.build": {
+          "executable_sha256": "496e0c4c115ddb92b29e014def0d3bc33788b4a41bb64a650049b30f7194980a"
+        },
+        "proton.queries": {
+          "provider_experiment": {
+            "upgrade_control": "automatic",
+            "same_workload_and_acceptance": true
+          },
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "metrics": [
+            "M10 local: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+            "M10 movable: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 80740352, aliasable_bytes: 0 }",
+            "M10 public queries: PASSED"
+          ]
+        },
+        "proton.dispatch": {
+          "provider_experiment": {
+            "upgrade_control": "automatic",
+            "same_workload_and_acceptance": true
+          },
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "loaded_modules": {
+            "amd_fidelityfx_loader_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_loader_dx12.dll",
+              "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+            },
+            "amd_fidelityfx_upscaler_dx12.dll": {
+              "loaded_path": "<application-stage>/amd_fidelityfx_upscaler_dx12.dll",
+              "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+            }
+          },
+          "metrics": [
+            "Proton validation: DirectX debug HRESULT=0x887a002d; D3D12 GBV not enabled; Vulkan diagnostics recorded by launcher",
+            "Gate A queries: provider=ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }; estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(0) }; usage=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }",
+            "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10058594, max_red: 0.84765625, left_red: 0.193594, right_red: 0.7556911, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton validation: DirectX info queue unavailable; error count unavailable",
+            "Proton device checkpoint: device_removed=0x00000000"
+          ]
+        }
+      },
+      "selected_inputs": [
+        {
+          "path": "crates/fsr-sdk/src/upscaler/dx12/tests/queries.rs",
+          "sha256": "658968a069bd3d133f6335bdf0a18244284a8bc0a296b3deb92a4e2a3326c381"
+        },
+        {
+          "path": "crates/fsr-sdk/tests/native/gpu.cpp",
+          "sha256": "9a743af26a017652884d8f8fb25fc3b94b0243f66f4eac3cf3976a18e5f757db"
+        },
+        {
+          "path": "crates/fsr-sdk/tests/native/single_frame.rs",
+          "sha256": "cd0c382c9a7cc4453c73b63f03c3355199452d2d7057409b05802b4c7aaefccd"
+        },
+        {
+          "path": "crates/fsr-sdk-sys/tests/context_lifecycle/device.cpp",
+          "sha256": "8131993e8f234e56beb8cb87f02f9a34506f2eba5b7b643e8041c19f23547d55"
+        },
+        {
+          "path": "tools/verification/nix/flake.lock",
+          "sha256": "835855bf9ee53c877d8d00a14ad94bb1f1700d80276981fbe3bf46806b066b14"
+        },
+        {
+          "path": "tools/verification/proton.py",
+          "sha256": "7e6b9bfa5a7fa04786235f6a65f8cb4c292f5b13d73d031b50075c4c05a8a46a"
+        },
+        {
+          "path": "tools/verification/vulkan_validation.py",
+          "sha256": "caf846c11d9f84e1d875e74b3dafa67ae3bb42e25e3678927be36b967a5dce59"
+        },
+        {
+          "path": "sdk/api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "sdk/api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "sdk/api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "sdk/upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        },
+        {
+          "path": "sdk/signedbin/amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "path": "sdk/signedbin/amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        },
+        {
+          "path": "vulkan-validation/manifest.json",
+          "sha256": "825b8bac33c1038edd2bda89282eeeb51d1d2dd14d1ff4793aaeacafb4853ff9"
+        },
+        {
+          "path": "vulkan-validation/layer.so",
+          "sha256": "21532eb6dc6f587ffc276b07f048c7de6ced8db2929caaf9fabe30962001e963"
+        },
+        {
+          "path": "proton/proton",
+          "sha256": "a4f94c208355639c87877ba63e8faf1f26d8c0731db04f722dee66cdfcfbf478"
+        },
+        {
+          "path": "proton/version",
+          "sha256": "74f8066ecc8ca0258515ba07244741163095cdd8181ae3ce5887bfd37c957b4c"
+        },
+        {
+          "path": "proton/toolmanifest.vdf",
+          "sha256": "bb81d44a687cc6f4ea7ae05fa9f0502f35c48e462051809dce3b2a58492e3498"
+        },
+        {
+          "path": "proton/files/bin/wine",
+          "sha256": "7a6de49c00d8ed2ba55c6967d3643c5ef729f5e562fb51e47e4f41c6cdb5c92a"
+        },
+        {
+          "path": "proton/files/bin/wineserver",
+          "sha256": "ae2550cd7c6c675128cffe938764f2f797eb7163ca6ca9bddf0014d7fb984b4b"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-windows/amdxc64.dll",
+          "sha256": "e0dc52b1ec5a5fb2be476e66c9b3e8693dfe18a8411ecf927353dd8a7398b95f"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-windows/amd_ags_x64.dll",
+          "sha256": "efeba485c2b7bb8b790f0194556ff5456c425a6eb7cf55d6a099507b3a26b2da"
+        },
+        {
+          "path": "proton/files/lib/wine/x86_64-unix/amd_ags_x64.so",
+          "sha256": "9d545cd16bbfe2073d339c4353ad275b17cfa32eb7137de18a9412bd747338c7"
+        },
+        {
+          "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12.dll",
+          "sha256": "2b4a4cb22a3615f8234a9f555a07244a06354185db568a09c0f82056732f66f3"
+        },
+        {
+          "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12core.dll",
+          "sha256": "aa0895bae41eb365f24f38038022b932f0dd1e92d33fec053a46bd710704aea5"
+        },
+        {
+          "path": "proton/files/lib/wine/dxvk/x86_64-windows/dxgi.dll",
+          "sha256": "45051464bb0f50bb14d4773b81c8743712624eb2273fae627fea4c14f535ff4b"
+        },
+        {
+          "path": "tools/cargo_xwin",
+          "sha256": "c360d5e87df2bf66337d330a5a76647c36a1552b0782f9c06ea73908f3c1a338"
+        },
+        {
+          "path": "tools/umu",
+          "sha256": "f66f80fba77f413092ec541e064123cf67d825395d03a63e475d9a9ba5f315f6"
+        },
+        {
+          "path": "tools/clang-cl",
+          "sha256": "f53f4d9b4eefe3f3f19e8eac7db8208428d8501fb8a9761552ef3e8bff4e7251"
+        },
+        {
+          "path": "experiment/provider_probe.py",
+          "sha256": "53cc10b9c7d42825188856d33de8e7574e2c8f61c6f92f8ff69c3a0f97ec4283"
+        }
+      ]
+    }
+  ],
+  "shader_analysis": {
+    "20261013T003425Z-proton-0beeaeb54195": {
+      "compiled_shaders": 30,
+      "signed_packed_int8_dot_shaders": 13,
+      "signed_packed_int8_dot_instructions": 4264,
+      "shaders": [
+        {
+          "hash": "0cf0c70309ac947e",
+          "spirv_sha256": "810636645f52d5b8c019206deb046e954af730fc13edaa6a00ebf66e686c3ac0",
+          "dxil_sha256": "fccef09cae8bbee870b99d06e9de58d5e6d51f9a031ec65235c4d27680f91639",
+          "signed_packed_int8_dot_instructions": 84,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%304 = OpSDot %uint %161 %296 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "1166ef0f7eb5faf8",
+          "spirv_sha256": "52ca48438ad7805a56a1c6d398202592e279da13dff5847347e9851c2a7e9d2d",
+          "dxil_sha256": "46f853dc75b0c88dcc10a181bf57d6f0c02686d548bb82ba0386975ec8d31b66",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "1c10a207187ed92f",
+          "spirv_sha256": "46ed9be611265db7fbe67b024b60ecca6fced93462c071da75fc0b1675e3730f",
+          "dxil_sha256": "eb40516877480d61b6d5a6e872dadccf6192822de38eec45b9c19b3cfc333d7b",
+          "signed_packed_int8_dot_instructions": 960,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%153 = OpSDot %uint %147 %uint_4260822022 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "1d342f30b767818e",
+          "spirv_sha256": "f313679000e1b21e5962be24378a3573ff1a66ba2b4450fd642a3eed2242d829",
+          "dxil_sha256": "b81fd53d8bb52f9fbd3b7d81c486ab04cac46cd3abd12ffd1ba7d0a9849ebd2e",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "2926b128258f6507",
+          "spirv_sha256": "a61afbc22503af792227755730de7737e3aae2f7e137caa327e4f7bbd9bee90c",
+          "dxil_sha256": "f3b9b2e3dc6eb22d593fa74ec77223cf828c85ba8910be2a2c5ddb5833d7bbed",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "2b94cdfc6f11de60",
+          "spirv_sha256": "a873b766b2b8923aeb7d325a61cbea251cbac6450e708a23a7714c553ce577ff",
+          "dxil_sha256": "f790b1105a76694849f031061e5eab7388ad492b1a34e71223a0f37554ab7ecd",
+          "signed_packed_int8_dot_instructions": 128,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%509 = OpSDot %uint %359 %501 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "46d63cc2724ab56d",
+          "spirv_sha256": "7b291b1194634f587421a097d602c120c96852784d063071998cf4a5b3c03336",
+          "dxil_sha256": "25e5d651fc968bd8b8f2ab6209754b9d1868cf645268b231ea2953a3d426d1b9",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "4d3bd506c02ee107",
+          "spirv_sha256": "817b8c3e2f99cb4d16dbdc364c3a19afa6dd9c8407667f1b9da1e7ddee95703c",
+          "dxil_sha256": "4069be19ce32359347627c7f662c2896f1369661d04b5ee940c0771109d0f95f",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "5689f0f6d6db5c9b",
+          "spirv_sha256": "1ca06425f0066f60e09cc8bca0a30f208ccc5f1fe40584c89a702edecc699eb9",
+          "dxil_sha256": "a82e712db2adc4322de9bf2cf342d17c62eb9ce9167252d82ea32d7329e93d83",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "589d8b78574384f8",
+          "spirv_sha256": "a87a2e4830c900689e22f8646c4574068bc36972befb183f6788866b8cb29236",
+          "dxil_sha256": "07ab7707e18b6d93f37b751ab115943fd0a8831bb3f7c41e295ff426cadacd30",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "5f64e4bb0fd47eb8",
+          "spirv_sha256": "f0e4094b930f736b7d3579b40f63352315ddf5b2e04925168b4b2c0e32524f6e",
+          "dxil_sha256": "90c65c653fea05f328680deeb5196c9318bf8fdfe038ccaaeb8e171233d313a8",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "657a9149e6a6d983",
+          "spirv_sha256": "114dceed5ef5b800476bca5a64592deff796ad2bad63bf48bc02fd3f42c6c311",
+          "dxil_sha256": "4272bd8b3df3d1c18312960b7aedecd33b3e2515230c6f3c1c8fbf32f95fb28c",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "6948fa9240fdd86d",
+          "spirv_sha256": "c657676ac2cec04bcbd93cd5e91ec34d7103ef7daa460a103494a096e5dadb5c",
+          "dxil_sha256": "c9389b86b5a579bd030674e476ba31eb90cc24efe472f4226ee4045731ebb03a",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "83fc83db145b9eab",
+          "spirv_sha256": "9487c52cec7e259f4cb212335e84db43c52902b4e3243afcd34305b95ad1b83b",
+          "dxil_sha256": "9c56e2d6eeb7457dd88b8f1e19dfb46725cd1e65f32602ed93ef0515a138cd5b",
+          "signed_packed_int8_dot_instructions": 84,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%304 = OpSDot %uint %161 %296 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "996136f00380aba8",
+          "spirv_sha256": "d6a01100a56327713d2f7c1a768e41f8a31f2cadce5f37b7dac81630722ff5a2",
+          "dxil_sha256": "ebd1c205f6480548b3a039abd3c63b909ff61b2e51d96ccc5068eca11817105d",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "9b14984523169e4d",
+          "spirv_sha256": "42ad16314970303c60ba655f6c5522a9243ebc41b6978790dc9fc2fa9b91207a",
+          "dxil_sha256": "1ca50bfd7366f8df6f287b9477f5069a46e985778615eeced718f1c10c8a2c93",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "9c405b28b4266d13",
+          "spirv_sha256": "bb1798794d6c8b0ad3760059bf36e2c396594226c0835202040a4a515a8beb01",
+          "dxil_sha256": "2af2aa7db70216c7bad4c959d804bcd49c9b4c71c198dd97a972b31901732788",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%279 = OpSDot %uint %229 %271 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "9e5257bb73d56439",
+          "spirv_sha256": "74bff763786dd1cc3b207ff701065d170a4b0dc2d38fc5e6d95d293d5b1bc92c",
+          "dxil_sha256": "8055e7867a785d5b69a0502e9d35fe0b19bbbc4ef63576cff4074421ded31020",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "9f8f2d65fd1e19de",
+          "spirv_sha256": "e9aee05cec78f0659fa570bfc0f495a51d00d2bc80c4e99cde4106a3df51c35e",
+          "dxil_sha256": "0c3304e8e2d28893e33d6bb7d98216c05ac62925d53df6fdad2b6eebf50d681a",
+          "signed_packed_int8_dot_instructions": 272,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%208 = OpSDot %uint %154 %167 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "b31e06cb230924d4",
+          "spirv_sha256": "d14f17131f05eef74fdd026b9fd811e7ee4b1dfd3a3a38704bc99cf11ff4b4b1",
+          "dxil_sha256": "1c87a4e00d877d4330f4b8a37e9d9104c1df9bee86593042b321b05f25ed1c06",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "b6a81d50ce41c20f",
+          "spirv_sha256": "020929f63d8a70f90bd628a92c50b4049db89155d5e062bf03eb1e8cb8ee7c60",
+          "dxil_sha256": "3b6977a46a8cc9b21bc2b4ba735f350f820f59623b169e9ce8d53904deb0a7c5",
+          "signed_packed_int8_dot_instructions": 512,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%797 = OpSDot %uint %647 %789 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "c0806eb39b9c1e9f",
+          "spirv_sha256": "633a081ff53510f7dd51450676f06a4e1c9f8cf292ae7102c1936ca47186f7c5",
+          "dxil_sha256": "2fb9a90ab5124e4cd61608dd2a805012abd0927b9f78627dc3d312c97cf1227a",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "c33f4126d9878816",
+          "spirv_sha256": "22774bbe4211fa39fde731245b14277a2c91b1f65c4011d6254bf9feb185f874",
+          "dxil_sha256": "62d9101a5bf39c80aa92fe9fb7f077a4a92de5f8f3fd79e972eac41d8f48be8d",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "c620021443a811fc",
+          "spirv_sha256": "6292dd68a4da9370c7dabb3b192fe6958b1a12daffd92b7fa80ed6fe231e1e5d",
+          "dxil_sha256": "e40a640c3e127f495ab88105084f866aaaf7aee90c204d5645bd01306318da76",
+          "signed_packed_int8_dot_instructions": 208,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%274 = OpSDot %uint %224 %266 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "c6b076aa62c0927d",
+          "spirv_sha256": "3796a77b7e42ef58d616af24e2b8c465170353f5194db32172919f84f3f8c82a",
+          "dxil_sha256": "fe627731553537f3535009f2c26d2cd6e5db2940b48f06e3b4c631ca0b4890bd",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "e0d8ce49e87ed7c3",
+          "spirv_sha256": "bcb4d1d01e33114c68bb13059577c280bb05b5a3af7218fdbc38e99883e0632d",
+          "dxil_sha256": "38eaa0412dcd046b533c6740dfa8a4265336c2079edfc73f4fbf712d5da7dcd0",
+          "signed_packed_int8_dot_instructions": 208,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%272 = OpSDot %uint %222 %264 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "e7c288d8ff89d888",
+          "spirv_sha256": "e44f0ccd272e4a85ad38894a38db7adae019d18660b166e6c28e82b328d7cc84",
+          "dxil_sha256": "38bcb476648879395f1829a8b1adfc9474832bffc5f699b30132dc6351e8a05c",
+          "signed_packed_int8_dot_instructions": 208,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%274 = OpSDot %uint %224 %266 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "f7ea511744202f66",
+          "spirv_sha256": "73e05c6727408d5b1f472112c5d68060e9db9aaf918e892055e6619d5f0e4edc",
+          "dxil_sha256": "d071612eb9273498d7f5a0b7f5599fa1ad8e83699a81b7795a14d783722e8350",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%280 = OpSDot %uint %230 %272 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "fdfc534367db7623",
+          "spirv_sha256": "d757fd28efbd09259f82918de5d3765784933d5b26eea56babe45fd6fefc5cfa",
+          "dxil_sha256": "dafa1819bbf9c84d806948c1979836314ed2f109052d1e4142ed8c32269fa934",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%280 = OpSDot %uint %230 %272 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "fe94e2a85ab8086b",
+          "spirv_sha256": "e1b576f7e8cedc46615a90f5d2026a43a525a2e43cfc66b62def8e700f55688a",
+          "dxil_sha256": "8c27af0446e1a7be0779f3be4fb49984d5692680c90f72a5bedc7a2d96f1ed17",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%202 = OpSDot %uint %148 %161 PackedVectorFormat4x8Bit"
+          ]
+        }
+      ],
+      "per_shader_dispatch_attribution": "not captured; trace-level command-list events were absent"
+    },
+    "20261013T003538Z-proton-620be03800cb": {
+      "compiled_shaders": 30,
+      "signed_packed_int8_dot_shaders": 13,
+      "signed_packed_int8_dot_instructions": 4264,
+      "shaders": [
+        {
+          "hash": "0cf0c70309ac947e",
+          "spirv_sha256": "810636645f52d5b8c019206deb046e954af730fc13edaa6a00ebf66e686c3ac0",
+          "dxil_sha256": "fccef09cae8bbee870b99d06e9de58d5e6d51f9a031ec65235c4d27680f91639",
+          "signed_packed_int8_dot_instructions": 84,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%304 = OpSDot %uint %161 %296 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "1166ef0f7eb5faf8",
+          "spirv_sha256": "52ca48438ad7805a56a1c6d398202592e279da13dff5847347e9851c2a7e9d2d",
+          "dxil_sha256": "46f853dc75b0c88dcc10a181bf57d6f0c02686d548bb82ba0386975ec8d31b66",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "1c10a207187ed92f",
+          "spirv_sha256": "46ed9be611265db7fbe67b024b60ecca6fced93462c071da75fc0b1675e3730f",
+          "dxil_sha256": "eb40516877480d61b6d5a6e872dadccf6192822de38eec45b9c19b3cfc333d7b",
+          "signed_packed_int8_dot_instructions": 960,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%153 = OpSDot %uint %147 %uint_4260822022 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "1d342f30b767818e",
+          "spirv_sha256": "f313679000e1b21e5962be24378a3573ff1a66ba2b4450fd642a3eed2242d829",
+          "dxil_sha256": "b81fd53d8bb52f9fbd3b7d81c486ab04cac46cd3abd12ffd1ba7d0a9849ebd2e",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "2926b128258f6507",
+          "spirv_sha256": "a61afbc22503af792227755730de7737e3aae2f7e137caa327e4f7bbd9bee90c",
+          "dxil_sha256": "f3b9b2e3dc6eb22d593fa74ec77223cf828c85ba8910be2a2c5ddb5833d7bbed",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "2b94cdfc6f11de60",
+          "spirv_sha256": "a873b766b2b8923aeb7d325a61cbea251cbac6450e708a23a7714c553ce577ff",
+          "dxil_sha256": "f790b1105a76694849f031061e5eab7388ad492b1a34e71223a0f37554ab7ecd",
+          "signed_packed_int8_dot_instructions": 128,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%509 = OpSDot %uint %359 %501 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "46d63cc2724ab56d",
+          "spirv_sha256": "7b291b1194634f587421a097d602c120c96852784d063071998cf4a5b3c03336",
+          "dxil_sha256": "25e5d651fc968bd8b8f2ab6209754b9d1868cf645268b231ea2953a3d426d1b9",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "4d3bd506c02ee107",
+          "spirv_sha256": "817b8c3e2f99cb4d16dbdc364c3a19afa6dd9c8407667f1b9da1e7ddee95703c",
+          "dxil_sha256": "4069be19ce32359347627c7f662c2896f1369661d04b5ee940c0771109d0f95f",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "5689f0f6d6db5c9b",
+          "spirv_sha256": "1ca06425f0066f60e09cc8bca0a30f208ccc5f1fe40584c89a702edecc699eb9",
+          "dxil_sha256": "a82e712db2adc4322de9bf2cf342d17c62eb9ce9167252d82ea32d7329e93d83",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "589d8b78574384f8",
+          "spirv_sha256": "a87a2e4830c900689e22f8646c4574068bc36972befb183f6788866b8cb29236",
+          "dxil_sha256": "07ab7707e18b6d93f37b751ab115943fd0a8831bb3f7c41e295ff426cadacd30",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "5f64e4bb0fd47eb8",
+          "spirv_sha256": "f0e4094b930f736b7d3579b40f63352315ddf5b2e04925168b4b2c0e32524f6e",
+          "dxil_sha256": "90c65c653fea05f328680deeb5196c9318bf8fdfe038ccaaeb8e171233d313a8",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "657a9149e6a6d983",
+          "spirv_sha256": "114dceed5ef5b800476bca5a64592deff796ad2bad63bf48bc02fd3f42c6c311",
+          "dxil_sha256": "4272bd8b3df3d1c18312960b7aedecd33b3e2515230c6f3c1c8fbf32f95fb28c",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "6948fa9240fdd86d",
+          "spirv_sha256": "c657676ac2cec04bcbd93cd5e91ec34d7103ef7daa460a103494a096e5dadb5c",
+          "dxil_sha256": "c9389b86b5a579bd030674e476ba31eb90cc24efe472f4226ee4045731ebb03a",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "83fc83db145b9eab",
+          "spirv_sha256": "9487c52cec7e259f4cb212335e84db43c52902b4e3243afcd34305b95ad1b83b",
+          "dxil_sha256": "9c56e2d6eeb7457dd88b8f1e19dfb46725cd1e65f32602ed93ef0515a138cd5b",
+          "signed_packed_int8_dot_instructions": 84,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%304 = OpSDot %uint %161 %296 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "996136f00380aba8",
+          "spirv_sha256": "d6a01100a56327713d2f7c1a768e41f8a31f2cadce5f37b7dac81630722ff5a2",
+          "dxil_sha256": "ebd1c205f6480548b3a039abd3c63b909ff61b2e51d96ccc5068eca11817105d",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "9b14984523169e4d",
+          "spirv_sha256": "42ad16314970303c60ba655f6c5522a9243ebc41b6978790dc9fc2fa9b91207a",
+          "dxil_sha256": "1ca50bfd7366f8df6f287b9477f5069a46e985778615eeced718f1c10c8a2c93",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "9c405b28b4266d13",
+          "spirv_sha256": "bb1798794d6c8b0ad3760059bf36e2c396594226c0835202040a4a515a8beb01",
+          "dxil_sha256": "2af2aa7db70216c7bad4c959d804bcd49c9b4c71c198dd97a972b31901732788",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%279 = OpSDot %uint %229 %271 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "9e5257bb73d56439",
+          "spirv_sha256": "74bff763786dd1cc3b207ff701065d170a4b0dc2d38fc5e6d95d293d5b1bc92c",
+          "dxil_sha256": "8055e7867a785d5b69a0502e9d35fe0b19bbbc4ef63576cff4074421ded31020",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "9f8f2d65fd1e19de",
+          "spirv_sha256": "e9aee05cec78f0659fa570bfc0f495a51d00d2bc80c4e99cde4106a3df51c35e",
+          "dxil_sha256": "0c3304e8e2d28893e33d6bb7d98216c05ac62925d53df6fdad2b6eebf50d681a",
+          "signed_packed_int8_dot_instructions": 272,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%208 = OpSDot %uint %154 %167 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "b31e06cb230924d4",
+          "spirv_sha256": "d14f17131f05eef74fdd026b9fd811e7ee4b1dfd3a3a38704bc99cf11ff4b4b1",
+          "dxil_sha256": "1c87a4e00d877d4330f4b8a37e9d9104c1df9bee86593042b321b05f25ed1c06",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "b6a81d50ce41c20f",
+          "spirv_sha256": "020929f63d8a70f90bd628a92c50b4049db89155d5e062bf03eb1e8cb8ee7c60",
+          "dxil_sha256": "3b6977a46a8cc9b21bc2b4ba735f350f820f59623b169e9ce8d53904deb0a7c5",
+          "signed_packed_int8_dot_instructions": 512,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%797 = OpSDot %uint %647 %789 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "c0806eb39b9c1e9f",
+          "spirv_sha256": "633a081ff53510f7dd51450676f06a4e1c9f8cf292ae7102c1936ca47186f7c5",
+          "dxil_sha256": "2fb9a90ab5124e4cd61608dd2a805012abd0927b9f78627dc3d312c97cf1227a",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "c33f4126d9878816",
+          "spirv_sha256": "22774bbe4211fa39fde731245b14277a2c91b1f65c4011d6254bf9feb185f874",
+          "dxil_sha256": "62d9101a5bf39c80aa92fe9fb7f077a4a92de5f8f3fd79e972eac41d8f48be8d",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "c620021443a811fc",
+          "spirv_sha256": "6292dd68a4da9370c7dabb3b192fe6958b1a12daffd92b7fa80ed6fe231e1e5d",
+          "dxil_sha256": "e40a640c3e127f495ab88105084f866aaaf7aee90c204d5645bd01306318da76",
+          "signed_packed_int8_dot_instructions": 208,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%274 = OpSDot %uint %224 %266 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "c6b076aa62c0927d",
+          "spirv_sha256": "3796a77b7e42ef58d616af24e2b8c465170353f5194db32172919f84f3f8c82a",
+          "dxil_sha256": "fe627731553537f3535009f2c26d2cd6e5db2940b48f06e3b4c631ca0b4890bd",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "e0d8ce49e87ed7c3",
+          "spirv_sha256": "bcb4d1d01e33114c68bb13059577c280bb05b5a3af7218fdbc38e99883e0632d",
+          "dxil_sha256": "38eaa0412dcd046b533c6740dfa8a4265336c2079edfc73f4fbf712d5da7dcd0",
+          "signed_packed_int8_dot_instructions": 208,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%272 = OpSDot %uint %222 %264 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "e7c288d8ff89d888",
+          "spirv_sha256": "e44f0ccd272e4a85ad38894a38db7adae019d18660b166e6c28e82b328d7cc84",
+          "dxil_sha256": "38bcb476648879395f1829a8b1adfc9474832bffc5f699b30132dc6351e8a05c",
+          "signed_packed_int8_dot_instructions": 208,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%274 = OpSDot %uint %224 %266 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "f7ea511744202f66",
+          "spirv_sha256": "73e05c6727408d5b1f472112c5d68060e9db9aaf918e892055e6619d5f0e4edc",
+          "dxil_sha256": "d071612eb9273498d7f5a0b7f5599fa1ad8e83699a81b7795a14d783722e8350",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%280 = OpSDot %uint %230 %272 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "fdfc534367db7623",
+          "spirv_sha256": "d757fd28efbd09259f82918de5d3765784933d5b26eea56babe45fd6fefc5cfa",
+          "dxil_sha256": "dafa1819bbf9c84d806948c1979836314ed2f109052d1e4142ed8c32269fa934",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%280 = OpSDot %uint %230 %272 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "fe94e2a85ab8086b",
+          "spirv_sha256": "e1b576f7e8cedc46615a90f5d2026a43a525a2e43cfc66b62def8e700f55688a",
+          "dxil_sha256": "8c27af0446e1a7be0779f3be4fb49984d5692680c90f72a5bedc7a2d96f1ed17",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%202 = OpSDot %uint %148 %161 PackedVectorFormat4x8Bit"
+          ]
+        }
+      ],
+      "per_shader_dispatch_attribution": "not captured; trace-level command-list events were absent"
+    },
+    "20261013T003727Z-proton-5ff822ab9429": {
+      "compiled_shaders": 30,
+      "signed_packed_int8_dot_shaders": 13,
+      "signed_packed_int8_dot_instructions": 4264,
+      "shaders": [
+        {
+          "hash": "0cf0c70309ac947e",
+          "spirv_sha256": "810636645f52d5b8c019206deb046e954af730fc13edaa6a00ebf66e686c3ac0",
+          "dxil_sha256": "fccef09cae8bbee870b99d06e9de58d5e6d51f9a031ec65235c4d27680f91639",
+          "signed_packed_int8_dot_instructions": 84,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%304 = OpSDot %uint %161 %296 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "1166ef0f7eb5faf8",
+          "spirv_sha256": "52ca48438ad7805a56a1c6d398202592e279da13dff5847347e9851c2a7e9d2d",
+          "dxil_sha256": "46f853dc75b0c88dcc10a181bf57d6f0c02686d548bb82ba0386975ec8d31b66",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "1c10a207187ed92f",
+          "spirv_sha256": "46ed9be611265db7fbe67b024b60ecca6fced93462c071da75fc0b1675e3730f",
+          "dxil_sha256": "eb40516877480d61b6d5a6e872dadccf6192822de38eec45b9c19b3cfc333d7b",
+          "signed_packed_int8_dot_instructions": 960,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%153 = OpSDot %uint %147 %uint_4260822022 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "1d342f30b767818e",
+          "spirv_sha256": "007315c42072370919ac393b63a04a0ac025a802f927b490a6749bd6034c15fd",
+          "dxil_sha256": "b81fd53d8bb52f9fbd3b7d81c486ab04cac46cd3abd12ffd1ba7d0a9849ebd2e",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "2926b128258f6507",
+          "spirv_sha256": "bdabc7c28f18c31ac8574856a386a268ae4d866f68a65e72b59bf3bad2235132",
+          "dxil_sha256": "f3b9b2e3dc6eb22d593fa74ec77223cf828c85ba8910be2a2c5ddb5833d7bbed",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "2b94cdfc6f11de60",
+          "spirv_sha256": "a873b766b2b8923aeb7d325a61cbea251cbac6450e708a23a7714c553ce577ff",
+          "dxil_sha256": "f790b1105a76694849f031061e5eab7388ad492b1a34e71223a0f37554ab7ecd",
+          "signed_packed_int8_dot_instructions": 128,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%509 = OpSDot %uint %359 %501 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "46d63cc2724ab56d",
+          "spirv_sha256": "d85b605d066d89178994ba835b6c3b267ed771de530117a5b9e6103d49e866e7",
+          "dxil_sha256": "25e5d651fc968bd8b8f2ab6209754b9d1868cf645268b231ea2953a3d426d1b9",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "4d3bd506c02ee107",
+          "spirv_sha256": "abc2426ff739d25cba4d271cad08ec9f25056ae197a9727b7b7e72467ba49d28",
+          "dxil_sha256": "4069be19ce32359347627c7f662c2896f1369661d04b5ee940c0771109d0f95f",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "5689f0f6d6db5c9b",
+          "spirv_sha256": "1ca06425f0066f60e09cc8bca0a30f208ccc5f1fe40584c89a702edecc699eb9",
+          "dxil_sha256": "a82e712db2adc4322de9bf2cf342d17c62eb9ce9167252d82ea32d7329e93d83",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "589d8b78574384f8",
+          "spirv_sha256": "295873b3ecbd9db40cc4c50ecf15a72964d5846b96642d2e4743a9333382b557",
+          "dxil_sha256": "07ab7707e18b6d93f37b751ab115943fd0a8831bb3f7c41e295ff426cadacd30",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "5f64e4bb0fd47eb8",
+          "spirv_sha256": "f0e4094b930f736b7d3579b40f63352315ddf5b2e04925168b4b2c0e32524f6e",
+          "dxil_sha256": "90c65c653fea05f328680deeb5196c9318bf8fdfe038ccaaeb8e171233d313a8",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "657a9149e6a6d983",
+          "spirv_sha256": "df469b6481234bf7b964a7c0ecf8a5829d84d1bc34fdb7c72e87014f82e31326",
+          "dxil_sha256": "4272bd8b3df3d1c18312960b7aedecd33b3e2515230c6f3c1c8fbf32f95fb28c",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "6948fa9240fdd86d",
+          "spirv_sha256": "b0545fc4c1886fa0a6252029eb6e3a2f999974bc0bc89539c8d6005c184d8a6f",
+          "dxil_sha256": "c9389b86b5a579bd030674e476ba31eb90cc24efe472f4226ee4045731ebb03a",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "83fc83db145b9eab",
+          "spirv_sha256": "9487c52cec7e259f4cb212335e84db43c52902b4e3243afcd34305b95ad1b83b",
+          "dxil_sha256": "9c56e2d6eeb7457dd88b8f1e19dfb46725cd1e65f32602ed93ef0515a138cd5b",
+          "signed_packed_int8_dot_instructions": 84,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%304 = OpSDot %uint %161 %296 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "996136f00380aba8",
+          "spirv_sha256": "d6a01100a56327713d2f7c1a768e41f8a31f2cadce5f37b7dac81630722ff5a2",
+          "dxil_sha256": "ebd1c205f6480548b3a039abd3c63b909ff61b2e51d96ccc5068eca11817105d",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "9b14984523169e4d",
+          "spirv_sha256": "70c2b7b4e55d665591b2dca3efddb6e99e6d393020722cec635fb8df3bd81bf1",
+          "dxil_sha256": "1ca50bfd7366f8df6f287b9477f5069a46e985778615eeced718f1c10c8a2c93",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "9c405b28b4266d13",
+          "spirv_sha256": "bb1798794d6c8b0ad3760059bf36e2c396594226c0835202040a4a515a8beb01",
+          "dxil_sha256": "2af2aa7db70216c7bad4c959d804bcd49c9b4c71c198dd97a972b31901732788",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%279 = OpSDot %uint %229 %271 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "9e5257bb73d56439",
+          "spirv_sha256": "55c48a8b7627343d996f7818ee6055e143d3b956b8f65911d6b6c337bd8f72ca",
+          "dxil_sha256": "8055e7867a785d5b69a0502e9d35fe0b19bbbc4ef63576cff4074421ded31020",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "9f8f2d65fd1e19de",
+          "spirv_sha256": "e9aee05cec78f0659fa570bfc0f495a51d00d2bc80c4e99cde4106a3df51c35e",
+          "dxil_sha256": "0c3304e8e2d28893e33d6bb7d98216c05ac62925d53df6fdad2b6eebf50d681a",
+          "signed_packed_int8_dot_instructions": 272,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%208 = OpSDot %uint %154 %167 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "b31e06cb230924d4",
+          "spirv_sha256": "f26dc72bbe9ccc70e2cc2dc1f4b2a868baf3c2e470b4e76994f98c50674ec3d8",
+          "dxil_sha256": "1c87a4e00d877d4330f4b8a37e9d9104c1df9bee86593042b321b05f25ed1c06",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "b6a81d50ce41c20f",
+          "spirv_sha256": "020929f63d8a70f90bd628a92c50b4049db89155d5e062bf03eb1e8cb8ee7c60",
+          "dxil_sha256": "3b6977a46a8cc9b21bc2b4ba735f350f820f59623b169e9ce8d53904deb0a7c5",
+          "signed_packed_int8_dot_instructions": 512,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%797 = OpSDot %uint %647 %789 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "c0806eb39b9c1e9f",
+          "spirv_sha256": "c4aba5b9cd11100308aa2e3d8a4d39e66713c46c35edbe6496552764459a2228",
+          "dxil_sha256": "2fb9a90ab5124e4cd61608dd2a805012abd0927b9f78627dc3d312c97cf1227a",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "c33f4126d9878816",
+          "spirv_sha256": "1e93b681a9264afc07f0ab41086474b3afaa2ff8d37b5b75c9ceae005e21e558",
+          "dxil_sha256": "62d9101a5bf39c80aa92fe9fb7f077a4a92de5f8f3fd79e972eac41d8f48be8d",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "c620021443a811fc",
+          "spirv_sha256": "6292dd68a4da9370c7dabb3b192fe6958b1a12daffd92b7fa80ed6fe231e1e5d",
+          "dxil_sha256": "e40a640c3e127f495ab88105084f866aaaf7aee90c204d5645bd01306318da76",
+          "signed_packed_int8_dot_instructions": 208,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%274 = OpSDot %uint %224 %266 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "c6b076aa62c0927d",
+          "spirv_sha256": "a3d130ad8fc6438766f3cdeb7e062d03291a25f6a5e439f71b905795cfc856ec",
+          "dxil_sha256": "fe627731553537f3535009f2c26d2cd6e5db2940b48f06e3b4c631ca0b4890bd",
+          "signed_packed_int8_dot_instructions": 0,
+          "int8_type": false,
+          "cooperative_matrix_instructions": 0,
+          "example": []
+        },
+        {
+          "hash": "e0d8ce49e87ed7c3",
+          "spirv_sha256": "bcb4d1d01e33114c68bb13059577c280bb05b5a3af7218fdbc38e99883e0632d",
+          "dxil_sha256": "38eaa0412dcd046b533c6740dfa8a4265336c2079edfc73f4fbf712d5da7dcd0",
+          "signed_packed_int8_dot_instructions": 208,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%272 = OpSDot %uint %222 %264 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "e7c288d8ff89d888",
+          "spirv_sha256": "e44f0ccd272e4a85ad38894a38db7adae019d18660b166e6c28e82b328d7cc84",
+          "dxil_sha256": "38bcb476648879395f1829a8b1adfc9474832bffc5f699b30132dc6351e8a05c",
+          "signed_packed_int8_dot_instructions": 208,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%274 = OpSDot %uint %224 %266 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "f7ea511744202f66",
+          "spirv_sha256": "73e05c6727408d5b1f472112c5d68060e9db9aaf918e892055e6619d5f0e4edc",
+          "dxil_sha256": "d071612eb9273498d7f5a0b7f5599fa1ad8e83699a81b7795a14d783722e8350",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%280 = OpSDot %uint %230 %272 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "fdfc534367db7623",
+          "spirv_sha256": "d757fd28efbd09259f82918de5d3765784933d5b26eea56babe45fd6fefc5cfa",
+          "dxil_sha256": "dafa1819bbf9c84d806948c1979836314ed2f109052d1e4142ed8c32269fa934",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%280 = OpSDot %uint %230 %272 PackedVectorFormat4x8Bit"
+          ]
+        },
+        {
+          "hash": "fe94e2a85ab8086b",
+          "spirv_sha256": "e1b576f7e8cedc46615a90f5d2026a43a525a2e43cfc66b62def8e700f55688a",
+          "dxil_sha256": "8c27af0446e1a7be0779f3be4fb49984d5692680c90f72a5bedc7a2d96f1ed17",
+          "signed_packed_int8_dot_instructions": 400,
+          "int8_type": true,
+          "cooperative_matrix_instructions": 0,
+          "example": [
+            "%202 = OpSDot %uint %148 %161 PackedVectorFormat4x8Bit"
+          ]
+        }
+      ],
+      "per_shader_dispatch_attribution": "not captured; trace-level command-list events were absent"
+    }
+  },
+  "proton_upgrade_components": {
+    "proton_version": "1791480010 experimental-11.0-20261008-x86_64",
+    "files": {
+      "proton": {
+        "size": 96351,
+        "sha256": "2304e055b98c0016b54273bfe67633a0fb122913fabcdd4857639b3835a23d75"
+      },
+      "version": {
+        "size": 45,
+        "sha256": "e2dc436a90648081b0934399c0070b9a87afa5022f74ccf1f2c56d2c3a618409"
+      },
+      "contrib/amdxcffx64.dll": {
+        "size": 65657608,
+        "sha256": "4e7dc37aebea3a90e3d3cc43e24cb2b54176b2535315f20dbe63b3b7cfc56b1e"
+      },
+      "files/lib/wine/x86_64-windows/amdxc64.dll": {
+        "size": 120286,
+        "sha256": "4164ed39060f2b486d4d594a4a94746c074a77b4dbb2e3d4c943c0bf8c0c4acd"
+      },
+      "files/lib/wine/x86_64-windows/amd_ags_x64.dll": {
+        "size": 199254,
+        "sha256": "206d6665387f348acb58c829f272c0f9963d4d2a491075c57fc76e23c8b7a8be"
+      },
+      "files/lib/wine/x86_64-unix/amd_ags_x64.so": {
+        "size": 16328,
+        "sha256": "1b202ccfbd93bdef614ccc12c1851d4412935f42243418eaf304a01d34c16b2b"
+      }
+    },
+    "unchanged_through_runs": true
+  },
+  "infrastructure": {
+    "before_changes": {
+      "tests": 128,
+      "skips": 0,
+      "exit": 0,
+      "seconds": 58.71
+    },
+    "after_changes": {
+      "tests": 131,
+      "skips": 0,
+      "exit": 0,
+      "seconds": 60.547
+    }
+  },
+  "probe_sha256": "53cc10b9c7d42825188856d33de8e7574e2c8f61c6f92f8ff69c3a0f97ec4283",
+  "all_diagnostic_shader_bytes_identical": false,
+  "shader_comparisons": {
+    "experimental_automatic_vs_disabled": {
+      "same_shader_keys": true,
+      "identical_dxil": 30,
+      "identical_spirv": 30,
+      "total": 30
+    },
+    "experimental_vs_proton11": {
+      "same_shader_keys": true,
+      "identical_dxil": 30,
+      "identical_spirv": 17,
+      "total": 30
+    }
+  }
+}

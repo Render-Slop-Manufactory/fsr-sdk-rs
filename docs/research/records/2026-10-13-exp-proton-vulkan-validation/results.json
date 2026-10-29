@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "attempts": [
+    {
+      "attempt": "20261012T232251Z-proton-457a9ad6bcb8",
+      "run": {
+        "schema_version": 1,
+        "profile": "proton",
+        "started_utc": "2026-10-12T23:22:52.845488+00:00",
+        "status": "failed",
+        "input_identity": "69373b7adbf3f24bd591b65fa81ed08f4817cb7e65eecb24e23c0cb8045d6b8a",
+        "required": [
+          "equipment.toolchain",
+          "proton.equipment",
+          "proton.sdk",
+          "proton.helper",
+          "proton.build",
+          "proton.launch",
+          "proton.queries",
+          "proton.dispatch"
+        ],
+        "cases": {
+          "equipment.toolchain": "passed",
+          "proton.equipment": "failed",
+          "proton.sdk": "blocked",
+          "proton.helper": "blocked",
+          "proton.build": "blocked",
+          "proton.launch": "blocked",
+          "proton.queries": "blocked",
+          "proton.dispatch": "blocked"
+        },
+        "finished_utc": "2026-10-12T23:22:53.854557+00:00",
+        "inputs_unchanged": true,
+        "completed": 8
+      },
+      "cases": {
+        "proton.equipment": {
+          "evaluation": "failed",
+          "execution": "completed",
+          "reason": "vulkan: completed, exit=1; expectation not met",
+          "exit_codes": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        "proton.queries": {
+          "evaluation": "blocked",
+          "execution": "blocked",
+          "reason": "Unmet prerequisites: proton.launch",
+          "exit_codes": []
+        },
+        "proton.dispatch": {
+          "evaluation": "blocked",
+          "execution": "blocked",
+          "reason": "Unmet prerequisites: proton.queries",
+          "exit_codes": []
+        }
+      }
+    },
+    {
+      "attempt": "20261012T232326Z-proton-1ab85c72521e",
+      "run": {
+        "schema_version": 1,
+        "profile": "proton",
+        "started_utc": "2026-10-12T23:23:27.521573+00:00",
+        "status": "failed",
+        "input_identity": "d6975c9f411b60588b34f35e72be8f01f69d37d30047eba85c89629b80b1ac82",
+        "required": [
+          "equipment.toolchain",
+          "proton.equipment",
+          "proton.sdk",
+          "proton.helper",
+          "proton.build",
+          "proton.launch",
+          "proton.queries",
+          "proton.dispatch"
+        ],
+        "cases": {
+          "equipment.toolchain": "passed",
+          "proton.equipment": "passed",
+          "proton.sdk": "passed",
+          "proton.helper": "passed",
+          "proton.build": "passed",
+          "proton.launch": "passed",
+          "proton.queries": "failed",
+          "proton.dispatch": "blocked"
+        },
+        "finished_utc": "2026-10-12T23:24:10.598813+00:00",
+        "inputs_unchanged": true,
+        "completed": 8
+      },
+      "cases": {
+        "proton.equipment": {
+          "evaluation": "passed",
+          "execution": "completed",
+          "reason": null,
+          "exit_codes": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "proton.queries": {
+          "evaluation": "failed",
+          "execution": "completed",
+          "reason": "Vulkan core/synchronization validation activation was not observed",
+          "exit_codes": [
+            0
+          ],
+          "vulkan_validation": {
+            "active": false,
+            "synchronization": false,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          }
+        },
+        "proton.dispatch": {
+          "evaluation": "blocked",
+          "execution": "blocked",
+          "reason": "Unmet prerequisites: proton.queries",
+          "exit_codes": []
+        }
+      }
+    },
+    {
+      "attempt": "20261012T232603Z-proton-b60aad251f28",
+      "run": {
+        "schema_version": 1,
+        "profile": "proton",
+        "started_utc": "2026-10-12T23:26:04.510499+00:00",
+        "status": "passed",
+        "input_identity": "048e4abd584cdda9c9cc136245ef1675040cfb9de39bfbdcf2e32cd90fd0638b",
+        "required": [
+          "equipment.toolchain",
+          "proton.equipment",
+          "proton.sdk",
+          "proton.helper",
+          "proton.build",
+          "proton.launch",
+          "proton.queries",
+          "proton.dispatch"
+        ],
+        "cases": {
+          "equipment.toolchain": "passed",
+          "proton.equipment": "passed",
+          "proton.sdk": "passed",
+          "proton.helper": "passed",
+          "proton.build": "passed",
+          "proton.launch": "passed",
+          "proton.queries": "passed",
+          "proton.dispatch": "passed"
+        },
+        "finished_utc": "2026-10-12T23:26:51.043875+00:00",
+        "inputs_unchanged": true,
+        "completed": 8
+      },
+      "cases": {
+        "proton.equipment": {
+          "evaluation": "passed",
+          "execution": "completed",
+          "reason": null,
+          "exit_codes": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "metrics": []
+        },
+        "proton.queries": {
+          "evaluation": "passed",
+          "execution": "completed",
+          "reason": null,
+          "exit_codes": [
+            0
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.queries/proton-00/validation.log"
+          },
+          "metrics": [
+            "M10 local: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 71172096, aliasable_bytes: 11010048 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 78970880, aliasable_bytes: 11010048 }",
+            "M10 movable: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 71172096, aliasable_bytes: 11010048 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 78970880, aliasable_bytes: 11010048 }",
+            "M10 public queries: PASSED",
+            "Adapter: AMD Custom GPU 0405 (RADV VANGOGH); vendor=0x1002 device=0x163f; feature_level=12_0; index=0; luid=0x00000000000003f2"
+          ]
+        },
+        "proton.dispatch": {
+          "evaluation": "passed",
+          "execution": "completed",
+          "reason": null,
+          "exit_codes": [
+            0
+          ],
+          "vulkan_validation": {
+            "active": true,
+            "synchronization": true,
+            "instances": 3,
+            "errors": 0,
+            "warnings": 0,
+            "log": "<run>/cases/proton.dispatch/proton-00/validation.log"
+          },
+          "metrics": [
+            "Gate A debug layer: HRESULT=0x887a002d",
+            "Proton validation: DirectX debug HRESULT=0x887a002d; D3D12 GBV not enabled; Vulkan diagnostics recorded by launcher",
+            "Gate A device creation: HRESULT=0x00000000",
+            "Gate A queries: provider=ProviderInfo { id: ProviderId(17700776140660019205), name: \"3.1.5\" }; estimate=GpuMemoryUsage { total_bytes: 7012352, aliasable_bytes: 917504 }; requirements=ResourceRequirements { required: ResourceFlags(15), optional: ResourceFlags(48) }; usage=GpuMemoryUsage { total_bytes: 7536640, aliasable_bytes: 917504 }",
+            "Gate A public construction: OK native_code=0x00000000",
+            "M6 provider: id=0xf5a5ca1e00c01005; name=3.1.5",
+            "GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.10076904, max_red: 0.84765625, left_red: 0.19362283, right_red: 0.7558286, debug_errors: 18446744073709551615, device_removed: 0 }",
+            "Proton validation: DirectX info queue unavailable; error count unavailable",
+            "Gate A explicit destroy: OK native_code=0x00000000",
+            "Gate A after explicit destroy and resource cleanup:",
+            "Proton single-frame: PASSED",
+            "Adapter: AMD Custom GPU 0405 (RADV VANGOGH); vendor=0x1002 device=0x163f; feature_level=12_0; index=0; luid=0x00000000000003f2",
+            "Selected-device AMD check: vendor=0x1002 device=0x163f hardware_amd=true",
+            "Proton device checkpoint: device_removed=0x00000000"
+          ]
+        }
+      }
+    }
+  ],
+  "selected_input_hashes": [
+    {
+      "path": "crates/fsr-sdk/tests/native/single_frame.rs",
+      "sha256": "cd0c382c9a7cc4453c73b63f03c3355199452d2d7057409b05802b4c7aaefccd"
+    },
+    {
+      "path": "tools/verification/nix/README.md",
+      "sha256": "1416ea8cbbca23e96828313fdae630fc7afb27abf53abc8879ccdb3d19e0ecfa"
+    },
+    {
+      "path": "tools/verification/nix/flake.lock",
+      "sha256": "835855bf9ee53c877d8d00a14ad94bb1f1700d80276981fbe3bf46806b066b14"
+    },
+    {
+      "path": "tools/verification/nix/flake.nix",
+      "sha256": "3829ab0eae7cdac457ec65ee7fdca488f4b1585bd4e34c68298d882c6aeeb75e"
+    },
+    {
+      "path": "tools/verification/proton.py",
+      "sha256": "51a20355d81084c81cdff0c609b7a269e90f1915d9f6fa20d1e4b794df976ef7"
+    },
+    {
+      "path": "tools/verification/vulkan_validation.py",
+      "sha256": "76b45d71e324d0e12f9f9cf554b66ab2118839c8e25c957ccbb6cc69f64fcf2a"
+    },
+    {
+      "path": "sdk/signedbin/amd_fidelityfx_loader_dx12.dll",
+      "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+    },
+    {
+      "path": "sdk/signedbin/amd_fidelityfx_upscaler_dx12.dll",
+      "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+    },
+    {
+      "path": "vulkan-validation/manifest.json",
+      "sha256": "825b8bac33c1038edd2bda89282eeeb51d1d2dd14d1ff4793aaeacafb4853ff9"
+    },
+    {
+      "path": "vulkan-validation/layer.so",
+      "sha256": "21532eb6dc6f587ffc276b07f048c7de6ced8db2929caaf9fabe30962001e963"
+    },
+    {
+      "path": "proton/proton",
+      "sha256": "f07e19d289a4c7a1a9047bb123a2f630b54ceef1ee2ba0d96d1990a68055635e"
+    },
+    {
+      "path": "proton/version",
+      "sha256": "2d1989eee915f845b26471d3f4b516488c22e60600827c7050d580527b05e2ac"
+    },
+    {
+      "path": "proton/toolmanifest.vdf",
+      "sha256": "96480c58a44fe75ee1ca0d923b5640a6cde5b7f19a69b7ddbe72da8e3425b084"
+    },
+    {
+      "path": "proton/files/bin/wine",
+      "sha256": "a9dbee3586e190c15485e609bc27d11cda4d21affea436a8853a733f02e55740"
+    },
+    {
+      "path": "proton/files/bin/wine64",
+      "sha256": "0dd90716479b5c3ae302b537547decdaee43ebd308dd6aa1e2216e2ed5875f35"
+    },
+    {
+      "path": "proton/files/bin/wineserver",
+      "sha256": "e41020169d5e5b2d15f65d4eb7a89c6a8542f7b90c696ff8a49af4d97bb42149"
+    },
+    {
+      "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12.dll",
+      "sha256": "8283fda74b73bec09c02b63f1ad19a459f1657d1da4efcb8ec55921a000ae4bf"
+    },
+    {
+      "path": "proton/files/lib/wine/vkd3d-proton/x86_64-windows/d3d12core.dll",
+      "sha256": "e6e829f8f7b1d61f7f95faf6cb7ffd369c04d10d6342252b5792597c9aa6c018"
+    },
+    {
+      "path": "proton/files/lib/wine/dxvk/x86_64-windows/dxgi.dll",
+      "sha256": "aa9308a7c097eca0ba95bbf9c63ff4badfa204bafa63738aee7990e2067c8d1e"
+    }
+  ],
+  "infrastructure": {
+    "command": "nix develop path:./tools/verification/nix --command python3 -m unittest discover -s tools/verification/tests -v",
+    "tests": 128,
+    "skipped": 0,
+    "elapsed_seconds": 120.4,
+    "exit": 0
+  }
+}
