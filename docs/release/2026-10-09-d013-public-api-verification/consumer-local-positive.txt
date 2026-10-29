@@ -1,5 +1,0 @@
-    Checking movable-api-control v0.0.0 (<repo>\target\movable-api-controls)
-warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\<repo>\target\movable-api-controls\build\debug\incremental\movable_api_control-2esj0l19ws5gx\s-hn17xz4wgg-06s4rdg-working`
-
-warning: `movable-api-control` (bin "movable-api-control") generated 1 warning
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.37s
