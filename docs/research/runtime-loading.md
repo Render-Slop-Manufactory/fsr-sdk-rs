@@ -1,16 +1,85 @@
 # runtime loading
 
-Updated: 2026-10-09 (D013 acquisition/termination review, acceptance and separate public implementation verification recorded).
+Updated: 2026-10-27 (U07 accepted/implemented; prior evidence: D042 loader-only candidate and persistent trust allocation integrated; deployment/native observations unchanged).
 
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
 
-The [2026-10-09 maintenance recheck](../release/2026-10-09-windows-native-recheck.md)
+The [2026-10-09 maintenance recheck](../ROADMAP_HISTORY.md#october-9-native-diagnostic-refresh)
 repeated trusted AMD loader acquisition, all four isolated provider layouts,
 shared-runtime queries and D013 residency observations on its captured baseline.
 Executable-adjacent providers again succeeded, private-directory-only/absent
 providers returned code 4 and count 0, and provider residency survived final
 loader release. D007 and the provider-termination uncertainty remain unchanged.
+
+## Accepted loader-only acquisition boundary
+
+The [D042 setup contract](../design/upscaler-setup.md) narrows loading to trusted
+ABI/code, initialization/partial-failure/unload and family-wide coordination.
+Effect assumptions are acquired separately through unsafe setup creation and
+persist in derived owners. The [bounded spike](records/2026-10-26-exp-upscaler-setup-contract-spike.md)
+observes zero FFX create/query/destroy calls on loader-only Drop and rejects safe
+planning or use of the loaded candidate with the old safe constructor. Retained
+runtime-state witnesses are distinct from observed final DLL unload, since the
+fixture observer owns another library reference.
+
+U07 was approved and implemented on 2026-10-27. Production now exposes
+unsafe `Runtime::load` / `MovableRuntime::load` and separate unsafe setup
+acquisition; old flat effect routes are removed. The
+[implementation record](../release/2026-10-27-upscaler-setup-verification.md)
+documents the production checks. No new DLL acquisition/discovery, provider isolation or termination
+guarantee follows; the [API synthesis](api-and-safety.md#accepted-api-transition-and-setup-draft)
+records review and implementation limits.
+
+## Proton staging observations
+
+The [Steam Deck proof](records/2026-10-13-exp-proton-linux-cross-build.md) and
+[Steam Machine comparison](records/2026-10-13-exp-steam-machine-proton-fsr4-int8.md)
+observe both pinned AMD DLLs loaded from the fresh executable stage. The runner
+checks their hashes and resolves Wine paths through the isolated prefix's actual
+DOS drive mappings; the Machine used `S:` rather than the Deck's `Z:` mapping.
+This is observed staging success, not an assumed extension of Windows discovery
+behaviour or a test of alternative Proton deployment layouts.
+
+The Machine reports provider 4.1.1 with both Experimental and Proton 11, including
+Experimental with automatic upgrading disabled. Optional Proton AMD components
+are frozen as inputs when present. This does not attribute all internal provider
+activity to a particular module. Linux signature-chain checks failed for lack of
+a local issuer certificate; execution explicitly trusted the approved SDK hash
+pins. The later bounded runtime and cleanup results below are separate from the
+existing Windows provider-residency and termination questions.
+
+## Prepared Proton runtime and launcher cleanup
+
+The [V08 experiment](records/2026-10-14-exp-proton-offline-runtime.md) verifies
+two fresh query/single-frame attempts on Deck with checksum-selected local
+Proton/steamrt3 distributions and the installed launcher package. Complete
+distribution inventories check bytes, modes, directory nodes and literal symlink
+targets; only sniper's generated `var/` cache is excluded, and the prepared shim
+has a separate hash. Missing/changed/extra distribution inputs reject execution.
+Each launcher call proves network isolation before exec; update variables alone
+are insufficient because the inspected umu still attempts an upstream lookup.
+This local trust policy leaves external launcher dependencies and host libraries/
+drivers outside the inventory. It establishes no Windows signature equivalence,
+remote bootstrap or self-contained runtime distribution.
+
+The [V09 experiment](records/2026-10-14-exp-proton-timeout-cleanup.md) retains
+the failed group-only watchdog baseline: 12 Wine/container processes survived
+across detached sessions. Shared prepared launch now uses bubblewrap PID
+containment with `--die-with-parent`; offline calls also isolate networking.
+Two fresh forced-expiry confirmations require all tracked owned processes to
+exit, target heartbeats to stop and unrelated-prefix activity to continue.
+Same-prefix public queries and GPU/fence/readback/teardown controls pass before
+and afterwards, without prefix restoration. Missing isolation blocks launch.
+This closes the bounded process-cleanup checkpoint, not AMD provider unloading,
+GPU/kernel-hang recovery or arbitrary Proton-stack cleanup.
+
+The separate [exit-247 diagnosis](records/2026-10-14-exp-proton-exit-status.md)
+does not reproduce Deck's completed jitter launch failure in six exact-payload
+replays. Wine error 1726 also appears in passing replays. A killed POSIX control
+verifies SIGKILL-to-247 conversion as a possible mechanism; no original trace
+identifies the failed layer or signal. V09's correction supplies no causal
+explanation for that earlier non-timeout failure, and its verdict stays failed.
 
 ## DX12 provider discovery and deployment
 
@@ -49,7 +118,7 @@ Neither that call form nor deterministic coexistence of multiple FSR runtime
 copies is established. No supported provider-directory control was identified
 in the inspected public surface; this is not proof against private mechanisms.
 
-**Verified runtime behavior:** the signed v2.3.0 loader and upscaler DLLs were
+**Verified runtime behaviour:** the signed v2.3.0 loader and upscaler DLLs were
 tested on Windows build 26200.9457 with Rust x64/MSVC, using the existing null-
 context/device count-only query. Each layout ran in a fresh process with an empty,
 separate working directory and an absolute loader path. PATH was checked for
@@ -149,6 +218,6 @@ date or reviewed revision was supplied; the intake date is used. See
 for the reviewed requirements. [D013 was separately accepted on 2026-10-09](../adr/D013.md#acceptance-rationale-and-remaining-assumptions);
 its [unsafe acquisition contract](../adr/D013.md#conditional-safety-contract)
 adopts these assumptions without resolving provider termination. The subsequent
-[public implementation check](../release/2026-10-09-d013-public-api-verification.md)
+[public implementation check](../ROADMAP_HISTORY.md#movable-implementation-checkpoint)
 verifies early runtime release, sibling retention and destination-thread final
 runtime release; it establishes no provider termination guarantee.

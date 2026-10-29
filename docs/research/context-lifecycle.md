@@ -1,17 +1,139 @@
 # context lifecycle
 
-Updated: 2026-10-09 (D013 lifecycle review, acceptance and separate public implementation verification recorded).
+Updated: 2026-10-27 (U11 production usability/abandonment implemented; prior evidence: D042 candidate retention, unwind and terminal-usability spike integrated).
 
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
 
-The [2026-10-09 maintenance recheck](../release/2026-10-09-windows-native-recheck.md)
+The [2026-10-09 maintenance recheck](../ROADMAP_HISTORY.md#october-9-native-diagnostic-refresh)
 repeated explicit/Drop lifecycle, shared contexts, public movable cleanup and
 the existing isolated failure probes on its captured baseline. Normal cleanup
 passed; injected allocation failures again caused access violations before create
 returned. Returned-error retain/protect/cleanup variants completed the existing
 two-second observation after a stale prerequisite marker was repaired in the
 runner. D005's bounded assumptions and universal native failure gaps remain.
+
+## Setup-independent owners and reported abandonment
+
+The [D042 setup contract](../design/upscaler-setup.md) and
+[bounded spike](records/2026-10-26-exp-upscaler-setup-contract-spike.md) preserve
+the production owner inside experimental local/movable contexts. Controlled
+checks on Rust 1.99/1.88 observe two contexts surviving setup/public-runtime loss,
+one-attempt cleanup during caught unwinding, ordinary create-error release and
+OK/null, callback-create-error and destroy-error retention. Loader-only Drop
+makes no FFX create/query/destroy call. These reuse D005/D040's conditional
+mechanisms and do not establish new native failure or callback postconditions.
+
+The candidate's pure usability/abandonment guard preserves the first native
+operation/code and blocks later live use after reported abandonment. It makes
+no native call, waits for nothing and does not release the owner. Renderer-owned
+list invalidation, earlier GPU completion and external callback-target lifetime
+remain required. This was a candidate U11-shaped workflow. Production now exposes
+`usability()` and `mark_recording_abandoned()` with the same first-cause boundary;
+[U11 verification](../release/2026-10-27-context-usability-verification.md) separately
+records public both-family guards, terminal cleanup/retention and bounded native
+abandonment. The
+[API synthesis](api-and-safety.md#accepted-api-transition-and-setup-draft)
+records U07 approval and production implementation on 2026-10-27; the
+[implementation checks](../release/2026-10-27-upscaler-setup-verification.md)
+cover the retained owner through the new acquisition path. U12 subsequently
+completed [consumer/migration integration](../release/2026-10-27-api-transition-verification.md);
+the [shared rc1 qualification](../release/2026-10-29-candidate-verification.md#shared-rc1-cross-host-qualification)
+records the later exact-package evidence.
+
+## Callback and allocator lifecycle assessment
+
+The [2026-10-25 synthesis](callbacks-and-allocation.md) integrates the
+[SDK contracts](records/2026-10-25-src-upscaler-callback-allocation-contracts.md)
+and [Rust practices](records/2026-10-25-src-rust-ffi-callback-allocation-practices.md).
+Open DX12 callback slots persist beyond the installing context; omission does
+not clear them and later registration can change earlier contexts' allocation/free
+routing. Creation messages also have global retention in open providers. Callback
+code/state therefore cannot automatically be reclaimed by a context's successful
+Drop or after a later creation error. Compatible host allocator userdata is a
+separate ownership problem from the no-userdata module-global callbacks.
+
+The [ABI/native spike](records/2026-10-25-exp-upscaler-callback-allocation.md)
+now observes shared resource/CB replacement and persistent omitted/incomplete
+registration on selected 3.1.5/4.1.1. Forty set-1 resources are freed by compatible
+set-2 callbacks, and 3.1.5 invokes message callback 3 after its installing context
+is destroyed. All 10 successful contexts are destroyed after 16 fenced frames;
+30 host and 160 resource allocations balance their frees. CB upload backing is
+retained through context/GPU completion. Heap invocation is unobserved.
+
+D005's null-callback/default-allocation implementation and terminal policy remain
+accepted. [D040](../adr/D040.md) now implements the callback-bearing path for both
+families: stable host-table forwarding to destroy, retention of the whole pinned
+state/device/runtime bundle on native create error or OK/null, and existing
+one-attempt retention on destroy failure. Pre-native failures clean up normally;
+post-create query failures establish ordinary terminal cleanup. External targets
+remain valid for every native use independently of wrapper lifetime.
+
+The [implementation verification](../release/2026-10-25-callbacks-diagnostics-verification.md)
+separates controlled error/poison/move/Drop tests from successful public-native
+execution: 12 contexts, 20 fenced frames, 24 balanced host and 240 balanced
+resource allocations; 80 cross-set frees use compatible replacements. Neither
+this nor the spike establishes native failure recovery or quiescence. Heap SDK
+invocation remains unobserved; ABI and controlled heap calls are verified.
+
+## Current Configure eligibility and cleanup
+
+Accepted [D029](../adr/D029.md) implements a shared first-native-failure state
+for both families. A Configure error preserves its native operation/code and
+blocks dispatch, live queries and Configure. D042/U10 replaces the earlier
+`ConfigurePoisoned` / `DispatchPoisoned` errors with
+`Error::ContextUnusable(TerminalCause::Native(...))`, retaining the first
+operation and code. Checked `TuningRequest::new` validates each parameter's
+finite domain before `request_tuning`; non-finite and outside-domain inputs, like ordinary
+query errors, leave a usable context eligible. A later invalid request does not
+undo earlier acknowledged settings. A default-reset request cannot recover
+a poisoned context, and several single-key calls are not a transaction.
+
+The [implementation record](../release/2026-10-18-upscaler-tuning-verification.md)
+includes a loaded host fixture using the production mapper/runtime/owner. After
+an outer move, scalar/null requests, error propagation, explicit/Drop teardown
+and failed-destroy retention pass. The generic owner's terminal destruction
+remains a single attempt; Configure adds no command list to invalidate or
+asynchronous work to complete. The context is idle before Configure under the
+prior unsafe dispatch contract. Actual-provider non-retention and safe terminal
+destruction after a Configure error remain acquisition trust, not an observed
+AMD failure guarantee. The later [coherence checkpoint](../release/2026-10-18-api-coherence-verification.md)
+covers domain rejection before FFI, reset after invalid input, parameter mismatch
+and preserved poison/cleanup policy, including extracted-package host tests.
+Windows public fixtures now execute in the
+[2026-10-19 follow-up](../release/2026-10-19-windows-upscaler-verification.md).
+All five tuning controls also complete value/default-request cycles and 20 fenced
+GPU frames across both families on 4.1.1 before explicit destruction. This is
+successful-call integration, not an observed AMD Configure-error path or proof
+of parameter application, non-retention on error or universal destroyability.
+
+The [reactive-mask experiment](records/2026-10-19-exp-reactive-mask-providers.md)
+retains 126 disposable-context children, 378 completed frames and successful
+terminal cleanup with clean diagnostics. Native generation returns OK in all
+arms, but 4.1.1/2.3.4 fail mask-write criteria while 3.1.5 passes both public
+families. These are successful-return cleanup observations; they neither exercise
+native generator rejection nor establish safe context reuse after failed or
+abandoned recording. Controlled poisoning/failed-destroy fixtures and conditional
+actual-provider trust remain distinct evidence.
+
+## Active-output lifecycle follow-up
+
+The [accepted D024 amendment](../adr/D024.md#amendment-active-output-within-maximum-allocations-2026-10-19)
+adds per-frame active output while retaining context maxima and exact maximum
+allocations. The [implementation verification](../release/2026-10-19-active-output-verification.md)
+passes controlled tests on both owners: output validation errors permit retry,
+dispatch rechecks changed requests after successful preflight, and an injected
+unknown native dispatch error preserves its code and makes later calls terminal.
+Poison rejects before invalid output geometry or failing COM inspection.
+
+Public GPU verification observes 52 successful context destructions after 144
+dispatched and 12 control frames on selected 4.1.1/3.1.5. Replacement resources
+are used only after prior-frame CPU fencing; reset remains caller-selected and
+is true on the first frame alone. Size changes neither recreate the context nor
+establish idleness or recover poison. These runs contain no native rejection:
+successful cleanup does not establish failure atomicity, safe abandonment or
+general destroyability. Existing terminal invalidation/completion and failed-destroy
+retention requirements remain in force.
 
 ## Context lifecycle: v2.3.0 source findings
 
@@ -29,7 +151,7 @@ replace the API-version node. The existing count-only query supplies no IDs.
 Descriptor tags must match their actual payload types; mismatch is not merely a
 recoverable validation error.
 
-**Reported source behavior:** creation clears a valid output slot after checking
+**Reported source behaviour:** creation clears a valid output slot after checking
 both input pointers, then delegates to a provider. Open FSR2/FSR3 providers publish
 the handle only on success; there is no provider-independent failed-create
 postcondition. Destruction in these open paths frees the context without clearing
@@ -94,11 +216,13 @@ source findings, not additional runtime verification.
 
 **Design implication:** D005's null callback and retained dependencies avoid
 some unresolved dependencies, but excluding Send/Sync alone supplies no global
-native threading contract. Non-null callback support needs a broader lifetime
-model than context-local ownership. The failed-create spike does not resolve
-successful-context descriptor lifetimes, callback behavior or threading. D005
-is now accepted; suggested instrumentation in the source report is future
-research, not executed evidence or authorization to run it.
+native threading contract. D040 now implements the broader non-null callback
+lifetime model in the [current callback assessment](callbacks-and-allocation.md):
+external targets survive their full native reachability while the wrapper retains
+its own pinned bundle through ordinary/exceptional cleanup. The historical
+failed-create spike supplies no general callback, descriptor or threading
+proof. Proposed instrumentation in that source report remains unexecuted
+research, not a prerequisite or authorization to rerun it.
 
 ## Teardown after submitted GPU work
 
@@ -131,7 +255,7 @@ These are reported static findings about the common layer, open FSR2/FSR3
 providers and their DX12 backend, not additional runtime observations or an
 implementation description of the signed 4.1.1 provider.
 
-**Reported source behavior:** the common destroy entry point checks the outer
+**Reported source behaviour:** the common destroy entry point checks the outer
 pointer, reads the associated provider through the handle, and forwards the
 provider's result unchanged. It then performs zero-refcount provider cleanup
 even if that result is an error. The inspected static FSR2/FSR3 providers do not
@@ -161,7 +285,7 @@ not exercised and must not be presented as an observed valid-context failure.
 
 **Unresolved:** the signed loader's exact forwarding/validation and the
 FSR4/ML/external provider's destruction implementation are unavailable in the
-inspected public source. Open-provider behavior cannot classify a hypothetical
+inspected public source. Open-provider behaviour cannot classify a hypothetical
 4.1.1 destroy error as live, dead or partially destroyed. No legitimate,
 non-corrupting valid-context failure trigger suitable for a runtime experiment
 was identified. The report's null-outer-pointer case concerns API conformance
@@ -173,7 +297,7 @@ documentation conflict and successful lifecycle observation without proving
 that the signed provider uses the same internal implementation. No Context,
 Drop or failure policy is accepted by integrating these findings.
 
-## Context lifecycle: observed runtime behavior
+## Context lifecycle: observed runtime behaviour
 
 The [successful lifecycle experiment](records/2026-09-20-exp-context-lifecycle.md)
 and [allocation-failure experiment](records/2026-09-20-exp-create-allocation-failure.md)
@@ -203,7 +327,7 @@ and remaining provider-contract questions are unchanged.
 **Verified successful lifecycle:** creation returned OK with a non-null context;
 the provider query identified `0xf5a5ca1e01001001`, name `4.1.1`; destruction
 returned OK without nulling the handle. This independently reproduces the
-source-reported non-nulling behavior on the tested runtime path and contradicts
+source-reported non-nulling behaviour on the tested runtime path and contradicts
 the generic documentation's null-after-destroy claim for that path. It does not
 establish minimum descriptor/device lifetimes or general GPU compatibility.
 
@@ -318,7 +442,7 @@ mutex; a waiting sibling recovers mutex poison, remains usable and completes
 final release. Library liveness and pointer identity are checked through cleanup.
 
 These controlled returned codes and injected inspection errors establish ownership
-and cleanup behavior, not AMD failed-recording recovery, rollback/quiescence or
+and cleanup behaviour, not AMD failed-recording recovery, rollback/quiescence or
 native unwind/device-release compatibility. Earlier create-error/OK-null controls
 were reused; new creation-after-runtime-transfer and extra native-slot mutations
 were not tested. Module absence does not attribute termination callbacks to a
@@ -361,7 +485,7 @@ the existing sealed Rc/Arc seam, pinned allocation and ordered terminal cleanup;
 the review does not independently rerun fixtures or native tests, and supplies
 no reviewed source revision. The review required the real public movable bundle's
 own complete field and cleanup audit; the subsequent
-[implementation verification](../release/2026-10-09-d013-public-api-verification.md)
+[implementation verification](../ROADMAP_HISTORY.md#movable-implementation-checkpoint)
 records that audit and actual public consumer/cleanup checks. It does not change
 these historical findings or establish native returned-error recovery.
 
@@ -376,5 +500,5 @@ runtime or retaining dependencies after a failure does not discharge those
 obligations or establish native quiescence. GPU completion remains independent.
 These requirements were adopted in the
 [accepted D013 safety contract](../adr/D013.md#conditional-safety-contract) on
-2026-10-09. They are not proven AMD error/termination behavior; design acceptance
+2026-10-09. They are not proven AMD error/termination behaviour; design acceptance
 remains distinct from implementation and support verification.

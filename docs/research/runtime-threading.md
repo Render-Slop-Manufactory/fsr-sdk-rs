@@ -1,16 +1,120 @@
 # runtime threading
 
-Updated: 2026-10-09 (D013 review, design acceptance and separate public implementation verification recorded).
+Updated: 2026-10-27 (U07 accepted/implemented; prior evidence: D042 loader/setup trait allocation and controlled transfer integrated; native guarantees unchanged).
 
 Extracted from the [API and safety synthesis](api-and-safety.md).
 These findings retain their original evidence and limitations.
 
-The [2026-10-09 maintenance recheck](../release/2026-10-09-windows-native-recheck.md)
+The [2026-10-09 maintenance recheck](../ROADMAP_HISTORY.md#october-9-native-diagnostic-refresh)
 repeated all six private transfer prerequisites, all 30 extended cleanup children
 and the public movable regression on its captured baseline. The audit verified
 96 selected payloads matching their controls and 12 unwind Drops. Provider
 residency persisted after application cleanup; this adds no general threading
 or termination guarantee and excludes later concurrent source edits.
+
+## Loader and effect trust before safe transfer
+
+The [accepted setup contract](../design/upscaler-setup.md) separates loader/final-
+release compatibility from effect operations. A movable loaded Runtime is already
+Send, so arbitrary-destination loader cleanup must be established at loading;
+it cannot wait for later setup acquisition. Unsafe effect acquisition establishes
+the additional lasting upscaler duties for every safe reachable selection and
+derived owner, including after the setup/public runtime is dropped.
+
+The [spike](records/2026-10-26-exp-upscaler-setup-contract-spike.md) confirms
+local runtime/setup/context `!Send + !Sync` and movable counterparts
+`Send + !Sync` through positive/negative external consumers on Rust 1.99/1.88.
+One joined-thread destruction executes through the production movable owner
+under serialized controlled DLL/COM conditions. It establishes no new AMD
+affinity, hidden-worker, arbitrary-thread or concurrent-use guarantee. Exclusive
+setup borrowing still covers only one CPU view; all prior common-domain and
+callback obligations remain. U07's concrete loader/setup contracts were approved
+and implemented on 2026-10-27; the
+[implementation record](../release/2026-10-27-upscaler-setup-verification.md)
+checks production auto traits and existing transfer regressions separately.
+
+## Callback registration and threading assessment
+
+The [callback/allocation synthesis](callbacks-and-allocation.md) integrates the
+[SDK contract record](records/2026-10-25-src-upscaler-callback-allocation-contracts.md)
+and [Rust FFI practices](records/2026-10-25-src-rust-ffi-callback-allocation-practices.md).
+Open allocation/message slots use unsynchronized module-global storage. Two Rust
+runtime handles can share one DLL image; an effect ID does not distinguish two
+contexts. A Rust registry, TLS current-context marker or mutex supplies neither
+missing identity nor callback quiescence. Loader and provider images must not be
+assumed to share the same registration namespace.
+
+The [ABI/native spike](records/2026-10-25-exp-upscaler-callback-allocation.md)
+now confirms that two acquisitions share one loader image on the recorded stack,
+and later resource/CB registration affects surviving contexts on both selected
+providers. All observed callbacks run on the main thread at depth 1 during the
+serialized protocol; no transfer, concurrent native call or callback-driven
+reentry is tested. Provider-message routing differs, and the signed loader's
+effect-aware rejection differs from the inspected open implementation. Neither
+fact establishes a universal module boundary or supported-effect isolation.
+
+D013's lasting common-domain coordination remains necessary. D040 adds the
+concrete movable field/lifetime audit and explicit native affinity,
+reentry and shutdown obligations; local `!Send` and movable `Send + !Sync` alone
+do not control native callbacks. Avoid wrapper locks across native callback-capable
+calls. Both public families now expose explicit unsafe integration, with callback
+compatibility on every permitted destination thread. Pinned table/descriptor
+addresses survive outer moves; the wrapper owns no external target state.
+The [implementation verification](../release/2026-10-25-callbacks-diagnostics-verification.md)
+records controlled destination-thread callback cleanup and public-native execution
+for both families. The native workload remains serial on one thread. It proves
+no general affinity, concurrency, reentry, shutdown or asynchronous-use guarantee.
+
+## Current Configure coordination
+
+[D029](../adr/D029.md) extends both unsafe acquisition contracts to the five
+context-specific controls exposed as `request_tuning`. Domain validation now
+precedes every native Configure call; it neither acquires a lock nor establishes
+GPU completion. Common-domain serialization/non-reentrancy
+and movable destination-thread/cleanup obligations include these calls.
+Actual-provider trust requires synchronous descriptor/float consumption on both
+success and error, no deferred GPU/shutdown work and compatibility with sibling
+contexts and the retained profile. Prior unsafe dispatch must establish GPU
+completion and no pending executable recording before safe Configure; CPU locks,
+`&mut self` and ownership handoff do not establish that condition.
+
+The [implementation checks](../release/2026-10-18-upscaler-tuning-verification.md)
+verify local mapping/lifecycle and compile both public families. The pointer-free
+eligibility enum moves with the owner; temporary tuning data is not retained.
+The local `!Send + !Sync` and movable `Send + !Sync` boundaries remain unchanged.
+These results neither establish actual-provider Configure support nor a new
+native threading guarantee. The later [coherence checkpoint](../release/2026-10-18-api-coherence-verification.md)
+checks both families and the renamed preflight/query methods on current Rust and
+MSRV, including isolated development packages. No concurrency permission, wait,
+retention token or new native result follows from that checkpoint. The subsequent
+[Windows follow-up](../release/2026-10-19-windows-upscaler-verification.md) executes
+the fixtures, both-family tuning cycles with 20 fenced GPU frames on 4.1.1 and
+the existing public movable handoff regressions. The new tuning control remains
+on one thread; it adds no Configure handoff or concurrency proof.
+
+The [reactive-mask experiment](records/2026-10-19-exp-reactive-mask-providers.md)
+likewise keeps each public movable generator child on one thread. Both families
+pass on 3.1.5; successful returns without writes on 4.1.1/2.3.4 remain failures.
+Clean fenced cleanup across these children does not establish cross-thread
+generator compatibility, reentrancy, sibling isolation or provider termination.
+Common-domain serialization, GPU completion and terminal recording obligations
+remain caller-established conditions.
+
+## Active-output coordination follow-up
+
+The [D024 output implementation](../release/2026-10-19-active-output-verification.md)
+adds a checked optional dimension value to the existing borrowed frame, without
+new native ownership, callbacks, locks or transfer mechanisms. Both public owners
+share inspection and native mapping; the existing local/movable trait boundaries
+and common-domain coordination requirements remain unchanged.
+
+Both-family GPU coverage on selected 4.1.1/3.1.5 keeps every child on one CPU
+thread. Each previous frame is CPU-fenced before recording with replacement
+resources on a new per-frame queue. This establishes the recorded serial sequence,
+not overlapping work, general cross-queue synchronization or active-output
+handoff compatibility. The consolidated batch also passes existing movable
+regressions; those do not extend their coverage to transferring this new profile.
+Bounds checks, preflight and an owner move still establish no GPU completion.
 
 ## Post-v0.1.0 upscaler surface
 
@@ -45,14 +149,16 @@ must not imply that memory V2 needs an additional backend node. Both GetVersions
 and memory V2 embed a device; pinned `GetDevice` recognizes each. Other
 null-context utilities need the chained DX12 device to reach external providers.
 The intake also confirms the public loader ignores global-debug `effectId`;
-the earlier discrepancy with release guidance and signed-runtime behavior
+the earlier discrepancy with release guidance and signed-runtime behaviour
 remains unresolved.
 
 **Design inference:** D012 permits optional typed creation settings with defaults
 preserving today's zero flags. Read-only/provider utilities can also be additive.
 Each still needs its own supported contract: shared bits do not prove uniform
-provider behavior. Callback lifetime/threading, Configure pointer consumption,
-reset/persistence, numerical limits and broader native concurrency remain open.
+provider behaviour. D029 now supplies the explicit wrapper contract and local
+implementation for Configure; closed-provider consumption/reset/persistence
+properties remain unverified. Callback lifetime/threading and broader native
+concurrency remain open.
 The report's proposed sequence is a recommendation, not a roadmap change.
 Per-frame extensibility and image-semantic experiments are integrated in the
 [dispatch topic](upscaling-dispatch.md#broader-frame-surface-and-api-evolution).
@@ -78,16 +184,16 @@ disjoint closure capture bypassed the Send wrapper and failed compilation;
 wrapper methods fixed capture without widening
 the generic owner's traits.
 
-**Verified host behavior:** eight probes passed on macOS ARM64. Same-thread
+**Verified host behaviour:** eight probes passed on macOS ARM64. Same-thread
 Rc/Arc controls and joined thread transfers preserve stable boxed pointers,
 ordered destruction/dependency cleanup, sibling retention after the public-like
 runtime is dropped, and final Rust ownership release on another thread.
 Returned create errors, OK/null creation, destroy failure/no retry and unwinding
 preserve D005's cleanup or exceptional-retention policy. The host library-drop
 observer and weak references establish Rust ownership release, not independent
-OS unmapping or AMD DLL termination behavior.
+OS unmapping or AMD DLL termination behaviour.
 
-**Verified Windows fixture behavior:** the
+**Verified Windows fixture behaviour:** the
 [Windows x64/MSVC record](records/2026-09-29-exp-d013-windows-fixtures.md)
 executed all eight probes with Rust 1.98.1 and default `dx12`, using the real
 Windows `FfxLibrary` and the locally built lifecycle DLL. It verifies the same
@@ -96,7 +202,7 @@ unwinding and runtime-only transfer. Loaded-module observations require the
 fixture DLL to stay loaded during callbacks/dependency cleanup, disappear after
 successful final release, and remain loaded after intentional exceptional
 retention. This complements the macOS observer; it does not establish AMD DLL
-termination or arbitrary OS memory-unmapping behavior. All nine baseline input
+termination or arbitrary OS memory-unmapping behaviour. All nine baseline input
 hashes match after CRLF-to-LF normalization, so these are observations of the
 same source inputs rather than a changed probe. The workspace run passed 33
 wrapper tests, 12 sys tests and four doctests; Clippy with warnings denied and
@@ -382,7 +488,7 @@ executing thread, without promising provider unload or its thread.
 **Evidence sufficiency is a recommendation:** this review considers the existing
 serialized, fenced evidence sufficient for the explicitly
 unsafe design if the strengthened caller-established assumptions are accepted.
-It does not resolve missing AMD guarantees, native returned-error behavior,
+It does not resolve missing AMD guarantees, native returned-error behaviour,
 hidden work, provider termination, external-user coordination, outstanding-work
 transfers or other configurations. Those remain uncertainties bounded by the
 contract, rather than newly verified properties. It identifies no reason to
@@ -402,16 +508,45 @@ Drop, and existing local-family regressions. Historical test bundles cannot
 substitute for those checks. The recommendation selects no release and changes
 neither D014 nor `0.2.0` scope.
 
+## M10: Query coordination
+
+The [2026-10-12 source review](records/2026-10-12-src-m10-dx12-query-safety.md)
+applies the existing coordination distinction to the five proposed queries.
+`&mut self` protects one Rust object; separate siblings and foreign/native users
+can still touch shared state. Enumeration's reused global name buffer requires
+the coordination domain to cover count, fill and immediate copying, not merely
+the native calls. Movable queries also inherit D013's arbitrary-thread
+and cleanup obligations, with no new implicit mutex or blanket Send impl.
+
+The reported open paths perform CPU queries without recording GPU work; those
+facts establish neither a universal fence requirement nor closed-provider
+compatibility with GPU work in flight. A CPU lock/handoff is not GPU completion,
+and a GPU fence does not serialize CPU access. Query-specific pointer and
+GPU-state assumptions need deliberate contract review; D013 acceptance does not
+automatically extend them. See the [five-method safety assessment](api-and-safety.md#m10-selected-dx12-query-safety).
+The intake adds no execution result or AMD threading guarantee and leaves the
+accepted movable contract unchanged.
+
+[D018](../adr/D018.md) subsequently accepts explicit query-specific trust in both
+unsafe acquisition contracts, including live-query compatibility with permitted
+work in flight and ordinary-error continuation. Unreleased source implements
+the five methods without adding locks. The later
+[Windows checkpoint](../release/2026-10-12-windows-m10-sdk-verification.md) passes
+both query families and transferred-owner regressions on one configuration.
+M10 is selected for [0.3.0](../release/0.3.0-preparation.md); final release checks
+remain separate. Neither those bounded results nor historical D013 checks
+establish universal native query/GPU guarantees.
+
 ## D013: public implementation verification
 
 Current source now implements the optional family, shared sealed private core
-and concrete Send audit. The [2026-10-09 implementation check](../release/2026-10-09-d013-public-api-verification.md)
+and concrete Send audit. The [2026-10-09 implementation check](../ROADMAP_HISTORY.md#movable-implementation-checkpoint)
 records consumer traits/feature/family boundaries, failure fixtures, automatic
 cleanup coordination and selected native public-path checks. Historical records
 above remain evidence for their original test-only source. The new checks
 establish no universal AMD compatibility or provider termination guarantee;
 the maintainer explicitly included the optional family in `0.2.0` on 2026-10-10,
 superseding the earlier exclusion. The
-[combined release check](../release/2026-10-10-0.2.0-release-verification.md)
+[combined release check](../ROADMAP_HISTORY.md#release-qualification)
 verifies the selected archives and public movable paths. Historical experiments
 above retain their original inputs and limitations.

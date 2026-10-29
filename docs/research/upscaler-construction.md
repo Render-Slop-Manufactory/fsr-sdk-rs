@@ -1,15 +1,121 @@
 # Upscaler construction
 
-- Updated: 2026-10-09 (existing native construction/dimension tests rerun; historical evidence unchanged).
-- Scope: public construction, numerical trust, provider sharing and M5 evidence.
+- Updated: 2026-10-27 (U07 accepted/implemented; prior evidence: D042 setup draft and controlled construction/selection spike integrated).
+- Scope: public construction, numerical trust, provider sharing, M5 evidence and M10 pre-create Queries.
 - Overview: [API and safety](api-and-safety.md).
 
-The [2026-10-09 maintenance recheck](../release/2026-10-09-windows-native-recheck.md)
+The [2026-10-09 maintenance recheck](../ROADMAP_HISTORY.md#october-9-native-diagnostic-refresh)
 repeated public two-context construction and all twelve raw dimension cases on
 its captured baseline. The five positive controls completed create/destroy;
 the four zero-dimension cases again aborted inside native create, and widths
 16383/16384/16385 returned generic error 1 with null handles. These are bounded
 construction observations, not dispatch support or new numerical contracts.
+
+## Setup-bound planning and creation
+
+Accepted [D042](../adr/D042.md) replaces separate provider stores and flat setup
+queries as the 0.3.0 target. The [accepted contract](../design/upscaler-setup.md)
+binds runtime, device and one provider request through planning, estimates and
+creation. Created owners have no setup lifetime and retain production runtime,
+device and pinned storage independently. U07 was approved and implemented on 2026-10-27: the single request now lives
+in setup and `UpscalerOptions` has no provider field. See the
+[implementation checks](../release/2026-10-27-upscaler-setup-verification.md).
+
+The [setup spike](records/2026-10-26-exp-upscaler-setup-contract-spike.md) compiles
+default and selected consumer workflows for both families on Rust 1.99/1.88.
+Controlled execution observes fresh membership, input rejection before
+enumeration, exact ID forwarding and live-identity-mismatch cleanup. Two contexts
+retain weakly observed runtime state and independent device references after
+setup/public-runtime/original-device loss. The observer also pins its DLL, so
+final native unload is not established. Safe rebinding needs prior trust for
+later reachable providers; neither binding nor enumeration reserves a provider.
+The [API synthesis](api-and-safety.md#accepted-api-transition-and-setup-draft)
+keeps design selection, draft and executed evidence separate. The setup selects
+no query cache or latency improvement and adds no AMD construction guarantee.
+
+## Complete-upscaling inventory follow-up
+
+The [coverage synthesis](upscaling-coverage.md) integrates the
+[2026-10-18 inventory](records/2026-10-18-src-upscaling-release-surface-inventory.md)
+and its [Configure prerequisite](records/2026-10-15-src-upscaler-configure-contract.md).
+At intake, creation retained only the API-version/DX12 chain, with no override
+or message callback; CPU allocators were null. [D028](../adr/D028.md) subsequently
+accepted provider selection and [implemented](../release/2026-10-18-provider-selection-verification.md)
+retained optional override nodes and the pre-create resource-requirements route
+for both families. API version 4.1.1 stays independent of the provider ID.
+Host checks and Windows compilation are followed by the passing
+[Windows batch](../release/2026-10-19-windows-upscaler-verification.md): fixtures,
+independent MSVC ABI, selected setup/live queries and two submitted/fenced frames
+per family with the explicitly selected observed default 4.1.1 ID. Live identity
+is checked before and after dispatch; this establishes no general provider compatibility.
+[D029](../adr/D029.md) subsequently implements the five live-context controls
+([verification](../release/2026-10-18-upscaler-tuning-verification.md)), with no
+implicit Configure calls during construction or changes to creation options.
+Provider-default reset is an explicit live operation, not a hardcoded numeric
+creation default. Acquisition trust requires these controls to preserve the
+existing allocation/profile and cached resource requirements; it does not
+establish those properties for every closed provider. D040 subsequently adds
+explicit message/custom-allocation construction, as described below. The source intake, accepted contracts, local
+implementation checks and subsequent bounded native confirmation are distinct evidence.
+
+The later [coherence checkpoint](../release/2026-10-18-api-coherence-verification.md)
+renames live controls to `request_tuning` and quality-derived dimensions to
+`render_size_for_quality`, with matching default/selected runtime routes. Tuning
+validates each parameter's finite wrapper domain before native entry, without
+implicit construction-time requests. Quality-size results do not report or change
+an existing context's active region. Current/MSRV consumers and development
+archives pass local checks; Windows fixtures and native Configure cycles now
+pass for both families on 4.1.1. Acknowledgement and enumeration do not establish application.
+
+The [generator experiment](records/2026-10-19-exp-reactive-mask-providers.md)
+additionally selects exact 3.1.5/2.3.4 names and checks effective live IDs.
+Only 3.1.5 writes masks in that protocol; 4.1.1/2.3.4 return OK without writes.
+Selection is observed independently of optional-operation capability.
+The [setup measurement](records/2026-10-19-exp-provider-setup-cost.md) adds 192
+optimized whole-path timings from three processes: default medians 229.55–230.74 ms,
+selected 696.98–707.10 ms per six-query sequence. Context lifetime is outside
+the timer. This does not isolate enumeration or select provider sessions/caching.
+
+The subsequent [public active-output verification](../release/2026-10-19-active-output-verification.md)
+creates exact selected 4.1.1/3.1.5 contexts for both owners, checks effective IDs
+and performs current-output jitter queries with matching provider selection.
+Context maxima remain immutable and external allocations retain exact maxima;
+the per-frame output setter neither recreates the context nor changes selection.
+This adds successful construction/query/dispatch/cleanup observations for that
+profile, not a wider numerical construction domain or provider capability query.
+The raw 2.3.4 smaller-output result still prevents inferring support from identity
+or OK; its unsupported variable-output path is not tested through the public contract.
+
+## Callback-bearing construction and retained targets
+
+Accepted [D040](../adr/D040.md) implements callback-bearing construction for both
+families, now exposed as unsafe setup `create_with_callbacks` under D042. The [callback synthesis](callbacks-and-allocation.md) reconciles the
+source/practice studies with the direct-SDK spike and separate
+[public verification](../release/2026-10-25-callbacks-diagnostics-verification.md).
+The pinned chain is root → API version → DX12 backend → optional nonempty
+allocation extension → optional provider override. Host callbacks use a separate
+stable table forwarded unchanged to create and destroy. Explicit-provider
+membership/identity checks and post-create requirements checks remain in place.
+
+An empty bundle follows ordinary construction. Absent host callbacks select
+native default host allocation; absent DX12 groups leave prior registrations
+alone. A null creation message pointer has provider-specific shared-state
+consequences and is not a general unregister or quiescence operation.
+
+Before native creation, ordinary validation/enumeration failure cleans up normally.
+Once callbacks are supplied to native creation, a returned native error retains
+the complete pinned state/device/runtime bundle without using the failed handle.
+OK/null and failed-destroy retention remain terminal. A live owner rejected by a
+post-create query uses normal one-attempt destruction. External callback targets
+are independently retained for all possible native users after success or error.
+The local/movable field and caller obligations are explicit; no closure adapter
+or automatic target reclamation follows from holding a pinned table.
+
+Both-family controlled checks and 12 public native contexts/20 fenced frames pass
+on selected 3.1.5/4.1.1. This verifies the implemented lifecycle paths on the
+recorded deployment, not general native failure rollback or a wider construction
+domain. The [release archive checkpoint](../release/0.3.0-preparation.md#archive-coverage-before-final-verification)
+remains separate.
 
 ## M5 source intake and provenance
 
@@ -45,12 +151,12 @@ condition, and generic minima, maxima, aspect-ratio limits and downscaling
 support remain unresolved. Native AA permits
 equal render/output sizes for supporting providers. Open FSR3 accepts variable
 dispatch dimensions within creation maxima and rejects dimensions exceeding them;
-that implementation does not establish signed FSR4 validation behavior.
+that implementation does not establish signed FSR4 validation behaviour.
 
 The header reportedly permits zero or combinations of ten defined creation bits.
 Flags must describe the application's actual input conventions. The FSR3 adapter
 maps bits 0–7 but not the non-linear-colorspace/debug-visualization bits 8–9, so
-shared flag declarations do not establish uniform provider behavior. Device
+shared flag declarations do not establish uniform provider behaviour. Device
 requirements likewise differ by provider; enumeration with a device is useful
 availability evidence, not exhaustive compatibility validation.
 
@@ -91,7 +197,7 @@ wrapper support or a requirement to expose it all.
 the inspected FSR3 code truncates to an integer; custom scale factors and other
 providers remain unresolved. The v2.3.0 release describes `effectId` as enabling
 per-effect debug routing, while the pinned public loader ignores the field and
-uses module-static callback state. The signed runtime's exact behavior and
+uses module-static callback state. The signed runtime's exact behaviour and
 cross-module scope remain unresolved. No Query purity, Configure visibility,
 CPU overlap or GPU-completion guarantee follows from these reports.
 
@@ -136,7 +242,7 @@ provider for those failed cases were not established. The M4 private
 constructor already used `NonZeroU32`; the M5 public `Dimensions::new` rejects
 zero before native creation. For this tested signed path, zero input
 cannot safely be delegated to a returned native error. The result does not
-establish a complete nonzero size domain or behavior on other configurations.
+establish a complete nonzero size domain or behaviour on other configurations.
 This corrects any reading of the earlier source-only report as promising an
 ordinary error return for zero dimensions.
 
@@ -154,7 +260,7 @@ and an unsafely acquired `Runtime`. Windows-target compilation and host/Windows
 ownership fixtures pass. The public path's native lifecycle evidence is
 synthesized below; it does not establish a complete nonzero numerical domain.
 
-**Open-provider source behavior:** FSR2 and FSR3 derive half-resolution resource
+**Open-provider source behaviour:** FSR2 and FSR3 derive half-resolution resource
 extents from `maxRenderSize`, so a coordinate of 1 yields a zero extent in those
 paths. They also assign some unsigned creation dimensions into signed constants.
 The signed-runtime experiment succeeded at 1×1 → 2×2, demonstrating that the
@@ -169,7 +275,7 @@ generic create path does not show conversion of that throw to an API return code
 The pre-create V2 memory Query can expose some invalid resource descriptions
 for open providers but is not documented as a complete signed-provider
 construction validator. None of these observations establishes the signed
-provider's internal arithmetic, failure behavior or a safe wrapper range.
+provider's internal arithmetic, failure behaviour or a safe wrapper range.
 
 **Verified signed-runtime boundary observation:** the
 [three-point experiment](records/2026-09-23-exp-m5-dx12-dimension-boundary.md)
@@ -245,3 +351,53 @@ performance, or other GPU/provider compatibility follows. The first two M5
 runner attempts stopped at local PowerShell command availability and restricted
 OS inventory access before reaching native execution; the record retains them
 separately from the passing hardware cases.
+
+## M10: provider discovery and memory planning
+
+The [2026-10-12 Query safety review](records/2026-10-12-src-m10-dx12-query-safety.md)
+refines the earlier source findings at the same SDK v2.3.0 commit. Its primary
+source inspection is reported evidence; intake checked the current wrapper gaps
+without repeating the upstream investigation. The
+[API/safety assessment](api-and-safety.md#m10-selected-dx12-query-safety) records
+provenance, the five-method assessment and proposed trust/error policies. This
+review adds no native execution or accepted M10 contract.
+
+**Enumeration:** the inspected generic implementation limits writes to input
+capacity and reports the number written. Growth between count and fill can
+therefore return OK with a truncated list; shrinkage can leave unused slots.
+IDs and names are paired and sorted within the same fill call. An external name
+uses a reused `static char[64]` buffer, reinforcing the existing immediate-copy
+requirement under shared CPU coordination. Native IDs stay opaque; names and
+enumeration do not establish a capability guarantee.
+
+**Proposed wrapper policy:** use checked count/capacity conversions and initialized
+arrays, inspect only the returned slots after OK, reject a reported count beyond
+capacity and copy names before another native operation. Decide whether the API
+returns a bounded enumeration observation or attempts completeness with bounded
+retries and a defined instability error. A full buffer cannot distinguish an
+exact fit from truncation, and this ABI offers no transactional provider snapshot.
+No retry can promise persistent provider identity.
+
+**Memory planning:** the open FSR3 V2 path obtains allocation information from
+the supplied DX12 device synchronously. It ignores V2 flags in its calculation;
+the review additionally reports that its shared-resource loop indexes
+`resources[i]` rather than `sharedResources[i]`. These findings limit numerical
+accuracy claims; they are not a reproduced signed-provider failure. An estimate
+is not a reservation, a construction validator or a guarantee of the provider
+chosen later. D008's numerical construction trust does not automatically cover
+V2 query arithmetic or closed-provider retention of devices/output pointers.
+
+The review preserves the earlier unresolved external-provider lifetimes and
+synchronization questions. It recommends an explicit query-specific extension
+of unsafe acquisition obligations if safe M10 methods are selected; that choice
+was left to subsequent contract review. Provider override, quality and jitter helpers remain
+outside this five-method proposal.
+
+**Implementation follow-up:** [D018](../adr/D018.md) accepts device-aware provider
+enumeration without a completeness promise and the V2 estimate under explicit
+query numerical/non-retention trust. Both families now implement them in
+unreleased source; the [Windows checkpoint](../release/2026-10-12-windows-m10-sdk-verification.md)
+passes both public query families and native regressions on one configuration.
+M10 is selected for [0.3.0](../release/0.3.0-preparation.md), with final release
+checks/publication separate. Estimates remain observations of the
+then-default selection, not construction validation or reservation guarantees.
