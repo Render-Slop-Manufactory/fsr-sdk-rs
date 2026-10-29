@@ -1,0 +1,37 @@
+[
+  {
+    "path": ".gitattributes",
+    "bytes": 8,
+    "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+  },
+  {
+    "path": "comparisons.json",
+    "bytes": 8327,
+    "sha256": "a27ff2046d8bcc698b3d01906e30529b9b890a1361a8e1af348e59b72136e5b6"
+  },
+  {
+    "path": "measurements.json",
+    "bytes": 245631,
+    "sha256": "e3a6da70d23929778084f2db07bf88788b0820a3ffe3ebaf1255162bd5022e65"
+  },
+  {
+    "path": "package-checks.json",
+    "bytes": 8519,
+    "sha256": "75990e41d827b364871cdd206ba4e676e0fb3bf0ea03447b3667846afea38003"
+  },
+  {
+    "path": "public-path.json",
+    "bytes": 236821,
+    "sha256": "2a052353153546510817863a097874c8136d661d18cd58bff345f36e923907e3"
+  },
+  {
+    "path": "regression.json",
+    "bytes": 528175,
+    "sha256": "62dbbf0e08f7b283682092248039807e97b6050570890ab29135982c861a6d22"
+  },
+  {
+    "path": "source-delta.json",
+    "bytes": 1118,
+    "sha256": "33f6b38cdb0f4f91e6b6b2ff87deb17fc080a850dabecc924f92de004e648ce1"
+  }
+]

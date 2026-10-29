@@ -1,0 +1,1757 @@
+{
+  "abi.common": {
+    "id": "abi.common",
+    "claim": "Independent native common ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native common ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:08.096593+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+          "/Fo<run>\\common.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:08.101912+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.common/00-command.stdout.txt",
+        "stderr": "cases/abi.common/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:08.617228+00:00",
+        "elapsed_seconds": 0.513
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:06:08.622247+00:00"
+  },
+  "abi.creation": {
+    "id": "abi.creation",
+    "claim": "Independent native creation ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native creation ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:08.626506+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+          "/Fo<run>\\creation.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:08.630602+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.creation/00-command.stdout.txt",
+        "stderr": "cases/abi.creation/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:09.192538+00:00",
+        "elapsed_seconds": 0.56
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:06:09.197363+00:00"
+  },
+  "abi.dispatch": {
+    "id": "abi.dispatch",
+    "claim": "Independent native dispatch ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native dispatch ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:09.202089+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+          "/Fo<run>\\dispatch.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:09.206051+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.dispatch/00-command.stdout.txt",
+        "stderr": "cases/abi.dispatch/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:09.333481+00:00",
+        "elapsed_seconds": 0.126
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:06:09.337270+00:00"
+  },
+  "abi.headers": {
+    "id": "abi.headers",
+    "claim": "Four hash-verified pinned SDK headers",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Four hash-verified pinned SDK headers"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:08.087613+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+      "headers": [
+        {
+          "path": "api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        }
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:08.092296+00:00"
+  },
+  "abi.query": {
+    "id": "abi.query",
+    "claim": "Independent native query ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native query ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:09.341259+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\query_native_abi.cpp",
+          "/Fo<run>\\query.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:09.345705+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.query/00-command.stdout.txt",
+        "stderr": "cases/abi.query/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:09.481039+00:00",
+        "elapsed_seconds": 0.134
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:06:09.485995+00:00"
+  },
+  "equipment.toolchain": {
+    "id": "equipment.toolchain",
+    "claim": "Actual compiler, Cargo, Python and host identity",
+    "requires": [],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Actual compiler, Cargo, Python and host identity"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:01.543146+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\rustc.EXE",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:01.587988+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/00-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:01.668100+00:00",
+        "elapsed_seconds": 0.078
+      },
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "-V"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:01.712909+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/01-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/01-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:01.789837+00:00",
+        "elapsed_seconds": 0.075
+      }
+    ],
+    "observations": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.14.1 (tags/v3.14.1:57e0d17, Dec  2 2025, 14:05:07) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    },
+    "finished_utc": "2026-10-15T18:06:01.945185+00:00"
+  },
+  "native.build.fsr_sdk": {
+    "id": "native.build.fsr_sdk",
+    "claim": "Discover and stage exact fsr_sdk test executable",
+    "requires": [
+      "equipment.toolchain",
+      "native.helper"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Discover and stage exact fsr_sdk test executable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:12.601137+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "--no-run",
+          "--message-format=json",
+          "--features",
+          "dx12,movable",
+          "--lib",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:12.666678+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.build.fsr_sdk/00-command.stdout.txt",
+        "stderr": "cases/native.build.fsr_sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:18.578297+00:00",
+        "elapsed_seconds": 5.91
+      }
+    ],
+    "observations": {
+      "executable_sha256": "9dbc5a4805a945d409906da86bde99e2f5cfb5b7d5168ae980a2e9b6cca1ae97",
+      "manifest": "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+      "registry_artifact": false
+    },
+    "finished_utc": "2026-10-15T18:06:19.060587+00:00"
+  },
+  "native.dispatch.active-render": {
+    "id": "native.dispatch.active-render",
+    "claim": "dispatch.active render",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_active_render_dispatch",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Active render dispatch: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:37.686883+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::native_dispatch::native_active_render_dispatch",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:37.689053+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Active render dispatch: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.active-render/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.active-render/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:40.960238+00:00",
+        "elapsed_seconds": 3.269
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:40.989329+00:00"
+  },
+  "native.dispatch.automatic-exposure": {
+    "id": "native.dispatch.automatic-exposure",
+    "claim": "dispatch.automatic exposure",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_automatic_exposure_dispatch",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Automatic exposure dispatch: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:34.894445+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::native_dispatch::native_automatic_exposure_dispatch",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:34.896845+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Automatic exposure dispatch: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.automatic-exposure/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.automatic-exposure/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:35.887316+00:00",
+        "elapsed_seconds": 0.988
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:35.909674+00:00"
+  },
+  "native.dispatch.depth-motion": {
+    "id": "native.dispatch.depth-motion",
+    "claim": "dispatch.depth motion",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_depth_motion_dispatch",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Depth/motion dispatch: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:29.877864+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::native_dispatch::native_depth_motion_dispatch",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:29.880004+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Depth/motion dispatch: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.depth-motion/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.depth-motion/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:34.865853+00:00",
+        "elapsed_seconds": 4.984
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:34.888244+00:00"
+  },
+  "native.dispatch.linear-hdr": {
+    "id": "native.dispatch.linear-hdr",
+    "claim": "dispatch.linear hdr",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_hdr_dispatch",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Linear HDR dispatch: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:35.914156+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::native_dispatch::native_hdr_dispatch",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:35.916419+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Linear HDR dispatch: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.linear-hdr/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.linear-hdr/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:37.248069+00:00",
+        "elapsed_seconds": 1.33
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:37.267812+00:00"
+  },
+  "native.dispatch.pre-exposure": {
+    "id": "native.dispatch.pre-exposure",
+    "claim": "dispatch.pre exposure",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_pre_exposure_dispatch",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Pre-exposure dispatch: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:27.961292+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::native_dispatch::native_pre_exposure_dispatch",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:27.963943+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Pre-exposure dispatch: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.pre-exposure/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.pre-exposure/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:29.854876+00:00",
+        "elapsed_seconds": 1.889
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:29.873226+00:00"
+  },
+  "native.dispatch.semantics": {
+    "id": "native.dispatch.semantics",
+    "claim": "dispatch.semantics",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_semantic_comparisons",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Gate C: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:41.629202+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::native_dispatch::native_semantic_comparisons",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:41.631133+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate C: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.semantics/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.semantics/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:44.660893+00:00",
+        "elapsed_seconds": 3.028
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:44.683334+00:00"
+  },
+  "native.dispatch.single": {
+    "id": "native.dispatch.single",
+    "claim": "dispatch.single",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_dispatch_readback",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Gate A: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:24.059001+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::native_dispatch::native_dispatch_readback",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:24.060962+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate A: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.single/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.single/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:27.919560+00:00",
+        "elapsed_seconds": 3.857
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:27.940396+00:00"
+  },
+  "native.dispatch.supplied-masks": {
+    "id": "native.dispatch.supplied-masks",
+    "claim": "dispatch.supplied masks",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_supplied_masks_dispatch",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Supplied masks dispatch: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:37.272245+00:00",
+    "evaluation": "failed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::native_dispatch::native_supplied_masks_dispatch",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:37.274249+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Supplied masks dispatch: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.supplied-masks/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.supplied-masks/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 1,
+        "finished_utc": "2026-10-15T18:06:37.660240+00:00",
+        "elapsed_seconds": 0.383
+      }
+    ],
+    "observations": {},
+    "reason": "command: completed, exit=1; expectation not met",
+    "finished_utc": "2026-10-15T18:06:37.681292+00:00"
+  },
+  "native.dispatch.temporal": {
+    "id": "native.dispatch.temporal",
+    "claim": "dispatch.temporal",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_temporal_smoke",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Gate B: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:40.994571+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::native_dispatch::native_temporal_smoke",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:40.996792+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate B: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.temporal/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.temporal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:41.608375+00:00",
+        "elapsed_seconds": 0.609
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Upscaler provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:41.624942+00:00"
+  },
+  "native.helper": {
+    "id": "native.helper",
+    "claim": "DX12 submission, fencing and readback equipment",
+    "requires": [
+      "equipment.toolchain",
+      "native.sdk",
+      "abi.common",
+      "abi.creation",
+      "abi.dispatch",
+      "abi.query"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "DX12 submission, fencing and readback equipment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:10.842160+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/LD",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+          "/Fo<run>\\native\\",
+          "/link",
+          "/OUT:<run>\\native\\gpu_helper.dll",
+          "/IMPLIB:<run>\\native\\gpu_helper.lib",
+          "d3d12.lib",
+          "dxgi.lib"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:10.846394+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.helper/00-command.stdout.txt",
+        "stderr": "cases/native.helper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:12.552874+00:00",
+        "elapsed_seconds": 1.705
+      }
+    ],
+    "observations": {
+      "helper_sha256": "382edf4e91064e999de0c1656dd409341ccd54a9623063fcdab2f00ba57ce1f6"
+    },
+    "finished_utc": "2026-10-15T18:06:12.596824+00:00"
+  },
+  "native.lifecycle.drop": {
+    "id": "native.lifecycle.drop",
+    "claim": "lifecycle.drop",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::tests::native_lifecycle_drop",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Production owner: destroy A/B OK",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:23.638662+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::native_lifecycle_drop",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:23.640652+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Production owner: destroy A/B OK",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.lifecycle.drop/00-command.stdout.txt",
+        "stderr": "cases/native.lifecycle.drop/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:24.039781+00:00",
+        "elapsed_seconds": 0.397
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:24.055214+00:00"
+  },
+  "native.lifecycle.explicit": {
+    "id": "native.lifecycle.explicit",
+    "claim": "lifecycle.explicit",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::tests::native_lifecycle",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Production owner: destroy A/B OK",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:23.184922+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::native_lifecycle",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:23.187122+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Production owner: destroy A/B OK",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.lifecycle.explicit/00-command.stdout.txt",
+        "stderr": "cases/native.lifecycle.explicit/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:23.613829+00:00",
+        "elapsed_seconds": 0.425
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:23.633289+00:00"
+  },
+  "native.movable.disabled": {
+    "id": "native.movable.disabled",
+    "claim": "movable.disabled",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public",
+      "native.queries.utilities",
+      "native.lifecycle.explicit",
+      "native.lifecycle.drop",
+      "native.dispatch.single",
+      "native.dispatch.pre-exposure",
+      "native.dispatch.depth-motion",
+      "native.dispatch.automatic-exposure",
+      "native.dispatch.linear-hdr",
+      "native.dispatch.supplied-masks",
+      "native.dispatch.active-render",
+      "native.dispatch.temporal",
+      "native.dispatch.semantics"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::movable_public::public_siblings_dispatch_and_cleanup_after_thread_handoffs",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Public movable: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {
+        "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+      },
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:44.687845+00:00",
+    "evaluation": "blocked",
+    "execution": "blocked",
+    "commands": [],
+    "observations": {},
+    "reason": "Unmet prerequisites: native.dispatch.supplied-masks",
+    "finished_utc": "2026-10-15T18:06:44.687933+00:00"
+  },
+  "native.movable.sharpening": {
+    "id": "native.movable.sharpening",
+    "claim": "movable.sharpening",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public",
+      "native.queries.utilities",
+      "native.lifecycle.explicit",
+      "native.lifecycle.drop",
+      "native.dispatch.single",
+      "native.dispatch.pre-exposure",
+      "native.dispatch.depth-motion",
+      "native.dispatch.automatic-exposure",
+      "native.dispatch.linear-hdr",
+      "native.dispatch.supplied-masks",
+      "native.dispatch.active-render",
+      "native.dispatch.temporal",
+      "native.dispatch.semantics"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::movable_public::public_native_sharpening_after_thread_handoffs",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Public movable: PASSED mode=Native",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {
+        "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+      },
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:44.692216+00:00",
+    "evaluation": "blocked",
+    "execution": "blocked",
+    "commands": [],
+    "observations": {},
+    "reason": "Unmet prerequisites: native.dispatch.supplied-masks",
+    "finished_utc": "2026-10-15T18:06:44.692304+00:00"
+  },
+  "native.queries.public": {
+    "id": "native.queries.public",
+    "claim": "queries.public",
+    "requires": [
+      "equipment.toolchain",
+      "native.build.fsr_sdk"
+    ],
+    "selector": "upscaler::dx12::tests::queries::native_public_queries",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Public queries: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:19.064804+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::queries::native_public_queries",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:19.066246+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Public queries: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.queries.public/00-command.stdout.txt",
+        "stderr": "cases/native.queries.public/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:20.513121+00:00",
+        "elapsed_seconds": 1.445
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:20.531886+00:00"
+  },
+  "native.queries.utilities": {
+    "id": "native.queries.utilities",
+    "claim": "queries.utilities",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::tests::utility_queries::native_utility_queries",
+    "scope": "native-query",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Upscaler utility queries: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:20.536811+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::utility_queries::native_utility_queries",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:06:20.538627+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Upscaler utility queries: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.queries.utilities/00-command.stdout.txt",
+        "stderr": "cases/native.queries.utilities/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:23.169295+00:00",
+        "elapsed_seconds": 2.629
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Provider: ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }",
+        "Provider: ProviderInfo { id: ProviderId(17700776140664213505), name: \"4.1.1\" }"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:06:23.180546+00:00"
+  },
+  "native.sdk": {
+    "id": "native.sdk",
+    "claim": "Pinned, signed local loader/provider deployment",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Pinned, signed local loader/provider deployment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:09.490883+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1",
+          "-Mode",
+          "signatures",
+          "-Directory",
+          "<run>\\native"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:09.606420+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.sdk/00-command.stdout.txt",
+        "stderr": "cases/native.sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:10.832667+00:00",
+        "elapsed_seconds": 1.224
+      }
+    ],
+    "observations": {
+      "artifacts": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      ],
+      "signatures": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.6"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.6"
+        }
+      ],
+      "adapter_index": 0
+    },
+    "finished_utc": "2026-10-15T18:06:10.837665+00:00"
+  },
+  "native.sharpening.audit": {
+    "id": "native.sharpening.audit",
+    "claim": "Independent offline half-float/frame-observation audit",
+    "requires": [
+      "equipment.toolchain",
+      "native.sharpening.integration.r1",
+      "native.sharpening.integration.r2",
+      "native.sharpening.integration.r3"
+    ],
+    "selector": "",
+    "scope": "offline-analysis",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent offline half-float/frame-observation audit"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:44.710153+00:00",
+    "evaluation": "blocked",
+    "execution": "blocked",
+    "commands": [],
+    "observations": {},
+    "reason": "Unmet prerequisites: native.sharpening.integration.r1, native.sharpening.integration.r2, native.sharpening.integration.r3",
+    "finished_utc": "2026-10-15T18:06:44.710232+00:00"
+  },
+  "native.sharpening.integration.r1": {
+    "id": "native.sharpening.integration.r1",
+    "claim": "sharpening.integration.r1",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public",
+      "native.queries.utilities",
+      "native.lifecycle.explicit",
+      "native.lifecycle.drop",
+      "native.dispatch.single",
+      "native.dispatch.pre-exposure",
+      "native.dispatch.depth-motion",
+      "native.dispatch.automatic-exposure",
+      "native.dispatch.linear-hdr",
+      "native.dispatch.supplied-masks",
+      "native.dispatch.active-render",
+      "native.dispatch.temporal",
+      "native.dispatch.semantics"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_sharpening_integration",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Sharpening integration: PASSED outputs=48",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": 48,
+      "readback_bytes_each": 460800
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:44.697665+00:00",
+    "evaluation": "blocked",
+    "execution": "blocked",
+    "commands": [],
+    "observations": {},
+    "reason": "Unmet prerequisites: native.dispatch.supplied-masks",
+    "finished_utc": "2026-10-15T18:06:44.697741+00:00"
+  },
+  "native.sharpening.integration.r2": {
+    "id": "native.sharpening.integration.r2",
+    "claim": "sharpening.integration.r2",
+    "requires": [
+      "equipment.toolchain",
+      "native.sharpening.integration.r1"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_sharpening_integration",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Sharpening integration: PASSED outputs=48",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": 48,
+      "readback_bytes_each": 460800
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:44.701880+00:00",
+    "evaluation": "blocked",
+    "execution": "blocked",
+    "commands": [],
+    "observations": {},
+    "reason": "Unmet prerequisites: native.sharpening.integration.r1",
+    "finished_utc": "2026-10-15T18:06:44.701954+00:00"
+  },
+  "native.sharpening.integration.r3": {
+    "id": "native.sharpening.integration.r3",
+    "claim": "sharpening.integration.r3",
+    "requires": [
+      "equipment.toolchain",
+      "native.sharpening.integration.r2"
+    ],
+    "selector": "upscaler::dx12::native_dispatch::native_sharpening_integration",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Sharpening integration: PASSED outputs=48",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": 48,
+      "readback_bytes_each": 460800
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:44.706177+00:00",
+    "evaluation": "blocked",
+    "execution": "blocked",
+    "commands": [],
+    "observations": {},
+    "reason": "Unmet prerequisites: native.sharpening.integration.r2",
+    "finished_utc": "2026-10-15T18:06:44.706259+00:00"
+  },
+  "windows.environment": {
+    "id": "windows.environment",
+    "claim": "x64 Windows developer-tool environment",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "x64 Windows developer-tool environment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:06:01.949520+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:06:01.953370+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/windows.environment/00-environment.stdout.txt",
+        "stderr": "cases/windows.environment/00-environment.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:06:08.065394+00:00",
+        "elapsed_seconds": 6.11
+      }
+    ],
+    "observations": {
+      "msvc": "14.44.35207",
+      "windows_sdk": "10.0.22621.0\\",
+      "target_arch": "x64"
+    },
+    "finished_utc": "2026-10-15T18:06:08.082642+00:00"
+  }
+}

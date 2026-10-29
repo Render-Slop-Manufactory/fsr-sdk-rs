@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "outcomes": [
+    {
+      "case": "experiment.transfer-cleanup.create-after-transfer-control-r1",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.create-after-transfer-control-r2",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.create-after-transfer-control-r3",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.create-after-transfer-transfer-r1",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.create-after-transfer-transfer-r2",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.create-after-transfer-transfer-r3",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.history-control-r1",
+      "fenced_frames": 64,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.history-control-r2",
+      "fenced_frames": 64,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.history-control-r3",
+      "fenced_frames": 64,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.history-transfer-r1",
+      "fenced_frames": 64,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.history-transfer-r2",
+      "fenced_frames": 64,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.history-transfer-r3",
+      "fenced_frames": 64,
+      "native_destroy_ok": 1,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.independent-siblings-control-r1",
+      "fenced_frames": 17,
+      "native_destroy_ok": 2,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.independent-siblings-control-r2",
+      "fenced_frames": 17,
+      "native_destroy_ok": 2,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.independent-siblings-control-r3",
+      "fenced_frames": 17,
+      "native_destroy_ok": 2,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.independent-siblings-transfer-r1",
+      "fenced_frames": 17,
+      "native_destroy_ok": 2,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.independent-siblings-transfer-r2",
+      "fenced_frames": 17,
+      "native_destroy_ok": 2,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.independent-siblings-transfer-r3",
+      "fenced_frames": 17,
+      "native_destroy_ok": 2,
+      "unwind_drops": 0
+    },
+    {
+      "case": "experiment.transfer-cleanup.unwind-control-r1",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.unwind-control-r2",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.unwind-control-r3",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.unwind-transfer-r1",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.unwind-transfer-r2",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.unwind-transfer-r3",
+      "fenced_frames": 1,
+      "native_destroy_ok": 1,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.sibling-unwind-control-r1",
+      "fenced_frames": 3,
+      "native_destroy_ok": 2,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.sibling-unwind-control-r2",
+      "fenced_frames": 3,
+      "native_destroy_ok": 2,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.sibling-unwind-control-r3",
+      "fenced_frames": 3,
+      "native_destroy_ok": 2,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.sibling-unwind-transfer-r1",
+      "fenced_frames": 3,
+      "native_destroy_ok": 2,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.sibling-unwind-transfer-r2",
+      "fenced_frames": 3,
+      "native_destroy_ok": 2,
+      "unwind_drops": 1
+    },
+    {
+      "case": "experiment.transfer-cleanup.sibling-unwind-transfer-r3",
+      "fenced_frames": 3,
+      "native_destroy_ok": 2,
+      "unwind_drops": 1
+    }
+  ],
+  "selected_payloads": 96,
+  "provider_termination": "not established",
+  "payload_comparisons": [
+    {
+      "case": "create-after-transfer",
+      "controls_repeatable": true,
+      "transfers_repeatable": true,
+      "all_match_control": true,
+      "diagnostic_only": true
+    },
+    {
+      "case": "history",
+      "controls_repeatable": true,
+      "transfers_repeatable": true,
+      "all_match_control": true,
+      "diagnostic_only": true
+    },
+    {
+      "case": "independent-siblings",
+      "controls_repeatable": true,
+      "transfers_repeatable": true,
+      "all_match_control": true,
+      "diagnostic_only": true
+    },
+    {
+      "case": "unwind",
+      "controls_repeatable": true,
+      "transfers_repeatable": true,
+      "all_match_control": true,
+      "diagnostic_only": true
+    },
+    {
+      "case": "sibling-unwind",
+      "controls_repeatable": true,
+      "transfers_repeatable": true,
+      "all_match_control": true,
+      "diagnostic_only": true
+    }
+  ]
+}

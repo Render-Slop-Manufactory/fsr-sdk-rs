@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "profile": "experiment-gpu-timing",
+  "required_cases": [
+    {
+      "id": "equipment.toolchain",
+      "claim": "Actual compiler, Cargo, Python and host identity",
+      "requires": [],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Actual compiler, Cargo, Python and host identity"
+      }
+    },
+    {
+      "id": "windows.environment",
+      "claim": "x64 Windows developer-tool environment",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "x64 Windows developer-tool environment"
+      }
+    },
+    {
+      "id": "abi.headers",
+      "claim": "Four hash-verified pinned SDK headers",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Four hash-verified pinned SDK headers"
+      }
+    },
+    {
+      "id": "abi.common",
+      "claim": "Independent native common ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native common ABI assertions"
+      }
+    },
+    {
+      "id": "abi.creation",
+      "claim": "Independent native creation ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native creation ABI assertions"
+      }
+    },
+    {
+      "id": "abi.dispatch",
+      "claim": "Independent native dispatch ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native dispatch ABI assertions"
+      }
+    },
+    {
+      "id": "abi.query",
+      "claim": "Independent native query ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native query ABI assertions"
+      }
+    },
+    {
+      "id": "native.sdk",
+      "claim": "Pinned, signed local loader/provider deployment",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Pinned, signed local loader/provider deployment"
+      }
+    },
+    {
+      "id": "native.helper",
+      "claim": "DX12 submission, fencing and readback equipment",
+      "requires": [
+        "equipment.toolchain",
+        "native.sdk",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "abi.query"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "DX12 submission, fencing and readback equipment"
+      }
+    },
+    {
+      "id": "gpu-timing.build.fsr_sdk",
+      "claim": "Discover and stage exact fsr_sdk test executable",
+      "requires": [
+        "equipment.toolchain",
+        "native.helper"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Discover and stage exact fsr_sdk test executable"
+      }
+    },
+    {
+      "id": "gpu.build.cpp",
+      "claim": "Independent optimized GPU reference",
+      "requires": [
+        "equipment.toolchain",
+        "native.helper"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent optimized GPU reference"
+      }
+    },
+    {
+      "id": "gpu.diagnostics.cpp-minimal",
+      "claim": "cpp-minimal debug control",
+      "requires": [
+        "equipment.toolchain",
+        "gpu-timing.build.fsr_sdk",
+        "gpu.build.cpp"
+      ],
+      "selector": "gpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": true,
+        "frames": 4,
+        "warmup": 0,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.diagnostics.rust-wrapper",
+      "claim": "rust-wrapper debug control",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.diagnostics.cpp-minimal"
+      ],
+      "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": true,
+        "frames": 4,
+        "warmup": 0,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.block1.cpp-minimal",
+      "claim": "cpp-minimal GPU timestamp process",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.diagnostics.rust-wrapper"
+      ],
+      "selector": "gpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": false,
+        "frames": 160,
+        "warmup": 32,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.block1.rust-wrapper",
+      "claim": "rust-wrapper GPU timestamp process",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.block1.cpp-minimal"
+      ],
+      "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": false,
+        "frames": 160,
+        "warmup": 32,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.block2.rust-wrapper",
+      "claim": "rust-wrapper GPU timestamp process",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.block1.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": false,
+        "frames": 160,
+        "warmup": 32,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.block2.cpp-minimal",
+      "claim": "cpp-minimal GPU timestamp process",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.block2.rust-wrapper"
+      ],
+      "selector": "gpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": false,
+        "frames": 160,
+        "warmup": 32,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.block3.cpp-minimal",
+      "claim": "cpp-minimal GPU timestamp process",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.block2.cpp-minimal"
+      ],
+      "selector": "gpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": false,
+        "frames": 160,
+        "warmup": 32,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.block3.rust-wrapper",
+      "claim": "rust-wrapper GPU timestamp process",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.block3.cpp-minimal"
+      ],
+      "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": false,
+        "frames": 160,
+        "warmup": 32,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.block4.rust-wrapper",
+      "claim": "rust-wrapper GPU timestamp process",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.block3.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": false,
+        "frames": 160,
+        "warmup": 32,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.block4.cpp-minimal",
+      "claim": "cpp-minimal GPU timestamp process",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.block4.rust-wrapper"
+      ],
+      "selector": "gpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "debug_layer": false,
+        "frames": 160,
+        "warmup": 32,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete timestamps; no speed gate"
+      }
+    },
+    {
+      "id": "gpu.analysis",
+      "claim": "Separate CPU/GPU distributions and process differences",
+      "requires": [
+        "equipment.toolchain",
+        "gpu.block1.cpp-minimal",
+        "gpu.block1.rust-wrapper",
+        "gpu.block2.rust-wrapper",
+        "gpu.block2.cpp-minimal",
+        "gpu.block3.cpp-minimal",
+        "gpu.block3.rust-wrapper",
+        "gpu.block4.rust-wrapper",
+        "gpu.block4.cpp-minimal"
+      ],
+      "selector": "",
+      "scope": "offline-analysis",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Separate CPU/GPU distributions and process differences"
+      }
+    }
+  ],
+  "resume": "disabled"
+}

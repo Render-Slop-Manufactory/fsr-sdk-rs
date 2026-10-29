@@ -1,0 +1,87 @@
+{
+  "ci": {
+    "attempt": "20261015T180725Z-ci-8697f4d65e11",
+    "status": "passed",
+    "counts": {
+      "passed": 115
+    },
+    "completed": 115,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "msrv": {
+    "attempt": "20261015T180713Z-msrv-b87062ab3830",
+    "status": "passed",
+    "counts": {
+      "passed": 98
+    },
+    "completed": 98,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "native": {
+    "attempt": "20261015T180601Z-native-upscaler-71e8e21022c1",
+    "status": "failed",
+    "counts": {
+      "passed": 22,
+      "failed": 1,
+      "blocked": 6
+    },
+    "completed": 29,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "transfer": {
+    "attempt": "20261015T180832Z-experiment-transfer-cleanup-3c0970c099c7",
+    "status": "failed",
+    "counts": {
+      "passed": 28,
+      "failed": 1,
+      "blocked": 31
+    },
+    "completed": 60,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "recording": {
+    "attempt": "20261015T180844Z-experiment-recording-ae84b76a4c44",
+    "status": "failed",
+    "counts": {
+      "passed": 28,
+      "failed": 1
+    },
+    "completed": 29,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "independent": {
+    "attempt": "20261015T181022Z-windows-independent-regressions-f3cc350ccfbc",
+    "status": "passed",
+    "counts": {
+      "passed": 79
+    },
+    "completed": 79,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "cpp-cpu": {
+    "attempt": "20261015T181038Z-experiment-cpu-comparison-34f5bfa9aadd",
+    "status": "passed",
+    "counts": {
+      "passed": 45
+    },
+    "completed": 45,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "cpp-gpu": {
+    "attempt": "20261015T181142Z-experiment-gpu-timing-5eec22d65c35",
+    "status": "passed",
+    "counts": {
+      "passed": 22
+    },
+    "completed": 22,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  }
+}

@@ -1,0 +1,2160 @@
+[
+  {
+    "id": "equipment.toolchain",
+    "claim": "Actual compiler, Cargo, Python and host identity",
+    "requires": [],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Actual compiler, Cargo, Python and host identity"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:35.029849+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\rustc.EXE",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:35.093708+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/00-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:35.246959+00:00",
+        "elapsed_seconds": 0.15
+      },
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "-V"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:35.310919+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/01-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/01-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:35.405682+00:00",
+        "elapsed_seconds": 0.093
+      }
+    ],
+    "observations": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.14.1 (tags/v3.14.1:57e0d17, Dec  2 2025, 14:05:07) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    },
+    "finished_utc": "2026-10-12T21:36:35.618637+00:00"
+  },
+  {
+    "id": "windows.environment",
+    "claim": "x64 Windows developer-tool environment",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "x64 Windows developer-tool environment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:35.622942+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:35.627960+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/windows.environment/00-environment.stdout.txt",
+        "stderr": "cases/windows.environment/00-environment.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:42.859505+00:00",
+        "elapsed_seconds": 7.229
+      }
+    ],
+    "observations": {
+      "msvc": "14.44.35207",
+      "windows_sdk": "10.0.22621.0\\",
+      "target_arch": "x64"
+    },
+    "finished_utc": "2026-10-12T21:36:42.876257+00:00"
+  },
+  {
+    "id": "abi.headers",
+    "claim": "Four hash-verified pinned SDK headers",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Four hash-verified pinned SDK headers"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:42.881384+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+      "headers": [
+        {
+          "path": "api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        }
+      ]
+    },
+    "finished_utc": "2026-10-12T21:36:42.886663+00:00"
+  },
+  {
+    "id": "abi.common",
+    "claim": "Independent native common ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native common ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:42.892780+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+          "/Fo<run>\\common.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:42.898166+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.common/00-command.stdout.txt",
+        "stderr": "cases/abi.common/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:43.497255+00:00",
+        "elapsed_seconds": 0.597
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-12T21:36:43.503422+00:00"
+  },
+  {
+    "id": "abi.creation",
+    "claim": "Independent native creation ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native creation ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:43.509427+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+          "/Fo<run>\\creation.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:43.516062+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.creation/00-command.stdout.txt",
+        "stderr": "cases/abi.creation/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:44.369203+00:00",
+        "elapsed_seconds": 0.851
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-12T21:36:44.374610+00:00"
+  },
+  {
+    "id": "abi.dispatch",
+    "claim": "Independent native dispatch ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native dispatch ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:44.379874+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+          "/Fo<run>\\dispatch.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:44.385422+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.dispatch/00-command.stdout.txt",
+        "stderr": "cases/abi.dispatch/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:44.533576+00:00",
+        "elapsed_seconds": 0.146
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-12T21:36:44.538141+00:00"
+  },
+  {
+    "id": "abi.query",
+    "claim": "Independent native query ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native query ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:44.543110+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\query_native_abi.cpp",
+          "/Fo<run>\\query.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:44.548152+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.query/00-command.stdout.txt",
+        "stderr": "cases/abi.query/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:44.703870+00:00",
+        "elapsed_seconds": 0.153
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-12T21:36:44.708439+00:00"
+  },
+  {
+    "id": "native.sdk",
+    "claim": "Pinned, signed local loader/provider deployment",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Pinned, signed local loader/provider deployment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:44.713781+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1",
+          "-Mode",
+          "signatures",
+          "-Directory",
+          "<run>\\native"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:44.833279+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.sdk/00-command.stdout.txt",
+        "stderr": "cases/native.sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:46.288537+00:00",
+        "elapsed_seconds": 1.453
+      }
+    ],
+    "observations": {
+      "artifacts": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      ],
+      "signatures": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.6"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.6"
+        }
+      ],
+      "adapter_index": 0
+    },
+    "finished_utc": "2026-10-12T21:36:46.293341+00:00"
+  },
+  {
+    "id": "native.helper",
+    "claim": "DX12 submission, fencing and readback equipment",
+    "requires": [
+      "equipment.toolchain",
+      "native.sdk",
+      "abi.common",
+      "abi.creation",
+      "abi.dispatch",
+      "abi.query"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "DX12 submission, fencing and readback equipment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:46.299429+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/LD",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+          "/Fo<run>\\native\\",
+          "/link",
+          "/OUT:<run>\\native\\m6_gpu.dll",
+          "/IMPLIB:<run>\\native\\m6_gpu.lib",
+          "d3d12.lib",
+          "dxgi.lib"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:46.305089+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.helper/00-command.stdout.txt",
+        "stderr": "cases/native.helper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:48.042687+00:00",
+        "elapsed_seconds": 1.735
+      }
+    ],
+    "observations": {
+      "helper_sha256": "952acc4c3cc1065360e5bd26b12c2ea93c133afe327ed01a374ef492390fa54c"
+    },
+    "finished_utc": "2026-10-12T21:36:48.083900+00:00"
+  },
+  {
+    "id": "native.build.fsr_sdk",
+    "claim": "Discover and stage exact fsr_sdk test executable",
+    "requires": [
+      "equipment.toolchain",
+      "native.helper"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Discover and stage exact fsr_sdk test executable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:48.088384+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "--no-run",
+          "--message-format=json",
+          "--features",
+          "dx12,movable",
+          "--lib",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-12T21:36:48.156011+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.build.fsr_sdk/00-command.stdout.txt",
+        "stderr": "cases/native.build.fsr_sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:48.550080+00:00",
+        "elapsed_seconds": 0.392
+      }
+    ],
+    "observations": {
+      "executable_sha256": "8ee627b498e6579953941d93211fb93438be2f75c028506d66f5968212187543",
+      "manifest": "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+      "registry_artifact": false
+    },
+    "finished_utc": "2026-10-12T21:36:48.776723+00:00"
+  },
+  {
+    "id": "native.queries.public",
+    "claim": "queries.public",
+    "requires": [
+      "equipment.toolchain",
+      "native.build.fsr_sdk"
+    ],
+    "selector": "upscaler::dx12::tests::queries::native_public_queries",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "M10 public queries: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:48.781291+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::queries::native_public_queries",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:36:48.783464+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "M10 public queries: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.queries.public/00-command.stdout.txt",
+        "stderr": "cases/native.queries.public/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:50.106245+00:00",
+        "elapsed_seconds": 1.321
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-12T21:36:50.119147+00:00"
+  },
+  {
+    "id": "native.lifecycle.explicit",
+    "claim": "lifecycle.explicit",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::tests::native_lifecycle",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Production owner: destroy A/B OK",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:50.124366+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::native_lifecycle",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:36:50.126513+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Production owner: destroy A/B OK",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.lifecycle.explicit/00-command.stdout.txt",
+        "stderr": "cases/native.lifecycle.explicit/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:50.554923+00:00",
+        "elapsed_seconds": 0.427
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-12T21:36:50.569016+00:00"
+  },
+  {
+    "id": "native.lifecycle.drop",
+    "claim": "lifecycle.drop",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::tests::native_lifecycle_drop",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Production owner: destroy A/B OK",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:50.574690+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::native_lifecycle_drop",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:36:50.576821+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Production owner: destroy A/B OK",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.lifecycle.drop/00-command.stdout.txt",
+        "stderr": "cases/native.lifecycle.drop/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:51.038494+00:00",
+        "elapsed_seconds": 0.46
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "Provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-12T21:36:51.050668+00:00"
+  },
+  {
+    "id": "native.dispatch.single",
+    "claim": "dispatch.single",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::m6::native_dispatch_readback",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Gate A: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:51.056068+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_dispatch_readback",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:36:51.058082+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate A: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.single/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.single/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:54.393000+00:00",
+        "elapsed_seconds": 3.333
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-12T21:36:54.408165+00:00"
+  },
+  {
+    "id": "native.dispatch.temporal",
+    "claim": "dispatch.temporal",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::m6::native_temporal_smoke",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Gate B: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:54.412401+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_temporal_smoke",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:36:54.414238+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate B: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.temporal/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.temporal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:54.907580+00:00",
+        "elapsed_seconds": 0.491
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-12T21:36:54.922780+00:00"
+  },
+  {
+    "id": "native.dispatch.semantics",
+    "claim": "dispatch.semantics",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public"
+    ],
+    "selector": "upscaler::dx12::m6::native_semantic_comparisons",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Gate C: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:54.927051+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_semantic_comparisons",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:36:54.928831+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Gate C: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.dispatch.semantics/00-command.stdout.txt",
+        "stderr": "cases/native.dispatch.semantics/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:36:59.569819+00:00",
+        "elapsed_seconds": 4.639
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-12T21:36:59.584750+00:00"
+  },
+  {
+    "id": "native.movable.disabled",
+    "claim": "movable.disabled",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public",
+      "native.lifecycle.explicit",
+      "native.lifecycle.drop",
+      "native.dispatch.single",
+      "native.dispatch.temporal",
+      "native.dispatch.semantics"
+    ],
+    "selector": "upscaler::dx12::m6::movable_public::public_siblings_dispatch_and_cleanup_after_thread_handoffs",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Public movable: PASSED",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {
+        "FSR_SDK_TEST_D013_TRACE": "1"
+      },
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:36:59.589148+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::movable_public::public_siblings_dispatch_and_cleanup_after_thread_handoffs",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:36:59.590964+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Public movable: PASSED",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.movable.disabled/00-command.stdout.txt",
+        "stderr": "cases/native.movable.disabled/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_TEST_D013_TRACE": "1"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:37:00.256732+00:00",
+        "elapsed_seconds": 0.664
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-12T21:37:00.272630+00:00"
+  },
+  {
+    "id": "native.movable.sharpening",
+    "claim": "movable.sharpening",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public",
+      "native.lifecycle.explicit",
+      "native.lifecycle.drop",
+      "native.dispatch.single",
+      "native.dispatch.temporal",
+      "native.dispatch.semantics"
+    ],
+    "selector": "upscaler::dx12::m6::movable_public::public_native_sharpening_after_thread_handoffs",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "Public movable: PASSED mode=Native",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {
+        "FSR_SDK_TEST_D013_TRACE": "1"
+      },
+      "readback_count": null,
+      "readback_bytes_each": null
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:37:00.277786+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::movable_public::public_native_sharpening_after_thread_handoffs",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:37:00.279698+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "Public movable: PASSED mode=Native",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.movable.sharpening/00-command.stdout.txt",
+        "stderr": "cases/native.movable.sharpening/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_TEST_D013_TRACE": "1"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:37:00.876527+00:00",
+        "elapsed_seconds": 0.595
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ]
+    },
+    "finished_utc": "2026-10-12T21:37:00.891049+00:00"
+  },
+  {
+    "id": "native.sharpening.integration.r1",
+    "claim": "sharpening.integration.r1",
+    "requires": [
+      "equipment.toolchain",
+      "native.queries.public",
+      "native.lifecycle.explicit",
+      "native.lifecycle.drop",
+      "native.dispatch.single",
+      "native.dispatch.temporal",
+      "native.dispatch.semantics"
+    ],
+    "selector": "upscaler::dx12::m6::native_sharpening_integration",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "M9 integration: PASSED outputs=48",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": 48,
+      "readback_bytes_each": 460800
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:37:00.895810+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_sharpening_integration",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:37:00.898244+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "M9 integration: PASSED outputs=48",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.sharpening.integration.r1/00-command.stdout.txt",
+        "stderr": "cases/native.sharpening.integration.r1/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_TEST_M9_OUTPUT": "<run>\\readbacks\\native.sharpening.integration.r1"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:37:04.962120+00:00",
+        "elapsed_seconds": 4.062
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ],
+      "readbacks": [
+        {
+          "file": "scene-0-disabled-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94"
+        },
+        {
+          "file": "scene-0-disabled-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75"
+        },
+        {
+          "file": "scene-0-disabled-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b"
+        },
+        {
+          "file": "scene-0-disabled-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a"
+        },
+        {
+          "file": "scene-0-disabled-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "d1b102fc0123cdbefe3779647a04214e71ebfb2c70fdde29b976a8c083edea2d"
+        },
+        {
+          "file": "scene-0-disabled-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d08021733c54c0909bd3334a97fe5409eab4cd60aaf960c243605fe180f6bd7"
+        },
+        {
+          "file": "scene-0-disabled-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "f78b965f207224a5f7417706bc0dd54f280797fe072522291ce7f91a9d38f8d9"
+        },
+        {
+          "file": "scene-0-disabled-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8"
+        },
+        {
+          "file": "scene-0-switch-a-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94"
+        },
+        {
+          "file": "scene-0-switch-a-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75"
+        },
+        {
+          "file": "scene-0-switch-a-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b"
+        },
+        {
+          "file": "scene-0-switch-a-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a"
+        },
+        {
+          "file": "scene-0-switch-a-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11"
+        },
+        {
+          "file": "scene-0-switch-a-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e"
+        },
+        {
+          "file": "scene-0-switch-a-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9"
+        },
+        {
+          "file": "scene-0-switch-a-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8"
+        },
+        {
+          "file": "scene-0-switch-b-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94"
+        },
+        {
+          "file": "scene-0-switch-b-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75"
+        },
+        {
+          "file": "scene-0-switch-b-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b"
+        },
+        {
+          "file": "scene-0-switch-b-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a"
+        },
+        {
+          "file": "scene-0-switch-b-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11"
+        },
+        {
+          "file": "scene-0-switch-b-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e"
+        },
+        {
+          "file": "scene-0-switch-b-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9"
+        },
+        {
+          "file": "scene-0-switch-b-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8"
+        },
+        {
+          "file": "scene-1-disabled-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe"
+        },
+        {
+          "file": "scene-1-disabled-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632"
+        },
+        {
+          "file": "scene-1-disabled-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033"
+        },
+        {
+          "file": "scene-1-disabled-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d"
+        },
+        {
+          "file": "scene-1-disabled-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "e64039d02fbe04770ec58756973c78a20f49a5127feb7b6f6f3afec9ce257677"
+        },
+        {
+          "file": "scene-1-disabled-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "484cb3e753f05c4f89dc17f8940557f63d5e41aa27034fe098edf83b847f1794"
+        },
+        {
+          "file": "scene-1-disabled-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "5b475f904d04d75be729ce53c0650921f294b842300f570cd65218face5d4ccb"
+        },
+        {
+          "file": "scene-1-disabled-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239"
+        },
+        {
+          "file": "scene-1-switch-a-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe"
+        },
+        {
+          "file": "scene-1-switch-a-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632"
+        },
+        {
+          "file": "scene-1-switch-a-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033"
+        },
+        {
+          "file": "scene-1-switch-a-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d"
+        },
+        {
+          "file": "scene-1-switch-a-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468"
+        },
+        {
+          "file": "scene-1-switch-a-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f"
+        },
+        {
+          "file": "scene-1-switch-a-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627"
+        },
+        {
+          "file": "scene-1-switch-a-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239"
+        },
+        {
+          "file": "scene-1-switch-b-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe"
+        },
+        {
+          "file": "scene-1-switch-b-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632"
+        },
+        {
+          "file": "scene-1-switch-b-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033"
+        },
+        {
+          "file": "scene-1-switch-b-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d"
+        },
+        {
+          "file": "scene-1-switch-b-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468"
+        },
+        {
+          "file": "scene-1-switch-b-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f"
+        },
+        {
+          "file": "scene-1-switch-b-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627"
+        },
+        {
+          "file": "scene-1-switch-b-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239"
+        }
+      ]
+    },
+    "finished_utc": "2026-10-12T21:37:05.037119+00:00"
+  },
+  {
+    "id": "native.sharpening.integration.r2",
+    "claim": "sharpening.integration.r2",
+    "requires": [
+      "equipment.toolchain",
+      "native.sharpening.integration.r1"
+    ],
+    "selector": "upscaler::dx12::m6::native_sharpening_integration",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "M9 integration: PASSED outputs=48",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": 48,
+      "readback_bytes_each": 460800
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:37:05.042199+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_sharpening_integration",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:37:05.044387+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "M9 integration: PASSED outputs=48",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.sharpening.integration.r2/00-command.stdout.txt",
+        "stderr": "cases/native.sharpening.integration.r2/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_TEST_M9_OUTPUT": "<run>\\readbacks\\native.sharpening.integration.r2"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:37:11.587440+00:00",
+        "elapsed_seconds": 6.541
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ],
+      "readbacks": [
+        {
+          "file": "scene-0-disabled-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94"
+        },
+        {
+          "file": "scene-0-disabled-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75"
+        },
+        {
+          "file": "scene-0-disabled-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b"
+        },
+        {
+          "file": "scene-0-disabled-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a"
+        },
+        {
+          "file": "scene-0-disabled-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "d1b102fc0123cdbefe3779647a04214e71ebfb2c70fdde29b976a8c083edea2d"
+        },
+        {
+          "file": "scene-0-disabled-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d08021733c54c0909bd3334a97fe5409eab4cd60aaf960c243605fe180f6bd7"
+        },
+        {
+          "file": "scene-0-disabled-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "f78b965f207224a5f7417706bc0dd54f280797fe072522291ce7f91a9d38f8d9"
+        },
+        {
+          "file": "scene-0-disabled-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8"
+        },
+        {
+          "file": "scene-0-switch-a-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94"
+        },
+        {
+          "file": "scene-0-switch-a-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75"
+        },
+        {
+          "file": "scene-0-switch-a-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b"
+        },
+        {
+          "file": "scene-0-switch-a-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a"
+        },
+        {
+          "file": "scene-0-switch-a-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11"
+        },
+        {
+          "file": "scene-0-switch-a-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e"
+        },
+        {
+          "file": "scene-0-switch-a-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9"
+        },
+        {
+          "file": "scene-0-switch-a-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8"
+        },
+        {
+          "file": "scene-0-switch-b-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94"
+        },
+        {
+          "file": "scene-0-switch-b-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75"
+        },
+        {
+          "file": "scene-0-switch-b-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b"
+        },
+        {
+          "file": "scene-0-switch-b-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a"
+        },
+        {
+          "file": "scene-0-switch-b-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11"
+        },
+        {
+          "file": "scene-0-switch-b-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e"
+        },
+        {
+          "file": "scene-0-switch-b-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9"
+        },
+        {
+          "file": "scene-0-switch-b-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8"
+        },
+        {
+          "file": "scene-1-disabled-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe"
+        },
+        {
+          "file": "scene-1-disabled-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632"
+        },
+        {
+          "file": "scene-1-disabled-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033"
+        },
+        {
+          "file": "scene-1-disabled-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d"
+        },
+        {
+          "file": "scene-1-disabled-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "e64039d02fbe04770ec58756973c78a20f49a5127feb7b6f6f3afec9ce257677"
+        },
+        {
+          "file": "scene-1-disabled-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "484cb3e753f05c4f89dc17f8940557f63d5e41aa27034fe098edf83b847f1794"
+        },
+        {
+          "file": "scene-1-disabled-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "5b475f904d04d75be729ce53c0650921f294b842300f570cd65218face5d4ccb"
+        },
+        {
+          "file": "scene-1-disabled-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239"
+        },
+        {
+          "file": "scene-1-switch-a-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe"
+        },
+        {
+          "file": "scene-1-switch-a-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632"
+        },
+        {
+          "file": "scene-1-switch-a-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033"
+        },
+        {
+          "file": "scene-1-switch-a-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d"
+        },
+        {
+          "file": "scene-1-switch-a-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468"
+        },
+        {
+          "file": "scene-1-switch-a-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f"
+        },
+        {
+          "file": "scene-1-switch-a-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627"
+        },
+        {
+          "file": "scene-1-switch-a-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239"
+        },
+        {
+          "file": "scene-1-switch-b-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe"
+        },
+        {
+          "file": "scene-1-switch-b-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632"
+        },
+        {
+          "file": "scene-1-switch-b-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033"
+        },
+        {
+          "file": "scene-1-switch-b-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d"
+        },
+        {
+          "file": "scene-1-switch-b-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468"
+        },
+        {
+          "file": "scene-1-switch-b-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f"
+        },
+        {
+          "file": "scene-1-switch-b-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627"
+        },
+        {
+          "file": "scene-1-switch-b-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239"
+        }
+      ]
+    },
+    "finished_utc": "2026-10-12T21:37:11.679560+00:00"
+  },
+  {
+    "id": "native.sharpening.integration.r3",
+    "claim": "sharpening.integration.r3",
+    "requires": [
+      "equipment.toolchain",
+      "native.sharpening.integration.r2"
+    ],
+    "selector": "upscaler::dx12::m6::native_sharpening_integration",
+    "scope": "native-gpu",
+    "expectation": {
+      "evaluation": "passed",
+      "exit": 0,
+      "markers": [
+        "M9 integration: PASSED outputs=48",
+        "1 passed; 0 failed"
+      ],
+      "watchdog_seconds": 180,
+      "environment": {},
+      "readback_count": 48,
+      "readback_bytes_each": 460800
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:37:11.685134+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\native-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::m6::native_sharpening_integration",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-12T21:37:11.689544+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "M9 integration: PASSED outputs=48",
+            "1 passed; 0 failed"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/native.sharpening.integration.r3/00-command.stdout.txt",
+        "stderr": "cases/native.sharpening.integration.r3/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_M6_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\m6_gpu.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_TEST_M9_OUTPUT": "<run>\\readbacks\\native.sharpening.integration.r3"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-12T21:37:15.965123+00:00",
+        "elapsed_seconds": 4.273
+      }
+    ],
+    "observations": {
+      "execution": "completed",
+      "exit_code": 0,
+      "adapter_provider_observations": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x000000000001117b",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1",
+        "M6 provider: id=0xf5a5ca1e01001001; name=4.1.1"
+      ],
+      "readbacks": [
+        {
+          "file": "scene-0-disabled-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94"
+        },
+        {
+          "file": "scene-0-disabled-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75"
+        },
+        {
+          "file": "scene-0-disabled-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b"
+        },
+        {
+          "file": "scene-0-disabled-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a"
+        },
+        {
+          "file": "scene-0-disabled-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "d1b102fc0123cdbefe3779647a04214e71ebfb2c70fdde29b976a8c083edea2d"
+        },
+        {
+          "file": "scene-0-disabled-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d08021733c54c0909bd3334a97fe5409eab4cd60aaf960c243605fe180f6bd7"
+        },
+        {
+          "file": "scene-0-disabled-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "f78b965f207224a5f7417706bc0dd54f280797fe072522291ce7f91a9d38f8d9"
+        },
+        {
+          "file": "scene-0-disabled-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8"
+        },
+        {
+          "file": "scene-0-switch-a-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94"
+        },
+        {
+          "file": "scene-0-switch-a-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75"
+        },
+        {
+          "file": "scene-0-switch-a-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b"
+        },
+        {
+          "file": "scene-0-switch-a-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a"
+        },
+        {
+          "file": "scene-0-switch-a-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11"
+        },
+        {
+          "file": "scene-0-switch-a-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e"
+        },
+        {
+          "file": "scene-0-switch-a-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9"
+        },
+        {
+          "file": "scene-0-switch-a-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8"
+        },
+        {
+          "file": "scene-0-switch-b-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "12182ac00df016af2410fc67be1c3a9aeee44ccfafa10c8c7ece720b08957b94"
+        },
+        {
+          "file": "scene-0-switch-b-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "dd5a90edfe6be33b10562a1bccad64ea26063222c3aff54f7ad266294130bb75"
+        },
+        {
+          "file": "scene-0-switch-b-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "988e2798f4612c9b85754c8b8b18f84e66269faea594401ab434a7160f5be43b"
+        },
+        {
+          "file": "scene-0-switch-b-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "f19bf197cb1f179f176f862ae1c3cdfd0ba66bc3323f7f871b6cb69b3b8ac29a"
+        },
+        {
+          "file": "scene-0-switch-b-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "1777158d180ebfa0751e8439872ea2705bc6ada75a31118834066819ed630d11"
+        },
+        {
+          "file": "scene-0-switch-b-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "9227280efe51903c98984127e1cd5132886500ac7b0fc6560d770cfed742c04e"
+        },
+        {
+          "file": "scene-0-switch-b-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "359b20a03e721cfe6210f5a39843021c39a8ba93e27de826c5b42a74d8de37f9"
+        },
+        {
+          "file": "scene-0-switch-b-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "8254106978242259c2fd5abb2efb0e1fce600c61b4887d12f9549e008145b0f8"
+        },
+        {
+          "file": "scene-1-disabled-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe"
+        },
+        {
+          "file": "scene-1-disabled-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632"
+        },
+        {
+          "file": "scene-1-disabled-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033"
+        },
+        {
+          "file": "scene-1-disabled-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d"
+        },
+        {
+          "file": "scene-1-disabled-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "e64039d02fbe04770ec58756973c78a20f49a5127feb7b6f6f3afec9ce257677"
+        },
+        {
+          "file": "scene-1-disabled-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "484cb3e753f05c4f89dc17f8940557f63d5e41aa27034fe098edf83b847f1794"
+        },
+        {
+          "file": "scene-1-disabled-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "5b475f904d04d75be729ce53c0650921f294b842300f570cd65218face5d4ccb"
+        },
+        {
+          "file": "scene-1-disabled-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239"
+        },
+        {
+          "file": "scene-1-switch-a-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe"
+        },
+        {
+          "file": "scene-1-switch-a-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632"
+        },
+        {
+          "file": "scene-1-switch-a-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033"
+        },
+        {
+          "file": "scene-1-switch-a-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d"
+        },
+        {
+          "file": "scene-1-switch-a-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468"
+        },
+        {
+          "file": "scene-1-switch-a-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f"
+        },
+        {
+          "file": "scene-1-switch-a-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627"
+        },
+        {
+          "file": "scene-1-switch-a-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239"
+        },
+        {
+          "file": "scene-1-switch-b-frame-0.red.u16le",
+          "bytes": 460800,
+          "sha256": "7d67bb5136d3957dcdd2aa6436ce96d562d61e894a443cc5a9f236f1f65725fe"
+        },
+        {
+          "file": "scene-1-switch-b-frame-1.red.u16le",
+          "bytes": 460800,
+          "sha256": "1d9c04cf63ac295c6a4ffeb0040d90f20a617f67c7a3ac8437850265c674c632"
+        },
+        {
+          "file": "scene-1-switch-b-frame-2.red.u16le",
+          "bytes": 460800,
+          "sha256": "41e19d087504f973478446da8f96a896a3d9a8fb768e83fdcecd87cd31400033"
+        },
+        {
+          "file": "scene-1-switch-b-frame-3.red.u16le",
+          "bytes": 460800,
+          "sha256": "97330000594cbbd17c4aa144cc1ebc3ae2634dec0c5fd2b24e8a4ff2e681a49d"
+        },
+        {
+          "file": "scene-1-switch-b-frame-4.red.u16le",
+          "bytes": 460800,
+          "sha256": "918bbfe8323fcec7540288f8337c31e67b4ac08ff63c03e40f3ae751d7bac468"
+        },
+        {
+          "file": "scene-1-switch-b-frame-5.red.u16le",
+          "bytes": 460800,
+          "sha256": "306c3b8bd999b48e233b5d6baf793ad0e09435b3ff11087c6f7d7cc554bcda7f"
+        },
+        {
+          "file": "scene-1-switch-b-frame-6.red.u16le",
+          "bytes": 460800,
+          "sha256": "d1f6784b59d597600684acac46eebad285e17a92e678834108c65ab2d8e7a627"
+        },
+        {
+          "file": "scene-1-switch-b-frame-7.red.u16le",
+          "bytes": 460800,
+          "sha256": "4fc6d0dfc4df5765f60624cfc6f379bcffab5029c9dc9f31765ed342f9b23239"
+        }
+      ]
+    },
+    "finished_utc": "2026-10-12T21:37:16.020946+00:00"
+  },
+  {
+    "id": "native.sharpening.audit",
+    "claim": "Independent offline half-float/frame-observation audit",
+    "requires": [
+      "equipment.toolchain",
+      "native.sharpening.integration.r1",
+      "native.sharpening.integration.r2",
+      "native.sharpening.integration.r3"
+    ],
+    "selector": "",
+    "scope": "offline-analysis",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent offline half-float/frame-observation audit"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-12T21:37:16.025488+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "outputs": 144,
+      "comparisons": 78,
+      "image_thresholds": null
+    },
+    "finished_utc": "2026-10-12T21:37:23.656511+00:00"
+  }
+]

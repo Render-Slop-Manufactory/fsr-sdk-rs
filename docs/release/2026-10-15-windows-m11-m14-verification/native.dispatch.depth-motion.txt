@@ -1,0 +1,361 @@
+Gate B debug layer: HRESULT=0x00000000
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Gate B device creation: HRESULT=0x00000000
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Depth/motion profile: depth=StandardFinite units=Uv resolution=Render jitter=Excluded estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }
+Gate B public construction: OK native_code=0x00000000
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+Gate B frame=0: translation=0px jitter=(0.25,-0.25) reset=true frame_time=16.667ms
+Gate B frame=0 harness creation: HRESULT=0x00000000
+Gate B frame=0 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=0 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358033, right_red: 0.7556558, debug_errors: 0, device_removed: 0 }
+Gate B frame=1: translation=1px jitter=(-0.25,0.25) reset=false frame_time=16.667ms
+Gate B frame=1 harness creation: HRESULT=0x00000000
+Gate B frame=1 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=1 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.08795166, max_red: 0.8461914, left_red: 0.19121014, right_red: 0.7527847, debug_errors: 0, device_removed: 0 }
+Gate B frame=2: translation=2px jitter=(0.125,-0.125) reset=false frame_time=16.667ms
+Gate B frame=2 harness creation: HRESULT=0x00000000
+Gate B frame=2 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=2 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09069824, max_red: 0.8432617, left_red: 0.18860283, right_red: 0.7495062, debug_errors: 0, device_removed: 0 }
+Profile explicit destroy: OK
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Gate B after frame-resource cleanup:
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Depth/motion profile: PASSED (StandardFinite, Uv, Render, Excluded)
+Gate B debug layer: HRESULT=0x00000000
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Gate B device creation: HRESULT=0x00000000
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Depth/motion profile: depth=StandardFinite units=Pixels resolution=Display jitter=Included estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }
+Gate B public construction: OK native_code=0x00000000
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+Gate B frame=0: translation=0px jitter=(0.25,-0.25) reset=true frame_time=16.667ms
+Gate B frame=0 harness creation: HRESULT=0x00000000
+Gate B frame=0 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=0 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358033, right_red: 0.7556558, debug_errors: 0, device_removed: 0 }
+Gate B frame=1: translation=1px jitter=(-0.25,0.25) reset=false frame_time=16.667ms
+Gate B frame=1 harness creation: HRESULT=0x00000000
+Gate B frame=1 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=1 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09893799, max_red: 0.8461914, left_red: 0.19129676, right_red: 0.75266993, debug_errors: 0, device_removed: 0 }
+Gate B frame=2: translation=2px jitter=(0.125,-0.125) reset=false frame_time=16.667ms
+Gate B frame=2 harness creation: HRESULT=0x00000000
+Gate B frame=2 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=2 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09564209, max_red: 0.8442383, left_red: 0.18835253, right_red: 0.7489011, debug_errors: 0, device_removed: 0 }
+Profile explicit destroy: OK
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Gate B after frame-resource cleanup:
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Depth/motion profile: PASSED (StandardFinite, Pixels, Display, Included)
+Gate B debug layer: HRESULT=0x00000000
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Gate B device creation: HRESULT=0x00000000
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Depth/motion profile: depth=ReversedFinite units=Pixels resolution=Render jitter=Included estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }
+Gate B public construction: OK native_code=0x00000000
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+Gate B frame=0: translation=0px jitter=(0.25,-0.25) reset=true frame_time=16.667ms
+Gate B frame=0 harness creation: HRESULT=0x00000000
+Gate B frame=0 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=0 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358033, right_red: 0.7556558, debug_errors: 0, device_removed: 0 }
+Gate B frame=1: translation=1px jitter=(-0.25,0.25) reset=false frame_time=16.667ms
+Gate B frame=1 harness creation: HRESULT=0x00000000
+Gate B frame=1 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=1 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09814453, max_red: 0.8461914, left_red: 0.1911964, right_red: 0.7527707, debug_errors: 0, device_removed: 0 }
+Gate B frame=2: translation=2px jitter=(0.125,-0.125) reset=false frame_time=16.667ms
+Gate B frame=2 harness creation: HRESULT=0x00000000
+Gate B frame=2 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=2 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09564209, max_red: 0.84228516, left_red: 0.18858762, right_red: 0.749445, debug_errors: 0, device_removed: 0 }
+Profile explicit destroy: OK
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Gate B after frame-resource cleanup:
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Depth/motion profile: PASSED (ReversedFinite, Pixels, Render, Included)
+Gate B debug layer: HRESULT=0x00000000
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Gate B device creation: HRESULT=0x00000000
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Depth/motion profile: depth=ReversedFinite units=Uv resolution=Display jitter=Excluded estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }
+Gate B public construction: OK native_code=0x00000000
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+Gate B frame=0: translation=0px jitter=(0.25,-0.25) reset=true frame_time=16.667ms
+Gate B frame=0 harness creation: HRESULT=0x00000000
+Gate B frame=0 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=0 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358033, right_red: 0.7556558, debug_errors: 0, device_removed: 0 }
+Gate B frame=1: translation=1px jitter=(-0.25,0.25) reset=false frame_time=16.667ms
+Gate B frame=1 harness creation: HRESULT=0x00000000
+Gate B frame=1 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=1 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09906006, max_red: 0.8461914, left_red: 0.19120963, right_red: 0.75277025, debug_errors: 0, device_removed: 0 }
+Gate B frame=2: translation=2px jitter=(0.125,-0.125) reset=false frame_time=16.667ms
+Gate B frame=2 harness creation: HRESULT=0x00000000
+Gate B frame=2 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=2 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.0960083, max_red: 0.84228516, left_red: 0.18859795, right_red: 0.7494786, debug_errors: 0, device_removed: 0 }
+Profile explicit destroy: OK
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Gate B after frame-resource cleanup:
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Depth/motion profile: PASSED (ReversedFinite, Uv, Display, Excluded)
+Gate B debug layer: HRESULT=0x00000000
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Gate B device creation: HRESULT=0x00000000
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Depth/motion profile: depth=StandardInfinite units=Uv resolution=Render jitter=Included estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }
+Gate B public construction: OK native_code=0x00000000
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+Gate B frame=0: translation=0px jitter=(0.25,-0.25) reset=true frame_time=16.667ms
+Gate B frame=0 harness creation: HRESULT=0x00000000
+Gate B frame=0 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=0 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358033, right_red: 0.7556558, debug_errors: 0, device_removed: 0 }
+Gate B frame=1: translation=1px jitter=(-0.25,0.25) reset=false frame_time=16.667ms
+Gate B frame=1 harness creation: HRESULT=0x00000000
+Gate B frame=1 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=1 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09906006, max_red: 0.8461914, left_red: 0.19120339, right_red: 0.75277156, debug_errors: 0, device_removed: 0 }
+Gate B frame=2: translation=2px jitter=(0.125,-0.125) reset=false frame_time=16.667ms
+Gate B frame=2 harness creation: HRESULT=0x00000000
+Gate B frame=2 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=2 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.090026855, max_red: 0.8432617, left_red: 0.18859723, right_red: 0.7494574, debug_errors: 0, device_removed: 0 }
+Profile explicit destroy: OK
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Gate B after frame-resource cleanup:
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Depth/motion profile: PASSED (StandardInfinite, Uv, Render, Included)
+Gate B debug layer: HRESULT=0x00000000
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Gate B device creation: HRESULT=0x00000000
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Depth/motion profile: depth=StandardInfinite units=Pixels resolution=Display jitter=Excluded estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }
+Gate B public construction: OK native_code=0x00000000
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+Gate B frame=0: translation=0px jitter=(0.25,-0.25) reset=true frame_time=16.667ms
+Gate B frame=0 harness creation: HRESULT=0x00000000
+Gate B frame=0 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=0 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358033, right_red: 0.7556558, debug_errors: 0, device_removed: 0 }
+Gate B frame=1: translation=1px jitter=(-0.25,0.25) reset=false frame_time=16.667ms
+Gate B frame=1 harness creation: HRESULT=0x00000000
+Gate B frame=1 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=1 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09814453, max_red: 0.8461914, left_red: 0.1911964, right_red: 0.7527707, debug_errors: 0, device_removed: 0 }
+Gate B frame=2: translation=2px jitter=(0.125,-0.125) reset=false frame_time=16.667ms
+Gate B frame=2 harness creation: HRESULT=0x00000000
+Gate B frame=2 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=2 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09564209, max_red: 0.84228516, left_red: 0.18858762, right_red: 0.749445, debug_errors: 0, device_removed: 0 }
+Profile explicit destroy: OK
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Gate B after frame-resource cleanup:
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Depth/motion profile: PASSED (StandardInfinite, Pixels, Display, Excluded)
+Gate B debug layer: HRESULT=0x00000000
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Gate B device creation: HRESULT=0x00000000
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Depth/motion profile: depth=ReversedInfinite units=Pixels resolution=Render jitter=Excluded estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }
+Gate B public construction: OK native_code=0x00000000
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+Gate B frame=0: translation=0px jitter=(0.25,-0.25) reset=true frame_time=16.667ms
+Gate B frame=0 harness creation: HRESULT=0x00000000
+Gate B frame=0 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=0 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358033, right_red: 0.7556558, debug_errors: 0, device_removed: 0 }
+Gate B frame=1: translation=1px jitter=(-0.25,0.25) reset=false frame_time=16.667ms
+Gate B frame=1 harness creation: HRESULT=0x00000000
+Gate B frame=1 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=1 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09814453, max_red: 0.8461914, left_red: 0.1911964, right_red: 0.7527707, debug_errors: 0, device_removed: 0 }
+Gate B frame=2: translation=2px jitter=(0.125,-0.125) reset=false frame_time=16.667ms
+Gate B frame=2 harness creation: HRESULT=0x00000000
+Gate B frame=2 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=2 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09564209, max_red: 0.84228516, left_red: 0.18858762, right_red: 0.749445, debug_errors: 0, device_removed: 0 }
+Profile explicit destroy: OK
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Gate B after frame-resource cleanup:
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Depth/motion profile: PASSED (ReversedInfinite, Pixels, Render, Excluded)
+Gate B debug layer: HRESULT=0x00000000
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5283840
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Gate B device creation: HRESULT=0x00000000
+Selected-device AMD check: vendor=0x1002 device=0x7590 hardware_amd=true
+Depth/motion profile: depth=ReversedInfinite units=Uv resolution=Display jitter=Included estimate=GpuMemoryUsage { total_bytes: 28180480, aliasable_bytes: 0 }
+Gate B public construction: OK native_code=0x00000000
+Provider query: code=0x00000000
+M6 provider: id=0xf5a5ca1e01001001; name=4.1.1
+Gate B frame=0: translation=0px jitter=(0.25,-0.25) reset=true frame_time=16.667ms
+Gate B frame=0 harness creation: HRESULT=0x00000000
+Gate B frame=0 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=0 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.1005249, max_red: 0.84765625, left_red: 0.19358033, right_red: 0.7556558, debug_errors: 0, device_removed: 0 }
+Gate B frame=1: translation=1px jitter=(-0.25,0.25) reset=false frame_time=16.667ms
+Gate B frame=1 harness creation: HRESULT=0x00000000
+Gate B frame=1 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=1 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09893799, max_red: 0.8461914, left_red: 0.19129677, right_red: 0.75266916, debug_errors: 0, device_removed: 0 }
+Gate B frame=2: translation=2px jitter=(0.125,-0.125) reset=false frame_time=16.667ms
+Gate B frame=2 harness creation: HRESULT=0x00000000
+Gate B frame=2 public dispatch: OK native_code=0x00000000
+DX12 readback recording: HRESULT=0x00000000
+DX12 list close: HRESULT=0x00000000
+DX12 submission: ExecuteCommandLists issued (no return value)
+DX12 signal: HRESULT=0x00000000
+DX12 fence completion: HRESULT=0x00000000 timeout_ms=60000
+DX12 mapped readback: HRESULT=0x00000000
+Gate B frame=2 GPU readback: Metrics { width: 640, height: 360, finite_pixels: 230400, changed_pixels: 230400, min_red: 0.09576416, max_red: 0.8442383, left_red: 0.18835017, right_red: 0.748902, debug_errors: 0, device_removed: 0 }
+Profile explicit destroy: OK
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Gate B after frame-resource cleanup:
+Device checkpoint: debug_errors=0 device_removed=0x00000000
+Depth/motion profile: PASSED (ReversedInfinite, Uv, Display, Included)
+Depth/motion dispatch: PASSED

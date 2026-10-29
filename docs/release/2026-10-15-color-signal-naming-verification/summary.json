@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-15",
+  "sdk": "v2.3.0",
+  "target": "x86_64-pc-windows-msvc",
+  "gpu": "AMD Radeon RX 9060 XT",
+  "vendor_id": "0x1002",
+  "device_id": "0x7590",
+  "driver": "32.0.31041.1004",
+  "runs": [
+    {
+      "label": "initial",
+      "profile": "experiment-color-signal",
+      "status": "passed",
+      "cases": 60,
+      "frames": 144,
+      "unchanged_source_inputs": true,
+      "provider": [
+        "0xf5a5ca1e01001001",
+        "4.1.1"
+      ],
+      "same_code_hypothesis_failure_frames": [
+        {
+          "arm": "pre-srgb-linear-before-encode",
+          "frame": 2
+        },
+        {
+          "arm": "pre-srgb-linear-before-encode",
+          "frame": 2
+        },
+        {
+          "arm": "pre-srgb-linear-before-encode",
+          "frame": 2
+        },
+        {
+          "arm": "pre-pq-linear-before-encode",
+          "frame": 1
+        },
+        {
+          "arm": "pre-pq-linear-before-encode",
+          "frame": 2
+        },
+        {
+          "arm": "pre-pq-linear-before-encode",
+          "frame": 1
+        },
+        {
+          "arm": "pre-pq-linear-before-encode",
+          "frame": 2
+        },
+        {
+          "arm": "pre-pq-linear-before-encode",
+          "frame": 1
+        },
+        {
+          "arm": "pre-pq-linear-before-encode",
+          "frame": 2
+        },
+        {
+          "arm": "pre-pq-encoded-after-encode",
+          "frame": 1
+        },
+        {
+          "arm": "pre-pq-encoded-after-encode",
+          "frame": 2
+        },
+        {
+          "arm": "pre-pq-encoded-after-encode",
+          "frame": 1
+        },
+        {
+          "arm": "pre-pq-encoded-after-encode",
+          "frame": 2
+        },
+        {
+          "arm": "pre-pq-encoded-after-encode",
+          "frame": 1
+        },
+        {
+          "arm": "pre-pq-encoded-after-encode",
+          "frame": 2
+        }
+      ],
+      "local_attempt": "target/verification/20261015T215023Z-experiment-color-signal-7022d7c93afb"
+    },
+    {
+      "label": "controls",
+      "profile": "experiment-colour-signal-controls",
+      "status": "passed",
+      "cases": 54,
+      "frames": 126,
+      "unchanged_source_inputs": true,
+      "provider": [
+        "0xf5a5ca1e01001001",
+        "4.1.1"
+      ],
+      "same_code_hypothesis_failure_frames": [],
+      "local_attempt": "target/verification/20261015T215141Z-experiment-colour-signal-controls-c4a493e7f1b9"
+    }
+  ],
+  "legacy_probe": {
+    "selector": "upscaler::dx12::native_dispatch::native_colour_signal",
+    "environment": "FSR_SDK_COLOUR_* only",
+    "frames": 3,
+    "status": "passed",
+    "exports": [
+      "gpu_set_color_signal",
+      "gpu_set_colour_signal"
+    ],
+    "invalid_export_inputs": "both return E_INVALIDARG",
+    "conflicting_environment": "FSR_SDK_COLOR_ENCODING=pq with FSR_SDK_COLOUR_ENCODING=srgb rejects before context creation"
+  },
+  "limits": "One Windows/GPU/provider configuration. Numerical failures remain observations; no quality, universal signal-semantics or performance acceptance.",
+  "host_checks": {
+    "python_canonical_entry": {
+      "passed": 12
+    },
+    "python_legacy_entry": {
+      "passed": 12,
+      "same_suite": true
+    },
+    "infrastructure_final_rerun": {
+      "passed": 192,
+      "skipped": 4,
+      "failed": 0
+    },
+    "infrastructure_initial_run": {
+      "failed": 1,
+      "reason": "Export-consistency assumption rejected the intentionally retained legacy export; corrected and rerun."
+    },
+    "rust_environment_tests": {
+      "current_passed": 3,
+      "msrv_1_88_0_passed": 3
+    },
+    "clippy": "passed; all wrapper targets with movable; warnings denied",
+    "format": "passed",
+    "protocol_bytes": "identical to pre-migration originals",
+    "historical_links": "preserved"
+  }
+}

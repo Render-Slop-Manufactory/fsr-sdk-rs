@@ -1,0 +1,18 @@
+[
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/frame.rs",
+    "before_sha256": "89573253df0b3df01b2ab9b159d0820ff92cd77e2ec7907fb38d621662cb7032",
+    "after_sha256": "6f01efaf1597aab098a44d1ae43683e595db909fa93c45123712a7d8efd13c54",
+    "change": "Rustdoc only; reversing this exact replacement reproduces the GPU-run source hash",
+    "before": "    /// Output stays at its maximum. This setter performs no native call.",
+    "after": "    /// Active output is selected independently. This setter performs no native call."
+  },
+  {
+    "path": "crates/fsr-sdk/src/upscaler/dx12/movable.rs",
+    "before_sha256": "7e80163765d7c44ab85a4480f6195acd807d2ee12b178d1c4bf718a8ba31b996",
+    "after_sha256": "7121fb61e260793d92e00e586b5de7d150640a5629834355620c175ec13f766a",
+    "change": "Rustdoc only; reversing this exact replacement reproduces the GPU-run source hash",
+    "before": "    /// Dynamic contexts may vary active render size; no submission or GPU wait is performed.",
+    "after": "    /// Dynamic contexts may vary active render/output sizes; no submission or GPU wait is performed."
+  }
+]

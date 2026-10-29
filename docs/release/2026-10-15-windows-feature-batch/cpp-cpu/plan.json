@@ -1,0 +1,835 @@
+{
+  "schema_version": 1,
+  "profile": "experiment-cpu-comparison",
+  "required_cases": [
+    {
+      "id": "equipment.toolchain",
+      "claim": "Actual compiler, Cargo, Python and host identity",
+      "requires": [],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Actual compiler, Cargo, Python and host identity"
+      }
+    },
+    {
+      "id": "windows.environment",
+      "claim": "x64 Windows developer-tool environment",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "x64 Windows developer-tool environment"
+      }
+    },
+    {
+      "id": "abi.headers",
+      "claim": "Four hash-verified pinned SDK headers",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Four hash-verified pinned SDK headers"
+      }
+    },
+    {
+      "id": "abi.common",
+      "claim": "Independent native common ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native common ABI assertions"
+      }
+    },
+    {
+      "id": "abi.creation",
+      "claim": "Independent native creation ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native creation ABI assertions"
+      }
+    },
+    {
+      "id": "abi.dispatch",
+      "claim": "Independent native dispatch ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native dispatch ABI assertions"
+      }
+    },
+    {
+      "id": "abi.query",
+      "claim": "Independent native query ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native query ABI assertions"
+      }
+    },
+    {
+      "id": "native.sdk",
+      "claim": "Pinned, signed local loader/provider deployment",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Pinned, signed local loader/provider deployment"
+      }
+    },
+    {
+      "id": "native.helper",
+      "claim": "DX12 submission, fencing and readback equipment",
+      "requires": [
+        "equipment.toolchain",
+        "native.sdk",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "abi.query"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "DX12 submission, fencing and readback equipment"
+      }
+    },
+    {
+      "id": "cpu.build.fsr_sdk",
+      "claim": "Discover and stage exact fsr_sdk test executable",
+      "requires": [
+        "equipment.toolchain",
+        "native.helper"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Discover and stage exact fsr_sdk test executable"
+      }
+    },
+    {
+      "id": "cpu.build.cpp",
+      "claim": "Independent optimized native C++ executable",
+      "requires": [
+        "equipment.toolchain",
+        "native.helper"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent optimized native C++ executable"
+      }
+    },
+    {
+      "id": "cpu.diagnostics.cpp-minimal",
+      "claim": "cpp-minimal debug validity control",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.build.fsr_sdk",
+        "cpu.build.cpp"
+      ],
+      "selector": "cpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "cpp-minimal",
+        "debug_layer": true,
+        "preinspect": false,
+        "frames": 4,
+        "measured_frames": 0,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.diagnostics.rust-raw",
+      "claim": "rust-raw debug validity control",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.diagnostics.cpp-minimal"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": true,
+        "preinspect": false,
+        "frames": 4,
+        "measured_frames": 0,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.diagnostics.rust-wrapper",
+      "claim": "rust-wrapper debug validity control",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.diagnostics.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": true,
+        "preinspect": false,
+        "frames": 4,
+        "measured_frames": 0,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block1.cpp-minimal",
+      "claim": "cpp-minimal CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.diagnostics.rust-wrapper"
+      ],
+      "selector": "cpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "cpp-minimal",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block1.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block1.cpp-minimal"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block1.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block1.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block2.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block1.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block2.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block2.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block2.cpp-minimal",
+      "claim": "cpp-minimal CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block2.rust-raw"
+      ],
+      "selector": "cpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "cpp-minimal",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block3.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block2.cpp-minimal"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block3.cpp-minimal",
+      "claim": "cpp-minimal CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block3.rust-raw"
+      ],
+      "selector": "cpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "cpp-minimal",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block3.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block3.cpp-minimal"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block4.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block3.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block4.cpp-minimal",
+      "claim": "cpp-minimal CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block4.rust-wrapper"
+      ],
+      "selector": "cpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "cpp-minimal",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block4.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block4.cpp-minimal"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block5.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block4.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block5.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block5.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block5.cpp-minimal",
+      "claim": "cpp-minimal CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block5.rust-wrapper"
+      ],
+      "selector": "cpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "cpp-minimal",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block6.cpp-minimal",
+      "claim": "cpp-minimal CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block5.cpp-minimal"
+      ],
+      "selector": "cpu-reference.exe",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "cpp-minimal",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block6.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block6.cpp-minimal"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.block6.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block6.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm1.prepared.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block6.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm1.prepared.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm1.prepared.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm1.preinspected.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm1.prepared.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": true,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm1.preinspected.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm1.preinspected.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": true,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm2.preinspected.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm1.preinspected.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": true,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm2.preinspected.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm2.preinspected.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": true,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm2.prepared.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm2.preinspected.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm2.prepared.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm2.prepared.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm3.prepared.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm2.prepared.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm3.preinspected.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm3.prepared.rust-raw"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": true,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm3.prepared.rust-wrapper",
+      "claim": "rust-wrapper CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm3.preinspected.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-wrapper",
+        "debug_layer": false,
+        "preinspect": false,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.warm3.preinspected.rust-raw",
+      "claim": "rust-raw CPU recording process",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.warm3.prepared.rust-wrapper"
+      ],
+      "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+      "scope": "native-experiment",
+      "expectation": {
+        "arm": "rust-raw",
+        "debug_layer": false,
+        "preinspect": true,
+        "frames": 160,
+        "measured_frames": 128,
+        "watchdog_seconds": 180,
+        "contract": "Matched valid execution and complete evidence, no speed gate"
+      }
+    },
+    {
+      "id": "cpu.analysis",
+      "claim": "Process-block differences and warm-state sensitivity",
+      "requires": [
+        "equipment.toolchain",
+        "cpu.block1.cpp-minimal",
+        "cpu.block1.rust-raw",
+        "cpu.block1.rust-wrapper",
+        "cpu.block2.rust-wrapper",
+        "cpu.block2.rust-raw",
+        "cpu.block2.cpp-minimal",
+        "cpu.block3.rust-raw",
+        "cpu.block3.cpp-minimal",
+        "cpu.block3.rust-wrapper",
+        "cpu.block4.rust-wrapper",
+        "cpu.block4.cpp-minimal",
+        "cpu.block4.rust-raw",
+        "cpu.block5.rust-raw",
+        "cpu.block5.rust-wrapper",
+        "cpu.block5.cpp-minimal",
+        "cpu.block6.cpp-minimal",
+        "cpu.block6.rust-wrapper",
+        "cpu.block6.rust-raw",
+        "cpu.warm1.prepared.rust-wrapper",
+        "cpu.warm1.prepared.rust-raw",
+        "cpu.warm1.preinspected.rust-wrapper",
+        "cpu.warm1.preinspected.rust-raw",
+        "cpu.warm2.preinspected.rust-raw",
+        "cpu.warm2.preinspected.rust-wrapper",
+        "cpu.warm2.prepared.rust-raw",
+        "cpu.warm2.prepared.rust-wrapper",
+        "cpu.warm3.prepared.rust-raw",
+        "cpu.warm3.preinspected.rust-wrapper",
+        "cpu.warm3.prepared.rust-wrapper",
+        "cpu.warm3.preinspected.rust-raw"
+      ],
+      "selector": "",
+      "scope": "offline-analysis",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Process-block differences and warm-state sensitivity"
+      }
+    }
+  ],
+  "resume": "disabled"
+}

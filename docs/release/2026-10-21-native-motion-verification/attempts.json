@@ -1,0 +1,51 @@
+[
+  {
+    "label": "native",
+    "directory": "20261020T225445Z-native-motion-scale-8162e657537e",
+    "status": "passed",
+    "cases": 102,
+    "inputs_unchanged": true
+  },
+  {
+    "label": "ci-sandbox",
+    "directory": "20261020T225445Z-ci-de0ec6223b9c",
+    "status": "failed",
+    "cases": 129,
+    "inputs_unchanged": true
+  },
+  {
+    "label": "ci",
+    "directory": "20261020T225744Z-ci-faec21e236ca",
+    "status": "passed",
+    "cases": 129,
+    "inputs_unchanged": true
+  },
+  {
+    "label": "msrv",
+    "directory": "20261020T225918Z-msrv-d5510b549489",
+    "status": "passed",
+    "cases": 112,
+    "inputs_unchanged": true
+  },
+  {
+    "label": "package-workspace-error",
+    "directory": "20261020T230135Z-native-motion-package-audit-b92c3a47a33c",
+    "status": "failed",
+    "cases": 4,
+    "inputs_unchanged": true
+  },
+  {
+    "label": "package-path-error",
+    "directory": "20261020T230303Z-native-motion-package-audit-53eee1e2cca9",
+    "status": "failed",
+    "cases": 5,
+    "inputs_unchanged": true
+  },
+  {
+    "label": "package",
+    "directory": "20261020T230335Z-native-motion-package-audit-3b0965455339",
+    "status": "passed",
+    "cases": 5,
+    "inputs_unchanged": true
+  }
+]

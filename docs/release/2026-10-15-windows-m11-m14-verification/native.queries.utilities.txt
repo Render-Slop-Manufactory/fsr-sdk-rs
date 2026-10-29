@@ -1,0 +1,28 @@
+Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514
+Local GPU memory: dedicated_bytes=16974905344 budget_bytes=16165400576 current_usage_bytes=5279744
+Driver query: HRESULT=0x00000000; version=32.0.31041.1004
+Provider: ProviderInfo { id: ProviderId(17700776140664213505), name: "4.1.1" }
+Utility quality=NativeAa: pre_ratio=1.0 pre_render=Dimensions { width: 1920, height: 1080 } live_ratio=1.0 live_render=Dimensions { width: 1920, height: 1080 }
+Utility quality=Quality: pre_ratio=1.5 pre_render=Dimensions { width: 1280, height: 720 } live_ratio=1.5 live_render=Dimensions { width: 1280, height: 720 }
+Utility quality=Balanced: pre_ratio=1.7 pre_render=Dimensions { width: 1129, height: 635 } live_ratio=1.7 live_render=Dimensions { width: 1129, height: 635 }
+Utility quality=Performance: pre_ratio=2.0 pre_render=Dimensions { width: 960, height: 540 } live_ratio=2.0 live_render=Dimensions { width: 960, height: 540 }
+Utility quality=UltraPerformance: pre_ratio=3.0 pre_render=Dimensions { width: 640, height: 360 } live_ratio=3.0 live_render=Dimensions { width: 640, height: 360 }
+Utility pre jitter: phase=JitterPhaseCount(18) index=0 offset=JitterOffsetPixels { x: 0.0, y: -0.16666666 }
+Utility pre jitter: phase=JitterPhaseCount(18) index=9 offset=JitterOffsetPixels { x: -0.1875, y: -0.12962961 }
+Utility pre jitter: phase=JitterPhaseCount(18) index=17 offset=JitterOffsetPixels { x: -0.21875, y: -0.4259259 }
+Utility live jitter: phase=JitterPhaseCount(18) index=0 offset=JitterOffsetPixels { x: 0.0, y: -0.16666666 }
+Utility live jitter: phase=JitterPhaseCount(18) index=9 offset=JitterOffsetPixels { x: -0.1875, y: -0.12962961 }
+Utility live jitter: phase=JitterPhaseCount(18) index=17 offset=JitterOffsetPixels { x: -0.21875, y: -0.4259259 }
+Provider: ProviderInfo { id: ProviderId(17700776140664213505), name: "4.1.1" }
+Utility quality=NativeAa: pre_ratio=1.0 pre_render=Dimensions { width: 1920, height: 1080 } live_ratio=1.0 live_render=Dimensions { width: 1920, height: 1080 }
+Utility quality=Quality: pre_ratio=1.5 pre_render=Dimensions { width: 1280, height: 720 } live_ratio=1.5 live_render=Dimensions { width: 1280, height: 720 }
+Utility quality=Balanced: pre_ratio=1.7 pre_render=Dimensions { width: 1129, height: 635 } live_ratio=1.7 live_render=Dimensions { width: 1129, height: 635 }
+Utility quality=Performance: pre_ratio=2.0 pre_render=Dimensions { width: 960, height: 540 } live_ratio=2.0 live_render=Dimensions { width: 960, height: 540 }
+Utility quality=UltraPerformance: pre_ratio=3.0 pre_render=Dimensions { width: 640, height: 360 } live_ratio=3.0 live_render=Dimensions { width: 640, height: 360 }
+Utility pre jitter: phase=JitterPhaseCount(18) index=0 offset=JitterOffsetPixels { x: 0.0, y: -0.16666666 }
+Utility pre jitter: phase=JitterPhaseCount(18) index=9 offset=JitterOffsetPixels { x: -0.1875, y: -0.12962961 }
+Utility pre jitter: phase=JitterPhaseCount(18) index=17 offset=JitterOffsetPixels { x: -0.21875, y: -0.4259259 }
+Utility live jitter: phase=JitterPhaseCount(18) index=0 offset=JitterOffsetPixels { x: 0.0, y: -0.16666666 }
+Utility live jitter: phase=JitterPhaseCount(18) index=9 offset=JitterOffsetPixels { x: -0.1875, y: -0.12962961 }
+Utility live jitter: phase=JitterPhaseCount(18) index=17 offset=JitterOffsetPixels { x: -0.21875, y: -0.4259259 }
+Upscaler utility queries: PASSED

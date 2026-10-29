@@ -1,0 +1,538 @@
+[
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "aligned-max",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "height-only",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "rounded-motion-0",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "family": "local",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-0",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "rounded-motion-0-sharp",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "family": "local",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-0-sharp",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "rounded-motion-1",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "family": "local",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-1",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "rounded-motion-1-sharp",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "family": "local",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-1-sharp",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "rounded-motion-2",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "rounded-motion-2-sharp",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "rounded-motion-3",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "rounded-motion-3-sharp",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "stable-max",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "kind": "owner",
+    "selection": "width-only",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "family": "movable",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-0",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "family": "movable",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-0-sharp",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "family": "movable",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-1",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "3.1.5",
+    "family": "movable",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-1-sharp",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "aligned-max",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "height-only",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "rounded-motion-0",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "family": "local",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-0",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "rounded-motion-0-sharp",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "family": "local",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-0-sharp",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "rounded-motion-1",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "family": "local",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-1",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "rounded-motion-1-sharp",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "family": "local",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-1-sharp",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "rounded-motion-2",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "rounded-motion-2-sharp",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "rounded-motion-3",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "rounded-motion-3-sharp",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "stable-max",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "kind": "owner",
+    "selection": "width-only",
+    "input_equal": [
+      true,
+      true,
+      true
+    ],
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "family": "movable",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-0",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "family": "movable",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-0-sharp",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "family": "movable",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-1",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "provider": "4.1.1",
+    "family": "movable",
+    "kind": "UV versus pixels",
+    "selection": "rounded-motion-1-sharp",
+    "output_equal": [
+      true,
+      true,
+      true
+    ]
+  }
+]

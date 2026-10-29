@@ -1,0 +1,2 @@
+# Preserve compact verification evidence bytes.
+* -text whitespace=cr-at-eol

@@ -1,0 +1,92 @@
+[
+  {
+    "path": ".gitattributes",
+    "bytes": 72,
+    "sha256": "e1a560eeda757f14716da54c8632c6548f62946d882baf83a0f28ae016215e8c"
+  },
+  {
+    "path": "ci/cases.json",
+    "bytes": 201229,
+    "sha256": "8c173aad2c7504e17a9375586d1a9e8d8c0c8ff6c672e64546774b03ce7e28f5"
+  },
+  {
+    "path": "ci/infrastructure.tests.txt",
+    "bytes": 28101,
+    "sha256": "fd64ce615742c290aa676c5ce1c9dc4bfd978d8dcb60b8d2ac080d8d7562a331"
+  },
+  {
+    "path": "ci/inputs.json",
+    "bytes": 32450,
+    "sha256": "4c83e06245f85b9c1e21f6b7d69348b016da16d09d6345ca926124833892355f"
+  },
+  {
+    "path": "ci/plan.json",
+    "bytes": 42211,
+    "sha256": "29f34ff399d8cef5c0fde47dbf87581479df4e3dc0519bfe3d2efc799335e5c9"
+  },
+  {
+    "path": "ci/run.json",
+    "bytes": 11455,
+    "sha256": "f3c90c7b3a14c7d17d19d6b67c4309f18f5262a654d679869e06d3d249bc0ec2"
+  },
+  {
+    "path": "ci/rust.movable.test.txt",
+    "bytes": 21562,
+    "sha256": "9643468e24cb2dd2ac5e61492408d13c972b318da1d70d175966fab910334917"
+  },
+  {
+    "path": "msrv/cases.json",
+    "bytes": 179584,
+    "sha256": "f3554eef5cc3f8b58b9792d969a34be8542fea51871089401ab616abd6bb2bb6"
+  },
+  {
+    "path": "msrv/inputs.json",
+    "bytes": 31500,
+    "sha256": "4578333f3a32507af060e78f56279ba5dc157c32a80dee98083bcff36e0c27ce"
+  },
+  {
+    "path": "msrv/plan.json",
+    "bytes": 37195,
+    "sha256": "30e8b1c4764c80be676542a5c8e1a23c92bd1b9f5db9c17f39e6fc1225031b38"
+  },
+  {
+    "path": "msrv/run.json",
+    "bytes": 11326,
+    "sha256": "5134d4a640c8078bb210b3c7a38ad15729dd80418f4f8873ee5ad7a364a6b04b"
+  },
+  {
+    "path": "native/cases.json",
+    "bytes": 100764,
+    "sha256": "5a871285023399e8f511faf90081f7dd55c1110fa51c2d6aa4ecf280f6170008"
+  },
+  {
+    "path": "native/inputs.json",
+    "bytes": 32459,
+    "sha256": "9ddbbacb04a2e7ee378178dff79e2c04d1284ca0d2d24f4bf1c04dd9a5e4c239"
+  },
+  {
+    "path": "native/native.dispatch.supplied-masks.txt",
+    "bytes": 22832,
+    "sha256": "acb7fca9a9dd53ee9b11e53a734b55cc488f435408abefe03feed21643329d7a"
+  },
+  {
+    "path": "native/native.queries.public.txt",
+    "bytes": 950,
+    "sha256": "9750884e0ad150f5ede241e8e2414a4d07ab711eaab9cd425f54d61d6191250b"
+  },
+  {
+    "path": "native/plan.json",
+    "bytes": 17022,
+    "sha256": "c99adeb110ec4b3d3622e71955262f75958952fe08f3d6b13a57b9d9a8fd67a1"
+  },
+  {
+    "path": "native/run.json",
+    "bytes": 2391,
+    "sha256": "56fd7d41568844c03c351f0abc9c570ecbed0c15f39078f8dc5277d9688ccaf4"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 653,
+    "sha256": "bc3f9fac44616ba783b92e8f735371187812a2c2a1cc68fa09f8518f8fd9afd8"
+  }
+]

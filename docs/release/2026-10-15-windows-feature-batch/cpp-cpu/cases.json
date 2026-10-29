@@ -1,0 +1,3773 @@
+{
+  "abi.common": {
+    "id": "abi.common",
+    "claim": "Independent native common ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native common ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:44.408358+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+          "/Fo<run>\\common.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:44.413085+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.common/00-command.stdout.txt",
+        "stderr": "cases/abi.common/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:45.026501+00:00",
+        "elapsed_seconds": 0.611
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:10:45.030192+00:00"
+  },
+  "abi.creation": {
+    "id": "abi.creation",
+    "claim": "Independent native creation ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native creation ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:45.033925+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+          "/Fo<run>\\creation.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:45.038247+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.creation/00-command.stdout.txt",
+        "stderr": "cases/abi.creation/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:45.643109+00:00",
+        "elapsed_seconds": 0.603
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:10:45.647417+00:00"
+  },
+  "abi.dispatch": {
+    "id": "abi.dispatch",
+    "claim": "Independent native dispatch ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native dispatch ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:45.651129+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+          "/Fo<run>\\dispatch.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:45.655083+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.dispatch/00-command.stdout.txt",
+        "stderr": "cases/abi.dispatch/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:45.803831+00:00",
+        "elapsed_seconds": 0.147
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:10:45.811032+00:00"
+  },
+  "abi.headers": {
+    "id": "abi.headers",
+    "claim": "Four hash-verified pinned SDK headers",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Four hash-verified pinned SDK headers"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:44.398113+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+      "headers": [
+        {
+          "path": "api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        }
+      ]
+    },
+    "finished_utc": "2026-10-15T18:10:44.404052+00:00"
+  },
+  "abi.query": {
+    "id": "abi.query",
+    "claim": "Independent native query ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native query ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:45.814678+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\query_native_abi.cpp",
+          "/Fo<run>\\query.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:45.818874+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.query/00-command.stdout.txt",
+        "stderr": "cases/abi.query/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:45.954826+00:00",
+        "elapsed_seconds": 0.134
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:10:45.959182+00:00"
+  },
+  "cpu.analysis": {
+    "id": "cpu.analysis",
+    "claim": "Process-block differences and warm-state sensitivity",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block1.cpp-minimal",
+      "cpu.block1.rust-raw",
+      "cpu.block1.rust-wrapper",
+      "cpu.block2.rust-wrapper",
+      "cpu.block2.rust-raw",
+      "cpu.block2.cpp-minimal",
+      "cpu.block3.rust-raw",
+      "cpu.block3.cpp-minimal",
+      "cpu.block3.rust-wrapper",
+      "cpu.block4.rust-wrapper",
+      "cpu.block4.cpp-minimal",
+      "cpu.block4.rust-raw",
+      "cpu.block5.rust-raw",
+      "cpu.block5.rust-wrapper",
+      "cpu.block5.cpp-minimal",
+      "cpu.block6.cpp-minimal",
+      "cpu.block6.rust-wrapper",
+      "cpu.block6.rust-raw",
+      "cpu.warm1.prepared.rust-wrapper",
+      "cpu.warm1.prepared.rust-raw",
+      "cpu.warm1.preinspected.rust-wrapper",
+      "cpu.warm1.preinspected.rust-raw",
+      "cpu.warm2.preinspected.rust-raw",
+      "cpu.warm2.preinspected.rust-wrapper",
+      "cpu.warm2.prepared.rust-raw",
+      "cpu.warm2.prepared.rust-wrapper",
+      "cpu.warm3.prepared.rust-raw",
+      "cpu.warm3.preinspected.rust-wrapper",
+      "cpu.warm3.prepared.rust-wrapper",
+      "cpu.warm3.preinspected.rust-raw"
+    ],
+    "selector": "",
+    "scope": "offline-analysis",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Process-block differences and warm-state sensitivity"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:27.969911+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "blocks": [
+        {
+          "block": 1,
+          "order": [
+            "cpp-minimal",
+            "rust-raw",
+            "rust-wrapper"
+          ],
+          "process_median_ns": {
+            "cpp-minimal": 73700.0,
+            "rust-raw": 71000.0,
+            "rust-wrapper": 74500.0
+          },
+          "wrapper_minus_cpp_ns": 800.0,
+          "raw_minus_cpp_ns": -2700.0,
+          "wrapper_minus_raw_ns": 3500.0
+        },
+        {
+          "block": 2,
+          "order": [
+            "rust-wrapper",
+            "rust-raw",
+            "cpp-minimal"
+          ],
+          "process_median_ns": {
+            "rust-wrapper": 47000.0,
+            "rust-raw": 40500.0,
+            "cpp-minimal": 38700.0
+          },
+          "wrapper_minus_cpp_ns": 8300.0,
+          "raw_minus_cpp_ns": 1800.0,
+          "wrapper_minus_raw_ns": 6500.0
+        },
+        {
+          "block": 3,
+          "order": [
+            "rust-raw",
+            "cpp-minimal",
+            "rust-wrapper"
+          ],
+          "process_median_ns": {
+            "rust-raw": 58500.0,
+            "cpp-minimal": 39500.0,
+            "rust-wrapper": 50300.0
+          },
+          "wrapper_minus_cpp_ns": 10800.0,
+          "raw_minus_cpp_ns": 19000.0,
+          "wrapper_minus_raw_ns": -8200.0
+        },
+        {
+          "block": 4,
+          "order": [
+            "rust-wrapper",
+            "cpp-minimal",
+            "rust-raw"
+          ],
+          "process_median_ns": {
+            "rust-wrapper": 39900.0,
+            "cpp-minimal": 38800.0,
+            "rust-raw": 49800.0
+          },
+          "wrapper_minus_cpp_ns": 1100.0,
+          "raw_minus_cpp_ns": 11000.0,
+          "wrapper_minus_raw_ns": -9900.0
+        },
+        {
+          "block": 5,
+          "order": [
+            "rust-raw",
+            "rust-wrapper",
+            "cpp-minimal"
+          ],
+          "process_median_ns": {
+            "rust-raw": 41000.0,
+            "rust-wrapper": 56900.0,
+            "cpp-minimal": 37800.0
+          },
+          "wrapper_minus_cpp_ns": 19100.0,
+          "raw_minus_cpp_ns": 3200.0,
+          "wrapper_minus_raw_ns": 15900.0
+        },
+        {
+          "block": 6,
+          "order": [
+            "cpp-minimal",
+            "rust-wrapper",
+            "rust-raw"
+          ],
+          "process_median_ns": {
+            "cpp-minimal": 40500.0,
+            "rust-wrapper": 44600.0,
+            "rust-raw": 52200.0
+          },
+          "wrapper_minus_cpp_ns": 4100.0,
+          "raw_minus_cpp_ns": 11700.0,
+          "wrapper_minus_raw_ns": -7600.0
+        }
+      ],
+      "warm_state_controls": [
+        {
+          "block": 1,
+          "process_median_ns": {
+            "prepared": {
+              "rust-wrapper": 51200.0,
+              "rust-raw": 44600.0
+            },
+            "preinspected": {
+              "rust-wrapper": 44300.0,
+              "rust-raw": 40600.0
+            }
+          },
+          "delta_ns": {
+            "prepared": 6600.0,
+            "preinspected": 3700.0
+          }
+        },
+        {
+          "block": 2,
+          "process_median_ns": {
+            "prepared": {
+              "rust-wrapper": 81000.0,
+              "rust-raw": 65600.0
+            },
+            "preinspected": {
+              "rust-wrapper": 42600.0,
+              "rust-raw": 48400.0
+            }
+          },
+          "delta_ns": {
+            "prepared": 15400.0,
+            "preinspected": -5800.0
+          }
+        },
+        {
+          "block": 3,
+          "process_median_ns": {
+            "prepared": {
+              "rust-wrapper": 75400.0,
+              "rust-raw": 66700.0
+            },
+            "preinspected": {
+              "rust-wrapper": 89200.0,
+              "rust-raw": 99600.0
+            }
+          },
+          "delta_ns": {
+            "prepared": 8700.0,
+            "preinspected": -10400.0
+          }
+        }
+      ],
+      "performance_threshold": null
+    },
+    "finished_utc": "2026-10-15T18:11:27.980700+00:00"
+  },
+  "cpu.block1.cpp-minimal": {
+    "id": "cpu.block1.cpp-minimal",
+    "claim": "cpp-minimal CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.diagnostics.rust-wrapper"
+    ],
+    "selector": "cpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "cpp-minimal",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:09.230976+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:09.245775+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block1.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/cpu.block1.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block1.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:10.517519+00:00",
+        "elapsed_seconds": 1.267
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 51600.0,
+        "median_ns": 73700.0,
+        "p95_ns": 390500.0,
+        "max_ns": 4967000.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:10.542394+00:00"
+  },
+  "cpu.block1.rust-raw": {
+    "id": "cpu.block1.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block1.cpp-minimal"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:10.548153+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:10.552561+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block1.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.block1.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block1.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:11.382642+00:00",
+        "elapsed_seconds": 0.828
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 47400.0,
+        "median_ns": 71000.0,
+        "p95_ns": 186600.0,
+        "max_ns": 1637600.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:11.414900+00:00"
+  },
+  "cpu.block1.rust-wrapper": {
+    "id": "cpu.block1.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block1.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:11.423022+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:11.426045+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block1.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.block1.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block1.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:12.421635+00:00",
+        "elapsed_seconds": 0.992
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 50300.0,
+        "median_ns": 74500.0,
+        "p95_ns": 288400.0,
+        "max_ns": 1910800.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:12.453989+00:00"
+  },
+  "cpu.block2.cpp-minimal": {
+    "id": "cpu.block2.cpp-minimal",
+    "claim": "cpp-minimal CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block2.rust-raw"
+    ],
+    "selector": "cpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "cpp-minimal",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:13.481727+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:13.484374+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block2.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/cpu.block2.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block2.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:13.881502+00:00",
+        "elapsed_seconds": 0.395
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 30400.0,
+        "median_ns": 38700.0,
+        "p95_ns": 53800.0,
+        "max_ns": 76200.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:13.895510+00:00"
+  },
+  "cpu.block2.rust-raw": {
+    "id": "cpu.block2.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block2.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:13.015025+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:13.017467+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block2.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.block2.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block2.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:13.447664+00:00",
+        "elapsed_seconds": 0.429
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 32500.0,
+        "median_ns": 40500.0,
+        "p95_ns": 70500.0,
+        "max_ns": 104500.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:13.476920+00:00"
+  },
+  "cpu.block2.rust-wrapper": {
+    "id": "cpu.block2.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block1.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:12.460729+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:12.463509+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block2.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.block2.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block2.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:12.987001+00:00",
+        "elapsed_seconds": 0.521
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 34100.0,
+        "median_ns": 47000.0,
+        "p95_ns": 73000.0,
+        "max_ns": 79000.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:13.010711+00:00"
+  },
+  "cpu.block3.cpp-minimal": {
+    "id": "cpu.block3.cpp-minimal",
+    "claim": "cpp-minimal CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block3.rust-raw"
+    ],
+    "selector": "cpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "cpp-minimal",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:14.383685+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:14.385762+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block3.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/cpu.block3.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block3.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:14.800292+00:00",
+        "elapsed_seconds": 0.413
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 31800.0,
+        "median_ns": 39500.0,
+        "p95_ns": 63400.0,
+        "max_ns": 79100.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:14.819159+00:00"
+  },
+  "cpu.block3.rust-raw": {
+    "id": "cpu.block3.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block2.cpp-minimal"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:13.899590+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:13.901805+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block3.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.block3.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block3.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:14.350420+00:00",
+        "elapsed_seconds": 0.447
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 33200.0,
+        "median_ns": 58500.0,
+        "p95_ns": 101300.0,
+        "max_ns": 332800.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:14.378468+00:00"
+  },
+  "cpu.block3.rust-wrapper": {
+    "id": "cpu.block3.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block3.cpp-minimal"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:14.823634+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:14.825861+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block3.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.block3.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block3.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:15.288995+00:00",
+        "elapsed_seconds": 0.461
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 35000.0,
+        "median_ns": 50300.0,
+        "p95_ns": 77700.0,
+        "max_ns": 97300.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:15.313436+00:00"
+  },
+  "cpu.block4.cpp-minimal": {
+    "id": "cpu.block4.cpp-minimal",
+    "claim": "cpp-minimal CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block4.rust-wrapper"
+    ],
+    "selector": "cpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "cpp-minimal",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:15.752524+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:15.755125+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block4.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/cpu.block4.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block4.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:16.131968+00:00",
+        "elapsed_seconds": 0.375
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 32000.0,
+        "median_ns": 38800.0,
+        "p95_ns": 62300.0,
+        "max_ns": 72500.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:16.148512+00:00"
+  },
+  "cpu.block4.rust-raw": {
+    "id": "cpu.block4.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block4.cpp-minimal"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:16.152898+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:16.155466+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block4.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.block4.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block4.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:16.630237+00:00",
+        "elapsed_seconds": 0.473
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 32100.0,
+        "median_ns": 49800.0,
+        "p95_ns": 68500.0,
+        "max_ns": 179400.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:16.656755+00:00"
+  },
+  "cpu.block4.rust-wrapper": {
+    "id": "cpu.block4.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block3.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:15.318079+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:15.320354+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block4.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.block4.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block4.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:15.727144+00:00",
+        "elapsed_seconds": 0.405
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 31100.0,
+        "median_ns": 39900.0,
+        "p95_ns": 71700.0,
+        "max_ns": 84000.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:15.748172+00:00"
+  },
+  "cpu.block5.cpp-minimal": {
+    "id": "cpu.block5.cpp-minimal",
+    "claim": "cpp-minimal CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block5.rust-wrapper"
+    ],
+    "selector": "cpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "cpp-minimal",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:17.593282+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:17.595260+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block5.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/cpu.block5.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block5.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:17.979425+00:00",
+        "elapsed_seconds": 0.382
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 29600.0,
+        "median_ns": 37800.0,
+        "p95_ns": 66000.0,
+        "max_ns": 84900.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:17.994499+00:00"
+  },
+  "cpu.block5.rust-raw": {
+    "id": "cpu.block5.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block4.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:16.661047+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:16.663249+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block5.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.block5.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block5.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:17.084626+00:00",
+        "elapsed_seconds": 0.42
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 30900.0,
+        "median_ns": 41000.0,
+        "p95_ns": 63300.0,
+        "max_ns": 104000.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:17.108078+00:00"
+  },
+  "cpu.block5.rust-wrapper": {
+    "id": "cpu.block5.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block5.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:17.112453+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:17.115039+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block5.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.block5.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block5.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:17.571992+00:00",
+        "elapsed_seconds": 0.455
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 35800.0,
+        "median_ns": 56900.0,
+        "p95_ns": 84000.0,
+        "max_ns": 148800.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:17.589406+00:00"
+  },
+  "cpu.block6.cpp-minimal": {
+    "id": "cpu.block6.cpp-minimal",
+    "claim": "cpp-minimal CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block5.cpp-minimal"
+    ],
+    "selector": "cpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "cpp-minimal",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:17.998383+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:18.000315+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block6.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/cpu.block6.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block6.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:18.405614+00:00",
+        "elapsed_seconds": 0.404
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 33200.0,
+        "median_ns": 40500.0,
+        "p95_ns": 70000.0,
+        "max_ns": 135900.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:18.425641+00:00"
+  },
+  "cpu.block6.rust-raw": {
+    "id": "cpu.block6.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block6.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:18.899035+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:18.901103+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block6.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.block6.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block6.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:19.335560+00:00",
+        "elapsed_seconds": 0.433
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 32900.0,
+        "median_ns": 52200.0,
+        "p95_ns": 76100.0,
+        "max_ns": 111400.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:19.353849+00:00"
+  },
+  "cpu.block6.rust-wrapper": {
+    "id": "cpu.block6.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block6.cpp-minimal"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:18.430760+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:18.433616+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.block6.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.block6.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.block6.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:18.877602+00:00",
+        "elapsed_seconds": 0.442
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 34900.0,
+        "median_ns": 44600.0,
+        "p95_ns": 72000.0,
+        "max_ns": 157200.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:18.894855+00:00"
+  },
+  "cpu.build.cpp": {
+    "id": "cpu.build.cpp",
+    "claim": "Independent optimized native C++ executable",
+    "requires": [
+      "equipment.toolchain",
+      "native.helper"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent optimized native C++ executable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:59.647094+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/O2",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/EHsc",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\cpu_reference.cpp",
+          "/Fo<run>\\native\\cpu_reference.obj",
+          "/Fe<run>\\native\\cpu-reference.exe",
+          "/link",
+          "<run>\\native\\gpu_helper.lib",
+          "d3d12.lib"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:59.651478+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.build.cpp/00-command.stdout.txt",
+        "stderr": "cases/cpu.build.cpp/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:01.412248+00:00",
+        "elapsed_seconds": 1.759
+      }
+    ],
+    "observations": {
+      "executable_sha256": "5d03e4f519d46379e60cc6a8f65e39a68730e583a5a0c8e12f5c57f46ca79012",
+      "optimizer": "/O2 /MT",
+      "independence": "Standalone consumer uses pinned AMD headers and SDK symbols; shared helper only supplies device/resources/clock/submission/readback"
+    },
+    "finished_utc": "2026-10-15T18:11:01.461593+00:00"
+  },
+  "cpu.build.fsr_sdk": {
+    "id": "cpu.build.fsr_sdk",
+    "claim": "Discover and stage exact fsr_sdk test executable",
+    "requires": [
+      "equipment.toolchain",
+      "native.helper"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Discover and stage exact fsr_sdk test executable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:49.635274+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "--no-run",
+          "--message-format=json",
+          "--features",
+          "dx12,movable",
+          "--lib",
+          "--release",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:49.715639+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.build.fsr_sdk/00-command.stdout.txt",
+        "stderr": "cases/cpu.build.fsr_sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:59.389125+00:00",
+        "elapsed_seconds": 9.672
+      }
+    ],
+    "observations": {
+      "executable_sha256": "19b11b2e3c8da5538022a62337f578a5be04da7b37ae88e909f1115197130942",
+      "manifest": "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+      "registry_artifact": false
+    },
+    "finished_utc": "2026-10-15T18:10:59.642529+00:00"
+  },
+  "cpu.diagnostics.cpp-minimal": {
+    "id": "cpu.diagnostics.cpp-minimal",
+    "claim": "cpp-minimal debug validity control",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.build.fsr_sdk",
+      "cpu.build.cpp"
+    ],
+    "selector": "cpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "cpp-minimal",
+      "debug_layer": true,
+      "preinspect": false,
+      "frames": 4,
+      "measured_frames": 0,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:01.465681+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:01.467709+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.diagnostics.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/cpu.diagnostics.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.diagnostics.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:05.168524+00:00",
+        "elapsed_seconds": 3.699
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "5097338675a805521419720c249d21ac5f5cc637351851382b93f36a16a63987",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 4,
+        "min_ns": 181100.0,
+        "median_ns": 352400.0,
+        "p95_ns": 352400.0,
+        "max_ns": 3058110000.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:05.188958+00:00"
+  },
+  "cpu.diagnostics.rust-raw": {
+    "id": "cpu.diagnostics.rust-raw",
+    "claim": "rust-raw debug validity control",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.diagnostics.cpp-minimal"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": true,
+      "preinspect": false,
+      "frames": 4,
+      "measured_frames": 0,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:05.193375+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:05.195927+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.diagnostics.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.diagnostics.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.diagnostics.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:08.521998+00:00",
+        "elapsed_seconds": 3.324
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "5097338675a805521419720c249d21ac5f5cc637351851382b93f36a16a63987",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 4,
+        "min_ns": 193800.0,
+        "median_ns": 289800.0,
+        "p95_ns": 289800.0,
+        "max_ns": 2714825600.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:08.547772+00:00"
+  },
+  "cpu.diagnostics.rust-wrapper": {
+    "id": "cpu.diagnostics.rust-wrapper",
+    "claim": "rust-wrapper debug validity control",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.diagnostics.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": true,
+      "preinspect": false,
+      "frames": 4,
+      "measured_frames": 0,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:08.551970+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:08.554755+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.diagnostics.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.diagnostics.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.diagnostics.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:09.179488+00:00",
+        "elapsed_seconds": 0.623
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "5097338675a805521419720c249d21ac5f5cc637351851382b93f36a16a63987",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 4,
+        "min_ns": 1157600.0,
+        "median_ns": 2254800.0,
+        "p95_ns": 2254800.0,
+        "max_ns": 177707500.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:09.223766+00:00"
+  },
+  "cpu.warm1.preinspected.rust-raw": {
+    "id": "cpu.warm1.preinspected.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm1.preinspected.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": true,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:20.833392+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:20.835232+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm1.preinspected.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm1.preinspected.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "1",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm1.preinspected.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:21.250035+00:00",
+        "elapsed_seconds": 0.413
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 32700.0,
+        "median_ns": 40600.0,
+        "p95_ns": 67700.0,
+        "max_ns": 72300.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:21.264258+00:00"
+  },
+  "cpu.warm1.preinspected.rust-wrapper": {
+    "id": "cpu.warm1.preinspected.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm1.prepared.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": true,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:20.324492+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:20.326864+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm1.preinspected.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm1.preinspected.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "1",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm1.preinspected.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:20.809843+00:00",
+        "elapsed_seconds": 0.481
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 34100.0,
+        "median_ns": 44300.0,
+        "p95_ns": 73400.0,
+        "max_ns": 81600.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:20.829481+00:00"
+  },
+  "cpu.warm1.prepared.rust-raw": {
+    "id": "cpu.warm1.prepared.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm1.prepared.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:19.856987+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:19.859201+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm1.prepared.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm1.prepared.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm1.prepared.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:20.297573+00:00",
+        "elapsed_seconds": 0.436
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 33200.0,
+        "median_ns": 44600.0,
+        "p95_ns": 70800.0,
+        "max_ns": 84200.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:20.320201+00:00"
+  },
+  "cpu.warm1.prepared.rust-wrapper": {
+    "id": "cpu.warm1.prepared.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.block6.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:19.358371+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:19.360534+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm1.prepared.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm1.prepared.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm1.prepared.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:19.831196+00:00",
+        "elapsed_seconds": 0.469
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 35000.0,
+        "median_ns": 51200.0,
+        "p95_ns": 75700.0,
+        "max_ns": 91400.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:19.852333+00:00"
+  },
+  "cpu.warm2.preinspected.rust-raw": {
+    "id": "cpu.warm2.preinspected.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm1.preinspected.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": true,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:21.267919+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:21.269884+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm2.preinspected.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm2.preinspected.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "1",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm2.preinspected.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:21.734668+00:00",
+        "elapsed_seconds": 0.463
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 34300.0,
+        "median_ns": 48400.0,
+        "p95_ns": 71400.0,
+        "max_ns": 96500.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:21.748885+00:00"
+  },
+  "cpu.warm2.preinspected.rust-wrapper": {
+    "id": "cpu.warm2.preinspected.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm2.preinspected.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": true,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:21.752701+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:21.755200+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm2.preinspected.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm2.preinspected.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "1",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm2.preinspected.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:22.140425+00:00",
+        "elapsed_seconds": 0.383
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 34400.0,
+        "median_ns": 42600.0,
+        "p95_ns": 73600.0,
+        "max_ns": 89000.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:22.164488+00:00"
+  },
+  "cpu.warm2.prepared.rust-raw": {
+    "id": "cpu.warm2.prepared.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm2.preinspected.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:22.169158+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:22.171317+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm2.prepared.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm2.prepared.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm2.prepared.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:22.798454+00:00",
+        "elapsed_seconds": 0.625
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 36600.0,
+        "median_ns": 65600.0,
+        "p95_ns": 155100.0,
+        "max_ns": 3549200.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:22.956256+00:00"
+  },
+  "cpu.warm2.prepared.rust-wrapper": {
+    "id": "cpu.warm2.prepared.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm2.prepared.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:22.962119+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:22.964477+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm2.prepared.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm2.prepared.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm2.prepared.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:23.887222+00:00",
+        "elapsed_seconds": 0.917
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 54200.0,
+        "median_ns": 81000.0,
+        "p95_ns": 798500.0,
+        "max_ns": 8985300.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:23.919843+00:00"
+  },
+  "cpu.warm3.preinspected.rust-raw": {
+    "id": "cpu.warm3.preinspected.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm3.prepared.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": true,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:26.836837+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:26.841561+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm3.preinspected.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm3.preinspected.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "1",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm3.preinspected.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:27.814553+00:00",
+        "elapsed_seconds": 0.969
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 56200.0,
+        "median_ns": 99600.0,
+        "p95_ns": 408700.0,
+        "max_ns": 3585300.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:27.964195+00:00"
+  },
+  "cpu.warm3.preinspected.rust-wrapper": {
+    "id": "cpu.warm3.preinspected.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm3.prepared.rust-raw"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": true,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:24.838723+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:24.841879+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm3.preinspected.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm3.preinspected.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "1",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm3.preinspected.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:25.756785+00:00",
+        "elapsed_seconds": 0.912
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 54200.0,
+        "median_ns": 89200.0,
+        "p95_ns": 649200.0,
+        "max_ns": 5772500.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:25.874026+00:00"
+  },
+  "cpu.warm3.prepared.rust-raw": {
+    "id": "cpu.warm3.prepared.rust-raw",
+    "claim": "rust-raw CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm2.prepared.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-raw",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:23.930536+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:23.933386+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-raw"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm3.prepared.rust-raw/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm3.prepared.rust-raw/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-raw",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm3.prepared.rust-raw\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:24.791762+00:00",
+        "elapsed_seconds": 0.854
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 37800.0,
+        "median_ns": 66700.0,
+        "p95_ns": 167900.0,
+        "max_ns": 1173700.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:24.832920+00:00"
+  },
+  "cpu.warm3.prepared.rust-wrapper": {
+    "id": "cpu.warm3.prepared.rust-wrapper",
+    "claim": "rust-wrapper CPU recording process",
+    "requires": [
+      "equipment.toolchain",
+      "cpu.warm3.preinspected.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+    "scope": "native-experiment",
+    "expectation": {
+      "arm": "rust-wrapper",
+      "debug_layer": false,
+      "preinspect": false,
+      "frames": 160,
+      "measured_frames": 128,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete evidence, no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:25.887945+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\cpu-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::cpu_comparison::native_cpu_comparison",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:25.890684+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/cpu.warm3.prepared.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/cpu.warm3.prepared.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\cpu.warm3.prepared.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:26.794162+00:00",
+        "elapsed_seconds": 0.886
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "frequency_hz": 10000000,
+      "output_sha256": "031e1c2fdcd80f6a535a847708cad5d1e2c38690cc9caacc0f2b473e721b968e",
+      "canonical_descriptors_match": true,
+      "dispatch": {
+        "samples": 128,
+        "min_ns": 52400.0,
+        "median_ns": 75400.0,
+        "p95_ns": 323300.0,
+        "max_ns": 3201600.0
+      },
+      "empty_clock": {
+        "samples": 256,
+        "min_ns": 0.0,
+        "median_ns": 0.0,
+        "p95_ns": 100.0,
+        "max_ns": 100.0
+      },
+      "adapter_driver": [
+        "Adapter: AMD Radeon RX 9060 XT; vendor=0x1002 device=0x7590; feature_level=12_0; index=0; luid=0x0000000000011514",
+        "Driver query: HRESULT=0x00000000; version=32.0.31041.1004"
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:26.830107+00:00"
+  },
+  "equipment.toolchain": {
+    "id": "equipment.toolchain",
+    "claim": "Actual compiler, Cargo, Python and host identity",
+    "requires": [],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Actual compiler, Cargo, Python and host identity"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:38.899197+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\rustc.EXE",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:38.955465+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/00-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:39.056998+00:00",
+        "elapsed_seconds": 0.1
+      },
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "-V"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:39.114986+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/01-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/01-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:39.199757+00:00",
+        "elapsed_seconds": 0.083
+      }
+    ],
+    "observations": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.14.1 (tags/v3.14.1:57e0d17, Dec  2 2025, 14:05:07) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    },
+    "finished_utc": "2026-10-15T18:10:39.373260+00:00"
+  },
+  "native.helper": {
+    "id": "native.helper",
+    "claim": "DX12 submission, fencing and readback equipment",
+    "requires": [
+      "equipment.toolchain",
+      "native.sdk",
+      "abi.common",
+      "abi.creation",
+      "abi.dispatch",
+      "abi.query"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "DX12 submission, fencing and readback equipment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:47.520926+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/LD",
+          "/O2",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+          "/Fo<run>\\native\\",
+          "/link",
+          "/OUT:<run>\\native\\gpu_helper.dll",
+          "/IMPLIB:<run>\\native\\gpu_helper.lib",
+          "d3d12.lib",
+          "dxgi.lib"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:47.525508+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.helper/00-command.stdout.txt",
+        "stderr": "cases/native.helper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:49.579546+00:00",
+        "elapsed_seconds": 2.052
+      }
+    ],
+    "observations": {
+      "helper_sha256": "5523eacdcbc5f5ab3126d70956e2f40eb0f465755aa39dea16efd0bd3ce81e14"
+    },
+    "finished_utc": "2026-10-15T18:10:49.630605+00:00"
+  },
+  "native.sdk": {
+    "id": "native.sdk",
+    "claim": "Pinned, signed local loader/provider deployment",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Pinned, signed local loader/provider deployment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:45.963383+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1",
+          "-Mode",
+          "signatures",
+          "-Directory",
+          "<run>\\native"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:46.084878+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.sdk/00-command.stdout.txt",
+        "stderr": "cases/native.sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:47.510866+00:00",
+        "elapsed_seconds": 1.424
+      }
+    ],
+    "observations": {
+      "artifacts": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      ],
+      "signatures": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.7"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.7"
+        }
+      ],
+      "adapter_index": 0
+    },
+    "finished_utc": "2026-10-15T18:10:47.516156+00:00"
+  },
+  "windows.environment": {
+    "id": "windows.environment",
+    "claim": "x64 Windows developer-tool environment",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "x64 Windows developer-tool environment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:10:39.377684+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:10:39.382189+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/windows.environment/00-environment.stdout.txt",
+        "stderr": "cases/windows.environment/00-environment.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:10:44.376075+00:00",
+        "elapsed_seconds": 4.992
+      }
+    ],
+    "observations": {
+      "msvc": "14.44.35207",
+      "windows_sdk": "10.0.22621.0\\",
+      "target_arch": "x64"
+    },
+    "finished_utc": "2026-10-15T18:10:44.393096+00:00"
+  }
+}

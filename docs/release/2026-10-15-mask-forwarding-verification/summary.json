@@ -1,0 +1,32 @@
+{
+  "ci": {
+    "attempt": "20261015T185841Z-ci-f1bc322b3fc6",
+    "status": "passed",
+    "counts": {
+      "passed": 115
+    },
+    "completed": 115,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "msrv": {
+    "attempt": "20261015T185841Z-msrv-666632df0a2d",
+    "status": "passed",
+    "counts": {
+      "passed": 98
+    },
+    "completed": 98,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  },
+  "native": {
+    "attempt": "20261015T185840Z-native-upscaler-2585f751f596",
+    "status": "passed",
+    "counts": {
+      "passed": 29
+    },
+    "completed": 29,
+    "inputs_unchanged": true,
+    "integrity": "passed"
+  }
+}

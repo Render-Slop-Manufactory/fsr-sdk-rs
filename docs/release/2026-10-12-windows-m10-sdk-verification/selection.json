@@ -1,0 +1,11 @@
+{
+  "scope": "Compact selected evidence, not a complete coordinator export.",
+  "omitted": [
+    "AMD payloads",
+    "executables",
+    "developer environment",
+    "raw GPU readbacks",
+    "unselected logs"
+  ],
+  "limits": "Audit summaries and hashes cannot reconstruct omitted readbacks. The interrupted CI attempt is incomplete and is not an integrity-verified complete run."
+}

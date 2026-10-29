@@ -1,0 +1,1853 @@
+{
+  "schema_version": 1,
+  "profile": "experiment-transfer-cleanup",
+  "required_cases": [
+    {
+      "id": "equipment.toolchain",
+      "claim": "Actual compiler, Cargo, Python and host identity",
+      "requires": [],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Actual compiler, Cargo, Python and host identity"
+      }
+    },
+    {
+      "id": "windows.environment",
+      "claim": "x64 Windows developer-tool environment",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "x64 Windows developer-tool environment"
+      }
+    },
+    {
+      "id": "abi.headers",
+      "claim": "Four hash-verified pinned SDK headers",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Four hash-verified pinned SDK headers"
+      }
+    },
+    {
+      "id": "abi.common",
+      "claim": "Independent native common ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native common ABI assertions"
+      }
+    },
+    {
+      "id": "abi.creation",
+      "claim": "Independent native creation ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native creation ABI assertions"
+      }
+    },
+    {
+      "id": "abi.dispatch",
+      "claim": "Independent native dispatch ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native dispatch ABI assertions"
+      }
+    },
+    {
+      "id": "abi.query",
+      "claim": "Independent native query ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native query ABI assertions"
+      }
+    },
+    {
+      "id": "native.sdk",
+      "claim": "Pinned, signed local loader/provider deployment",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Pinned, signed local loader/provider deployment"
+      }
+    },
+    {
+      "id": "native.helper",
+      "claim": "DX12 submission, fencing and readback equipment",
+      "requires": [
+        "equipment.toolchain",
+        "native.sdk",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "abi.query"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "DX12 submission, fencing and readback equipment"
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.build.fsr_sdk",
+      "claim": "Discover and stage exact fsr_sdk test executable",
+      "requires": [
+        "equipment.toolchain",
+        "native.helper"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Discover and stage exact fsr_sdk test executable"
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.queries.public",
+      "claim": "queries.public",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.build.fsr_sdk"
+      ],
+      "selector": "upscaler::dx12::tests::queries::native_public_queries",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Public queries: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.queries.utilities",
+      "claim": "queries.utilities",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::tests::utility_queries::native_utility_queries",
+      "scope": "native-query",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Upscaler utility queries: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.lifecycle.explicit",
+      "claim": "lifecycle.explicit",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::tests::native_lifecycle",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Production owner: destroy A/B OK",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.lifecycle.drop",
+      "claim": "lifecycle.drop",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::tests::native_lifecycle_drop",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Production owner: destroy A/B OK",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.dispatch.single",
+      "claim": "dispatch.single",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_dispatch_readback",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Gate A: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.dispatch.pre-exposure",
+      "claim": "dispatch.pre exposure",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_pre_exposure_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Pre-exposure dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.dispatch.depth-motion",
+      "claim": "dispatch.depth motion",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_depth_motion_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Depth/motion dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.dispatch.automatic-exposure",
+      "claim": "dispatch.automatic exposure",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_automatic_exposure_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Automatic exposure dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.dispatch.linear-hdr",
+      "claim": "dispatch.linear hdr",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_hdr_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Linear HDR dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.dispatch.supplied-masks",
+      "claim": "dispatch.supplied masks",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_supplied_masks_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Supplied masks dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.dispatch.active-render",
+      "claim": "dispatch.active render",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_active_render_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Active render dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.dispatch.temporal",
+      "claim": "dispatch.temporal",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_temporal_smoke",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Gate B: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.dispatch.semantics",
+      "claim": "dispatch.semantics",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_semantic_comparisons",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Gate C: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.d013-control-abc",
+      "claim": "d013 control abc",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::same_thread_load_create_dispatch_and_cleanup",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Transfer baseline scenario=1 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.d013-transfer-three-frames",
+      "claim": "d013 transfer three frames",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::three_moving_frames_on_successive_threads",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Transfer baseline scenario=2 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.d013-transfer-abc",
+      "claim": "d013 transfer abc",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::load_create_then_dispatch_and_cleanup_on_other_threads",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Transfer baseline scenario=1 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.d013-control-siblings",
+      "claim": "d013 control siblings",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::same_thread_siblings_survive_runtime_release",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Transfer baseline scenario=3 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.d013-transfer-siblings",
+      "claim": "d013 transfer siblings",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::siblings_survive_runtime_release_and_thread_transfers",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Transfer baseline scenario=3 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.d013-control-three-frames",
+      "claim": "d013 control three frames",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfer_baseline::same_thread_three_moving_frames",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Transfer baseline scenario=2 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.create-after-transfer-control-r1",
+      "claim": "create after transfer control r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_runtime_transfer_before_context_creation",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=1 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.create-after-transfer-control-r2",
+      "claim": "create after transfer control r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_runtime_transfer_before_context_creation",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=1 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.create-after-transfer-control-r3",
+      "claim": "create after transfer control r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_runtime_transfer_before_context_creation",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=1 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.create-after-transfer-transfer-r1",
+      "claim": "create after transfer transfer r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::runtime_transfer_before_context_creation_on_another_thread",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=1 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.create-after-transfer-transfer-r2",
+      "claim": "create after transfer transfer r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::runtime_transfer_before_context_creation_on_another_thread",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=1 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.create-after-transfer-transfer-r3",
+      "claim": "create after transfer transfer r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::runtime_transfer_before_context_creation_on_another_thread",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=1 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.history-control-r1",
+      "claim": "history control r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_continuous_history_across_ownership_handoffs",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=2 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 6,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.history-control-r2",
+      "claim": "history control r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_continuous_history_across_ownership_handoffs",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=2 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 6,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.history-control-r3",
+      "claim": "history control r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_continuous_history_across_ownership_handoffs",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=2 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 6,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.history-transfer-r1",
+      "claim": "history transfer r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::continuous_history_across_worker_thread_transfers",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=2 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 6,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.history-transfer-r2",
+      "claim": "history transfer r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::continuous_history_across_worker_thread_transfers",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=2 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 6,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.history-transfer-r3",
+      "claim": "history transfer r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::continuous_history_across_worker_thread_transfers",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=2 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 6,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.independent-siblings-control-r1",
+      "claim": "independent siblings control r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=3 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 5,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.independent-siblings-control-r2",
+      "claim": "independent siblings control r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=3 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 5,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.independent-siblings-control-r3",
+      "claim": "independent siblings control r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_independent_siblings_share_cleanup_coordination",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=3 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 5,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.independent-siblings-transfer-r1",
+      "claim": "independent siblings transfer r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=3 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 5,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.independent-siblings-transfer-r2",
+      "claim": "independent siblings transfer r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=3 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 5,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.independent-siblings-transfer-r3",
+      "claim": "independent siblings transfer r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::independent_siblings_share_cleanup_coordination_across_threads",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=3 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 5,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.unwind-control-r1",
+      "claim": "unwind control r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_automatic_context_cleanup_during_unwind",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=4 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.unwind-control-r2",
+      "claim": "unwind control r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_automatic_context_cleanup_during_unwind",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=4 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.unwind-control-r3",
+      "claim": "unwind control r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_automatic_context_cleanup_during_unwind",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=4 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.unwind-transfer-r1",
+      "claim": "unwind transfer r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::transferred_context_automatic_cleanup_during_unwind",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=4 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.unwind-transfer-r2",
+      "claim": "unwind transfer r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::transferred_context_automatic_cleanup_during_unwind",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=4 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.unwind-transfer-r3",
+      "claim": "unwind transfer r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::transferred_context_automatic_cleanup_during_unwind",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=4 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 1,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.sibling-unwind-control-r1",
+      "claim": "sibling unwind control r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=5 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 3,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.sibling-unwind-control-r2",
+      "claim": "sibling unwind control r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=5 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 3,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.sibling-unwind-control-r3",
+      "claim": "sibling unwind control r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::same_thread_sibling_cleanup_during_unwind_preserves_survivor",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=5 transfer=false: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 3,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.sibling-unwind-transfer-r1",
+      "claim": "sibling unwind transfer r1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=5 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 3,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.sibling-unwind-transfer-r2",
+      "claim": "sibling unwind transfer r2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=5 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 3,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.sibling-unwind-transfer-r3",
+      "claim": "sibling unwind transfer r3",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.queries.public",
+        "experiment.transfer-cleanup.lifecycle.explicit",
+        "experiment.transfer-cleanup.lifecycle.drop",
+        "experiment.transfer-cleanup.dispatch.single",
+        "experiment.transfer-cleanup.dispatch.pre-exposure",
+        "experiment.transfer-cleanup.dispatch.depth-motion",
+        "experiment.transfer-cleanup.dispatch.automatic-exposure",
+        "experiment.transfer-cleanup.dispatch.linear-hdr",
+        "experiment.transfer-cleanup.dispatch.supplied-masks",
+        "experiment.transfer-cleanup.dispatch.active-render",
+        "experiment.transfer-cleanup.dispatch.temporal",
+        "experiment.transfer-cleanup.dispatch.semantics",
+        "experiment.transfer-cleanup.d013-control-abc",
+        "experiment.transfer-cleanup.d013-transfer-three-frames",
+        "experiment.transfer-cleanup.d013-transfer-abc",
+        "experiment.transfer-cleanup.d013-control-siblings",
+        "experiment.transfer-cleanup.d013-transfer-siblings",
+        "experiment.transfer-cleanup.d013-control-three-frames"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::thread_transfers::transferred_sibling_cleanup_during_unwind_preserves_survivor",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "case=5 transfer=true: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_CONTEXT_TRACE": "1"
+        },
+        "readback_count": 3,
+        "readback_bytes_each": 1843200
+      }
+    },
+    {
+      "id": "experiment.transfer-cleanup.payload-comparison",
+      "claim": "Selected control/transfer payload comparison",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.transfer-cleanup.create-after-transfer-control-r1",
+        "experiment.transfer-cleanup.create-after-transfer-control-r2",
+        "experiment.transfer-cleanup.create-after-transfer-control-r3",
+        "experiment.transfer-cleanup.create-after-transfer-transfer-r1",
+        "experiment.transfer-cleanup.create-after-transfer-transfer-r2",
+        "experiment.transfer-cleanup.create-after-transfer-transfer-r3",
+        "experiment.transfer-cleanup.history-control-r1",
+        "experiment.transfer-cleanup.history-control-r2",
+        "experiment.transfer-cleanup.history-control-r3",
+        "experiment.transfer-cleanup.history-transfer-r1",
+        "experiment.transfer-cleanup.history-transfer-r2",
+        "experiment.transfer-cleanup.history-transfer-r3",
+        "experiment.transfer-cleanup.independent-siblings-control-r1",
+        "experiment.transfer-cleanup.independent-siblings-control-r2",
+        "experiment.transfer-cleanup.independent-siblings-control-r3",
+        "experiment.transfer-cleanup.independent-siblings-transfer-r1",
+        "experiment.transfer-cleanup.independent-siblings-transfer-r2",
+        "experiment.transfer-cleanup.independent-siblings-transfer-r3",
+        "experiment.transfer-cleanup.unwind-control-r1",
+        "experiment.transfer-cleanup.unwind-control-r2",
+        "experiment.transfer-cleanup.unwind-control-r3",
+        "experiment.transfer-cleanup.unwind-transfer-r1",
+        "experiment.transfer-cleanup.unwind-transfer-r2",
+        "experiment.transfer-cleanup.unwind-transfer-r3",
+        "experiment.transfer-cleanup.sibling-unwind-control-r1",
+        "experiment.transfer-cleanup.sibling-unwind-control-r2",
+        "experiment.transfer-cleanup.sibling-unwind-control-r3",
+        "experiment.transfer-cleanup.sibling-unwind-transfer-r1",
+        "experiment.transfer-cleanup.sibling-unwind-transfer-r2",
+        "experiment.transfer-cleanup.sibling-unwind-transfer-r3"
+      ],
+      "selector": "",
+      "scope": "offline-analysis",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Selected control/transfer payload comparison"
+      }
+    }
+  ],
+  "resume": "disabled"
+}

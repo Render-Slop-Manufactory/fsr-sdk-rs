@@ -1,0 +1,212 @@
+[
+  {
+    "path": ".gitattributes",
+    "bytes": 72,
+    "sha256": "e1a560eeda757f14716da54c8632c6548f62946d882baf83a0f28ae016215e8c"
+  },
+  {
+    "path": "ci/cases.json",
+    "bytes": 201228,
+    "sha256": "874386dd482821d0a520a528ca05f42326ddcf017aca39b6da28a86c338820ce"
+  },
+  {
+    "path": "ci/infrastructure.tests.txt",
+    "bytes": 28101,
+    "sha256": "fb80f58381685efbeb00d89e446cd4bbd2b2d1484b5bbc396846f92f7432a39e"
+  },
+  {
+    "path": "ci/inputs.json",
+    "bytes": 32450,
+    "sha256": "81f4cefdfca49ff440fcb590036e98d357864a14b03d098ea46deb005f8ac669"
+  },
+  {
+    "path": "ci/plan.json",
+    "bytes": 42211,
+    "sha256": "29f34ff399d8cef5c0fde47dbf87581479df4e3dc0519bfe3d2efc799335e5c9"
+  },
+  {
+    "path": "ci/run.json",
+    "bytes": 11455,
+    "sha256": "cdb29d93ab803512a9fdee6810fd0f65a0ea2ea2baeab1ee655c7e61b734d376"
+  },
+  {
+    "path": "ci/rust.movable.test.txt",
+    "bytes": 21555,
+    "sha256": "135fab866e30eb0fbe5915e14280bf367fec7d01aa429fbbe53bb8bf61267d1f"
+  },
+  {
+    "path": "cpp-cpu/cases.json",
+    "bytes": 129123,
+    "sha256": "1ea3793dd5a2553be45426f78e8c6681e914e929d7ac24abdf3f9bc805733018"
+  },
+  {
+    "path": "cpp-cpu/inputs.json",
+    "bytes": 32469,
+    "sha256": "56e1d176cd1bcdf5fa6667bd3a16cabfad486624bb861edb87b311654396f905"
+  },
+  {
+    "path": "cpp-cpu/plan.json",
+    "bytes": 25606,
+    "sha256": "170c96724862f8b9c921bdf102f649ba75f149dfa84b1c09e30bc6e0804883b1"
+  },
+  {
+    "path": "cpp-cpu/run.json",
+    "bytes": 3523,
+    "sha256": "246b7efaa02740cc402a5cca89d05148bd076070ba3e7b4eaf18ad75929be12f"
+  },
+  {
+    "path": "cpp-gpu/cases.json",
+    "bytes": 60515,
+    "sha256": "c1435a5c812c61bdc9847550cebc75af5e36668a0a660e232ff7954da063c020"
+  },
+  {
+    "path": "cpp-gpu/inputs.json",
+    "bytes": 32465,
+    "sha256": "466864a6059d779db0ff39136d3e3a1ed02a79cc619e84855360d92406e3c6f0"
+  },
+  {
+    "path": "cpp-gpu/plan.json",
+    "bytes": 10097,
+    "sha256": "4ad7594bc1f4efe0e963159f34bfb1fa5d126def47fa1fb1107ba913148b5612"
+  },
+  {
+    "path": "cpp-gpu/run.json",
+    "bytes": 1735,
+    "sha256": "fb20665b927990492591ea638c8410393ad5c235db006e36c67985d53ab77632"
+  },
+  {
+    "path": "independent/cases.json",
+    "bytes": 302733,
+    "sha256": "af373a9e5965401499ebc9e740ca4f8c90b928970604fb7e7899dcd570ddf2a8"
+  },
+  {
+    "path": "independent/inputs.json",
+    "bytes": 32613,
+    "sha256": "8dfecddbbd6a46d6b2c9d93dcc77de3e10f1876999ae9b9906d219471be45608"
+  },
+  {
+    "path": "independent/native-sharpening.json",
+    "bytes": 67522,
+    "sha256": "f501cbd8fef7094b29fbd7365a8025450210d33e7b120c669f17ad0cde13946b"
+  },
+  {
+    "path": "independent/plan.json",
+    "bytes": 83928,
+    "sha256": "5c80a972d0d9e344be4680cdad719935fb8c712e06037486f72ec50d6503103c"
+  },
+  {
+    "path": "independent/run.json",
+    "bytes": 8745,
+    "sha256": "b2ffbef36ed437b9d66b9bed6831384162be0520641bb6a99075bc5bc8271835"
+  },
+  {
+    "path": "independent/transfer-cleanup.json",
+    "bytes": 5977,
+    "sha256": "3a6dc4ed33fb3a1c5d6607ba26043765658a488536a60718f637e05b92e82f91"
+  },
+  {
+    "path": "independent-selection.py.txt",
+    "bytes": 2175,
+    "sha256": "484308a447563baf328ada19620eedba1ed7ee96302cc43b8486eb147d503b9c"
+  },
+  {
+    "path": "msrv/cases.json",
+    "bytes": 179586,
+    "sha256": "6df749750258b97978d3856b08684bbd4899870c51347c7316ea9542c57add84"
+  },
+  {
+    "path": "msrv/inputs.json",
+    "bytes": 31500,
+    "sha256": "acc6a6830c3a6cfe6c03fab1732bb6c6e73000c9466e28d81804fef00e9204e0"
+  },
+  {
+    "path": "msrv/plan.json",
+    "bytes": 37195,
+    "sha256": "30e8b1c4764c80be676542a5c8e1a23c92bd1b9f5db9c17f39e6fc1225031b38"
+  },
+  {
+    "path": "msrv/run.json",
+    "bytes": 11326,
+    "sha256": "92a19145228ff03094ee2b4597c2fc03802f4b701c48b27aee0cb78d82535502"
+  },
+  {
+    "path": "native/cases.json",
+    "bytes": 61964,
+    "sha256": "a6b9f6fa20175432bf6f0bd4bccdba89299953b7fee67eb7aeed8f1c67bb363b"
+  },
+  {
+    "path": "native/inputs.json",
+    "bytes": 32459,
+    "sha256": "ae86d44b7192aa62118ab9d971e6f85029cfd664014d7435739ab89abd919d9e"
+  },
+  {
+    "path": "native/native.dispatch.linear-hdr.txt",
+    "bytes": 7010,
+    "sha256": "69138c08732a1094b8d5b5a9e4125e6a9e5350b3c56b362713295659189e48a4"
+  },
+  {
+    "path": "native/native.dispatch.supplied-masks.txt",
+    "bytes": 961,
+    "sha256": "74269181559b63d0421022f6b10af5318b64fd2d2ea51a458e0f03a943ef4363"
+  },
+  {
+    "path": "native/native.queries.public.txt",
+    "bytes": 950,
+    "sha256": "9750884e0ad150f5ede241e8e2414a4d07ab711eaab9cd425f54d61d6191250b"
+  },
+  {
+    "path": "native/plan.json",
+    "bytes": 17022,
+    "sha256": "c99adeb110ec4b3d3622e71955262f75958952fe08f3d6b13a57b9d9a8fd67a1"
+  },
+  {
+    "path": "native/run.json",
+    "bytes": 2397,
+    "sha256": "97eaf54ffb7816aa5dc18a81d75a39d1efa2d392d3de85352f5b41ae6452e13e"
+  },
+  {
+    "path": "recording/cases.json",
+    "bytes": 72421,
+    "sha256": "e9999e912af24fc6335ff5c507a78c838d0d65f2559bd82760da57f46214bea5"
+  },
+  {
+    "path": "recording/inputs.json",
+    "bytes": 32464,
+    "sha256": "d5098eeaee126ea417d12de9576542df1f475c1b79beddad6bac8346c84f1568"
+  },
+  {
+    "path": "recording/plan.json",
+    "bytes": 16980,
+    "sha256": "cb2095c3ded2fee3013a4175a3e8b6bd95b21e4611033c0d9f26c02d3524443a"
+  },
+  {
+    "path": "recording/run.json",
+    "bytes": 2790,
+    "sha256": "fb0dce79710d5664feb14eb44b5f8d8512df6176ab60bcbcd387d6dc698896e6"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 1942,
+    "sha256": "731513068841216cd91370f4e80d3bcfe1c0bc6c8ffcfcba2683b0c2da278475"
+  },
+  {
+    "path": "transfer/cases.json",
+    "bytes": 141052,
+    "sha256": "3e5e3d944ee46f2246aac3d480fea5511ee1bcff54b43e3af5c7c4d003491b64"
+  },
+  {
+    "path": "transfer/inputs.json",
+    "bytes": 32471,
+    "sha256": "9af37c6d7afa1ed3ab774ae9f3a387dc2171c2fa8338d102872b73ae56daa7dd"
+  },
+  {
+    "path": "transfer/plan.json",
+    "bytes": 73368,
+    "sha256": "612a0ab3fad8e02eef63c6e84a21186969cd56c3f4faa92c01d6924d46809992"
+  },
+  {
+    "path": "transfer/run.json",
+    "bytes": 7362,
+    "sha256": "339044a272e82154ccc25d948e0365ccf7440e3965efe415726d312136bd847e"
+  }
+]

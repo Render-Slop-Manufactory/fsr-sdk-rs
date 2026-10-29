@@ -1,0 +1,1885 @@
+{
+  "abi.common": {
+    "id": "abi.common",
+    "claim": "Independent native common ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native common ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:49.335789+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\native_abi.cpp",
+          "/Fo<run>\\common.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:49.339812+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.common/00-command.stdout.txt",
+        "stderr": "cases/abi.common/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:49.826589+00:00",
+        "elapsed_seconds": 0.485
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:11:49.830169+00:00"
+  },
+  "abi.creation": {
+    "id": "abi.creation",
+    "claim": "Independent native creation ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native creation ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:49.833457+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\native_abi.cpp",
+          "/Fo<run>\\creation.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:49.837462+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.creation/00-command.stdout.txt",
+        "stderr": "cases/abi.creation/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:50.437604+00:00",
+        "elapsed_seconds": 0.598
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:11:50.442074+00:00"
+  },
+  "abi.dispatch": {
+    "id": "abi.dispatch",
+    "claim": "Independent native dispatch ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native dispatch ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:50.446611+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\dispatch_native_abi.cpp",
+          "/Fo<run>\\dispatch.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:50.450735+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.dispatch/00-command.stdout.txt",
+        "stderr": "cases/abi.dispatch/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:50.633820+00:00",
+        "elapsed_seconds": 0.182
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:11:50.637882+00:00"
+  },
+  "abi.headers": {
+    "id": "abi.headers",
+    "claim": "Four hash-verified pinned SDK headers",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Four hash-verified pinned SDK headers"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:49.327054+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "sdk_commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+      "headers": [
+        {
+          "path": "api/include/ffx_api.h",
+          "sha256": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd"
+        },
+        {
+          "path": "api/include/ffx_api_types.h",
+          "sha256": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49"
+        },
+        {
+          "path": "api/include/dx12/ffx_api_dx12.h",
+          "sha256": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530"
+        },
+        {
+          "path": "upscalers/include/ffx_upscale.h",
+          "sha256": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+        }
+      ]
+    },
+    "finished_utc": "2026-10-15T18:11:49.331942+00:00"
+  },
+  "abi.query": {
+    "id": "abi.query",
+    "claim": "Independent native query ABI assertions",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment",
+      "abi.headers"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent native query ABI assertions"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:50.641836+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/c",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\query_native_abi.cpp",
+          "/Fo<run>\\query.obj"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:50.645719+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/abi.query/00-command.stdout.txt",
+        "stderr": "cases/abi.query/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:50.790117+00:00",
+        "elapsed_seconds": 0.143
+      }
+    ],
+    "observations": {},
+    "finished_utc": "2026-10-15T18:11:50.793808+00:00"
+  },
+  "equipment.toolchain": {
+    "id": "equipment.toolchain",
+    "claim": "Actual compiler, Cargo, Python and host identity",
+    "requires": [],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Actual compiler, Cargo, Python and host identity"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:42.892913+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\rustc.EXE",
+          "-vV"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:42.935681+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/00-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:43.011229+00:00",
+        "elapsed_seconds": 0.074
+      },
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "-V"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:43.074840+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/equipment.toolchain/01-command.stdout.txt",
+        "stderr": "cases/equipment.toolchain/01-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:43.179058+00:00",
+        "elapsed_seconds": 0.101
+      }
+    ],
+    "observations": {
+      "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)\n",
+      "python": "3.14.1 (tags/v3.14.1:57e0d17, Dec  2 2025, 14:05:07) [MSC v.1944 64 bit (AMD64)]",
+      "host": "Windows-11-10.0.26300-SP0",
+      "resume": "disabled"
+    },
+    "finished_utc": "2026-10-15T18:11:43.342103+00:00"
+  },
+  "gpu-timing.build.fsr_sdk": {
+    "id": "gpu-timing.build.fsr_sdk",
+    "claim": "Discover and stage exact fsr_sdk test executable",
+    "requires": [
+      "equipment.toolchain",
+      "native.helper"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Discover and stage exact fsr_sdk test executable"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:53.662401+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<user-home>\\.cargo\\bin\\cargo.EXE",
+          "test",
+          "--manifest-path",
+          "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+          "--no-run",
+          "--message-format=json",
+          "--features",
+          "dx12,movable",
+          "--lib",
+          "--release",
+          "--locked",
+          "--offline"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:53.714546+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu-timing.build.fsr_sdk/00-command.stdout.txt",
+        "stderr": "cases/gpu-timing.build.fsr_sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:54.084468+00:00",
+        "elapsed_seconds": 0.368
+      }
+    ],
+    "observations": {
+      "executable_sha256": "19b11b2e3c8da5538022a62337f578a5be04da7b37ae88e909f1115197130942",
+      "manifest": "<repo>\\crates\\fsr-sdk\\Cargo.toml",
+      "registry_artifact": false
+    },
+    "finished_utc": "2026-10-15T18:11:54.205834+00:00"
+  },
+  "gpu.analysis": {
+    "id": "gpu.analysis",
+    "claim": "Separate CPU/GPU distributions and process differences",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.block1.cpp-minimal",
+      "gpu.block1.rust-wrapper",
+      "gpu.block2.rust-wrapper",
+      "gpu.block2.cpp-minimal",
+      "gpu.block3.cpp-minimal",
+      "gpu.block3.rust-wrapper",
+      "gpu.block4.rust-wrapper",
+      "gpu.block4.cpp-minimal"
+    ],
+    "selector": "",
+    "scope": "offline-analysis",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Separate CPU/GPU distributions and process differences"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:12:26.458516+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [],
+    "observations": {
+      "protocol": {
+        "question": "Bounded matched Rust/C++ 1080p FSR command GPU interval, independently of CPU recording",
+        "output": [
+          1920,
+          1080
+        ],
+        "render": "Pre-create SDK Quality query, checked against live context; allocation follows reported dimensions",
+        "frames": 160,
+        "warmup": 32,
+        "debug_frames": 4,
+        "scene": "Analytic ramp translating one render pixel right each frame; projection-jittered samples; UV current-to-previous motion excludes jitter; standard finite depth 0.5; explicit exposure 1",
+        "history": "One context per process, reset only first frame; all frame jitters queried in advance from live provider",
+        "process_orders": [
+          [
+            "cpp-minimal",
+            "rust-wrapper"
+          ],
+          [
+            "rust-wrapper",
+            "cpp-minimal"
+          ],
+          [
+            "cpp-minimal",
+            "rust-wrapper"
+          ],
+          [
+            "rust-wrapper",
+            "cpp-minimal"
+          ]
+        ],
+        "cpu": "QPC around dispatch only; no query recording, upload, submission, wait, readback or logging",
+        "gpu": "Same direct queue EndQuery timestamps around FSR recording; provider barriers included; fixture uploads/transitions, empty bracket, ResolveQueryData and final readback outside",
+        "synchronization": "One frame in flight; completed monotonically increasing fence before query, allocator, list or upload reuse",
+        "controls": "Untouched sentinel, restored final sentinel, finite and fully written output, exact matched descriptors/jitters/provider/adapter/driver/output per history cohort, separate debug-layer children, per-frame empty GPU brackets and stable queried queue frequency",
+        "interpretation": "Descriptive process distributions and nearby median differences; no speed threshold, clock locking, FPS, throughput, image-quality or universal parity claim"
+      },
+      "blocks": [
+        {
+          "block": 1,
+          "order": [
+            "cpp-minimal",
+            "rust-wrapper"
+          ],
+          "distributions": {
+            "cpp-minimal": {
+              "cpu": {
+                "samples": 128,
+                "min_ns": 59400.0,
+                "median_ns": 77000.0,
+                "p95_ns": 131900.0,
+                "max_ns": 317600.0
+              },
+              "gpu": {
+                "samples": 128,
+                "min_ns": 639360.0,
+                "median_ns": 949440.0,
+                "p95_ns": 971800.0,
+                "max_ns": 1310000.0
+              },
+              "empty_gpu": {
+                "samples": 160,
+                "min_ns": 0.0,
+                "median_ns": 40.0,
+                "p95_ns": 80.0,
+                "max_ns": 80.0
+              }
+            },
+            "rust-wrapper": {
+              "cpu": {
+                "samples": 128,
+                "min_ns": 62800.0,
+                "median_ns": 80400.0,
+                "p95_ns": 125400.0,
+                "max_ns": 186400.0
+              },
+              "gpu": {
+                "samples": 128,
+                "min_ns": 649040.0,
+                "median_ns": 951040.0,
+                "p95_ns": 975680.0,
+                "max_ns": 1780840.0
+              },
+              "empty_gpu": {
+                "samples": 160,
+                "min_ns": 40.0,
+                "median_ns": 40.0,
+                "p95_ns": 80.0,
+                "max_ns": 80.0
+              }
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "cpu": 3400.0,
+            "gpu": 1600.0
+          }
+        },
+        {
+          "block": 2,
+          "order": [
+            "rust-wrapper",
+            "cpp-minimal"
+          ],
+          "distributions": {
+            "rust-wrapper": {
+              "cpu": {
+                "samples": 128,
+                "min_ns": 63200.0,
+                "median_ns": 88200.0,
+                "p95_ns": 167600.0,
+                "max_ns": 343200.0
+              },
+              "gpu": {
+                "samples": 128,
+                "min_ns": 641560.0,
+                "median_ns": 940000.0,
+                "p95_ns": 976400.0,
+                "max_ns": 1294320.0
+              },
+              "empty_gpu": {
+                "samples": 160,
+                "min_ns": 0.0,
+                "median_ns": 40.0,
+                "p95_ns": 80.0,
+                "max_ns": 120.0
+              }
+            },
+            "cpp-minimal": {
+              "cpu": {
+                "samples": 128,
+                "min_ns": 51700.0,
+                "median_ns": 68000.0,
+                "p95_ns": 108400.0,
+                "max_ns": 229900.0
+              },
+              "gpu": {
+                "samples": 128,
+                "min_ns": 643840.0,
+                "median_ns": 708360.0,
+                "p95_ns": 965480.0,
+                "max_ns": 1311560.0
+              },
+              "empty_gpu": {
+                "samples": 160,
+                "min_ns": 40.0,
+                "median_ns": 40.0,
+                "p95_ns": 80.0,
+                "max_ns": 80.0
+              }
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "cpu": 20200.0,
+            "gpu": 231640.0
+          }
+        },
+        {
+          "block": 3,
+          "order": [
+            "cpp-minimal",
+            "rust-wrapper"
+          ],
+          "distributions": {
+            "cpp-minimal": {
+              "cpu": {
+                "samples": 128,
+                "min_ns": 54800.0,
+                "median_ns": 67700.0,
+                "p95_ns": 102400.0,
+                "max_ns": 267400.0
+              },
+              "gpu": {
+                "samples": 128,
+                "min_ns": 643280.0,
+                "median_ns": 683600.0,
+                "p95_ns": 968320.0,
+                "max_ns": 1020960.0
+              },
+              "empty_gpu": {
+                "samples": 160,
+                "min_ns": 40.0,
+                "median_ns": 40.0,
+                "p95_ns": 80.0,
+                "max_ns": 80.0
+              }
+            },
+            "rust-wrapper": {
+              "cpu": {
+                "samples": 128,
+                "min_ns": 62100.0,
+                "median_ns": 79800.0,
+                "p95_ns": 140900.0,
+                "max_ns": 386700.0
+              },
+              "gpu": {
+                "samples": 128,
+                "min_ns": 648520.0,
+                "median_ns": 688560.0,
+                "p95_ns": 997680.0,
+                "max_ns": 1274640.0
+              },
+              "empty_gpu": {
+                "samples": 160,
+                "min_ns": 0.0,
+                "median_ns": 40.0,
+                "p95_ns": 80.0,
+                "max_ns": 80.0
+              }
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "cpu": 12100.0,
+            "gpu": 4960.0
+          }
+        },
+        {
+          "block": 4,
+          "order": [
+            "rust-wrapper",
+            "cpp-minimal"
+          ],
+          "distributions": {
+            "rust-wrapper": {
+              "cpu": {
+                "samples": 128,
+                "min_ns": 57900.0,
+                "median_ns": 76900.0,
+                "p95_ns": 129300.0,
+                "max_ns": 293500.0
+              },
+              "gpu": {
+                "samples": 128,
+                "min_ns": 593320.0,
+                "median_ns": 702480.0,
+                "p95_ns": 1007480.0,
+                "max_ns": 1255240.0
+              },
+              "empty_gpu": {
+                "samples": 160,
+                "min_ns": 0.0,
+                "median_ns": 40.0,
+                "p95_ns": 80.0,
+                "max_ns": 80.0
+              }
+            },
+            "cpp-minimal": {
+              "cpu": {
+                "samples": 128,
+                "min_ns": 53600.0,
+                "median_ns": 69100.0,
+                "p95_ns": 109000.0,
+                "max_ns": 159000.0
+              },
+              "gpu": {
+                "samples": 128,
+                "min_ns": 655960.0,
+                "median_ns": 682680.0,
+                "p95_ns": 741440.0,
+                "max_ns": 1021760.0
+              },
+              "empty_gpu": {
+                "samples": 160,
+                "min_ns": 0.0,
+                "median_ns": 40.0,
+                "p95_ns": 40.0,
+                "max_ns": 80.0
+              }
+            }
+          },
+          "wrapper_minus_cpp_median_ns": {
+            "cpu": 7800.0,
+            "gpu": 19800.0
+          }
+        }
+      ],
+      "performance_threshold": null
+    },
+    "finished_utc": "2026-10-15T18:12:26.461486+00:00"
+  },
+  "gpu.block1.cpp-minimal": {
+    "id": "gpu.block1.cpp-minimal",
+    "claim": "cpp-minimal GPU timestamp process",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.diagnostics.rust-wrapper"
+    ],
+    "selector": "gpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": false,
+      "frames": 160,
+      "warmup": 32,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:12:03.256465+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:12:03.258810+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.block1.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/gpu.block1.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.block1.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:12:06.137662+00:00",
+        "elapsed_seconds": 2.877
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "bd9fd40fe7456bd2be5f6ae6f57f08053c5cdf5196e4e4fcb56b8576aabe3904",
+      "cpu": {
+        "samples": 128,
+        "min_ns": 59400.0,
+        "median_ns": 77000.0,
+        "p95_ns": 131900.0,
+        "max_ns": 317600.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 639360.0,
+        "median_ns": 949440.0,
+        "p95_ns": 971800.0,
+        "max_ns": 1310000.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 0.0,
+        "median_ns": 40.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:12:06.165734+00:00"
+  },
+  "gpu.block1.rust-wrapper": {
+    "id": "gpu.block1.rust-wrapper",
+    "claim": "rust-wrapper GPU timestamp process",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.block1.cpp-minimal"
+    ],
+    "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": false,
+      "frames": 160,
+      "warmup": 32,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:12:06.169973+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:12:06.172954+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.block1.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/gpu.block1.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.block1.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:12:09.146662+00:00",
+        "elapsed_seconds": 2.972
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "bd9fd40fe7456bd2be5f6ae6f57f08053c5cdf5196e4e4fcb56b8576aabe3904",
+      "cpu": {
+        "samples": 128,
+        "min_ns": 62800.0,
+        "median_ns": 80400.0,
+        "p95_ns": 125400.0,
+        "max_ns": 186400.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 649040.0,
+        "median_ns": 951040.0,
+        "p95_ns": 975680.0,
+        "max_ns": 1780840.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 40.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:12:09.179711+00:00"
+  },
+  "gpu.block2.cpp-minimal": {
+    "id": "gpu.block2.cpp-minimal",
+    "claim": "cpp-minimal GPU timestamp process",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.block2.rust-wrapper"
+    ],
+    "selector": "gpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": false,
+      "frames": 160,
+      "warmup": 32,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:12:12.180114+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:12:12.182046+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.block2.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/gpu.block2.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.block2.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:12:14.997565+00:00",
+        "elapsed_seconds": 2.814
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "bd9fd40fe7456bd2be5f6ae6f57f08053c5cdf5196e4e4fcb56b8576aabe3904",
+      "cpu": {
+        "samples": 128,
+        "min_ns": 51700.0,
+        "median_ns": 68000.0,
+        "p95_ns": 108400.0,
+        "max_ns": 229900.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 643840.0,
+        "median_ns": 708360.0,
+        "p95_ns": 965480.0,
+        "max_ns": 1311560.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 40.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:12:15.021803+00:00"
+  },
+  "gpu.block2.rust-wrapper": {
+    "id": "gpu.block2.rust-wrapper",
+    "claim": "rust-wrapper GPU timestamp process",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.block1.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": false,
+      "frames": 160,
+      "warmup": 32,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:12:09.182936+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:12:09.185177+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.block2.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/gpu.block2.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.block2.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:12:12.144569+00:00",
+        "elapsed_seconds": 2.958
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "bd9fd40fe7456bd2be5f6ae6f57f08053c5cdf5196e4e4fcb56b8576aabe3904",
+      "cpu": {
+        "samples": 128,
+        "min_ns": 63200.0,
+        "median_ns": 88200.0,
+        "p95_ns": 167600.0,
+        "max_ns": 343200.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 641560.0,
+        "median_ns": 940000.0,
+        "p95_ns": 976400.0,
+        "max_ns": 1294320.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 0.0,
+        "median_ns": 40.0,
+        "p95_ns": 80.0,
+        "max_ns": 120.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:12:12.176376+00:00"
+  },
+  "gpu.block3.cpp-minimal": {
+    "id": "gpu.block3.cpp-minimal",
+    "claim": "cpp-minimal GPU timestamp process",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.block2.cpp-minimal"
+    ],
+    "selector": "gpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": false,
+      "frames": 160,
+      "warmup": 32,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:12:15.024813+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:12:15.026260+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.block3.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/gpu.block3.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.block3.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:12:17.780235+00:00",
+        "elapsed_seconds": 2.753
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "bd9fd40fe7456bd2be5f6ae6f57f08053c5cdf5196e4e4fcb56b8576aabe3904",
+      "cpu": {
+        "samples": 128,
+        "min_ns": 54800.0,
+        "median_ns": 67700.0,
+        "p95_ns": 102400.0,
+        "max_ns": 267400.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 643280.0,
+        "median_ns": 683600.0,
+        "p95_ns": 968320.0,
+        "max_ns": 1020960.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 40.0,
+        "median_ns": 40.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:12:17.805313+00:00"
+  },
+  "gpu.block3.rust-wrapper": {
+    "id": "gpu.block3.rust-wrapper",
+    "claim": "rust-wrapper GPU timestamp process",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.block3.cpp-minimal"
+    ],
+    "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": false,
+      "frames": 160,
+      "warmup": 32,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:12:17.808661+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:12:17.810717+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.block3.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/gpu.block3.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.block3.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:12:20.721837+00:00",
+        "elapsed_seconds": 2.909
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "bd9fd40fe7456bd2be5f6ae6f57f08053c5cdf5196e4e4fcb56b8576aabe3904",
+      "cpu": {
+        "samples": 128,
+        "min_ns": 62100.0,
+        "median_ns": 79800.0,
+        "p95_ns": 140900.0,
+        "max_ns": 386700.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 648520.0,
+        "median_ns": 688560.0,
+        "p95_ns": 997680.0,
+        "max_ns": 1274640.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 0.0,
+        "median_ns": 40.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:12:20.754453+00:00"
+  },
+  "gpu.block4.cpp-minimal": {
+    "id": "gpu.block4.cpp-minimal",
+    "claim": "cpp-minimal GPU timestamp process",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.block4.rust-wrapper"
+    ],
+    "selector": "gpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": false,
+      "frames": 160,
+      "warmup": 32,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:12:23.686785+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:12:23.688538+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.block4.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/gpu.block4.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.block4.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:12:26.434069+00:00",
+        "elapsed_seconds": 2.742
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "bd9fd40fe7456bd2be5f6ae6f57f08053c5cdf5196e4e4fcb56b8576aabe3904",
+      "cpu": {
+        "samples": 128,
+        "min_ns": 53600.0,
+        "median_ns": 69100.0,
+        "p95_ns": 109000.0,
+        "max_ns": 159000.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 655960.0,
+        "median_ns": 682680.0,
+        "p95_ns": 741440.0,
+        "max_ns": 1021760.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 0.0,
+        "median_ns": 40.0,
+        "p95_ns": 40.0,
+        "max_ns": 80.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:12:26.455831+00:00"
+  },
+  "gpu.block4.rust-wrapper": {
+    "id": "gpu.block4.rust-wrapper",
+    "claim": "rust-wrapper GPU timestamp process",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.block3.rust-wrapper"
+    ],
+    "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": false,
+      "frames": 160,
+      "warmup": 32,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:12:20.757572+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:12:20.759764+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.block4.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/gpu.block4.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "0",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.block4.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:12:23.653076+00:00",
+        "elapsed_seconds": 2.892
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "bd9fd40fe7456bd2be5f6ae6f57f08053c5cdf5196e4e4fcb56b8576aabe3904",
+      "cpu": {
+        "samples": 128,
+        "min_ns": 57900.0,
+        "median_ns": 76900.0,
+        "p95_ns": 129300.0,
+        "max_ns": 293500.0
+      },
+      "gpu": {
+        "samples": 128,
+        "min_ns": 593320.0,
+        "median_ns": 702480.0,
+        "p95_ns": 1007480.0,
+        "max_ns": 1255240.0
+      },
+      "empty_gpu": {
+        "samples": 160,
+        "min_ns": 0.0,
+        "median_ns": 40.0,
+        "p95_ns": 80.0,
+        "max_ns": 80.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:12:23.683429+00:00"
+  },
+  "gpu.build.cpp": {
+    "id": "gpu.build.cpp",
+    "claim": "Independent optimized GPU reference",
+    "requires": [
+      "equipment.toolchain",
+      "native.helper"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Independent optimized GPU reference"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:54.209801+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/O2",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/EHsc",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\upscalers\\include",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu_reference.cpp",
+          "/Fo<run>\\native\\gpu_reference.obj",
+          "/Fe<run>\\native\\gpu-reference.exe",
+          "/link",
+          "<run>\\native\\gpu_helper.lib",
+          "d3d12.lib"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:54.213391+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.build.cpp/00-command.stdout.txt",
+        "stderr": "cases/gpu.build.cpp/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:55.776722+00:00",
+        "elapsed_seconds": 1.562
+      }
+    ],
+    "observations": {
+      "executable_sha256": "81459489fdbaddc238f3fe85181443f391d3f252e1f2780c936f36c2d603d78d",
+      "optimizer": "/O2 /MT",
+      "independence": "Pinned AMD headers and SDK calls in standalone C++; shared equipment contains no AMD calls"
+    },
+    "finished_utc": "2026-10-15T18:11:55.816354+00:00"
+  },
+  "gpu.diagnostics.cpp-minimal": {
+    "id": "gpu.diagnostics.cpp-minimal",
+    "claim": "cpp-minimal debug control",
+    "requires": [
+      "equipment.toolchain",
+      "gpu-timing.build.fsr_sdk",
+      "gpu.build.cpp"
+    ],
+    "selector": "gpu-reference.exe",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": true,
+      "frames": 4,
+      "warmup": 0,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:55.820043+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-reference.exe"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:55.821521+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED cpp-minimal"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.diagnostics.cpp-minimal/00-command.stdout.txt",
+        "stderr": "cases/gpu.diagnostics.cpp-minimal/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "cpp-minimal",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.diagnostics.cpp-minimal\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:59.474329+00:00",
+        "elapsed_seconds": 3.651
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "524cd583ea532e9d46bcd105773391f588031dcaeef02d55fd0d840506247c97",
+      "cpu": {
+        "samples": 4,
+        "min_ns": 179600.0,
+        "median_ns": 263700.0,
+        "p95_ns": 263700.0,
+        "max_ns": 2830088700.0
+      },
+      "gpu": {
+        "samples": 4,
+        "min_ns": 598560.0,
+        "median_ns": 659040.0,
+        "p95_ns": 659040.0,
+        "max_ns": 661480.0
+      },
+      "empty_gpu": {
+        "samples": 4,
+        "min_ns": 40.0,
+        "median_ns": 40.0,
+        "p95_ns": 40.0,
+        "max_ns": 40.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:11:59.499815+00:00"
+  },
+  "gpu.diagnostics.rust-wrapper": {
+    "id": "gpu.diagnostics.rust-wrapper",
+    "claim": "rust-wrapper debug control",
+    "requires": [
+      "equipment.toolchain",
+      "gpu.diagnostics.cpp-minimal"
+    ],
+    "selector": "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+    "scope": "native-experiment",
+    "expectation": {
+      "debug_layer": true,
+      "frames": 4,
+      "warmup": 0,
+      "watchdog_seconds": 180,
+      "contract": "Matched valid execution and complete timestamps; no speed gate"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:59.504185+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "<run>\\native\\gpu-timing-fsr_sdk.exe",
+          "--ignored",
+          "--exact",
+          "upscaler::dx12::tests::gpu_timing::native_gpu_timing",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "cwd": "<run>\\native",
+        "started_utc": "2026-10-15T18:11:59.506120+00:00",
+        "timeout_seconds": 180,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [
+            "CPU_COMPARISON PASSED rust-wrapper"
+          ],
+          "observation_only": false
+        },
+        "stdout": "cases/gpu.diagnostics.rust-wrapper/00-command.stdout.txt",
+        "stderr": "cases/gpu.diagnostics.rust-wrapper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {
+          "FSR_SDK_TEST_DLL": "<run>\\native\\amd_fidelityfx_loader_dx12.dll",
+          "FSR_SDK_TEST_GPU_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_DEVICE_DLL": "<run>\\native\\gpu_helper.dll",
+          "FSR_SDK_TEST_PROVIDER_DLL": "<run>\\native\\amd_fidelityfx_upscaler_dx12.dll",
+          "FSR_SDK_TEST_ADAPTER_INDEX": "0",
+          "FSR_SDK_CPU_ARM": "rust-wrapper",
+          "FSR_SDK_PERFORMANCE_DEBUG": "1",
+          "FSR_SDK_CPU_PREINSPECT": "0",
+          "FSR_SDK_CPU_OUTPUT": "<run>\\readbacks\\gpu.diagnostics.rust-wrapper\\final.rgba16f"
+        },
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:12:03.219728+00:00",
+        "elapsed_seconds": 3.712
+      }
+    ],
+    "observations": {
+      "provider": {
+        "id": 17700776140664213505,
+        "name": "4.1.1"
+      },
+      "query": {
+        "render": [
+          1280,
+          720
+        ],
+        "phase": 18
+      },
+      "gpu_frequency_hz": 100000000,
+      "output_sha256": "524cd583ea532e9d46bcd105773391f588031dcaeef02d55fd0d840506247c97",
+      "cpu": {
+        "samples": 4,
+        "min_ns": 178400.0,
+        "median_ns": 306000.0,
+        "p95_ns": 306000.0,
+        "max_ns": 2935877400.0
+      },
+      "gpu": {
+        "samples": 4,
+        "min_ns": 606160.0,
+        "median_ns": 649520.0,
+        "p95_ns": 649520.0,
+        "max_ns": 657240.0
+      },
+      "empty_gpu": {
+        "samples": 4,
+        "min_ns": 40.0,
+        "median_ns": 40.0,
+        "p95_ns": 40.0,
+        "max_ns": 40.0
+      }
+    },
+    "finished_utc": "2026-10-15T18:12:03.252043+00:00"
+  },
+  "native.helper": {
+    "id": "native.helper",
+    "claim": "DX12 submission, fencing and readback equipment",
+    "requires": [
+      "equipment.toolchain",
+      "native.sdk",
+      "abi.common",
+      "abi.creation",
+      "abi.dispatch",
+      "abi.query"
+    ],
+    "selector": "",
+    "scope": "windows-compilation",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "DX12 submission, fencing and readback equipment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:52.070520+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\cl.EXE",
+          "/nologo",
+          "/std:c++17",
+          "/W4",
+          "/WX",
+          "/MT",
+          "/LD",
+          "/O2",
+          "/DFSR_GPU_TIMING",
+          "/I<repo>\\target\\sdk-windows-verification\\v2.3.0\\Kits\\FidelityFX\\api\\include\\dx12",
+          "<repo>\\crates\\fsr-sdk\\tests\\native\\gpu.cpp",
+          "<repo>\\crates\\fsr-sdk-sys\\tests\\context_lifecycle\\device.cpp",
+          "/Fo<run>\\native\\",
+          "/link",
+          "/OUT:<run>\\native\\gpu_helper.dll",
+          "/IMPLIB:<run>\\native\\gpu_helper.lib",
+          "d3d12.lib",
+          "dxgi.lib"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:52.074192+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.helper/00-command.stdout.txt",
+        "stderr": "cases/native.helper/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:53.615641+00:00",
+        "elapsed_seconds": 1.54
+      }
+    ],
+    "observations": {
+      "helper_sha256": "bebe22226e37d840b332b03a19ea5353decf7fd5a02b379c46a65d1e1a806278"
+    },
+    "finished_utc": "2026-10-15T18:11:53.658248+00:00"
+  },
+  "native.sdk": {
+    "id": "native.sdk",
+    "claim": "Pinned, signed local loader/provider deployment",
+    "requires": [
+      "equipment.toolchain",
+      "windows.environment"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "Pinned, signed local loader/provider deployment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:50.797981+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1",
+          "-Mode",
+          "signatures",
+          "-Directory",
+          "<run>\\native"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:50.911215+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/native.sdk/00-command.stdout.txt",
+        "stderr": "cases/native.sdk/00-command.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:52.062593+00:00",
+        "elapsed_seconds": 1.15
+      }
+    ],
+    "observations": {
+      "artifacts": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "sha256": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46"
+        }
+      ],
+      "signatures": [
+        {
+          "file": "amd_fidelityfx_loader_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.7"
+        },
+        {
+          "file": "amd_fidelityfx_upscaler_dx12.dll",
+          "status": "Valid",
+          "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+          "signature_type": "Authenticode",
+          "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+          "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+          "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+          "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+          "powershell_version": "7.6.7"
+        }
+      ],
+      "adapter_index": 0
+    },
+    "finished_utc": "2026-10-15T18:11:52.066909+00:00"
+  },
+  "windows.environment": {
+    "id": "windows.environment",
+    "claim": "x64 Windows developer-tool environment",
+    "requires": [
+      "equipment.toolchain"
+    ],
+    "selector": "",
+    "scope": "host",
+    "expectation": {
+      "evaluation": "passed",
+      "contract": "x64 Windows developer-tool environment"
+    },
+    "schema_version": 1,
+    "started_utc": "2026-10-15T18:11:43.347250+00:00",
+    "evaluation": "passed",
+    "execution": "completed",
+    "commands": [
+      {
+        "args": [
+          "C:\\Program Files\\PowerShell\\7\\pwsh.EXE",
+          "-NoProfile",
+          "-NonInteractive",
+          "-File",
+          "<repo>\\tools\\verification\\windows.ps1"
+        ],
+        "cwd": "<repo>",
+        "started_utc": "2026-10-15T18:11:43.352333+00:00",
+        "timeout_seconds": 1200,
+        "expectation": {
+          "diagnostic": null,
+          "markers": [],
+          "observation_only": false
+        },
+        "stdout": "cases/windows.environment/00-environment.stdout.txt",
+        "stderr": "cases/windows.environment/00-environment.stderr.txt",
+        "execution": "completed",
+        "environment_overrides": {},
+        "exit_code": 0,
+        "finished_utc": "2026-10-15T18:11:49.311681+00:00",
+        "elapsed_seconds": 5.957
+      }
+    ],
+    "observations": {
+      "msvc": "14.44.35207",
+      "windows_sdk": "10.0.22621.0\\",
+      "target_arch": "x64"
+    },
+    "finished_utc": "2026-10-15T18:11:49.323171+00:00"
+  }
+}

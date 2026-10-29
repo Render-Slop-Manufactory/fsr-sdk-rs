@@ -1,0 +1,598 @@
+{
+  "schema_version": 1,
+  "profile": "experiment-recording",
+  "required_cases": [
+    {
+      "id": "equipment.toolchain",
+      "claim": "Actual compiler, Cargo, Python and host identity",
+      "requires": [],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Actual compiler, Cargo, Python and host identity"
+      }
+    },
+    {
+      "id": "windows.environment",
+      "claim": "x64 Windows developer-tool environment",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "x64 Windows developer-tool environment"
+      }
+    },
+    {
+      "id": "abi.headers",
+      "claim": "Four hash-verified pinned SDK headers",
+      "requires": [
+        "equipment.toolchain"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Four hash-verified pinned SDK headers"
+      }
+    },
+    {
+      "id": "abi.common",
+      "claim": "Independent native common ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native common ABI assertions"
+      }
+    },
+    {
+      "id": "abi.creation",
+      "claim": "Independent native creation ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native creation ABI assertions"
+      }
+    },
+    {
+      "id": "abi.dispatch",
+      "claim": "Independent native dispatch ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native dispatch ABI assertions"
+      }
+    },
+    {
+      "id": "abi.query",
+      "claim": "Independent native query ABI assertions",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment",
+        "abi.headers"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Independent native query ABI assertions"
+      }
+    },
+    {
+      "id": "native.sdk",
+      "claim": "Pinned, signed local loader/provider deployment",
+      "requires": [
+        "equipment.toolchain",
+        "windows.environment"
+      ],
+      "selector": "",
+      "scope": "host",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Pinned, signed local loader/provider deployment"
+      }
+    },
+    {
+      "id": "native.helper",
+      "claim": "DX12 submission, fencing and readback equipment",
+      "requires": [
+        "equipment.toolchain",
+        "native.sdk",
+        "abi.common",
+        "abi.creation",
+        "abi.dispatch",
+        "abi.query"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "DX12 submission, fencing and readback equipment"
+      }
+    },
+    {
+      "id": "experiment.recording.build.fsr_sdk",
+      "claim": "Discover and stage exact fsr_sdk test executable",
+      "requires": [
+        "equipment.toolchain",
+        "native.helper"
+      ],
+      "selector": "",
+      "scope": "windows-compilation",
+      "expectation": {
+        "evaluation": "passed",
+        "contract": "Discover and stage exact fsr_sdk test executable"
+      }
+    },
+    {
+      "id": "experiment.recording.queries.public",
+      "claim": "queries.public",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.build.fsr_sdk"
+      ],
+      "selector": "upscaler::dx12::tests::queries::native_public_queries",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Public queries: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.queries.utilities",
+      "claim": "queries.utilities",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::tests::utility_queries::native_utility_queries",
+      "scope": "native-query",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Upscaler utility queries: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.lifecycle.explicit",
+      "claim": "lifecycle.explicit",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::tests::native_lifecycle",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Production owner: destroy A/B OK",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.lifecycle.drop",
+      "claim": "lifecycle.drop",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::tests::native_lifecycle_drop",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Production owner: destroy A/B OK",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.dispatch.single",
+      "claim": "dispatch.single",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_dispatch_readback",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Gate A: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.dispatch.pre-exposure",
+      "claim": "dispatch.pre exposure",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_pre_exposure_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Pre-exposure dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.dispatch.depth-motion",
+      "claim": "dispatch.depth motion",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_depth_motion_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Depth/motion dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.dispatch.automatic-exposure",
+      "claim": "dispatch.automatic exposure",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_automatic_exposure_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Automatic exposure dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.dispatch.linear-hdr",
+      "claim": "dispatch.linear hdr",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_hdr_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Linear HDR dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.dispatch.supplied-masks",
+      "claim": "dispatch.supplied masks",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_supplied_masks_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Supplied masks dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.dispatch.active-render",
+      "claim": "dispatch.active render",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_active_render_dispatch",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Active render dispatch: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.dispatch.temporal",
+      "claim": "dispatch.temporal",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_temporal_smoke",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Gate B: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.dispatch.semantics",
+      "claim": "dispatch.semantics",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.queries.public"
+      ],
+      "selector": "upscaler::dx12::native_dispatch::native_semantic_comparisons",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "Gate C: PASSED",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {},
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.same-1",
+      "claim": "same 1",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.dispatch.single",
+        "experiment.recording.dispatch.temporal",
+        "experiment.recording.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::recording_ahead::native_recording_ahead_spike",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "GPU readback",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_RECORD_MODE": "same",
+          "FSR_SDK_TEST_RECORD_COUNT": "1"
+        },
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.same-2",
+      "claim": "same 2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.dispatch.single",
+        "experiment.recording.dispatch.temporal",
+        "experiment.recording.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::recording_ahead::native_recording_ahead_spike",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "GPU readback",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_RECORD_MODE": "same",
+          "FSR_SDK_TEST_RECORD_COUNT": "2"
+        },
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.same-5",
+      "claim": "same 5",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.dispatch.single",
+        "experiment.recording.dispatch.temporal",
+        "experiment.recording.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::recording_ahead::native_recording_ahead_spike",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "GPU readback",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_RECORD_MODE": "same",
+          "FSR_SDK_TEST_RECORD_COUNT": "5"
+        },
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.same-8",
+      "claim": "same 8",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.dispatch.single",
+        "experiment.recording.dispatch.temporal",
+        "experiment.recording.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::recording_ahead::native_recording_ahead_spike",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "GPU readback",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_RECORD_MODE": "same",
+          "FSR_SDK_TEST_RECORD_COUNT": "8"
+        },
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.sibling-2",
+      "claim": "sibling 2",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.dispatch.single",
+        "experiment.recording.dispatch.temporal",
+        "experiment.recording.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::recording_ahead::native_recording_ahead_spike",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "GPU readback",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_RECORD_MODE": "sibling",
+          "FSR_SDK_TEST_RECORD_COUNT": "2"
+        },
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    },
+    {
+      "id": "experiment.recording.sibling-5",
+      "claim": "sibling 5",
+      "requires": [
+        "equipment.toolchain",
+        "experiment.recording.dispatch.single",
+        "experiment.recording.dispatch.temporal",
+        "experiment.recording.dispatch.semantics"
+      ],
+      "selector": "upscaler::dx12::recording_ahead::native_recording_ahead_spike",
+      "scope": "native-gpu",
+      "expectation": {
+        "evaluation": "passed",
+        "exit": 0,
+        "markers": [
+          "GPU readback",
+          "1 passed; 0 failed"
+        ],
+        "watchdog_seconds": 180,
+        "environment": {
+          "FSR_SDK_TEST_RECORD_MODE": "sibling",
+          "FSR_SDK_TEST_RECORD_COUNT": "5"
+        },
+        "readback_count": null,
+        "readback_bytes_each": null
+      }
+    }
+  ],
+  "resume": "disabled"
+}

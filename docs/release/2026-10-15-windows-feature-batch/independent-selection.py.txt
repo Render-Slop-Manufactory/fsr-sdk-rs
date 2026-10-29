@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: MPL-2.0
+"""Supplemental selection, never a replacement for failed full profiles."""
+import sys
+from pathlib import Path
+
+root = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(root / 'tools/verification'))
+from run import parser
+from profiles import compose
+from records import fresh
+from execution import Runner, Case
+
+options = parser().parse_args(['run', 'native-upscaler', '--native', '--adapter-index', '0',
+    '--sdk-root', str(root / 'target/sdk-windows-verification/v2.3.0/Kits/FidelityFX')])
+profile = 'windows-independent-regressions'
+directory = fresh(root / 'target/verification', profile)
+print('Attempt: ' + str(directory), flush=True)
+runner = Runner(root, directory, options)
+runner.env['CARGO_TARGET_DIR'] = str(root / 'target/verification-build/current')
+runner.state['external_inputs'] = [('selection-script', Path(__file__))]
+runner.state['external_inputs'] += [('sdk/' + str(p.relative_to(options.sdk_root)), p)
+    for p in Path(options.sdk_root).rglob('*') if p.is_file()]
+cases = []
+seen = set()
+excluded = {p + '.dispatch.supplied-masks' for p in ('native', 'experiment.transfer-cleanup')}
+removed = []
+for source_profile in ('native-upscaler', 'experiment-transfer-cleanup'):
+    for case in compose(source_profile):
+        if case.id in seen or case.id in excluded:
+            continue
+        seen.add(case.id)
+        for dependency in case.requires:
+            if dependency in excluded:
+                removed.append([case.id, dependency])
+        case.requires = tuple(d for d in case.requires if d not in excluded)
+        cases.append(case)
+def scope(r):
+    r.note(excluded=sorted(excluded), removed_prerequisite_edges=removed,
+        reason='Provider 4.1.1 advertises no optional masks. Full profiles remain failed; '
+               'this selection checks independent regressions with unchanged actions and expectations.')
+cases.insert(1, Case('selection.scope', 'Explicit supplemental scope; no supplied-mask acceptance', scope,
+    ('equipment.toolchain',)))
+code = runner.execute(cases, profile, require_passed=True)
+print('Result: ' + str(directory / 'run.json'), flush=True)
+sys.exit(code)

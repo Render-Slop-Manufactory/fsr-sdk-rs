@@ -1,0 +1,87 @@
+[
+  {
+    "path": "attempts.json",
+    "bytes": 44738,
+    "sha256": "0bb90b2de06de49410ab47d9fa388db63bf2ea67f40b463e316844eded3f79b9"
+  },
+  {
+    "path": "infrastructure-tests.txt",
+    "bytes": 17892,
+    "sha256": "e76bdd2908d8c6aa474fa7ed8ceebaa9af570380836c52549ea96286781c3e5e"
+  },
+  {
+    "path": "inputs.json",
+    "bytes": 24597,
+    "sha256": "a3ca453233b731be67b591c986914bad33e1ace3669764e6a098761ec082eb25"
+  },
+  {
+    "path": "native-cases.json",
+    "bytes": 78547,
+    "sha256": "ed69c3770f74ee4481163ccf45a3930b9640c0eeeabcadf7694fafde687af864"
+  },
+  {
+    "path": "native-plan.json",
+    "bytes": 12132,
+    "sha256": "cd7d48c702d8af3aa8240c680fb318691dd16c9d1a3513c0ebd25d9d754262ec"
+  },
+  {
+    "path": "native-sharpening-audit.json",
+    "bytes": 68305,
+    "sha256": "fcbe034c2a9cac3a1009d041c6841b4ac5c140c05ac128c4c9c8af50d9acc965"
+  },
+  {
+    "path": "native.dispatch.single.txt",
+    "bytes": 1778,
+    "sha256": "7b829b02ce5c442b0c7225fb301035009c9786f5a381bb7e5e4babe8d80ce122"
+  },
+  {
+    "path": "native.movable.disabled.txt",
+    "bytes": 2386,
+    "sha256": "ccc2f138b674b9d6b7f13880c702c146858bc40d6241c15b41549a2c5c08976f"
+  },
+  {
+    "path": "native.movable.sharpening.txt",
+    "bytes": 2410,
+    "sha256": "a65b5a78067535a2662b4ff022ce0666e0b0aaf522d75b52460640514f364ae8"
+  },
+  {
+    "path": "native.queries.public.txt",
+    "bytes": 952,
+    "sha256": "b6ba1a5aa0b4af0ac0154ac23be1c567b0f5df771ae53206dee11303791c82f6"
+  },
+  {
+    "path": "offline-result.json",
+    "bytes": 1211,
+    "sha256": "db9821261a62bc989befdbd4c7aa2b1dc3896b3ed447aadf9bd4c203d7b24dc0"
+  },
+  {
+    "path": "reuse-result.json",
+    "bytes": 1211,
+    "sha256": "db9821261a62bc989befdbd4c7aa2b1dc3896b3ed447aadf9bd4c203d7b24dc0"
+  },
+  {
+    "path": "rust-default-tests.txt",
+    "bytes": 14021,
+    "sha256": "cfadd9da17acf82aa0004ce2394416121c34d4941b87e11ab6990175fc88bc2e"
+  },
+  {
+    "path": "rust-movable-tests.txt",
+    "bytes": 15572,
+    "sha256": "9e9b6fdd5193cd5a14898950be4c0bacb40d2c67d6a7f2b443b398e67bd4589e"
+  },
+  {
+    "path": "sdk-provenance.json",
+    "bytes": 3443,
+    "sha256": "b2998e0bf2da9041c12776ed7b295dec8eee65ccacc7b94399ec66ea242667ca"
+  },
+  {
+    "path": "selection.json",
+    "bytes": 393,
+    "sha256": "95d4c10d801f6dad66e58ba56e33ce62424acef3f302bfca34e6edb9e8be6805"
+  },
+  {
+    "path": "strict-result.json",
+    "bytes": 10649,
+    "sha256": "14635b28ae90e37addee914da334cbd6be6d01918606e827d6d4dfe4c7a654ac"
+  }
+]

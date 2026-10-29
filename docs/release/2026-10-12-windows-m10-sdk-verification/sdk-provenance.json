@@ -1,0 +1,58 @@
+{
+  "version": "v2.3.0",
+  "url": "https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/releases/download/v2.3.0/FidelityFX-Samples-v2.3.0-prebuilt.zip",
+  "asset": "FidelityFX-Samples-v2.3.0-prebuilt.zip",
+  "commit": "60f4ea81909200d8542eca14dccb2628b763a9a3",
+  "installed_at": "2026-10-12T21:35:36.807623+00:00",
+  "archive_expected_sha256": "f90890b9323bb2f4f2404ac4cdc9395e8495ecdac6f7aa0bcdf1ad1848422273",
+  "archive_sha256": "f90890b9323bb2f4f2404ac4cdc9395e8495ecdac6f7aa0bcdf1ad1848422273",
+  "archive_bytes": 127451548,
+  "files": {
+    "3rdpartynotice.md": "94401a90486d1b53b528bb7f845a7b8daf7227b60eb7c0fc3b8c5571ba202a27",
+    "docs/license.md": "6757f2fec461238da6f84f83536ec195e8c036b1773a06f6f34301b9ed8c0963",
+    "Kits/FidelityFX/api/include/ffx_api.h": "e1a9d1b559eaf75f4cb401f1c43a66e2f3dc9621abfeb58b9c6fac56443177fd",
+    "Kits/FidelityFX/api/include/ffx_api_types.h": "cc0adc0ffc804dd7cd03c39c15581b575e416383177ffe95060201d52cc0fc49",
+    "Kits/FidelityFX/api/include/dx12/ffx_api_dx12.h": "c9afbc3c4c673723e9e5369a666f0ff54560543b5a93537f8ff453bf1c3bf530",
+    "Kits/FidelityFX/signedbin/amd_fidelityfx_loader_dx12.dll": "e2d85aa05a9bd9ed8b38935fdf5199372cca6f74c12015143bb6f945ee1608aa",
+    "Kits/FidelityFX/signedbin/amd_fidelityfx_upscaler_dx12.dll": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46",
+    "Kits/FidelityFX/upscalers/include/ffx_upscale.h": "65be36d5653eb71c10379e0204f7bb7cd6a8aeec96e6f8cffc5f59ffeb1f89bf"
+  },
+  "licence_notices": {
+    "docs/license.md": "6757f2fec461238da6f84f83536ec195e8c036b1773a06f6f34301b9ed8c0963",
+    "3rdpartynotice.md": "94401a90486d1b53b528bb7f845a7b8daf7227b60eb7c0fc3b8c5571ba202a27"
+  },
+  "signatures": {
+    "status": "windows_policy_valid",
+    "method": "Windows Get-AuthenticodeSignature",
+    "revocation": "not independently established",
+    "checked_at": "2026-10-12T21:35:36.807273+00:00",
+    "files": [
+      {
+        "file": "amd_fidelityfx_loader_dx12.dll",
+        "status": "Valid",
+        "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+        "signature_type": "Authenticode",
+        "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+        "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+        "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+        "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+        "powershell_version": "7.6.6"
+      },
+      {
+        "file": "amd_fidelityfx_upscaler_dx12.dll",
+        "status": "Valid",
+        "signer": "CN=Advanced Micro Devices, O=Advanced Micro Devices, S=California, C=US",
+        "signature_type": "Authenticode",
+        "signer_thumbprint": "33D35682079E201671B738B7209B4586103BC271",
+        "signer_issuer": "CN=Sectigo Public Code Signing CA R36, O=Sectigo Limited, C=GB",
+        "timestamp_subject": "CN=DigiCert SHA256 RSA4096 Timestamp Responder 2025 1, O=\"DigiCert, Inc.\", C=US",
+        "timestamp_thumbprint": "DD6230AC860A2D306BDA38B16879523007FB417E",
+        "powershell_version": "7.6.6"
+      }
+    ]
+  },
+  "dll_archive_members": [
+    "Samples/Upscalers/FidelityFX_FSR/dx12/x64/Release/amd_fidelityfx_loader_dx12.dll",
+    "Samples/Upscalers/FidelityFX_FSR/dx12/x64/Release/amd_fidelityfx_upscaler_dx12.dll"
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "baseline_files": 1548,
+  "changed": [
+    {
+      "path": "CHANGELOG.md",
+      "before_sha256": "b4658f70bb01741900733fa70c6f4ae24f5116fd93100f14015153a013dac613",
+      "after_sha256": "a347716f6563ab36bc0ef78e58192b8e6baa5942af8756ffd5deaf9194fcc892"
+    },
+    {
+      "path": "ROADMAP.md",
+      "before_sha256": "a34de3178c059dc3bcfcbea5ef04b9705f02d80194fe18ae9feb87bb0641f63a",
+      "after_sha256": "65428b06e289e52396926eb87b7ee9991b240c6537ddb5bee2ba325ddc284729"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/README.md",
+      "before_sha256": "7f80b41bf4231a479a3f4724cbe5067429a5da932d0029dfc84997af7dcbe166",
+      "after_sha256": "954d75d65ce1cab0ddd303f601b172b087ea0a14f910042a019acc3649e46b77"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/src/api.rs",
+      "before_sha256": "635b27da82273bbfa993e326eb8da364c4c326bf5fcea9968a6023e49683448e",
+      "after_sha256": "75eed7419af07e47fa3c18bfb854890d10b407985c55aff6c069c623e2461e10"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/dispatch_abi.rs",
+      "before_sha256": "82220fc2e58f8c84447e8af4c74e309db5a14ec881ca38ea1c0932c1d75b845c",
+      "after_sha256": "2336ab3afd5c2d13490cd85d98007372f166ff216647646ef88123d0e7a37853"
+    },
+    {
+      "path": "crates/fsr-sdk-sys/tests/dispatch_native_abi.cpp",
+      "before_sha256": "15e2c16a375061e70a78617857dfe7826f0d315e858214e4d85878426c43d342",
+      "after_sha256": "3010e5ae82b7959015d49ba966356bbd448b7bac1215a5a1455e9db98c419184"
+    },
+    {
+      "path": "crates/fsr-sdk/README.md",
+      "before_sha256": "f4e5767ca33851e42ad3315d463629ae1c7bb81cf0324e3a3d71421bfc18f28f",
+      "after_sha256": "78d3397497a866090b3c21ecc6fa2fa89c2b484db225957dc9b206641dea7312"
+    },
+    {
+      "path": "crates/fsr-sdk/examples/dx12_upscale.rs",
+      "before_sha256": "6247101d671e772a97071e2841b95412ee0bdf23af521c0cf6da90103c2276a9",
+      "after_sha256": "cca9ae1bfe675a5ab022157907e1028c7477e452635f15b531f82d0305950aad"
+    },
+    {
+      "path": "crates/fsr-sdk/src/error.rs",
+      "before_sha256": "49e0e8f35e5390c1b61fbf4c9d56e0a6c11e194a1cfbc7fcf11754c9753f2c6f",
+      "after_sha256": "92630042eee931187184176ff9c7660882c98ecd60bb3eba428d642a1350befd"
+    },
+    {
+      "path": "crates/fsr-sdk/src/lib.rs",
+      "before_sha256": "b5f8491ba8688fcc1df54897f3974823322cc6a9af7c2bcad12e5f941e4cc75f",
+      "after_sha256": "c5853c14181c1e373c57424123892575659530c17f03ba58e6b4c5fed5b2bd08"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler.rs",
+      "before_sha256": "0df0b6e5502ff156c07a1a0a535539b29a5e34aee6b24b1e1838eda370c90ea9",
+      "after_sha256": "c7f2919d8f49627e762aa5d24b97883be791bb64e295c179eaaa4d99bb2ab278"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/common.rs",
+      "before_sha256": "fe11802ffa9852a507e0a92f36ce8880bcd4a642606d5c01de73b5c9158f6a58",
+      "after_sha256": "d28d8ac11ee77a1a4de39bf55c5d81d5d02aa44dd50d406676b8ba3ded98dc79"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch.rs",
+      "before_sha256": "da04c98991b2151cc17ff130330abf833d8c010356c9b8da36a9eddf68c72c26",
+      "after_sha256": "9ad65998fff5e880a0f264edb7e319d59ea07cc81290c7dcc6434cd7bea0334b"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/descriptor.rs",
+      "before_sha256": "e76ee0f29a9826a15c23bb7f6175c25622d68ef5fdad53c830cd1237c56371c4",
+      "after_sha256": "25948e595eed6abad44cfc73e5bcbf69c046d2f4dcd44427efd4ca81e178bc57"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/frame.rs",
+      "before_sha256": "6f01efaf1597aab098a44d1ae43683e595db909fa93c45123712a7d8efd13c54",
+      "after_sha256": "acd40194ea294b8122438132d9c55d3529066562ab1824cec22af1f468cf248a"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/resources.rs",
+      "before_sha256": "7f9bb5fd2f3fdf796497f18c78fdc3633dd22f5b0ab48152506f51450b6b1a4c",
+      "after_sha256": "f8fd129886dd32a0b294ea97f4aee3a1051348757dd23e46f61fcddd126a66f4"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/dispatch/tests.rs",
+      "before_sha256": "11c58c716dfe51771e50634edc55dcd3976251d2fd2716a46c63edbc14b93383",
+      "after_sha256": "1279953ed4370afc69d219e989982883bba019984cd6593720ac6f9e0ef5b4b5"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/movable.rs",
+      "before_sha256": "7121fb61e260793d92e00e586b5de7d150640a5629834355620c175ec13f766a",
+      "after_sha256": "d7c195311028bd4d70f6370a448b19ef1bc8559a5fef93baf9666f7c0424da63"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/com.rs",
+      "before_sha256": "7bf3403f8792f54a4722119091dd3c3fd6883215de5772eff984642dbfa6202a",
+      "after_sha256": "6decaf8a5d16d4c8797cb1b00b833538a586eac91f568e99b2e197e7b2e227e8"
+    },
+    {
+      "path": "crates/fsr-sdk/src/upscaler/dx12/tests/mod.rs",
+      "before_sha256": "d97e42fcaeddb508f4a7d2f5e9de84c6402421c9d912ddad81111ed76de585fe",
+      "after_sha256": "33c7d012b1b6db4c974c8269e15631ceb191616f643e2ebcf9e3147102220e17"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/dispatch_readback.rs",
+      "before_sha256": "76af7958de6e11ae8bcdf5d88770c7707f713aa251c7d3cc26f1ad68ba2491ad",
+      "after_sha256": "34f010d9ff15213f3dbe37a792c80160003ea7cabcaa2b2c0c25e245b4d4cccd"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/gpu.cpp",
+      "before_sha256": "06eab15213b4c5c23072fe2921c21241755015fcbf510b487359ccee1284c4ec",
+      "after_sha256": "a529f6965d7c6a8b0ae6e5dff011380cefef0b3eac95c66a2400aa3df6916ca7"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/variable_output.h",
+      "before_sha256": "2a73de62db4f8f02e7902fa0c10221890c626e5d162be8342a9a43a906a8f6ec",
+      "after_sha256": "36def3c520cd91ac62a1b66ee384b538f2836c8815e4bc133b0693c88c5854a3"
+    },
+    {
+      "path": "crates/fsr-sdk/tests/native/variable_output.rs",
+      "before_sha256": "547740568a05297a5deaac8917be275575cb8251f32286b351753c355e9efcb4",
+      "after_sha256": "b1e8a4bceb992d50f6bcc59f06edafa6e18e896cd8a7181e5a3c35adf1a161f0"
+    },
+    {
+      "path": "docs/ABI_COVERAGE.md",
+      "before_sha256": "a8bb5e4cb1124e66a5de86339b762eb25bc5defaa0ef32387e55d3a91c2beaa2",
+      "after_sha256": "2203367ca8e8570c67c408d5b20627bfc1ba3edbe524f1cb81fce77484532115"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "before_sha256": "37897f669ba0f0050f0b9f7d34f1bbb69a6eda1225273e9feaced84eb3bcd3c8",
+      "after_sha256": "5bb14fdf275429d4589be4c244d19961a9b06281aca8a2fb86bcee3a0c56c981"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "before_sha256": "2dadf738be44719898b205260bd6938b7add4743cef7f0541350a53d73075c68",
+      "after_sha256": "744b36592c5a03ab9d6cc13f981ffc26259a0c6fdddfc6efeff7a19823c23614"
+    },
+    {
+      "path": "docs/adr/D034.md",
+      "before_sha256": "0ebc2d7e2b18253f7485f3e10ebafd888c0fa393dc265be48575efe02f1a6f1f",
+      "after_sha256": "978423776a6aaa252c56b0bf448d06f737e5cb5cddc01ef88d0884caf81e70fd"
+    },
+    {
+      "path": "docs/release/0.3.0-preparation.md",
+      "before_sha256": "46c73126c7f06441367c98b3460bcf508dd1ef88438d2b5ddd8cf5e39f40dd3c",
+      "after_sha256": "ffd514367ba49b38f4c4a9a2325d4d46a1c8e5a9a796c58eb31c53e6a6b53ae9"
+    },
+    {
+      "path": "docs/research/README.md",
+      "before_sha256": "0377a01b48ea3d977aec685997ee46332ceb9320f888c446e2bb763f0f256f49",
+      "after_sha256": "fbc49c3f3d1a4c0d95b5802eca26e896359191cf1647fb3e713c55afc710b069"
+    },
+    {
+      "path": "docs/research/api-and-safety.md",
+      "before_sha256": "2959fb6f2ff3b9c6f4a4d3f6a63546ec1ebd67e38c5bcd19a9b208f56a05141f",
+      "after_sha256": "a1599287d31047579590b4868f403d16871d92fca78d17fc580eca0bab8aee86"
+    },
+    {
+      "path": "docs/research/upscaling-coverage.md",
+      "before_sha256": "21510fc714d3822376bc2ebf822902508f35b17fe9a37af688530525dc6527a8",
+      "after_sha256": "aa10db1da2d715cf628c8dbdaf6d239a4812fd94b6dc0eb49f85881991e10a92"
+    },
+    {
+      "path": "docs/research/upscaling-dispatch.md",
+      "before_sha256": "9d6df42fd98762299212e68bb00a4fd2cb1634965e303a45e3f3696350ef573a",
+      "after_sha256": "c4b8daeddc98447e221dedf9b8a46e5af743bd659addbe68088fb765878cd585"
+    },
+    {
+      "path": "tools/verification/README.md",
+      "before_sha256": "9bbca5f742f029b9daedc8677512e5e722e7a614ea68f4bd819919ef3d79e4a5",
+      "after_sha256": "10e70a52eafc9c4b203655fc0d41e5398288c610cfa7d01feea684b529a4d6e9"
+    },
+    {
+      "path": "tools/verification/consumer-cases.json",
+      "before_sha256": "c1168b6f9cc89dcf7dcda1ae8e26d24641bef1d5a04c27c53030237378c33d38",
+      "after_sha256": "a595788bfb5a2abf37f4464749935db595f636df9e7651212a1da5442d4e2800"
+    },
+    {
+      "path": "tools/verification/profiles.py",
+      "before_sha256": "6bf016ebe9e96b928de97031855353cb07f981abd04f3721c8dfd3aaf9e78f6c",
+      "after_sha256": "1aef833cf1e4a26ee46b87f473a3f7fb090ffa972c24ef0e96f33941a1750e74"
+    }
+  ],
+  "historical_research_records_unchanged": true,
+  "root_readme_unchanged": true
+}
